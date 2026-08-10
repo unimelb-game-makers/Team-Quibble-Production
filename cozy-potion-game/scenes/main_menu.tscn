@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://bwmeocdqaeu4l"]
+
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://assets/main_theme.tres" id="1_l6cm7"]
+[ext_resource type="Script" uid="uid://drd1spct1hl1y" path="res://scripts/main_menu.gd" id="2_ekxnf"]
+[ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/cauldron_scene.tscn" id="3_wu84c"]
+[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/m&p_scene.tscn" id="4_8ln24"]
+[ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/recipe_scene.tscn" id="5_8ln24"]
+
+[sub_resource type="Gradient" id="Gradient_ekxnf"]
+colors = PackedColorArray(0, 0, 1, 1, 1, 0.49803922, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8kj3l"]
+gradient = SubResource("Gradient_ekxnf")
+fill_to = Vector2(1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_64js0"]
+font_size = 48
+shadow_color = Color(0, 0, 1, 1)
+
+[node name="MainMenu" type="Control" unique_id=44938569]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_l6cm7")
+script = ExtResource("2_ekxnf")
+minigame_packed_scenes = Array[PackedScene]([ExtResource("3_wu84c"), ExtResource("4_8ln24"), ExtResource("5_8ln24")])
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1908156186]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_8kj3l")
+
+[node name="Title" type="Label" parent="." unique_id=2088863489]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -225.5
+offset_right = 210.0
+offset_bottom = -158.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cozy Potion Game"
+label_settings = SubResource("LabelSettings_64js0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="Button" parent="." unique_id=910254194]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -90.5
+offset_right = 128.0
+offset_bottom = -37.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play"
+
+[node name="TestButton" type="OptionButton" parent="." unique_id=1621001618]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -10.5
+offset_right = 128.0
+offset_bottom = 42.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+selected = 0
+item_count = 2
+popup/item_0/text = "Test Minigame"
+popup/item_0/id = 0
+popup/item_1/id = 1
+popup/item_1/separator = true
+
+[node name="QuitButton" type="Button" parent="." unique_id=1104473335]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 69.5
+offset_right = 128.0
+offset_bottom = 122.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit"
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="item_selected" from="TestButton" to="." method="_on_test_button_item_selected"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dndijkbu6kmrt"]
+
+[ext_resource type="Script" uid="uid://ieqfw76u2c8q" path="res://scene_objects/crushing_minigame_objects/ingredient_ball.gd" id="1_sli4w"]
+[ext_resource type="Texture2D" uid="uid://bcoqip3k17f5" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/ginger.jpeg" id="2_n1bdl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvm4"]
+bg_color = Color(0.926813, 0.42044732, 0.3774877, 1)
+corner_radius_top_left = 65
+corner_radius_top_right = 65
+corner_radius_bottom_right = 65
+corner_radius_bottom_left = 65
+corner_detail = 7
+
+[node name="IngredientBall" type="RigidBody2D" unique_id=932391481 node_paths=PackedStringArray("split_markers", "polygon", "collision_polygon", "collision_area", "texture")]
+mass = 0.1
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_sli4w")
+split_limit = 3
+min_split_vel = 130.0
+split_markers = [NodePath("SplitSpawn1"), NodePath("SplitSpawn2")]
+split_scale = 0.5
+polygon = NodePath("Polygon2D")
+collision_polygon = NodePath("CollisionPolygon2D")
+collision_area = NodePath("Area2D")
+texture = NodePath("PanelContainer")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=539219241]
+color = Color(1, 0.24705882, 1, 1)
+polygon = PackedVector2Array(1, -62, 41, -47, 62, -3, 51, 47, 23, 63, -24, 63, -53, 38, -62, -2, -39, -45)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1771965529]
+polygon = PackedVector2Array(1, -62, 41, -46, 60, -5, 50, 46, 22, 61, -22, 65, -53, 38, -63, 1, -39, -45)
+
+[node name="SplitSpawn1" type="Marker2D" parent="." unique_id=155698116]
+position = Vector2(35, 0)
+
+[node name="SplitSpawn2" type="Marker2D" parent="." unique_id=353849214]
+position = Vector2(-27, -1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1280359596]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D" unique_id=627943924]
+polygon = PackedVector2Array(0, -68, 46, -50, 66, -8, 59, 50, 25, 69, -23, 72, -57, 41, -67, 2, -44, -48)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1417621902]
+clip_children = 1
+clip_contents = true
+offset_right = 130.0
+offset_bottom = 130.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-65, -65)
+theme_override_styles/panel = SubResource("StyleBoxFlat_4dvm4")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer" unique_id=195433124]
+layout_mode = 2
+texture = ExtResource("2_n1bdl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bvwov7462yf1x"]
+
+[ext_resource type="Script" uid="uid://di0h6fd4kd14f" path="res://scene_objects/crushing_minigame_objects/pestle.gd" id="1_kspic"]
+[ext_resource type="Texture2D" uid="uid://crp0882kh1uwn" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/pestle.png" id="1_larci"]
+
+[sub_resource type="Curve" id="Curve_kspic"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0875, 0.7538461), 0.660413, 0.660413, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="Pestle" type="CharacterBody2D" unique_id=1770029033]
+script = ExtResource("1_kspic")
+max_speed = 6000.0
+curve = SubResource("Curve_kspic")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=813400141]
+position = Vector2(0, -308.05)
+polygon = PackedVector2Array(-20, -23, -33, 2, -27, 23, -33, 186, -38, 246, -35, 325, -23, 343, 1, 351, 31, 343, 42, 322, 40, 243, 32, 184, 27, 20, 32, 2, 20, -18, 2, -32)
+
+[node name="MortarBetterRemovebgPreview" type="Sprite2D" parent="." unique_id=1977618505]
+position = Vector2(0, -149.435)
+scale = Vector2(0.5738255, 0.5738255)
+texture = ExtResource("1_larci")

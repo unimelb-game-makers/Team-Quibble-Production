@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://cty6lpq8trkc8"]
+
+[ext_resource type="Script" uid="uid://cms2728e0rt6h" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_scene.gd" id="1_fhxy2"]
+[ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scene_objects/crushing_minigame_objects/pestle.tscn" id="1_j31fb"]
+[ext_resource type="Texture2D" uid="uid://ctv72nx3uvy8c" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/blue_mortar_scene.jpeg" id="2_8v1xe"]
+[ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scene_objects/crushing_minigame_objects/ingredient_ball.tscn" id="2_fhxy2"]
+[ext_resource type="Texture2D" uid="uid://uepnxtqkou3g" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/arrow_unfocus.png" id="3_fhxy2"]
+[ext_resource type="Texture2D" uid="uid://cw2c1lwuqh461" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/arrow.png" id="4_bmuh6"]
+
+[node name="M&P Scene" type="Control" unique_id=126500727 node_paths=PackedStringArray("win_label_placeholder")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_fhxy2")
+win_label_placeholder = NodePath("Label")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1614224699]
+
+[node name="Mortar" type="StaticBody2D" parent="Node2D" unique_id=611331611]
+position = Vector2(586, 411)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Node2D/Mortar" unique_id=2009040266]
+polygon = PackedVector2Array(-34, -15, -142, -37, -171, -78, -177, -115, -205, -114, -192, -39, -126, 64, -34, 106, 61, 98, 131, 51, 175, -17, 197, -109, 196, -124, 165, -126, 145, -73, 96, -41, 29, -24)
+
+[node name="IngredientBall" parent="Node2D" unique_id=932391481 groups=["IngredientBall"] instance=ExtResource("2_fhxy2")]
+position = Vector2(520, 158)
+
+[node name="IngredientBall2" parent="Node2D" unique_id=1684924022 groups=["IngredientBall"] instance=ExtResource("2_fhxy2")]
+position = Vector2(670, 162)
+
+[node name="Mortar2" parent="Node2D" unique_id=1770029033 instance=ExtResource("1_j31fb")]
+position = Vector2(174, 271)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=423263158]
+z_index = -10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_8v1xe")
+expand_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=1755876509]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.813
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 59.42395
+offset_top = 216.0
+offset_right = -52.0
+offset_bottom = -271.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 100)
+texture_normal = ExtResource("3_fhxy2")
+texture_hover = ExtResource("4_bmuh6")
+texture_focused = ExtResource("4_bmuh6")
+stretch_mode = 0
+
+[node name="Label" type="RichTextLabel" parent="." unique_id=197231831]
+visible = false
+layout_mode = 0
+offset_left = 195.0
+offset_top = 167.0
+offset_right = 935.0
+offset_bottom = 372.0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 143
+bbcode_enabled = true
+text = "[rainbow freq=.3 sat=0.8 val=0.8]your did it[/rainbow]"
