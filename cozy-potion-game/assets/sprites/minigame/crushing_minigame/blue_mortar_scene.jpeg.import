@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crp0882kh1uwn"
-path="res://.godot/imported/pestle.png-418048ae5d2d6902a14fff2cf6accfed.ctex"
+uid="uid://ctv72nx3uvy8c"
+path="res://.godot/imported/blue_mortar_scene.jpeg-4dae2a7ec36c4298ef104c49b1017868.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/pestle.png"
-dest_files=["res://.godot/imported/pestle.png-418048ae5d2d6902a14fff2cf6accfed.ctex"]
+source_file="res://assets/sprites/minigame/crushing_minigame/blue_mortar_scene.jpeg"
+dest_files=["res://.godot/imported/blue_mortar_scene.jpeg-4dae2a7ec36c4298ef104c49b1017868.ctex"]
 
 [params]
 

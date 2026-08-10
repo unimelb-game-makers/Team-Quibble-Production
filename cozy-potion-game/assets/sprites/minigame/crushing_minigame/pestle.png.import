@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw2c1lwuqh461"
-path="res://.godot/imported/arrow.png-6e917b10f3b93e4ef252468e60a58811.ctex"
+uid="uid://crp0882kh1uwn"
+path="res://.godot/imported/pestle.png-8c8b0ec4170e821371af46bfed92688b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/arrow.png"
-dest_files=["res://.godot/imported/arrow.png-6e917b10f3b93e4ef252468e60a58811.ctex"]
+source_file="res://assets/sprites/minigame/crushing_minigame/pestle.png"
+dest_files=["res://.godot/imported/pestle.png-8c8b0ec4170e821371af46bfed92688b.ctex"]
 
 [params]
 

@@ -7,7 +7,7 @@ extends Control
 # The orginal owner of ingredient, i.e. Storage/Vbox
 var ingredient_box: VBoxContainer = null
 # Poor used for sorting ingredients
-var ingre_type: String = ""
+var ingredient_type: String = ""
 
 
 func _ready() -> void:
@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func set_text(newtext: String) -> void:
 	label.text = newtext
-	ingre_type = newtext
+	ingredient_type = newtext
 
 
 func get_dragbox() -> Area2D:
@@ -24,7 +24,7 @@ func get_dragbox() -> Area2D:
 
 
 func get_info() -> String:
-	return ingre_type
+	return ingredient_type
 
 # Called when dragged to ensure returns to orignal owner
 func return_to_box() -> void:

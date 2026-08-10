@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctv72nx3uvy8c"
-path="res://.godot/imported/blue_mortar_scene.jpeg-4ae9196c8d4972a54cddb556f5379c73.ctex"
+uid="uid://cw2c1lwuqh461"
+path="res://.godot/imported/arrow.png-94b42d09aa61b84037228313fe4d1e9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/blue_mortar_scene.jpeg"
-dest_files=["res://.godot/imported/blue_mortar_scene.jpeg-4ae9196c8d4972a54cddb556f5379c73.ctex"]
+source_file="res://assets/sprites/minigame/crushing_minigame/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-94b42d09aa61b84037228313fe4d1e9c.ctex"]
 
 [params]
 

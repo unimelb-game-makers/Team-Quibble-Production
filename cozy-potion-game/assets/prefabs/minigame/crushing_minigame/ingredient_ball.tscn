@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dndijkbu6kmrt"]
 
-[ext_resource type="Script" uid="uid://ieqfw76u2c8q" path="res://scene_objects/crushing_minigame_objects/ingredient_ball.gd" id="1_sli4w"]
-[ext_resource type="Texture2D" uid="uid://bcoqip3k17f5" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/ginger.jpeg" id="2_n1bdl"]
+[ext_resource type="Script" uid="uid://ieqfw76u2c8q" path="res://scripts/minigame/crushing_minigame/ingredient_ball.gd" id="1_sli4w"]
+[ext_resource type="Texture2D" uid="uid://bcoqip3k17f5" path="res://assets/sprites/minigame/crushing_minigame/ginger.jpeg" id="2_n1bdl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvm4"]
 bg_color = Color(0.926813, 0.42044732, 0.3774877, 1)

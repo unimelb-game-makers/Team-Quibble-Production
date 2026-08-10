@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcoqip3k17f5"
-path="res://.godot/imported/ginger.jpeg-1edfae2faad454a1aa2c788a9fd067f6.ctex"
+uid="uid://uepnxtqkou3g"
+path="res://.godot/imported/arrow_unfocus.png-0fcf6426069ae18675500d52761e3ca6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/ginger.jpeg"
-dest_files=["res://.godot/imported/ginger.jpeg-1edfae2faad454a1aa2c788a9fd067f6.ctex"]
+source_file="res://assets/sprites/minigame/crushing_minigame/arrow_unfocus.png"
+dest_files=["res://.godot/imported/arrow_unfocus.png-0fcf6426069ae18675500d52761e3ca6.ctex"]
 
 [params]
 

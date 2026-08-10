@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bvwov7462yf1x"]
 
-[ext_resource type="Script" uid="uid://di0h6fd4kd14f" path="res://scene_objects/crushing_minigame_objects/pestle.gd" id="1_kspic"]
-[ext_resource type="Texture2D" uid="uid://crp0882kh1uwn" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/pestle.png" id="1_larci"]
+[ext_resource type="Script" uid="uid://di0h6fd4kd14f" path="res://scripts/minigame/crushing_minigame/pestle.gd" id="1_kspic"]
+[ext_resource type="Texture2D" uid="uid://crp0882kh1uwn" path="res://assets/sprites/minigame/crushing_minigame/pestle.png" id="1_larci"]
 
 [sub_resource type="Curve" id="Curve_kspic"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0875, 0.7538461), 0.660413, 0.660413, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

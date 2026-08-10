@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cty6lpq8trkc8"]
 
-[ext_resource type="Script" uid="uid://cms2728e0rt6h" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_scene.gd" id="1_fhxy2"]
-[ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scene_objects/crushing_minigame_objects/pestle.tscn" id="1_j31fb"]
-[ext_resource type="Texture2D" uid="uid://ctv72nx3uvy8c" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/blue_mortar_scene.jpeg" id="2_8v1xe"]
-[ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scene_objects/crushing_minigame_objects/ingredient_ball.tscn" id="2_fhxy2"]
-[ext_resource type="Texture2D" uid="uid://uepnxtqkou3g" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/arrow_unfocus.png" id="3_fhxy2"]
-[ext_resource type="Texture2D" uid="uid://cw2c1lwuqh461" path="res://scene_objects/crushing_minigame_objects/crushing_minigame_assets/arrow.png" id="4_bmuh6"]
+[ext_resource type="Script" uid="uid://cms2728e0rt6h" path="res://scripts/minigame/crushing_minigame/crushing_minigame_scene.gd" id="1_fhxy2"]
+[ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://assets/prefabs/minigame/crushing_minigame/pestle.tscn" id="1_j31fb"]
+[ext_resource type="Texture2D" uid="uid://ctv72nx3uvy8c" path="res://assets/sprites/minigame/crushing_minigame/blue_mortar_scene.jpeg" id="2_8v1xe"]
+[ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://assets/prefabs/minigame/crushing_minigame/ingredient_ball.tscn" id="2_fhxy2"]
+[ext_resource type="Texture2D" uid="uid://uepnxtqkou3g" path="res://assets/sprites/minigame/crushing_minigame/arrow_unfocus.png" id="3_fhxy2"]
+[ext_resource type="Texture2D" uid="uid://cw2c1lwuqh461" path="res://assets/sprites/minigame/crushing_minigame/arrow.png" id="4_bmuh6"]
 
 [node name="M&P Scene" type="Control" unique_id=126500727 node_paths=PackedStringArray("win_label_placeholder")]
 layout_mode = 3

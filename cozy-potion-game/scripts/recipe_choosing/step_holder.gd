@@ -10,7 +10,7 @@ var num_steps: int = 0
 const MAX_STEPS = 3
 
 # Base methods used for prototype
-const base_methods: Array[String] = ["Mortar", "Heat", "..."]
+const BASE_METHODS: Array[String] = ["Mortar", "Heat", "..."]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -35,7 +35,7 @@ func create_new_step() -> void:
 		instance.get_placebox().input_event.connect(drop_ingredient.bind(instance))
 		
 		# Sets PopUpMenu methods
-		instance.set_methods(base_methods)
+		instance.set_methods(BASE_METHODS)
 		
 		num_steps += 1
 		
@@ -56,17 +56,17 @@ func remove_step() -> void:
 		add_step_button.visible = true
 		
 		# Gets step to remove
-		var remove_inst := container.get_children()[-1]
+		var remove_instance := container.get_children()[-1]
 		num_steps -= 1
 		
 		# Updates position of Add and Remove button
-		var new_y = remove_inst.custom_minimum_size.y * (num_steps - 1)
+		var new_y = remove_instance.custom_minimum_size.y * (num_steps - 1)
 		add_step_button.global_position.y = new_y
 		remove_step_button.global_position.y = new_y + add_step_button.size.y
 
 		# Removes lastest step
-		remove_inst.return_ingredient()
-		remove_inst.queue_free()
+		remove_instance.return_ingredient()
+		remove_instance.queue_free()
 		
 		# Hides Remove button if only 1 step left
 		if num_steps <= 1:
@@ -74,11 +74,11 @@ func remove_step() -> void:
 			remove_step_button.visible = false
 
 # If ingredient dropped over step PlaceBox, places ingredient in step
-func drop_ingredient(viewport: Node, event: InputEvent, shape_idx: int, node) -> void:
+func drop_ingredient(_viewport: Node, _event: InputEvent, _shape_idx: int, node) -> void:
 	if Input.is_action_just_released("LMB"):
 		# Semi Hardcoded idk what to do here
-		var ingre = get_tree().current_scene.get_dragging() 
-		if ingre == null:
+		var ingredient = get_tree().current_scene.get_dragging() 
+		if ingredient == null:
 			return
 		
 		# Returns previous ingredient to storage
@@ -86,9 +86,9 @@ func drop_ingredient(viewport: Node, event: InputEvent, shape_idx: int, node) ->
 			node.stored_ingredient.return_to_box()
 		
 		# Stores and replaces new ingredient on selected step
-		node.stored_ingredient = ingre
-		ingre.reparent(node.get_ingredientBox())
-		ingre.position = Vector2.ZERO
+		node.stored_ingredient = ingredient
+		ingredient.reparent(node.get_ingredientBox())
+		ingredient.position = Vector2.ZERO
 
 # Called when Final Button pressed, returns step information
 # If no info exists returns empty array

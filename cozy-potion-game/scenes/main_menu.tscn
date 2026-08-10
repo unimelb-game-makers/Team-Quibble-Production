@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://assets/main_theme.tres" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://drd1spct1hl1y" path="res://scripts/main_menu.gd" id="2_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/cauldron_scene.tscn" id="3_wu84c"]
-[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/m&p_scene.tscn" id="4_8ln24"]
+[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/crushing_minigame_scene.tscn" id="4_8ln24"]
 [ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/recipe_scene.tscn" id="5_8ln24"]
 
 [sub_resource type="Gradient" id="Gradient_ekxnf"]
