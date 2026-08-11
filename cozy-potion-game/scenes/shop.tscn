@@ -24,10 +24,12 @@ points = PackedVector3Array(-5.475, 0, -5.0825, -5.475, 0, 5.0825, 5.475, 0, -5.
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4dvm4"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_4dvm4"]
+
 [node name="Shop" type="Node" unique_id=428524118]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=135441025]
@@ -58,6 +60,10 @@ shape = SubResource("CapsuleShape3D_4dvm4")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/CharacterBody3D/AnimationPivot" unique_id=1321702747]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016607285, 0.9809308, 0)
 mesh = SubResource("CapsuleMesh_4dvm4")
+
+[node name="YouAreLookingHere" type="MeshInstance3D" parent="Node3D/CharacterBody3D/AnimationPivot" unique_id=1618548505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+mesh = SubResource("BoxMesh_4dvm4")
 
 [node name="CameraPivot" type="Node3D" parent="Node3D/CharacterBody3D" unique_id=475683213]
 

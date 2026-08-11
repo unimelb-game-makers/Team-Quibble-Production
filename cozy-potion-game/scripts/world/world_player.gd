@@ -11,6 +11,7 @@ class_name WorldPlayer extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const CAMERA_ZOOM_MAGNITUDE = 0.1
+const TURN_RATE = 2*PI
 var camera_sensitivity = 1
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -47,9 +48,16 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
-		animation_pivot.look_at(position + direction)
-		print_debug(animation_pivot.basis)
-		print_debug(direction)
+		 #rotates the animation pivot (that is, the actual mesh as well as the 
+		 #detector for interactable objects)
+		 #towards the movement direction at a rate of turn_rate per frame unless
+		 #we could just snap to that direction.
+		 #this implementation is a little overcomplicated so we can do smoothing
+		 #if that isnt needed and you are not me, maybe just use look_at()
+		var pivot_direction := animation_pivot.global_basis * Vector3.FORWARD
+		var angle_to_move_dir = pivot_direction.signed_angle_to(direction, Vector3(0,1,0))
+		var rotation = min(delta * TURN_RATE, abs(angle_to_move_dir)) * sign(angle_to_move_dir)
+		animation_pivot.rotate_y(rotation)
 		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
