@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://qmk6ifrtikov"]
+
+[ext_resource type="Texture2D" uid="uid://chtt062vyqabl" path="res://assets/sprites/thinghere.png" id="1_j7fbc"]
+[ext_resource type="Script" uid="uid://glhdprbthcxh" path="res://scripts/recipe_choosing/step.gd" id="2_j7fbc"]
+[ext_resource type="Texture2D" uid="uid://b6gfooj6w6uyp" path="res://assets/sprites/black_tlle.png" id="3_j7fbc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6sj1v"]
+size = Vector2(524, 186)
+
+[node name="Step" type="TextureRect" unique_id=422648195]
+custom_minimum_size = Vector2(722, 186)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = -432.0
+offset_bottom = -460.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_j7fbc")
+expand_mode = 3
+script = ExtResource("2_j7fbc")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=335997713]
+position = Vector2(184.99998, 99.5)
+scale = Vector2(0.7090163, 0.28719008)
+texture = ExtResource("3_j7fbc")
+
+[node name="MethodButton" type="MenuButton" parent="." unique_id=1220591427]
+layout_mode = 0
+offset_left = 558.0
+offset_top = 66.0
+offset_right = 642.0
+offset_bottom = 114.0
+text = "Method"
+
+[node name="IngredientBox" type="CenterContainer" parent="." unique_id=1757180994]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 47.0
+offset_right = 312.0
+offset_bottom = 139.0
+
+[node name="PlaceBox" type="Area2D" parent="." unique_id=1235193444]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceBox" unique_id=609717337]
+position = Vector2(263, 91)
+shape = SubResource("RectangleShape2D_6sj1v")
