@@ -60,7 +60,7 @@ func get_info() -> Array[String]:
 		return []
 	return [choices[method_id], stored_ingredient.get_info()]
 
-
+# Called when new ingredient placed, replacing previous ingredient with new one
 func ingredient_placed(dragbox : DragBox) -> void:
 	if stored_ingredient != null:
 		stored_ingredient.reparent.call_deferred(stored_ingredient.get_dragbox().get_home())
