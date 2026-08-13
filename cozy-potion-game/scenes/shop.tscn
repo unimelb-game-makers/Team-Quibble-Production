@@ -45,11 +45,13 @@ mesh = SubResource("PlaneMesh_4dvm4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Floor/StaticBody3D" unique_id=1836899377]
 shape = SubResource("ConvexPolygonShape3D_lx5au")
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot")]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.13066149, 1.0544419, 0)
 script = ExtResource("1_lx5au")
 animation_pivot = NodePath("AnimationPivot")
 camera_pivot = NodePath("CameraPivot")
+mouse_detector_left = NodePath("MouseDetectorLeft")
+mouse_detector_right = NodePath("MouseDetectorRight")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CharacterBody3D" unique_id=23129946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040551424, 0.9759979, 0)
@@ -68,7 +70,30 @@ mesh = SubResource("BoxMesh_4dvm4")
 [node name="CameraPivot" type="Node3D" parent="Node3D/CharacterBody3D" unique_id=475683213]
 
 [node name="Camera3D" type="Camera3D" parent="Node3D/CharacterBody3D/CameraPivot" unique_id=1999248506]
-transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 7, 7)
+transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 7, 7)
 projection = 1
 size = 8.0
 far = 100.0
+
+[node name="MouseDetectorLeft" type="Control" parent="Node3D/CharacterBody3D" unique_id=475781847]
+top_level = true
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 290.0
+offset_bottom = 2.0
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="MouseDetectorRight" type="Control" parent="Node3D/CharacterBody3D" unique_id=707998342]
+top_level = true
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -290.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1

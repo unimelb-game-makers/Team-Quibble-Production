@@ -8,11 +8,19 @@ class_name WorldPlayer extends CharacterBody3D
 @export var animation_pivot: Node3D
 @onready var camera = get_viewport().get_camera_3d()
 @export var camera_pivot: Node3D
+@export var mouse_detector_left: Control
+@export var mouse_detector_right: Control
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const CAMERA_ZOOM_MAGNITUDE = 0.1
-const TURN_RATE = 2*PI
+const TURN_RATE = 2 * PI
+const CAMERA_ROTATION_SPEED = 2 * PI
 var camera_sensitivity = 1
+var rotation_y_target: float = 0
+
+func _ready() -> void:
+	mouse_detector_left.mouse_entered.connect(rotate_camera.bind(-1))
+	mouse_detector_right.mouse_entered.connect(rotate_camera.bind(1))
 
 func _unhandled_input(event: InputEvent) -> void:
 	character_movement(event)
@@ -28,15 +36,30 @@ func character_movement(event: InputEvent) -> void:
 		zoom_camera(1)
 
 func rotate_camera(direction: int) -> void:
-	rotate_y(PI/2 * direction)
-	animation_pivot.rotate_y(PI/2 * direction)
+	#i really hope this implementation isnt what i stick with
+	if not is_equal_approx(rotation_y_target, 0):
+		return
+	rotation_y_target = PI/2 * direction
+	
+	#rotate_y(PI/2 * direction)
+	#animation_pivot.rotate_y(PI/2 * direction)
 
 func zoom_camera(direction: int) -> void:
 	if not camera.projection == Camera3D.ProjectionType.PROJECTION_ORTHOGONAL:
 		return
 	camera.size += CAMERA_ZOOM_MAGNITUDE * direction
 
-
+func _process(delta: float) -> void:
+	const epsilon = PI/24
+	if not is_equal_approx(rotation_y_target, 0):
+		var rot = delta * CAMERA_ROTATION_SPEED * sign(rotation_y_target)
+		rotate_y(rot)
+		var sign = sign(rotation_y_target)
+		rotation_y_target -= rot
+		#overshoot
+		if sign != sign(rotation_y_target):
+			rotate_y(rotation_y_target)
+			rotation_y_target = 0
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
