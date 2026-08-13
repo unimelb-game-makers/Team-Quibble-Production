@@ -4,6 +4,9 @@ class_name WorldPlayer extends CharacterBody3D
 ## the camera is centred on the player, and determines the direction of "up", etc
 ## the player can move the camerain 90 degree increments using a different set of
 ## movement keys.
+## to modify the player's model, put it as a child of AnimationPivot
+## for future interactable objects, use collision with the child
+## InteractableCollision to determine whether the player is facing it
 
 @export var animation_pivot: Node3D
 @onready var camera = get_viewport().get_camera_3d()
@@ -13,7 +16,7 @@ class_name WorldPlayer extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const CAMERA_ZOOM_MAGNITUDE = 0.1
-const TURN_RATE = 2 * PI
+const TURN_RATE = 4 * PI
 const CAMERA_ROTATION_SPEED = 2 * PI
 var camera_sensitivity = 1
 var rotation_y_target: float = 0
@@ -41,8 +44,6 @@ func rotate_camera(direction: int) -> void:
 		return
 	rotation_y_target = PI/2 * direction
 	
-	#rotate_y(PI/2 * direction)
-	#animation_pivot.rotate_y(PI/2 * direction)
 
 func zoom_camera(direction: int) -> void:
 	if not camera.projection == Camera3D.ProjectionType.PROJECTION_ORTHOGONAL:
@@ -50,7 +51,10 @@ func zoom_camera(direction: int) -> void:
 	camera.size += CAMERA_ZOOM_MAGNITUDE * direction
 
 func _process(delta: float) -> void:
-	const epsilon = PI/24
+	process_camera_rotation(delta)
+
+##rotates the camera each frame according to the rotation target.
+func process_camera_rotation(delta: float) -> void:
 	if not is_equal_approx(rotation_y_target, 0):
 		var rot = delta * CAMERA_ROTATION_SPEED * sign(rotation_y_target)
 		rotate_y(rot)
@@ -60,6 +64,7 @@ func _process(delta: float) -> void:
 		if sign != sign(rotation_y_target):
 			rotate_y(rotation_y_target)
 			rotation_y_target = 0
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
