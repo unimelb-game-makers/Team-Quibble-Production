@@ -65,4 +65,3 @@ func ingredient_placed(dragbox : DragBox) -> void:
 	if stored_ingredient != null:
 		stored_ingredient.reparent.call_deferred(stored_ingredient.get_dragbox().get_home())
 	stored_ingredient = dragbox.parent
-	pass

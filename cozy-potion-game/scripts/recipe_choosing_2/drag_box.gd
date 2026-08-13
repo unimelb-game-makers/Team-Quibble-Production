@@ -11,8 +11,8 @@ signal dropped
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	input_event.connect(start_dragging)
-	area_entered.connect(place_in)
 	set_process(false)
+
 
 func get_home() -> Container:
 	return home
@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 
 # Called when Ingredients feel input, trys to start dragging given ingredient
 func start_dragging(_viewport: Node, event: InputEvent, _shape_idx: int) \
-		-> void:
+			-> void:
 	if !dragging and event.is_action_pressed("LMB"):
 		dragging = true
 		parent.top_level = true
@@ -42,8 +42,8 @@ func start_dragging(_viewport: Node, event: InputEvent, _shape_idx: int) \
 		parent.reparent(home)
 
 func place_in(area: Area2D) -> void:
-	print("\n", area, parent.get_parent())
 	if dragging and area is PlaceBox:
-		parent.reparent.call_deferred(area.get_home())
 		area.placed_dragbox(self)
-		print(area, parent.get_parent())
+		
+		parent.reparent.call_deferred(area.get_home())
+		parent.position = Vector2.ZERO
