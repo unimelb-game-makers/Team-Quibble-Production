@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://bj3i03gjp1tom"]
+
+[ext_resource type="Script" uid="uid://jlcw7lvn21mq" path="res://scripts/recipe_choosing_2/recipe_scene.gd" id="1_o4r6j"]
+[ext_resource type="Script" uid="uid://c1p8v1kvj3mh3" path="res://scripts/recipe_choosing_2/step_holder.gd" id="2_v3o2t"]
+[ext_resource type="Script" uid="uid://bv2rvo8xtshkh" path="res://scripts/recipe_choosing_2/storage.gd" id="3_go40g"]
+[ext_resource type="Texture2D" uid="uid://chtt062vyqabl" path="res://assets/sprites/thinghere.png" id="4_7irvb"]
+
+[node name="RecipeScene" type="Node2D" unique_id=720193852]
+script = ExtResource("1_o4r6j")
+
+[node name="StepHolder" type="Node2D" parent="." unique_id=56645331]
+script = ExtResource("2_v3o2t")
+
+[node name="StepContainer" type="VBoxContainer" parent="StepHolder" unique_id=23180833]
+custom_minimum_size = Vector2(-1, -1)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+
+[node name="AddStepButton" type="Button" parent="StepHolder" unique_id=9427254]
+offset_left = 746.0
+offset_top = 18.0
+offset_right = 842.0
+offset_bottom = 88.0
+text = "Add Step"
+
+[node name="RemoveStepButton" type="Button" parent="StepHolder" unique_id=1081933295]
+offset_left = 734.0
+offset_top = 87.0
+offset_right = 843.0
+offset_bottom = 157.0
+text = "Remove Step"
+
+[node name="Storage" type="ScrollContainer" parent="." unique_id=448726623]
+custom_minimum_size = Vector2(100, 100)
+clip_contents = false
+offset_left = 861.0
+offset_top = 192.0
+offset_right = 1159.0
+offset_bottom = 657.0
+script = ExtResource("3_go40g")
+
+[node name="Vbox" type="VBoxContainer" parent="Storage" unique_id=322993201]
+custom_minimum_size = Vector2(-1, -1)
+propagate_maximum_size = false
+layout_mode = 2
+mouse_filter = 2
+
+[node name="IngredientBlocker" type="TextureRect" parent="." unique_id=494787291]
+offset_left = 844.0
+offset_right = 1168.0
+offset_bottom = 192.0
+mouse_filter = 0
+texture = ExtResource("4_7irvb")
+expand_mode = 1
+
+[node name="FinalButton" type="Button" parent="." unique_id=273093520]
+offset_left = 920.0
+offset_top = 46.0
+offset_right = 1128.0
+offset_bottom = 147.0
+text = "FinalButton"
