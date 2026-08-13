@@ -13,13 +13,15 @@ class_name WorldPlayer extends CharacterBody3D
 @export var camera_pivot: Node3D
 @export var mouse_detector_left: Control
 @export var mouse_detector_right: Control
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const CAMERA_ZOOM_MAGNITUDE = 0.1
 const TURN_RATE = 4 * PI
 const CAMERA_ROTATION_SPEED = 2 * PI
-var camera_sensitivity = 1
+
 var rotation_y_target: float = 0
+var top_down_active: bool = false
 
 func _ready() -> void:
 	mouse_detector_left.mouse_entered.connect(rotate_camera.bind(-1))
@@ -29,20 +31,22 @@ func _unhandled_input(event: InputEvent) -> void:
 	character_movement(event)
 
 func character_movement(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_left"):
+	if event.is_action_pressed("camera_left"):
 		rotate_camera(-1)
-	elif event.is_action_pressed("ui_right"):
+	elif event.is_action_pressed("camera_right"):
 		rotate_camera(1)
-	elif event.is_action_pressed("ui_up"):
+	elif event.is_action("zoom_in") :
 		zoom_camera(-1)
-	elif event.is_action_pressed("ui_down"):
+	elif event.is_action("zoom_out"):
 		zoom_camera(1)
+	elif event.is_action_pressed("ui_accept"):
+		toggle_top_down_cam()
 
 func rotate_camera(direction: int) -> void:
 	#i really hope this implementation isnt what i stick with
 	if not is_equal_approx(rotation_y_target, 0):
 		return
-	rotation_y_target = PI/2 * direction
+	rotation_y_target += PI/2 * direction
 	
 
 func zoom_camera(direction: int) -> void:
@@ -81,14 +85,45 @@ func _physics_process(delta: float) -> void:
 		 #towards the movement direction at a rate of turn_rate per frame unless
 		 #we could just snap to that direction.
 		 #this implementation is a little overcomplicated so we can do smoothing
-		 #if that isnt needed and you are not me, maybe just use look_at()
+		 #if that isnt needed, maybe just use look_at()
 		var pivot_direction := animation_pivot.global_basis * Vector3.FORWARD
 		var angle_to_move_dir = pivot_direction.signed_angle_to(direction, Vector3(0,1,0))
 		var rotation = min(delta * TURN_RATE, abs(angle_to_move_dir)) * sign(angle_to_move_dir)
 		animation_pivot.rotate_y(rotation)
-		
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func toggle_top_down_cam() -> void:
+	if not top_down_active:
+		activate_top_down_cam()
+		top_down_active = true
+	else:
+		deactivate_top_down_cam()
+		top_down_active = false
+
+func deactivate_top_down_cam() -> void:
+	rotation_y_target += PI/4
+	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(camera, "rotation_degrees", Vector3(-45,0,0), 0.2)
+	var tween2 = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween2.tween_property(camera, "position", Vector3(0,7.0,7.0), 0.2)
+	
+func activate_top_down_cam() -> void:
+	rotation_y_target += PI/4
+	#can use a tween here because we don't need to worry about angles wrapping
+	var tween = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(camera, "rotation_degrees", Vector3(-90,0,0), 0.2)
+	var tween2 = get_tree().create_tween()
+	tween.set_ease(Tween.EASE_IN_OUT)
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween2.tween_property(camera, "position", Vector3(0,7.0,0), 0.2)
+	

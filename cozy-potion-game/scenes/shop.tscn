@@ -82,7 +82,7 @@ shape = SubResource("BoxShape3D_4dvm4")
 [node name="Camera3D" type="Camera3D" parent="Node3D/Player/CameraPivot" unique_id=1999248506]
 transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 7, 7)
 projection = 1
-size = 8.0
+size = 8.177
 far = 100.0
 
 [node name="MouseDetectorLeft" type="Control" parent="Node3D/Player" unique_id=475781847]
