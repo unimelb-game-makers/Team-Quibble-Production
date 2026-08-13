@@ -29,6 +29,9 @@ points = PackedVector3Array(-5.475, 0, -5.0825, -5.475, 0, 5.0825, 5.475, 0, -5.
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
 size = Vector3(1.2932129, 1, 1)
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lx5au"]
+data = PackedVector3Array(-0.5, -1.2262878, 1.9725952, -0.5, -1.2262878, -1.9725952, -0.5, 1.2262878, -1.9725952, 0.5, -1.2262878, -1.9725952, -0.5, -1.2262878, -1.9725952, -0.5, -1.2262878, 1.9725952, -0.5, 1.2262878, -1.9725952, -0.5, -1.2262878, -1.9725952, 0.5, -1.2262878, -1.9725952, -0.5, 1.2262878, -1.9725952, -0.5, 1.2262878, 1.9725952, -0.5, -1.2262878, 1.9725952, -0.5, -1.2262878, 1.9725952, -0.5, 1.2262878, 1.9725952, 0.5, 1.2262878, 1.9725952, 0.5, 1.2262878, 1.9725952, -0.5, 1.2262878, 1.9725952, -0.5, 1.2262878, -1.9725952, -0.5, -1.2262878, 1.9725952, 0.5, -1.2262878, 1.9725952, 0.5, -1.2262878, -1.9725952, 0.5, 1.2262878, 1.9725952, 0.5, -1.2262878, 1.9725952, -0.5, -1.2262878, 1.9725952, 0.5, -1.2262878, -1.9725952, 0.5, -1.2262878, 1.9725952, 0.5, 1.2262878, 1.9725952, 0.5, -1.2262878, -1.9725952, 0.5, 1.2262878, -1.9725952, -0.5, 1.2262878, -1.9725952, -0.5, 1.2262878, -1.9725952, 0.5, 1.2262878, -1.9725952, 0.5, 1.2262878, 1.9725952, 0.5, 1.2262878, 1.9725952, 0.5, 1.2262878, -1.9725952, 0.5, -1.2262878, -1.9725952)
+
 [node name="Shop" type="Node" unique_id=428524118]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
@@ -46,6 +49,24 @@ mesh = SubResource("PlaneMesh_4dvm4")
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Floor" unique_id=819562357]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Floor/StaticBody3D" unique_id=1836899377]
+shape = SubResource("ConvexPolygonShape3D_lx5au")
+
+[node name="Floor2" type="MeshInstance3D" parent="Node3D" unique_id=775938820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.7348465, 12.810904)
+mesh = SubResource("PlaneMesh_4dvm4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Floor2" unique_id=1272939681]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Floor2/StaticBody3D" unique_id=2133620329]
+shape = SubResource("ConvexPolygonShape3D_lx5au")
+
+[node name="Floor3" type="MeshInstance3D" parent="Node3D" unique_id=1063911902]
+transform = Transform3D(1, 0, 0, 0, 0.96137553, -0.2752401, 0, 0.2752401, 0.96137553, 0, -1.4285016, 9.934447)
+mesh = SubResource("PlaneMesh_4dvm4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Floor3" unique_id=1261362475]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Floor3/StaticBody3D" unique_id=2038655761]
 shape = SubResource("ConvexPolygonShape3D_lx5au")
 
 [node name="Player" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right")]
@@ -107,3 +128,12 @@ offset_left = -100.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_filter = 1
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Node3D" unique_id=873276839]
+transform = Transform3D(0.013446121, 0, -0.9999096, 0, 1, 0, 0.9999096, 0, 0.013446121, 0, 1.4980092, 3.5854008)
+size = Vector3(1, 2.4525757, 3.9451904)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/CSGBox3D" unique_id=364933790]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Node3D/CSGBox3D/StaticBody3D" unique_id=314611919]
+shape = SubResource("ConcavePolygonShape3D_lx5au")
