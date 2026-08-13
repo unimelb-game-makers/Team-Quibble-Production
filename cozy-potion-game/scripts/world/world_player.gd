@@ -13,6 +13,7 @@ class_name WorldPlayer extends CharacterBody3D
 @export var camera_pivot: Node3D
 @export var mouse_detector_left: Control
 @export var mouse_detector_right: Control
+@export var interactable_collision_area: Area3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -41,6 +42,8 @@ func character_movement(event: InputEvent) -> void:
 		zoom_camera(1)
 	elif event.is_action_pressed("ui_accept"):
 		toggle_top_down_cam()
+	elif event.is_action_pressed("interact"):
+		interact()
 
 func rotate_camera(direction: int) -> void:
 	#i really hope this implementation isnt what i stick with
@@ -61,12 +64,18 @@ func _process(delta: float) -> void:
 func process_camera_rotation(delta: float) -> void:
 	if not is_equal_approx(rotation_y_target, 0):
 		var rot = delta * CAMERA_ROTATION_SPEED * sign(rotation_y_target)
+		# we rotate the camera by rotating the player, which makes it easier
+		# for them to walk in the right direction.
+		# however we dont want camera rotation to rotate the player's model
+		# so we rotate the model the other way
 		rotate_y(rot)
+		animation_pivot.rotate_y(-rot)
 		var sign = sign(rotation_y_target)
 		rotation_y_target -= rot
 		#overshoot
 		if sign != sign(rotation_y_target):
 			rotate_y(rotation_y_target)
+			animation_pivot.rotate_y(-rotation_y_target)
 			rotation_y_target = 0
 
 func _physics_process(delta: float) -> void:
@@ -116,7 +125,7 @@ func deactivate_top_down_cam() -> void:
 	tween2.tween_property(camera, "position", Vector3(0,7.0,7.0), 0.2)
 	
 func activate_top_down_cam() -> void:
-	rotation_y_target += PI/4
+	rotation_y_target -= PI/4
 	#can use a tween here because we don't need to worry about angles wrapping
 	var tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_IN_OUT)
@@ -127,3 +136,9 @@ func activate_top_down_cam() -> void:
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween2.tween_property(camera, "position", Vector3(0,7.0,0), 0.2)
 	
+func interact() -> void:
+	for area in interactable_collision_area.get_overlapping_areas():
+		if area is InteractableArea:
+			area.interacted.emit()
+			# probably bad to interact with two things at once
+			return
