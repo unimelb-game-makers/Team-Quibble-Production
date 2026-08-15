@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bec7ovcvsvc5q"]
 
 [ext_resource type="Script" uid="uid://b7wupl4oawgq1" path="res://scripts/world/world_player.gd" id="1_lx5au"]
+[ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/Mimi.fbx" id="2_032fp"]
 [ext_resource type="Script" uid="uid://bnfcqynt4fy0j" path="res://scripts/world/interactable_object.gd" id="2_xfvoa"]
 [ext_resource type="Script" uid="uid://bc5xc5cvwwo37" path="res://scripts/world/test_interactable_user.gd" id="3_1l46r"]
 
@@ -24,12 +25,11 @@ points = PackedVector3Array(-5.475, 0, -5.0825, -5.475, 0, 5.0825, 5.475, 0, -5.
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4dvm4"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_4dvm4"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_4dvm4"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
 size = Vector3(1.2932129, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_032fp"]
+albedo_color = Color(1, 0.24705882, 0.08627451, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_lx5au"]
 data = PackedVector3Array(-0.5, -1.2262878, 1.9725952, -0.5, -1.2262878, -1.9725952, -0.5, 1.2262878, -1.9725952, 0.5, -1.2262878, -1.9725952, -0.5, -1.2262878, -1.9725952, -0.5, -1.2262878, 1.9725952, -0.5, 1.2262878, -1.9725952, -0.5, -1.2262878, -1.9725952, 0.5, -1.2262878, -1.9725952, -0.5, 1.2262878, -1.9725952, -0.5, 1.2262878, 1.9725952, -0.5, -1.2262878, 1.9725952, -0.5, -1.2262878, 1.9725952, -0.5, 1.2262878, 1.9725952, 0.5, 1.2262878, 1.9725952, 0.5, 1.2262878, 1.9725952, -0.5, 1.2262878, 1.9725952, -0.5, 1.2262878, -1.9725952, -0.5, -1.2262878, 1.9725952, 0.5, -1.2262878, 1.9725952, 0.5, -1.2262878, -1.9725952, 0.5, 1.2262878, 1.9725952, 0.5, -1.2262878, 1.9725952, -0.5, -1.2262878, 1.9725952, 0.5, -1.2262878, -1.9725952, 0.5, -1.2262878, 1.9725952, 0.5, 1.2262878, 1.9725952, 0.5, -1.2262878, -1.9725952, 0.5, 1.2262878, -1.9725952, -0.5, 1.2262878, -1.9725952, -0.5, 1.2262878, -1.9725952, 0.5, 1.2262878, -1.9725952, 0.5, 1.2262878, 1.9725952, 0.5, 1.2262878, 1.9725952, 0.5, 1.2262878, -1.9725952, 0.5, -1.2262878, -1.9725952)
@@ -73,7 +73,7 @@ mesh = SubResource("PlaneMesh_4dvm4")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Floor3/StaticBody3D" unique_id=2038655761]
 shape = SubResource("ConvexPolygonShape3D_lx5au")
 
-[node name="Player" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area")]
+[node name="Player" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area", "mimi_sprite")]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.13066149, 1.0544419, 0)
 script = ExtResource("1_lx5au")
 animation_pivot = NodePath("AnimationPivot")
@@ -81,20 +81,16 @@ camera_pivot = NodePath("CameraPivot")
 mouse_detector_left = NodePath("MouseDetectorLeft")
 mouse_detector_right = NodePath("MouseDetectorRight")
 interactable_collision_area = NodePath("AnimationPivot/InteractableCollisionShape")
+mimi_sprite = NodePath("Mimi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Player" unique_id=23129946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040551424, 0.9759979, 0)
 shape = SubResource("CapsuleShape3D_4dvm4")
 
+[node name="Mimi" parent="Node3D/Player" unique_id=1944618892 instance=ExtResource("2_032fp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477, 0)
+
 [node name="AnimationPivot" type="Node3D" parent="Node3D/Player" unique_id=148174221]
-
-[node name="PlayerModel" type="MeshInstance3D" parent="Node3D/Player/AnimationPivot" unique_id=1321702747]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016607285, 0.9809308, 0)
-mesh = SubResource("CapsuleMesh_4dvm4")
-
-[node name="YouAreLookingHere" type="MeshInstance3D" parent="Node3D/Player/AnimationPivot" unique_id=1618548505]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.015237771, 0, -1.1924204)
-mesh = SubResource("BoxMesh_4dvm4")
 
 [node name="InteractableCollisionShape" type="Area3D" parent="Node3D/Player/AnimationPivot" unique_id=362638963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0661669, 0.11184323, -2.5223014)
@@ -103,6 +99,12 @@ collision_mask = 1048577
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Player/AnimationPivot/InteractableCollisionShape" unique_id=1628446424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133395195, 0, 1.3472493)
 shape = SubResource("BoxShape3D_4dvm4")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Node3D/Player/AnimationPivot" unique_id=1442432339]
+transform = Transform3D(0.6980141, -0.7157583, -0.021601157, 0.017767817, -0.012844771, 0.9997597, -0.7158635, -0.69823027, 0.003751712, -0.106, 0.95, -0.548)
+cast_shadow = 0
+polygon = PackedVector2Array(0.7617471, 0.8473878, 0.63597995, 0.976331, 1.0469601, 0.97114205, 0.96082616, 0.56121916, 0.8524252, 0.6899427, 0, 0)
+material = SubResource("StandardMaterial3D_032fp")
 
 [node name="CameraPivot" type="Node3D" parent="Node3D/Player" unique_id=475683213]
 
