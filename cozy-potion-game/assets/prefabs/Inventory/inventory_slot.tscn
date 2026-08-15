@@ -19,7 +19,8 @@ position = Vector2(30.23967, 34)
 
 [node name="QuantityLabel" type="Label" parent="." unique_id=2123998350]
 layout_mode = 0
-offset_left = 49.0
+offset_left = 40.0
 offset_top = 40.0
 offset_right = 59.0
 offset_bottom = 63.0
+horizontal_alignment = 2

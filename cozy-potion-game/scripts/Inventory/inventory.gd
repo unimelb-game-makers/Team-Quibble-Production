@@ -25,18 +25,23 @@ func _ready() -> void:
 	gui_input.connect(click_background)
 	pass
 
+# Creates empty list of items in bag
 func initate_items() -> Array[Stack]:
 	var new_slots : Array[Stack]
 	new_slots.resize(cols * rows)
 	for x in range(cols):
 		for y in range(rows):
 			new_slots[x * rows + y] = Stack.new(0)
+	
+	#Temp Stuff to for testing
 	new_slots[10].type = Stack.ItemType.STONE
 	new_slots[20].type = Stack.ItemType.STONE
 	new_slots[10].quantity = 2
 	new_slots[20].quantity = 1
 	return new_slots
 
+
+# Spawns ItemSlots with stacks stored
 func spawn_slots() -> void:
 	item_slots.resize(cols * rows)
 	for x in range(cols):
@@ -49,28 +54,30 @@ func spawn_slots() -> void:
 			new_instance.set_item(items[x * rows + y])
 
 
+# Adds new stack to the inventory priotising adding to existing stacks 
 func blind_add_item(new_item: Stack) -> Stack:
-	# Try to add to valid
+	# Adds to existing stacks
 	for i in range(item_slots.size()):
 		if item_slots[i].stack.type == new_item.type:
 			new_item = add_item_to_slot(new_item, item_slots[i])
 			
-			# If no more item to store stop adding
+			# If stack is now empty end
 			if new_item.type == Stack.ItemType.EMPTY:
 				return new_item
 	
-	# Some item should still exists at ts point
+	# Add to empty slots
 	for i in range(item_slots.size()):
 		if item_slots[i].stack.type == Stack.ItemType.EMPTY:
 			new_item = add_item_to_slot(new_item, item_slots[i])
 			
-			# If no more item to store stop adding
+			# If stack is now empty end
 			if new_item.type == Stack.ItemType.EMPTY:
 				return new_item
 	
 	return new_item
 
 
+# Adds stack to another stack in a slot up to a limit
 func add_item_to_slot(new_item: Stack, slot: ItemSlot) -> Stack:
 	# Make sure valid to add item to slot 
 	# (this creates weird redundancy thats semi nesscary, 
@@ -87,10 +94,12 @@ func add_item_to_slot(new_item: Stack, slot: ItemSlot) -> Stack:
 	slot.stack.quantity += add_to_stack
 	new_item.quantity -= add_to_stack
 	
-	slot.update_item()
+	slot.update_stack()
 	
 	return new_item
 
+
+# Adds amount from 1 stack to a slot
 func add_some_to_slot(stack: Stack, slot: ItemSlot, amount: int) -> Stack:
 	if amount <= stack.quantity:
 		var clone := Stack.new(amount).clone_type(stack)
@@ -98,13 +107,17 @@ func add_some_to_slot(stack: Stack, slot: ItemSlot, amount: int) -> Stack:
 		return add_item_to_slot(clone, slot)
 	return stack
 
-func _process(delta: float) -> void:
+
+# When Dragging puts hand onto mouse
+func _process(_delta: float) -> void:
 	if dragging:
 		hand.global_position = get_global_mouse_position()
 	
 	if Input.is_action_just_pressed("K"):
-		blind_add_item(Stack.new(10).clone_type(stack_dragging))
+		blind_add_item(Stack.new(9).clone_type(stack_dragging))
 
+
+# Updates the hand to represent current dragging stack
 func update_hand() -> void:
 	hand.get_node("HandSprite").texture = stack_dragging.get_sprite()
 	hand.get_node("QuantityLabel").text = stack_dragging.get_quantity_label()
@@ -114,6 +127,8 @@ func update_hand() -> void:
 		stack_dragging.queue_free()
 		stack_dragging = null
 
+
+# Called when player clicks on item slot
 func slot_clicked(event: InputEvent, slot: ItemSlot) -> void:
 	if event.is_action_pressed("LMB"):
 		if !dragging:
@@ -128,13 +143,16 @@ func slot_clicked(event: InputEvent, slot: ItemSlot) -> void:
 			slot.stack = swap_temp
 		
 		update_hand()
-		slot.update_item()
+		slot.update_stack()
+	
 	elif event.is_action_pressed("RMB"):
 		if dragging:
 			add_some_to_slot(stack_dragging, slot, 1)
 			update_hand()
-			slot.update_item()
+			slot.update_stack()
 
+
+# Called when background is clicked
 func click_background(event: InputEvent) -> void:
 	if event.is_action_pressed("LMB"):
 		if dragging:

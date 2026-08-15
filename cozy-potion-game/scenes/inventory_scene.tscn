@@ -20,8 +20,9 @@ theme_override_constants/v_separation = 4
 
 [node name="HandSprite" type="Sprite2D" parent="Hand" unique_id=1726090085]
 
-[node name="QuantityLabel" type="Label" parent="Hand" unique_id=1580903795]
-offset_left = 19.0
-offset_top = 10.0
+[node name="QuantityLabel" type="Label" parent="Hand" unique_id=2132649821]
+offset_left = 13.0
+offset_top = 8.0
 offset_right = 32.0
-offset_bottom = 33.0
+offset_bottom = 31.0
+horizontal_alignment = 2

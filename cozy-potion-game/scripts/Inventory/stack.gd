@@ -12,30 +12,27 @@ var max_grid_quantity: int = 10 # may not be constant later
 
 enum ItemType {EMPTY, STONE, WOOD}
 
+
 func _init(start_quantity: int) -> void:
 	quantity = start_quantity
 
+
+# clones type from parsed stack
 func clone_type(item : Stack) -> Stack:
 	type = item.type
 	
 	return self
 
+# Returns sprite of current sprite
+# Doesn't current do that thou
 func get_sprite() -> Texture2D:
 	if type == ItemType.EMPTY:
 		return null
-	return load("uid://2vnd31yby45a")
+	return load("uid://dxjv147f0i0pi")
 
 
+# Returns quantity of stack and "" if stack is empty
 func get_quantity_label() -> String:
-	if quantity == 0:
+	if type == ItemType.EMPTY:
 		return ""
 	return str(quantity)
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

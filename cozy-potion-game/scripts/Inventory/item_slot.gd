@@ -8,23 +8,13 @@ var stack: Stack = null
 static var item_slot_scene := preload("uid://b04fxmn4gaapy")
 
 
+# Set stack to new stack
 func set_item(new_stack: Stack) -> void:
 	stack = new_stack
-	update_item()
+	update_stack()
 
-func update_item() -> void:
+
+# Updates stack visuals to current stack
+func update_stack() -> void:
 	item_sprite.texture = stack.get_sprite()
-	if stack.quantity > 0 :
-		quantity_label.text = stack.get_quantity_label()
-	else:
-		quantity_label.text = ""
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	quantity_label.text = stack.get_quantity_label()
