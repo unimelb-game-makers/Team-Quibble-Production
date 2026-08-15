@@ -1,9 +1,6 @@
 extends Control
 
-@onready var grid: GridContainer = $GridContainer
-@onready var hand: Node2D = $Hand
-
-@onready var items : Array[Stack]
+var items : Array[Stack]
 var item_slots: Array[ItemSlot]
 var cols : int
 var rows : int
@@ -12,7 +9,10 @@ var max_slots : int
 var dragging := false
 var stack_dragging : Stack = null
 
-# Called when the node enters the scene tree for the first time.
+@onready var grid: GridContainer = $GridContainer
+@onready var hand: Node2D = $Hand
+
+
 func _ready() -> void:
 	cols = 10
 	rows = 5
@@ -24,6 +24,16 @@ func _ready() -> void:
 	
 	gui_input.connect(click_background)
 	pass
+
+
+# When Dragging puts hand onto mouse
+func _process(_delta: float) -> void:
+	if dragging:
+		hand.global_position = get_global_mouse_position()
+	
+	if Input.is_action_just_pressed("K"):
+		blind_add_item(Stack.new(9).clone_type(stack_dragging))
+
 
 # Creates empty list of items in bag
 func initate_items() -> Array[Stack]:
@@ -106,15 +116,6 @@ func add_some_to_slot(stack: Stack, slot: ItemSlot, amount: int) -> Stack:
 		stack.quantity -= amount
 		return add_item_to_slot(clone, slot)
 	return stack
-
-
-# When Dragging puts hand onto mouse
-func _process(_delta: float) -> void:
-	if dragging:
-		hand.global_position = get_global_mouse_position()
-	
-	if Input.is_action_just_pressed("K"):
-		blind_add_item(Stack.new(9).clone_type(stack_dragging))
 
 
 # Updates the hand to represent current dragging stack

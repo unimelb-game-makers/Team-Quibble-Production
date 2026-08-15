@@ -1,6 +1,8 @@
 class_name Stack
 extends Node
 
+enum ItemType {EMPTY, STONE, WOOD}
+
 var quantity : int:
 	set(value):
 		quantity = value
@@ -9,8 +11,6 @@ var quantity : int:
 var type : ItemType
 # Items can have more than max_quanity if on ground
 var max_grid_quantity: int = 10 # may not be constant later
-
-enum ItemType {EMPTY, STONE, WOOD}
 
 
 func _init(start_quantity: int) -> void:
