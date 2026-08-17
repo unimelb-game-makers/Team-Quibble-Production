@@ -44,8 +44,8 @@ func initate_items() -> Array[Stack]:
 			new_slots[x * rows + y] = Stack.new(0)
 	
 	#Temp Stuff to for testing
-	new_slots[10].type = Stack.ItemType.STONE
-	new_slots[20].type = Stack.ItemType.STONE
+	new_slots[10].item_name = "Apple"
+	new_slots[20].item_name = "Apple"
 	new_slots[10].quantity = 2
 	new_slots[20].quantity = 1
 	return new_slots
@@ -68,20 +68,20 @@ func spawn_slots() -> void:
 func blind_add_item(new_item: Stack) -> Stack:
 	# Adds to existing stacks
 	for i in range(item_slots.size()):
-		if item_slots[i].stack.type == new_item.type:
+		if item_slots[i].stack.item_name == new_item.item_name:
 			new_item = add_item_to_slot(new_item, item_slots[i])
 			
 			# If stack is now empty end
-			if new_item.type == Stack.ItemType.EMPTY:
+			if new_item.isEmpty:
 				return new_item
 	
 	# Add to empty slots
 	for i in range(item_slots.size()):
-		if item_slots[i].stack.type == Stack.ItemType.EMPTY:
+		if item_slots[i].stack.isEmpty:
 			new_item = add_item_to_slot(new_item, item_slots[i])
 			
 			# If stack is now empty end
-			if new_item.type == Stack.ItemType.EMPTY:
+			if new_item.isEmpty:
 				return new_item
 	
 	return new_item
@@ -92,9 +92,9 @@ func add_item_to_slot(new_item: Stack, slot: ItemSlot) -> Stack:
 	# Make sure valid to add item to slot 
 	# (this creates weird redundancy thats semi nesscary, 
 	# but like want to prevent misuse as well) 
-	if slot.stack.type == Stack.ItemType.EMPTY:
+	if slot.stack.isEmpty:
 		slot.stack = Stack.new(0).clone_type(new_item)
-	elif slot.stack.type != new_item.type:
+	elif slot.stack.item_name != new_item.item_name:
 		return new_item
 	
 	var add_to_stack : int = \
@@ -123,7 +123,7 @@ func update_hand() -> void:
 	hand.get_node("HandSprite").texture = stack_dragging.get_sprite()
 	hand.get_node("QuantityLabel").text = stack_dragging.get_quantity_label()
 	
-	if stack_dragging.type == Stack.ItemType.EMPTY:
+	if stack_dragging.isEmpty:
 		dragging = false
 		stack_dragging.queue_free()
 		stack_dragging = null
@@ -136,7 +136,7 @@ func slot_clicked(event: InputEvent, slot: ItemSlot) -> void:
 			dragging = true
 			stack_dragging = slot.stack
 			slot.stack = Stack.new(0)
-		elif slot.stack.type == stack_dragging.type:
+		elif slot.stack.item_name == stack_dragging.item_name:
 			stack_dragging = add_item_to_slot(stack_dragging, slot)
 		else:
 			var swap_temp := stack_dragging
