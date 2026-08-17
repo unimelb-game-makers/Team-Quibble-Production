@@ -32,7 +32,7 @@ func _process(_delta: float) -> void:
 		hand.global_position = get_global_mouse_position()
 	
 	if Input.is_action_just_pressed("K"):
-		blind_add_item(Stack.new(9).clone_type(stack_dragging))
+		blind_add_stack(Stack.new(9).clone_type(stack_dragging))
 
 
 # Creates empty list of items in bag
@@ -45,9 +45,9 @@ func initate_items() -> Array[Stack]:
 	
 	#Temp Stuff to for testing
 	new_slots[10].item_name = "Apple"
-	new_slots[20].item_name = "Apple"
+	#new_slots[20].item_name = "Apple"
 	new_slots[10].quantity = 2
-	new_slots[20].quantity = 1
+	#new_slots[20].quantity = 1
 	return new_slots
 
 
@@ -61,15 +61,15 @@ func spawn_slots() -> void:
 			
 			new_instance.gui_input.connect(slot_clicked.bind(new_instance))
 			item_slots[x * rows + y] = new_instance
-			new_instance.set_item(items[x * rows + y])
+			new_instance.stack = items[x * rows + y]
 
 
 # Adds new stack to the inventory priotising adding to existing stacks 
-func blind_add_item(new_item: Stack) -> Stack:
+func blind_add_stack(new_item: Stack) -> Stack:
 	# Adds to existing stacks
 	for i in range(item_slots.size()):
 		if item_slots[i].stack.item_name == new_item.item_name:
-			new_item = add_item_to_slot(new_item, item_slots[i])
+			new_item = add_stack_to_slot(new_item, item_slots[i])
 			
 			# If stack is now empty end
 			if new_item.isEmpty:
@@ -78,7 +78,7 @@ func blind_add_item(new_item: Stack) -> Stack:
 	# Add to empty slots
 	for i in range(item_slots.size()):
 		if item_slots[i].stack.isEmpty:
-			new_item = add_item_to_slot(new_item, item_slots[i])
+			new_item = add_stack_to_slot(new_item, item_slots[i])
 			
 			# If stack is now empty end
 			if new_item.isEmpty:
@@ -88,7 +88,7 @@ func blind_add_item(new_item: Stack) -> Stack:
 
 
 # Adds stack to another stack in a slot up to a limit
-func add_item_to_slot(new_item: Stack, slot: ItemSlot) -> Stack:
+func add_stack_to_slot(new_item: Stack, slot: ItemSlot) -> Stack:
 	# Make sure valid to add item to slot 
 	# (this creates weird redundancy thats semi nesscary, 
 	# but like want to prevent misuse as well) 
@@ -104,8 +104,6 @@ func add_item_to_slot(new_item: Stack, slot: ItemSlot) -> Stack:
 	slot.stack.quantity += add_to_stack
 	new_item.quantity -= add_to_stack
 	
-	slot.update_stack()
-	
 	return new_item
 
 
@@ -114,7 +112,7 @@ func add_some_to_slot(stack: Stack, slot: ItemSlot, amount: int) -> Stack:
 	if amount <= stack.quantity:
 		var clone := Stack.new(amount).clone_type(stack)
 		stack.quantity -= amount
-		return add_item_to_slot(clone, slot)
+		return add_stack_to_slot(clone, slot)
 	return stack
 
 
@@ -137,20 +135,18 @@ func slot_clicked(event: InputEvent, slot: ItemSlot) -> void:
 			stack_dragging = slot.stack
 			slot.stack = Stack.new(0)
 		elif slot.stack.item_name == stack_dragging.item_name:
-			stack_dragging = add_item_to_slot(stack_dragging, slot)
+			stack_dragging = add_stack_to_slot(stack_dragging, slot)
 		else:
 			var swap_temp := stack_dragging
 			stack_dragging = slot.stack
 			slot.stack = swap_temp
 		
 		update_hand()
-		slot.update_stack()
 	
 	elif event.is_action_pressed("RMB"):
 		if dragging:
 			add_some_to_slot(stack_dragging, slot, 1)
 			update_hand()
-			slot.update_stack()
 
 
 # Called when background is clicked

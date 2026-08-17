@@ -5,17 +5,20 @@ extends Node
 # if empty they can pick up item, if full they swap or smthng
 #
 
+signal updated_values
 
 var item_name : String:
 	set(value):
 		item_name = value
 		update_stack()
+		updated_values.emit()
 
 var quantity : int:
 	set(value):
 		quantity = value
 		if isEmpty != (value == 0):
 			update_stack()
+		updated_values.emit()
 
 # Items can have more than max_quanity if on ground
 const max_grid_quantity: int = 10
@@ -23,8 +26,9 @@ var isEmpty = false
 
 var sprite: Texture
 
-func _init(start_quantity: int) -> void:
+func _init(start_quantity: int, start_name: String = "") -> void:
 	quantity = start_quantity
+	item_name = start_name
 
 
 func update_stack() -> void:
