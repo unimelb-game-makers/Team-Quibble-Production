@@ -291,16 +291,16 @@ camera_pivot = NodePath("CameraPivot")
 mouse_detector_left = NodePath("MouseDetectorLeft")
 mouse_detector_right = NodePath("MouseDetectorRight")
 interactable_collision_area = NodePath("AnimationPivot/InteractableCollisionShape")
-mimi_sprite = NodePath("Mimi")
+mimi_sprite = NodePath("AnimationPivot/Mimi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Player" unique_id=23129946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040551424, 0.9759979, 0)
 shape = SubResource("CapsuleShape3D_4dvm4")
 
-[node name="Mimi" parent="Node3D/Player" unique_id=1944618892 instance=ExtResource("2_032fp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.477, 0)
-
 [node name="AnimationPivot" type="Node3D" parent="Node3D/Player" unique_id=148174221]
+
+[node name="Mimi" parent="Node3D/Player/AnimationPivot" unique_id=1944618892 instance=ExtResource("2_032fp")]
+transform = Transform3D(0.049481273, 0, -0.9987751, 0, 1, 0, 0.9987751, 0, 0.049481273, 0, 0.477, 0)
 
 [node name="InteractableCollisionShape" type="Area3D" parent="Node3D/Player/AnimationPivot" unique_id=362638963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0661669, 0.11184323, -2.5223014)

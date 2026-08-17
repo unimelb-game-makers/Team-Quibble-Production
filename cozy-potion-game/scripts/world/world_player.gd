@@ -43,18 +43,6 @@ func aesthetic_movement(event: InputEvent) -> void:
 	if event.is_action("zoom_out"):
 		zoom_camera(1)
 		
-	if event.is_action_pressed("move_left") and facing == -1:
-		flip_mimi()
-	if event.is_action_pressed("move_right") and facing == 1:
-		flip_mimi()
-	if event.is_action_pressed("move_up"):
-		tilt_mimi(-1)
-	if event.is_action_released("move_up"):
-		tilt_mimi(1)
-	if event.is_action_pressed("move_down"):
-		tilt_mimi(1)
-	if event.is_action_released("move_down"):
-		tilt_mimi(-1)
 	if event.is_action_pressed("interact"):
 		interact()
 
@@ -90,21 +78,6 @@ func process_camera_rotation(delta: float) -> void:
 			rotate_y(rotation_y_target)
 			animation_pivot.rotate_y(-rotation_y_target)
 			rotation_y_target = 0
-
-	#if this gets used again i'll make it a function, or maybe a class.
-	if not is_equal_approx(mimi_target_rotation, 0):
-		var rot = delta * CAMERA_ROTATION_SPEED * sign(mimi_target_rotation)
-		# we rotate the camera by rotating the player, which makes it easier
-		# for them to walk in the right direction.
-		# however we dont want camera rotation to rotate the player's model
-		# so we rotate the model the other way
-		mimi_sprite.rotate_y(rot)		
-		var sign = sign(mimi_target_rotation)
-		mimi_target_rotation -= rot
-		#overshoot
-		if sign != sign(mimi_target_rotation):
-			mimi_sprite.rotate_y(mimi_target_rotation)
-			mimi_target_rotation = 0
 
 func get_input_vector_unnormalised() -> Vector2i:
 	var res := Vector2.ZERO
@@ -182,17 +155,3 @@ func interact() -> void:
 			area.interacted.emit()
 			# probably bad to interact with two things at once
 			return
-
-var facing: int = 1
-var tilting: int = 0
-var tilting_angle = PI/4
-var mimi_target_rotation: float = 0
-
-#the following functions were revealed to me in a dream
-func flip_mimi():
-	mimi_target_rotation += (PI - tilting_angle * 2 * abs(tilting)) * facing * sign(tilting+0.5)
-	facing *= -1
-
-func tilt_mimi(direction: int):
-	mimi_target_rotation += tilting_angle * direction * facing
-	tilting += direction
