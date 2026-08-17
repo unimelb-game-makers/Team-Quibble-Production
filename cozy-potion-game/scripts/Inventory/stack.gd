@@ -1,40 +1,50 @@
 class_name Stack
 extends Node
 
+# My Idea for player hands is that the player stores a stack
+# if empty they can pick up item, if full they swap or smthng
+#
+
 
 var item_name : String:
 	set(value):
 		item_name = value
-		if value != "":
-			isEmpty = false
+		update_stack()
 
 var quantity : int:
 	set(value):
 		quantity = value
-		if value == 0:
-			isEmpty = true
+		if isEmpty != (value == 0):
+			update_stack()
 
 # Items can have more than max_quanity if on ground
-var max_grid_quantity: int = 10 # may not be constant later
+const max_grid_quantity: int = 10
 var isEmpty = false
 
+var sprite: Texture
 
 func _init(start_quantity: int) -> void:
 	quantity = start_quantity
 
 
+func update_stack() -> void:
+	if item_name != "" and quantity != 0:
+		sprite = Potion.potion_ingredient_index.get(item_name).sprite
+		isEmpty = false
+	else:
+		sprite = null
+		isEmpty = true
+
+
 # clones type from parsed stack
 func clone_type(stack : Stack) -> Stack:
 	item_name = stack.item_name
-	
 	return self
 
+
 # Returns sprite of current sprite
-# Doesn't current do that thou
 func get_sprite() -> Texture2D:
-	if isEmpty:
-		return null
-	return Potion.potion_ingredient_index.get(item_name).sprite
+	return sprite
 
 
 # Returns quantity of stack and "" if stack is empty
