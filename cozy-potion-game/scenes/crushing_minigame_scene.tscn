@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://uepnxtqkou3g" path="res://assets/sprites/minigame/crushing_minigame/arrow_unfocus.png" id="3_fhxy2"]
 [ext_resource type="Texture2D" uid="uid://cw2c1lwuqh461" path="res://assets/sprites/minigame/crushing_minigame/arrow.png" id="4_bmuh6"]
 
-[node name="M&P Scene" type="Control" unique_id=126500727 node_paths=PackedStringArray("win_label_placeholder")]
+[node name="CrushingMinigame" type="Control" unique_id=126500727 node_paths=PackedStringArray("win_label_placeholder")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
