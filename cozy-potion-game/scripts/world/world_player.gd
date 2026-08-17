@@ -20,7 +20,7 @@ class_name WorldPlayer extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const CAMERA_ZOOM_MAGNITUDE = 0.1
-const TURN_RATE = 4 * PI
+const INTERACTABLE_AREA_TURN_RATE = 10 * PI
 const CAMERA_ROTATION_SPEED = 2 * PI
 
 var rotation_y_target: float = 0
@@ -137,7 +137,7 @@ func _physics_process(delta: float) -> void:
 		 #if that isnt needed, maybe just use look_at()
 		var pivot_direction := animation_pivot.global_basis * Vector3.FORWARD
 		var angle_to_move_dir = pivot_direction.signed_angle_to(direction, Vector3(0,1,0))
-		var rotation = min(delta * TURN_RATE, abs(angle_to_move_dir)) * sign(angle_to_move_dir)
+		var rotation = min(delta * INTERACTABLE_AREA_TURN_RATE, abs(angle_to_move_dir)) * sign(angle_to_move_dir)
 		animation_pivot.rotate_y(rotation)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -188,6 +188,7 @@ var tilting: int = 0
 var tilting_angle = PI/4
 var mimi_target_rotation: float = 0
 
+#the following functions were revealed to me in a dream
 func flip_mimi():
 	mimi_target_rotation += (PI - tilting_angle * 2 * abs(tilting)) * facing * sign(tilting+0.5)
 	facing *= -1
