@@ -4,7 +4,7 @@ extends Node
 const SAVE_PATH = "user://pantry_save.json"
 
 var items : Dictionary[String, Stack] = {}
-var slots : Dictionary[String, ItemSlot] = {}
+var slots : Dictionary[String, Entry] = {}
 
 @onready var storage: VBoxContainer = $Storage
 
@@ -35,8 +35,8 @@ func spawn_entry(item_name: String) -> void:
 	if items[item_name].isEmpty:
 		return
 	
-	# Spawns Entry (currently ItemSlots as unsure whats wanted)
-	var new_instance := ItemSlot.item_slot_scene.instantiate()
+	# Spawns Entry
+	var new_instance := Entry.entry_slot_scene.instantiate()
 	storage.add_child(new_instance)
 	
 	new_instance.gui_input.connect(entry_clicked.bind(new_instance))
@@ -44,7 +44,7 @@ func spawn_entry(item_name: String) -> void:
 	slots[item_name] = new_instance
 
 
-# Spawns entrys with stacks stored, currently ItemSlots prob should be changed
+# Spawns entrys with stacks stored
 func spawn_all_entrys() -> void:
 	# Removes all current children
 	for node in storage.get_children():
@@ -52,7 +52,6 @@ func spawn_all_entrys() -> void:
 	
 	items.sort()
 	for key in items.keys():
-		# Spawns Entry (currently ItemSlots as unsure whats wanted)
 		spawn_entry(key)
 
 func update_entrys() -> void:
@@ -73,7 +72,7 @@ func sort_pantry() -> void:
 	var sorted_nodes := slots.values()
 	
 	sorted_nodes.sort_custom(
-		func(a: ItemSlot, b: ItemSlot): 
+		func(a: Entry, b: Entry): 
 			return a.stack.item_name.naturalnocasecmp_to(b.stack.item_name) < 0\
 		)
 	
@@ -105,6 +104,6 @@ func take_from_stack(item_name : String, amount: int) -> Stack:
 
 
 # Called when entry clicked on
-func entry_clicked(event: InputEvent, entry: ItemSlot) -> void:
+func entry_clicked(event: InputEvent, entry: Entry) -> void:
 	if event.is_action_pressed("LMB"):
 		print(entry.stack.item_name)
