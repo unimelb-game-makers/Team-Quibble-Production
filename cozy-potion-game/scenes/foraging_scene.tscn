@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://02woi54obgji"]
+
+[ext_resource type="Script" uid="uid://mdl3bm04icw8" path="res://foraging.gd" id="1_idw6r"]
+[ext_resource type="PackedScene" uid="uid://d1aebqcog8f34" path="res://scenes/inventory_component.tscn" id="2_fhih6"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1244343159]
+
+[node name="Backpack" type="Control" parent="." unique_id=828499362]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_idw6r")
+
+[node name="GridContainer" type="GridContainer" parent="Backpack" unique_id=1275345748]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 644.0
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+
+[node name="InvComponent" parent="Backpack" unique_id=1705191911 instance=ExtResource("2_fhih6")]

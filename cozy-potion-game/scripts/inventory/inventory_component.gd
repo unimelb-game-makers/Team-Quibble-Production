@@ -1,67 +1,47 @@
-extends Control
+class_name InventoryComponent
+extends Node2D
 
 var items : Array[Stack]
 var item_slots: Array[ItemSlot]
-var cols : int
-var rows : int
 var max_slots : int
 
 var dragging := false
 var stack_dragging : Stack = null
 
-@onready var grid: GridContainer = $GridContainer
-@onready var hand: Node2D = $Hand
-
-
-func _ready() -> void:
-	cols = 10
-	rows = 5
-	max_slots = cols * rows
-	
-	grid.columns = cols
-	items = initate_items()
-	spawn_slots()
-	
-	gui_input.connect(click_background)
-	pass
-
-
 # When Dragging puts hand onto mouse
 func _process(_delta: float) -> void:
 	if dragging:
-		hand.global_position = get_global_mouse_position()
+		global_position = get_global_mouse_position()
 	
+	# Test Code can be removed
 	if Input.is_action_just_pressed("K"):
 		blind_add_stack(Stack.new(9).clone_type(stack_dragging))
 
 
 # Creates empty list of items in bag
-func initate_items() -> Array[Stack]:
-	var new_slots : Array[Stack]
-	new_slots.resize(cols * rows)
-	for x in range(cols):
-		for y in range(rows):
-			new_slots[x * rows + y] = Stack.new(0)
+func initate_items(inv_size : int) -> void:
+	items = []
+	items.resize(inv_size)
+	for i in range(inv_size):
+		items[i] = Stack.new(0)
 	
 	#Temp Stuff to for testing
-	new_slots[10].item_name = "Apple"
-	#new_slots[20].item_name = "Apple"
-	new_slots[10].quantity = 2
-	#new_slots[20].quantity = 1
-	return new_slots
+	#items[10].item_name = "Apple"
+	#items[20].item_name = "Apple"
+	#items[10].quantity = 2
+	#items[20].quantity = 1
 
 
 # Spawns ItemSlots with stacks stored
-func spawn_slots() -> void:
-	item_slots.resize(cols * rows)
-	for x in range(cols):
-		for y in range(rows):
-			var new_instance := ItemSlot.item_slot_scene.instantiate()
-			grid.add_child(new_instance)
-			
-			new_instance.gui_input.connect(slot_clicked.bind(new_instance))
-			item_slots[x * rows + y] = new_instance
-			new_instance.stack = items[x * rows + y]
+func spawn_slots(storage: Container) -> void:
+	item_slots.resize(items.size())
+	for i in range(items.size()):
+		var new_instance := ItemSlot.item_slot_scene.instantiate()
+		storage.add_child(new_instance)
+		
+		new_instance.gui_input.connect(slot_clicked.bind(new_instance))
+		item_slots[i] = new_instance
+		new_instance.stack = items[i]
 
 
 # Adds new stack to the inventory priotising adding to existing stacks 
@@ -118,8 +98,8 @@ func add_some_to_slot(stack: Stack, slot: ItemSlot, amount: int) -> Stack:
 
 # Updates the hand to represent current dragging stack
 func update_hand() -> void:
-	hand.get_node("HandSprite").texture = stack_dragging.get_sprite()
-	hand.get_node("QuantityLabel").text = stack_dragging.get_quantity_label()
+	get_node("HandSprite").texture = stack_dragging.get_sprite()
+	get_node("QuantityLabel").text = stack_dragging.get_quantity_label()
 	
 	if stack_dragging.isEmpty:
 		dragging = false
@@ -150,6 +130,7 @@ func slot_clicked(event: InputEvent, slot: ItemSlot) -> void:
 
 
 # Called when background is clicked
+# Care as can active in gaps between slots
 func click_background(event: InputEvent) -> void:
 	if event.is_action_pressed("LMB"):
 		if dragging:
