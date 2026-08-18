@@ -15,8 +15,9 @@ func _ready() -> void:
 	max_slots = cols * rows
 	inv_grid.columns = cols
 	
+	# Create connection to inventory
 	gui_input.connect(inv_component.click_background)
-	inv_component.initate_items(max_slots)
-	inv_component.spawn_slots(inv_grid)
+	var start_stacks := inv_component.create_empty_stacks(max_slots)
+	inv_component.spawn_slots(inv_grid, start_stacks)
 	
-	inv_component.blind_add_stack(Stack.new(0, "Apple"))
+	inv_component.blind_add_stack(Stack.new(1, "Apple"))

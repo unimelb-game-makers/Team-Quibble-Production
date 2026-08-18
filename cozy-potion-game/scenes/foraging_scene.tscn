@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://02woi54obgji"]
 
-[ext_resource type="Script" uid="uid://mdl3bm04icw8" path="res://foraging.gd" id="1_idw6r"]
-[ext_resource type="PackedScene" uid="uid://d1aebqcog8f34" path="res://scenes/inventory_component.tscn" id="2_fhih6"]
+[ext_resource type="Script" uid="uid://mdl3bm04icw8" path="res://scripts/inventory/foraging.gd" id="1_idw6r"]
+[ext_resource type="PackedScene" uid="uid://d1aebqcog8f34" path="res://assets/prefabs/Inventory/inventory_component.tscn" id="2_fhih6"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1244343159]
 

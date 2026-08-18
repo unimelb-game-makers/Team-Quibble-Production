@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Cozy Potion Game"
-run/main_scene="uid://djbxy4gkaty7q"
+run/main_scene="uid://ccvp68inp2bhf"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 

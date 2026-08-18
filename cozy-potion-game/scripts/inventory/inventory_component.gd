@@ -1,7 +1,6 @@
 class_name InventoryComponent
 extends Node2D
 
-var items : Array[Stack]
 var item_slots: Array[ItemSlot]
 var max_slots : int
 
@@ -18,30 +17,26 @@ func _process(_delta: float) -> void:
 		blind_add_stack(Stack.new(9).clone_type(stack_dragging))
 
 
-# Creates empty list of items in bag
-func initate_items(inv_size : int) -> void:
-	items = []
+# Creates list of empty stacks
+func create_empty_stacks(inv_size : int) -> Array[Stack]:
+	var items :Array[Stack] = []
 	items.resize(inv_size)
 	for i in range(inv_size):
 		items[i] = Stack.new(0)
-	
-	#Temp Stuff to for testing
-	#items[10].item_name = "Apple"
-	#items[20].item_name = "Apple"
-	#items[10].quantity = 2
-	#items[20].quantity = 1
+	return items
 
 
-# Spawns ItemSlots with stacks stored
-func spawn_slots(storage: Container) -> void:
-	item_slots.resize(items.size())
-	for i in range(items.size()):
+# Spawns ItemSlots with currently parsed stacks
+func spawn_slots(storage: Container, item_list: Array[Stack]) -> void:
+	item_slots = []
+	item_slots.resize(item_list.size())
+	for i in range(item_list.size()):
 		var new_instance := ItemSlot.item_slot_scene.instantiate()
 		storage.add_child(new_instance)
 		
 		new_instance.gui_input.connect(slot_clicked.bind(new_instance))
 		item_slots[i] = new_instance
-		new_instance.stack = items[i]
+		new_instance.stack = item_list[i]
 
 
 # Adds new stack to the inventory priotising adding to existing stacks 

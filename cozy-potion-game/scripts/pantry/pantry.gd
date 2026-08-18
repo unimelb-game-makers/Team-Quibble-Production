@@ -4,6 +4,7 @@ extends Node
 const SAVE_PATH = "user://pantry_save.json"
 
 var items : Dictionary[String, Stack] = {}
+var slots : Dictionary[String, ItemSlot] = {}
 
 @onready var storage: VBoxContainer = $Storage
 
@@ -21,7 +22,7 @@ func _ready() -> void:
 	if save_info != null:
 		items = save_info
 	
-	respawn_all_entrys()
+	spawn_all_entrys()
 	
 	var t = Stack.new(1)
 	t.item_name = "Apple"
@@ -40,10 +41,11 @@ func spawn_entry(item_name: String) -> void:
 	
 	new_instance.gui_input.connect(entry_clicked.bind(new_instance))
 	new_instance.stack = items[item_name]
+	slots[item_name] = new_instance
 
 
 # Spawns entrys with stacks stored, currently ItemSlots prob should be changed
-func respawn_all_entrys() -> void:
+func spawn_all_entrys() -> void:
 	# Removes all current children
 	for node in storage.get_children():
 		node.queue_free()
@@ -53,23 +55,22 @@ func respawn_all_entrys() -> void:
 		# Spawns Entry (currently ItemSlots as unsure whats wanted)
 		spawn_entry(key)
 
-
-# Adds any missing entrys no currently spawned
-func adds_entrys(item_name: String) -> void:
-	var missing_keys = items.keys()
+func update_entrys() -> void:
+	var change := false
+	for key in items.keys():
+		if not slots.has(key) and items[key].quantity != 0:
+			spawn_entry(key)
+			change = true
+		elif items[key].quantity == 0:
+			slots[key].queue_free()
+			change = true
 	
-	for entry in storage.get_children():
-		if entry.stack.item_name in missing_keys:
-			missing_keys.erase(entry.stack.item_name)
-	
-	for key in missing_keys:
-		spawn_entry(key)
-	
-	sort_pantry()
+	if change:
+		sort_pantry()
 
 # Makes items in pantry be alphabetically ordered, expandable to different keys
 func sort_pantry() -> void:
-	var sorted_nodes := storage.get_children()
+	var sorted_nodes := slots.values()
 	
 	sorted_nodes.sort_custom(
 		func(a: ItemSlot, b: ItemSlot): 
@@ -87,11 +88,8 @@ func sort_pantry() -> void:
 func add_stack(new_stack : Stack) -> void:
 	if not items.has(new_stack.item_name):
 		items[new_stack.item_name] = Stack.new(0).clone_type(new_stack)
-		items[new_stack.item_name].quantity += new_stack.quantity
-		spawn_entry(new_stack.item_name)
-		sort_pantry()
-	else:
-		items[new_stack.item_name].quantity += new_stack.quantity
+	items[new_stack.item_name].quantity += new_stack.quantity
+	update_entrys()
 
 # Takes amount away from stack in pantry, only works if amount atleast in pantry
 func take_from_stack(item_name : String, amount: int) -> Stack:
@@ -101,7 +99,7 @@ func take_from_stack(item_name : String, amount: int) -> Stack:
 	
 	items[item_name].quantity -= amount
 	if items[item_name].quantity <= 0:
-		respawn_all_entrys()
+		update_entrys()
 	
 	return Stack.new(amount, item_name)
 
