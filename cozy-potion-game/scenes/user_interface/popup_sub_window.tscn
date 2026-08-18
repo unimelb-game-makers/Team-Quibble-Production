@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b3cd2a5yxvfp"]
 
 [ext_resource type="Script" uid="uid://cwkp4uesjlu0l" path="res://scripts/popup_sub_window.gd" id="1_xhyie"]
-[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/crushing_minigame_scene.tscn" id="2_gc7jl"]
+[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="2_gc7jl"]
 
 [sub_resource type="Animation" id="Animation_mb0g6"]
 length = 0.001

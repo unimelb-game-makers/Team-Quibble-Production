@@ -1,7 +1,9 @@
 [gd_scene format=4 uid="uid://bec7ovcvsvc5q"]
 
+[ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange_wall_material.tres" id="1_8r1wq"]
 [ext_resource type="Script" uid="uid://b7wupl4oawgq1" path="res://scripts/world/world_player.gd" id="1_lx5au"]
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_032fp"]
+[ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark_wall_material.tres" id="2_ajxib"]
 [ext_resource type="Script" uid="uid://bnfcqynt4fy0j" path="res://scripts/world/interactable_object.gd" id="2_xfvoa"]
 [ext_resource type="Script" uid="uid://bc5xc5cvwwo37" path="res://scripts/world/test_interactable_user.gd" id="3_1l46r"]
 
@@ -255,22 +257,27 @@ far = 0.99999994
 
 [node name="Cauldron" type="MeshInstance3D" parent="Node3D/Room_Geometry" unique_id=1057478789]
 transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, 0, 0, 0)
+material_override = ExtResource("1_8r1wq")
 mesh = SubResource("ArrayMesh_bqk33")
 
 [node name="Cube_002" type="MeshInstance3D" parent="Node3D/Room_Geometry" unique_id=2017441435]
 transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, -3.25, 0, -4.25)
+material_override = ExtResource("2_ajxib")
 mesh = SubResource("ArrayMesh_yievw")
 
 [node name="Cutting_Table_Placeholder" type="MeshInstance3D" parent="Node3D/Room_Geometry" unique_id=253147174]
 transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, 0, 0, 0)
+material_override = ExtResource("1_8r1wq")
 mesh = SubResource("ArrayMesh_xnihe")
 
 [node name="Mortar_Pestle_Table_Placeholder" type="MeshInstance3D" parent="Node3D/Room_Geometry" unique_id=1615871592]
 transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, 0, 0, 0)
+material_override = ExtResource("1_8r1wq")
 mesh = SubResource("ArrayMesh_t1j7f")
 
 [node name="Room_Layout_Placeholder" type="MeshInstance3D" parent="Node3D/Room_Geometry" unique_id=1916588820]
 transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, 0, 0, 0)
+material_override = ExtResource("2_ajxib")
 mesh = SubResource("ArrayMesh_s4ou2")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Room_Geometry/Room_Layout_Placeholder" unique_id=1040337290]
@@ -281,6 +288,7 @@ shape = SubResource("ConcavePolygonShape3D_032fp")
 
 [node name="Spice_Cabinet_Placeholder" type="MeshInstance3D" parent="Node3D/Room_Geometry" unique_id=146809813]
 transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, 0, 0, 0)
+material_override = ExtResource("1_8r1wq")
 mesh = SubResource("ArrayMesh_wlr1y")
 
 [node name="Player" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area", "mimi_sprite")]
