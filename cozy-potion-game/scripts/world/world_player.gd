@@ -28,6 +28,10 @@ var top_down_active: bool = false
 
 var accepting_control: bool = true
 
+# this is called before _ready
+func _init() -> void:
+	add_to_group(Utils.Group.GROUP_PLAYER) # may seem overkill but trust
+
 func _ready() -> void:
 	mouse_detector_left.mouse_entered.connect(rotate_camera.bind(-1))
 	mouse_detector_right.mouse_entered.connect(rotate_camera.bind(1))
@@ -74,10 +78,10 @@ func process_camera_rotation(delta: float) -> void:
 		# so we rotate the model the other way
 		rotate_y(rot)
 		animation_pivot.rotate_y(-rot)
-		var sign = sign(rotation_y_target)
+		var _sign = sign(rotation_y_target)
 		rotation_y_target -= rot
 		#overshoot
-		if sign != sign(rotation_y_target):
+		if _sign != sign(rotation_y_target):
 			rotate_y(rotation_y_target)
 			animation_pivot.rotate_y(-rotation_y_target)
 			rotation_y_target = 0
@@ -114,8 +118,8 @@ func _physics_process(delta: float) -> void:
 			 #if that isnt needed, maybe just use look_at()
 			var pivot_direction := animation_pivot.global_basis * Vector3.FORWARD
 			var angle_to_move_dir = pivot_direction.signed_angle_to(direction, Vector3(0,1,0))
-			var rotation = min(delta * INTERACTABLE_AREA_TURN_RATE, abs(angle_to_move_dir)) * sign(angle_to_move_dir)
-			animation_pivot.rotate_y(rotation)
+			var _rotation = min(delta * INTERACTABLE_AREA_TURN_RATE, abs(angle_to_move_dir)) * sign(angle_to_move_dir)
+			animation_pivot.rotate_y(_rotation)
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)

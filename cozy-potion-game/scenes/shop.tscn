@@ -238,6 +238,13 @@ albedo_color = Color(1, 0.24705882, 0.08627451, 1)
 
 [node name="Shop" type="Node" unique_id=428524118]
 
+[node name="SceneUI" type="CanvasLayer" parent="." unique_id=2120733313]
+
+[node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 instance=ExtResource("8_m4ofw")]
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
 visible = false
@@ -379,10 +386,3 @@ shape = SubResource("BoxShape3D_aue3q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.061737, 0)
 light_color = Color(0.9597469, 0.9266617, 0.81118107, 1)
 omni_range = 22.771
-
-[node name="PopupSubWindow" parent="." unique_id=519353967 instance=ExtResource("8_m4ofw")]
-anchors_preset = 15
-grow_horizontal = 2
-grow_vertical = 2
-
-[connection signal="interacted" from="Node3D/TestInteractableUser/InteractableObject" to="PopupSubWindow" method="_on_interactable_object_interacted"]

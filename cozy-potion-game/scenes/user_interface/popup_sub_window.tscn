@@ -124,6 +124,7 @@ viewport_path = NodePath("SubViewport")
 [node name="PopupSubWindow" type="Control" unique_id=519353967]
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("1_xhyie")
@@ -135,11 +136,18 @@ libraries/ = SubResource("AnimationLibrary_vsj0n")
 transparent_bg = true
 size = Vector2i(1920, 1080)
 
-[node name="SubViewportTexture" type="TextureRect" parent="." unique_id=754107476]
+[node name="PanelContainer" type="Panel" parent="." unique_id=1832112704]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportTexture" type="TextureRect" parent="PanelContainer" unique_id=754107476]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_2rywg")
