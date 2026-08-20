@@ -6,6 +6,8 @@
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark_wall_material.tres" id="2_ajxib"]
 [ext_resource type="Script" uid="uid://bnfcqynt4fy0j" path="res://scripts/world/interactable_object.gd" id="2_xfvoa"]
 [ext_resource type="Script" uid="uid://bc5xc5cvwwo37" path="res://scripts/world/test_interactable_user.gd" id="3_1l46r"]
+[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
+[ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
 sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)
@@ -358,16 +360,16 @@ grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TestInteractableUser" type="Node3D" parent="Node3D" unique_id=1808629614 node_paths=PackedStringArray("interactable_area")]
+[node name="TestInteractableUser" type="Node3D" parent="Node3D" unique_id=1808629614]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2.9055877, 1.0544419, -2.591208)
 script = ExtResource("3_1l46r")
-interactable_area = NodePath("InteractableObject")
 
 [node name="InteractableObject" type="Area3D" parent="Node3D/TestInteractableUser" unique_id=254663262]
 transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -0.73490536, -0.7443633, 0.6911044)
 collision_layer = 1048576
 collision_mask = 67108865
 script = ExtResource("2_xfvoa")
+scene_to_load = ExtResource("7_y6sft")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/TestInteractableUser/InteractableObject" unique_id=660347118]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6873169, 1.6658173)
@@ -377,3 +379,10 @@ shape = SubResource("BoxShape3D_aue3q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.061737, 0)
 light_color = Color(0.9597469, 0.9266617, 0.81118107, 1)
 omni_range = 22.771
+
+[node name="PopupSubWindow" parent="." unique_id=519353967 instance=ExtResource("8_m4ofw")]
+anchors_preset = 15
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="interacted" from="Node3D/TestInteractableUser/InteractableObject" to="PopupSubWindow" method="_on_interactable_object_interacted"]

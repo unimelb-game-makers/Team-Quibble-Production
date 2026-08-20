@@ -26,4 +26,9 @@ func _process(delta: float) -> void:
 
 
 func win_minigame() -> void:
-	win_label_placeholder.show()
+	process_mode = Node.PROCESS_MODE_DISABLED
+	## I am NOT in the headspace to debug this but this needs to be only called once
+	#win_label_placeholder.show()
+	## TODO: this should really be an established thing. I would create a Singleton
+	## after talking with other programmers
+	get_parent().get_parent().end_display_popup()
