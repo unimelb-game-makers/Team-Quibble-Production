@@ -5,9 +5,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 33
 
-[node name="OptionsMenu" type="CanvasLayer" unique_id=1433898098 node_paths=PackedStringArray("options_menu_container")]
+[node name="OptionsMenu" type="CanvasLayer" unique_id=1433898098 node_paths=PackedStringArray("options_menu_container", "exit_game_button")]
 script = ExtResource("1_liyum")
 options_menu_container = NodePath("Control/MarginContainer/Control/OptionsMenuContainer")
+exit_game_button = NodePath("Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer/ExitGameButton")
 
 [node name="Control" type="Control" parent="." unique_id=897544671]
 layout_mode = 3
@@ -16,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1525534556]
 layout_mode = 1
@@ -24,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
@@ -31,6 +34,7 @@ theme_override_constants/margin_bottom = 20
 
 [node name="Control" type="Control" parent="Control/MarginContainer" unique_id=1292584816]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="OptionsMenuContainer" type="MarginContainer" parent="Control/MarginContainer/Control" unique_id=279762709 groups=["OptionsMenuContainer"]]
 layout_mode = 1
