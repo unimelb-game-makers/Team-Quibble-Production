@@ -14,8 +14,8 @@ func _ready() -> void:
 	sub_viewport = get_tree().get_first_node_in_group("GameSubViewport")
 
 func change_active_scene_to_packed(scene: PackedScene) -> bool:
-	if not scene.can_instantiate():
-		return true
+	if not scene.can_instantiate() or not sub_viewport:
+		return false
 		
 	var new_scene_node = scene.instantiate()
 	
@@ -24,9 +24,12 @@ func change_active_scene_to_packed(scene: PackedScene) -> bool:
 	await get_tree().process_frame
 	
 	sub_viewport.add_child(new_scene_node)
-	return false
+	return true
 
 func change_active_scene_to_file(path: String) -> bool:
+	if not sub_viewport:
+		return false
+		
 	var error = ResourceLoader.load_threaded_request(path)
 	
 	if error:
