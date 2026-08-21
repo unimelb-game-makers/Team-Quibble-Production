@@ -3,9 +3,6 @@
 [ext_resource type="Script" uid="uid://bekvcfp1wjd0x" path="res://scripts/game_viewport/game_sub_viewport.gd" id="1_th4xb"]
 [ext_resource type="PackedScene" uid="uid://dvuso6cvhqekf" path="res://scenes/main.tscn" id="2_k2gmx"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
-font_size = 33
-
 [node name="Node" type="Node" unique_id=46579256]
 
 [node name="ViewportControl" type="Control" parent="." unique_id=2029353996]
@@ -31,67 +28,3 @@ render_target_update_mode = 4
 script = ExtResource("1_th4xb")
 
 [node name="Main" parent="ViewportControl/SubViewportContainer/SubViewport" unique_id=391929633 instance=ExtResource("2_k2gmx")]
-
-[node name="UIControl" type="Control" parent="." unique_id=1999173901]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="UIControl" unique_id=1266198937]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="Control" type="Control" parent="UIControl/MarginContainer" unique_id=1832866189]
-layout_mode = 2
-
-[node name="OptionsMenuContainer" type="MarginContainer" parent="UIControl/MarginContainer/Control" unique_id=696818643 groups=["OptionsMenuContainer"]]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.058000002
-anchor_top = 0.059000004
-anchor_right = 0.259
-anchor_bottom = 0.919
-offset_left = -0.040000916
-offset_top = -0.36000443
-offset_right = -0.9200134
-offset_bottom = 0.23999023
-offset_transform_enabled = true
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="PanelContainer" type="PanelContainer" parent="UIControl/MarginContainer/Control/OptionsMenuContainer" unique_id=1210357458]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UIControl/MarginContainer/Control/OptionsMenuContainer/PanelContainer" unique_id=1438540822]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="UIControl/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer" unique_id=975724824]
-layout_mode = 2
-text = "This is a main menu"
-label_settings = SubResource("LabelSettings_4dvm4")
-horizontal_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="UIControl/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer" unique_id=578056762]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="ExitGameButton" type="Button" parent="UIControl/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=2003450956]
-layout_mode = 2
-text = "Exit Game"
-alignment = 0

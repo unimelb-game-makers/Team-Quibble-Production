@@ -1,13 +1,8 @@
+##the interface by which nodes open and close the options menu globally
+##the implementation of options menu functionality can be found in the options menu
 extends Node
 
-var options_menu_container: Container:
-	get():
-		if options_menu_container:
-			return options_menu_container
-		elif is_inside_tree():
-			options_menu_container = get_tree().get_first_node_in_group("OptionsMenuContainer")
-			return options_menu_container
-		return null
+@export var options_menu_container: Container
 
 func _ready() -> void:
 	options_menu_container = get_tree().get_first_node_in_group("OptionsMenuContainer")
@@ -20,9 +15,15 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func open_options_menu() -> void:
 	#TODO give focus to first button in the options menu for non-mouse users
+	if not options_menu_container:
+		return
+		
 	animate_options_menu_in()
 
 func close_options_menu() -> void:
+	if not options_menu_container:
+		return
+		
 	animate_options_menu_out()
 
 func animate_options_menu_in() -> void:
