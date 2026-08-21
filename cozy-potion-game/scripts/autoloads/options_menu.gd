@@ -22,8 +22,8 @@ func connect_buttons() -> void:
 	exit_game_button.pressed.connect(get_tree().quit)
 
 func _input(event: InputEvent) -> void:
-	print_debug(event.as_text())
-	print_debug(event.is_action_pressed("open_options_menu"))
+	#print_debug(event.as_text())
+	#print_debug(event.is_action_pressed("open_options_menu"))
 	if event.is_action_pressed("open_options_menu"):
 		if not open:
 			open_options_menu()
@@ -64,6 +64,7 @@ func animate_options_menu_in() -> void:
 	
 	tween.tween_property(options_menu_container, "offset_transform_position", Vector2.ZERO, 0.2)
 	tween.tween_callback(options_menu_container.show)
+
 func animate_options_menu_out() -> void:
 	if not options_menu_container:
 		return
