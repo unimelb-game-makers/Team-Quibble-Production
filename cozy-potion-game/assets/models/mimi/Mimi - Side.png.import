@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dvdhrcdgs2uwq"
 path.s3tc="res://.godot/imported/Mimi - Side.png-a4d3acbc97bc3128e08adc2d63adbba0.s3tc.ctex"
+path.etc2="res://.godot/imported/Mimi - Side.png-a4d3acbc97bc3128e08adc2d63adbba0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/mimi/Mimi - Side.png"
-dest_files=["res://.godot/imported/Mimi - Side.png-a4d3acbc97bc3128e08adc2d63adbba0.s3tc.ctex"]
+dest_files=["res://.godot/imported/Mimi - Side.png-a4d3acbc97bc3128e08adc2d63adbba0.s3tc.ctex", "res://.godot/imported/Mimi - Side.png-a4d3acbc97bc3128e08adc2d63adbba0.etc2.ctex"]
 
 [params]
 
