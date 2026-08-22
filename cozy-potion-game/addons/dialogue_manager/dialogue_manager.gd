@@ -53,6 +53,9 @@ var ignore_missing_state_values: bool = false
 
 ## Used to resolve the current scene. Override if your game manages the current scene itself.
 var get_current_scene: Callable = func() -> Node:
+	var game_viewport: Node = get_tree().get_first_node_in_group("GameSubViewport")
+	if game_viewport and game_viewport is SubViewport and game_viewport.get_child_count() == 1:
+		return game_viewport.get_child(0)
 	var current_scene: Node = Engine.get_main_loop().current_scene
 	if not is_instance_valid(current_scene):
 		var root: Node = (Engine.get_main_loop() as SceneTree).root
