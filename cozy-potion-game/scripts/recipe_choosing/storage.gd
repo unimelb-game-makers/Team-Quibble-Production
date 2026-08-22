@@ -5,10 +5,6 @@ const INGREDIENT_SCENE = preload("uid://bq8fh7bhdr3an")
 # please be more descriptive with the names of things :)
 @onready var vbox: VBoxContainer = $Vbox
 
-# replace this with a method that retrieves ingredients from potion
-var base_ingredients: Array[String] = ["Mushroom", "Star Dust", "Monkey Paw", \
-		"Coffee", "Blood", "Walrus Hair"]
-
 var dragging: bool = false # True if ingredient being dragged
 var ingredient_dragging: Ingredient = null # Ingredient being dragged
 
