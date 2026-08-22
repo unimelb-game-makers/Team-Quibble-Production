@@ -8,6 +8,9 @@
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer.gd" id="5_tefeu"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://btxs6s8ameerr" path="res://scripts/cauldron_placeholder.gd" id="8_tipki"]
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://assets/main_theme.tres" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://bwmeocdqaeu4l" path="res://scenes/menus/main_menu.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://yiix2rvytky5" path="res://scripts/main.gd" id="1_sugp2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
 sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)

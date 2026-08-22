@@ -1,5 +1,13 @@
 extends Node2D
 
+
+# Base methods used for prototype
+const BASE_METHODS: Array[String] = ["Mortar", "Heat", "..."]
+
+const STEP_SCENE = preload("uid://qmk6ifrtikov")
+
+const MAX_STEPS = 3
+
 # container for all steps
 @onready var container: VBoxContainer = $StepContainer
 @onready var add_step_button: Button = $AddStepButton
@@ -7,10 +15,7 @@ extends Node2D
 
 # Steps currently on screen
 var num_steps: int = 0
-const MAX_STEPS = 3
 
-# Base methods used for prototype
-const BASE_METHODS: Array[String] = ["Mortar", "Heat", "..."]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,8 +34,7 @@ func create_new_step() -> void:
 		remove_step_button.visible = true
 		
 		# Creates new Step
-		var ingredientScene = load("res://scenes/step.tscn")
-		var instance = ingredientScene.instantiate()
+		var instance = STEP_SCENE.instantiate()
 		container.add_child(instance)
 		instance.get_placebox().input_event.connect(drop_ingredient.bind(instance))
 		

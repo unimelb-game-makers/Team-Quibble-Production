@@ -1,14 +1,14 @@
 class_name Potion
 extends Resource
 
-enum ATTRIBUTES {
+enum {
 	HEALING,
 	ENERGY,
 	CURE_DISEASE,
 	POISON,
 }
 
-enum TYPES {
+enum {
 	INSTANT,
 	OVERTIME,
 }
@@ -16,16 +16,14 @@ enum TYPES {
 const JSON_PATH: String = "res://scripts/potion_crafting/potion_list.json"
 const PLACEHOLDER: Texture = preload("res://icon.svg")
 
-static var potion_ingredient_index: Dictionary[String, PotionIngredient] :
+static var potion_ingredient_index: Dictionary[String, PotionIngredient] = {}:
 	get: 
-		if potion_ingredient_index == null: 
-			_read_json_data()
+		if potion_ingredient_index.size() <= 0: 
+			potion_ingredient_index = _read_json_data()
 		return potion_ingredient_index
 
 var name: String = "Inert Potion"
-var type: ATTRIBUTES = 1
 var value: int = 0
-
 
 # finds which of the entries is the highest
 static func get_max(_potion_effects: Dictionary[String, float]) -> String:
@@ -56,7 +54,7 @@ static func get_value(_potion_effects: Dictionary[String, float]) -> float:
 
 	return potion_value
 
-static func _read_json_data() -> void:
+static func _read_json_data() -> Dictionary[String, PotionIngredient]:
 	var json_string: String = FileAccess.open(JSON_PATH, FileAccess.READ).get_as_text()
 	var json_data: JSON = JSON.new()
 
@@ -64,7 +62,7 @@ static func _read_json_data() -> void:
 			"Variable json_data was null. %s" % [json_data.get_error_message()])
 
 	var potion_data = json_data.data["potions"]
-
+	var temp_potion_ingredient_index: Dictionary[String, PotionIngredient]
 	# this should be changed for a more efficent option at some point
 	for entry in potion_data:
 		var temp_potion: PotionIngredient = PotionIngredient.new()
@@ -79,4 +77,6 @@ static func _read_json_data() -> void:
 		temp_potion.instant = entry["instant"]
 		temp_potion.overtime = entry["overtime"]
 
-		potion_ingredient_index[temp_potion.name] = temp_potion.duplicate()
+		temp_potion_ingredient_index[temp_potion.name] = temp_potion.duplicate()
+
+	return temp_potion_ingredient_index
