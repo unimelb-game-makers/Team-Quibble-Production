@@ -42,3 +42,4 @@ text = "Main Menu"
 
 [node name="MainMenu" parent="UI" unique_id=44938569 instance=ExtResource("1_o5qli")]
 layout_mode = 1
+shop_scene_path = "uid://bec7ovcvsvc5q"
