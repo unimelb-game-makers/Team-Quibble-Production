@@ -292,7 +292,6 @@ points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, 
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
-visible = false
 light_color = Color(0.9946533, 0.9195563, 0.8045114, 1)
 shadow_enabled = true
 
