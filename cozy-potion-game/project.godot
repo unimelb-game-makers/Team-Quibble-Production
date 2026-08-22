@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneManager="*uid://c0071jx5m4ofo"
 OptionsMenu="*uid://c7rl0bd26eupb"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [display]
 
@@ -26,6 +27,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
