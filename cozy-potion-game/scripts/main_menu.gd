@@ -5,7 +5,7 @@ extends Control
 @onready var main_scene: Node = get_parent().get_parent() # ideally i would want a
 # nice autoloader script to get the main scene
 
-@export var shop_scene_path: String
+@onready var shop_scene_path := "uid://bec7ovcvsvc5q"
 
 
 func _ready() -> void:

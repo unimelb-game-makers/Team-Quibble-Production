@@ -27,8 +27,7 @@ func change_active_scene_to_packed(scene: PackedScene) -> bool:
 	return true
 
 func change_active_scene_to_file(path: String) -> bool:
-	if not sub_viewport:
-		return false
+	assert(sub_viewport, "A sub viewport could not be found")
 		
 	var error = ResourceLoader.load_threaded_request(path)
 	
