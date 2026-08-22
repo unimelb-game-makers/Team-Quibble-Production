@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer.gd" id="5_tefeu"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://btxs6s8ameerr" path="res://scripts/cauldron_placeholder.gd" id="8_tipki"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
 sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)
@@ -279,6 +280,8 @@ _data = {
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tipki"]
 points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, -2.3425, 5.0325, 0, 2.3425)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ar3d"]
+
 [node name="Shop" type="Node" unique_id=428524118]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
@@ -329,7 +332,7 @@ shape = SubResource("ConcavePolygonShape3D_032fp")
 transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, -1.1920929e-07, 0, 0, 0)
 mesh = SubResource("ArrayMesh_wlr1y")
 
-[node name="Player" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area", "mimi_sprite")]
+[node name="Player" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area", "mimi_sprite") groups=["Player"]]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.18743753, 1.0544419, -2.9712725)
 script = ExtResource("1_jyhfs")
 animation_pivot = NodePath("AnimationPivot")
@@ -459,3 +462,15 @@ dialogue_resource = ExtResource("7_o6xl0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerPlane/StaticBody3D" unique_id=299131404]
 shape = SubResource("ConvexPolygonShape3D_tipki")
+
+[node name="Cauldron" type="Node3D" parent="." unique_id=2122577558 node_paths=PackedStringArray("interactable_area")]
+script = ExtResource("8_tipki")
+interactable_area = NodePath("InteractableArea")
+
+[node name="InteractableArea" type="Area3D" parent="Cauldron" unique_id=1100585736]
+collision_layer = 1048576
+script = ExtResource("4_o6xl0")
+metadata/_custom_type_script = "uid://bnfcqynt4fy0j"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cauldron/InteractableArea" unique_id=1800008894]
+shape = SubResource("BoxShape3D_6ar3d")
