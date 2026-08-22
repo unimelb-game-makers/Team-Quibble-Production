@@ -160,7 +160,7 @@ func activate_top_down_cam() -> void:
 	
 func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
-		if area is InteractableArea:
-			area.on_interact()
+		if area is Interactable:
+			area.interacted.emit()
 			# probably bad to interact with two things at once
 			return

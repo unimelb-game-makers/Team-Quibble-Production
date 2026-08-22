@@ -1,7 +1,7 @@
 extends Node
 
 @export var customer_anim_player: AnimationPlayer
-@export var customer_interactable: InteractableArea
+@export var customer_interactable: Interactable
 @export var customer: Customer
 @export var dialogue_resource: DialogueResource
 

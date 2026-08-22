@@ -4,12 +4,13 @@
 [ext_resource type="Script" uid="uid://b7wupl4oawgq1" path="res://scripts/characters/world_player.gd" id="1_lx5au"]
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_032fp"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark_wall_material.tres" id="2_ajxib"]
-[ext_resource type="Script" uid="uid://bnfcqynt4fy0j" path="res://scripts/world/interactable_object.gd" id="2_xfvoa"]
+[ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="6_heatd"]
 [ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/mini_games/recipe_scene.tscn" id="7_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="9_m4ofw"]
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer.gd" id="10_44xle"]
+[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
 
@@ -249,8 +250,7 @@ albedo_color = Color(0.18266451, 0.380688, 0.93621075, 1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_j14q8"]
 material = SubResource("StandardMaterial3D_aue3q")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5u241"]
-size = Vector3(2.055725, 1.3164063, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_0n2di"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pqync"]
 data = PackedVector3Array(-4.9805603, -0.5, 0.31860352, -4.9805603, -0.5, -0.31860352, -4.9805603, 0.5, -0.31860352, 4.9805603, -0.5, -0.31860352, -4.9805603, -0.5, -0.31860352, -4.9805603, -0.5, 0.31860352, -4.9805603, 0.5, -0.31860352, -4.9805603, -0.5, -0.31860352, 4.9805603, -0.5, -0.31860352, -4.9805603, 0.5, -0.31860352, -4.9805603, 0.5, 0.31860352, -4.9805603, -0.5, 0.31860352, -4.9805603, -0.5, 0.31860352, -4.9805603, 0.5, 0.31860352, 4.9805603, 0.5, 0.31860352, 4.9805603, 0.5, 0.31860352, -4.9805603, 0.5, 0.31860352, -4.9805603, 0.5, -0.31860352, -4.9805603, -0.5, 0.31860352, 4.9805603, -0.5, 0.31860352, 4.9805603, -0.5, -0.31860352, 4.9805603, 0.5, 0.31860352, 4.9805603, -0.5, 0.31860352, -4.9805603, -0.5, 0.31860352, 4.9805603, -0.5, -0.31860352, 4.9805603, -0.5, 0.31860352, 4.9805603, 0.5, 0.31860352, 4.9805603, -0.5, -0.31860352, 4.9805603, 0.5, -0.31860352, -4.9805603, 0.5, -0.31860352, -4.9805603, 0.5, -0.31860352, 4.9805603, 0.5, -0.31860352, 4.9805603, 0.5, 0.31860352, 4.9805603, 0.5, 0.31860352, 4.9805603, 0.5, -0.31860352, 4.9805603, -0.5, -0.31860352)
@@ -288,7 +288,7 @@ points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, 
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=2120733313]
 
-[node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 instance=ExtResource("8_m4ofw")]
+[node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 groups=["popup_subwindow"] instance=ExtResource("8_m4ofw")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
@@ -345,7 +345,7 @@ transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, 
 material_override = ExtResource("1_8r1wq")
 mesh = SubResource("ArrayMesh_wlr1y")
 
-[node name="Player" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area", "mimi_sprite")]
+[node name="Player" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area", "mimi_sprite") groups=["player"]]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.18743753, 1.0544419, -2.9712725)
 script = ExtResource("1_lx5au")
 animation_pivot = NodePath("AnimationPivot")
@@ -412,40 +412,47 @@ grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="RecipeMinigame" type="Area3D" parent="Node3D" unique_id=254663262]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9055874, 0.51443744, 0.042072535)
-collision_layer = 1048576
-collision_mask = 67108865
-script = ExtResource("2_xfvoa")
-scene_to_load = ExtResource("7_m4ofw")
+[node name="CauldronMinigame2" type="Node3D" parent="Node3D" unique_id=1925488483 node_paths=PackedStringArray("interactable")]
+script = ExtResource("6_heatd")
+minigame_scene = ExtResource("9_m4ofw")
+interactable = NodePath("CauldronMinigameInteractable")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RecipeMinigame" unique_id=660347118]
-shape = SubResource("BoxShape3D_aue3q")
-
-[node name="CrushingMinigame" type="Area3D" parent="Node3D" unique_id=2000709200]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 3.8048701)
-collision_layer = 1048576
-collision_mask = 67108865
-script = ExtResource("2_xfvoa")
-scene_to_load = ExtResource("7_y6sft")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CrushingMinigame" unique_id=957162740]
-shape = SubResource("BoxShape3D_aue3q")
-
-[node name="CauldronMinigame" type="Area3D" parent="Node3D" unique_id=593043815]
+[node name="CauldronMinigameInteractable" type="Area3D" parent="Node3D/CauldronMinigame2" unique_id=593043815]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 0.053383827)
 collision_layer = 1048576
 collision_mask = 67108865
-script = ExtResource("2_xfvoa")
-scene_to_load = ExtResource("9_m4ofw")
+script = ExtResource("11_7mqwv")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CauldronMinigame" unique_id=807437790]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CauldronMinigame2/CauldronMinigameInteractable" unique_id=807437790]
 shape = SubResource("BoxShape3D_aue3q")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Node3D" unique_id=446579598]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.061737, 0)
-light_color = Color(0.9597469, 0.9266617, 0.81118107, 1)
-omni_range = 22.771
+[node name="RecipeMinigame" type="Node3D" parent="Node3D" unique_id=1914127599 node_paths=PackedStringArray("interactable")]
+script = ExtResource("6_heatd")
+minigame_scene = ExtResource("7_m4ofw")
+interactable = NodePath("RecipeMinigameInteractable")
+
+[node name="RecipeMinigameInteractable" type="Area3D" parent="Node3D/RecipeMinigame" unique_id=254663262]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9055874, 0.51443744, 0.042072535)
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("11_7mqwv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RecipeMinigame/RecipeMinigameInteractable" unique_id=660347118]
+shape = SubResource("BoxShape3D_aue3q")
+
+[node name="CrushingMinigame" type="Node3D" parent="Node3D" unique_id=1694996626 node_paths=PackedStringArray("interactable")]
+script = ExtResource("6_heatd")
+minigame_scene = ExtResource("7_y6sft")
+interactable = NodePath("CrushingMinigameInteractable")
+
+[node name="CrushingMinigameInteractable" type="Area3D" parent="Node3D/CrushingMinigame" unique_id=2000709200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 3.8048701)
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("11_7mqwv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CrushingMinigame/CrushingMinigameInteractable" unique_id=957162740]
+shape = SubResource("BoxShape3D_aue3q")
 
 [node name="CustomerPlane" type="MeshInstance3D" parent="." unique_id=565643317]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5312338, 0.011340201, -7.3478127)
@@ -456,15 +463,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.696093, 1.0550661, -0.6518
 mesh = SubResource("CapsuleMesh_j14q8")
 script = ExtResource("10_44xle")
 
-[node name="InteractableArea" type="Area3D" parent="CustomerPlane/Customer" unique_id=1815318230]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5587616)
-collision_layer = 1048576
-script = ExtResource("2_xfvoa")
-metadata/_custom_type_script = "uid://bnfcqynt4fy0j"
+[node name="Interactable" type="Area3D" parent="CustomerPlane/Customer" unique_id=27802250]
+script = ExtResource("11_7mqwv")
+metadata/_custom_type_script = "uid://ciwktypwu667m"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerPlane/Customer/InteractableArea" unique_id=1335744586]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06289673, -0.15820313, 0)
-shape = SubResource("BoxShape3D_5u241")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerPlane/Customer/Interactable" unique_id=1310426984]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1376704, 1.6061554)
+shape = SubResource("BoxShape3D_0n2di")
 
 [node name="Counter" type="CSGBox3D" parent="CustomerPlane" unique_id=1823332804]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031043053, 0.4277467, 0.348176)
@@ -481,7 +486,7 @@ libraries/ = SubResource("AnimationLibrary_yuijs")
 [node name="CustomerManager" type="Node" parent="CustomerPlane" unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer")]
 script = ExtResource("11_24it5")
 customer_anim_player = NodePath("../AnimationPlayer")
-customer_interactable = NodePath("../Customer/InteractableArea")
+customer_interactable = NodePath("../Customer/Interactable")
 customer = NodePath("../Customer")
 dialogue_resource = ExtResource("12_7mqwv")
 
