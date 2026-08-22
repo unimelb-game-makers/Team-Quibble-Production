@@ -1,7 +1,7 @@
-extends Control
+extends CanvasLayer
 
-@onready var sub_viewport: SubViewport = $SubViewport
-@onready var animation_player : AnimationPlayer = $AnimationPlayer
+@export var sub_viewport: SubViewport
+@export var animation_player : AnimationPlayer
 
 # Don't do this. Never assume a node will be there. I'm already not the biggest fan of using the
 # whole `@onready var = $Node` method but given the time constraints I'm fine if it's used for
@@ -14,13 +14,12 @@ var popup: Node
 
 func _ready() -> void:
 	visible = false
-
 	# This may seem overkill but trust the process. You can't miss spell a const
 	var ineteractable_objects = get_tree().get_nodes_in_group(Utils.Group.GROUP_INTERACTABLE_OBJECTS)
 
 	# This also sucks but a more modular method will be made in the future. This way we don't have to
 	# go looking for the player.
-	player = get_tree().get_nodes_in_group(Utils.Group.GROUP_PLAYER)[0]
+	player = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
 
 	assert(player, "Could not find player. Something is wrong")
 
@@ -35,16 +34,15 @@ func _ready() -> void:
 		print("connected to node %s" % object)
 
 func start_display_popup(_scene_to_load: PackedScene) -> void:
-	visible = true
-	var _popup = _scene_to_load.instantiate()
 	player.accepting_control = false
-	
-	popup = _popup
-	sub_viewport.add_child(_popup)
+	popup = _scene_to_load.instantiate()
+
+	popup.minigame_won.connect(end_display_popup)
+
+	sub_viewport.add_child(popup)
 	animation_player.play(&"fade_in")
 
 func end_display_popup() -> void:
-	visible = false
 	animation_player.play(&"fade_out")
 	await animation_player.animation_finished
 	sub_viewport.remove_child(popup)

@@ -1,5 +1,7 @@
-#controller for mortar and pestle scene
 extends Control
+#controller for mortar and pestle scene
+
+signal minigame_won()
 
 @export var win_label_placeholder: RichTextLabel
 @export var win_check_interval: float = 0.1
@@ -27,8 +29,5 @@ func _process(delta: float) -> void:
 
 func win_minigame() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
-	## I am NOT in the headspace to debug this but this needs to be only called once
-	#win_label_placeholder.show()
-	## TODO: this should really be an established thing. I would create a Singleton
-	## after talking with other programmers
-	get_parent().get_parent().end_display_popup()
+	
+	minigame_won.emit()
