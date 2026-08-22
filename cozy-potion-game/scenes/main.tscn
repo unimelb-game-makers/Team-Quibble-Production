@@ -232,11 +232,45 @@ albedo_color = Color(1, 0.24705882, 0.08627451, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aue3q"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_4dvm4"]
+size = Vector2(10.065, 4.685)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aue3q"]
+albedo_color = Color(0.18266451, 0.380688, 0.93621075, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4dvm4"]
+material = SubResource("StandardMaterial3D_aue3q")
+
+[sub_resource type="Animation" id="Animation_jyhfs"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Person")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -5.696093, 1.0550661, -0.651824)
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "person_in"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Person")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -5.696093, 1.0550661, -0.651824, 1, 1, 1, 1.055, -0.652)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tefeu"]
+_data = {
+&"RESET": SubResource("Animation_jyhfs"),
+&"person_in": SubResource("Animation_tbgi4")
+}
+
 [node name="Shop" type="Node" unique_id=428524118]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
-visible = false
 light_color = Color(0.9946533, 0.9195563, 0.8045114, 1)
 shadow_enabled = true
 
@@ -367,5 +401,21 @@ shape = SubResource("BoxShape3D_aue3q")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Node3D" unique_id=446579598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.061737, 0)
+visible = false
 light_color = Color(0.9597469, 0.9266617, 0.81118107, 1)
 omni_range = 22.771
+
+[node name="CustomerPlane" type="MeshInstance3D" parent="." unique_id=2019233416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5312338, 0.011340201, -7.3478127)
+mesh = SubResource("PlaneMesh_4dvm4")
+
+[node name="Person" type="MeshInstance3D" parent="CustomerPlane" unique_id=1003595822]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.696093, 1.0550661, -0.651824)
+mesh = SubResource("CapsuleMesh_4dvm4")
+
+[node name="Counter" type="CSGBox3D" parent="CustomerPlane" unique_id=1630536847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031043053, 0.4277467, 0.348176)
+size = Vector3(9.961121, 1, 0.63720703)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerPlane" unique_id=654509512]
+libraries/ = SubResource("AnimationLibrary_tefeu")
