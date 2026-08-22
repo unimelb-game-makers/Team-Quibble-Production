@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cv261l8djfmtu"
 path.s3tc="res://.godot/imported/Placeholder_Character.png-e043324940bc17a5efee0cf36300f69e.s3tc.ctex"
+path.etc2="res://.godot/imported/Placeholder_Character.png-e043324940bc17a5efee0cf36300f69e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/enviroment/Room_Layout_Placeholder/Cauldron_Placeholder.fbm/Placeholder_Character.png"
-dest_files=["res://.godot/imported/Placeholder_Character.png-e043324940bc17a5efee0cf36300f69e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Placeholder_Character.png-e043324940bc17a5efee0cf36300f69e.s3tc.ctex", "res://.godot/imported/Placeholder_Character.png-e043324940bc17a5efee0cf36300f69e.etc2.ctex"]
 
 [params]
 
