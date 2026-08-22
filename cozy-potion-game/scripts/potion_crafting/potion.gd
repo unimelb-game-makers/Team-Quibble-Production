@@ -1,14 +1,14 @@
 class_name Potion
 extends Resource
 
-enum {
+enum ATTRIBUTES {
 	HEALING,
 	ENERGY,
 	CURE_DISEASE,
 	POISON,
 }
 
-enum {
+enum TYPES {
 	INSTANT,
 	OVERTIME,
 }

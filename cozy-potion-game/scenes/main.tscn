@@ -428,6 +428,7 @@ script = ExtResource("5_tefeu")
 
 [node name="InteractableArea" type="Area3D" parent="CustomerPlane/Customer" unique_id=701643863]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5587616)
+collision_layer = 1048576
 script = ExtResource("4_o6xl0")
 metadata/_custom_type_script = "uid://bnfcqynt4fy0j"
 
@@ -450,7 +451,7 @@ libraries/ = SubResource("AnimationLibrary_tefeu")
 [node name="CustomerManager" type="Node" parent="CustomerPlane" unique_id=1665249646 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer")]
 script = ExtResource("5_tbgi4")
 customer_anim_player = NodePath("../AnimationPlayer")
-customer_interactable = NodePath("../../Node3D/TestInteractableUser/InteractableObject")
+customer_interactable = NodePath("../Customer/InteractableArea")
 customer = NodePath("../Customer")
 dialogue_resource = ExtResource("7_o6xl0")
 
