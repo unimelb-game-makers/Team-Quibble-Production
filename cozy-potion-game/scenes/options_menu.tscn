@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://c7rl0bd26eupb"]
+
+[ext_resource type="Script" uid="uid://ddiesd3y05efc" path="res://scripts/autoloads/options_menu.gd" id="1_liyum"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
+font_size = 33
+
+[node name="OptionsMenu" type="CanvasLayer" unique_id=1433898098 node_paths=PackedStringArray("options_menu_container", "exit_game_button")]
+script = ExtResource("1_liyum")
+options_menu_container = NodePath("Control/MarginContainer/Control/OptionsMenuContainer")
+exit_game_button = NodePath("Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer/ExitGameButton")
+
+[node name="Control" type="Control" parent="." unique_id=897544671]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1525534556]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Control" type="Control" parent="Control/MarginContainer" unique_id=1292584816]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="OptionsMenuContainer" type="MarginContainer" parent="Control/MarginContainer/Control" unique_id=279762709 groups=["OptionsMenuContainer"]]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.058000002
+anchor_top = 0.059000004
+anchor_right = 0.259
+anchor_bottom = 0.919
+offset_left = -0.040000916
+offset_top = -0.36000443
+offset_right = -0.9200134
+offset_bottom = 0.23999023
+offset_transform_enabled = true
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/Control/OptionsMenuContainer" unique_id=1692637642]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer" unique_id=1983870235]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer" unique_id=760924181]
+layout_mode = 2
+text = "This is a main menu"
+label_settings = SubResource("LabelSettings_4dvm4")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer" unique_id=285426307]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ExitGameButton" type="Button" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=726220320]
+layout_mode = 2
+text = "Exit Game"
+alignment = 0
