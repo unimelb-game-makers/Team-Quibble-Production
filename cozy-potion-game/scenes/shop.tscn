@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="9_m4ofw"]
+[ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer.gd" id="10_44xle"]
+[ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
+[ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
 sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)
@@ -237,6 +240,50 @@ albedo_color = Color(1, 0.24705882, 0.08627451, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aue3q"]
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_gobkm"]
+size = Vector2(10.065, 4.685)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aue3q"]
+albedo_color = Color(0.18266451, 0.380688, 0.93621075, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_j14q8"]
+material = SubResource("StandardMaterial3D_aue3q")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5u241"]
+size = Vector3(2.055725, 1.3164063, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_pqync"]
+data = PackedVector3Array(-4.9805603, -0.5, 0.31860352, -4.9805603, -0.5, -0.31860352, -4.9805603, 0.5, -0.31860352, 4.9805603, -0.5, -0.31860352, -4.9805603, -0.5, -0.31860352, -4.9805603, -0.5, 0.31860352, -4.9805603, 0.5, -0.31860352, -4.9805603, -0.5, -0.31860352, 4.9805603, -0.5, -0.31860352, -4.9805603, 0.5, -0.31860352, -4.9805603, 0.5, 0.31860352, -4.9805603, -0.5, 0.31860352, -4.9805603, -0.5, 0.31860352, -4.9805603, 0.5, 0.31860352, 4.9805603, 0.5, 0.31860352, 4.9805603, 0.5, 0.31860352, -4.9805603, 0.5, 0.31860352, -4.9805603, 0.5, -0.31860352, -4.9805603, -0.5, 0.31860352, 4.9805603, -0.5, 0.31860352, 4.9805603, -0.5, -0.31860352, 4.9805603, 0.5, 0.31860352, 4.9805603, -0.5, 0.31860352, -4.9805603, -0.5, 0.31860352, 4.9805603, -0.5, -0.31860352, 4.9805603, -0.5, 0.31860352, 4.9805603, 0.5, 0.31860352, 4.9805603, -0.5, -0.31860352, 4.9805603, 0.5, -0.31860352, -4.9805603, 0.5, -0.31860352, -4.9805603, 0.5, -0.31860352, 4.9805603, 0.5, -0.31860352, 4.9805603, 0.5, 0.31860352, 4.9805603, 0.5, 0.31860352, 4.9805603, 0.5, -0.31860352, 4.9805603, -0.5, -0.31860352)
+
+[sub_resource type="Animation" id="Animation_jyhfs"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Customer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -5.696093, 1.0550661, -0.651824)
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "person_in"
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Customer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -5.696093, 1.0550661, -0.651824, 1, 1, 1, 1.055, -0.652)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yuijs"]
+_data = {
+&"RESET": SubResource("Animation_jyhfs"),
+&"person_in": SubResource("Animation_tbgi4")
+}
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aa4hd"]
+points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, -2.3425, 5.0325, 0, 2.3425)
+
 [node name="Shop" type="Node" unique_id=428524118]
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=2120733313]
@@ -399,3 +446,46 @@ shape = SubResource("BoxShape3D_aue3q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.061737, 0)
 light_color = Color(0.9597469, 0.9266617, 0.81118107, 1)
 omni_range = 22.771
+
+[node name="CustomerPlane" type="MeshInstance3D" parent="." unique_id=565643317]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5312338, 0.011340201, -7.3478127)
+mesh = SubResource("PlaneMesh_gobkm")
+
+[node name="Customer" type="MeshInstance3D" parent="CustomerPlane" unique_id=871945857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.696093, 1.0550661, -0.651824)
+mesh = SubResource("CapsuleMesh_j14q8")
+script = ExtResource("10_44xle")
+
+[node name="InteractableArea" type="Area3D" parent="CustomerPlane/Customer" unique_id=1815318230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5587616)
+collision_layer = 1048576
+script = ExtResource("2_xfvoa")
+metadata/_custom_type_script = "uid://bnfcqynt4fy0j"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerPlane/Customer/InteractableArea" unique_id=1335744586]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06289673, -0.15820313, 0)
+shape = SubResource("BoxShape3D_5u241")
+
+[node name="Counter" type="CSGBox3D" parent="CustomerPlane" unique_id=1823332804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031043053, 0.4277467, 0.348176)
+size = Vector3(9.961121, 1, 0.63720703)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CustomerPlane/Counter" unique_id=82347158]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="CustomerPlane/Counter/StaticBody3D" unique_id=759776045]
+shape = SubResource("ConcavePolygonShape3D_pqync")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerPlane" unique_id=1878084005]
+libraries/ = SubResource("AnimationLibrary_yuijs")
+
+[node name="CustomerManager" type="Node" parent="CustomerPlane" unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer")]
+script = ExtResource("11_24it5")
+customer_anim_player = NodePath("../AnimationPlayer")
+customer_interactable = NodePath("../Customer/InteractableArea")
+customer = NodePath("../Customer")
+dialogue_resource = ExtResource("12_7mqwv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CustomerPlane" unique_id=495017166]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerPlane/StaticBody3D" unique_id=704160577]
+shape = SubResource("ConvexPolygonShape3D_aa4hd")

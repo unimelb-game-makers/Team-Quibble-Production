@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dvuso6cvhqekf"]
 
-[ext_resource type="Script" uid="uid://b7wupl4oawgq1" path="res://scripts/world/world_player.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://b7wupl4oawgq1" path="res://scripts/characters/world_player.gd" id="1_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="1_kbuax"]
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_tbgi4"]
 [ext_resource type="Script" uid="uid://bc5xc5cvwwo37" path="res://scripts/world/test_interactable_user.gd" id="3_tefeu"]
 [ext_resource type="Script" uid="uid://bnfcqynt4fy0j" path="res://scripts/world/interactable_object.gd" id="4_o6xl0"]
@@ -8,9 +9,6 @@
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer.gd" id="5_tefeu"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="7_o6xl0"]
 [ext_resource type="Script" uid="uid://btxs6s8ameerr" path="res://scripts/cauldron_placeholder.gd" id="8_tipki"]
-[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://assets/main_theme.tres" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://bwmeocdqaeu4l" path="res://scenes/menus/main_menu.tscn" id="1_o5qli"]
-[ext_resource type="Script" uid="uid://yiix2rvytky5" path="res://scripts/main.gd" id="1_sugp2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
 sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)
@@ -287,6 +285,10 @@ points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, 
 
 [node name="Shop" type="Node" unique_id=428524118]
 
+[node name="SceneUI" type="CanvasLayer" parent="." unique_id=668327136]
+
+[node name="PopupSubWindow" parent="SceneUI" unique_id=1360167922 instance=ExtResource("1_kbuax")]
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
 light_color = Color(0.9946533, 0.9195563, 0.8045114, 1)
@@ -402,10 +404,9 @@ grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="TestInteractableUser" type="Node3D" parent="Node3D" unique_id=1808629614 node_paths=PackedStringArray("interactable_area")]
+[node name="TestInteractableUser" type="Node3D" parent="Node3D" unique_id=1808629614]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, -2.9055877, 1.0544419, -2.591208)
 script = ExtResource("3_tefeu")
-interactable_area = NodePath("InteractableObject")
 
 [node name="InteractableObject" type="Area3D" parent="Node3D/TestInteractableUser" unique_id=254663262]
 transform = Transform3D(0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, 0.7071068, -0.73490536, -0.7443633, 0.6911044)
