@@ -5,8 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_032fp"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark_wall_material.tres" id="2_ajxib"]
 [ext_resource type="Script" uid="uid://bnfcqynt4fy0j" path="res://scripts/world/interactable_object.gd" id="2_xfvoa"]
+[ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/mini_games/recipe_scene.tscn" id="7_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
+[ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="9_m4ofw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
 sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)
@@ -363,14 +365,34 @@ grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="InteractableObject" type="Area3D" parent="Node3D" unique_id=254663262]
+[node name="RecipeMinigame" type="Area3D" parent="Node3D" unique_id=254663262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9055874, 0.51443744, 0.042072535)
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("2_xfvoa")
+scene_to_load = ExtResource("7_m4ofw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RecipeMinigame" unique_id=660347118]
+shape = SubResource("BoxShape3D_aue3q")
+
+[node name="CrushingMinigame" type="Area3D" parent="Node3D" unique_id=2000709200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 3.8048701)
 collision_layer = 1048576
 collision_mask = 67108865
 script = ExtResource("2_xfvoa")
 scene_to_load = ExtResource("7_y6sft")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/InteractableObject" unique_id=660347118]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CrushingMinigame" unique_id=957162740]
+shape = SubResource("BoxShape3D_aue3q")
+
+[node name="CauldronMinigame" type="Area3D" parent="Node3D" unique_id=593043815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 0.053383827)
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("2_xfvoa")
+scene_to_load = ExtResource("9_m4ofw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CauldronMinigame" unique_id=807437790]
 shape = SubResource("BoxShape3D_aue3q")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Node3D" unique_id=446579598]

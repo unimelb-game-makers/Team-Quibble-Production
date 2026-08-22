@@ -46,6 +46,9 @@ func end_display_popup() -> void:
 	animation_player.play(&"fade_out")
 	await animation_player.animation_finished
 	sub_viewport.remove_child(popup)
+	popup.minigame_won.disconnect(end_display_popup)
+
+	popup.queue_free()
 	
 	player.accepting_control = true
 

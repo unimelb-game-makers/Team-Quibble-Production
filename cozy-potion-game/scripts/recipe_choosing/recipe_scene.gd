@@ -1,5 +1,7 @@
 extends Node2D
 
+signal minigame_won()
+
 # Holds all steps
 @onready var step_holder: Node2D = $StepHolder
 # Holds Ingredients
@@ -18,3 +20,5 @@ func get_dragging() -> Ingredient:
 # Called when Final Button Pressed, gets selected choices, moves to next scene
 func end_scene() -> void:
 	print(step_holder.get_final_steps())
+
+	minigame_won.emit()
