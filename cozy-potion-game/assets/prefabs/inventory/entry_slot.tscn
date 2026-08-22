@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://78h1y85wird5"]
 
-[ext_resource type="Script" uid="uid://oe8ew2e46b48" path="res://scripts/inventory/entry.gd" id="1_m7dgc"]
+[ext_resource type="Script" uid="uid://di1233dchxhi4" path="res://scripts/inventory/entry.gd" id="1_m7dgc"]
 [ext_resource type="Texture2D" uid="uid://b6gfooj6w6uyp" path="res://assets/sprites/black_tlle.png" id="2_ejxci"]
 
 [node name="EntrySlot" type="Panel" unique_id=2122075227]

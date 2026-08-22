@@ -21,12 +21,12 @@ var quantity : int:
 		updated_values.emit()
 
 # Items can have more than max_quanity if on ground
-const max_grid_quantity: int = 10
+const MAX_QUANTITY: int = 10
 var isEmpty = false
 
 var sprite: Texture
 
-func _init(start_quantity: int, start_name: String = "") -> void:
+func _init(start_quantity: int = 0, start_name: String = "") -> void:
 	quantity = start_quantity
 	item_name = start_name
 
@@ -53,6 +53,6 @@ func get_sprite() -> Texture2D:
 
 # Returns quantity of stack and "" if stack is empty
 func get_quantity_label() -> String:
-	if isEmpty:
+	if isEmpty or quantity == 1:
 		return ""
 	return str(quantity)

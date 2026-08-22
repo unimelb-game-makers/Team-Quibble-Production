@@ -1,8 +1,6 @@
 class_name ItemSlot
 extends Node
 
-static var item_slot_scene := preload("uid://b04fxmn4gaapy")
-
 var stack : Stack :
 	set(value):
 		if stack != value:
@@ -15,6 +13,9 @@ var stack : Stack :
 
 @onready var item_sprite: Sprite2D = $ItemSprite
 @onready var quantity_label: Label = $QuantityLabel
+
+static func get_item_scene() -> PackedScene:
+	return preload("uid://b04fxmn4gaapy")
 
 func _ready() -> void:
 	stack = Stack.new(0)

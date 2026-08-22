@@ -36,7 +36,7 @@ func spawn_entry(item_name: String) -> void:
 		return
 	
 	# Spawns Entry
-	var new_instance := Entry.entry_slot_scene.instantiate()
+	var new_instance := Entry.get_item_scene().instantiate()
 	storage.add_child(new_instance)
 	
 	new_instance.gui_input.connect(entry_clicked.bind(new_instance))
