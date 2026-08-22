@@ -25,6 +25,7 @@ const CAMERA_ROTATION_SPEED = 2 * PI
 
 var rotation_y_target: float = 0
 var top_down_active: bool = false
+var potion: Potion
 
 func _ready() -> void:
 	mouse_detector_left.mouse_entered.connect(rotate_camera.bind(-1))
