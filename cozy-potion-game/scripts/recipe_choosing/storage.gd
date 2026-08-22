@@ -1,5 +1,7 @@
 extends ScrollContainer
 
+const INGREDIENT_SCENE = preload("uid://bq8fh7bhdr3an")
+
 # please be more descriptive with the names of things :)
 @onready var vbox: VBoxContainer = $Vbox
 
@@ -12,13 +14,13 @@ var ingredient_dragging: Ingredient = null # Ingredient being dragged
 
 
 func _ready() -> void:
-	var ingredientScene = load("res://scenes/ingredient.tscn")
-	
-	for ingredient in base_ingredients:
-		var instance = ingredientScene.instantiate()
+	for ingredient in Potion.potion_ingredient_index.values():
+		var instance = INGREDIENT_SCENE.instantiate()
+		assert(instance is Ingredient, "Scene instantiated was not of type Ingredient")
+
 		vbox.add_child(instance)
+		instance.set_resource(ingredient)
 		instance.get_dragbox().input_event.connect(start_dragging.bind(instance))
-		instance.set_text(ingredient)
 
 # If dragging, places dragged ingredient under mouse 
 func _process(_delta: float) -> void:
@@ -43,7 +45,7 @@ func sort_ingredients() -> void:
 	
 	sorted_nodes.sort_custom(
 		func(a: Ingredient, b: Ingredient): 
-			return a.ingre_type.naturalnocasecmp_to(b.ingre_type) < 0 \
+			return a.ingredient_name.naturalnocasecmp_to(b.ingredient_name) < 0 \
 		)
 	
 	for node in sorted_nodes:

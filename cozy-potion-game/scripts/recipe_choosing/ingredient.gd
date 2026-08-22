@@ -7,16 +7,18 @@ extends Control
 # The orginal owner of ingredient, i.e. Storage/Vbox
 var ingredient_box: VBoxContainer = null
 # Poor used for sorting ingredients
-var ingredient_type: String = ""
+var ingredient_name: String = ""
 
+var ingredient_resource: PotionIngredient
 
 func _ready() -> void:
 	ingredient_box = get_parent()
 
 
-func set_text(newtext: String) -> void:
-	label.text = newtext
-	ingredient_type = newtext
+func set_resource(_ingredient_resource: PotionIngredient) -> void:
+	ingredient_resource = _ingredient_resource
+	ingredient_name = ingredient_resource.name
+	label.text = ingredient_name
 
 
 func get_dragbox() -> Area2D:
@@ -24,7 +26,7 @@ func get_dragbox() -> Area2D:
 
 
 func get_info() -> String:
-	return ingredient_type
+	return ingredient_name
 
 # Called when dragged to ensure returns to orignal owner
 func return_to_box() -> void:

@@ -1,6 +1,8 @@
 class_name Pestle extends CharacterBody2D
 ## a character body that moves towards the mouse with some velocity
 
+
+
 @export var max_speed: float
 @export var curve: Curve
 
@@ -10,7 +12,7 @@ func _physics_process(_delta: float) -> void:
 	var mouse_world_position = get_tree().root.get_mouse_position()
 	mouse_world_position = to_local(mouse_world_position)
 	var move_dir = (mouse_world_position - position).normalized()
-	
+	 
 	#the speed we move towards the cursor is dependent on how far away we are from it
 	# in relation to how far away we could be from it
 	var max_distance = sqrt(get_window().size.x*get_window().size.x + get_window().size.y * get_window().size.y)

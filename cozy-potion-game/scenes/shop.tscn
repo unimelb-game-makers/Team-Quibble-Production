@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bec7ovcvsvc5q"]
 
 [ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange_wall_material.tres" id="1_8r1wq"]
-[ext_resource type="Script" uid="uid://b7wupl4oawgq1" path="res://scripts/world/world_player.gd" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://b7wupl4oawgq1" path="res://scripts/characters/world_player.gd" id="1_lx5au"]
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_032fp"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark_wall_material.tres" id="2_ajxib"]
 [ext_resource type="Script" uid="uid://bnfcqynt4fy0j" path="res://scripts/world/interactable_object.gd" id="2_xfvoa"]
