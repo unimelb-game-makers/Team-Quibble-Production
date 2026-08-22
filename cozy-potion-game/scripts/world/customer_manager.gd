@@ -37,7 +37,8 @@ func _on_customer_interact() -> void:
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "refuse")
 			player.potion = null
 
+
+#TODO:potions only have values and names, at the moment. This function will
+#be updated once the potion system is.
 func check_potion_match(player_potion: Potion, customer_request_type: Potion.ATTRIBUTES) -> bool:
-	if player_potion == null:
-		return false
-	return player_potion.type == customer_request_type
+	return true if randi_range(0,1) else false
