@@ -35,6 +35,7 @@ func attempt_brewing(_potion_recipe: Array[PotionIngredient]) -> Potion:
 
 	potion.name = "Potion of %s %s" % [potion_type, potion_effect]
 	potion.value = Potion.get_value(effect_score) + type_score[potion_type]
+	potion.type = Potion.ATTRIBUTES.get(potion_effect.to_upper())
 
 	return potion
 	

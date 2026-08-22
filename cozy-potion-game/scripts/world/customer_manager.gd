@@ -7,6 +7,7 @@ extends Node
 
 func _ready() -> void:
 	send_customer()
+
 func send_customer() -> void:
 	customer_anim_player.play("person_in")
 	customer_interactable.interacted.connect(_on_customer_interact, ConnectFlags.CONNECT_ONE_SHOT)

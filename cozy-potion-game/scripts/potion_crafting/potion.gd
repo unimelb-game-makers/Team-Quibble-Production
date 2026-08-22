@@ -23,7 +23,9 @@ static var potion_ingredient_index: Dictionary[String, PotionIngredient] :
 		return potion_ingredient_index
 
 var name: String = "Inert Potion"
+var type: ATTRIBUTES = 1
 var value: int = 0
+
 
 # finds which of the entries is the highest
 static func get_max(_potion_effects: Dictionary[String, float]) -> String:
