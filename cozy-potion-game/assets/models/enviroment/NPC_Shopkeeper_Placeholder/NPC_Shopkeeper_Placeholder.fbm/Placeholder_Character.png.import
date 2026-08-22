@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://hnmod6gtp1my"
 path.s3tc="res://.godot/imported/Placeholder_Character.png-ee3dae12eebbdced5481bbf1b3b045c2.s3tc.ctex"
+path.etc2="res://.godot/imported/Placeholder_Character.png-ee3dae12eebbdced5481bbf1b3b045c2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/enviroment/NPC_Shopkeeper_Placeholder/NPC_Shopkeeper_Placeholder.fbm/Placeholder_Character.png"
-dest_files=["res://.godot/imported/Placeholder_Character.png-ee3dae12eebbdced5481bbf1b3b045c2.s3tc.ctex"]
+dest_files=["res://.godot/imported/Placeholder_Character.png-ee3dae12eebbdced5481bbf1b3b045c2.s3tc.ctex", "res://.godot/imported/Placeholder_Character.png-ee3dae12eebbdced5481bbf1b3b045c2.etc2.ctex"]
 
 [params]
 

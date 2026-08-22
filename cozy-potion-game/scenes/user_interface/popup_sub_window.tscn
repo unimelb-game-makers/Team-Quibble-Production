@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://b3cd2a5yxvfp"]
+
+[ext_resource type="Script" uid="uid://cwkp4uesjlu0l" path="res://scripts/popup_sub_window.gd" id="1_xhyie"]
+[ext_resource type="Texture2D" uid="uid://chtt062vyqabl" path="res://assets/sprites/thinghere.png" id="2_2rywg"]
+
+[sub_resource type="Animation" id="Animation_mb0g6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uh2bh"]
+resource_name = "fade_in"
+length = 0.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8ihcq"]
+resource_name = "fade_out"
+length = 0.2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vsj0n"]
+_data = {
+&"RESET": SubResource("Animation_mb0g6"),
+&"fade_in": SubResource("Animation_uh2bh"),
+&"fade_out": SubResource("Animation_8ihcq")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ajxib"]
+texture = ExtResource("2_2rywg")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_2rywg"]
+viewport_path = NodePath("SubViewport")
+
+[node name="PopupSubWindow" type="CanvasLayer" unique_id=1360167922 node_paths=PackedStringArray("sub_viewport", "animation_player")]
+script = ExtResource("1_xhyie")
+sub_viewport = NodePath("SubViewport")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=317420702]
+libraries/ = SubResource("AnimationLibrary_vsj0n")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=230729811]
+transparent_bg = true
+size = Vector2i(1600, 900)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=64089137]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -450.0
+offset_right = 800.0
+offset_bottom = 450.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_ajxib")
+
+[node name="SubViewportTexture" type="TextureRect" parent="PanelContainer" unique_id=754107476]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = SubResource("ViewportTexture_2rywg")

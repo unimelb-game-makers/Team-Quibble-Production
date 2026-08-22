@@ -26,12 +26,19 @@ const CAMERA_ROTATION_SPEED = 2 * PI
 var rotation_y_target: float = 0
 var top_down_active: bool = false
 
+var accepting_control: bool = true
+
+# this is called before _ready
+func _init() -> void:
+	add_to_group(Utils.Group.GROUP_PLAYER) # may seem overkill but trust
+
 func _ready() -> void:
 	mouse_detector_left.mouse_entered.connect(rotate_camera.bind(-1))
 	mouse_detector_right.mouse_entered.connect(rotate_camera.bind(1))
 
 func _unhandled_input(event: InputEvent) -> void:
-	aesthetic_movement(event)
+	if accepting_control:
+		aesthetic_movement(event)
 
 func aesthetic_movement(event: InputEvent) -> void:
 	if event.is_action_pressed("camera_left"):
@@ -71,10 +78,10 @@ func process_camera_rotation(delta: float) -> void:
 		# so we rotate the model the other way
 		rotate_y(rot)
 		animation_pivot.rotate_y(-rot)
-		var sign = sign(rotation_y_target)
+		var _sign = sign(rotation_y_target)
 		rotation_y_target -= rot
 		#overshoot
-		if sign != sign(rotation_y_target):
+		if _sign != sign(rotation_y_target):
 			rotate_y(rotation_y_target)
 			animation_pivot.rotate_y(-rotation_y_target)
 			rotation_y_target = 0
@@ -92,31 +99,32 @@ func get_input_vector_unnormalised() -> Vector2i:
 	return res
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	if accepting_control:
+		# Add the gravity.
+		if not is_on_floor():
+			velocity += get_gravity() * delta
 
-	var input_dir = Input.get_vector("move_left","move_right","move_up","move_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	# rotates the direction angle to account for the camera
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-		 #rotates the animation pivot (that is, the actual mesh as well as the 
-		 #detector for interactable objects)
-		 #towards the movement direction at a rate of turn_rate per frame unless
-		 #we could just snap to that direction.
-		 #this implementation is a little overcomplicated so we can do smoothing
-		 #if that isnt needed, maybe just use look_at()
-		var pivot_direction := animation_pivot.global_basis * Vector3.FORWARD
-		var angle_to_move_dir = pivot_direction.signed_angle_to(direction, Vector3(0,1,0))
-		var rotation = min(delta * INTERACTABLE_AREA_TURN_RATE, abs(angle_to_move_dir)) * sign(angle_to_move_dir)
-		animation_pivot.rotate_y(rotation)
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
+		var input_dir = Input.get_vector("move_left","move_right","move_up","move_down")
+		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		# rotates the direction angle to account for the camera
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+			 #rotates the animation pivot (that is, the actual mesh as well as the 
+			 #detector for interactable objects)
+			 #towards the movement direction at a rate of turn_rate per frame unless
+			 #we could just snap to that direction.
+			 #this implementation is a little overcomplicated so we can do smoothing
+			 #if that isnt needed, maybe just use look_at()
+			var pivot_direction := animation_pivot.global_basis * Vector3.FORWARD
+			var angle_to_move_dir = pivot_direction.signed_angle_to(direction, Vector3(0,1,0))
+			var _rotation = min(delta * INTERACTABLE_AREA_TURN_RATE, abs(angle_to_move_dir)) * sign(angle_to_move_dir)
+			animation_pivot.rotate_y(_rotation)
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
 
-	move_and_slide()
+		move_and_slide()
 
 func toggle_top_down_cam() -> void:
 	if not top_down_active:
@@ -152,6 +160,6 @@ func activate_top_down_cam() -> void:
 func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
 		if area is InteractableArea:
-			area.interacted.emit()
+			area.on_interact()
 			# probably bad to interact with two things at once
 			return

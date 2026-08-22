@@ -16,14 +16,10 @@ enum {
 const JSON_PATH: String = "res://scripts/potion_crafting/potion_list.json"
 const PLACEHOLDER: Texture = preload("res://icon.svg")
 
-static var _is_loaded = false
-
-static var potion_ingredient_index: Dictionary[String, PotionIngredient] :
-	get:
-		# found infinte recursion if done orginal as dict != null nor isEmpty
-		if not _is_loaded:
-			_is_loaded = true 
-			_read_json_data()
+static var potion_ingredient_index: Dictionary[String, PotionIngredient] = {}:
+	get: 
+		if potion_ingredient_index.size() <= 0: 
+			potion_ingredient_index = _read_json_data()
 		return potion_ingredient_index
 
 var name: String = "Inert Potion"
@@ -58,8 +54,7 @@ static func get_value(_potion_effects: Dictionary[String, float]) -> float:
 
 	return potion_value
 
-static func _read_json_data() -> void:
-
+static func _read_json_data() -> Dictionary[String, PotionIngredient]:
 	var json_string: String = FileAccess.open(JSON_PATH, FileAccess.READ).get_as_text()
 	var json_data: JSON = JSON.new()
 
@@ -67,8 +62,7 @@ static func _read_json_data() -> void:
 			"Variable json_data was null. %s" % [json_data.get_error_message()])
 
 	var potion_data = json_data.data["potions"]
-	
-
+	var temp_potion_ingredient_index: Dictionary[String, PotionIngredient]
 	# this should be changed for a more efficent option at some point
 	for entry in potion_data:
 		var temp_potion: PotionIngredient = PotionIngredient.new()
@@ -82,5 +76,7 @@ static func _read_json_data() -> void:
 
 		temp_potion.instant = entry["instant"]
 		temp_potion.overtime = entry["overtime"]
-		
-		potion_ingredient_index[temp_potion.name] = temp_potion.duplicate()
+
+		temp_potion_ingredient_index[temp_potion.name] = temp_potion.duplicate()
+
+	return temp_potion_ingredient_index

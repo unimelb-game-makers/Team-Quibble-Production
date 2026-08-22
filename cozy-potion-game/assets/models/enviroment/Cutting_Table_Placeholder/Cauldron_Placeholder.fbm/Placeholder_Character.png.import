@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfhmpl4j783o5"
 path.s3tc="res://.godot/imported/Placeholder_Character.png-f0bfbaddd217eb7fbfdbc2c5502ae621.s3tc.ctex"
+path.etc2="res://.godot/imported/Placeholder_Character.png-f0bfbaddd217eb7fbfdbc2c5502ae621.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/enviroment/Cutting_Table_Placeholder/Cauldron_Placeholder.fbm/Placeholder_Character.png"
-dest_files=["res://.godot/imported/Placeholder_Character.png-f0bfbaddd217eb7fbfdbc2c5502ae621.s3tc.ctex"]
+dest_files=["res://.godot/imported/Placeholder_Character.png-f0bfbaddd217eb7fbfdbc2c5502ae621.s3tc.ctex", "res://.godot/imported/Placeholder_Character.png-f0bfbaddd217eb7fbfdbc2c5502ae621.etc2.ctex"]
 
 [params]
 

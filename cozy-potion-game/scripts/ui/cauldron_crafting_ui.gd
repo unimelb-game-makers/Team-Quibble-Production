@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal minigame_won()
+
 @export var potion_brewer: PotionBrewing
 @export var label_money_counter: Label
 @export var container_recipe_list: VBoxContainer
@@ -62,6 +64,7 @@ func create_potion() -> void:
 	potion_created_name_label.text = "You made a %s!" % created_potion.name
 	potion_created_value_label.text = "(which you can sell for $%d.)" % created_potion.value
 	
+	minigame_won.emit()
 	reset_potion()
 
 
