@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8cph38syc08d"]
 
 [ext_resource type="Script" uid="uid://b05k1s1jgk3jh" path="res://scripts/ui/cauldron_crafting_ui.gd" id="1_c2v7o"]
+[ext_resource type="Script" uid="uid://njh3e0ivu6i5" path="res://scenes/mini_games/cauldron_scene.gd" id="1_if6mv"]
 [ext_resource type="Texture2D" uid="uid://co3mgwg1g4mx6" path="res://assets/sprites/cauldron_placeholder.jpg" id="2_6g1p8"]
 [ext_resource type="Script" uid="uid://bytx8uyvjb5ht" path="res://scripts/potion_crafting/potion_brewing.gd" id="3_nsau4"]
 
@@ -15,6 +16,7 @@ corner_radius_bottom_left = 15
 font_size = 23
 
 [node name="CauldronScene" type="Node2D" unique_id=934424114]
+script = ExtResource("1_if6mv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1608703175 node_paths=PackedStringArray("potion_brewer", "label_money_counter", "container_recipe_list", "reset_button", "make_button", "quest_label", "potion_created_container", "potion_created_name_label", "potion_created_value_label")]
 script = ExtResource("1_c2v7o")
