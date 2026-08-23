@@ -1,9 +1,9 @@
-extends Node2D
+extends CanvasLayer
 
 signal minigame_won()
 
 # Holds all steps
-@onready var step_holder: Node2D = $StepHolder
+@onready var step_holder: CanvasLayer = $StepHolder
 # Holds Ingredients
 @onready var storage: ScrollContainer = $Storage
 # Buttons moves to next Scene
@@ -19,6 +19,6 @@ func get_dragging() -> Ingredient:
 
 # Called when Final Button Pressed, gets selected choices, moves to next scene
 func end_scene() -> void:
-	print(step_holder.get_final_steps())
-
+	PotionBrewing.recipe = step_holder.get_final_steps()
+	print(PotionBrewing.recipe)
 	minigame_won.emit()
