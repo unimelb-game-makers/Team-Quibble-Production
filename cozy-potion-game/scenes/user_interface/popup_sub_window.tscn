@@ -99,17 +99,23 @@ _data = {
 texture = ExtResource("2_2rywg")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2rywg"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="PopupSubWindow" type="CanvasLayer" unique_id=1360167922 node_paths=PackedStringArray("sub_viewport", "animation_player")]
 script = ExtResource("1_xhyie")
-sub_viewport = NodePath("SubViewport")
+sub_viewport = NodePath("SubViewportContainer/SubViewport")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=317420702]
 libraries/ = SubResource("AnimationLibrary_vsj0n")
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=230729811]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=8017029]
+offset_left = 160.0
+offset_top = 90.0
+offset_right = 1760.0
+offset_bottom = 990.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=230729811]
 transparent_bg = true
 size = Vector2i(1600, 900)
 
