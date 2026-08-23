@@ -30,9 +30,7 @@ func create_potion() -> void:
 	potion_created_name_label.text = "You made a %s!" % created_potion.name
 	potion_created_value_label.text = "(which you can sell for $%d.)" % created_potion.value
 	
-	get_tree().get_first_node_in_group("player").potion = created_potion
-	PotionBrewing.recipe.clear()
-	minigame_won.emit()
+	get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER).potion = created_potion
 	#reset_potion()
 
 
@@ -43,3 +41,5 @@ func create_potion() -> void:
 func _on_potion_created_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		potion_created_container.hide()
+		PotionBrewing.recipe.clear()
+		minigame_won.emit()

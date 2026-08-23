@@ -27,7 +27,7 @@ func _on_customer_interact() -> void:
 		DialogueManager.show_example_dialogue_balloon(dialogue_resource, dialogue_start)
 		customer.has_conveyed_request = true
 	else:
-		var player: WorldPlayer = get_tree().get_first_node_in_group("Player")
+		var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
 		if check_potion_match(player.potion, customer.requested_potion_type):
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
 			await DialogueManager.dialogue_ended
