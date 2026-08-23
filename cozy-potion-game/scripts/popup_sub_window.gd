@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name PopupSubWindow extends CanvasLayer
 
 @export var sub_viewport: SubViewport
 @export var animation_player : AnimationPlayer

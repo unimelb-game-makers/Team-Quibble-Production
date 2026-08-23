@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bq8fh7bhdr3an"]
 
-[ext_resource type="Script" uid="uid://bd8g7yrsfuglf" path="res://scripts/recipe_choosing/ingredient.gd" id="1_ssx0k"]
+[ext_resource type="Script" uid="uid://bd8g7yrsfuglf" path="res://scripts/minigame/recipe_choosing/ingredient.gd" id="1_ssx0k"]
 [ext_resource type="Texture2D" uid="uid://b6gfooj6w6uyp" path="res://assets/sprites/black_tlle.png" id="2_762re"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sj1v"]
@@ -12,7 +12,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 293.0
 offset_bottom = 93.0
-mouse_filter = 2
 script = ExtResource("1_ssx0k")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=907818478]
