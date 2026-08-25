@@ -1,6 +1,7 @@
 extends ScrollContainer
 
-const INGREDIENT_SCENE = preload("uid://bq8fh7bhdr3an")
+const INGREDIENT_SCENE = preload("uid://bevv56yxkl1y7") # draggable ui
+#const INGREDIENT_SCENE = preload("uid://bq8fh7bhdr3an")
 
 # please be more descriptive with the names of things :)
 @onready var vbox: VBoxContainer = $Vbox
@@ -8,15 +9,14 @@ const INGREDIENT_SCENE = preload("uid://bq8fh7bhdr3an")
 var dragging: bool = false # True if ingredient being dragged
 var ingredient_dragging: Ingredient = null # Ingredient being dragged
 
-
 func _ready() -> void:
 	for ingredient in Potion.potion_ingredient_index.values():
 		var instance = INGREDIENT_SCENE.instantiate()
-		assert(instance is Ingredient, "Scene instantiated was not of type Ingredient")
+		assert(instance is DraggableUI, "Scene instantiated was not of type Ingredient")
 
 		vbox.add_child(instance)
 		instance.set_resource(ingredient)
-		instance.get_dragbox().input_event.connect(start_dragging.bind(instance))
+		# instance.get_dragbox().input_event.connect(start_dragging.bind(instance))
 
 # If dragging, places dragged ingredient under mouse 
 func _process(_delta: float) -> void:
@@ -56,9 +56,12 @@ func get_dragging_ingredient() -> Ingredient:
 		return ingredient_dragging
 	return null
 
+
+
 # Called when Ingredients feel input, trys to start dragging given ingredient
 func start_dragging(_viewport: Node, event: InputEvent, _shape_idx: int, node) \
 		-> void:
+	print(_viewport)
 	if !dragging and event.is_action_pressed("LMB"):
 		dragging = true
 		ingredient_dragging = node

@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 
 # Base methods used for prototype
@@ -96,14 +96,11 @@ func drop_ingredient(_viewport: Node, _event: InputEvent, _shape_idx: int, node)
 
 # Called when Final Button pressed, returns step information
 # If no info exists returns empty array
-func get_final_steps() -> Array[Array]:
+func get_final_steps() -> Array[PotionIngredient]:
 	var steps = container.get_children()
-	var result: Array[Array]
+	var result: Array[PotionIngredient]
 	
 	for step in steps:
-		var res = step.get_info()
-		if res.is_empty():
-			return []
-		result.append(res)
+		result.append(step.get_ingredient_box().get_child(0).ingredient_resource)
 		
 	return result

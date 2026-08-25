@@ -14,14 +14,11 @@ corner_radius_bottom_left = 15
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 23
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1608703175 node_paths=PackedStringArray("potion_brewer", "label_money_counter", "container_recipe_list", "reset_button", "make_button", "quest_label", "potion_created_container", "potion_created_name_label", "potion_created_value_label")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1608703175 node_paths=PackedStringArray("potion_brewer", "reset_button", "make_button", "potion_created_container", "potion_created_name_label", "potion_created_value_label")]
 script = ExtResource("1_c2v7o")
 potion_brewer = NodePath("PotionBrewing")
-label_money_counter = NodePath("MarginContainer/LabelPlayerMoney")
-container_recipe_list = NodePath("MarginContainer/RecipeContainer/RecipeList")
 reset_button = NodePath("MarginContainer/Button")
 make_button = NodePath("MarginContainer/CurrentPotion/Button")
-quest_label = NodePath("MarginContainer/QuestContainer/QuestList/Label2")
 potion_created_container = NodePath("MarginContainer/PotionCreateContainer")
 potion_created_name_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/NameLabel")
 potion_created_value_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/ValueLabel")
@@ -38,53 +35,10 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="LabelPlayerMoney" type="Label" parent="MarginContainer" unique_id=1763387086]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "xxxxxxxxxxxxxxxxxxx"
-
-[node name="QuestContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1218040754]
-custom_minimum_size = Vector2(175, 250)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="Label" type="Label" parent="MarginContainer/QuestContainer" unique_id=258628667]
-layout_mode = 2
-text = "Quests:"
-
-[node name="QuestList" type="VBoxContainer" parent="MarginContainer/QuestContainer" unique_id=1224797902]
-custom_minimum_size = Vector2(175, 250)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="Label2" type="Label" parent="MarginContainer/QuestContainer/QuestList" unique_id=637012560]
-layout_mode = 2
-text = "Get To $2000"
-
-[node name="RecipeContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1113074650]
-custom_minimum_size = Vector2(175, 250)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-
-[node name="Label" type="Label" parent="MarginContainer/RecipeContainer" unique_id=435462635]
-layout_mode = 2
-text = "RecipeContainer"
-
-[node name="RecipeList" type="VBoxContainer" parent="MarginContainer/RecipeContainer" unique_id=901671854]
-custom_minimum_size = Vector2(175, 250)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-
 [node name="CurrentPotion" type="VBoxContainer" parent="MarginContainer" unique_id=2085211380]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-alignment = 2
 
 [node name="Label" type="Label" parent="MarginContainer/CurrentPotion" unique_id=62312173]
 layout_mode = 2

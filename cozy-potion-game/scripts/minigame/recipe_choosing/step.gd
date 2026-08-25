@@ -15,14 +15,22 @@ func _ready() -> void:
 	method_button.text = "Method?"
 	
 	method_button.get_popup().id_pressed.connect(method_choice)
-	pass
 
+func _input(event: InputEvent) -> void:
+	if !event.is_action_released("LMB"):
+		return
+
+	if !ingredient_box.get_global_rect().has_point(get_global_mouse_position()):
+		return
+
+	if DraggableUI.node_being_dragged:
+		DraggableUI.node_being_dragged.container_parent = ingredient_box
 
 func get_placebox() -> Area2D:
 	return place_box
 
 
-func get_ingredientBox() -> CenterContainer:
+func get_ingredient_box() -> CenterContainer:
 	return ingredient_box
 
 # Called when removing step, puts ingredients back in storage
