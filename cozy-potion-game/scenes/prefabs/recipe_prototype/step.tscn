@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qmk6ifrtikov"]
 
 [ext_resource type="Texture2D" uid="uid://chtt062vyqabl" path="res://assets/sprites/thinghere.png" id="1_j7fbc"]
-[ext_resource type="Script" uid="uid://glhdprbthcxh" path="res://scripts/recipe_choosing/step.gd" id="2_j7fbc"]
+[ext_resource type="Script" uid="uid://glhdprbthcxh" path="res://scripts/minigame/recipe_choosing/step.gd" id="2_j7fbc"]
 [ext_resource type="Texture2D" uid="uid://b6gfooj6w6uyp" path="res://assets/sprites/black_tlle.png" id="3_j7fbc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6sj1v"]
@@ -45,5 +45,6 @@ offset_bottom = 139.0
 [node name="PlaceBox" type="Area2D" parent="." unique_id=1235193444]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceBox" unique_id=609717337]
+top_level = true
 position = Vector2(263, 91)
 shape = SubResource("RectangleShape2D_6sj1v")

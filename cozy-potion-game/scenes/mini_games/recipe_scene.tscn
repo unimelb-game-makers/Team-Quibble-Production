@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://dggr5lsckq1da"]
 
-[ext_resource type="Script" uid="uid://d2mnib1mjewtc" path="res://scripts/recipe_choosing/storage.gd" id="1_pwpi3"]
-[ext_resource type="Script" uid="uid://bwkvfoyn775ws" path="res://scripts/recipe_choosing/recipe_scene.gd" id="1_sdkqr"]
-[ext_resource type="Script" uid="uid://ckkfci6jx6nfg" path="res://scripts/recipe_choosing/step_holder.gd" id="2_pwpi3"]
+[ext_resource type="Script" uid="uid://d2mnib1mjewtc" path="res://scripts/minigame/recipe_choosing/storage.gd" id="1_pwpi3"]
+[ext_resource type="Script" uid="uid://bwkvfoyn775ws" path="res://scripts/minigame/recipe_choosing/recipe_scene.gd" id="1_sdkqr"]
+[ext_resource type="Script" uid="uid://ckkfci6jx6nfg" path="res://scripts/minigame/recipe_choosing/step_holder.gd" id="2_pwpi3"]
 [ext_resource type="Texture2D" uid="uid://chtt062vyqabl" path="res://assets/sprites/thinghere.png" id="4_ryrtb"]
 
-[node name="RecipeScene" type="Node2D" unique_id=720193852]
+[node name="RecipeScene" type="CanvasLayer" unique_id=1296913563]
 script = ExtResource("1_sdkqr")
 
-[node name="StepHolder" type="Node2D" parent="." unique_id=56645331]
+[node name="StepHolder" type="CanvasLayer" parent="." unique_id=2044619857]
 script = ExtResource("2_pwpi3")
 
 [node name="StepContainer" type="VBoxContainer" parent="StepHolder" unique_id=23180833]
