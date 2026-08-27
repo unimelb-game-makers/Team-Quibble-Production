@@ -16,18 +16,33 @@ func check_potion_sufficient(potion: Potion) -> bool:
 static func generate_customer() -> Customer:
 	var customer = Customer.new()
 	
-	var json_string: String = FileAccess.open(TYPE_TO_NEEDS_JSON_PATH, FileAccess.READ).get_as_text()
-	var json_data: JSON = JSON.new()
-
-	assert(json_data.parse(json_string) == OK, 
-			"Variable json_data was null. %s" % [json_data.get_error_message()])
-	
-	var customer_types = json_data.data["NPC"]
+	##getting json was a couple of lines, so i put it somewhere else.
+	## should check for null here, but if it's null we probably want a
+	## crash anyway.
+	var type_to_needs_json: JSON = Utils.get_json(TYPE_TO_NEEDS_JSON_PATH)
+	var customer_types = type_to_needs_json.data["NPC"]
 	var customer_index = randi_range(0, customer_types.size()-1)
 	customer.customer_type = customer_types[customer_index]
+	print_debug(customer.customer_type)
 	
-	var ailment_chance_array = 
+	var ailment_chance_array: Array[float] = Utils.array_to_float_array(
+		Utils.get_json(GAME_STAGE_TO_AILMENT_CHANCE_JSON_PATH).data["1"])
+	var ailment_count: int = 0
+	while(randf() < ailment_chance_array[ailment_count] and ailment_count < ailment_chance_array.size()):
+		ailment_count+=1
+	print_debug("%d ailments" % ailment_count)
 	
+	var ailments_array: Array = type_to_needs_json.data.keys()
+	ailments_array.erase("NPC")
+	var ailment_weights: Array
+	ailment_weights.resize(ailments_array.size())
+	for i in range(ailments_array.size()):
+		ailment_weights[i] = type_to_needs_json.data[ailments_array[i]][customer_index]
+	print_debug(ailments_array)
+	print_debug(ailment_weights)
+	
+	var first_ailment: String = Utils.pick_random_weighted(ailments_array, Utils.array_to_float_array(ailment_weights))
+	print_debug("first need is %s" % first_ailment)
 	return customer
 
 	

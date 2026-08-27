@@ -45,4 +45,3 @@ func check_potion_match(player_potion: Potion, customer_request_type: Potion.ATT
 
 func customer_tests():
 	var test_customer_1: Customer = Customer.generate_customer()
-	print_debug(test_customer_1.customer_type)
