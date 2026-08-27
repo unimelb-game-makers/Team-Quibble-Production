@@ -12,6 +12,7 @@ func _ready() -> void:
 
 func send_customer() -> void:
 	customer_anim_player.play("person_in")
+	customer_world.customer = Customer.generate_customer()
 	customer_world.has_conveyed_request = false
 
 func recall_customer() -> void:
@@ -21,10 +22,8 @@ func recall_customer() -> void:
 
 func _on_customer_interact() -> void:
 	if not customer_world.has_conveyed_request:
-		#this is, generally, poor use of enums
-		var dialogue_start: String = Potion.ATTRIBUTES.find_key(customer_world.customer.needs.front())
-		dialogue_start = dialogue_start.to_lower()
-		DialogueManager.show_example_dialogue_balloon(dialogue_resource, dialogue_start)
+		
+		DialogueManager.show_example_dialogue_balloon(CustomerDialogue.get_initial_dialogue(customer_world.customer), "start")
 		customer_world.has_conveyed_request = true
 	else:
 		var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)

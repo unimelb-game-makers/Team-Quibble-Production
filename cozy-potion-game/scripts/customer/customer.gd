@@ -92,5 +92,3 @@ static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Cus
 	if DEBUG:
 		print_debug("need severities: ", customer.need_severities)
 	return customer
-
-	
