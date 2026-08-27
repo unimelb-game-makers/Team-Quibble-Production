@@ -45,3 +45,10 @@ func check_potion_match(player_potion: Potion, customer_request_type: Potion.ATT
 
 func customer_tests():
 	var test_customer_1: Customer = Customer.generate_customer()
+	assert(test_customer_1.customer_type != "", "bad customer 1")
+	assert(test_customer_1.needs.size() > 0, "bad customer 1")
+	assert(test_customer_1.needs[0] != "", "bad customer 1")
+	var test_customer_2: Customer = Customer.generate_customer("Student", true)
+	assert(test_customer_2.customer_type == "Student", "bad customer 2")
+	assert(test_customer_2.needs.size() > 0, "bad customer 2")
+	assert(test_customer_2.needs[0] != "", "bad customer 2")
