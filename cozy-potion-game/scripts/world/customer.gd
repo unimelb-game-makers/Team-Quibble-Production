@@ -1,6 +1,4 @@
-##THIS IS NOT A FINAL IMPLEMENTATION
-class_name Customer extends Node3D
-
-var requested_potion_type: Potion.ATTRIBUTES
+##Placeholder class for player interaction with customers
+class_name CustomerWorld extends Node3D
 
 var has_conveyed_request: bool = false

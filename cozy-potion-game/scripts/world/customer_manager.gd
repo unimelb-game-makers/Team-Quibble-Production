@@ -2,7 +2,7 @@ extends Node
 
 @export var customer_anim_player: AnimationPlayer
 @export var customer_interactable: Interactable
-@export var customer: Customer
+@export var customer: CustomerWorld
 @export var dialogue_resource: DialogueResource
 
 func _ready() -> void:
