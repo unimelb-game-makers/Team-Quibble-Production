@@ -482,12 +482,12 @@ shape = SubResource("ConcavePolygonShape3D_pqync")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerPlane" unique_id=1878084005]
 libraries/ = SubResource("AnimationLibrary_yuijs")
 
-[node name="CustomerManager" type="Node" parent="CustomerPlane" unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer")]
+[node name="CustomerManager" type="Node" parent="CustomerPlane" unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
 script = ExtResource("11_24it5")
-dialogue_resource = ExtResource("12_7mqwv")
 customer_anim_player = NodePath("../AnimationPlayer")
 customer_interactable = NodePath("../Customer/Interactable")
-customer = NodePath("../Customer")
+customer_world = NodePath("../Customer")
+dialogue_resource = ExtResource("12_7mqwv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CustomerPlane" unique_id=495017166]
 
