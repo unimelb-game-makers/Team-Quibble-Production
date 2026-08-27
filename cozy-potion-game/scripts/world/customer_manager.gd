@@ -2,7 +2,7 @@ extends Node
 
 @export var customer_anim_player: AnimationPlayer
 @export var customer_interactable: Interactable
-@export var customer: CustomerWorld
+@export var customer_world: CustomerWorld
 @export var dialogue_resource: DialogueResource
 
 func _ready() -> void:
@@ -11,8 +11,8 @@ func _ready() -> void:
 
 func send_customer() -> void:
 	customer_anim_player.play("person_in")
-	customer.requested_potion_type = Potion.ATTRIBUTES.values().pick_random()
-	customer.has_conveyed_request = false
+	customer_world.requested_potion_type = Potion.ATTRIBUTES.values().pick_random()
+	customer_world.has_conveyed_request = false
 
 func recall_customer() -> void:
 	customer_anim_player.play_backwards("person_in")
@@ -28,7 +28,7 @@ func _on_customer_interact() -> void:
 		customer.has_conveyed_request = true
 	else:
 		var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
-		if check_potion_match(player.potion, customer.requested_potion_type):
+		if check_potion_match(player.potion, customer.get_potion_type_request):
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
 			await DialogueManager.dialogue_ended
 			player.potion = null

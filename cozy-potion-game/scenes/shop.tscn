@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="9_m4ofw"]
-[ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer.gd" id="10_44xle"]
+[ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
@@ -484,10 +484,10 @@ libraries/ = SubResource("AnimationLibrary_yuijs")
 
 [node name="CustomerManager" type="Node" parent="CustomerPlane" unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer")]
 script = ExtResource("11_24it5")
+dialogue_resource = ExtResource("12_7mqwv")
 customer_anim_player = NodePath("../AnimationPlayer")
 customer_interactable = NodePath("../Customer/Interactable")
 customer = NodePath("../Customer")
-dialogue_resource = ExtResource("12_7mqwv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CustomerPlane" unique_id=495017166]
 
