@@ -20,13 +20,17 @@ class_name IngredientBall extends RigidBody2D
 @export var texture: Control
 var internal_scale = 1
 
+#signal split_into(_ingredient: IngredientBall)
 
 #if this ball can still split, for each marker in the split markers array,
 #generate a smaller duplicate of this ball and increment its split count, then put it on that marker
 func split() -> void:
+
 	if split_count < split_limit:
+		
 		for marker in split_markers:
 			var new_ball: IngredientBall = duplicate()
+			#split_into.emit(new_ball)
 			new_ball.split_count += 1
 			new_ball.global_position = marker.global_position
 			new_ball.set_internal_scale(internal_scale * split_scale)

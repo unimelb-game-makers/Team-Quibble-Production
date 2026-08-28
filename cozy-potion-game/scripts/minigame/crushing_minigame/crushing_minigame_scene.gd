@@ -1,9 +1,6 @@
-extends Control
+extends Minigame
 #controller for mortar and pestle scene
 
-signal minigame_won()
-
-@export var win_label_placeholder: RichTextLabel
 @export var win_check_interval: float = 0.1
 var win_check_timer: float
 
