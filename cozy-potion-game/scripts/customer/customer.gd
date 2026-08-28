@@ -1,8 +1,22 @@
 class_name Customer extends Resource
 
+##customer occupation: student, cultist, etc
 var customer_type: String
-var need_severities: Array[float]
+##array of customer needs: NEED_HEALING, NEED_LIGHT, etc
+##the first element is the primary need, others are secondary
 var needs: Array[String]
+##each element in needs has a corresponding severity in this array at
+##the same index.
+var need_severities: Array[float]
+##the first need. Ooh, that souds philosophical. root of all desires and shit.
+var primary_need: String:
+	get():
+		return needs.front()
+	#this isn't neccessary
+	set(value):
+		assert(value is String, "tried to set nonstring primary need")
+		needs[0] = value
+
 
 const TYPE_TO_NEEDS_JSON_PATH: String = "res://scripts/customer/customer_type_to_need_probability.json"
 const GAME_STAGE_TO_AILMENT_CHANCE_JSON_PATH: String = "res://scripts/customer/game_stage_to_ailment_chance.json"
@@ -16,6 +30,10 @@ const GAME_STAGE_1_SEVERITY_CURVE: String = "res://scripts/customer/game_stage_1
 func check_potion_sufficient(potion: Potion) -> bool:
 	return true
 
+
+##Returns a randomly created customer resource. 
+## if set_type isn't null, it's type will always be that
+## if debug is true, print debug information
 static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Customer:
 	var customer = Customer.new()
 	
