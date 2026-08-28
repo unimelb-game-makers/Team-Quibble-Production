@@ -25,6 +25,7 @@ const CAMERA_ROTATION_SPEED = 2 * PI
 
 var rotation_y_target: float = 0
 var top_down_active: bool = false
+var potion: Potion
 
 var accepting_control: bool = true
 
@@ -159,7 +160,7 @@ func activate_top_down_cam() -> void:
 	
 func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
-		if area is InteractableArea:
-			area.on_interact()
+		if area is Interactable:
+			area.interacted.emit()
 			# probably bad to interact with two things at once
 			return

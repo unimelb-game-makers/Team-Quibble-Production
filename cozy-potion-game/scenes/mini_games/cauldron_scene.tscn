@@ -15,23 +15,16 @@ corner_radius_bottom_left = 15
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 23
 
-[node name="CauldronScene" type="CanvasLayer" unique_id=836267295]
-script = ExtResource("1_if6mv")
-metadata/_custom_type_script = "uid://5vr6exm8hl07"
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1608703175 node_paths=PackedStringArray("potion_brewer", "label_money_counter", "container_recipe_list", "reset_button", "make_button", "quest_label", "potion_created_container", "potion_created_name_label", "potion_created_value_label")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1608703175 node_paths=PackedStringArray("potion_brewer", "reset_button", "make_button", "potion_created_container", "potion_created_name_label", "potion_created_value_label")]
 script = ExtResource("1_c2v7o")
-potion_brewer = NodePath("../PotionBrewing")
-label_money_counter = NodePath("MarginContainer/LabelPlayerMoney")
-container_recipe_list = NodePath("MarginContainer/RecipeContainer/RecipeList")
+potion_brewer = NodePath("PotionBrewing")
 reset_button = NodePath("MarginContainer/Button")
 make_button = NodePath("MarginContainer/CurrentPotion/Button")
-quest_label = NodePath("MarginContainer/QuestContainer/QuestList/Label2")
 potion_created_container = NodePath("MarginContainer/PotionCreateContainer")
 potion_created_name_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/NameLabel")
 potion_created_value_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/ValueLabel")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=884297072]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=884297072]
 custom_minimum_size = Vector2(10, 10)
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,70 +36,27 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="LabelPlayerMoney" type="Label" parent="CanvasLayer/MarginContainer" unique_id=1763387086]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-text = "xxxxxxxxxxxxxxxxxxx"
-
-[node name="QuestContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1218040754]
-custom_minimum_size = Vector2(175, 250)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/QuestContainer" unique_id=258628667]
-layout_mode = 2
-text = "Quests:"
-
-[node name="QuestList" type="VBoxContainer" parent="CanvasLayer/MarginContainer/QuestContainer" unique_id=1224797902]
-custom_minimum_size = Vector2(175, 250)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/QuestContainer/QuestList" unique_id=637012560]
-layout_mode = 2
-text = "Get To $2000"
-
-[node name="RecipeContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=1113074650]
-custom_minimum_size = Vector2(175, 250)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/RecipeContainer" unique_id=435462635]
-layout_mode = 2
-text = "RecipeContainer"
-
-[node name="RecipeList" type="VBoxContainer" parent="CanvasLayer/MarginContainer/RecipeContainer" unique_id=901671854]
-custom_minimum_size = Vector2(175, 250)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-
-[node name="CurrentPotion" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=2085211380]
+[node name="CurrentPotion" type="VBoxContainer" parent="MarginContainer" unique_id=2085211380]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-alignment = 2
 
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/CurrentPotion" unique_id=62312173]
+[node name="Label" type="Label" parent="MarginContainer/CurrentPotion" unique_id=62312173]
 layout_mode = 2
 text = "CurrentPotion"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/CurrentPotion" unique_id=829514689]
+[node name="Button" type="Button" parent="MarginContainer/CurrentPotion" unique_id=829514689]
 layout_mode = 2
 text = "Create"
 
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer" unique_id=1774481802]
+[node name="Button" type="Button" parent="MarginContainer" unique_id=1774481802]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 text = "Reset Potion"
 
-[node name="PotionCreateContainer" type="PanelContainer" parent="CanvasLayer/MarginContainer" unique_id=342408907]
+[node name="PotionCreateContainer" type="PanelContainer" parent="MarginContainer" unique_id=342408907]
 visible = false
 custom_minimum_size = Vector2(400, 189.29)
 layout_mode = 2
@@ -114,35 +64,38 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_4dvm4")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/PotionCreateContainer" unique_id=26754820]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PotionCreateContainer" unique_id=26754820]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer/PotionCreateContainer/MarginContainer" unique_id=25329789]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PotionCreateContainer/MarginContainer" unique_id=25329789]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer" unique_id=468586189]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer" unique_id=468586189]
 layout_mode = 2
 
-[node name="NameLabel" type="Label" parent="CanvasLayer/MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=1783411204]
+[node name="NameLabel" type="Label" parent="MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=1783411204]
 layout_mode = 2
 text = "You made a Potion"
 label_settings = SubResource("LabelSettings_4dvm4")
 horizontal_alignment = 1
 
-[node name="ValueLabel" type="Label" parent="CanvasLayer/MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=2049008697]
+[node name="ValueLabel" type="Label" parent="MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=2049008697]
 layout_mode = 2
 text = "(that you can sell for $$$)"
 horizontal_alignment = 1
 
-[node name="CauldronPlaceholder" type="Sprite2D" parent="." unique_id=948128405]
-position = Vector2(581, 528)
-scale = Vector2(1, 0.545)
+[node name="CauldronPlaceholder" type="TextureRect" parent="MarginContainer" unique_id=677183550]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
 texture = ExtResource("2_6g1p8")
 
 [node name="PotionBrewing" type="Node" parent="." unique_id=1885634969]
 script = ExtResource("3_nsau4")
 metadata/_custom_type_script = "uid://bytx8uyvjb5ht"
+
+[node name="CauldronScene" type="Node2D" parent="." unique_id=934424114]

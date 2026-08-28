@@ -5,5 +5,5 @@ extends Node
 const Group = {
 	GROUP_PLAYER = "player",
 	GROUP_INTERACTABLE_OBJECTS = "interactable_objects",
+	GROUP_POPUP_SUBWINDOW = "popup_subwindow"
 }
-

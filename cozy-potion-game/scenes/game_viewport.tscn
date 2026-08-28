@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2qiws8u3tfkj"]
 
 [ext_resource type="Script" uid="uid://bekvcfp1wjd0x" path="res://scripts/game_viewport/game_sub_viewport.gd" id="1_th4xb"]
-[ext_resource type="PackedScene" uid="uid://dvuso6cvhqekf" path="res://scenes/main.tscn" id="2_k2gmx"]
+[ext_resource type="PackedScene" uid="uid://bec7ovcvsvc5q" path="res://scenes/shop.tscn" id="2_k2gmx"]
 
 [node name="Node" type="Node" unique_id=46579256]
 
@@ -27,4 +27,4 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 script = ExtResource("1_th4xb")
 
-[node name="Main" parent="ViewportControl/SubViewportContainer/SubViewport" unique_id=391929633 instance=ExtResource("2_k2gmx")]
+[node name="Shop" parent="ViewportControl/SubViewportContainer/SubViewport" unique_id=428524118 instance=ExtResource("2_k2gmx")]

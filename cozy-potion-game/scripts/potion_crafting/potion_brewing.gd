@@ -1,6 +1,8 @@
 class_name PotionBrewing
 extends Node
 
+static var recipe: Array[PotionIngredient]
+
 func attempt_brewing(_potion_recipe: Array[PotionIngredient]) -> Potion:
 	# Unless something else broke, this method shouldn't get a recipe bigger than 3 ingredients
 	assert(_potion_recipe.size() <= 3 and _potion_recipe.size() > 0,
@@ -35,6 +37,7 @@ func attempt_brewing(_potion_recipe: Array[PotionIngredient]) -> Potion:
 
 	potion.name = "Potion of %s %s" % [potion_type, potion_effect]
 	potion.value = Potion.get_value(effect_score) + type_score[potion_type]
+	#potion.type = Potion.ATTRIBUTES.keys()[get(potion_effect.to_upper())]
 
 	return potion
 	

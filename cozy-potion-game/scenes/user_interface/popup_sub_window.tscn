@@ -137,7 +137,7 @@ viewport_path = NodePath("SubViewport")
 
 [node name="PopupSubWindow" type="CanvasLayer" unique_id=1360167922 node_paths=PackedStringArray("sub_viewport", "animation_player")]
 script = ExtResource("1_xhyie")
-sub_viewport = NodePath("SubViewport")
+sub_viewport = NodePath("PanelContainer/SubViewportContainer/SubViewport")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=317420702]
@@ -157,8 +157,14 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_eukv0")
 
-[node name="SubViewportTexture" type="TextureRect" parent="PanelContainer" unique_id=754107476]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer" unique_id=8017029]
+z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = SubResource("ViewportTexture_2rywg")
+
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/SubViewportContainer" unique_id=230729811]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1600, 900)
+render_target_update_mode = 4

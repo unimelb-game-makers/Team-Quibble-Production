@@ -1,3 +1,4 @@
+class_name PopupSubWindow
 extends CanvasLayer
 
 @export var sub_viewport: SubViewport
@@ -32,6 +33,10 @@ func _ready() -> void:
 				"A node that isn't an interactable object has been assigned said tag")
 		object.connect("interacted", start_display_popup)
 		print("connected to node %s" % object)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("close_minigame"):
+		if popup: end_display_popup()
 
 func start_display_popup(_scene_to_load: PackedScene) -> void:
 	player.accepting_control = false
