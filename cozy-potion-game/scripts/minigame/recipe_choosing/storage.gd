@@ -40,7 +40,7 @@ func sort_ingredients() -> void:
 	var sorted_nodes := vbox.get_children()
 	
 	sorted_nodes.sort_custom(
-		func(a: Ingredient, b: Ingredient): 
+		func(a: DraggableUI, b: DraggableUI): 
 			return a.ingredient_name.naturalnocasecmp_to(b.ingredient_name) < 0 \
 		)
 	

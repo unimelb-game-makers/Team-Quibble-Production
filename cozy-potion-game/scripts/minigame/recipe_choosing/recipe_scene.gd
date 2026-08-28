@@ -16,7 +16,8 @@ func get_dragging() -> Ingredient:
 	return storage.get_dragging_ingredient()
 
 # Called when Final Button Pressed, gets selected choices, moves to next scene
-func end_scene() -> void:
+func win_minigame() -> void:
+	breakpoint
 	PotionBrewing.recipe = step_holder.get_final_steps()
 	print(PotionBrewing.recipe)
 	minigame_won.emit()

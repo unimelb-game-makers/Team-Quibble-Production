@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Minigame
 
 signal potion_made
 
@@ -21,6 +21,8 @@ func _ready() -> void:
 	potion_created_container.gui_input.connect(_on_potion_created_container_gui_input)
 
 func create_potion() -> void:
+	breakpoint
+
 	if PotionBrewing.recipe.size() == 0:
 		return
 
