@@ -13,7 +13,7 @@ enum {
 	OVERTIME,
 }
 
-const JSON_PATH: String = "res://scripts/potion_crafting/potion_list.json"
+const JSON_PATH: String = "res://resources/potion_list.json"
 const PLACEHOLDER: Texture = preload("res://icon.svg")
 
 static var potion_ingredient_index: Dictionary[String, PotionIngredient] = {}:
