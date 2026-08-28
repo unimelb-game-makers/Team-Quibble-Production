@@ -1,6 +1,6 @@
 extends Minigame
 
-signal potion_made
+#signal potion_made
 
 @export var potion_brewer: PotionBrewing
 @export var reset_button: Button
@@ -11,7 +11,7 @@ signal potion_made
 
 var ingredient_button: PackedScene = preload("uid://b6r6ktehhfb10")
 
-signal money_changed(new_value: int)
+#signal money_changed(new_value: int)
 
 func _ready() -> void:
 	# await potion_brewer.ready
@@ -21,7 +21,7 @@ func _ready() -> void:
 	potion_created_container.gui_input.connect(_on_potion_created_container_gui_input)
 
 func create_potion() -> void:
-	breakpoint
+	
 
 	if PotionBrewing.recipe.size() == 0:
 		return
