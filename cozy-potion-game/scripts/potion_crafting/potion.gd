@@ -67,7 +67,7 @@ static func _read_json_data() -> Dictionary[String, PotionIngredient]:
 	for entry in potion_data:
 		var temp_potion: PotionIngredient = PotionIngredient.new()
 		temp_potion.name = entry["name"]
-		temp_potion.sprite = PLACEHOLDER
+		temp_potion.sprite = load(entry["sprite"])
 
 		temp_potion.healing = entry["healing"]
 		temp_potion.energy = entry["energy"]

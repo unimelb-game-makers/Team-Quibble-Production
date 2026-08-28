@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://djbxy4gkaty7q"]
+
+[ext_resource type="Script" uid="uid://c07gq1h18t0pj" path="res://scripts/inventory/prep_tray.gd" id="1_yq6a2"]
+[ext_resource type="PackedScene" uid="uid://d1aebqcog8f34" path="res://assets/prefabs/inventory/inventory_component.tscn" id="2_mfyub"]
+
+[node name="CanvasLayer2" type="CanvasLayer" unique_id=1960677974]
+
+[node name="PrepTray" type="Control" parent="." unique_id=1716054455]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1915.0
+offset_bottom = 1073.0
+script = ExtResource("1_yq6a2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PrepTray" unique_id=700394000]
+layout_mode = 0
+offset_left = 715.0
+offset_top = 734.0
+offset_right = 1110.0
+offset_bottom = 983.0
+
+[node name="InvComponent" parent="PrepTray" unique_id=1705191911 instance=ExtResource("2_mfyub")]
