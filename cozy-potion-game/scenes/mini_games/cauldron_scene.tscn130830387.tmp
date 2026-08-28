@@ -18,7 +18,7 @@ font_size = 23
 script = ExtResource("1_c2v7o")
 potion_brewer = NodePath("PotionBrewing")
 reset_button = NodePath("MarginContainer/Button")
-make_button = NodePath("MarginContainer/CurrentPotion/CreatePotion")
+make_button = NodePath("MarginContainer/CurrentPotion/Button")
 potion_created_container = NodePath("MarginContainer/PotionCreateContainer")
 potion_created_name_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/NameLabel")
 potion_created_value_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/ValueLabel")
@@ -45,7 +45,7 @@ layout_mode = 2
 text = "CurrentPotion"
 horizontal_alignment = 1
 
-[node name="CreatePotion" type="Button" parent="MarginContainer/CurrentPotion" unique_id=829514689]
+[node name="Button" type="Button" parent="MarginContainer/CurrentPotion" unique_id=829514689]
 layout_mode = 2
 text = "Create"
 

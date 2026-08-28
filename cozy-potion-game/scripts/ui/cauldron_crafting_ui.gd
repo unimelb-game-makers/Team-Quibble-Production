@@ -1,6 +1,6 @@
-extends CanvasLayer
+extends Minigame
 
-signal minigame_won()
+signal potion_made
 
 @export var potion_brewer: PotionBrewing
 @export var reset_button: Button
@@ -21,6 +21,8 @@ func _ready() -> void:
 	potion_created_container.gui_input.connect(_on_potion_created_container_gui_input)
 
 func create_potion() -> void:
+	breakpoint
+
 	if PotionBrewing.recipe.size() == 0:
 		return
 

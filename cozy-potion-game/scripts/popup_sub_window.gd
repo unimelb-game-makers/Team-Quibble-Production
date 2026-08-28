@@ -56,9 +56,3 @@ func end_display_popup() -> void:
 	popup.queue_free()
 	
 	player.accepting_control = true
-
-## this was connected in-editor.
-## TODO: set mechanically for all interactables in scene. this could be done by giving the 
-## interactable a group
-## func _on_interactable_object_interacted(_scene_to_load: PackedScene) -> void:
-##	start_display_popup(_scene_to_load.instantiate())
