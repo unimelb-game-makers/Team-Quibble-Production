@@ -10,7 +10,6 @@ class_name Pestle extends CharacterBody2D
 func _physics_process(_delta: float) -> void:
 	#direction to move
 	var mouse_world_position = get_tree().root.get_mouse_position()
-	mouse_world_position = to_local(mouse_world_position)
 	var move_dir = (mouse_world_position - position).normalized()
 	 
 	#the speed we move towards the cursor is dependent on how far away we are from it
