@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://w2ytjmje0lw2" path="res://assets/sprites/minigame/crushing_minigame/Tan stone mortar.jpeg" id="2_eukv0"]
 [ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scenes/prefabs/minigame/crushing_minigame/ingredient_ball.tscn" id="2_fhxy2"]
 
-[node name="CrushingMinigame" type="Node2D" unique_id=1614224699]
+[node name="CrushingMinigame" type="CanvasLayer" unique_id=1189992554]
 script = ExtResource("1_fhxy2")
+metadata/_custom_type_script = "uid://5vr6exm8hl07"
 
 [node name="Mortar" type="StaticBody2D" parent="." unique_id=611331611]
 position = Vector2(960, 668)

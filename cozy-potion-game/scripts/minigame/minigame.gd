@@ -1,4 +1,4 @@
-class_name Minigame extends Node2D
+class_name Minigame extends CanvasLayer
 
 signal minigame_won
 

@@ -15,8 +15,9 @@ corner_radius_bottom_left = 15
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 23
 
-[node name="CauldronScene" type="Node2D" unique_id=934424114]
+[node name="CauldronScene" type="CanvasLayer" unique_id=836267295]
 script = ExtResource("1_if6mv")
+metadata/_custom_type_script = "uid://5vr6exm8hl07"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1608703175 node_paths=PackedStringArray("potion_brewer", "label_money_counter", "container_recipe_list", "reset_button", "make_button", "quest_label", "potion_created_container", "potion_created_name_label", "potion_created_value_label")]
 script = ExtResource("1_c2v7o")
