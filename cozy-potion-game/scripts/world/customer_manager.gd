@@ -27,7 +27,7 @@ func _on_customer_interact() -> void:
 		customer_world.has_conveyed_request = true
 	else:
 		var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
-		if customer_world.customer:
+		if customer_world.customer.check_potion_sufficient(player.potion):
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
 			await DialogueManager.dialogue_ended
 			player.potion = null
@@ -36,13 +36,7 @@ func _on_customer_interact() -> void:
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "refuse")
 			player.potion = null
 
-
-#TODO:potions only have values and names, at the moment. This function will
-#be updated once the potion system is.
-func check_potion_match(player_potion: Potion, customer_request_type: Potion.ATTRIBUTES) -> bool:
-	return true if randi_range(0,1) else false
-
-func customer_tests():
+func customer_tests() -> void:
 	var test_customer_1: Customer = Customer.generate_customer()
 	assert(test_customer_1.customer_type != "", "bad customer 1")
 	assert(test_customer_1.needs.size() > 0, "bad customer 1")
