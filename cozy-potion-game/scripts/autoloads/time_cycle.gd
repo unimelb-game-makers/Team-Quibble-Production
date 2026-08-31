@@ -1,6 +1,14 @@
 extends Node
 
 #parameters
+const DAYS = ["Monday",
+"Tuesday",
+"Wednesday",
+"Thursday",
+"Friday",
+"Saturday",
+"Sunday",
+]
 var customers_per_day: int = 12
 var day_start_hour: int = 6
 var day_length: int = 12
@@ -17,7 +25,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		progress_day()
 		print_debug(day_progress)
-		print_debug(day_progress_to_time_string())
+		print_debug(day_progress_to_time_string(), " , ", days_passed_to_day_string())
 
 func day_progress_to_time_string() -> String:
 	var hour: int = int(wrap(day_start_hour + day_progress * day_length, 1, 13))
@@ -28,6 +36,9 @@ func day_progress_to_time_string() -> String:
 	else:
 		60 * fmod(day_progress, day_progress/day_length)
 	return "%02d:%02d" % [hour, minute]
+
+func days_passed_to_day_string() -> String:
+	return DAYS[wrapi(days_passed,0, 7)]
 
 func get_day_progress_increment() -> float:
 	return 1.0/customers_per_day
@@ -51,6 +62,9 @@ func progress_day(is_custom: bool = false, increment: float = 0) -> bool:
 func start_day() -> void:
 	day_started.emit()
 	day_progress = 0
+	days_passed += 1
 
 func end_day() -> void:
 	day_complete.emit()
+	#TODO tie this to some ui input after results screen
+	start_day()

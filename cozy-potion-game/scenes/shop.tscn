@@ -18,6 +18,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 124
 
+[sub_resource type="LabelSettings" id="LabelSettings_aue3q"]
+font_size = 26
+
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
 sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)
 sky_horizon_color = Color(0.2, 0.16862746, 0.13333334, 1)
@@ -296,7 +299,7 @@ points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, 
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SceneUI" unique_id=1010363722]
 
-[node name="DigitalClock" type="Control" parent="SceneUI/CanvasLayer" unique_id=1383968923 node_paths=PackedStringArray("label")]
+[node name="DigitalClock" type="Control" parent="SceneUI/CanvasLayer" unique_id=1383968923 node_paths=PackedStringArray("time_label", "day_label")]
 layout_mode = 3
 anchor_right = 0.233
 anchor_bottom = 0.166
@@ -304,7 +307,8 @@ offset_bottom = -2.1601563
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_7mqwv")
-label = NodePath("PanelContainer/CenterContainer/Label")
+time_label = NodePath("PanelContainer/CenterContainer/TimeLabel")
+day_label = NodePath("PanelContainer/MarginContainer/DayLabel")
 
 [node name="PanelContainer" type="PanelContainer" parent="SceneUI/CanvasLayer/DigitalClock" unique_id=742264574]
 layout_mode = 1
@@ -317,10 +321,24 @@ grow_vertical = 2
 [node name="CenterContainer" type="CenterContainer" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer" unique_id=508760732]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer/CenterContainer" unique_id=1280092990]
+[node name="TimeLabel" type="Label" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer/CenterContainer" unique_id=1280092990]
 layout_mode = 2
 text = "07:00"
 label_settings = SubResource("LabelSettings_4dvm4")
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer" unique_id=1802638663]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DayLabel" type="Label" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer/MarginContainer" unique_id=2029681164]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Monday"
+label_settings = SubResource("LabelSettings_aue3q")
+horizontal_alignment = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
