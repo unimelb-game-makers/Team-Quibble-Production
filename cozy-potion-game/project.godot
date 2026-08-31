@@ -21,6 +21,7 @@ Utils="*uid://dxmo3so2glesr"
 SceneManager="*uid://c0071jx5m4ofo"
 OptionsMenu="*uid://c7rl0bd26eupb"
 DialogueManager="*uid://c3rodes2l3gxb"
+TimeCycle="*uid://jkbigy13ojrr"
 
 [display]
 
