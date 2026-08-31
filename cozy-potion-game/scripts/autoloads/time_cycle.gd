@@ -11,7 +11,7 @@ const DAYS = ["Monday",
 ]
 var customers_per_day: int = 12
 var day_start_hour: int = 6
-var day_length: int = 12
+var day_length: int = 10
 
 #actual variables
 var day_progress: float = 0
@@ -25,7 +25,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
 		progress_day()
 		print_debug(day_progress)
-		print_debug(day_progress_to_time_string(), " , ", days_passed_to_day_string())
 
 func day_progress_to_time_string() -> String:
 	var hour: int = int(wrap(day_start_hour + day_progress * day_length, 1, 13))
@@ -34,7 +33,7 @@ func day_progress_to_time_string() -> String:
 	if day_progress == 0:
 		minute = 0
 	else:
-		60 * fmod(day_progress, day_progress/day_length)
+		minute = ceil(wrap(60 * day_progress * day_length, 0, 60))
 	return "%02d:%02d" % [hour, minute]
 
 func days_passed_to_day_string() -> String:
