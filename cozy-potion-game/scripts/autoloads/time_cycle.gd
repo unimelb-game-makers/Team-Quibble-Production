@@ -10,6 +10,7 @@ var day_progress: float = 0
 var days_passed: int = 0
 
 signal day_complete
+signal day_progress_changed
 signal day_started
 
 func _input(event: InputEvent) -> void:
@@ -38,8 +39,9 @@ func progress_day(is_custom: bool = false, increment: float = 0) -> bool:
 	if not is_custom:
 		increment = get_day_progress_increment()
 	day_progress += increment
+	day_progress_changed.emit()
 	
-	if day_progress > 1:
+	if day_progress >= 1:
 		day_progress = 0
 		end_day()
 		return true

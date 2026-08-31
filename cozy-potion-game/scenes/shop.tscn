@@ -2,6 +2,7 @@
 
 [ext_resource type="Material" uid="uid://8ylcw0h1lkhg" path="res://addons/kenney_prototype_tools/materials/orange_wall_material.tres" id="1_8r1wq"]
 [ext_resource type="Script" uid="uid://b7wupl4oawgq1" path="res://scripts/characters/world_player.gd" id="1_lx5au"]
+[ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_7mqwv"]
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_032fp"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark_wall_material.tres" id="2_ajxib"]
 [ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="6_heatd"]
@@ -13,6 +14,9 @@
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
+font_size = 124
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
 sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)
@@ -289,6 +293,34 @@ points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=2120733313]
 
 [node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 groups=["popup_subwindow"] instance=ExtResource("8_m4ofw")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SceneUI" unique_id=1010363722]
+
+[node name="DigitalClock" type="Control" parent="SceneUI/CanvasLayer" unique_id=1383968923 node_paths=PackedStringArray("label")]
+layout_mode = 3
+anchor_right = 0.233
+anchor_bottom = 0.166
+offset_bottom = -2.1601563
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_7mqwv")
+label = NodePath("PanelContainer/CenterContainer/Label")
+
+[node name="PanelContainer" type="PanelContainer" parent="SceneUI/CanvasLayer/DigitalClock" unique_id=742264574]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer" unique_id=508760732]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer/CenterContainer" unique_id=1280092990]
+layout_mode = 2
+text = "07:00"
+label_settings = SubResource("LabelSettings_4dvm4")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
