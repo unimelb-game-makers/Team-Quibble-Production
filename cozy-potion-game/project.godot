@@ -21,6 +21,7 @@ Utils="*uid://dxmo3so2glesr"
 SceneManager="*uid://c0071jx5m4ofo"
 OptionsMenu="*uid://c7rl0bd26eupb"
 DialogueManager="*uid://c3rodes2l3gxb"
+FmodManager="*uid://cds10pm7hwn3p"
 
 [display]
 
@@ -30,7 +31,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg")
 
 [global_group]
 
