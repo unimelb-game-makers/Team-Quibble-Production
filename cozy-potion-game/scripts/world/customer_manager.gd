@@ -2,17 +2,18 @@ extends Node
 
 @export var customer_anim_player: AnimationPlayer
 @export var customer_interactable: Interactable
-@export var customer: Customer
+@export var customer_world: CustomerWorld
 @export var dialogue_resource: DialogueResource
 
 func _ready() -> void:
 	send_customer()
 	customer_interactable.interacted.connect(_on_customer_interact)
+	customer_tests()
 
 func send_customer() -> void:
 	customer_anim_player.play("person_in")
-	customer.requested_potion_type = Potion.ATTRIBUTES.values().pick_random()
-	customer.has_conveyed_request = false
+	customer_world.customer = Customer.generate_customer()
+	customer_world.has_conveyed_request = false
 
 func recall_customer() -> void:
 	customer_anim_player.play_backwards("person_in")
@@ -20,15 +21,13 @@ func recall_customer() -> void:
 	send_customer()
 
 func _on_customer_interact() -> void:
-	if not customer.has_conveyed_request:
-		#this is, generally, poor use of enums
-		var dialogue_start: String = Potion.ATTRIBUTES.find_key(customer.requested_potion_type)
-		dialogue_start = dialogue_start.to_lower()
-		DialogueManager.show_example_dialogue_balloon(dialogue_resource, dialogue_start)
-		customer.has_conveyed_request = true
+	if not customer_world.has_conveyed_request:
+		
+		DialogueManager.show_example_dialogue_balloon(CustomerDialogue.get_initial_dialogue(customer_world.customer), "start")
+		customer_world.has_conveyed_request = true
 	else:
 		var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
-		if check_potion_match(player.potion, customer.requested_potion_type):
+		if customer_world.customer.check_potion_sufficient(player.potion):
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
 			await DialogueManager.dialogue_ended
 			player.potion = null
@@ -37,8 +36,12 @@ func _on_customer_interact() -> void:
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "refuse")
 			player.potion = null
 
-
-#TODO:potions only have values and names, at the moment. This function will
-#be updated once the potion system is.
-func check_potion_match(player_potion: Potion, customer_request_type: Potion.ATTRIBUTES) -> bool:
-	return true if randi_range(0,1) else false
+func customer_tests() -> void:
+	var test_customer_1: Customer = Customer.generate_customer()
+	assert(test_customer_1.customer_type != "", "bad customer 1")
+	assert(test_customer_1.needs.size() > 0, "bad customer 1")
+	assert(test_customer_1.needs[0] != "", "bad customer 1")
+	var test_customer_2: Customer = Customer.generate_customer("Student", true)
+	assert(test_customer_2.customer_type == "Student", "bad customer 2")
+	assert(test_customer_2.needs.size() > 0, "bad customer 2")
+	assert(test_customer_2.needs[0] != "", "bad customer 2")
