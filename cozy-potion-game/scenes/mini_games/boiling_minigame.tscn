@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dwjhqwlvqsrte"]
+
+[ext_resource type="Script" uid="uid://b6gck2otw1hmt" path="res://scripts/minigame/boiling_minigame.gd" id="1_siphr"]
+
+[node name="BoilingMinigame" type="CanvasLayer" unique_id=1533572996]
+script = ExtResource("1_siphr")

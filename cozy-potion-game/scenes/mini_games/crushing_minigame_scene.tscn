@@ -2,47 +2,43 @@
 
 [ext_resource type="Script" uid="uid://cms2728e0rt6h" path="res://scripts/minigame/crushing_minigame/crushing_minigame_scene.gd" id="1_fhxy2"]
 [ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scenes/prefabs/minigame/crushing_minigame/pestle.tscn" id="1_j31fb"]
-[ext_resource type="Texture2D" uid="uid://w2ytjmje0lw2" path="res://assets/sprites/minigame/crushing_minigame/Tan stone mortar.jpeg" id="2_eukv0"]
+[ext_resource type="Texture2D" uid="uid://b3gjpa70gjjns" path="res://assets/sprites/minigame/crushing_minigame/mortar_pestle_tan_side_full.png" id="2_eukv0"]
 [ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scenes/prefabs/minigame/crushing_minigame/ingredient_ball.tscn" id="2_fhxy2"]
+[ext_resource type="Script" uid="uid://bq1babbegpewr" path="res://scripts/Inventory/stack.gd" id="2_ra2gm"]
+[ext_resource type="Texture2D" uid="uid://cv4yuk1h14m3o" path="res://assets/sprites/ingredients/Amanita_muscaria_64.png" id="3_2tac5"]
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_8kj3l"]
-b = Vector2(0, 500)
+[sub_resource type="Resource" id="Resource_hd1gb"]
+script = ExtResource("2_ra2gm")
+sprite = ExtResource("3_2tac5")
+color = Color(1, 0, 0, 1)
+metadata/_custom_type_script = "uid://bq1babbegpewr"
 
 [node name="CrushingMinigame" type="CanvasLayer" unique_id=1189992554]
 script = ExtResource("1_fhxy2")
+placeholder_stack = SubResource("Resource_hd1gb")
 metadata/_custom_type_script = "uid://5vr6exm8hl07"
 
 [node name="Mortar" type="StaticBody2D" parent="." unique_id=611331611]
 position = Vector2(960, 668)
 
 [node name="Sprite2D" type="Sprite2D" parent="Mortar" unique_id=1375926958]
-position = Vector2(-35, -13)
-scale = Vector2(0.72, 0.72)
+position = Vector2(-63, 0)
 texture = ExtResource("2_eukv0")
-region_enabled = true
+flip_h = true
 region_rect = Rect2(364.23303, 218.25635, 788.9972, 665.39685)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar" unique_id=2009040266]
-polygon = PackedVector2Array(-34, -15, -142, -37, -171, -78, -177, -115, -205, -114, -192, -39, -126, 64, -34, 106, 61, 98, 131, 51, 175, -17, 197, -109, 196, -124, 165, -126, 145, -73, 96, -41, 29, -24)
-
-[node name="Wall" type="StaticBody2D" parent="." unique_id=841755147]
-position = Vector2(960, 668)
-collision_layer = 0
-collision_mask = 2
-
-[node name="WallLeft" type="CollisionShape2D" parent="Wall" unique_id=1503652555]
-position = Vector2(-190, -600)
-shape = SubResource("SegmentShape2D_8kj3l")
-
-[node name="WallRight" type="CollisionShape2D" parent="Wall" unique_id=434993140]
-position = Vector2(190, -600)
-shape = SubResource("SegmentShape2D_8kj3l")
+build_mode = 1
+polygon = PackedVector2Array(348, -900, 348, -5, 323, 77, 278, 141, 204, 191, 137, 206, -137, 206, -204, 191, -278, 141, -323, 77, -348, -5, -348, -900)
 
 [node name="IngredientBall" parent="." unique_id=932391481 groups=["IngredientBall"] instance=ExtResource("2_fhxy2")]
 position = Vector2(832, 448)
 
 [node name="IngredientBall2" parent="." unique_id=1684924022 groups=["IngredientBall"] instance=ExtResource("2_fhxy2")]
 position = Vector2(1088, 448)
+
+[node name="IngredientBall3" parent="." unique_id=381910825 groups=["IngredientBall"] instance=ExtResource("2_fhxy2")]
+position = Vector2(960, 640)
 
 [node name="Pestle" parent="." unique_id=1770029033 instance=ExtResource("1_j31fb")]
 position = Vector2(960, 256)

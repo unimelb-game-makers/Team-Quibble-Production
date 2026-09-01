@@ -1,5 +1,5 @@
 class_name Stack
-extends Node
+extends Resource
 
 # My Idea for player hands is that the player stores a stack
 # if empty they can pick up item, if full they swap or smthng
@@ -24,7 +24,7 @@ var quantity : int:
 const MAX_QUANTITY: int = 10
 var isEmpty = false
 
-var sprite: Texture
+@export var sprite: Texture
 
 func _init(start_quantity: int = 0, start_name: String = "") -> void:
 	quantity = start_quantity
@@ -50,7 +50,7 @@ func clone_type(stack : Stack) -> Stack:
 func get_sprite() -> Texture2D:
 	return sprite
 
-var color: Color
+@export var color: Color
 func get_color() -> Color:
 	return color
 
