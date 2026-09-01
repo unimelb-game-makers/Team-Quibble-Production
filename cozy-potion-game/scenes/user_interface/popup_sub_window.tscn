@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b3cd2a5yxvfp"]
 
 [ext_resource type="Script" uid="uid://cwkp4uesjlu0l" path="res://scripts/popup_sub_window.gd" id="1_xhyie"]
+[ext_resource type="Shader" uid="uid://64cib7cb0lh7" path="res://resources/popup_sub_window.gdshader" id="2_2rywg"]
 
 [sub_resource type="Animation" id="Animation_mb0g6"]
 length = 0.001
@@ -132,8 +133,22 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eukv0"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2rywg"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="Gradient" id="Gradient_x32ww"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.75)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fv063"]
+gradient = SubResource("Gradient_x32ww")
+width = 1920
+height = 1080
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t6myd"]
+shader = ExtResource("2_2rywg")
+shader_parameter/cutout = SubResource("GradientTexture2D_fv063")
 
 [node name="PopupSubWindow" type="CanvasLayer" unique_id=1360167922 node_paths=PackedStringArray("sub_viewport", "animation_player")]
 script = ExtResource("1_xhyie")
@@ -159,12 +174,13 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_eukv0")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer" unique_id=8017029]
 z_index = 1
+material = SubResource("ShaderMaterial_t6myd")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="SubViewport" type="SubViewport" parent="PanelContainer/SubViewportContainer" unique_id=230729811]
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/SubViewportContainer" unique_id=214688188]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(1600, 900)
+size = Vector2i(1920, 1080)
 render_target_update_mode = 4

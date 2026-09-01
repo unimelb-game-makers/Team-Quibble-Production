@@ -12,6 +12,7 @@ corner_radius_bottom_left = 65
 corner_detail = 7
 
 [node name="IngredientBall" type="RigidBody2D" unique_id=932391481 node_paths=PackedStringArray("split_markers", "polygon", "collision_polygon", "collision_area", "texture")]
+collision_layer = 3
 mass = 0.1
 contact_monitor = true
 max_contacts_reported = 10

@@ -50,6 +50,9 @@ func clone_type(stack : Stack) -> Stack:
 func get_sprite() -> Texture2D:
 	return sprite
 
+var color: Color
+func get_color() -> Color:
+	return color
 
 # Returns quantity of stack and "" if stack is empty
 func get_quantity_label() -> String:
