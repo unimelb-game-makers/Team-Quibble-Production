@@ -37,9 +37,8 @@ func check_potion_sufficient(potion: Potion) -> bool:
 static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Customer:
 	var customer = Customer.new()
 	
-	#getting json was a couple of lines, so i put it somewhere else.
-	# should check for null here, but if it's null we probably want a
-	# crash anyway.
+	#These first lines initialise the json mapping character types to need
+	# probabilities, create a customer, and set its type randomly
 	var type_to_needs_json: JSON = Utils.get_json(TYPE_TO_NEEDS_JSON_PATH)
 	var customer_types: Array = type_to_needs_json.data["NPC"]
 	var customer_index: int
@@ -54,20 +53,22 @@ static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Cus
 		print_debug(customer.customer_type)
 	
 	#TODO: allow for more game stages
-	var ailment_chance_array: Array[float] = Utils.array_to_float_array(
-		Utils.get_json(GAME_STAGE_TO_AILMENT_CHANCE_JSON_PATH).data["1"])
-	var ailment_count: int = 0
-	while(randf() < ailment_chance_array[ailment_count] and ailment_count < ailment_chance_array.size()):
-		ailment_count+=1
-	if DEBUG:
-		print_debug("%d ailments" % ailment_count)
+	var ailment_count = get_ailment_count(customer, DEBUG)
 	
-	var ailments_array: Array = type_to_needs_json.data.keys()
+	set_ailments(customer, customer_index, ailment_count, type_to_needs_json,DEBUG)
+	
+	#TODO: allow for more game stages
+	set_need_severities(customer, ailment_count, DEBUG)
+
+	return customer
+
+static func set_ailments(customer, customer_index, ailment_count, json, DEBUG) -> void:
+	var ailments_array: Array = json.data.keys()
 	ailments_array.erase("NPC")
 	var ailment_weights: Array
 	ailment_weights.resize(ailments_array.size())
 	for i in range(ailments_array.size()):
-		ailment_weights[i] = type_to_needs_json.data[ailments_array[i]][customer_index]
+		ailment_weights[i] = json.data[ailments_array[i]][customer_index]
 	if DEBUG:
 		print_debug(ailments_array)
 		print_debug(ailment_weights)
@@ -93,12 +94,17 @@ static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Cus
 		if DEBUG:
 			print_debug("additional need is %s" % secondary_ailment)
 	
-	#currently, i am setting ailment severities by sampling randomly along a curve
-	#i did it this way because it allows for fine tuning of exactly how
-	#severe we want problems to be at each stage. 
-	#also, additional ailments past the first have half severity of 
-	# the first.
-	#TODO: allow for more game stages
+static func get_ailment_count(customer, DEBUG) -> int:
+	var ailment_chance_array: Array[float] = Utils.array_to_float_array(
+		Utils.get_json(GAME_STAGE_TO_AILMENT_CHANCE_JSON_PATH).data["1"])
+	var ailment_count: int = 0
+	while(randf() < ailment_chance_array[ailment_count] and ailment_count < ailment_chance_array.size()):
+		ailment_count+=1
+	if DEBUG:
+		print_debug("%d ailments" % ailment_count)
+	return ailment_count
+	
+static func set_need_severities(customer: Customer, ailment_count: int, DEBUG: bool) -> void:
 	var severity_curve: Curve = preload(GAME_STAGE_1_SEVERITY_CURVE)
 	var first_ailment_severity = severity_curve.sample(randf())
 	customer.need_severities.resize(ailment_count)
@@ -109,4 +115,4 @@ static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Cus
 	
 	if DEBUG:
 		print_debug("need severities: ", customer.need_severities)
-	return customer
+	
