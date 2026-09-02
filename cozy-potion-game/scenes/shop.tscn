@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_7mqwv"]
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_032fp"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark_wall_material.tres" id="2_ajxib"]
+[ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/ui/news_popup.gd" id="3_gobkm"]
 [ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="6_heatd"]
 [ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/mini_games/recipe_scene.tscn" id="7_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
@@ -20,6 +21,12 @@ font_size = 124
 
 [sub_resource type="LabelSettings" id="LabelSettings_aue3q"]
 font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_0n2di"]
+font_size = 46
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ar3d"]
+font_size = 22
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
 sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)
@@ -297,9 +304,9 @@ points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, 
 
 [node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 groups=["popup_subwindow"] instance=ExtResource("8_m4ofw")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="SceneUI" unique_id=1010363722]
+[node name="TimeUI" type="CanvasLayer" parent="SceneUI" unique_id=1010363722]
 
-[node name="DigitalClock" type="Control" parent="SceneUI/CanvasLayer" unique_id=1383968923 node_paths=PackedStringArray("time_label", "day_label")]
+[node name="DigitalClock" type="Control" parent="SceneUI/TimeUI" unique_id=1383968923 node_paths=PackedStringArray("time_label", "day_label")]
 layout_mode = 3
 anchor_right = 0.233
 anchor_bottom = 0.166
@@ -310,7 +317,7 @@ script = ExtResource("2_7mqwv")
 time_label = NodePath("PanelContainer/CenterContainer/TimeLabel")
 day_label = NodePath("PanelContainer/MarginContainer/DayLabel")
 
-[node name="PanelContainer" type="PanelContainer" parent="SceneUI/CanvasLayer/DigitalClock" unique_id=742264574]
+[node name="PanelContainer" type="PanelContainer" parent="SceneUI/TimeUI/DigitalClock" unique_id=742264574]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -318,27 +325,77 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer" unique_id=508760732]
+[node name="CenterContainer" type="CenterContainer" parent="SceneUI/TimeUI/DigitalClock/PanelContainer" unique_id=508760732]
 layout_mode = 2
 
-[node name="TimeLabel" type="Label" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer/CenterContainer" unique_id=1280092990]
+[node name="TimeLabel" type="Label" parent="SceneUI/TimeUI/DigitalClock/PanelContainer/CenterContainer" unique_id=1280092990]
 layout_mode = 2
 text = "07:00"
 label_settings = SubResource("LabelSettings_4dvm4")
 
-[node name="MarginContainer" type="MarginContainer" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer" unique_id=1802638663]
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI/TimeUI/DigitalClock/PanelContainer" unique_id=1802638663]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="DayLabel" type="Label" parent="SceneUI/CanvasLayer/DigitalClock/PanelContainer/MarginContainer" unique_id=2029681164]
+[node name="DayLabel" type="Label" parent="SceneUI/TimeUI/DigitalClock/PanelContainer/MarginContainer" unique_id=2029681164]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Monday"
 label_settings = SubResource("LabelSettings_aue3q")
 horizontal_alignment = 1
+
+[node name="NewsPopup" type="Control" parent="SceneUI/TimeUI" unique_id=1253198593 node_paths=PackedStringArray("headline_label", "description_label", "accept_button")]
+layout_mode = 3
+anchor_left = 0.3
+anchor_top = 0.292
+anchor_right = 0.7
+anchor_bottom = 0.653
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_gobkm")
+headline_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/HeadlineLabel")
+description_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/DescriptionLabel")
+accept_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/AcceptButton")
+
+[node name="PanelContainer" type="PanelContainer" parent="SceneUI/TimeUI/NewsPopup" unique_id=1918465820]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI/TimeUI/NewsPopup/PanelContainer" unique_id=1814893937]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/TimeUI/NewsPopup/PanelContainer/MarginContainer" unique_id=661966335]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="HeadlineLabel" type="Label" parent="SceneUI/TimeUI/NewsPopup/PanelContainer/MarginContainer/VBoxContainer" unique_id=1860591815]
+layout_mode = 2
+text = "HEADLINE!"
+label_settings = SubResource("LabelSettings_0n2di")
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="SceneUI/TimeUI/NewsPopup/PanelContainer/MarginContainer/VBoxContainer" unique_id=923894528]
+layout_mode = 2
+text = "lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit amet"
+label_settings = SubResource("LabelSettings_6ar3d")
+autowrap_mode = 2
+
+[node name="AcceptButton" type="Button" parent="SceneUI/TimeUI/NewsPopup/PanelContainer/MarginContainer/VBoxContainer" unique_id=1892534889]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Ok, Whatever."
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)

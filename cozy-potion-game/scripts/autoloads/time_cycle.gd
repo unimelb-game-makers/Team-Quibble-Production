@@ -52,7 +52,6 @@ func progress_day(is_custom: bool = false, increment: float = 0) -> bool:
 	day_progress_changed.emit()
 	
 	if day_progress >= 1:
-		day_progress = 0
 		end_day()
 		return true
 	
@@ -62,6 +61,7 @@ func start_day() -> void:
 	day_started.emit()
 	day_progress = 0
 	days_passed += 1
+	day_progress_changed.emit()
 
 func end_day() -> void:
 	day_complete.emit()
