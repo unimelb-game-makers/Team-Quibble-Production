@@ -112,10 +112,30 @@ enum ProcessID {
 	PROC_DISTILL,
 } 
 
+const INGREDIENT_JSON: String = "res://resources/json/ingredients.json"
+const PROCESSES_JSON: String = "res://resources/json/processes.json"
+
+var ingredient_list: Array[PotionIngredientNew] = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	read_ingredient_data()
 
 func read_ingredient_data() -> void:
-	pass
+	var json_string: String = FileAccess.open(INGREDIENT_JSON, FileAccess.READ).get_as_text()
+	var json_data: JSON = JSON.new()
+
+	assert(json_data.parse(json_string) == OK, 
+			"Variable json_data was null. %s" % [json_data.get_error_message()])
+	ingredient_list.resize(IngredientID.size())
+	var index := 0
+
+	for ingredient in json_data.data:
+		var temp_ingredient := PotionIngredientNew.new()
+		temp_ingredient.ingredient_name = ingredient["Ingredient Name"]
+		temp_ingredient.ingredient_id = IngredientID.keys().find(ingredient["Ingredient ID"])
+		breakpoint
+		ingredient_list[index] = temp_ingredient
+		index += 1
+	
+	breakpoint	
