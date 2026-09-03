@@ -96,5 +96,3 @@ texture = ExtResource("2_6g1p8")
 [node name="PotionBrewing" type="Node" parent="." unique_id=1885634969]
 script = ExtResource("3_nsau4")
 metadata/_custom_type_script = "uid://bytx8uyvjb5ht"
-
-[node name="CauldronScene" type="Node2D" parent="." unique_id=934424114]

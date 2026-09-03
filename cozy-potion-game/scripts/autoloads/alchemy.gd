@@ -121,21 +121,29 @@ var ingredient_list: Array[PotionIngredientNew] = []
 func _ready() -> void:
 	read_ingredient_data()
 
+# This should only run once
 func read_ingredient_data() -> void:
 	var json_string: String = FileAccess.open(INGREDIENT_JSON, FileAccess.READ).get_as_text()
 	var json_data: JSON = JSON.new()
 
 	assert(json_data.parse(json_string) == OK, 
 			"Variable json_data was null. %s" % [json_data.get_error_message()])
+
 	ingredient_list.resize(IngredientID.size())
 	var index := 0
 
 	for ingredient in json_data.data:
 		var temp_ingredient := PotionIngredientNew.new()
 		temp_ingredient.ingredient_name = ingredient["Ingredient Name"]
+
+		# Used to index an enum with a string
 		temp_ingredient.ingredient_id = IngredientID.keys().find(ingredient["Ingredient ID"])
-		breakpoint
+		
+		for process in ingredient["Compatible Process IDs"].split(", "):
+			temp_ingredient.valid_process_methods.append(ProcessID.keys().find(process))
+
+		for attribute in AttributeID.values():
+			temp_ingredient.attributes.set(attribute, ingredient[AttributeID.keys()[attribute]])
+
 		ingredient_list[index] = temp_ingredient
 		index += 1
-	
-	breakpoint	
