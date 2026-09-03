@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djbxy4gkaty7q"]
 
 [ext_resource type="Script" uid="uid://c07gq1h18t0pj" path="res://scripts/inventory/prep_tray.gd" id="1_yq6a2"]
-[ext_resource type="PackedScene" uid="uid://d1aebqcog8f34" path="res://assets/prefabs/inventory/inventory_component.tscn" id="2_mfyub"]
+[ext_resource type="PackedScene" uid="uid://d1aebqcog8f34" path="res://assets/prefabs/Inventory/inventory_component.tscn" id="2_mfyub"]
 
 [node name="CanvasLayer2" type="CanvasLayer" unique_id=1960677974]
 
