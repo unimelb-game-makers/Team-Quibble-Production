@@ -1,6 +1,6 @@
 extends Node
 
-var current_news_event: Dictionary
+var current_news_event: NewsEvent
 
 const NEWS_JSON_PATH: String = "res://scripts/autoloads/news_events.json"
 
@@ -17,19 +17,23 @@ func set_new_news_event() -> void:
 	new_news_event.emit()
 
 func get_news_headline() -> String:
-	return current_news_event["HEADLINE"]
+	return current_news_event.headline
 
 func get_news_description() -> String:
-	return current_news_event["DESCRIPTION"]
+	return current_news_event.description
 
-##internal use, use set_new_news_event to do that
-func generate_news_event() -> Dictionary:
+##internal use, use set_new_news_event
+##creates a news event dictionary and makes some random modifications to it
+func generate_news_event() -> NewsEvent:
 	var news_json: JSON = Utils.get_json(NEWS_JSON_PATH)
 	var events: Array = news_json.data
 	
-	return events.pick_random()
+	var event_dict: Dictionary = events.pick_random()
+	var event: NewsEvent = NewsEvent.new()
+	event.initialise(event_dict)
+	
+	return event
 
 func test_news() -> void:
-	var news: Dictionary = generate_news_event()
-	
-	assert(news["HEADLINE"] != "")
+	var news: NewsEvent = generate_news_event()
+	assert(news.headline != "")
