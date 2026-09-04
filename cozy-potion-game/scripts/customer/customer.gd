@@ -57,7 +57,7 @@ static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Cus
 		assert(customer_dictionary, "set customer type does not exist")
 		
 	if DEBUG:
-		print_debug(customer_resource.customer_type)
+		print_debug("Customer type: %s" % customer_resource.customer_type)
 	
 	#TODO: allow for more game stages
 	var need_count = get_need_count(DEBUG)
@@ -72,13 +72,18 @@ static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Cus
 static func set_needs(customer_dictionary: Dictionary, customer_resource: Customer, need_count: int, DEBUG) -> void:
 	var ailments_array: Array = customer_dictionary.keys()
 	ailments_array = ailments_array.filter(func(x): return x.begins_with("NEED_"))
-	var ailment_weights: Array
+	
+	var ailment_weights: Array[float]
 	ailment_weights.resize(ailments_array.size())
+	var effect: NewsEvent.NewsEffect = NewsManager.current_news_event.get_effect("NEED_PROBABILITY")
 	for i in range(ailments_array.size()):
-		ailment_weights[i] = customer_dictionary.get(ailments_array[i])
+		ailment_weights[i] = float(customer_dictionary.get(ailments_array[i]))
+		if effect and effect.target == ailments_array[i]:
+			ailment_weights[i] *= effect.magnitude
+		
 	if DEBUG:
-		print_debug(ailments_array)
-		print_debug(ailment_weights)
+		print_debug("Ailments: ", ailments_array)
+		print_debug("Ailment Weights: ", ailment_weights)
 	
 	var first_ailment: String = Utils.pick_random_weighted(ailments_array, Utils.array_to_float_array(ailment_weights))
 	customer_resource.needs.append(first_ailment)
@@ -88,14 +93,18 @@ static func set_needs(customer_dictionary: Dictionary, customer_resource: Custom
 	var ailment_relationship_json: JSON = Utils.get_json(AILMENT_RELATIONSHIP_JSON_PATH)
 	
 	var secondary_ailment_array: Array
-	var secondary_ailment_weights: Array
+	var secondary_ailment_weights: Array[float]
 	#look for matching row
 	for dict in ailment_relationship_json.data:
 		if dict.get("ROW_OF_NEEDS") == first_ailment:
 			secondary_ailment_array = dict.keys()
 			secondary_ailment_array = secondary_ailment_array.filter(func(x): return x.begins_with("NEED_"))
 			for ailment in secondary_ailment_array:
-				secondary_ailment_weights.append(dict.get(ailment))
+				var val: float = float(dict.get(ailment))
+				if effect and effect.target == ailment:
+					val *= effect.magnitude
+				
+				secondary_ailment_weights.append(val)
 	
 	var j: int = need_count
 	while (j > 1):
@@ -135,11 +144,11 @@ static func set_need_severities(customer: Customer, ailment_count: int, DEBUG: b
 
 static func get_random_customer(customers: Array) -> Dictionary:
 	var customer_weights: Array[float]
-	var effect = NewsManager.current_news_event.get_effect("NPC_SPAWN_PROBABILITY")
+	var effect: NewsEvent.NewsEffect = NewsManager.current_news_event.get_effect("NPC_SPAWN_PROBABILITY")
 	for dict in customers:
 		var val = float(dict.get("NPC_SPAWN_PROBABILITY"))
 		if effect and dict.get("NPC") == effect.target:
-			val *= effect.magnitude * 40
+			val *= effect.magnitude
 		customer_weights.append(val)
 	return Utils.pick_random_weighted(customers, customer_weights)
 	
