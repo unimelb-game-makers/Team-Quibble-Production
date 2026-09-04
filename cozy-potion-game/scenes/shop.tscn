@@ -347,6 +347,18 @@ text = "Monday"
 label_settings = SubResource("LabelSettings_aue3q")
 horizontal_alignment = 1
 
+[node name="Button" type="Button" parent="SceneUI/TimeUI/DigitalClock" unique_id=2002673928]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 6.109
+offset_left = 100.0
+offset_top = 177.0
+offset_right = -123.359985
+offset_bottom = -850.02515
+theme_override_font_sizes/font_size = 28
+text = "Advance Time"
+
 [node name="NewsPopup" type="Control" parent="SceneUI/TimeUI" unique_id=1253198593 node_paths=PackedStringArray("headline_label", "description_label", "accept_button")]
 layout_mode = 3
 anchor_left = 0.3
