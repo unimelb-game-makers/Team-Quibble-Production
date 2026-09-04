@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dwjhqwlvqsrte"]
 
 [ext_resource type="Script" uid="uid://b6gck2otw1hmt" path="res://scripts/minigame/boiling_minigame.gd" id="1_siphr"]
+[ext_resource type="Texture2D" uid="uid://fueysbadjrju" path="res://assets/sprites/minigame/boiling_minigame/teapot_full.png" id="2_b5035"]
 
 [sub_resource type="Curve" id="Curve_ii47s"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -52,6 +53,11 @@ _data = {
 [node name="BoilingMinigame" type="CanvasLayer" unique_id=1533572996]
 script = ExtResource("1_siphr")
 progress_variance_array = Array[Curve]([SubResource("Curve_ii47s"), SubResource("Curve_siphr"), SubResource("Curve_b5035")])
+
+[node name="TeapotFull" type="Sprite2D" parent="." unique_id=2053737364]
+position = Vector2(960, 456)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_b5035")
 
 [node name="Thermometer" type="Sprite2D" parent="." unique_id=2072749853]
 texture_filter = 1
