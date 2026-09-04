@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b7luov8dx6thj" path="res://scripts/inventory/inventory_component.gd" id="1_cgqxk"]
 
 [node name="InvComponent" type="Node2D" unique_id=1705191911 node_paths=PackedStringArray("HandSprite", "QuantityLabel")]
+top_level = true
 script = ExtResource("1_cgqxk")
 HandSprite = NodePath("HandSprite")
 QuantityLabel = NodePath("QuantityLabel")

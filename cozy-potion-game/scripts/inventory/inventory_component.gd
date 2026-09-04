@@ -104,33 +104,66 @@ func update_hand() -> void:
 		stack_dragging = null
 
 
+func remove_from_stack(stack: Stack, amount_to_remove: int) -> Stack:
+	if amount_to_remove > stack.quantity:
+		amount_to_remove = stack.quantity
+	
+	var remove_stack := Stack.new(amount_to_remove).clone_type(stack)
+	stack.quantity -= amount_to_remove
+	
+	return remove_stack
+
+
+func pickup_stack(slot: ItemSlot, amount_to_pickup: int = -1) -> void:
+	dragging = true
+	if amount_to_pickup <= -1:
+		stack_dragging = slot.stack
+		slot.stack = Stack.new(0)
+	else:
+		stack_dragging = remove_from_stack(slot.stack, amount_to_pickup)
+	
+	update_hand()
+
+
+func place_stack(slot: ItemSlot) -> void:
+	stack_dragging = add_stack_to_slot(stack_dragging, slot)
+	update_hand()
+
+func swap_held_stack(slot: ItemSlot) -> void:
+	var swap_temp := stack_dragging
+	stack_dragging = slot.stack
+	slot.stack = swap_temp
+	update_hand()
+
 # Called when player clicks on item slot
 func slot_clicked(event: InputEvent, slot: ItemSlot) -> void:
 	if event.is_action_pressed("grab_inventory_item"):
+		# Nothing currently held
 		if !dragging:
-			dragging = true
-			stack_dragging = slot.stack
-			slot.stack = Stack.new(0)
+			pickup_stack(slot)
+		# Add same stack to each other
 		elif slot.stack.item_name == stack_dragging.item_name:
-			stack_dragging = add_stack_to_slot(stack_dragging, slot)
+			place_stack(slot)
+		# Swap held stack with another
 		else:
-			var swap_temp := stack_dragging
-			stack_dragging = slot.stack
-			slot.stack = swap_temp
-		
-		update_hand()
+			swap_held_stack(slot)
 	
 	elif event.is_action_pressed("place_inventory_item"):
 		if dragging:
 			add_some_to_slot(stack_dragging, slot, 1)
 			update_hand()
 
+func drop_held() -> Stack:
+	if stack_dragging != null:
+		# Dropping stuff
+		var s = stack_dragging
+		stack_dragging = Stack.new(0)
+		update_hand()
+		return s
+	return null
 
 # Called when background is clicked
 # Care as can active in gaps between slots
 func click_background(event: InputEvent) -> void:
-	if event.is_action_pressed("LMB"):
-		if dragging:
-			# Dropping stuff
-			stack_dragging.quantity = 0
-			update_hand()
+	if event.is_action_pressed("grab_inventory_item"):
+		drop_held()
