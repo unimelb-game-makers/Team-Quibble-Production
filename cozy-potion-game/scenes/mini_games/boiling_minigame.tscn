@@ -15,6 +15,12 @@ point_count = 2
 _data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8kj3l"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_x2l7t"]
+b = Vector2(-328, 0)
+
 [sub_resource type="Gradient" id="Gradient_siphr"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.6, 0.8)
@@ -54,10 +60,23 @@ _data = {
 script = ExtResource("1_siphr")
 progress_variance_array = Array[Curve]([SubResource("Curve_ii47s"), SubResource("Curve_siphr"), SubResource("Curve_b5035")])
 
-[node name="TeapotFull" type="Sprite2D" parent="." unique_id=2053737364]
-position = Vector2(960, 456)
+[node name="Pot" type="StaticBody2D" parent="." unique_id=141724054]
+position = Vector2(960, 480)
+
+[node name="TeapotFull" type="Sprite2D" parent="Pot" unique_id=2053737364]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_b5035")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pot" unique_id=1199941143]
+position = Vector2(200, 0)
+shape = SubResource("WorldBoundaryShape2D_8kj3l")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Pot" unique_id=1828165565]
+position = Vector2(200, 100)
+shape = SubResource("SegmentShape2D_x2l7t")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pot" unique_id=1890254461]
+polygon = PackedVector2Array(-128, -40, -183, 11, -219, 58, -247, 100, -128, 100)
 
 [node name="Thermometer" type="Sprite2D" parent="." unique_id=2072749853]
 texture_filter = 1
