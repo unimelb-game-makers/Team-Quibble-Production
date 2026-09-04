@@ -32,6 +32,7 @@ func generate_news_event() -> NewsEvent:
 	var event: NewsEvent = NewsEvent.new()
 	event.initialise(event_dict)
 	
+	
 	return event
 
 func test_news() -> void:
