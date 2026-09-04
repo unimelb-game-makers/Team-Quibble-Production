@@ -14,8 +14,6 @@ func initialise(news_dict: Dictionary = {}) -> void:
 	headline = news_dict.get("HEADLINE")
 	description = news_dict.get("DESCRIPTION")
 	for i in range(1,4):
-		print_debug("EFFECT_%d_MIN_MULT" % i)
-		print_debug(news_dict.get("EFFECT_%d_MIN_MULT" % i))
 		effects[news_dict.get("EFFECT_%d" % i)] = \
 		randf_range(float(news_dict.get("EFFECT_%d_MIN_MULT" % i)), float(news_dict.get("EFFECT_%d_MAX_MULT" % i)))
 		targets.append(news_dict.get("TARGET_%d" % i))

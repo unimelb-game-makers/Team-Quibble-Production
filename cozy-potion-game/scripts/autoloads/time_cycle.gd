@@ -22,9 +22,9 @@ signal day_progress_changed
 signal day_started
 
 func _input(event: InputEvent) -> void:
+	#DEBUG
 	if event.is_action_pressed("interact"):
 		progress_day()
-		print_debug(day_progress)
 
 func day_progress_to_time_string() -> String:
 	var hour: int = int(wrap(day_start_hour + day_progress * day_length, 1, 13))
