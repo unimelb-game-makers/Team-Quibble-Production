@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="1_w18gf"]
 [ext_resource type="Script" uid="uid://bkt5imxfgerjv" path="res://scenes/user_interface/draggable_component.gd" id="2_votms"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_votms"]
+bg_color = Color(0.6, 0.6, 0.6, 0.18039216)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
+font_size = 39
+
 [node name="DraggableExample" type="Control" unique_id=140986750]
 layout_mode = 3
 anchors_preset = 15
@@ -11,6 +17,40 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=1486242622]
+layout_mode = 0
+offset_left = 1227.0
+offset_top = 171.0
+offset_right = 1547.0
+offset_bottom = 816.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_votms")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2" unique_id=1483460457]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PanelContainer2/VBoxContainer" unique_id=770954645]
+custom_minimum_size = Vector2(100, 60)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="DraggableComponent" type="Node" parent="PanelContainer2/VBoxContainer/Panel" unique_id=1532870653]
+script = ExtResource("2_votms")
+
+[node name="Label" type="Label" parent="PanelContainer2/VBoxContainer/Panel" unique_id=955098165]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Draggable"
+label_settings = SubResource("LabelSettings_4dvm4")
+
+[node name="DraggableAcceptorComponent" type="Node" parent="PanelContainer2/VBoxContainer" unique_id=1303305552]
+script = ExtResource("1_w18gf")
+metadata/_custom_type_script = "uid://b85c75nnvco20"
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1426059220]
 layout_mode = 1
@@ -22,44 +62,7 @@ offset_top = 220.0
 offset_right = -1133.0
 offset_bottom = -389.0
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_votms")
 
 [node name="DraggableAcceptorComponent" type="Node" parent="PanelContainer" unique_id=575514622]
 script = ExtResource("1_w18gf")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1483460457]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1227.0
-offset_top = 171.0
-offset_right = -373.0
-offset_bottom = -298.0
-
-[node name="Panel" type="Panel" parent="VBoxContainer" unique_id=770954645]
-custom_minimum_size = Vector2(0, 59.55)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="DraggableComponent" type="Node" parent="VBoxContainer/Panel" unique_id=1532870653]
-script = ExtResource("2_votms")
-
-[node name="Panel2" type="Panel" parent="VBoxContainer" unique_id=1196967089]
-custom_minimum_size = Vector2(0, 59.55)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="DraggableComponent" type="Node" parent="VBoxContainer/Panel2" unique_id=1721313573]
-script = ExtResource("2_votms")
-
-[node name="Panel3" type="Panel" parent="VBoxContainer" unique_id=1925843805]
-custom_minimum_size = Vector2(0, 59.55)
-layout_mode = 2
-mouse_filter = 2
-
-[node name="DraggableComponent" type="Node" parent="VBoxContainer/Panel3" unique_id=726954474]
-script = ExtResource("2_votms")
-
-[node name="DraggableAcceptorComponent" type="Node" parent="VBoxContainer" unique_id=1303305552]
-script = ExtResource("1_w18gf")
-metadata/_custom_type_script = "uid://b85c75nnvco20"

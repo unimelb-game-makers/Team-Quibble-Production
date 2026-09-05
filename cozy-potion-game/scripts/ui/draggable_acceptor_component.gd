@@ -4,6 +4,9 @@ class_name DraggableAcceptorComponent extends Node
 
 var my_control: Control
 
+#use this in the control that uses this if you want
+signal accepted_draggable
+
 func _ready() -> void:
 	if not get_parent() is Container:
 		push_warning("DraggableAcceptorComponent child of non-container")
