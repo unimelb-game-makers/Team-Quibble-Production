@@ -29,7 +29,6 @@ var effects: Dictionary[String, float] = {
 		"poison": 0.0,
 		}
 
-
 @export var instant: float = 0.0 :
 	get: return instant 
 	set(val): instant = val ; type["instant"] = val 

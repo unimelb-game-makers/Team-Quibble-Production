@@ -1,6 +1,31 @@
 class_name Potion
 extends Resource
 
+var potion_name: String = "Inert Potion"
+var potion_value: int = 0
+
+var potion_id: Alchemy.PotionID = Alchemy.PotionID.size()
+var potion_primary: Alchemy.AttributeID = Alchemy.AttributeID.size()
+var potion_secondary: Alchemy.AttributeID = Alchemy.AttributeID.size()
+var potion_attribute_strength: int
+
+func constructor(_attributes: Dictionary[Alchemy.AttributeID, int]) -> void:
+	var keys := _attributes.keys()
+	keys.sort_custom(func(a, b): return _attributes[a] > _attributes[b])
+	
+	for key in keys:
+		print("%s:%s" % [Alchemy.AttributeID.keys()[key], _attributes[key]])
+		
+	potion_id = keys[0]
+	potion_primary = keys[0]
+	if _attributes[keys[0]] == _attributes[keys[1]]:
+		potion_secondary = keys[1]
+		
+	potion_attribute_strength = _attributes[keys[0]]
+	
+	potion_name = "Potion of " + Alchemy.AttributeID.keys()[0].trim_prefix("ATTR_").capitalize()
+### OLD ###
+
 enum ATTRIBUTES {
 	HEALING,
 	ENERGY,
@@ -21,9 +46,6 @@ static var potion_ingredient_index: Dictionary[String, PotionIngredient] = {}:
 		if potion_ingredient_index.size() <= 0: 
 			potion_ingredient_index = _read_json_data()
 		return potion_ingredient_index
-
-var name: String = "Inert Potion"
-var value: int = 0
 
 # finds which of the entries is the highest
 static func get_max(_potion_effects: Dictionary[String, float]) -> String:

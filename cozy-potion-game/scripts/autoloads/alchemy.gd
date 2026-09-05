@@ -120,6 +120,7 @@ var ingredient_list: Array[PotionIngredientNew] = []
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	read_ingredient_data()
+	brew_potion([ingredient_list[IngredientID.INGR_APPLE], ingredient_list[IngredientID.INGR_GINSENG], ingredient_list[IngredientID.INGR_HONEY]])
 
 # This should only run once
 func read_ingredient_data() -> void:
@@ -147,3 +148,24 @@ func read_ingredient_data() -> void:
 
 		ingredient_list[index] = temp_ingredient
 		index += 1
+
+func brew_potion(_ingredient_list: Array[PotionIngredientNew]) -> Potion:
+	var _attributes := sum_attributes(_ingredient_list)
+	
+	var potion := Potion.new()
+	potion.constructor(_attributes)
+	
+	return potion	
+
+func sum_attributes(_ingredient_list: Array[PotionIngredientNew]) -> Dictionary[Alchemy.AttributeID, int]:
+	var _attributes: Dictionary[Alchemy.AttributeID, int]
+	_attributes.assign(_ingredient_list[0].attributes.duplicate())
+	if _ingredient_list.size() == 1:
+			return _attributes
+	
+	for ingredient in range(1, _ingredient_list.size()-1):
+		for attribute in AttributeID.values():
+			var new_value = _attributes[attribute] + _ingredient_list[ingredient].attributes[attribute]
+			_attributes[attribute] = new_value
+			
+	return _attributes
