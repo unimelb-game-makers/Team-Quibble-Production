@@ -4,7 +4,6 @@
 class_name Interactable extends Area3D
 
 signal interacted
-signal display_popup(interactable_self: Interactable)
 
 const INTERACTABLE_LAYER: int = 21
 
@@ -18,9 +17,8 @@ func _ready() -> void:
 ## Handle when the player enters the box
 func _body_entered(body: Node3D):
 	if body is WorldPlayer:
-		display_popup.emit(self)
 		popup = Utils.popup_manager.spawn_popup(self)
-
+## When player leaves box
 func _body_exited(body: Node3D):
 	if body is WorldPlayer and popup:
 		popup.queue_free()
