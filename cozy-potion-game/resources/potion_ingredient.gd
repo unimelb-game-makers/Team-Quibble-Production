@@ -3,6 +3,7 @@ extends Resource
 
 @export var name: String
 @export var sprite: Texture
+@export var colour: Color
 
 # This is a shit implementation atm and will be changed in the future
 @export var healing: float = 0.0 :
@@ -28,7 +29,6 @@ var effects: Dictionary[String, float] = {
 		"cure_disease": 0.0,
 		"poison": 0.0,
 		}
-
 
 @export var instant: float = 0.0 :
 	get: return instant 

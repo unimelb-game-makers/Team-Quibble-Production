@@ -25,6 +25,7 @@ const MAX_QUANTITY: int = 10
 var isEmpty = false
 
 @export var sprite: Texture
+@export var colour: Color = Color.RED
 
 func _init(start_quantity: int = 0, start_name: String = "") -> void:
 	quantity = start_quantity
@@ -34,9 +35,11 @@ func _init(start_quantity: int = 0, start_name: String = "") -> void:
 func update_stack() -> void:
 	if item_name != "" and quantity != 0:
 		sprite = Potion.potion_ingredient_index.get(item_name).sprite
+		#colour = Potion.potion_ingredient_index.get(item_name).colour
 		isEmpty = false
 	else:
 		sprite = null
+		colour = Color.BLACK
 		isEmpty = true
 
 
@@ -50,9 +53,9 @@ func clone_type(stack : Stack) -> Stack:
 func get_sprite() -> Texture2D:
 	return sprite
 
-@export var color: Color
+
 func get_color() -> Color:
-	return color
+	return colour
 
 # Returns quantity of stack and "" if stack is empty
 func get_quantity_label() -> String:
