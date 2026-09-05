@@ -22,6 +22,8 @@ SceneManager="*uid://c0071jx5m4ofo"
 OptionsMenu="*uid://c7rl0bd26eupb"
 DialogueManager="*uid://c3rodes2l3gxb"
 FmodManager="*uid://cds10pm7hwn3p"
+TimeCycle="*uid://jkbigy13ojrr"
+NewsManager="*uid://brtfnh3amack8"
 
 [display]
 
@@ -123,6 +125,10 @@ place_inventory_item={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(232, 22),"global_position":Vector2(244, 82),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogue/customer/placeholder.dialogue")
 
 [layer_names]
 
