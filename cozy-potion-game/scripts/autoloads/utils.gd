@@ -46,4 +46,5 @@ static func pick_random_weighted(items: Array, weights: Array[float]):
 	
 	assert(false, "something is wrong with this function")
 	return items.pick_random()
-	
+
+var popup_manager: PopupManager

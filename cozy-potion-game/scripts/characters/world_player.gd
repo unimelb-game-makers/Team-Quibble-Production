@@ -157,7 +157,8 @@ func activate_top_down_cam() -> void:
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween2.tween_property(camera, "position", Vector3(0,7.0,0), 0.2)
-	
+
+## Called when player presses E
 func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
 		if area is Interactable:

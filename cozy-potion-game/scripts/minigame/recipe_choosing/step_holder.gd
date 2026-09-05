@@ -104,5 +104,5 @@ func get_final_steps() -> Array[PotionIngredient]:
 		result.append(step.get_ingredient_box().get_child(0).ingredient_resource)
 	
 	print(result)
-
+	
 	return result

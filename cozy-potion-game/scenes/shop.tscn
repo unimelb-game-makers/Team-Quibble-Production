@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_032fp"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark_wall_material.tres" id="2_ajxib"]
 [ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/ui/news_popup.gd" id="3_gobkm"]
+[ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="4_j14q8"]
 [ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="6_heatd"]
 [ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/mini_games/recipe_scene.tscn" id="7_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
@@ -409,6 +410,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Ok, Whatever."
+
+[node name="PopupManager" type="CanvasLayer" parent="SceneUI" unique_id=25847526]
+script = ExtResource("4_j14q8")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)

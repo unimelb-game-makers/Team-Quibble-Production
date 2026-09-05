@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dfmffbhgk3n4k"]
+
+[ext_resource type="Shader" uid="uid://5m7lrht8t50u" path="res://shaders/wavy_text.gdshader" id="1_228b5"]
+[ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="1_ajxwf"]
+[ext_resource type="Script" uid="uid://dp2yqek8qlyij" path="res://scripts/ui/popup_text.gd" id="1_c1qsl"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ajxwf"]
+shader = ExtResource("1_228b5")
+shader_parameter/text_color = Color(0.26666668, 1, 1, 1)
+shader_parameter/warp_frequency = 10.0
+shader_parameter/warp_amplitude = 5.0
+shader_parameter/warp_speed = 3.806000180785
+
+[sub_resource type="Theme" id="Theme_nx2dr"]
+Label/colors/font_outline_color = Color(1, 0.53078943, 0.41911653, 1)
+Label/constants/outline_size = 5
+Label/font_sizes/font_size = 64
+Label/fonts/font = ExtResource("1_ajxwf")
+
+[node name="popup_text" type="Node2D" unique_id=526913073]
+script = ExtResource("1_c1qsl")
+
+[node name="Label" type="Label" parent="." unique_id=1180905384]
+material = SubResource("ShaderMaterial_ajxwf")
+offset_left = -164.0
+offset_top = -32.0
+offset_right = 184.0
+offset_bottom = 32.0
+theme = SubResource("Theme_nx2dr")
+text = "E to interact"
