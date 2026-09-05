@@ -3,6 +3,10 @@ class_name DraggableComponent extends Node
 #this code and the coupled DraggableAcceptor make liberal use of get_parent()
 #which is generally bad when overused but there is no other oppurtunity
 
+#if you encounter bugs to do with positioning while dragging, consider
+#changing this code to use offset_transform
+
+
 static var dragged_control: Control
 static var pending_parent: Control
 
@@ -57,7 +61,7 @@ func assign_to_mouse() -> void:
 	being_dragged = true
 
 func move_to_mouse() -> void:
-	my_control.global_position = my_control.get_global_mouse_position()
+	my_control.global_position = my_control.get_global_mouse_position() - my_control.get_global_rect().size/2
 
 # Called when dragged to ensure returns to orignal owner
 func return_to_previous() -> void:
