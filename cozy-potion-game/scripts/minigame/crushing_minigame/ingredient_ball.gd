@@ -72,7 +72,6 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			split()
 
 func set_texture_and_color(_texture: Texture2D, _color: Color, _apply_color: bool = true) -> void:
-	print(_color)
 	sprite_2d.set_texture(_texture)
 	color = _color
 	if _apply_color:

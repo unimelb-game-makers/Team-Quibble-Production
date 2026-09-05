@@ -10,7 +10,7 @@ radius = 64.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_t6myd"]
 radius = 72.0
 
-[node name="IngredientBall" type="RigidBody2D" unique_id=932391481 node_paths=PackedStringArray("split_markers", "polygon", "collision_polygon", "collision_area", "sprite_2d")]
+[node name="IngredientBall" type="RigidBody2D" unique_id=932391481 node_paths=PackedStringArray("split_markers", "collision_area", "sprite_2d")]
 collision_layer = 3
 mass = 0.1
 contact_monitor = true
@@ -20,8 +20,6 @@ split_limit = 3
 min_split_vel = 130.0
 split_markers = [NodePath("SplitSpawn1"), NodePath("SplitSpawn2")]
 split_scale = 0.5
-polygon = NodePath("")
-collision_polygon = NodePath("")
 collision_area = NodePath("Area2D")
 sprite_2d = NodePath("Sprite2D")
 crushed_sprite = ExtResource("2_fv063")
