@@ -14,9 +14,29 @@ var slots : Dictionary[String, Entry] = {}
 @onready var info_name: Label = $InfoDisplay/InfoName
 @onready var info_description: Label = $InfoDisplay/InfoDescription
 
+@onready var sort_button: MenuButton = $SortButton
+
 var hotbar_cols : int = 3 # Unsure what wanted here
+# maybe could be sotred in seperate script so it doesn't take up so much space
+var sort_keys : Array[Callable] = [
+	func(a: Entry, b: Entry): 
+		return a.stack.item_name.naturalnocasecmp_to(b.stack.item_name) < 0,
+	func(a: Entry, b: Entry):
+		return a.stack.quantity < b.stack.quantity,
+	func(a: Entry, b: Entry):
+		var ingre_list := Potion.potion_ingredient_index
+		var a_ingre = ingre_list.get(a.stack.item_name)
+		var b_ingre = ingre_list.get(b.stack.item_name)
+		return a_ingre.healing < b_ingre.healing,
+		]
+var sort_index: int = 0
 
 func _ready() -> void:
+	
+	sort_button.get_popup().add_item("Itemname", 0)
+	sort_button.get_popup().add_item("Quantity", 1)
+	sort_button.get_popup().add_item("Healing", 1)
+	sort_button.get_popup().index_pressed.connect(set_sort_key)
 	
 	hotbar.columns = hotbar_cols
 	# Create connection to inventory
@@ -60,6 +80,7 @@ func _process(_delta: float) -> void:
 			inv_component.stack_dragging = Stack.new(0)
 		inv_component.pickup_stack(last_clicked_entry, 1)
 		update_entrys()
+
 
 func _gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("grab_inventory_item"):
@@ -107,14 +128,16 @@ func update_entrys() -> void:
 	if change:
 		sort_pantry()
 
+func set_sort_key(index: int) -> void:
+	sort_index = index
+	sort_button.text = sort_button.get_popup().get_item_text(index)
+	sort_pantry()
+
 # Makes items in pantry be alphabetically ordered, expandable to different keys
 func sort_pantry() -> void:
 	var sorted_nodes := slots.values()
 	
-	sorted_nodes.sort_custom(
-		func(a: Entry, b: Entry): 
-			return a.stack.item_name.naturalnocasecmp_to(b.stack.item_name) < 0\
-		)
+	sorted_nodes.sort_custom(sort_keys[sort_index])
 	
 	for node in sorted_nodes:
 		storage.remove_child(node)
