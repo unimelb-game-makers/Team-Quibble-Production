@@ -4,9 +4,9 @@ extends Resource
 var potion_name: String = "Inert Potion"
 var potion_value: int = 0
 
-var potion_id: Alchemy.PotionID = Alchemy.PotionID.size()
-var potion_primary: Alchemy.AttributeID = Alchemy.AttributeID.size()
-var potion_secondary: Alchemy.AttributeID = Alchemy.AttributeID.size()
+var potion_id: Alchemy.PotionID
+var potion_primary: Alchemy.AttributeID
+var potion_secondary: Alchemy.AttributeID
 var potion_attribute_strength: int
 
 func constructor(_attributes: Dictionary[Alchemy.AttributeID, int]) -> void:
@@ -18,12 +18,31 @@ func constructor(_attributes: Dictionary[Alchemy.AttributeID, int]) -> void:
 		
 	potion_id = keys[0]
 	potion_primary = keys[0]
-	if _attributes[keys[0]] == _attributes[keys[1]]:
-		potion_secondary = keys[1]
-		
 	potion_attribute_strength = _attributes[keys[0]]
+	potion_name = "Potion of "
+
+	match true:
+		true when potion_attribute_strength < 20: 
+			potion_name += "Trace "
+		true when potion_attribute_strength < 40: 
+			potion_name += "Lesser "
+		true when potion_attribute_strength < 60: 
+			potion_name += ""
+		true when potion_attribute_strength < 80: 
+			potion_name += "Greater "
+		true when potion_attribute_strength < 100: 
+			potion_name += "Supreme "
+
+	potion_name += Alchemy.AttributeID.keys()[potion_primary].trim_prefix("ATTR_").capitalize()
+
+	if _attributes[keys[0]] != _attributes[keys[1]]:
+		return
+
+	potion_secondary = keys[1]
+	potion_name += " and " + Alchemy.AttributeID.keys()[potion_secondary].trim_prefix("ATTR_").capitalize()
+
+		
 	
-	potion_name = "Potion of " + Alchemy.AttributeID.keys()[0].trim_prefix("ATTR_").capitalize()
 ### OLD ###
 
 enum ATTRIBUTES {

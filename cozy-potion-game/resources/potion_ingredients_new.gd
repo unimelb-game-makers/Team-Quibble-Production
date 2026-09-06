@@ -5,7 +5,7 @@ extends Resource
 var ingredient_name: String = ""
 var ingredient_sprite: Texture2D = preload("uid://dexko6nfrs6tc")
 # so it will throw an out of bounds error if not set
-var ingredient_id: int = Alchemy.IngredientID.size()
+var ingredient_id: Alchemy.IngredientID
 var valid_process_methods: Array[Alchemy.ProcessID] = []
 
 # This will make it so you can index it using the Alchemy.AttributeID
