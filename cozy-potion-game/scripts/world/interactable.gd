@@ -14,6 +14,10 @@ func _ready() -> void:
 	body_entered.connect(_body_entered)
 	body_exited.connect(_body_exited)
 
+func interact():
+	interacted.emit()
+	if popup: popup.queue_free()
+
 ## Handle when the player enters the box
 func _body_entered(body: Node3D):
 	if body is WorldPlayer:
