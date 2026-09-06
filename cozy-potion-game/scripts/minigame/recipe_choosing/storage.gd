@@ -10,7 +10,7 @@ var dragging: bool = false # True if ingredient being dragged
 var ingredient_dragging: Ingredient = null # Ingredient being dragged
 
 func _ready() -> void:
-	for ingredient in Potion.potion_ingredient_index.values():
+	for ingredient in Alchemy.ingredient_list:
 		var instance = INGREDIENT_SCENE.instantiate()
 		assert(instance is DraggableUI, "Scene instantiated was not of type Ingredient")
 

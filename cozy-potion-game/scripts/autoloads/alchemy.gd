@@ -116,7 +116,7 @@ const INGREDIENT_JSON: String = "res://resources/json/ingredients.json"
 const PROCESSES_JSON: String = "res://resources/json/processes.json"
 const POTION_JSON: String = "res://resources/json/potion_list.json"
 
-var ingredient_list: Array[PotionIngredientNew] = []
+var ingredient_list: Array[PotionIngredient] = []
 var potion_referance: Array[PotionReferance] = []
 
 # Called when the node enters the scene tree for the first time.
@@ -139,7 +139,7 @@ func read_ingredient_data() -> void:
 	var index := 0
 
 	for ingredient in json_data.data:
-		var temp_ingredient := PotionIngredientNew.new()
+		var temp_ingredient := PotionIngredient.new()
 		temp_ingredient.ingredient_name = ingredient["Ingredient Name"]
 
 		# Used to index an enum with a string
@@ -176,7 +176,7 @@ func read_potion_data() -> void:
 
 		potion_referance[temp_potion.potion_id] = temp_potion
 
-func brew_potion(_ingredient_list: Array[PotionIngredientNew]) -> Potion:
+func brew_potion(_ingredient_list: Array[PotionIngredient]) -> Potion:
 	var _attributes := sum_attributes(_ingredient_list)
 	
 	var potion := Potion.new()
@@ -184,7 +184,7 @@ func brew_potion(_ingredient_list: Array[PotionIngredientNew]) -> Potion:
 	
 	return potion	
 
-func sum_attributes(_ingredient_list: Array[PotionIngredientNew]) -> Dictionary[Alchemy.AttributeID, int]:
+func sum_attributes(_ingredient_list: Array[PotionIngredient]) -> Dictionary[Alchemy.AttributeID, int]:
 	var _attributes: Dictionary[Alchemy.AttributeID, int]
 	_attributes.assign(_ingredient_list[0].attributes.duplicate())
 	if _ingredient_list.size() == 1:
