@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
+[ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="16_j14q8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 124
@@ -298,6 +299,9 @@ _data = {
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_aa4hd"]
 points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, -2.3425, 5.0325, 0, 2.3425)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pitpm"]
+size = Vector3(100, 1, 100)
+
 [node name="Shop" type="Node" unique_id=428524118]
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=2120733313]
@@ -545,6 +549,13 @@ script = ExtResource("11_7mqwv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CauldronMinigame2/CauldronMinigameInteractable" unique_id=807437790]
 shape = SubResource("BoxShape3D_aue3q")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D/CauldronMinigame2/CauldronMinigameInteractable" unique_id=1853608334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.47849822, -0.08663425)
+light_color = Color(1, 0.32156864, 0, 1)
+light_energy = 0.70173943
+light_bake_mode = 1
+omni_attenuation = 3.951
+
 [node name="RecipeMinigame" type="Node3D" parent="Node3D" unique_id=1914127599 node_paths=PackedStringArray("interactable")]
 script = ExtResource("6_heatd")
 minigame_scene = ExtResource("7_m4ofw")
@@ -613,3 +624,10 @@ dialogue_resource = ExtResource("12_7mqwv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerPlane/StaticBody3D" unique_id=704160577]
 shape = SubResource("ConvexPolygonShape3D_aa4hd")
+
+[node name="OutOfBoundsCollider" type="Area3D" parent="." unique_id=1001117953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
+script = ExtResource("16_j14q8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBoundsCollider" unique_id=108824546]
+shape = SubResource("BoxShape3D_pitpm")
