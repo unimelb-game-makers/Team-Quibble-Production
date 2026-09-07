@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="9_m4ofw"]
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
+[ext_resource type="PackedScene" uid="uid://cy4b7vyvfm6pt" path="res://scenes/user_interface/test_indicator.tscn" id="11_5u241"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
@@ -549,10 +550,23 @@ script = ExtResource("11_7mqwv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CauldronMinigame2/CauldronMinigameInteractable" unique_id=807437790]
 shape = SubResource("BoxShape3D_aue3q")
 
-[node name="RecipeMinigame" type="Node3D" parent="Node3D" unique_id=1914127599 node_paths=PackedStringArray("interactable")]
+[node name="Node3D" type="Node3D" parent="Node3D/CauldronMinigame2" unique_id=1620973947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.645, 0)
+
+[node name="indicator1" parent="Node3D/CauldronMinigame2/Node3D" unique_id=94547233 node_paths=PackedStringArray("node") instance=ExtResource("11_5u241")]
+node = NodePath("..")
+
+[node name="RecipeMinigame" type="Node3D" parent="Node3D" unique_id=1914127599 node_paths=PackedStringArray("interactable", "indicator")]
 script = ExtResource("6_heatd")
 minigame_scene = ExtResource("7_m4ofw")
 interactable = NodePath("RecipeMinigameInteractable")
+indicator = NodePath("Node3D3/indicator2")
+
+[node name="Node3D3" type="Node3D" parent="Node3D/RecipeMinigame" unique_id=1645987674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.645, 4.373)
+
+[node name="indicator2" parent="Node3D/RecipeMinigame/Node3D3" unique_id=783946502 node_paths=PackedStringArray("node") instance=ExtResource("11_5u241")]
+node = NodePath("..")
 
 [node name="RecipeMinigameInteractable" type="Area3D" parent="Node3D/RecipeMinigame" unique_id=254663262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9055874, 0.51443744, 0.042072535)
@@ -563,10 +577,17 @@ script = ExtResource("11_7mqwv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RecipeMinigame/RecipeMinigameInteractable" unique_id=660347118]
 shape = SubResource("BoxShape3D_aue3q")
 
-[node name="CrushingMinigame" type="Node3D" parent="Node3D" unique_id=1694996626 node_paths=PackedStringArray("interactable")]
+[node name="CrushingMinigame" type="Node3D" parent="Node3D" unique_id=1694996626 node_paths=PackedStringArray("interactable", "indicator")]
 script = ExtResource("6_heatd")
 minigame_scene = ExtResource("7_y6sft")
 interactable = NodePath("CrushingMinigameInteractable")
+indicator = NodePath("Node3D2/indicator3")
+
+[node name="Node3D2" type="Node3D" parent="Node3D/CrushingMinigame" unique_id=1967249194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0678272, 1.6451044, 0)
+
+[node name="indicator3" parent="Node3D/CrushingMinigame/Node3D2" unique_id=748834340 node_paths=PackedStringArray("node") instance=ExtResource("11_5u241")]
+node = NodePath("..")
 
 [node name="CrushingMinigameInteractable" type="Area3D" parent="Node3D/CrushingMinigame" unique_id=2000709200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 3.8048701)

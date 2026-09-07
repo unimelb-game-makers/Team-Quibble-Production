@@ -2,6 +2,7 @@ class_name MinigameObject extends Node3D
 
 @export var minigame_scene: PackedScene
 @export var interactable: Interactable
+@export var indicator: Indicator
 var popup_subwindow: PopupSubWindow
 
 func _ready() -> void:
@@ -10,3 +11,5 @@ func _ready() -> void:
 
 func _on_interact():
 	popup_subwindow.start_display_popup(minigame_scene)
+	if indicator:
+		indicator.visible = false
