@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://djbxy4gkaty7q"]
+
+[ext_resource type="Script" uid="uid://c07gq1h18t0pj" path="res://scenes/prep_tray.gd" id="1_s53o5"]
+[ext_resource type="PackedScene" uid="uid://d1aebqcog8f34" path="res://scenes/inventory_component.tscn" id="2_jk6jw"]
+
+[sub_resource type="GDScript" id="GDScript_f55em"]
+script/source = "extends Node
+
+@onready var storage: HBoxContainer = $Control/HBoxContainer
+
+var held_stacks : Array[Stack] = []
+var max_hand_size : int
+
+func _ready() -> void:
+	max_hand_size = 1
+
+
+# Spawns slots for prep tray
+func spawn_all_slots() -> void:
+	
+	for stack in held_stacks:
+		var new_instance := ItemSlot.item_slot_scene.instantiate()
+		storage.add_child(new_instance)
+		
+		new_instance.gui_input.connect(entry_clicked.bind(new_instance))
+		new_instance.stack = stack
+
+func entry_clicked(event: InputEvent, slot: ItemSlot) -> void:
+	pass
+"
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1960677974]
+script = SubResource("GDScript_f55em")
+
+[node name="PrepTray" type="Control" parent="." unique_id=1716054455]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_s53o5")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PrepTray" unique_id=700394000]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="InvComponent" parent="PrepTray" unique_id=1705191911 instance=ExtResource("2_jk6jw")]

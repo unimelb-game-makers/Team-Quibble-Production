@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://02woi54obgji"]
+
+[ext_resource type="Script" uid="uid://b7luov8dx6thj" path="res://scripts/Inventory/inventory.gd" id="1_o12kf"]
+
+[node name="ItemStorage" type="Control" unique_id=3859083]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_o12kf")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=653760316]
+layout_mode = 0
+offset_right = 1153.0
+offset_bottom = 644.0
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+
+[node name="Hand" type="Node2D" parent="." unique_id=505195428]
+
+[node name="HandSprite" type="Sprite2D" parent="Hand" unique_id=1726090085]
+
+[node name="QuantityLabel" type="Label" parent="Hand" unique_id=1580903795]
+offset_left = 19.0
+offset_top = 10.0
+offset_right = 32.0
+offset_bottom = 33.0

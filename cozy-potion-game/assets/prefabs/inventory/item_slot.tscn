@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://b04fxmn4gaapy"]
+
+[ext_resource type="Script" uid="uid://dtfvdcuy006ib" path="res://scripts/inventory/item_slot.gd" id="1_jn4e4"]
+[ext_resource type="Texture2D" uid="uid://b6gfooj6w6uyp" path="res://assets/sprites/black_tlle.png" id="2_16ala"]
+
+[node name="ItemSlot" type="Panel" unique_id=1405171780]
+custom_minimum_size = Vector2(59, 63)
+offset_right = 59.0
+offset_bottom = 63.0
+script = ExtResource("1_jn4e4")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=902217433]
+position = Vector2(30.23967, 34)
+scale = Vector2(0.11983471, 0.11983471)
+texture = ExtResource("2_16ala")
+
+[node name="ItemSprite" type="Sprite2D" parent="." unique_id=76707666]
+position = Vector2(30.23967, 34)
+
+[node name="QuantityLabel" type="Label" parent="." unique_id=2123998350]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 59.0
+offset_bottom = 63.0
+horizontal_alignment = 2

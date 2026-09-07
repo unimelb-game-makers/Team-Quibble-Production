@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bevv56yxkl1y7"]
+
+[ext_resource type="Script" uid="uid://dlkassy77awq8" path="res://scenes/user_interface/draggable_ui.gd" id="1_eej16"]
+
+[node name="Ingredient" type="Panel" unique_id=289371094]
+custom_minimum_size = Vector2(293, 92)
+offset_right = 293.0
+offset_bottom = 93.0
+mouse_filter = 1
+script = ExtResource("1_eej16")
+
+[node name="Label" type="Label" parent="." unique_id=1490340621]
+layout_mode = 0
+offset_right = 294.0
+offset_bottom = 90.0
+horizontal_alignment = 1
+vertical_alignment = 1

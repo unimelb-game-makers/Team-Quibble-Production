@@ -1,7 +1,6 @@
+extends Minigame
 #controller for mortar and pestle scene
-extends Control
 
-@export var win_label_placeholder: RichTextLabel
 @export var win_check_interval: float = 0.1
 var win_check_timer: float
 
@@ -26,4 +25,6 @@ func _process(delta: float) -> void:
 
 
 func win_minigame() -> void:
-	win_label_placeholder.show()
+	process_mode = Node.PROCESS_MODE_DISABLED
+	
+	minigame_won.emit()

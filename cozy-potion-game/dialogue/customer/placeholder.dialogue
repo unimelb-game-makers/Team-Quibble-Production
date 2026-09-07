@@ -1,0 +1,26 @@
+~ healing
+Man: Give me a potion of healing.
+=> END
+
+~ cure_disease
+Man: Give me a potion of cure disease.
+Man: Wait why did i say it like that.
+Man: also give me a potion of cure stroke.
+=> END
+
+~ energy
+Man: Give me a potion of energy.
+Man: or a white monster. either works.
+=> END
+
+~ poison
+Man: Give me a potion of poison.
+=> END
+
+~ refuse
+Man: I don't want that. Try again.
+=> END
+
+~ accept
+Man: yeah thats what i wanted.
+=> END
