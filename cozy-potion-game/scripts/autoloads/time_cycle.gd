@@ -40,8 +40,8 @@ func get_day_progress_increment() -> float:
 ##progresses the day by either a custom amount or by an amout dependent on
 ##number of customers per day. returns true if this ended the day,
 ##false otherwise
-func progress_day(is_custom: bool = false, increment: float = 0) -> bool:
-	if not is_custom:
+func progress_day(increment: float = 0) -> bool:
+	if not increment:
 		increment = get_day_progress_increment()
 	day_progress += increment
 	day_progress_changed.emit()

@@ -17,6 +17,8 @@ var primary_need: String:
 		assert(value is String, "tried to set nonstring primary need")
 		needs[0] = value
 
+##how much time a customer will progress the day by when satisfied
+var time_allotment: float
 
 const TYPE_TO_NEEDS_JSON_PATH: String = "res://scripts/customer/customer_type_to_need_probability.json"
 const GAME_STAGE_TO_AILMENT_CHANCE_JSON_PATH: String = "res://scripts/customer/game_stage_to_ailment_chance.json"
