@@ -8,8 +8,9 @@ extends Node
 var customer_queue: Array[Customer]
 
 func _ready() -> void:
-	customer_interactable.interacted.connect(_on_customer_interact)
 	customer_tests()
+	
+	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
 
 #runs at the start of the day and sets up the list of customers and

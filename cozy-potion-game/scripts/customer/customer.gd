@@ -77,7 +77,7 @@ static func set_needs(customer_dictionary: Dictionary, customer_resource: Custom
 	
 	var ailment_weights: Array[float]
 	ailment_weights.resize(ailments_array.size())
-	var effect: NewsEvent.NewsEffect = NewsManager.current_news_event.get_effect("NEED_PROBABILITY")
+	var effect: NewsEvent.NewsEffect = NewsManager.get_news_effect("NEED_PROBABILITY")
 	for i in range(ailments_array.size()):
 		ailment_weights[i] = float(customer_dictionary.get(ailments_array[i]))
 		if effect and effect.target == ailments_array[i]:
@@ -146,7 +146,7 @@ static func set_need_severities(customer: Customer, ailment_count: int, DEBUG: b
 
 static func get_random_customer(customers: Array) -> Dictionary:
 	var customer_weights: Array[float]
-	var effect: NewsEvent.NewsEffect = NewsManager.current_news_event.get_effect("NPC_SPAWN_PROBABILITY")
+	var effect: NewsEvent.NewsEffect = NewsManager.get_news_effect("NPC_SPAWN_PROBABILITY")
 	for dict in customers:
 		var val = float(dict.get("NPC_SPAWN_PROBABILITY"))
 		if effect and dict.get("NPC") == effect.target:

@@ -24,6 +24,11 @@ signal day_complete
 signal day_progress_changed
 signal day_started
 
+func _ready() -> void:
+	#wait for other autoloads to connect their signals 
+	await get_tree().process_frame
+	start_day()
+
 #this block is responsible for actually progressing the day towards
 #the target day progress and checking if the day is over
 func _process(delta: float) -> void:
