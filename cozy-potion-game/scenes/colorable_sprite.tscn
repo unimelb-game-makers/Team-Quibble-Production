@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dcb40hou0so02"]
+
+[ext_resource type="Script" uid="uid://cjotieye2jrd7" path="res://scripts/colorable_sprite.gd" id="1_rgpbf"]
+
+[node name="ColorableSprite" type="Sprite2D" unique_id=1460984007]
+script = ExtResource("1_rgpbf")
+
+[node name="Uncolored" type="Sprite2D" parent="." unique_id=2024670338]
