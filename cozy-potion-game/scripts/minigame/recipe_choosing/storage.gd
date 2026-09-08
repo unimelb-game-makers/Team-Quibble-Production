@@ -61,7 +61,7 @@ func get_dragging_ingredient() -> Ingredient:
 # Called when Ingredients feel input, trys to start dragging given ingredient
 func start_dragging(_viewport: Node, event: InputEvent, _shape_idx: int, node) \
 		-> void:
-	print(_viewport)
+	print_debug(_viewport)
 	if !dragging and event.is_action_pressed("LMB"):
 		dragging = true
 		ingredient_dragging = node

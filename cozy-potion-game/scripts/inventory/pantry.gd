@@ -106,4 +106,4 @@ func take_from_stack(item_name : String, amount: int) -> Stack:
 # Called when entry clicked on
 func entry_clicked(event: InputEvent, entry: Entry) -> void:
 	if event.is_action_pressed("LMB"):
-		print(entry.stack.item_name)
+		print_debug(entry.stack.item_name)
