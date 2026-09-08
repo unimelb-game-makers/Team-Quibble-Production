@@ -1,5 +1,8 @@
+class_name Drawer
 extends Control
 
+
+signal leave_drawer
 
 var cols : int
 var rows : int
@@ -70,6 +73,11 @@ func _ready() -> void:
 	hotbar = Inventory.new(hotbar_grid, 1)
 	hotbar.spawn_slots(Inventory.create_empty_stacks(3))
 	inv_component.attach_inventory(hotbar) 
+
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("close_minigame"):
+		leave_drawer.emit(hotbar)
 
 
 func set_sort_key(index: int) -> void:

@@ -30,7 +30,6 @@ func attach_inventory(new_inventory: Inventory) -> void:
 		default_pickup_amount = new_inventory.max_quantity
 	
 	for slot in new_inventory.item_slots:
-		print(slot.stack.item_name)
 		slot.gui_input.connect(slot_clicked.bind(new_inventory, slot))
 
 
@@ -80,6 +79,7 @@ func swap_held_stack(slot: ItemSlot) -> void:
 # Called when player clicks on item slot
 func slot_clicked(event: InputEvent, inventory: Inventory, slot: ItemSlot) -> void:
 	if event.is_action_pressed("grab_inventory_item"):
+		print("clicked")
 		# Nothing currently held
 		if !dragging:
 			pickup_stack(slot)
@@ -88,6 +88,7 @@ func slot_clicked(event: InputEvent, inventory: Inventory, slot: ItemSlot) -> vo
 			place_stack(inventory, slot)
 		# Swap held stack with another
 		else:
+			print("adsa")
 			swap_held_stack(slot)
 	
 	elif event.is_action_pressed("place_inventory_item"):

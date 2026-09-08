@@ -32,6 +32,14 @@ func spawn_slots(item_list: Array[Stack]) -> void:
 		new_instance.stack = item_list[i]
 
 
+func copy_inventory(original : Inventory) -> void:
+	for slot in item_slots:
+		storage.remove_child(slot)
+	
+	spawn_slots(original.export_stacks())
+
+
+
 # Adds new stack to the inventory priotising adding to existing stacks 
 func blind_add_stack(new_item: Stack) -> Stack:
 	# Adds to existing stacks
@@ -93,3 +101,11 @@ func sort_items(sort_func: Callable) -> void:
 	
 	for node in item_slots:
 		storage.add_child(node)
+
+
+func export_stacks() -> Array[Stack]:
+	var stacks : Array[Stack]
+	for slot in item_slots:
+		stacks.append(slot.stack)
+	
+	return stacks
