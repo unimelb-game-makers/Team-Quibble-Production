@@ -20,8 +20,6 @@ var quantity : int:
 			update_stack()
 		updated_values.emit()
 
-# Items can have more than max_quanity if on ground
-const MAX_QUANTITY: int = 10
 var isEmpty = false
 
 var sprite: Texture

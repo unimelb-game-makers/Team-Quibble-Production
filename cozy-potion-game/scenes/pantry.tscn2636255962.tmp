@@ -21,12 +21,14 @@ offset_bottom = 703.0
 
 [node name="InvComponent" parent="Pantry" unique_id=1705191911 instance=ExtResource("2_tw74k")]
 
-[node name="Hotbar" type="HBoxContainer" parent="Pantry" unique_id=1864505031]
+[node name="Hotbar" type="GridContainer" parent="Pantry" unique_id=765213913]
 layout_mode = 0
 offset_left = 362.0
 offset_top = 974.0
 offset_right = 1515.0
 offset_bottom = 1094.0
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
 
 [node name="InfoDisplay" type="Control" parent="Pantry" unique_id=1653964864]
 anchors_preset = 0
