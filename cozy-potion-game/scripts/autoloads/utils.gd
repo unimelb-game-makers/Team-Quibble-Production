@@ -48,3 +48,4 @@ static func pick_random_weighted(items: Array, weights: Array[float]):
 	return items.pick_random()
 
 var popup_manager: PopupManager
+var list_manager: ListManager

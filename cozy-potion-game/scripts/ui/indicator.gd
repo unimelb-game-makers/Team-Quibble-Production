@@ -1,12 +1,10 @@
 extends Node2D
 class_name Indicator
 
-@export var node: Node3D
+var pivot_pos: Vector3
 
-func set_pivot():
-	global_position = get_viewport().get_camera_3d().unproject_position(node.global_position)
-	pass
+func set_pivot(pos: Vector3):
+	pivot_pos = pos
 
 func _process(delta: float) -> void:
-	set_pivot()
-	print("here")
+	global_position = get_viewport().get_camera_3d().unproject_position(pivot_pos)
