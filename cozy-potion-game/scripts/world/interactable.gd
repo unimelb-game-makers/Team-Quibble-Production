@@ -11,18 +11,19 @@ var popup: PopupText = null
 
 func _ready() -> void:
 	set_collision_layer_value(INTERACTABLE_LAYER, true)
-	body_entered.connect(_body_entered)
-	body_exited.connect(_body_exited)
+	area_entered.connect(_area_entered)
+	area_exited.connect(_area_exited)
 
 func interact():
 	interacted.emit()
 	if popup: popup.queue_free()
 
-## Handle when the player enters the box
-func _body_entered(body: Node3D):
-	if body is WorldPlayer:
+## Handle when an area enters the box
+func _area_entered(area: Area3D):
+	if area is PlayerInteractableDetector:
 		popup = Utils.popup_manager.spawn_popup(self)
-## When player leaves box
-func _body_exited(body: Node3D):
-	if body is WorldPlayer and popup:
+
+## When area leaves box
+func _area_exited(area: Area3D):
+	if area is PlayerInteractableDetector and popup:
 		popup.queue_free()

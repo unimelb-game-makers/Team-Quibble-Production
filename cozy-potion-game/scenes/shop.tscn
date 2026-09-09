@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
+[ext_resource type="Script" uid="uid://c5d8fk5q5gbku" path="res://scripts/world/player_interactable_detector.gd" id="11_lxs01"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
 [ext_resource type="Script" uid="uid://b6xdw32473ggf" path="res://scripts/ui/indicator.gd" id="13_ru2r1"]
 [ext_resource type="Texture2D" uid="uid://c2mvlk1clgcro" path="res://assets/sprites/potion_red_64.png" id="14_lxs01"]
@@ -543,6 +544,7 @@ transform = Transform3D(0.049481273, 0, -0.9987751, 0, 1, 0, 0.9987751, 0, 0.049
 [node name="InteractableCollisionShape" type="Area3D" parent="Node3D/Player/AnimationPivot" unique_id=362638963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0661669, 0.11184323, -2.5223014)
 collision_mask = 1048577
+script = ExtResource("11_lxs01")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Player/AnimationPivot/InteractableCollisionShape" unique_id=1628446424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133395195, 0, 1.3472493)

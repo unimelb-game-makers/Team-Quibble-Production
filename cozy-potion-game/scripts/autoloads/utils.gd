@@ -1,6 +1,9 @@
 extends Node
 # This is a ductape solution. A better solution will probably need to be implemented in the future
 
+var popup_manager: PopupManager
+var list_manager: ListManager
+
 # project group names
 const Group = {
 	GROUP_PLAYER = "player",
@@ -46,6 +49,3 @@ static func pick_random_weighted(items: Array, weights: Array[float]):
 	
 	assert(false, "something is wrong with this function")
 	return items.pick_random()
-
-var popup_manager: PopupManager
-var list_manager: ListManager
