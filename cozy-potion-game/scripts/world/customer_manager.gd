@@ -38,11 +38,12 @@ func recall_customer() -> void:
 
 func _on_customer_interact() -> void:
 	if not customer_world.has_conveyed_request:
-		
 		DialogueManager.show_example_dialogue_balloon(CustomerDialogue.get_initial_dialogue(customer_world.customer), "start")
 		customer_world.has_conveyed_request = true
+		Utils.corner_needs_list_manager.create_list(customer_world.customer)
 	else:
 		var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
+		Utils.corner_needs_list_manager.clear_list()
 		if customer_world.customer.check_potion_sufficient(player.potion):
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
 			await DialogueManager.dialogue_ended
