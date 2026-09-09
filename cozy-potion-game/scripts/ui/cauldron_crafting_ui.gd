@@ -29,8 +29,8 @@ func create_potion() -> void:
 	var created_potion := potion_brewer.attempt_brewing(PotionBrewing.recipe)
 
 	potion_created_container.show()
-	potion_created_name_label.text = "You made a %s!" % created_potion.name
-	potion_created_value_label.text = "(which you can sell for $%d.)" % created_potion.value
+	potion_created_name_label.text = "You made a %s!" % created_potion.potion_name
+	potion_created_value_label.text = "(which you can sell for $%d.)" % created_potion.potion_value
 	
 	get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER).potion = created_potion
 	#reset_potion()

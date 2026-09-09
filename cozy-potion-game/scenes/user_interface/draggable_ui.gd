@@ -54,7 +54,7 @@ var ingredient_resource: PotionIngredient
 
 func set_resource(_ingredient_resource: PotionIngredient) -> void:
 	ingredient_resource = _ingredient_resource
-	ingredient_name = ingredient_resource.name
+	ingredient_name = ingredient_resource.ingredient_name
 	label.text = ingredient_name
 
 func get_info() -> String:
