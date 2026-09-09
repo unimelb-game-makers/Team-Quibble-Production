@@ -2,31 +2,48 @@
 
 [ext_resource type="Script" uid="uid://cms2728e0rt6h" path="res://scripts/minigame/crushing_minigame/crushing_minigame_scene.gd" id="1_fhxy2"]
 [ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scenes/prefabs/minigame/crushing_minigame/pestle.tscn" id="1_j31fb"]
-[ext_resource type="Texture2D" uid="uid://w2ytjmje0lw2" path="res://assets/sprites/minigame/crushing_minigame/Tan stone mortar.jpeg" id="2_eukv0"]
+[ext_resource type="Texture2D" uid="uid://d4j1fyiiegfeq" path="res://assets/sprites/minigame/crushing_minigame/Mortar.png" id="2_eukv0"]
 [ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scenes/prefabs/minigame/crushing_minigame/ingredient_ball.tscn" id="2_fhxy2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvm4"]
+size = Vector2(853, 21)
 
 [node name="CrushingMinigame" type="CanvasLayer" unique_id=1189992554]
 script = ExtResource("1_fhxy2")
 metadata/_custom_type_script = "uid://5vr6exm8hl07"
 
-[node name="Mortar" type="StaticBody2D" parent="." unique_id=611331611]
-position = Vector2(960, 668)
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1194482863]
+custom_minimum_size = Vector2(1600, 900)
+offset_right = 1600.0
+offset_bottom = 900.0
+color = Color(0, 0, 0, 0.10980392)
 
-[node name="Sprite2D" type="Sprite2D" parent="Mortar" unique_id=1375926958]
-position = Vector2(-35, -13)
-scale = Vector2(0.72, 0.72)
+[node name="Mortar" type="StaticBody2D" parent="." unique_id=611331611]
+position = Vector2(732, 692)
+
+[node name="Mortar3" type="Sprite2D" parent="Mortar" unique_id=40044891]
+position = Vector2(21, -254)
+scale = Vector2(2, 2)
 texture = ExtResource("2_eukv0")
-region_enabled = true
-region_rect = Rect2(364.23303, 218.25635, 788.9972, 665.39685)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar" unique_id=2009040266]
-polygon = PackedVector2Array(-34, -15, -142, -37, -171, -78, -177, -115, -205, -114, -192, -39, -126, 64, -34, 106, 61, 98, 131, 51, 175, -17, 197, -109, 196, -124, 165, -126, 145, -73, 96, -41, 29, -24)
+position = Vector2(2, 56)
+polygon = PackedVector2Array(7, 43, -144, 11, -245, -54, -293, -116, -327, -198, -330, -250, -383, -249, -382, -177, -345, -84, -275, -5, -170, 61, -89, 88, 112, 89, 232, 51, 328, -18, 380, -85, 419, -191, 417, -250, 365, -245, 354, -178, 326, -112, 282, -56, 196, 2, 105, 34)
 
 [node name="IngredientBall" parent="." unique_id=932391481 groups=["IngredientBall"] instance=ExtResource("2_fhxy2")]
-position = Vector2(832, 448)
+position = Vector2(867, 658)
 
 [node name="IngredientBall2" parent="." unique_id=1684924022 groups=["IngredientBall"] instance=ExtResource("2_fhxy2")]
-position = Vector2(1088, 448)
+position = Vector2(634, 659)
 
-[node name="Mortar2" parent="." unique_id=1770029033 instance=ExtResource("1_j31fb")]
+[node name="Pestle" parent="." unique_id=1770029033 instance=ExtResource("1_j31fb")]
 position = Vector2(960, 256)
+collision_mask = 1073741825
+
+[node name="BallCeiling" type="StaticBody2D" parent="." unique_id=565693533]
+position = Vector2(725, 396)
+collision_layer = 2147483648
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BallCeiling" unique_id=1193264195]
+position = Vector2(15, 82)
+shape = SubResource("RectangleShape2D_4dvm4")

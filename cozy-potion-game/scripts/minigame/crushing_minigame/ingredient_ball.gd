@@ -14,10 +14,10 @@ class_name IngredientBall extends RigidBody2D
 #scale of new balls
 @export var split_scale: float
 #godot doesn't allow scaling rigidbodies, so we have to do a bit of a workaround
-@export var polygon: Polygon2D
-@export var collision_polygon: CollisionPolygon2D
+@export var collision_shape: CollisionShape2D
 @export var collision_area: Area2D
-@export var textureRect: TextureRect
+@export var ingredient_sprite: Sprite2D
+@export var ingredient_background: Sprite2D
 
 # WHY are these all exports :(
 
@@ -26,14 +26,13 @@ class_name IngredientBall extends RigidBody2D
 
 var internal_scale = 1
 
-var color: Color = Color.BLACK
+var color: Color = Color.RED
 
 #signal split_into(_ingredient: IngredientBall)
 
 #if this ball can still split, for each marker in the split markers array,
 #generate a smaller duplicate of this ball and increment its split count, then put it on that marker
 func split() -> void:
-
 	if split_count < split_limit:
 		for marker in split_markers:
 			var new_ball: IngredientBall = duplicate()
@@ -53,11 +52,11 @@ func split() -> void:
 #oh my god this is so bad
 func set_internal_scale(new_scale: float) -> void:
 	internal_scale = new_scale
-	polygon.scale = Vector2.ONE * internal_scale
-	collision_polygon.scale = Vector2.ONE * internal_scale
+	collision_shape.scale = Vector2.ONE * internal_scale
 	#$CollisionShape2D.scale = Vector2.ONE * internal_scale
 	collision_area.scale = Vector2.ONE * internal_scale
-	textureRect.scale = Vector2.ONE * 2 * internal_scale
+	ingredient_background.scale = Vector2.ONE * 1.8 * internal_scale
+	ingredient_sprite.scale = Vector2.ONE * 1.8 * internal_scale
 	
 	for marker in split_markers:
 		marker.position *= new_scale
@@ -72,7 +71,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			split()
 
 func set_texture_and_color(_texture: Texture2D, _color: Color, _apply_color: bool = true) -> void:
-	textureRect.set_texture(_texture)
+	ingredient_sprite.set_texture(_texture)
 	color = _color
 	if _apply_color:
 		modulate = _color

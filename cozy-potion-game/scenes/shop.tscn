@@ -748,7 +748,7 @@ minigame_scene = ExtResource("11_gobkm")
 interactable = NodePath("PantryMinigameInteractable")
 
 [node name="PantryMinigameInteractable" type="Area3D" parent="Node3D/PantryMinigame" unique_id=1736279303]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 3.8048701)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011726, 0.48404193, 3.8048701)
 collision_layer = 1048576
 collision_mask = 67108865
 script = ExtResource("11_7mqwv")
@@ -787,10 +787,10 @@ libraries/ = SubResource("AnimationLibrary_yuijs")
 
 [node name="CustomerManager" type="Node" parent="CustomerPlane" unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
 script = ExtResource("11_24it5")
-dialogue_resource = ExtResource("12_7mqwv")
 customer_anim_player = NodePath("../AnimationPlayer")
 customer_interactable = NodePath("../Customer/Interactable")
 customer_world = NodePath("../Customer")
+dialogue_resource = ExtResource("12_7mqwv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CustomerPlane" unique_id=495017166]
 
