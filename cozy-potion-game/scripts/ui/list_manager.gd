@@ -1,12 +1,12 @@
 extends Control
-class_name ListManager
+class_name CornerNeedsListManager
 
 @onready var vbox: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/VBoxContainer
 
 var customer_need_label: PackedScene = preload("res://scenes/user_interface/customer_need_label.tscn")
 
 func _ready() -> void:
-	Utils.list_manager = self
+	Utils.corner_needs_list_manager = self
 
 func create_list(customer: Customer):
 	clear_list()
