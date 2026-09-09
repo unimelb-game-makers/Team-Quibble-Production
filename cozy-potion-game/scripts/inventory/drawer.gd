@@ -24,18 +24,16 @@ var sort_keys : Array[Callable] = [
 			return false
 		if b.stack.isEmpty:
 			return true
-		return a.stack.item_name.naturalnocasecmp_to(b.stack.item_name) < 0,
+		return a.stack.get_item_name().naturalnocasecmp_to(b.stack.get_item_name()) < 0,
 	func(a: ItemSlot, b: ItemSlot):
 		return a.stack.quantity > b.stack.quantity,
 	func(a: ItemSlot, b: ItemSlot):
-		var ingre_list := Potion.potion_ingredient_index
-		if a.stack.isEmpty:
+		if a.stack.isEmpty or b.stack.item is Potion:
 			return false
-		if b.stack.isEmpty:
+		if b.stack.isEmpty or a.stack.item is Potion:
 			return true
-		var a_ingre = ingre_list.get(a.stack.item_name)
-		var b_ingre = ingre_list.get(b.stack.item_name)
-		return a_ingre.healing < b_ingre.healing,
+		return a.stack.attributes.get(Alchemy.AttributeID.ATTR_HEALING) < \
+			b.stack.attributes.get(Alchemy.AttributeID.ATTR_HEALING),
 		]
 var sort_index: int = 0
 
@@ -58,11 +56,11 @@ func _ready() -> void:
 	gui_input.connect(inv_component.click_background)
 	
 	var filled_stacks := Inventory.create_empty_stacks(max_slots)
-	var keys = Potion.potion_ingredient_index.keys()
+	var ingredients = Alchemy.ingredient_list
 	
-	for i in range(keys.size()):
+	for i in range(ingredients.size()):
 		filled_stacks[i].quantity = 40
-		filled_stacks[i].item_name = keys[i]
+		filled_stacks[i].item = ingredients[i]
 	
 	drawer = Inventory.new(inv_grid)
 	drawer.spawn_slots(filled_stacks)

@@ -9,6 +9,7 @@ HandSprite = NodePath("HandSprite")
 QuantityLabel = NodePath("QuantityLabel")
 
 [node name="HandSprite" type="Sprite2D" parent="." unique_id=399070844]
+scale = Vector2(0.5, 0.5)
 
 [node name="QuantityLabel" type="Label" parent="." unique_id=1360882390]
 offset_left = 13.0

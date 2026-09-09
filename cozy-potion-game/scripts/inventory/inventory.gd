@@ -16,7 +16,7 @@ static func create_empty_stacks(inv_size : int) -> Array[Stack]:
 	var items :Array[Stack] = []
 	items.resize(inv_size)
 	for i in range(inv_size):
-		items[i] = Stack.new(0)
+		items[i] = Stack.new()
 	return items
 
 
@@ -44,7 +44,7 @@ func copy_inventory(original : Inventory) -> void:
 func blind_add_stack(new_item: Stack) -> Stack:
 	# Adds to existing stacks
 	for i in range(item_slots.size()):
-		if item_slots[i].stack.item_name == new_item.item_name:
+		if item_slots[i].stack.compare_items(new_item):
 			new_item = add_stack_to_slot(new_item, item_slots[i])
 			
 			# If stack is now empty end
@@ -69,8 +69,8 @@ func add_stack_to_slot(new_item: Stack, slot: ItemSlot) -> Stack:
 	# (this creates weird redundancy thats semi nesscary, 
 	# but like want to prevent misuse as well) 
 	if slot.stack.isEmpty:
-		slot.stack = Stack.new(0).clone_type(new_item)
-	elif slot.stack.item_name != new_item.item_name:
+		slot.stack = Stack.new(0, new_item.item)
+	elif not slot.stack.compare_items(new_item):
 		return new_item
 	
 	var add_to_stack : int = \
