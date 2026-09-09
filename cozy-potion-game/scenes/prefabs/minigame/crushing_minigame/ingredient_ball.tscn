@@ -18,13 +18,14 @@ contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_sli4w")
 split_limit = 3
-min_split_vel = 75.0
+min_split_vel = 300.0
 split_markers = [NodePath("SplitSpawn1"), NodePath("SplitSpawn2")]
-split_scale = 0.5
+split_scale = 0.66
 collision_shape = NodePath("CollisionShape2D")
 collision_area = NodePath("Area2D")
-ingredient_sprite = NodePath("IngredientSpriteBackground/IngredientSprite")
+ingredient_sprite = NodePath("IngredientSprite")
 ingredient_background = NodePath("IngredientSpriteBackground")
+base_grace_period = 0.15
 
 [node name="SplitSpawn1" type="Marker2D" parent="." unique_id=155698116]
 position = Vector2(35, 0)
@@ -33,6 +34,8 @@ position = Vector2(35, 0)
 position = Vector2(-27, -1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1280359596]
+collision_layer = 0
+collision_mask = 536870912
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1377359311]
 shape = SubResource("CircleShape2D_4dvm4")
@@ -40,8 +43,8 @@ shape = SubResource("CircleShape2D_4dvm4")
 [node name="IngredientSpriteBackground" type="Sprite2D" parent="." unique_id=514089852]
 texture = ExtResource("2_fv063")
 
-[node name="IngredientSprite" type="Sprite2D" parent="IngredientSpriteBackground" unique_id=2099921319]
-scale = Vector2(1.8, 1.8)
+[node name="IngredientSprite" type="Sprite2D" parent="." unique_id=2099921319]
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("3_la51t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=72396208]

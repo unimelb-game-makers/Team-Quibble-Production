@@ -13,6 +13,7 @@ script = ExtResource("1_fhxy2")
 metadata/_custom_type_script = "uid://5vr6exm8hl07"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1194482863]
+visible = false
 custom_minimum_size = Vector2(1600, 900)
 offset_right = 1600.0
 offset_bottom = 900.0
@@ -37,8 +38,9 @@ position = Vector2(867, 658)
 position = Vector2(634, 659)
 
 [node name="Pestle" parent="." unique_id=1770029033 instance=ExtResource("1_j31fb")]
+z_index = 1
 position = Vector2(960, 256)
-collision_mask = 1073741825
+collision_layer = 536870912
 
 [node name="BallCeiling" type="StaticBody2D" parent="." unique_id=565693533]
 position = Vector2(725, 396)
