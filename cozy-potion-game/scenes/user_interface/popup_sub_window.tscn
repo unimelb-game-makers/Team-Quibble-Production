@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b3cd2a5yxvfp"]
 
 [ext_resource type="Script" uid="uid://cwkp4uesjlu0l" path="res://scripts/popup_sub_window.gd" id="1_xhyie"]
+[ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="2_2rywg"]
 
 [sub_resource type="Animation" id="Animation_mb0g6"]
 length = 0.001
@@ -132,9 +133,6 @@ _data = {
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eukv0"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_2rywg"]
-viewport_path = NodePath("SubViewport")
-
 [node name="PopupSubWindow" type="CanvasLayer" unique_id=1360167922 node_paths=PackedStringArray("sub_viewport", "animation_player")]
 script = ExtResource("1_xhyie")
 sub_viewport = NodePath("PanelContainer/SubViewportContainer/SubViewport")
@@ -157,13 +155,26 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxEmpty_eukv0")
 
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2088361896]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer" unique_id=591983263]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_2rywg")
+theme_override_font_sizes/font_size = 64
+text = "Q to exit"
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="PanelContainer" unique_id=8017029]
 z_index = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="SubViewport" type="SubViewport" parent="PanelContainer/SubViewportContainer" unique_id=230729811]
+[node name="SubViewport" type="SubViewport" parent="PanelContainer/SubViewportContainer" unique_id=2030805699]
 transparent_bg = true
 handle_input_locally = false
 size = Vector2i(1600, 900)
