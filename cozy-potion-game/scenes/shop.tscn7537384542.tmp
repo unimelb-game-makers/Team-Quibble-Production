@@ -304,11 +304,6 @@ points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, 
 
 [node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 groups=["popup_subwindow"] instance=ExtResource("8_m4ofw")]
 
-[node name="hotbar" type="HBoxContainer" parent="SceneUI" unique_id=1593043109 groups=["hotbar"]]
-offset_left = 627.0
-offset_top = 991.0
-offset_right = 1360.0
-offset_bottom = 1062.0
 [node name="TimeUI" type="CanvasLayer" parent="SceneUI" unique_id=1010363722]
 
 [node name="DigitalClock" type="Control" parent="SceneUI/TimeUI" unique_id=1383968923 node_paths=PackedStringArray("time_label", "day_label", "advance_time_button")]

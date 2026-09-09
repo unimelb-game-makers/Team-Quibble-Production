@@ -10,7 +10,7 @@ var dragging: bool = false # True if ingredient being dragged
 var ingredient_dragging: Ingredient = null # Ingredient being dragged
 
 func _ready() -> void:
-	for ingredient in Potion.potion_ingredient_index.values():
+	for ingredient in Alchemy.ingredient_list:
 		var instance = INGREDIENT_SCENE.instantiate()
 		assert(instance is DraggableUI, "Scene instantiated was not of type Ingredient")
 
@@ -61,7 +61,7 @@ func get_dragging_ingredient() -> Ingredient:
 # Called when Ingredients feel input, trys to start dragging given ingredient
 func start_dragging(_viewport: Node, event: InputEvent, _shape_idx: int, node) \
 		-> void:
-	print(_viewport)
+	print_debug(_viewport)
 	if !dragging and event.is_action_pressed("LMB"):
 		dragging = true
 		ingredient_dragging = node
