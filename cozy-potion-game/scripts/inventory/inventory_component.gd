@@ -79,16 +79,14 @@ func swap_held_stack(slot: ItemSlot) -> void:
 # Called when player clicks on item slot
 func slot_clicked(event: InputEvent, inventory: Inventory, slot: ItemSlot) -> void:
 	if event.is_action_pressed("grab_inventory_item"):
-		print("clicked")
 		# Nothing currently held
 		if !dragging:
 			pickup_stack(slot)
 		# Add same stack to each other
-		elif slot.stack.item_name == stack_dragging.item_name:
+		elif slot.stack.compare_items(stack_dragging):
 			place_stack(inventory, slot)
 		# Swap held stack with another
 		else:
-			print("adsa")
 			swap_held_stack(slot)
 	
 	elif event.is_action_pressed("place_inventory_item"):

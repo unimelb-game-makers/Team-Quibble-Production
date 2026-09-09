@@ -26,7 +26,7 @@ func _ready() -> void:
 		assert(object is InteractableArea, 
 				"A node that isn't an interactable object has been assigned said tag")
 		object.connect("interacted", start_display_popup)
-		print("connected to node %s" % object)
+		print_debug("connected to node %s" % object)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("close_minigame"):

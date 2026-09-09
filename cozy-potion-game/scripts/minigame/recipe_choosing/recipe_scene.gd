@@ -19,5 +19,5 @@ func get_dragging() -> Ingredient:
 func win_minigame() -> void:
 	
 	PotionBrewing.recipe = step_holder.get_final_steps()
-	print(PotionBrewing.recipe)
+	print_debug(PotionBrewing.recipe)
 	minigame_won.emit()
