@@ -4,12 +4,6 @@ extends CanvasLayer
 @export var sub_viewport: SubViewport
 @export var animation_player : AnimationPlayer
 
-# Don't do this. Never assume a node will be there. I'm already not the biggest fan of using the
-# whole `@onready var = $Node` method but given the time constraints I'm fine if it's used for
-# children but not for getting nodes up the tree. Scripts should serve a single purpose and be as
-# lazy with aquiring the information they need.
-#@onready var player: WorldPlayer = $"../Node3D/Player" 
-
 var player: WorldPlayer
 var popup: Node
 
@@ -36,20 +30,29 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("close_minigame"):
-		if popup: end_display_popup()
+		if popup: end_display_popup(null)
 
-func start_display_popup(_scene_to_load: PackedScene) -> void:
+func start_display_popup(_scene_to_load: PackedScene, hotbar: Inventory,\
+		input_index: int) -> void:
 	player.accepting_control = false
 	popup = _scene_to_load.instantiate()
 
-	popup.minigame_won.connect(end_display_popup)
+	popup.minigame_won.connect(end_display_popup, ConnectFlags.CONNECT_ONE_SHOT)
 
 	sub_viewport.add_child(popup)
 	animation_player.play(&"fade_in")
+	
+	# Assuming this is a minigame
+	if popup is Minigame:
+		popup.set_hotbar(hotbar, input_index)
 
-func end_display_popup() -> void:
+func end_display_popup(output_hotbar: Inventory) -> void:
+	if output_hotbar != null:
+		player.hotbar.copy_inventory(output_hotbar)
+	
 	animation_player.play(&"fade_out")
 	await animation_player.animation_finished
+	# Raise errors but idk what they do
 	sub_viewport.remove_child(popup)
 	popup.minigame_won.disconnect(end_display_popup)
 

@@ -8,7 +8,8 @@ var corner_needs_list_manager: Control
 const Group = {
 	GROUP_PLAYER = "player",
 	GROUP_INTERACTABLE_OBJECTS = "interactable_objects",
-	GROUP_POPUP_SUBWINDOW = "popup_subwindow"
+	GROUP_POPUP_SUBWINDOW = "popup_subwindow",
+	GROUP_HOTBAR = "hotbar",
 }
 
 #takes a string path and returns the json file at that location

@@ -11,7 +11,7 @@ corner_radius_bottom_right = 65
 corner_radius_bottom_left = 65
 corner_detail = 7
 
-[node name="IngredientBall" type="RigidBody2D" unique_id=932391481 node_paths=PackedStringArray("split_markers", "polygon", "collision_polygon", "collision_area", "texture")]
+[node name="IngredientBall" type="RigidBody2D" unique_id=932391481 node_paths=PackedStringArray("split_markers", "polygon", "collision_polygon", "collision_area", "textureRect")]
 mass = 0.1
 contact_monitor = true
 max_contacts_reported = 10
@@ -23,7 +23,7 @@ split_scale = 0.5
 polygon = NodePath("Polygon2D")
 collision_polygon = NodePath("CollisionPolygon2D")
 collision_area = NodePath("Area2D")
-texture = NodePath("PanelContainer")
+textureRect = NodePath("PanelContainer/TextureRect")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=539219241]
 color = Color(1, 0.24705882, 1, 1)

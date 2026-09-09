@@ -29,6 +29,11 @@ var potion: Potion
 
 var accepting_control: bool = true
 
+#hotbar stuff
+var hotbar : Inventory
+var hotbar_grid: Container
+var input_stack_index: int = 0
+
 # this is called before _ready
 func _init() -> void:
 	add_to_group(Utils.Group.GROUP_PLAYER) # may seem overkill but trust
@@ -36,10 +41,20 @@ func _init() -> void:
 func _ready() -> void:
 	mouse_detector_left.mouse_entered.connect(rotate_camera.bind(-1))
 	mouse_detector_right.mouse_entered.connect(rotate_camera.bind(1))
+	
+	#idk if great way to get contianer
+	hotbar_grid = get_tree().get_first_node_in_group(Utils.Group.GROUP_HOTBAR)
+	# sets up hotbar
+	hotbar = Inventory.new(hotbar_grid)
+	hotbar.spawn_slots(Inventory.create_empty_stacks(3))
+	for i in range(hotbar.item_slots.size()):
+		hotbar.item_slots[i].gui_input.connect(set_input_stack.bind(i))
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if accepting_control:
 		aesthetic_movement(event)
+
 
 func aesthetic_movement(event: InputEvent) -> void:
 	if event.is_action_pressed("camera_left"):
@@ -158,10 +173,16 @@ func activate_top_down_cam() -> void:
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween2.tween_property(camera, "position", Vector3(0,7.0,0), 0.2)
 
-## Called when player presses E
+
+func set_input_stack(event: InputEvent, slot_index:int) -> void:
+	if event.is_action_pressed("LMB"):
+		input_stack_index = slot_index
+
+
 func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
 		if area is Interactable:
-			area.interact()
+			# parses index as Im fudging selecting stack
+			area.interacted.emit(hotbar, input_stack_index)
 			# probably bad to interact with two things at once
 			return
