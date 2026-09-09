@@ -10,9 +10,9 @@ const DAYS = ["Monday",
 "Sunday",
 ]
 #the speed that the day progresses when it has a time to progress towards
-const day_progress_rate_per_second: float = 0.03
+const day_progress_rate_per_second: float = 0.06
 var customers_per_day: int = 12
-var day_start_hour: int = 6
+var day_start_hour: int = 12
 var day_length: int = 10
 
 #actual variables
