@@ -10,7 +10,7 @@ const DAYS = ["Monday",
 "Sunday",
 ]
 #the speed that the day progresses when it has a time to progress towards
-const day_progress_rate_per_second: float = 0.06
+const day_progress_rate_per_second: float = 0.09
 var customers_per_day: int = 12
 var day_start_hour: int = 12
 var day_length: int = 10
@@ -61,6 +61,9 @@ func days_passed_to_day_string() -> String:
 
 func get_day_progress_increment() -> float:
 	return 1.0/customers_per_day
+	
+func get_current_hour() -> int:
+	return int(day_start_hour + day_progress * day_length)
 	
 ##progresses the day by either a custom amount or by an amout dependent on
 ##number of customers per day. returns true if this ended the day,
