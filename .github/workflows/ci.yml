@@ -58,24 +58,32 @@ jobs:
     concurrency:
       group: gh-pages-write
       queue: max
-    steps:
-      - name: Download web artifact
-        uses: actions/download-artifact@v8
-        with:
-          name: web
-          path: build/web
+steps:
+  - name: Download web artifact
+    uses: actions/download-artifact@v8
+    with:
+      name: web
+      path: build/web
 
-      - name: Publish preview
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ github.token }}
-          publish_dir: build/web
-          publish_branch: gh-pages
-          destination_dir: previews/${{ github.event.pull_request.number }}
-          keep_files: false
-          user_name: github-actions[bot]
-          user_email: 41898282+github-actions[bot]@users.noreply.github.com
-          commit_message: Publish preview for PR ${{ github.event.pull_request.number }}
+  - name: Install Git LFS
+    run: |
+      sudo apt-get update
+      sudo apt-get install -y git-lfs
+
+  - name: Configure Git LFS
+    run: git lfs install
+
+  - name: Publish preview
+    uses: peaceiris/actions-gh-pages@v4
+    with:
+      github_token: ${{ github.token }}
+      publish_dir: build/web
+      publish_branch: gh-pages
+      destination_dir: previews/${{ github.event.pull_request.number }}
+      keep_files: false
+      user_name: github-actions[bot]
+      user_email: 41898282+github-actions[bot]@users.noreply.github.com
+      commit_message: Publish preview for PR ${{ github.event.pull_request.number }}
 
   publish-main-pages:
     name: Publish main Pages build
