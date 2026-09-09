@@ -9,6 +9,8 @@ const DAYS = ["Monday",
 "Saturday",
 "Sunday",
 ]
+#the speed that the day progresses when it has a time to progress towards
+const day_progress_rate_per_second: float = 0.03
 var customers_per_day: int = 12
 var day_start_hour: int = 6
 var day_length: int = 10
@@ -16,11 +18,34 @@ var day_length: int = 10
 #actual variables
 var day_progress: float = 0
 var days_passed: int = 0
+var target_day_progress: float = 0
 
 signal day_complete
 signal day_progress_changed
 signal day_started
 
+func _ready() -> void:
+	#wait for other autoloads to connect their signals 
+	await get_tree().process_frame
+	start_day()
+
+#this block is responsible for actually progressing the day towards
+#the target day progress and checking if the day is over
+func _process(delta: float) -> void:
+	var init = day_progress
+
+	day_progress = move_toward(day_progress, target_day_progress, day_progress_rate_per_second * delta)
+	if is_equal_approx(day_progress_rate_per_second, 0) or day_progress_rate_per_second < 0:
+		day_progress = target_day_progress
+	
+	#could cause issues at insanely high framerates, but i dont want to redraw 
+	#the clock ui every frame in other cases
+	if not is_equal_approx(init, day_progress):
+		day_progress_changed.emit()
+		
+	if day_progress >= 1:
+		end_day()
+		
 func day_progress_to_time_string() -> String:
 	var hour: int = int(wrap(day_start_hour + day_progress * day_length, 1, 13))
 	var minute: int = 0
@@ -40,21 +65,18 @@ func get_day_progress_increment() -> float:
 ##progresses the day by either a custom amount or by an amout dependent on
 ##number of customers per day. returns true if this ended the day,
 ##false otherwise
-func progress_day(is_custom: bool = false, increment: float = 0) -> bool:
-	if not is_custom:
+func progress_day(increment: float = 0):
+	if not increment:
 		increment = get_day_progress_increment()
-	day_progress += increment
-	day_progress_changed.emit()
+	target_day_progress += increment
 	
-	if day_progress >= 1:
-		end_day()
-		return true
-	
-	return false
+
+
 
 func start_day() -> void:
 	day_started.emit()
 	day_progress = 0
+	target_day_progress = 0
 	days_passed += 1
 	day_progress_changed.emit()
 
