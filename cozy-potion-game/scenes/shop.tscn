@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
+[ext_resource type="PackedScene" uid="uid://ccvp68inp2bhf" path="res://scenes/mini_games/ingredient_drawer.tscn" id="11_gobkm"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
@@ -457,6 +458,21 @@ collision_mask = 67108865
 script = ExtResource("11_7mqwv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CrushingMinigame/CrushingMinigameInteractable" unique_id=957162740]
+shape = SubResource("BoxShape3D_aue3q")
+
+[node name="PantryMinigame" type="Node3D" parent="Node3D" unique_id=437026515 node_paths=PackedStringArray("interactable")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0603027, 0, -4.052246)
+script = ExtResource("6_heatd")
+minigame_scene = ExtResource("11_gobkm")
+interactable = NodePath("PantryMinigameInteractable")
+
+[node name="PantryMinigameInteractable" type="Area3D" parent="Node3D/PantryMinigame" unique_id=1736279303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 3.8048701)
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("11_7mqwv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/PantryMinigame/PantryMinigameInteractable" unique_id=2102240272]
 shape = SubResource("BoxShape3D_aue3q")
 
 [node name="CustomerPlane" type="MeshInstance3D" parent="." unique_id=565643317]
