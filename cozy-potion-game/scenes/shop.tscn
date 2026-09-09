@@ -428,7 +428,7 @@ text = "Ok, Whatever."
 [node name="PopupManager" type="CanvasLayer" parent="SceneUI" unique_id=25847526]
 script = ExtResource("4_j14q8")
 
-[node name="ListManager" type="Control" parent="SceneUI" unique_id=1083800987]
+[node name="ListManager" type="Control" parent="SceneUI" unique_id=1083800987 node_paths=PackedStringArray("vbox")]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -437,6 +437,7 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 script = ExtResource("5_pqync")
+vbox = NodePath("PanelContainer/MarginContainer/VBoxContainer/VBoxContainer")
 
 [node name="PanelContainer" type="PanelContainer" parent="SceneUI/ListManager" unique_id=1354279208]
 layout_mode = 1

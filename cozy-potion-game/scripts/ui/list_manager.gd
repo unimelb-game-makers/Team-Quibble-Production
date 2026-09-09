@@ -1,7 +1,7 @@
 extends Control
 class_name CornerNeedsListManager
 
-@onready var vbox: VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/VBoxContainer
+@export var vbox: VBoxContainer
 
 var customer_need_label: PackedScene = preload("res://scenes/user_interface/customer_need_label.tscn")
 

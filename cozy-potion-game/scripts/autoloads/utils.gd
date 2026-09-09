@@ -2,7 +2,7 @@ extends Node
 # This is a ductape solution. A better solution will probably need to be implemented in the future
 
 var popup_manager: PopupManager
-var list_manager: CornerNeedsListManager
+var corner_needs_list_manager: Control
 
 # project group names
 const Group = {
