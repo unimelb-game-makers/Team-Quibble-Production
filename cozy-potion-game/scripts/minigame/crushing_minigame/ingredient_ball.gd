@@ -17,7 +17,7 @@ class_name IngredientBall extends RigidBody2D
 @export var polygon: Polygon2D
 @export var collision_polygon: CollisionPolygon2D
 @export var collision_area: Area2D
-@export var textureRect: TextureRect
+@export var sprite_2d: Sprite2D
 
 # WHY are these all exports :(
 
@@ -53,11 +53,11 @@ func split() -> void:
 #oh my god this is so bad
 func set_internal_scale(new_scale: float) -> void:
 	internal_scale = new_scale
-	polygon.scale = Vector2.ONE * internal_scale
-	collision_polygon.scale = Vector2.ONE * internal_scale
-	#$CollisionShape2D.scale = Vector2.ONE * internal_scale
+	#polygon.scale = Vector2.ONE * internal_scale
+	#collision_polygon.scale = Vector2.ONE * internal_scale
+	$CollisionShape2D.scale = Vector2.ONE * internal_scale
 	collision_area.scale = Vector2.ONE * internal_scale
-	textureRect.scale = Vector2.ONE * 2 * internal_scale
+	sprite_2d.scale = Vector2.ONE * 2 * internal_scale
 	
 	for marker in split_markers:
 		marker.position *= new_scale
@@ -72,7 +72,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			split()
 
 func set_texture_and_color(_texture: Texture2D, _color: Color, _apply_color: bool = true) -> void:
-	textureRect.set_texture(_texture)
+	sprite_2d.set_texture(_texture)
 	color = _color
 	if _apply_color:
 		modulate = _color

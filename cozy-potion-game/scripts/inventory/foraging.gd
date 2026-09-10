@@ -17,9 +17,7 @@ func _ready() -> void:
 	
 	# Create connection to inventory
 	gui_input.connect(inv_component.click_background)
-	var inv := Inventory.new(inv_grid)
-	inv.spawn_slots(Inventory.create_empty_stacks(max_slots))
-	inv_component.attach_inventory(inv)
+	var start_stacks := inv_component.create_empty_stacks(max_slots)
+	inv_component.spawn_slots(inv_grid, start_stacks)
 	
-	inv.blind_add_stack(Stack.new(2, Alchemy.ingredient_list[0]))
-	inv.blind_add_stack(Stack.new(2, Alchemy.ingredient_list[1]))
+	inv_component.blind_add_stack(Stack.new(2, "Apple"))

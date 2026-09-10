@@ -1,1 +1,0 @@
-class_name PlayerInteractableDetector extends Area3D

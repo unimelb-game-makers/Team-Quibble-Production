@@ -16,7 +16,6 @@ texture = ExtResource("2_16ala")
 
 [node name="ItemSprite" type="Sprite2D" parent="." unique_id=76707666]
 position = Vector2(30.23967, 34)
-scale = Vector2(0.5, 0.5)
 
 [node name="QuantityLabel" type="Label" parent="." unique_id=2123998350]
 layout_mode = 0

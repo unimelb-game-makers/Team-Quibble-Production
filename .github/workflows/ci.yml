@@ -65,14 +65,6 @@ jobs:
           name: web
           path: build/web
 
-      - name: Install Git LFS
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y git-lfs
-
-      - name: Configure Git LFS
-        run: git lfs install
-
       - name: Publish preview
         uses: peaceiris/actions-gh-pages@v4
         with:
