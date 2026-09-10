@@ -8,7 +8,8 @@ var win_check_timer: float
 
 func _ready() -> void:
 	## TODO: placeholder
-	_apply_ingredient(placeholder_stack)
+	#_apply_ingredient(placeholder_stack)
+	pass
 
 #checks all the objects with tag ingredient ball to see if any have not reached their split limit
 #runs every 0.1 seconds or so
@@ -29,5 +30,8 @@ func _process(delta: float) -> void:
 		win_check_timer = 0
 
 func _apply_ingredient(_new_ingredient: Stack) -> void:
+	if hotbar.item_slots[input_index].stack.isEmpty:
+		win_minigame()
+	
 	for object in get_tree().get_nodes_in_group("IngredientBall"):
-		object.set_texture_and_color(placeholder_stack.get_sprite(), Color.RED, false)
+		object.set_texture_and_color(_new_ingredient.get_sprite(), Color.RED, false)
