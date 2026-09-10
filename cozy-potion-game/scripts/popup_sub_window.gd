@@ -54,7 +54,8 @@ func end_display_popup(output_hotbar: Inventory) -> void:
 	await animation_player.animation_finished
 	# Raise errors but idk what they do
 	sub_viewport.remove_child(popup)
-	popup.minigame_won.disconnect(end_display_popup)
+	if popup.is_connected("minigame_won", end_display_popup):
+		popup.minigame_won.disconnect(end_display_popup)
 
 	popup.queue_free()
 	
