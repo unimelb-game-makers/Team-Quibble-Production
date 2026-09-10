@@ -4,94 +4,34 @@ extends Node2D
 @export var HandSprite : Sprite2D
 @export var QuantityLabel : Label
 
-var item_slots: Array[ItemSlot]
+var inventorys: Array[Inventory]
 var max_slots : int
 
 var dragging := false
 var stack_dragging : Stack = null
+var default_pickup_amount = -1
+
 
 # When Dragging puts hand onto mouse
 func _process(_delta: float) -> void:
 	if dragging:
 		global_position = get_global_mouse_position()
-	
-	# Test Code can be removed
-	#if Input.is_action_just_pressed("K"):
-		#blind_add_stack(Stack.new(9).clone_type(stack_dragging))
-
-
-# Creates list of empty stacks
-func create_empty_stacks(inv_size : int) -> Array[Stack]:
-	var items :Array[Stack] = []
-	items.resize(inv_size)
-	for i in range(inv_size):
-		items[i] = Stack.new(0)
-	return items
-
-
-# Spawns ItemSlots with currently parsed stacks
-func spawn_slots(storage: Container, item_list: Array[Stack]) -> void:
-	item_slots = []
-	item_slots.resize(item_list.size())
-	for i in range(item_list.size()):
-		var new_instance := ItemSlot.get_item_scene().instantiate()
-		storage.add_child(new_instance)
 		
-		new_instance.gui_input.connect(slot_clicked.bind(new_instance))
-		item_slots[i] = new_instance
-		new_instance.stack = item_list[i]
 
 
-# Adds new stack to the inventory priotising adding to existing stacks 
-func blind_add_stack(new_item: Stack) -> Stack:
-	# Adds to existing stacks
-	for i in range(item_slots.size()):
-		if item_slots[i].stack.item_name == new_item.item_name:
-			new_item = add_stack_to_slot(new_item, item_slots[i])
-			
-			# If stack is now empty end
-			if new_item.isEmpty:
-				return new_item
+# Puts inventory in group, idk about this though
+func attach_inventory(new_inventory: Inventory) -> void:
+	inventorys.append(new_inventory)
 	
-	# Add to empty slots
-	for i in range(item_slots.size()):
-		if item_slots[i].stack.isEmpty:
-			new_item = add_stack_to_slot(new_item, item_slots[i])
-			
-			# If stack is now empty end
-			if new_item.isEmpty:
-				return new_item
+	if default_pickup_amount != -1:
+		default_pickup_amount = min(new_inventory.max_quantity,\
+			default_pickup_amount)
+	else:
+		default_pickup_amount = new_inventory.max_quantity
 	
-	return new_item
+	for slot in new_inventory.item_slots:
+		slot.gui_input.connect(slot_clicked.bind(new_inventory, slot))
 
-
-# Adds stack to another stack in a slot up to a limit
-func add_stack_to_slot(new_item: Stack, slot: ItemSlot) -> Stack:
-	# Make sure valid to add item to slot 
-	# (this creates weird redundancy thats semi nesscary, 
-	# but like want to prevent misuse as well) 
-	if slot.stack.isEmpty:
-		slot.stack = Stack.new(0).clone_type(new_item)
-	elif slot.stack.item_name != new_item.item_name:
-		return new_item
-	
-	var add_to_stack : int = \
-		min(slot.stack.MAX_QUANTITY - slot.stack.quantity, \
-		new_item.quantity)
-	
-	slot.stack.quantity += add_to_stack
-	new_item.quantity -= add_to_stack
-	
-	return new_item
-
-
-# Adds amount from 1 stack to a slot
-func add_some_to_slot(stack: Stack, slot: ItemSlot, amount: int) -> Stack:
-	if amount <= stack.quantity:
-		var clone := Stack.new(amount).clone_type(stack)
-		stack.quantity -= amount
-		return add_stack_to_slot(clone, slot)
-	return stack
 
 # Updates the hand to represent current dragging stack
 func update_hand() -> void:
@@ -104,33 +44,67 @@ func update_hand() -> void:
 		stack_dragging = null
 
 
+func remove_from_stack(stack: Stack, amount_to_remove: int) -> Stack:
+	if amount_to_remove > stack.quantity:
+		amount_to_remove = stack.quantity
+	
+	var remove_stack := Stack.new(amount_to_remove).clone_type(stack)
+	stack.quantity -= amount_to_remove
+	
+	return remove_stack
+
+
+func pickup_stack(slot: ItemSlot, \
+		amount_to_pickup: int = default_pickup_amount) -> void:
+	dragging = true
+	if amount_to_pickup <= -1:
+		stack_dragging = slot.stack
+		slot.stack = Stack.new(0)
+	else:
+		stack_dragging = remove_from_stack(slot.stack, amount_to_pickup)
+	
+	update_hand()
+
+
+func place_stack(inventory: Inventory, slot: ItemSlot) -> void:
+	stack_dragging = inventory.add_stack_to_slot(stack_dragging, slot)
+	update_hand()
+
+func swap_held_stack(slot: ItemSlot) -> void:
+	var swap_temp := stack_dragging
+	stack_dragging = slot.stack
+	slot.stack = swap_temp
+	update_hand()
+
 # Called when player clicks on item slot
-func slot_clicked(event: InputEvent, slot: ItemSlot) -> void:
+func slot_clicked(event: InputEvent, inventory: Inventory, slot: ItemSlot) -> void:
 	if event.is_action_pressed("grab_inventory_item"):
+		# Nothing currently held
 		if !dragging:
-			dragging = true
-			stack_dragging = slot.stack
-			slot.stack = Stack.new(0)
-		elif slot.stack.item_name == stack_dragging.item_name:
-			stack_dragging = add_stack_to_slot(stack_dragging, slot)
+			pickup_stack(slot)
+		# Add same stack to each other
+		elif slot.stack.compare_items(stack_dragging):
+			place_stack(inventory, slot)
+		# Swap held stack with another
 		else:
-			var swap_temp := stack_dragging
-			stack_dragging = slot.stack
-			slot.stack = swap_temp
-		
-		update_hand()
+			swap_held_stack(slot)
 	
 	elif event.is_action_pressed("place_inventory_item"):
 		if dragging:
-			add_some_to_slot(stack_dragging, slot, 1)
+			inventory.add_some_to_slot(stack_dragging, slot, 1)
 			update_hand()
 
+func drop_held() -> Stack:
+	if stack_dragging != null:
+		# Dropping stuff
+		var s = stack_dragging
+		stack_dragging = Stack.new(0)
+		update_hand()
+		return s
+	return null
 
 # Called when background is clicked
 # Care as can active in gaps between slots
 func click_background(event: InputEvent) -> void:
-	if event.is_action_pressed("LMB"):
-		if dragging:
-			# Dropping stuff
-			stack_dragging.quantity = 0
-			update_hand()
+	if event.is_action_pressed("grab_inventory_item"):
+		drop_held()

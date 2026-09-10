@@ -6,7 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_032fp"]
 [ext_resource type="Material" uid="uid://c4urka6ybrmhm" path="res://addons/kenney_prototype_tools/materials/dark_wall_material.tres" id="2_ajxib"]
 [ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/ui/news_popup.gd" id="3_gobkm"]
+[ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="4_j14q8"]
+[ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/ui/list_manager.gd" id="5_pqync"]
 [ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="6_heatd"]
+[ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="6_yuijs"]
 [ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/mini_games/recipe_scene.tscn" id="7_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
@@ -14,8 +17,14 @@
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
+[ext_resource type="PackedScene" uid="uid://ccvp68inp2bhf" path="res://scenes/mini_games/ingredient_drawer.tscn" id="11_gobkm"]
+[ext_resource type="Script" uid="uid://c5d8fk5q5gbku" path="res://scripts/world/player_interactable_detector.gd" id="11_lxs01"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
 [ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="16_j14q8"]
+[ext_resource type="Script" uid="uid://b6xdw32473ggf" path="res://scripts/ui/indicator.gd" id="13_ru2r1"]
+[ext_resource type="Texture2D" uid="uid://c2mvlk1clgcro" path="res://assets/sprites/potion_red_64.png" id="14_lxs01"]
+[ext_resource type="Texture2D" uid="uid://dc41ulmsyvhxi" path="res://assets/sprites/mooncap_full.png" id="17_6nbx6"]
+[ext_resource type="Texture2D" uid="uid://cy0nmubfx1two" path="res://assets/sprites/blue_mortar_pestle_full.png" id="19_mihhf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 124
@@ -254,6 +263,13 @@ size = Vector3(1.2932129, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_032fp"]
 albedo_color = Color(1, 0.24705882, 0.08627451, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csqtc"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 8
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_aue3q"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_gobkm"]
@@ -307,6 +323,12 @@ size = Vector3(100, 1, 100)
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=2120733313]
 
 [node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 groups=["popup_subwindow"] instance=ExtResource("8_m4ofw")]
+
+[node name="hotbar" type="HBoxContainer" parent="SceneUI" unique_id=1593043109 groups=["hotbar"]]
+offset_left = 627.0
+offset_top = 991.0
+offset_right = 1360.0
+offset_bottom = 1062.0
 
 [node name="TimeUI" type="CanvasLayer" parent="SceneUI" unique_id=1010363722]
 
@@ -414,6 +436,50 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 32
 text = "Ok, Whatever."
 
+[node name="PopupManager" type="CanvasLayer" parent="SceneUI" unique_id=25847526]
+script = ExtResource("4_j14q8")
+
+[node name="ListManager" type="Control" parent="SceneUI" unique_id=1083800987 node_paths=PackedStringArray("vbox")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+script = ExtResource("5_pqync")
+vbox = NodePath("PanelContainer/MarginContainer/VBoxContainer/VBoxContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="SceneUI/ListManager" unique_id=1354279208]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 60.0
+offset_right = -51.0
+offset_bottom = 177.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI/ListManager/PanelContainer" unique_id=1277090194]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/ListManager/PanelContainer/MarginContainer" unique_id=243339392]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SceneUI/ListManager/PanelContainer/MarginContainer/VBoxContainer" unique_id=1913433969]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_yuijs")
+theme_override_font_sizes/font_size = 32
+text = "Customer Needs:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/ListManager/PanelContainer/MarginContainer/VBoxContainer" unique_id=1511902598]
+layout_mode = 2
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
 light_color = Color(0.9946533, 0.9195563, 0.8045114, 1)
@@ -490,6 +556,7 @@ transform = Transform3D(0.049481273, 0, -0.9987751, 0, 1, 0, 0.9987751, 0, 0.049
 [node name="InteractableCollisionShape" type="Area3D" parent="Node3D/Player/AnimationPivot" unique_id=362638963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0661669, 0.11184323, -2.5223014)
 collision_mask = 1048577
+script = ExtResource("11_lxs01")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Player/AnimationPivot/InteractableCollisionShape" unique_id=1628446424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133395195, 0, 1.3472493)
@@ -535,10 +602,43 @@ grow_vertical = 2
 mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CauldronMinigame2" type="Node3D" parent="Node3D" unique_id=1925488483 node_paths=PackedStringArray("interactable")]
+[node name="CauldronMinigame2" type="Node3D" parent="Node3D" unique_id=1925488483 node_paths=PackedStringArray("interactable", "indicator", "indicator_pos")]
 script = ExtResource("6_heatd")
 minigame_scene = ExtResource("9_m4ofw")
 interactable = NodePath("CauldronMinigameInteractable")
+indicator = NodePath("indicator_pos/indicator1")
+indicator_pos = NodePath("indicator_pos")
+
+[node name="indicator_pos" type="Node3D" parent="Node3D/CauldronMinigame2" unique_id=1620973947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.645, 0)
+
+[node name="indicator1" type="Node2D" parent="Node3D/CauldronMinigame2/indicator_pos" unique_id=94547233]
+script = ExtResource("13_ru2r1")
+
+[node name="PanelContainer" type="PanelContainer" parent="Node3D/CauldronMinigame2/indicator_pos/indicator1" unique_id=1282988357]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_csqtc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Node3D/CauldronMinigame2/indicator_pos/indicator1/PanelContainer" unique_id=546532654]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="Node3D/CauldronMinigame2/indicator_pos/indicator1/PanelContainer/MarginContainer" unique_id=1654922310]
+layout_mode = 2
+texture = ExtResource("14_lxs01")
 
 [node name="CauldronMinigameInteractable" type="Area3D" parent="Node3D/CauldronMinigame2" unique_id=593043815]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 0.053383827)
@@ -560,6 +660,40 @@ omni_attenuation = 3.951
 script = ExtResource("6_heatd")
 minigame_scene = ExtResource("7_m4ofw")
 interactable = NodePath("RecipeMinigameInteractable")
+indicator = NodePath("indicator_pos/indicator2")
+indicator_pos = NodePath("indicator_pos")
+
+[node name="indicator_pos" type="Node3D" parent="Node3D/RecipeMinigame" unique_id=1645987674]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1321115, 1.645, 0.029575348)
+
+[node name="indicator2" type="Node2D" parent="Node3D/RecipeMinigame/indicator_pos" unique_id=783946502]
+script = ExtResource("13_ru2r1")
+
+[node name="PanelContainer" type="PanelContainer" parent="Node3D/RecipeMinigame/indicator_pos/indicator2" unique_id=958428828]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_csqtc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Node3D/RecipeMinigame/indicator_pos/indicator2/PanelContainer" unique_id=1889884227]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="Node3D/RecipeMinigame/indicator_pos/indicator2/PanelContainer/MarginContainer" unique_id=1265257025]
+layout_mode = 2
+texture = ExtResource("17_6nbx6")
+expand_mode = 2
 
 [node name="RecipeMinigameInteractable" type="Area3D" parent="Node3D/RecipeMinigame" unique_id=254663262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9055874, 0.51443744, 0.042072535)
@@ -570,10 +704,44 @@ script = ExtResource("11_7mqwv")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RecipeMinigame/RecipeMinigameInteractable" unique_id=660347118]
 shape = SubResource("BoxShape3D_aue3q")
 
-[node name="CrushingMinigame" type="Node3D" parent="Node3D" unique_id=1694996626 node_paths=PackedStringArray("interactable")]
+[node name="CrushingMinigame" type="Node3D" parent="Node3D" unique_id=1694996626 node_paths=PackedStringArray("interactable", "indicator", "indicator_pos")]
 script = ExtResource("6_heatd")
 minigame_scene = ExtResource("7_y6sft")
 interactable = NodePath("CrushingMinigameInteractable")
+indicator = NodePath("indicator_pos/indicator3")
+indicator_pos = NodePath("indicator_pos")
+
+[node name="indicator_pos" type="Node3D" parent="Node3D/CrushingMinigame" unique_id=1967249194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039976537, 1.6451044, 4.372744)
+
+[node name="indicator3" type="Node2D" parent="Node3D/CrushingMinigame/indicator_pos" unique_id=748834340]
+script = ExtResource("13_ru2r1")
+
+[node name="PanelContainer" type="PanelContainer" parent="Node3D/CrushingMinigame/indicator_pos/indicator3" unique_id=737561529]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_csqtc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Node3D/CrushingMinigame/indicator_pos/indicator3/PanelContainer" unique_id=2065512365]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="Node3D/CrushingMinigame/indicator_pos/indicator3/PanelContainer/MarginContainer" unique_id=2133647434]
+layout_mode = 2
+texture = ExtResource("19_mihhf")
+expand_mode = 2
 
 [node name="CrushingMinigameInteractable" type="Area3D" parent="Node3D/CrushingMinigame" unique_id=2000709200]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 3.8048701)
@@ -582,6 +750,21 @@ collision_mask = 67108865
 script = ExtResource("11_7mqwv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CrushingMinigame/CrushingMinigameInteractable" unique_id=957162740]
+shape = SubResource("BoxShape3D_aue3q")
+
+[node name="PantryMinigame" type="Node3D" parent="Node3D" unique_id=437026515 node_paths=PackedStringArray("interactable")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0603027, 0, -4.052246)
+script = ExtResource("6_heatd")
+minigame_scene = ExtResource("11_gobkm")
+interactable = NodePath("PantryMinigameInteractable")
+
+[node name="PantryMinigameInteractable" type="Area3D" parent="Node3D/PantryMinigame" unique_id=1736279303]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 3.8048701)
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("11_7mqwv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/PantryMinigame/PantryMinigameInteractable" unique_id=2102240272]
 shape = SubResource("BoxShape3D_aue3q")
 
 [node name="CustomerPlane" type="MeshInstance3D" parent="." unique_id=565643317]
@@ -615,10 +798,10 @@ libraries/ = SubResource("AnimationLibrary_yuijs")
 
 [node name="CustomerManager" type="Node" parent="CustomerPlane" unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
 script = ExtResource("11_24it5")
+dialogue_resource = ExtResource("12_7mqwv")
 customer_anim_player = NodePath("../AnimationPlayer")
 customer_interactable = NodePath("../Customer/Interactable")
 customer_world = NodePath("../Customer")
-dialogue_resource = ExtResource("12_7mqwv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CustomerPlane" unique_id=495017166]
 

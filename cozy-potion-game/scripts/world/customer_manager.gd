@@ -7,10 +7,10 @@ extends Node
 
 var customer_queue: Array[Customer]
 
-
 func _ready() -> void:
-	customer_interactable.interacted.connect(_on_customer_interact)
 	customer_tests()
+	
+	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
 
 #runs at the start of the day and sets up the list of customers and
@@ -38,26 +38,53 @@ func recall_customer() -> void:
 
 func _on_customer_interact() -> void:
 	if not customer_world.has_conveyed_request:
-		
 		DialogueManager.show_example_dialogue_balloon(CustomerDialogue.get_initial_dialogue(customer_world.customer), "start")
 		customer_world.has_conveyed_request = true
+		Utils.corner_needs_list_manager.create_list(customer_world.customer)
 	else:
 		var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
+		Utils.corner_needs_list_manager.clear_list()
 		if customer_world.customer.check_potion_sufficient(player.potion):
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
 			await DialogueManager.dialogue_ended
 			player.potion = null
-			TimeCycle.progress_day()
+			if customer_world.customer.time_allotment:
+				TimeCycle.progress_day(customer_world.customer.time_allotment)
+			else:
+				TimeCycle.progress_day()
 			recall_customer()
 		else:
 			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "refuse")
 			player.potion = null
 
 #generates some number of customers to be drawn from during the day
-# plus some morein case something bad happens. idk
 func generate_customer_queue() -> void:
-	for i in range(TimeCycle.customers_per_day + 3):
+	for i in range(TimeCycle.customers_per_day):
 		customer_queue.append(Customer.generate_customer())
+	
+	var time_allotments = generate_customer_time_allotments()
+	for i in range(time_allotments.size()):
+		customer_queue[i].time_allotment = time_allotments[i]
+
+func generate_customer_time_allotments() -> Array[float]:
+	var customer_time_allotments: Array[float]
+	#randomly puts a number of points on a line from 0 to 1 equal to the number 
+	#of customers per day minus 1. This leaves a number of gaps between points
+	#on that number line equal to the number of customers.
+	#those gaps are then assigned to the customer time array.
+	var points: Array[float]
+	for i in range(TimeCycle.customers_per_day-1):
+		points.append(randf_range(0, 1))
+	
+	points.sort()
+	customer_time_allotments.append(points.front())
+	
+	for i in range(1, TimeCycle.customers_per_day-1):
+		customer_time_allotments.append(points[i] - points[i-1])
+	
+	#a little bit of padding is added to this value to ensure that it ends the day
+	customer_time_allotments.append(1.1-points.back())
+	return customer_time_allotments
 
 #gets the next customer of the day, or else null
 func get_next_customer() -> Customer:

@@ -7,11 +7,12 @@ extends Node
 
 signal updated_values
 
-var item_name : String:
+var item : Resource:
 	set(value):
-		item_name = value
+		item = value
 		update_stack()
 		updated_values.emit()
+
 
 var quantity : int:
 	set(value):
@@ -20,35 +21,56 @@ var quantity : int:
 			update_stack()
 		updated_values.emit()
 
-# Items can have more than max_quanity if on ground
-const MAX_QUANTITY: int = 10
 var isEmpty = false
 
 var sprite: Texture
 
-func _init(start_quantity: int = 0, start_name: String = "") -> void:
+func _init(start_quantity: int = 0, new_item: Resource = null) -> void:
 	quantity = start_quantity
-	item_name = start_name
+	item = new_item
 
 
 func update_stack() -> void:
-	if item_name != "" and quantity != 0:
-		sprite = Potion.potion_ingredient_index.get(item_name).sprite
+	if item != null and quantity != 0:
+		sprite = get_item_sprite()
 		isEmpty = false
 	else:
 		sprite = null
 		isEmpty = true
 
 
+func get_item_name() -> String:
+	if item is PotionIngredient:
+		return item.ingredient_name
+	elif item is Potion:
+		return item.potion_name
+	return ""
+
+
+# Returns sprite of current item
+func get_item_sprite() -> Texture2D:
+	if item is PotionIngredient:
+		return item.ingredient_sprite
+	elif item is Potion:
+		return null
+	return null
+
+
+# Returns sprite of currently held in stack
+func get_sprite() -> Texture2D:
+	return sprite
+
+
 # clones type from parsed stack
 func clone_type(stack : Stack) -> Stack:
-	item_name = stack.item_name
+	item = stack.item
 	return self
 
 
-# Returns sprite of current sprite
-func get_sprite() -> Texture2D:
-	return sprite
+func compare_items(comp_stack: Stack) -> bool:
+	if comp_stack.item == item:
+		return true
+	return false
 
 
 # Returns quantity of stack and "" if stack is empty

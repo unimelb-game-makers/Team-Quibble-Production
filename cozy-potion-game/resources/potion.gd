@@ -14,7 +14,7 @@ func constructor(_attributes: Dictionary[Alchemy.AttributeID, int]) -> void:
 	keys.sort_custom(func(a, b): return _attributes[a] > _attributes[b])
 	
 	for key in keys:
-		print("%s:%s" % [Alchemy.AttributeID.keys()[key], _attributes[key]])
+		print_debug("%s:%s" % [Alchemy.AttributeID.keys()[key], _attributes[key]])
 		
 	potion_id = keys[0]
 	potion_primary = keys[0]

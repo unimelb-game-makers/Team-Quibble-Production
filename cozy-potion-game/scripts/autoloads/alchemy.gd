@@ -117,7 +117,7 @@ const PROCESSES_JSON: String = "res://resources/json/processes.json"
 const POTION_JSON: String = "res://resources/json/potion_list.json"
 
 var ingredient_list: Array[PotionIngredient] = []
-var potion_referance: Array[PotionReferance] = []
+var potion_referance: Array[PotionReference] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -129,11 +129,7 @@ func _ready() -> void:
 
 # This should only run once
 func read_ingredient_data() -> void:
-	var json_string: String = FileAccess.open(INGREDIENT_JSON, FileAccess.READ).get_as_text()
-	var json_data: JSON = JSON.new()
-
-	assert(json_data.parse(json_string) == OK, 
-			"Variable json_data was null. %s" % [json_data.get_error_message()])
+	var json_data: JSON = Utils.get_json(INGREDIENT_JSON)
 
 	ingredient_list.resize(IngredientID.size())
 	var index := 0
@@ -155,16 +151,12 @@ func read_ingredient_data() -> void:
 		index += 1
 
 func read_potion_data() -> void:
-	var json_string: String = FileAccess.open(POTION_JSON, FileAccess.READ).get_as_text()
-	var json_data: JSON = JSON.new()
-
-	assert(json_data.parse(json_string) == OK, 
-			"Variable json_data was null. %s" % [json_data.get_error_message()])
+	var json_data: JSON = Utils.get_json(POTION_JSON)
 
 	potion_referance.resize(PotionID.size())
 
 	for potion in json_data.data:
-		var temp_potion := PotionReferance.new()
+		var temp_potion := PotionReference.new()
 
 		# There's prob a better way to do this lol
 		temp_potion.potion_id = PotionID.keys().find(potion["POT_ID"]) as PotionID

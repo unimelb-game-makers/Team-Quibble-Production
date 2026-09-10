@@ -1,11 +1,15 @@
 extends Node
 # This is a ductape solution. A better solution will probably need to be implemented in the future
 
+var popup_manager: PopupManager
+var corner_needs_list_manager: Control
+
 # project group names
 const Group = {
 	GROUP_PLAYER = "player",
 	GROUP_INTERACTABLE_OBJECTS = "interactable_objects",
-	GROUP_POPUP_SUBWINDOW = "popup_subwindow"
+	GROUP_POPUP_SUBWINDOW = "popup_subwindow",
+	GROUP_HOTBAR = "hotbar",
 }
 
 #takes a string path and returns the json file at that location
@@ -46,4 +50,23 @@ static func pick_random_weighted(items: Array, weights: Array[float]):
 	
 	assert(false, "something is wrong with this function")
 	return items.pick_random()
-	
+
+##takes one of the row or column names found in the json files such as 
+##NEED_DARKNESS or NPC_STUDENT to Darkness and Student respectively.
+###then returns the string whether it changed or not.
+##Not great, I know.
+static func canonise_string(input: String) -> String:
+	if input.begins_with("NEED_"):
+		#removes this prefix
+		input = input.substr(5)
+	elif input.begins_with("NPC_"):
+		input = input.substr(4)
+	input = input.capitalize()
+	return input
+
+##takes a need like NEED_DARKNESS and outputs the potion name,
+##like Potion of Darkness. This is probably implemented elsewhere
+## in the alchemy system but they have reasons to be different
+static func need_to_potion_name(input: String) -> String:
+	input = canonise_string(input)
+	return "Potion of %s" % input
