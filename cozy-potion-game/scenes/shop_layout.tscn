@@ -683,8 +683,20 @@ mesh = SubResource("ArrayMesh_sv6ev")
 [node name="Wall_010" type="MeshInstance3D" parent="." unique_id=616007705]
 mesh = SubResource("ArrayMesh_6d0kd")
 
+[node name="AreaLight3D" type="AreaLight3D" parent="Wall_010" unique_id=1009982675]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.052778125, 2.3082256, -1.2834971)
+light_energy = 2.0
+area_range = 9.451
+area_size = Vector2(0.6735046, 0.27950144)
+
 [node name="Wall_011" type="MeshInstance3D" parent="." unique_id=375953943]
 mesh = SubResource("ArrayMesh_84q0u")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="Wall_011" unique_id=534177188]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -7.013584, 2.29211, -6.7139564)
+light_energy = 2.0
+area_range = 9.451
+area_size = Vector2(0.6735046, 0.27950144)
 
 [node name="Cube_005" type="MeshInstance3D" parent="." unique_id=813233639]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.966957, 0, 2.374051)
@@ -693,11 +705,23 @@ mesh = SubResource("ArrayMesh_whj3q")
 [node name="Wall_012" type="MeshInstance3D" parent="." unique_id=512645259]
 mesh = SubResource("ArrayMesh_tkwpf")
 
+[node name="AreaLight3D" type="AreaLight3D" parent="Wall_012" unique_id=1141078332]
+transform = Transform3D(0.016058663, 0, -0.9998711, 0, 1, 0, 0.9998711, 0, 0.016058663, -6.9138412, 2.3082256, -1.2834971)
+light_energy = 2.0
+area_range = 9.451
+area_size = Vector2(0.6735046, 0.27950144)
+
 [node name="Wall_013" type="MeshInstance3D" parent="." unique_id=1335910558]
 mesh = SubResource("ArrayMesh_b8dfp")
 
 [node name="Wall_014" type="MeshInstance3D" parent="." unique_id=1663605588]
 mesh = SubResource("ArrayMesh_8h3s8")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="Wall_014" unique_id=1957159763]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.13751411, 2.1857982, -6.883718)
+light_energy = 2.0
+area_range = 9.451
+area_size = Vector2(0.6735046, 0.27950144)
 
 [node name="Wall_015" type="MeshInstance3D" parent="." unique_id=1056341282]
 mesh = SubResource("ArrayMesh_u2vf1")
@@ -740,3 +764,9 @@ shape = SubResource("ConvexPolygonShape3D_hj67y")
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="StaticBody3D" unique_id=1739510551]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_7ufjt")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=402323068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8408166, 1.1525866, 6.447785)
+light_energy = 4.0
+area_range = 9.451
+area_size = Vector2(1, 2.390548)
