@@ -6,10 +6,10 @@ extends Minigame
 @onready var boiling_timer: Timer = $BoilingTimer
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-const SUCCESS_AREA_START: float = 0.8
-const SUCCESS_AREA_END: float = 0.9
+const SUCCESS_AREA_START: float = 0.25
+const SUCCESS_AREA_END: float = 0.75
 
-const THERMOMETER_WIDTH: float = 960 # this and the above will be replaced by assets anyway
+const THERMOMETER_WIDTH: float = 420 # this and the above will be replaced by assets anyway
 
 const TOTAL_TIME: float = 5.0
 
