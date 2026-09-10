@@ -602,15 +602,6 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_oiw8t")
 
-[sub_resource type="Animation" id="Animation_xdi86"]
-resource_name = "Cube_001Action"
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5px4"]
-_data = {
-&"Cube_001Action": SubResource("Animation_xdi86")
-}
-
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_k5ybc"]
 points = PackedVector3Array(-7.0793653, -0.31434956, -9.079365, 0.0634923, -0.15565045, 1.0793648, 0.0634923, -0.31434956, 1.0793648, 0.0634923, -0.15565045, -9.079365, -7.0793653, -0.15565045, 1.0793648, -7.0793653, -0.31434956, 1.0793648, 0.0634923, -0.31434956, -9.079365, -7.0793653, -0.15565045, -9.079365)
 
@@ -725,9 +716,6 @@ area_size = Vector2(0.6735046, 0.27950144)
 
 [node name="Wall_015" type="MeshInstance3D" parent="." unique_id=1056341282]
 mesh = SubResource("ArrayMesh_u2vf1")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=167554645]
-libraries/ = SubResource("AnimationLibrary_j5px4")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1056981171]
 
