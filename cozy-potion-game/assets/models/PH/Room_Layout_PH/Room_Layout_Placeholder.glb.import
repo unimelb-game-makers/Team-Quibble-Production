@@ -39,7 +39,25 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"Emissive": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/PH/Room_Layout_PH/Emissive.tres",
+"use_external/path": "uid://hijg7obbdxse"
+},
+"Stone Walls": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/PH/Room_Layout_PH/Stone Walls.tres",
+"use_external/path": "uid://mx5uayqqepl4"
+},
+"Wood Floor": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://assets/models/PH/Room_Layout_PH/Wood Floor.tres",
+"use_external/path": "uid://t0hkeivbfgub"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
 gltf/texture_map_mode=1
