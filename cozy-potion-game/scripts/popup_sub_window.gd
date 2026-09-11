@@ -3,6 +3,7 @@ extends CanvasLayer
 
 @export var sub_viewport: SubViewport
 @export var animation_player : AnimationPlayer
+@export var black_rect: ColorRect
 
 var player: WorldPlayer
 var popup: Node
@@ -50,7 +51,7 @@ func end_display_popup(output_hotbar: Inventory) -> void:
 	if output_hotbar != null:
 		player.hotbar.copy_inventory(output_hotbar)
 	
-	animation_player.play(&"fade_out")
+	animation_player.play_backwards(&"fade_in")
 	await animation_player.animation_finished
 	# Raise errors but idk what they do
 	sub_viewport.remove_child(popup)

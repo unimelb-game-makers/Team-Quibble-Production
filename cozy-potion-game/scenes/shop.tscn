@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://c2mvlk1clgcro" path="res://assets/sprites/potion_red_64.png" id="14_lxs01"]
 [ext_resource type="Texture2D" uid="uid://dc41ulmsyvhxi" path="res://assets/sprites/mooncap_full.png" id="17_6nbx6"]
 [ext_resource type="Texture2D" uid="uid://cy0nmubfx1two" path="res://assets/sprites/blue_mortar_pestle_full.png" id="19_mihhf"]
+[ext_resource type="PackedScene" uid="uid://dwjhqwlvqsrte" path="res://scenes/mini_games/boiling_minigame.tscn" id="22_mihhf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 124
@@ -748,12 +749,27 @@ minigame_scene = ExtResource("11_gobkm")
 interactable = NodePath("PantryMinigameInteractable")
 
 [node name="PantryMinigameInteractable" type="Area3D" parent="Node3D/PantryMinigame" unique_id=1736279303]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011607, 0.51443744, 3.8048701)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011726, 0.48404193, 3.8048701)
 collision_layer = 1048576
 collision_mask = 67108865
 script = ExtResource("11_7mqwv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/PantryMinigame/PantryMinigameInteractable" unique_id=2102240272]
+shape = SubResource("BoxShape3D_aue3q")
+
+[node name="BoilingMinigameTest" type="Node3D" parent="Node3D" unique_id=324080536 node_paths=PackedStringArray("interactable")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.60632324, 0, -5.9538574)
+script = ExtResource("6_heatd")
+minigame_scene = ExtResource("22_mihhf")
+interactable = NodePath("BoilingMinigameInteractable")
+
+[node name="BoilingMinigameInteractable" type="Area3D" parent="Node3D/BoilingMinigameTest" unique_id=1555534321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12768555, 0.95532227, 1.5192871)
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("11_7mqwv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/BoilingMinigameTest/BoilingMinigameInteractable" unique_id=1380177469]
 shape = SubResource("BoxShape3D_aue3q")
 
 [node name="CustomerPlane" type="MeshInstance3D" parent="." unique_id=565643317]
@@ -787,10 +803,10 @@ libraries/ = SubResource("AnimationLibrary_yuijs")
 
 [node name="CustomerManager" type="Node" parent="CustomerPlane" unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
 script = ExtResource("11_24it5")
-dialogue_resource = ExtResource("12_7mqwv")
 customer_anim_player = NodePath("../AnimationPlayer")
 customer_interactable = NodePath("../Customer/Interactable")
 customer_world = NodePath("../Customer")
+dialogue_resource = ExtResource("12_7mqwv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CustomerPlane" unique_id=495017166]
 
