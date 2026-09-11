@@ -500,15 +500,6 @@ script = ExtResource("2_ouqob")
 hotbar_item_slot_scene = ExtResource("2_5lclc")
 acceptor = NodePath("DraggableAcceptorComponent")
 
-[node name="HotbarItemSlot" parent="SceneUI/HotbarControl/PanelContainer/hotbar" unique_id=1405171780 instance=ExtResource("2_5lclc")]
-layout_mode = 2
-
-[node name="HotbarItemSlot2" parent="SceneUI/HotbarControl/PanelContainer/hotbar" unique_id=468122126 instance=ExtResource("2_5lclc")]
-layout_mode = 2
-
-[node name="HotbarItemSlot3" parent="SceneUI/HotbarControl/PanelContainer/hotbar" unique_id=2033682617 instance=ExtResource("2_5lclc")]
-layout_mode = 2
-
 [node name="DraggableAcceptorComponent" type="Node" parent="SceneUI/HotbarControl/PanelContainer/hotbar" unique_id=140455852]
 script = ExtResource("9_p0at6")
 metadata/_custom_type_script = "uid://b85c75nnvco20"

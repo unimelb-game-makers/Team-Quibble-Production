@@ -13,12 +13,21 @@ func _init(contianer:Container = null, max_stack_size:int = 999) -> void:
 
 # Creates list of empty stacks
 static func create_empty_stacks(inv_size : int) -> Array[Stack]:
-	var items :Array[Stack] = []
+	var items: Array[Stack] = []
 	items.resize(inv_size)
 	for i in range(inv_size):
 		items[i] = Stack.new()
 	return items
 
+
+
+#creates a new slot from a stack and adds it to inventory
+func add_new_slot_from_stack(item: Stack) -> void:
+	var new_instance: ItemSlot = ItemSlot.get_item_scene().instantiate()
+	storage.add_child(new_instance)
+		
+	item_slots.append(new_instance)
+	new_instance.stack = item
 
 # Spawns ItemSlots with currently parsed stacks
 func spawn_slots(item_list: Array[Stack]) -> void:

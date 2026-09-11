@@ -47,6 +47,7 @@ func start_display_popup(_scene_to_load: PackedScene, hotbar: Inventory,\
 	# to that one
 	if popup is Minigame:
 		popup.set_hotbar(hotbar, input_index)
+		popup.ingredient_processed.connect(hotbar.add_new_slot_from_stack)
 
 func end_display_popup(output_hotbar: Inventory) -> void:
 	if output_hotbar != null:

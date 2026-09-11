@@ -18,6 +18,9 @@ const TOTAL_TIME: float = 5.0
 
 func _ready() -> void:
 	thermometer_sprite.texture.gradient.offsets = [0.0, SUCCESS_AREA_START, SUCCESS_AREA_END]
+	acceptor.accepted_draggable.connect(emit_ingredient_added)
+	ingredient_added.connect(_on_ingredient_added)
+	boiling_timer.paused = true
 
 func _process(_delta: float) -> void:
 	if !boiling_timer.is_stopped():
@@ -32,6 +35,17 @@ func _process(_delta: float) -> void:
 				pass
 			animation_player.play(&"end")
 
+
+func _on_ingredient_added(ingredient_stack: Stack):
+	boiling_timer.paused = false
+	animation_player.play(&"start")
+	
+	output_ingredient = process_ingredient(ingredient_stack)
+
+func process_ingredient(input_stack: Stack) -> Stack:
+	print_debug("IT IS NOW TIME TO IMPLEMENT ITEM PROCESSING ON THIS LINE")
+	input_stack.item.ingredient_name = "PROCESSED INGREDIENT"
+	return input_stack
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	match anim_name:

@@ -38,5 +38,4 @@ func _unhandled_input(event: InputEvent) -> void:
 
 #hack. Please let me be done with this
 func emit_accepted(draggable: Control):
-	print_debug(1397)
 	accepted_draggable.emit(draggable)

@@ -45,7 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if !my_control.get_global_rect().has_point(my_control.get_global_mouse_position()):
 		return
-	print_debug(1)
+
 	if dragged_control:
 		return
 	assign_to_mouse()

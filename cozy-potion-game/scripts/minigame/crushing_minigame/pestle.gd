@@ -10,6 +10,7 @@ class_name Pestle extends CharacterBody2D
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 	await crushing_minigame.ingredient_added
+	await get_tree().create_timer(0.2).timeout
 	process_mode = Node.PROCESS_MODE_INHERIT
 
 func _physics_process(_delta: float) -> void:

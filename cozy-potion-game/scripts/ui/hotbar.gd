@@ -9,7 +9,6 @@ var inventory: Inventory
 
 func _ready() -> void:
 	inventory = Inventory.new(self)
-	inventory.assign_slots(Inventory.create_empty_stacks(3), get_item_slot_children())
 	acceptor.accepted_draggable.connect(_on_accept)
 
 func _on_accept(control: Control):

@@ -9,11 +9,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvm4"]
 size = Vector2(853, 21)
 
-[node name="CrushingMinigame" type="CanvasLayer" unique_id=1189992554 node_paths=PackedStringArray("ball_spawn_marker", "acceptor")]
+[node name="CrushingMinigame" type="CanvasLayer" unique_id=1189992554 node_paths=PackedStringArray("ball_spawn_marker", "acceptor", "draggable_hint_rect")]
 script = ExtResource("1_fhxy2")
 ball_spawn_marker = NodePath("BallSpawnMarker")
 ingredient_ball_scene = ExtResource("2_fhxy2")
 acceptor = NodePath("Control/DraggableAcceptorComponent")
+draggable_hint_rect = NodePath("Control/ColorRect")
 metadata/_custom_type_script = "uid://5vr6exm8hl07"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1194482863]
@@ -64,3 +65,13 @@ mouse_filter = 2
 [node name="DraggableAcceptorComponent" type="Node" parent="Control" unique_id=1491720030]
 script = ExtResource("5_7jnv1")
 metadata/_custom_type_script = "uid://b85c75nnvco20"
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=439333258]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.54509807, 1, 0.54509807, 0.18039216)

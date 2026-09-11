@@ -3,6 +3,7 @@ class_name Minigame extends CanvasLayer
 signal minigame_won
 
 @export var acceptor: DraggableAcceptorComponent
+@export var draggable_hint_rect: ColorRect
 #emitted when an item is added to the minigame.
 # this is usually done by dragging from the hotbar
 #most minigames should not start until this is done
@@ -18,6 +19,7 @@ func _ready() -> void:
 	acceptor.accepted_draggable.connect(emit_ingredient_added)
 
 func win_minigame() -> void:
+	print_debug("created a %s and added to hotbar" % output_ingredient.item.ingredient_name)
 	ingredient_processed.emit(output_ingredient)
 	process_mode = Node.PROCESS_MODE_DISABLED
 	
@@ -31,19 +33,13 @@ func set_hotbar(new_hotbar: Inventory, new_input_index: int) -> void:
 	hotbar = new_hotbar
 	input_index = new_input_index
 
-func set_ingredient(_new_ingredient: Stack) -> void:
-	_apply_ingredient(_new_ingredient)
-	input_ingredients.append(_new_ingredient)
-	## TODO: this should be the processed ingredient
-	output_ingredient = _new_ingredient
-
-## private function; this gets overwritten for each child
-func _apply_ingredient(_new_ingredient: Stack) -> void:
-	## Applies the coloring and textures
-	pass
-	
 #this is one way of connecting the ingredient accepted signal
 # from the subviewportcontainer above this to the minigame
 func emit_ingredient_added(draggable: Control):
-	print_debug(1)
-	ingredient_added.emit(Stack.new())
+	draggable.queue_free()
+	if draggable_hint_rect:
+		draggable_hint_rect.hide()
+	if draggable is ItemSlot:
+		ingredient_added.emit(draggable.stack)
+	else:
+		assert(false," added non ingredient")
