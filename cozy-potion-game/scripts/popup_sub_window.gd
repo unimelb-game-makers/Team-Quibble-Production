@@ -47,8 +47,10 @@ func start_display_popup(_scene_to_load: PackedScene, hotbar: Inventory,\
 		popup.set_hotbar(hotbar, input_index)
 
 func end_display_popup(output_hotbar: Inventory) -> void:
+	player.hotbar.storage.show()
 	if output_hotbar != null:
 		player.hotbar.copy_inventory(output_hotbar)
+		player.connect_hotbar_touch()
 	
 	animation_player.play(&"fade_out")
 	await animation_player.animation_finished

@@ -47,8 +47,7 @@ func _ready() -> void:
 	# sets up hotbar
 	hotbar = Inventory.new(hotbar_grid)
 	hotbar.spawn_slots(Inventory.create_empty_stacks(3))
-	for i in range(hotbar.item_slots.size()):
-		hotbar.item_slots[i].gui_input.connect(set_input_stack.bind(i))
+	connect_hotbar_touch()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -174,15 +173,25 @@ func activate_top_down_cam() -> void:
 	tween2.tween_property(camera, "position", Vector3(0,7.0,0), 0.2)
 
 
+# Should be Removed
+func connect_hotbar_touch() -> void:
+	hotbar.item_slots[input_stack_index].highlight()
+	for i in range(hotbar.item_slots.size()):
+		hotbar.item_slots[i].gui_input.connect(set_input_stack.bind(i))
+
+
 func set_input_stack(event: InputEvent, slot_index:int) -> void:
 	if event.is_action_pressed("LMB"):
+		hotbar.item_slots[input_stack_index].unhighlight()
 		input_stack_index = slot_index
+		hotbar.item_slots[input_stack_index].highlight()
 
 
 func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
 		if area is Interactable:
 			# parses index as Im fudging selecting stack
+			hotbar.storage.hide()
 			area.interacted.emit(hotbar, input_stack_index)
 			# probably bad to interact with two things at once
 			return

@@ -32,9 +32,13 @@ func spawn_slots(item_list: Array[Stack]) -> void:
 		new_instance.stack = item_list[i]
 
 
-func copy_inventory(original : Inventory) -> void:
+func clear_item_slots() -> void:
 	for slot in item_slots:
 		storage.remove_child(slot)
+
+
+func copy_inventory(original : Inventory) -> void:
+	clear_item_slots()
 	
 	spawn_slots(original.export_stacks())
 
