@@ -1,0 +1,56 @@
+extends Minigame
+
+@export var progress_variance_array: Array[Curve]
+@onready var progress_variance: Curve = progress_variance_array.pick_random()
+
+@export var boiling_timer: Timer
+@export var animation_player: AnimationPlayer
+@export var thermometer_sprite: Sprite2D
+@export var needle_sprite: Sprite2D
+
+const SUCCESS_AREA_START: float = 0.25
+const SUCCESS_AREA_END: float = 0.75
+
+const THERMOMETER_WIDTH: float = 420 # this and the above will be replaced by assets anyway
+
+const TOTAL_TIME: float = 5.0
+
+
+func _ready() -> void:
+	thermometer_sprite.texture.gradient.offsets = [0.0, SUCCESS_AREA_START, SUCCESS_AREA_END]
+	acceptor.accepted_draggable.connect(emit_ingredient_added)
+	ingredient_added.connect(_on_ingredient_added)
+	boiling_timer.paused = true
+
+func _process(_delta: float) -> void:
+	if !boiling_timer.is_stopped():
+		var progress: float = progress_variance.sample((TOTAL_TIME - boiling_timer.time_left) / TOTAL_TIME)
+		needle_sprite.position.x = (progress - 0.5) * THERMOMETER_WIDTH
+		if Input.is_action_just_pressed(&"interact") or Input.is_action_just_pressed(&"LMB"):
+			boiling_timer.stop()
+			if progress < SUCCESS_AREA_END and progress > SUCCESS_AREA_START:
+				## TODO: presumably returns null ingredients
+				pass
+			else:
+				pass
+			animation_player.play(&"end")
+
+
+func _on_ingredient_added(ingredient_stack: Stack):
+	boiling_timer.paused = false
+	animation_player.play(&"start")
+	
+	output_ingredient = process_ingredient(ingredient_stack)
+
+func process_ingredient(input_stack: Stack) -> Stack:
+	print_debug("IT IS NOW TIME TO IMPLEMENT ITEM PROCESSING ON THIS LINE")
+	input_stack.item.ingredient_name = "PROCESSED INGREDIENT"
+	return input_stack
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	match anim_name:
+		&"start":
+			$Thermometer/Needle.show()
+			boiling_timer.start(TOTAL_TIME)
+		&"end":
+			win_minigame()

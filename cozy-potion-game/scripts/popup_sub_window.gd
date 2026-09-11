@@ -3,6 +3,7 @@ extends CanvasLayer
 
 @export var sub_viewport: SubViewport
 @export var animation_player : AnimationPlayer
+@export var black_rect: ColorRect
 
 var player: WorldPlayer
 var popup: Node
@@ -42,15 +43,17 @@ func start_display_popup(_scene_to_load: PackedScene, hotbar: Inventory,\
 	sub_viewport.add_child(popup)
 	animation_player.play(&"fade_in")
 	
-	# Assuming this is a minigame
+	# if the popup is a minigame, connect signals from this viewport
+	# to that one
 	if popup is Minigame:
 		popup.set_hotbar(hotbar, input_index)
+		popup.ingredient_processed.connect(hotbar.add_new_slot_from_stack)
 
 func end_display_popup(output_hotbar: Inventory) -> void:
 	if output_hotbar != null:
-		player.hotbar.copy_inventory(output_hotbar)
+		player.hotbar.assign_new_inventory(output_hotbar)
 	
-	animation_player.play(&"fade_out")
+	animation_player.play_backwards(&"fade_in")
 	await animation_player.animation_finished
 	# Raise errors but idk what they do
 	sub_viewport.remove_child(popup)
