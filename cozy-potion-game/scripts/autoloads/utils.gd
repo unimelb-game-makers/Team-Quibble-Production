@@ -10,6 +10,7 @@ const Group = {
 	GROUP_INTERACTABLE_OBJECTS = "interactable_objects",
 	GROUP_POPUP_SUBWINDOW = "popup_subwindow",
 	GROUP_HOTBAR = "hotbar",
+	GROUP_INGREDIENT_BALL = "ingredient_ball",
 }
 
 #takes a string path and returns the json file at that location

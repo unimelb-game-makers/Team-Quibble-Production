@@ -40,17 +40,14 @@ func _unhandled_input(event: InputEvent) -> void:
 				return_to_previous()
 			else:
 				parent_to_acceptor()
-
-
+	
 	if !event.is_action_pressed("LMB"):
 		return
 
 	if !my_control.get_global_rect().has_point(my_control.get_global_mouse_position()):
 		return
-
 	if dragged_control:
 		return
-
 	assign_to_mouse()
 
 func assign_to_mouse() -> void:
@@ -75,7 +72,7 @@ func parent_to_acceptor() -> void:
 	if not pending_parent:
 		return_to_previous()
 	if get_acceptor(pending_parent):
-		get_acceptor(pending_parent).accepted_draggable.emit()
+		get_acceptor(pending_parent).emit_accepted(my_control)
 	my_control.reparent(pending_parent)
 	pending_parent = null
 	draggable_accepted.emit()

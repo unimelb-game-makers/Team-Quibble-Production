@@ -1,11 +1,16 @@
 class_name Pestle extends CharacterBody2D
 ## a character body that moves towards the mouse with some velocity
 
-
-
 @export var max_speed: float
 @export var curve: Curve
 
+@export var crushing_minigame: CrushingMinigame
+
+
+func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_DISABLED
+	await crushing_minigame.ingredient_added
+	process_mode = Node.PROCESS_MODE_INHERIT
 
 func _physics_process(_delta: float) -> void:
 	#direction to move

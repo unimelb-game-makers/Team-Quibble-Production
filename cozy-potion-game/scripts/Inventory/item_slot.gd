@@ -11,8 +11,8 @@ var stack : Stack :
 		stack = value
 		update_stack()
 
-@onready var item_sprite: Sprite2D = $ItemSprite
-@onready var quantity_label: Label = $QuantityLabel
+@export var item_sprite: TextureRect
+@export var quantity_label: Label
 
 static func get_item_scene() -> PackedScene:
 	return preload("uid://b04fxmn4gaapy")

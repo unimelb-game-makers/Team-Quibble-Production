@@ -4,6 +4,7 @@ extends CanvasLayer
 @export var sub_viewport: SubViewport
 @export var animation_player : AnimationPlayer
 @export var black_rect: ColorRect
+@export var draggable_acceptor: DraggableAcceptorComponent
 
 var player: WorldPlayer
 var popup: Node
@@ -43,9 +44,12 @@ func start_display_popup(_scene_to_load: PackedScene, hotbar: Inventory,\
 	sub_viewport.add_child(popup)
 	animation_player.play(&"fade_in")
 	
-	# Assuming this is a minigame
+	# if the popup is a minigame, connect signals from this viewport
+	# to that one
 	if popup is Minigame:
 		popup.set_hotbar(hotbar, input_index)
+		draggable_acceptor.accepted_draggable.connect(popup.emit_ingredient_added)
+		
 
 func end_display_popup(output_hotbar: Inventory) -> void:
 	if output_hotbar != null:

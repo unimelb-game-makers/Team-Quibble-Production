@@ -5,7 +5,7 @@ class_name DraggableAcceptorComponent extends Node
 var my_control: Control
 
 #use this in the control that uses this if you want
-signal accepted_draggable
+signal accepted_draggable(draggable: Control)
 
 func _ready() -> void:
 	if not get_parent() is Container:
@@ -19,12 +19,19 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not DraggableComponent.dragged_control:
 		return
 	
+	if not my_control.is_visible_in_tree():
+		return
+
+		
 	var intersecting_mouse: bool = \
 	my_control.get_global_rect().has_point(my_control.get_global_mouse_position())
-	
 
 	if intersecting_mouse and DraggableComponent.pending_parent != my_control:
 		DraggableComponent.pending_parent = my_control
 	
 	if not intersecting_mouse and DraggableComponent.pending_parent == my_control:
 		DraggableComponent.pending_parent == null
+
+#hack. Please let me be done with this
+func emit_accepted(draggable: Control):
+	accepted_draggable.emit(draggable)

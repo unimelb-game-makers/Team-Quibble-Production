@@ -18,6 +18,5 @@ func set_output(stacks: Inventory) -> void:
 	win_minigame()
 
 func win_minigame() -> void:
-	ingredient_processed.emit(ingredient)
 	process_mode = Node.PROCESS_MODE_DISABLED
 	minigame_won.emit(output_stacks)

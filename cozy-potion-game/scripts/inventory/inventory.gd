@@ -44,7 +44,7 @@ func copy_inventory(original : Inventory) -> void:
 		storage.remove_child(slot)
 	
 	spawn_slots(original.export_stacks())
-	assert(false)
+
 
 # Similar to the above, but just sets the stack values of pre-
 # existing item slots. Only functions up to the number of slots the

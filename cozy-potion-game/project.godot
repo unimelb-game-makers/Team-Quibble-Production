@@ -42,6 +42,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 
 player=""
 popup_subwindow=""
+ingredient_ball=""
 
 [input]
 

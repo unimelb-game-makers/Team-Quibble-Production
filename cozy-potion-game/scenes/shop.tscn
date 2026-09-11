@@ -323,22 +323,6 @@ points = PackedVector3Array(-5.0325, 0, -2.3425, -5.0325, 0, 2.3425, 5.0325, 0, 
 
 [node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 groups=["popup_subwindow"] instance=ExtResource("8_m4ofw")]
 
-[node name="hotbar" type="HBoxContainer" parent="SceneUI" unique_id=1593043109 groups=["hotbar"]]
-offset_left = 627.0
-offset_top = 991.0
-offset_right = 1360.0
-offset_bottom = 1062.0
-script = ExtResource("2_ouqob")
-
-[node name="HotbarItemSlot" parent="SceneUI/hotbar" unique_id=1405171780 instance=ExtResource("2_5lclc")]
-layout_mode = 2
-
-[node name="HotbarItemSlot2" parent="SceneUI/hotbar" unique_id=468122126 instance=ExtResource("2_5lclc")]
-layout_mode = 2
-
-[node name="HotbarItemSlot3" parent="SceneUI/hotbar" unique_id=2033682617 instance=ExtResource("2_5lclc")]
-layout_mode = 2
-
 [node name="TimeUI" type="CanvasLayer" parent="SceneUI" unique_id=1010363722]
 
 [node name="DigitalClock" type="Control" parent="SceneUI/TimeUI" unique_id=1383968923 node_paths=PackedStringArray("time_label", "day_label", "advance_time_button")]
@@ -489,6 +473,39 @@ text = "Customer Needs:"
 [node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/CornerNeedsListManager/PanelContainer/MarginContainer/VBoxContainer" unique_id=1511902598]
 layout_mode = 2
 
+[node name="HotbarControl" type="Control" parent="SceneUI" unique_id=961925275]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 97.0
+offset_top = 262.0
+offset_right = 337.0
+offset_bottom = 325.0
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="SceneUI/HotbarControl" unique_id=1615126971]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="hotbar" type="HBoxContainer" parent="SceneUI/HotbarControl/PanelContainer" unique_id=1593043109 groups=["hotbar"]]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+script = ExtResource("2_ouqob")
+
+[node name="HotbarItemSlot" parent="SceneUI/HotbarControl/PanelContainer/hotbar" unique_id=1405171780 instance=ExtResource("2_5lclc")]
+layout_mode = 2
+
+[node name="HotbarItemSlot2" parent="SceneUI/HotbarControl/PanelContainer/hotbar" unique_id=468122126 instance=ExtResource("2_5lclc")]
+layout_mode = 2
+
+[node name="HotbarItemSlot3" parent="SceneUI/HotbarControl/PanelContainer/hotbar" unique_id=2033682617 instance=ExtResource("2_5lclc")]
+layout_mode = 2
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52749435]
 transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
 light_color = Color(0.9946533, 0.9195563, 0.8045114, 1)
@@ -552,7 +569,7 @@ mouse_detector_left = NodePath("MouseDetectorLeft")
 mouse_detector_right = NodePath("MouseDetectorRight")
 interactable_collision_area = NodePath("AnimationPivot/InteractableCollisionShape")
 mimi_sprite = NodePath("AnimationPivot/Mimi")
-hotbar_display = NodePath("../../SceneUI/hotbar")
+hotbar_display = NodePath("../../SceneUI/HotbarControl/PanelContainer/hotbar")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Player" unique_id=23129946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040551424, 0.9759979, 0)

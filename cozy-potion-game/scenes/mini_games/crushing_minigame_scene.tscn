@@ -8,8 +8,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvm4"]
 size = Vector2(853, 21)
 
-[node name="CrushingMinigame" type="CanvasLayer" unique_id=1189992554]
+[node name="CrushingMinigame" type="CanvasLayer" unique_id=1189992554 node_paths=PackedStringArray("ball_spawn_marker")]
 script = ExtResource("1_fhxy2")
+ball_spawn_marker = NodePath("BallSpawnMarker")
+ingredient_ball_scene = ExtResource("2_fhxy2")
 metadata/_custom_type_script = "uid://5vr6exm8hl07"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1194482863]
@@ -31,16 +33,11 @@ texture = ExtResource("2_eukv0")
 position = Vector2(2, 56)
 polygon = PackedVector2Array(7, 43, -144, 11, -245, -54, -293, -116, -327, -198, -330, -250, -383, -249, -382, -177, -345, -84, -275, -5, -170, 61, -89, 88, 112, 89, 232, 51, 328, -18, 380, -85, 419, -191, 417, -250, 365, -245, 354, -178, 326, -112, 282, -56, 196, 2, 105, 34)
 
-[node name="IngredientBall" parent="." unique_id=932391481 groups=["IngredientBall"] instance=ExtResource("2_fhxy2")]
-position = Vector2(867, 658)
-
-[node name="IngredientBall2" parent="." unique_id=1684924022 groups=["IngredientBall"] instance=ExtResource("2_fhxy2")]
-position = Vector2(634, 659)
-
-[node name="Pestle" parent="." unique_id=1770029033 instance=ExtResource("1_j31fb")]
+[node name="Pestle" parent="." unique_id=1770029033 node_paths=PackedStringArray("crushing_minigame") instance=ExtResource("1_j31fb")]
 z_index = 1
-position = Vector2(960, 256)
+position = Vector2(1234, 161)
 collision_layer = 536870912
+crushing_minigame = NodePath("..")
 
 [node name="BallCeiling" type="StaticBody2D" parent="." unique_id=565693533]
 position = Vector2(725, 396)
@@ -49,3 +46,6 @@ collision_layer = 2147483648
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BallCeiling" unique_id=1193264195]
 position = Vector2(15, 82)
 shape = SubResource("RectangleShape2D_4dvm4")
+
+[node name="BallSpawnMarker" type="Marker2D" parent="." unique_id=746776062]
+position = Vector2(762, 573)
