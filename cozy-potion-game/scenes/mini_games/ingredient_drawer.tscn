@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccvp68inp2bhf"]
 
-[ext_resource type="Script" uid="uid://duuaog7clpp3u" path="res://scripts/inventory/drawer.gd" id="1_d0n75"]
+[ext_resource type="Script" uid="uid://duuaog7clpp3u" path="res://scripts/Inventory/drawer.gd" id="1_d0n75"]
 [ext_resource type="Script" uid="uid://cy0xixkkld1n1" path="res://ingredient_drawer_minigame.gd" id="1_ts6jv"]
 [ext_resource type="PackedScene" uid="uid://d1aebqcog8f34" path="res://assets/prefabs/Inventory/inventory_component.tscn" id="2_ts6jv"]
 

@@ -49,7 +49,7 @@ func start_display_popup(_scene_to_load: PackedScene, hotbar: Inventory,\
 
 func end_display_popup(output_hotbar: Inventory) -> void:
 	if output_hotbar != null:
-		player.hotbar.copy_inventory(output_hotbar)
+		player.hotbar.assign_new_inventory(output_hotbar)
 	
 	animation_player.play_backwards(&"fade_in")
 	await animation_player.animation_finished

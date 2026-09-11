@@ -25,20 +25,35 @@ func spawn_slots(item_list: Array[Stack]) -> void:
 	item_slots = []
 	item_slots.resize(item_list.size())
 	for i in range(item_list.size()):
-		var new_instance := ItemSlot.get_item_scene().instantiate()
+		var new_instance: ItemSlot = ItemSlot.get_item_scene().instantiate()
 		storage.add_child(new_instance)
 		
 		item_slots[i] = new_instance
 		new_instance.stack = item_list[i]
 
+# Similar to the above, but accepts a premade list of slots.
+func assign_slots(item_list: Array[Stack], slot_list: Array[ItemSlot]) -> void:
+	item_slots.assign(slot_list)
+	for i in range(item_list.size()):
+		var slot: ItemSlot = slot_list[i]
+		
+		slot.stack = item_list[i]
 
 func copy_inventory(original : Inventory) -> void:
 	for slot in item_slots:
 		storage.remove_child(slot)
 	
 	spawn_slots(original.export_stacks())
+	assert(false)
 
-
+# Similar to the above, but just sets the stack values of pre-
+# existing item slots. Only functions up to the number of slots the
+# targget inventory, ie the one executing this function
+# has. Other slots from the incoming inventory are
+# ignored
+func assign_new_inventory(new_inventory: Inventory) -> void:
+	for i in range(item_slots.size()):
+		item_slots[i].stack = new_inventory.item_slots[i].stack
 
 # Adds new stack to the inventory priotising adding to existing stacks 
 func blind_add_stack(new_item: Stack) -> Stack:

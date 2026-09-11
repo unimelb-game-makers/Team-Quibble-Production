@@ -36,7 +36,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			dragged_control = null
 			#if we don't have a parent waiting to pick up,
 			#return to previous owner
-			print_debug(pending_parent)
 			if not pending_parent or pending_parent == my_control.get_parent():
 				return_to_previous()
 			else:

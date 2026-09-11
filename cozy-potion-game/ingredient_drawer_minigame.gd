@@ -9,7 +9,7 @@ func _ready() -> void:
 
 func set_hotbar(new_hotbar: Inventory, new_input_index: int) -> void:
 	super(new_hotbar, new_input_index)
-	storage.hotbar.copy_inventory(new_hotbar)
+	storage.hotbar.assign_new_inventory(new_hotbar)
 	# poor design here, causes redudant connections
 	storage.inv_component.attach_inventory(storage.hotbar)
 

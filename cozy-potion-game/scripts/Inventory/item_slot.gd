@@ -1,5 +1,5 @@
 class_name ItemSlot
-extends Node
+extends Panel
 
 var stack : Stack :
 	set(value):

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bcqi5ykyush3i"]
+
+[ext_resource type="Script" uid="uid://dtfvdcuy006ib" path="res://scripts/Inventory/item_slot.gd" id="1_5qwv8"]
+[ext_resource type="Texture2D" uid="uid://b6gfooj6w6uyp" path="res://assets/sprites/black_tlle.png" id="2_278uj"]
+[ext_resource type="Script" uid="uid://bkt5imxfgerjv" path="res://scenes/user_interface/draggable_component.gd" id="3_q1wai"]
+
+[node name="HotbarItemSlot" type="Panel" unique_id=1405171780]
+custom_minimum_size = Vector2(59, 63)
+offset_right = 59.0
+offset_bottom = 63.0
+mouse_filter = 2
+script = ExtResource("1_5qwv8")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=902217433]
+position = Vector2(30.23967, 34)
+scale = Vector2(0.11983471, 0.11983471)
+texture = ExtResource("2_278uj")
+
+[node name="ItemSprite" type="Sprite2D" parent="." unique_id=76707666]
+position = Vector2(30.23967, 34)
+scale = Vector2(0.5, 0.5)
+
+[node name="QuantityLabel" type="Label" parent="." unique_id=2123998350]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 59.0
+offset_bottom = 63.0
+horizontal_alignment = 2
+
+[node name="DraggableComponent" type="Node" parent="." unique_id=462076725]
+script = ExtResource("3_q1wai")
+metadata/_custom_type_script = "uid://bkt5imxfgerjv"

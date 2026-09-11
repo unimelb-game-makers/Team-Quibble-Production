@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 	if being_dragged:
 		move_to_mouse()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_released("LMB"):
 		if node_being_dragged == self:
 			node_being_dragged = null

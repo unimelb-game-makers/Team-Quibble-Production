@@ -543,7 +543,7 @@ transform = Transform3D(1, 0, 0, 0, -1.1920929e-07, 0.99999994, 0, -0.99999994, 
 material_override = ExtResource("1_8r1wq")
 mesh = SubResource("ArrayMesh_wlr1y")
 
-[node name="Player" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area", "mimi_sprite", "hotbar_display") groups=["player"]]
+[node name="Player" type="CharacterBody3D" parent="Node3D" unique_id=1237919608 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area", "mimi_sprite") groups=["player"]]
 transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0.18743753, 1.0544419, -2.9712725)
 script = ExtResource("1_lx5au")
 animation_pivot = NodePath("AnimationPivot")
@@ -552,7 +552,6 @@ mouse_detector_left = NodePath("MouseDetectorLeft")
 mouse_detector_right = NodePath("MouseDetectorRight")
 interactable_collision_area = NodePath("AnimationPivot/InteractableCollisionShape")
 mimi_sprite = NodePath("AnimationPivot/Mimi")
-hotbar_display = NodePath("../../SceneUI/hotbar")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Player" unique_id=23129946]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040551424, 0.9759979, 0)
