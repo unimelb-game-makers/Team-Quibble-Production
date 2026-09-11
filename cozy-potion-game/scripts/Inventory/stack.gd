@@ -9,7 +9,9 @@ signal updated_values
 
 var item : Resource:
 	set(value):
-		item = value
+		item = null
+		if value != null:
+			item = value.duplicate()
 		update_stack()
 		updated_values.emit()
 
@@ -24,6 +26,7 @@ var quantity : int:
 var isEmpty = false
 
 var sprite: Texture
+
 
 func _init(start_quantity: int = 0, new_item: Resource = null) -> void:
 	quantity = start_quantity
@@ -68,8 +71,17 @@ func clone_type(stack : Stack) -> Stack:
 
 
 func compare_items(comp_stack: Stack) -> bool:
-	if comp_stack.item == item:
-		return true
+	#Bad
+	if comp_stack.item is PotionIngredient and item is PotionIngredient:
+		comp_stack.item.process_applied.sort()
+		item.process_applied.sort()
+		if comp_stack.item.ingredient_id == item.ingredient_id \
+			and comp_stack.item.process_applied == item.process_applied:
+				return true
+	
+	elif comp_stack.item is Potion and item is Potion:
+		if comp_stack.item.potion_id == item.potion_id:
+				return true
 	return false
 
 

@@ -10,3 +10,6 @@ var valid_process_methods: Array[Alchemy.ProcessID] = []
 
 # This will make it so you can index it using the Alchemy.AttributeID
 var attributes: Dictionary[Alchemy.AttributeID, int]
+
+# What processes have been applied to thing
+var process_applied: Array[Alchemy.ProcessID]
