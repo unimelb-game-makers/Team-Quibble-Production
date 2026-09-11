@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scenes/prefabs/minigame/crushing_minigame/pestle.tscn" id="1_j31fb"]
 [ext_resource type="Texture2D" uid="uid://d4j1fyiiegfeq" path="res://assets/sprites/minigame/crushing_minigame/Mortar.png" id="2_eukv0"]
 [ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scenes/prefabs/minigame/crushing_minigame/ingredient_ball.tscn" id="2_fhxy2"]
+[ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="5_7jnv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvm4"]
 size = Vector2(853, 21)
@@ -49,3 +50,15 @@ shape = SubResource("RectangleShape2D_4dvm4")
 
 [node name="BallSpawnMarker" type="Marker2D" parent="." unique_id=746776062]
 position = Vector2(762, 573)
+
+[node name="Control" type="Control" parent="." unique_id=1083516855]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 452.0
+offset_top = 396.0
+offset_right = 1075.0
+offset_bottom = 806.0
+
+[node name="DraggableAcceptorComponent" type="Node" parent="Control" unique_id=1491720030]
+script = ExtResource("5_7jnv1")
+metadata/_custom_type_script = "uid://b85c75nnvco20"

@@ -6,7 +6,6 @@ class_name DraggableComponent extends Node
 #if you encounter bugs to do with positioning while dragging, consider
 #changing this code to use offset_transform
 
-
 static var dragged_control: Control
 static var pending_parent: Control
 
@@ -46,6 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if !my_control.get_global_rect().has_point(my_control.get_global_mouse_position()):
 		return
+	print_debug(1)
 	if dragged_control:
 		return
 	assign_to_mouse()

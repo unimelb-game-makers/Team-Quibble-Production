@@ -31,6 +31,17 @@ func spawn_slots(item_list: Array[Stack]) -> void:
 		item_slots[i] = new_instance
 		new_instance.stack = item_list[i]
 
+# Spawns ItemSlots with currently parsed stacks
+func spawn_hotbar_slots(item_list: Array[Stack]) -> void:
+	item_slots = []
+	item_slots.resize(item_list.size())
+	for i in range(item_list.size()):
+		var new_instance: ItemSlot = ItemSlot.get_hotbar_item_slot_scene().instantiate()
+		storage.add_child(new_instance)
+		
+		item_slots[i] = new_instance
+		new_instance.stack = item_list[i]
+
 # Similar to the above, but accepts a premade list of slots.
 func assign_slots(item_list: Array[Stack], slot_list: Array[ItemSlot]) -> void:
 	item_slots.assign(slot_list)
@@ -45,6 +56,11 @@ func copy_inventory(original : Inventory) -> void:
 	
 	spawn_slots(original.export_stacks())
 
+func copy_inventory_to_hotbar(original : Inventory) -> void:
+	for slot in item_slots:
+		storage.remove_child(slot)
+	
+	spawn_hotbar_slots(original.export_stacks())
 
 # Similar to the above, but just sets the stack values of pre-
 # existing item slots. Only functions up to the number of slots the

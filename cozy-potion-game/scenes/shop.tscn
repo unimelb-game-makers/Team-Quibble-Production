@@ -496,6 +496,7 @@ layout_mode = 2
 mouse_filter = 2
 alignment = 1
 script = ExtResource("2_ouqob")
+hotbar_item_slot_scene = ExtResource("2_5lclc")
 
 [node name="HotbarItemSlot" parent="SceneUI/HotbarControl/PanelContainer/hotbar" unique_id=1405171780 instance=ExtResource("2_5lclc")]
 layout_mode = 2
