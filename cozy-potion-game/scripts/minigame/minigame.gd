@@ -2,6 +2,7 @@ class_name Minigame extends CanvasLayer
 
 signal minigame_won
 
+@export var acceptor: DraggableAcceptorComponent
 #emitted when an item is added to the minigame.
 # this is usually done by dragging from the hotbar
 #most minigames should not start until this is done
@@ -12,6 +13,9 @@ var input_ingredients: Array[Stack]
 var output_ingredient: Stack
 var hotbar: Inventory
 var input_index: int
+
+func _ready() -> void:
+	acceptor.accepted_draggable.connect(emit_ingredient_added)
 
 func win_minigame() -> void:
 	ingredient_processed.emit(output_ingredient)
@@ -41,4 +45,5 @@ func _apply_ingredient(_new_ingredient: Stack) -> void:
 #this is one way of connecting the ingredient accepted signal
 # from the subviewportcontainer above this to the minigame
 func emit_ingredient_added(draggable: Control):
+	print_debug(1)
 	ingredient_added.emit(Stack.new())

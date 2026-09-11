@@ -8,6 +8,7 @@ class_name CrushingMinigame extends Minigame
 var win_check_timer: float
 
 func _ready() -> void:
+	acceptor.accepted_draggable.connect(emit_ingredient_added)
 	ingredient_added.connect(_on_ingredient_added)
 	spawn_ball()
 

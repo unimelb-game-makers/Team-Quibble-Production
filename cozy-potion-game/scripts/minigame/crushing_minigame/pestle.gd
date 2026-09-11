@@ -15,6 +15,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	#direction to move
 	var mouse_world_position = get_viewport().get_mouse_position()
+	
 	var move_dir = (mouse_world_position - position).normalized()
 	 
 	#the speed we move towards the cursor is dependent on how far away we are from it

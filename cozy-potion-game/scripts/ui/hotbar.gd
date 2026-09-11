@@ -5,10 +5,15 @@ var inventory: Inventory
 
 #this is used when we need to populate the hotbar with empty items
 @export var hotbar_item_slot_scene: PackedScene
+@export var acceptor: DraggableAcceptorComponent
 
 func _ready() -> void:
 	inventory = Inventory.new(self)
 	inventory.assign_slots(Inventory.create_empty_stacks(3), get_item_slot_children())
+	acceptor.accepted_draggable.connect(_on_accept)
+
+func _on_accept(control: Control):
+	pass
 
 func repopulate() -> void:
 	var new = hotbar_item_slot_scene.instantiate()
