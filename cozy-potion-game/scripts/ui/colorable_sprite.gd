@@ -1,6 +1,6 @@
 class_name ColorableSprite extends Sprite2D
 
-@onready var uncolored: Sprite2D = $Uncolored
+@export var uncolored: Sprite2D
 
 func set_colored_texture(_new_texture: Texture) -> void:
 	set_texture(_new_texture)

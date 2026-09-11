@@ -135,9 +135,13 @@ _data = {
 &"start": SubResource("Animation_b5035")
 }
 
-[node name="BoilingMinigame" type="CanvasLayer" unique_id=1533572996]
+[node name="BoilingMinigame" type="CanvasLayer" unique_id=1533572996 node_paths=PackedStringArray("boiling_timer", "animation_player", "thermometer_sprite", "needle_sprite")]
 script = ExtResource("1_siphr")
 progress_variance_array = Array[Curve]([SubResource("Curve_ii47s"), SubResource("Curve_siphr"), SubResource("Curve_b5035")])
+boiling_timer = NodePath("BoilingTimer")
+animation_player = NodePath("AnimationPlayer")
+thermometer_sprite = NodePath("Thermometer")
+needle_sprite = NodePath("Thermometer/Needle")
 
 [node name="TeapotFull" type="Sprite2D" parent="." unique_id=2053737364]
 position = Vector2(930, 480)
@@ -175,7 +179,6 @@ position = Vector2(-42, -8)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_kvq03")
 script = ExtResource("5_agi2m")
-metadata/_custom_type_script = "uid://cjotieye2jrd7"
 
 [node name="ColorableSprite2" type="Sprite2D" parent="Ingredients" unique_id=898555877]
 z_index = -1
@@ -183,7 +186,6 @@ position = Vector2(46, 8)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_kvq03")
 script = ExtResource("5_agi2m")
-metadata/_custom_type_script = "uid://cjotieye2jrd7"
 
 [node name="ColorableSprite3" type="Sprite2D" parent="Ingredients" unique_id=1668329368]
 z_index = -1
@@ -191,6 +193,5 @@ position = Vector2(182, -8)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_kvq03")
 script = ExtResource("5_agi2m")
-metadata/_custom_type_script = "uid://cjotieye2jrd7"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

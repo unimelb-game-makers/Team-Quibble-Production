@@ -3,8 +3,10 @@ extends Minigame
 @export var progress_variance_array: Array[Curve]
 @onready var progress_variance: Curve = progress_variance_array.pick_random()
 
-@onready var boiling_timer: Timer = $BoilingTimer
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@export var boiling_timer: Timer
+@export var animation_player: AnimationPlayer
+@export var thermometer_sprite: Sprite2D
+@export var needle_sprite: Sprite2D
 
 const SUCCESS_AREA_START: float = 0.25
 const SUCCESS_AREA_END: float = 0.75
@@ -15,12 +17,12 @@ const TOTAL_TIME: float = 5.0
 
 
 func _ready() -> void:
-	$Thermometer.texture.gradient.offsets = [0.0, SUCCESS_AREA_START, SUCCESS_AREA_END]
+	thermometer_sprite.texture.gradient.offsets = [0.0, SUCCESS_AREA_START, SUCCESS_AREA_END]
 
 func _process(_delta: float) -> void:
 	if !boiling_timer.is_stopped():
 		var progress: float = progress_variance.sample((TOTAL_TIME - boiling_timer.time_left) / TOTAL_TIME)
-		$Thermometer/Needle.position.x = (progress - 0.5) * THERMOMETER_WIDTH
+		needle_sprite.position.x = (progress - 0.5) * THERMOMETER_WIDTH
 		if Input.is_action_just_pressed(&"interact") or Input.is_action_just_pressed(&"LMB"):
 			boiling_timer.stop()
 			if progress < SUCCESS_AREA_END and progress > SUCCESS_AREA_START:
@@ -29,7 +31,6 @@ func _process(_delta: float) -> void:
 			else:
 				pass
 			animation_player.play(&"end")
-
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
