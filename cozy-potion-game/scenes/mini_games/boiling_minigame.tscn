@@ -1,0 +1,196 @@
+[gd_scene format=3 uid="uid://dwjhqwlvqsrte"]
+
+[ext_resource type="Script" uid="uid://b6gck2otw1hmt" path="res://scripts/minigame/boiling_minigame.gd" id="1_siphr"]
+[ext_resource type="Texture2D" uid="uid://fueysbadjrju" path="res://assets/sprites/minigame/boiling_minigame/teapot_full.png" id="2_b5035"]
+[ext_resource type="Texture2D" uid="uid://bcde7p1jknv7b" path="res://assets/sprites/minigame/boiling_minigame/teapot_lid_full.png" id="3_yua08"]
+[ext_resource type="Texture2D" uid="uid://4ixno0w1bych" path="res://assets/sprites/unhappy.png" id="4_kvq03"]
+[ext_resource type="Script" uid="uid://cjotieye2jrd7" path="res://scripts/colorable_sprite.gd" id="5_agi2m"]
+
+[sub_resource type="Curve" id="Curve_ii47s"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_siphr"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_b5035"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_siphr"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.25, 0.75)
+colors = PackedColorArray(1, 1, 0, 1, 1, 0.6156863, 0, 1, 0.59, 0, 0, 1)
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x2l7t"]
+gradient = SubResource("Gradient_siphr")
+width = 420
+height = 128
+
+[sub_resource type="Gradient" id="Gradient_h368w"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.9)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6govl"]
+gradient = SubResource("Gradient_h368w")
+width = 16
+height = 80
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Animation" id="Animation_aeie2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeapotFull/TeapotLidFull:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ingredients:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(930, 280)]
+}
+
+[sub_resource type="Animation" id="Animation_siphr"]
+resource_name = "end"
+length = 1.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeapotFull/TeapotLidFull:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -400)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ingredients:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(930, 480), Vector2(930, 280)]
+}
+
+[sub_resource type="Animation" id="Animation_b5035"]
+resource_name = "start"
+length = 1.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TeapotFull/TeapotLidFull:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, -400), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Ingredients:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(930, 280), Vector2(930, 480)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h368w"]
+_data = {
+&"RESET": SubResource("Animation_aeie2"),
+&"end": SubResource("Animation_siphr"),
+&"start": SubResource("Animation_b5035")
+}
+
+[node name="BoilingMinigame" type="CanvasLayer" unique_id=1533572996]
+script = ExtResource("1_siphr")
+progress_variance_array = Array[Curve]([SubResource("Curve_ii47s"), SubResource("Curve_siphr"), SubResource("Curve_b5035")])
+
+[node name="TeapotFull" type="Sprite2D" parent="." unique_id=2053737364]
+position = Vector2(930, 480)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_b5035")
+
+[node name="TeapotLidFull" type="Sprite2D" parent="TeapotFull" unique_id=1204067302]
+position = Vector2(0, -400)
+texture = ExtResource("3_yua08")
+
+[node name="Thermometer" type="Sprite2D" parent="." unique_id=2072749853]
+self_modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+position = Vector2(960, 910)
+texture = SubResource("GradientTexture2D_x2l7t")
+
+[node name="Needle" type="Sprite2D" parent="Thermometer" unique_id=55972828]
+visible = false
+position = Vector2(-210, 0)
+texture = SubResource("GradientTexture2D_6govl")
+
+[node name="BoilingTimer" type="Timer" parent="." unique_id=539281011]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1137922232]
+libraries/ = SubResource("AnimationLibrary_h368w")
+autoplay = &"start"
+
+[node name="Ingredients" type="Node2D" parent="." unique_id=803572519]
+position = Vector2(930, 280)
+
+[node name="ColorableSprite" type="Sprite2D" parent="Ingredients" unique_id=1783808881]
+z_index = -1
+position = Vector2(-42, -8)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_kvq03")
+script = ExtResource("5_agi2m")
+metadata/_custom_type_script = "uid://cjotieye2jrd7"
+
+[node name="ColorableSprite2" type="Sprite2D" parent="Ingredients" unique_id=898555877]
+z_index = -1
+position = Vector2(46, 8)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_kvq03")
+script = ExtResource("5_agi2m")
+metadata/_custom_type_script = "uid://cjotieye2jrd7"
+
+[node name="ColorableSprite3" type="Sprite2D" parent="Ingredients" unique_id=1668329368]
+z_index = -1
+position = Vector2(182, -8)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_kvq03")
+script = ExtResource("5_agi2m")
+metadata/_custom_type_script = "uid://cjotieye2jrd7"
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
