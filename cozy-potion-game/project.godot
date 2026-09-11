@@ -42,6 +42,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 
 player=""
 popup_subwindow=""
+ingredient_ball=""
 
 [input]
 
@@ -136,6 +137,9 @@ locale/translations_pot_files=PackedStringArray("res://dialogue/customer/placeho
 [layer_names]
 
 3d_physics/layer_21="Interactable Area"
+2d_physics/layer_30="CrushingMinigamePestle"
+2d_physics/layer_31="CrushingMinigameBall"
+2d_physics/layer_32="CrushingMinigameBallCeiling"
 
 [physics]
 

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bcqi5ykyush3i"]
+
+[ext_resource type="Script" uid="uid://dtfvdcuy006ib" path="res://scripts/Inventory/item_slot.gd" id="1_5qwv8"]
+[ext_resource type="Script" uid="uid://bkt5imxfgerjv" path="res://scenes/user_interface/draggable_component.gd" id="3_q1wai"]
+
+[node name="HotbarItemSlot" type="Panel" unique_id=1405171780 node_paths=PackedStringArray("item_sprite", "quantity_label", "draggable_component")]
+custom_minimum_size = Vector2(59, 63)
+offset_right = 59.0
+offset_bottom = 63.0
+mouse_filter = 2
+script = ExtResource("1_5qwv8")
+item_sprite = NodePath("TextureRect")
+quantity_label = NodePath("QuantityLabel")
+draggable_component = NodePath("DraggableComponent")
+
+[node name="DraggableComponent" type="Node" parent="." unique_id=462076725]
+script = ExtResource("3_q1wai")
+metadata/_custom_type_script = "uid://bkt5imxfgerjv"
+
+[node name="QuantityLabel" type="Label" parent="." unique_id=2123998350]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 59.0
+offset_bottom = 63.0
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=190823075]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
