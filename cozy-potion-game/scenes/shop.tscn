@@ -263,6 +263,7 @@ offset_left = 132.0
 offset_top = 259.0
 offset_right = 346.0
 offset_bottom = 317.0
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="SceneUI/Control" unique_id=2013784363]
 layout_mode = 1
@@ -271,9 +272,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Hotbar" type="HBoxContainer" parent="SceneUI/Control/PanelContainer" unique_id=411067347 node_paths=PackedStringArray("acceptor")]
 layout_mode = 2
+mouse_filter = 2
 script = ExtResource("7_c8dfh")
 hotbar_item_slot_scene = ExtResource("8_mt8ix")
 acceptor = NodePath("DraggableAcceptorComponent")
