@@ -115,7 +115,9 @@ enum ProcessID {
 const INGREDIENT_JSON: String = "res://resources/json/ingredients.json"
 const PROCESSES_JSON: String = "res://resources/json/processes.json"
 const POTION_JSON: String = "res://resources/json/potion_list.json"
+const INGREDIENT_SPRITES: String = "res://assets/sprites/ingredients/"
 
+var sprite_directory: PackedStringArray
 var ingredient_list: Array[PotionIngredient] = []
 var potion_referance: Array[PotionReference] = []
 
@@ -132,8 +134,9 @@ func read_ingredient_data() -> void:
 	var json_data: JSON = Utils.get_json(INGREDIENT_JSON)
 
 	ingredient_list.resize(IngredientID.size())
+	sprite_directory = DirAccess.get_files_at(INGREDIENT_SPRITES)
 	var index := 0
-
+	var start = Time.get_ticks_msec()
 	for ingredient in json_data.data:
 		var temp_ingredient := PotionIngredient.new()
 		temp_ingredient.ingredient_name = ingredient["Ingredient Name"]
@@ -147,8 +150,12 @@ func read_ingredient_data() -> void:
 		for attribute in AttributeID.values():
 			temp_ingredient.attributes.set(attribute, ingredient[AttributeID.keys()[attribute]])
 
+		temp_ingredient.ingredient_sprite = get_sprite(IngredientID.keys()[temp_ingredient.ingredient_id])
+
 		ingredient_list[index] = temp_ingredient
 		index += 1
+	var end = Time.get_ticks_msec()
+	print_debug((end-start)/1000000.0)
 
 func read_potion_data() -> void:
 	var json_data: JSON = Utils.get_json(POTION_JSON)
@@ -182,9 +189,23 @@ func sum_attributes(_ingredient_list: Array[PotionIngredient]) -> Dictionary[Alc
 	if _ingredient_list.size() == 1:
 			return _attributes
 	
-	for ingredient in range(1, _ingredient_list.size()-1):
+	for ingredient in range(1, _ingredient_list.size()):
 		for attribute in AttributeID.values():
 			var new_value = _attributes[attribute] + _ingredient_list[ingredient].attributes[attribute]
 			_attributes[attribute] = new_value
 			
 	return _attributes
+
+const MISSING_IMAGE = preload("uid://dexko6nfrs6tc")
+
+# This sucks and should be replaced
+func get_sprite(_name: String) -> Resource:
+	_name = _name.replace("INGR_", "")
+	for index in range(sprite_directory.size()):
+		var sprite = sprite_directory[index].to_camel_case().to_lower()
+		if sprite.contains(_name.to_camel_case().to_lower()):
+			var sprite_path = INGREDIENT_SPRITES+sprite_directory[index]
+			return ResourceLoader.load(sprite_path)
+
+	print_debug(_name.to_camel_case().to_lower(), " is missing a sprite")
+	return MISSING_IMAGE
