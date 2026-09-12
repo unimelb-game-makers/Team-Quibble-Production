@@ -19,7 +19,7 @@ func _on_ingredient_added(ingredient_stack: Stack):
 
 func process_ingredient(input_stack: Stack) -> Stack:
 	print_debug("IT IS NOW TIME TO IMPLEMENT ITEM PROCESSING ON THIS LINE")
-	input_stack.item.ingredient_name = "PROCESSED INGREDIENT"
+	input_stack.item.process_applied.append(Alchemy.ProcessID.PROC_PRESS)
 	return input_stack
 
 
