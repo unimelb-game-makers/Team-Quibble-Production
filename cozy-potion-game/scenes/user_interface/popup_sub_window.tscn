@@ -175,6 +175,7 @@ sub_viewport = NodePath("PanelContainer/SubViewportContainer/SubViewport")
 animation_player = NodePath("AnimationPlayer")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1230038533]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -190,10 +191,6 @@ color = Color(0, 0, 0, 0.15686275)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=317420702]
 libraries/ = SubResource("AnimationLibrary_vsj0n")
 
-[node name="SubViewport" type="SubViewport" parent="." unique_id=230729811]
-transparent_bg = true
-size = Vector2i(1920, 1080)
-
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=64089137]
 anchors_preset = 15
 anchor_right = 1.0
@@ -202,10 +199,12 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2rywg")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=2088361896]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 30

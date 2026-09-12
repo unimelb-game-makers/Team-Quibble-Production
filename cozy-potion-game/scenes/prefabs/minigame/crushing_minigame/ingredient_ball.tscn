@@ -10,7 +10,7 @@ radius = 65.45
 [sub_resource type="CircleShape2D" id="CircleShape2D_aue3q"]
 radius = 61.75
 
-[node name="IngredientBall" type="RigidBody2D" unique_id=932391481 node_paths=PackedStringArray("split_markers", "collision_shape", "collision_area", "ingredient_sprite", "ingredient_background")]
+[node name="IngredientBall" type="RigidBody2D" unique_id=932391481 node_paths=PackedStringArray("split_markers", "collision_shape", "collision_area", "ingredient_sprite", "ingredient_background") groups=["ingredient_ball"]]
 collision_layer = 1073741824
 collision_mask = 3221225473
 mass = 0.1

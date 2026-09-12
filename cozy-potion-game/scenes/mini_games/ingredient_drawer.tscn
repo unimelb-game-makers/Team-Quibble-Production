@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccvp68inp2bhf"]
 
-[ext_resource type="Script" uid="uid://duuaog7clpp3u" path="res://scripts/inventory/drawer.gd" id="1_d0n75"]
+[ext_resource type="Script" uid="uid://duuaog7clpp3u" path="res://scripts/Inventory/drawer.gd" id="1_d0n75"]
 [ext_resource type="Script" uid="uid://cy0xixkkld1n1" path="res://ingredient_drawer_minigame.gd" id="1_ts6jv"]
 [ext_resource type="PackedScene" uid="uid://d1aebqcog8f34" path="res://assets/prefabs/Inventory/inventory_component.tscn" id="2_ts6jv"]
 
@@ -12,6 +12,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1910.0
 offset_bottom = 1091.0
+mouse_filter = 2
 script = ExtResource("1_d0n75")
 
 [node name="Storage" type="GridContainer" parent="Storage" unique_id=2147100874]
@@ -20,6 +21,7 @@ offset_left = 499.0
 offset_top = 201.0
 offset_right = 1424.0
 offset_bottom = 703.0
+mouse_filter = 2
 
 [node name="InvComponent" parent="Storage" unique_id=1705191911 instance=ExtResource("2_ts6jv")]
 
