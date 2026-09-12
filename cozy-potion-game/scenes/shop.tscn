@@ -6,9 +6,12 @@
 [ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/ui/list_manager.gd" id="5_pqync"]
 [ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="6_heatd"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="6_yuijs"]
+[ext_resource type="Script" uid="uid://c60gdvx5xbpwi" path="res://scripts/ui/hotbar.gd" id="7_c8dfh"]
 [ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/mini_games/recipe_scene.tscn" id="7_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
+[ext_resource type="PackedScene" uid="uid://bcqi5ykyush3i" path="res://assets/prefabs/Inventory/hotbar_item_slot.tscn" id="8_mt8ix"]
+[ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="9_a6g3j"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="9_m4ofw"]
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
 [ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="10_p0at6"]
@@ -102,12 +105,6 @@ corner_radius_bottom_left = 25
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=2120733313]
 
 [node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 groups=["popup_subwindow"] instance=ExtResource("8_m4ofw")]
-
-[node name="hotbar" type="HBoxContainer" parent="SceneUI" unique_id=1593043109 groups=["hotbar"]]
-offset_left = 627.0
-offset_top = 991.0
-offset_right = 1360.0
-offset_bottom = 1062.0
 
 [node name="TimeUI" type="CanvasLayer" parent="SceneUI" unique_id=1010363722]
 
@@ -259,6 +256,32 @@ text = "Customer Needs:"
 [node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/ListManager/PanelContainer/MarginContainer/VBoxContainer" unique_id=1511902598]
 layout_mode = 2
 
+[node name="Control" type="Control" parent="SceneUI" unique_id=1842526676]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 132.0
+offset_top = 259.0
+offset_right = 346.0
+offset_bottom = 317.0
+
+[node name="PanelContainer" type="PanelContainer" parent="SceneUI/Control" unique_id=2013784363]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hotbar" type="HBoxContainer" parent="SceneUI/Control/PanelContainer" unique_id=411067347 node_paths=PackedStringArray("acceptor")]
+layout_mode = 2
+script = ExtResource("7_c8dfh")
+hotbar_item_slot_scene = ExtResource("8_mt8ix")
+acceptor = NodePath("DraggableAcceptorComponent")
+
+[node name="DraggableAcceptorComponent" type="Node" parent="SceneUI/Control/PanelContainer/Hotbar" unique_id=55537982]
+script = ExtResource("9_a6g3j")
+metadata/_custom_type_script = "uid://b85c75nnvco20"
+
 [node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
 script = ExtResource("11_24it5")
 customer_anim_player = NodePath("AnimationPlayer")
@@ -300,8 +323,9 @@ metadata/_custom_type_script = "uid://ciwktypwu667m"
 transform = Transform3D(5.825, 0, 0, 0, 5.825, 0, 0, 0, 5.825, 0, -0.1376704, 1.6061554)
 shape = SubResource("BoxShape3D_0n2di")
 
-[node name="Player" parent="Node3D" unique_id=1588394108 instance=ExtResource("12_ouqob")]
+[node name="Player" parent="Node3D" unique_id=1588394108 node_paths=PackedStringArray("hotbar_display") instance=ExtResource("12_ouqob")]
 transform = Transform3D(0.6654595, 0, -0.746434, 0, 1, 0, 0.746434, 0, 0.6654595, -3.4541292, 0.31614017, -2.2616043)
+hotbar_display = NodePath("../../SceneUI/Control/PanelContainer/Hotbar")
 
 [node name="PantryObject" parent="Node3D" unique_id=953873510 instance=ExtResource("27_a6g3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6162415, -0.29058182, -4.981637)
