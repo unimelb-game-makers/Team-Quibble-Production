@@ -36,7 +36,7 @@ func recall_customer() -> void:
 	await get_tree().create_timer(1).timeout
 	send_customer()
 
-func _on_customer_interact() -> void:
+func _on_customer_interact(fuck, this) -> void:
 	if not customer_world.has_conveyed_request:
 		DialogueManager.show_example_dialogue_balloon(CustomerDialogue.get_initial_dialogue(customer_world.customer), "start")
 		customer_world.has_conveyed_request = true

@@ -175,7 +175,7 @@ func read_potion_data() -> void:
 
 		potion_referance[temp_potion.potion_id] = temp_potion
 
-func brew_potion(_ingredient_list: Array[PotionIngredient]) -> Potion:
+func brew_potion(_ingredient_list: Array) -> Potion:
 	var _attributes := sum_attributes(_ingredient_list)
 	
 	var potion := Potion.new()
@@ -183,7 +183,7 @@ func brew_potion(_ingredient_list: Array[PotionIngredient]) -> Potion:
 	
 	return potion	
 
-func sum_attributes(_ingredient_list: Array[PotionIngredient]) -> Dictionary[Alchemy.AttributeID, int]:
+func sum_attributes(_ingredient_list: Array) -> Dictionary[Alchemy.AttributeID, int]:
 	var _attributes: Dictionary[Alchemy.AttributeID, int]
 	_attributes.assign(_ingredient_list[0].attributes.duplicate())
 	if _ingredient_list.size() == 1:

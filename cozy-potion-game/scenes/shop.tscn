@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/mini_games/recipe_scene.tscn" id="7_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
-[ext_resource type="PackedScene" uid="uid://bcqi5ykyush3i" path="res://assets/prefabs/Inventory/hotbar_item_slot.tscn" id="8_mt8ix"]
+[ext_resource type="PackedScene" uid="uid://bcqi5ykyush3i" path="res://assets/prefabs/inventory/hotbar_item_slot.tscn" id="8_mt8ix"]
 [ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="9_a6g3j"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="9_m4ofw"]
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]

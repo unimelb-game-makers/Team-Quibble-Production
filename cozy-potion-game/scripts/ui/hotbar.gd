@@ -10,9 +10,19 @@ var inventory: Inventory
 func _ready() -> void:
 	inventory = Inventory.new(self)
 	acceptor.accepted_draggable.connect(_on_accept)
+	child_order_changed.connect(_on_children_update)
 
 func _on_accept(control: Control):
 	pass
+
+# Checks to see if we can accept more children
+func _on_children_update() -> void:
+	acceptor.accepting_items = (get_child_count() <= 3)
+	inventory.item_slots.resize(0)
+	for child in get_children():
+		if child is not ItemSlot:
+			continue
+		inventory.item_slots.append(child)
 
 func repopulate() -> void:
 	var new = hotbar_item_slot_scene.instantiate()

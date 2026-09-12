@@ -3,6 +3,7 @@
 class_name DraggableAcceptorComponent extends Node
 
 var my_control: Control
+var accepting_items: bool = true
 
 #use this in the control that uses this if you want
 signal accepted_draggable(draggable: Control)
@@ -23,6 +24,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if not my_control.is_visible_in_tree():
 		#print_debug(3)
+		return
+
+	if not accepting_items:
 		return
 
 		

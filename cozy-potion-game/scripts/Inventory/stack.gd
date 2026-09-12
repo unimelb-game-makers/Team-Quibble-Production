@@ -9,9 +9,7 @@ signal updated_values
 
 var item : Resource:
 	set(value):
-		item = null
-		if value != null:
-			item = value.duplicate()
+		item = value
 		update_stack()
 		updated_values.emit()
 

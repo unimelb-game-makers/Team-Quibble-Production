@@ -19,7 +19,13 @@ static func create_empty_stacks(inv_size : int) -> Array[Stack]:
 		items[i] = Stack.new()
 	return items
 
+func get_inventory_items() -> Array:
+	var inventory_items: Array
+	
+	for _item in item_slots:
+		inventory_items.append(_item.stack.item)
 
+	return inventory_items
 
 #creates a new slot from a stack and adds it to inventory
 func add_new_slot_from_stack(item: Stack) -> void:
