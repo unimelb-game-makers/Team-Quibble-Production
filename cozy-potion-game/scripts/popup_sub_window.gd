@@ -3,6 +3,7 @@ extends CanvasLayer
 
 @export var sub_viewport: SubViewport
 @export var animation_player : AnimationPlayer
+@export var black_rect: ColorRect
 
 var player: WorldPlayer
 var popup: Node

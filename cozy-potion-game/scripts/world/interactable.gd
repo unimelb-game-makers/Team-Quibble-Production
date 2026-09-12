@@ -15,8 +15,10 @@ func _ready() -> void:
 	area_exited.connect(_area_exited)
 
 func interact():
+	print_debug(1)
 	interacted.emit()
-	if popup: popup.queue_free()
+	if popup: 
+		popup.queue_free()
 
 ## Handle when an area enters the box
 func _area_entered(area: Area3D):
