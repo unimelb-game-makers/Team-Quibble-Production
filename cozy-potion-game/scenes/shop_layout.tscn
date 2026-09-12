@@ -635,6 +635,9 @@ points = PackedVector3Array(0.052233815, -0.2865873, -0.5515871, 4.075397, 0.022
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7ufjt"]
 points = PackedVector3Array(0.31321397, -0.0548, -0.0024902245, -0.9649404, -0.23454046, -0.52174044, -0.9649404, -0.13116404, -0.52174044, -0.9649404, -0.13116404, 0.01596427, 0.35864043, -0.23454046, -0.25288808, 0.35864043, -0.13116404, -0.52174044, -0.9649404, -0.048411906, -0.25288808, -0.9649404, -0.23454046, -0.25288808, 0.35864043, -0.23454046, -0.52174044, 0.35864043, -0.13116404, 0.01596427, 0.35864043, -0.048411906, -0.25288808, -0.919514, -0.0548, -0.0024902245)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_pitpm"]
+size = Vector3(4.4622803, 1, 1)
+
 [node name="ShopLayout" type="Node3D" unique_id=634199379]
 
 [node name="Cube_001" type="MeshInstance3D" parent="." unique_id=1361160823]
@@ -752,6 +755,10 @@ shape = SubResource("ConvexPolygonShape3D_hj67y")
 [node name="CollisionShape3D11" type="CollisionShape3D" parent="StaticBody3D" unique_id=1739510551]
 transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_7ufjt")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="StaticBody3D" unique_id=1914902693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.958921, 0.6191447, 2.5391858)
+shape = SubResource("BoxShape3D_pitpm")
 
 [node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=402323068]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8408166, 1.1525866, 6.447785)
