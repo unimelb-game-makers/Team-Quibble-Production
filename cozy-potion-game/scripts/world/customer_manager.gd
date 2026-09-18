@@ -49,23 +49,32 @@ func _on_customer_interact(fuck, this) -> void:
 func show_acceptor_dialogue(dialogue_start: String) -> void:
 	DialogueManager.show_dialogue_balloon_scene(acceptor_dialogue_balloon, dialogue_resource, dialogue_start)
 	if DialogueManager.active_balloon is ItemAcceptDialogueBalloon:
-		var potion_accept_zone = DialogueManager.active_balloon.potion_accept_zone
-		potion_accept_zone.potion_accepted.connect(_on_potion_accepted)
-		potion_accept_zone.other_accepted.connect(_on_other_accepted)
+		var potion_accept_zone: CustomerPotionAcceptZone = DialogueManager.active_balloon.potion_accept_zone
+		potion_accept_zone.draggable_acceptor_compoment.accepted_draggable.connect(_on_acceptor_accepted)
 	else:
 		assert(false)
-	
-func _on_other_accepted(other: Resource):
-	print_debug("other accepted")
+
+func _on_acceptor_accepted(control: Control):
 	DialogueManager.active_balloon.queue_free()
-	DialogueManager.show_example_dialogue_balloon(dialogue_resource, "not_potion")
-
-func _on_potion_accepted(potion: Potion) -> void:
-	if customer_world.customer.check_potion_sufficient(potion):
-		buy_potion(potion)
+	
+	if not control is ItemSlot:
+		DraggableComponent.get_draggable_component(control).return_to_previous()
+	
+	var item = control.stack.item
+	
+	if not item is Potion:
+		DraggableComponent.get_draggable_component(control).return_to_previous()
+		other_accepted()
+		return
+	
+	if customer_world.customer.check_potion_sufficient(item):
+		buy_potion(item)
 	else:
-		refuse_potion(potion)
+		DraggableComponent.get_draggable_component(control).return_to_previous()
+		refuse_potion()
 
+func other_accepted():
+	DialogueManager.show_example_dialogue_balloon(dialogue_resource, "not_potion")
 
 func buy_potion(potion: Potion) -> void:
 		Utils.corner_needs_list_manager.clear_list()
@@ -77,7 +86,7 @@ func buy_potion(potion: Potion) -> void:
 			TimeCycle.progress_day()
 		recall_customer()
 
-func refuse_potion(potion: Potion) -> void:
+func refuse_potion() -> void:
 	DialogueManager.show_example_dialogue_balloon(dialogue_resource, "refuse")
 	
 
