@@ -216,7 +216,8 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	if dialogue_line.responses.size() > 0: return
 
 	# When there are no response options the balloon itself is the clickable thing
-	get_viewport().set_input_as_handled()
+	if clicks_advance_dialogue:
+		get_viewport().set_input_as_handled()
 
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and clicks_advance_dialogue:
 		next(dialogue_line.next_id)
