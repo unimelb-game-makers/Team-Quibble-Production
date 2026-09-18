@@ -73,9 +73,9 @@ func _ready() -> void:
 	inv_component.attach_inventory(hotbar) 
 
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("close_minigame"):
-		leave_drawer.emit(hotbar)
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("close_minigame"):
+		#leave_drawer.emit(hotbar)
 
 
 func set_sort_key(index: int) -> void:

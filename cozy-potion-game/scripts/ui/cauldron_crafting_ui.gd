@@ -21,12 +21,10 @@ func _ready() -> void:
 	potion_created_container.gui_input.connect(_on_potion_created_container_gui_input)
 
 func create_potion() -> void:
-	
+	var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
+	var potion_recipe = player.hotbar.get_inventory_items()
 
-	if PotionBrewing.recipe.size() == 0:
-		return
-
-	var created_potion := potion_brewer.attempt_brewing(PotionBrewing.recipe)
+	var created_potion := Alchemy.brew_potion(potion_recipe)
 
 	potion_created_container.show()
 	potion_created_name_label.text = "You made a %s!" % created_potion.potion_name

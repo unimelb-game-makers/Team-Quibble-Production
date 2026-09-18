@@ -6,7 +6,6 @@ class_name DraggableComponent extends Node
 #if you encounter bugs to do with positioning while dragging, consider
 #changing this code to use offset_transform
 
-
 static var dragged_control: Control
 static var pending_parent: Control
 
@@ -36,13 +35,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			dragged_control = null
 			#if we don't have a parent waiting to pick up,
 			#return to previous owner
-			print_debug(pending_parent)
 			if not pending_parent or pending_parent == my_control.get_parent():
 				return_to_previous()
 			else:
 				parent_to_acceptor()
-
-
+	
 	if !event.is_action_pressed("LMB"):
 		return
 
@@ -51,7 +48,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if dragged_control:
 		return
-
 	assign_to_mouse()
 
 func assign_to_mouse() -> void:
@@ -76,7 +72,7 @@ func parent_to_acceptor() -> void:
 	if not pending_parent:
 		return_to_previous()
 	if get_acceptor(pending_parent):
-		get_acceptor(pending_parent).accepted_draggable.emit()
+		get_acceptor(pending_parent).emit_accepted(my_control)
 	my_control.reparent(pending_parent)
 	pending_parent = null
 	draggable_accepted.emit()
