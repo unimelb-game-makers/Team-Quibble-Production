@@ -30,7 +30,13 @@ const GAME_STAGE_1_SEVERITY_CURVE: String = "res://scripts/customer/game_stage_1
 ## not sure yet. TODO: update this function after the rest of the potion system
 ## is done
 func check_potion_sufficient(potion: Potion) -> bool:
-	return true
+	var potion_primary_attribute_name: String = Alchemy.AttributeID.find_key(potion.potion_primary)
+	potion_primary_attribute_name = Utils.canonise_string(potion_primary_attribute_name)
+	var primary_need_name: String = Utils.canonise_string(primary_need)
+	print_debug("Primary potion attribute is %s" % potion_primary_attribute_name)
+	print_debug("Primary customer need is %s" % primary_need_name)
+
+	return potion_primary_attribute_name == primary_need_name
 
 
 ##Returns a randomly created customer resource. 

@@ -57,11 +57,10 @@ static func pick_random_weighted(items: Array, weights: Array[float]):
 ###then returns the string whether it changed or not.
 ##Not great, I know.
 static func canonise_string(input: String) -> String:
-	if input.begins_with("NEED_"):
-		#removes this prefix
-		input = input.substr(5)
-	elif input.begins_with("NPC_"):
-		input = input.substr(4)
+	const prefixes: Array[String] = ["NEED_", "ATTR_","NPC_"]
+	for prefix in prefixes:
+		if input.begins_with(prefix):
+			input = input.substr(prefix.length())
 	input = input.capitalize()
 	return input
 
