@@ -44,12 +44,17 @@ func is_full() -> bool:
 	if not use_max_items:
 		return false
 		
-	var child_count: int = 0
-	for child in my_control.get_children():
-		if child is Control:
-			child_count += 1
+	var child_count: int = get_accepted_controls().size()
 	return child_count > max_items - 1
 
+## Returns a list of the controls that are siblings to this.
+## that is, mostl likely the accepted controls
+func get_accepted_controls() -> Array[Control]:
+	var res: Array[Control]
+	for child in my_control.get_children():
+		if child is Control:
+			res.append(child)
+	return res
 #hack. Please let me be done with this
 func emit_accepted(draggable: Control):
 	accepted_draggable.emit(draggable)
