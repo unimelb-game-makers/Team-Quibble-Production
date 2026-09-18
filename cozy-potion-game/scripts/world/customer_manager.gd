@@ -13,6 +13,7 @@ func _ready() -> void:
 	
 	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
+	potion_accept_zone.potion_accepted.connect(_on_potion_accepted)
 
 #runs at the start of the day and sets up the list of customers and
 #also sends the first one to the shop
@@ -44,18 +45,18 @@ func _on_customer_interact(fuck, this) -> void:
 		Utils.corner_needs_list_manager.create_list(customer_world.customer)
 	else:
 		potion_accept_zone.show()
-		Utils.corner_needs_list_manager.clear_list()
+		DialogueManager.show_example_dialogue_balloon(dialogue_resource, "start_accepting")
+		DialogueManager.active_balloon.will_block_other_input = false
 
-
-
-func on_potion_offered(potion: Potion) -> void:
+func _on_potion_accepted(potion: Potion) -> void:
 	if customer_world.customer.check_potion_sufficient(potion):
-		accept_potion(potion)
+		buy_potion(potion)
 	else:
 		refuse_potion(potion)
 
 
-func accept_potion(potion: Potion) -> void:
+func buy_potion(potion: Potion) -> void:
+		Utils.corner_needs_list_manager.clear_list()
 		DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
 		await DialogueManager.dialogue_ended
 		if customer_world.customer.time_allotment:

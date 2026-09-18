@@ -109,7 +109,7 @@ func get_input_vector_unnormalised() -> Vector2i:
 	return res
 
 func _physics_process(delta: float) -> void:
-	if accepting_control:
+	if accepting_control and not DialogueManager.active_balloon:
 		# Add the gravity.
 		if not is_on_floor():
 			velocity += get_gravity() * delta

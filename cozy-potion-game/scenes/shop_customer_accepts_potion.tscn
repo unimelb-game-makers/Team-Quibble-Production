@@ -325,6 +325,7 @@ mouse_filter = 2
 
 [node name="DraggableAcceptorComponent" type="Node" parent="SceneUI/CustomerPotionAcceptZone/PanelContainer/MarginContainer/PanelContainer" unique_id=1548293977]
 script = ExtResource("9_7cpb4")
+use_max_items = true
 metadata/_custom_type_script = "uid://b85c75nnvco20"
 
 [node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world", "potion_accept_zone")]
