@@ -25,7 +25,6 @@ const CAMERA_ROTATION_SPEED = 2 * PI
 
 var rotation_y_target: float = 0
 var top_down_active: bool = false
-var potion: Potion
 
 var accepting_control: bool = true
 

@@ -4,6 +4,7 @@ extends Node
 @export var customer_interactable: Interactable
 @export var customer_world: CustomerWorld
 @export var dialogue_resource: DialogueResource
+@export var potion_accept_zone: CustomerPotionAcceptZone
 
 var customer_queue: Array[Customer]
 
@@ -42,20 +43,30 @@ func _on_customer_interact(fuck, this) -> void:
 		customer_world.has_conveyed_request = true
 		Utils.corner_needs_list_manager.create_list(customer_world.customer)
 	else:
-		var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
+		potion_accept_zone.show()
 		Utils.corner_needs_list_manager.clear_list()
-		if customer_world.customer.check_potion_sufficient(player.potion):
-			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
-			await DialogueManager.dialogue_ended
-			player.potion = null
-			if customer_world.customer.time_allotment:
-				TimeCycle.progress_day(customer_world.customer.time_allotment)
-			else:
-				TimeCycle.progress_day()
-			recall_customer()
+
+
+
+func on_potion_offered(potion: Potion) -> void:
+	if customer_world.customer.check_potion_sufficient(potion):
+		accept_potion(potion)
+	else:
+		refuse_potion(potion)
+
+
+func accept_potion(potion: Potion) -> void:
+		DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
+		await DialogueManager.dialogue_ended
+		if customer_world.customer.time_allotment:
+			TimeCycle.progress_day(customer_world.customer.time_allotment)
 		else:
-			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "refuse")
-			player.potion = null
+			TimeCycle.progress_day()
+		recall_customer()
+
+func refuse_potion(potion: Potion) -> void:
+	DialogueManager.show_example_dialogue_balloon(dialogue_resource, "refuse")
+	
 
 #generates some number of customers to be drawn from during the day
 func generate_customer_queue() -> void:
