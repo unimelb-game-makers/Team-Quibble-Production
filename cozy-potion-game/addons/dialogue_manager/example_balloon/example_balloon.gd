@@ -107,11 +107,6 @@ func _process(_delta: float) -> void:
 		progress.visible = not dialogue_label.is_typing and dialogue_line.responses.size() == 0 and not dialogue_line.has_tag("voice")
 
 
-func _unhandled_input(_event: InputEvent) -> void:
-	# Only the balloon is allowed to handle input while it's showing
-	if will_block_other_input:
-		get_viewport().set_input_as_handled()
-
 
 func _notification(what: int) -> void:
 	## Detect a change of locale and update the current dialogue line to show the new language
@@ -202,7 +197,9 @@ func _on_mutated(mutation: Dictionary) -> void:
 		mutation_cooldown.start(0.1)
 
 
-func _on_balloon_gui_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
+	if will_block_other_input:
+		get_viewport().set_input_as_handled()
 	# See if we need to skip typing of the dialogue
 	if dialogue_label.is_typing:
 		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()

@@ -1,0 +1,3 @@
+class_name ItemAcceptDialogueBalloon extends DialogueManagerExampleBalloon
+
+@export var potion_accept_zone: CustomerPotionAcceptZone

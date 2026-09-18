@@ -646,6 +646,7 @@ func show_dialogue_balloon_scene(balloon_scene: Variant, resource: DialogueResou
 
 	var balloon: Node = balloon_scene
 	_start_balloon.call_deferred(balloon, resource, cue, extra_game_states)
+	active_balloon = balloon
 	return balloon
 
 

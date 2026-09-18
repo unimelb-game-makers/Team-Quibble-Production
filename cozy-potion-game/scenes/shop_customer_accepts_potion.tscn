@@ -9,9 +9,9 @@
 [ext_resource type="Script" uid="uid://c60gdvx5xbpwi" path="res://scripts/ui/hotbar.gd" id="7_ed0df"]
 [ext_resource type="PackedScene" uid="uid://bcqi5ykyush3i" path="res://assets/prefabs/Inventory/hotbar_item_slot.tscn" id="8_4ddaa"]
 [ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="9_7cpb4"]
-[ext_resource type="Script" uid="uid://bltn1i8oigeai" path="res://scripts/ui/customer_potion_accept_zone.gd" id="10_1xpwl"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="10_2ukpi"]
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="11_mtuaq"]
+[ext_resource type="PackedScene" uid="uid://c8rv1a0qlm0i1" path="res://scenes/user_interface/item_accept_dialogue_balloon.tscn" id="12_1xpwl"]
 [ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="12_egm7a"]
 [ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="13_5yugc"]
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="14_gss6t"]
@@ -288,53 +288,13 @@ use_max_items = true
 max_items = 3
 metadata/_custom_type_script = "uid://b85c75nnvco20"
 
-[node name="CustomerPotionAcceptZone" type="Control" parent="SceneUI" unique_id=1848314469]
-layout_mode = 3
-anchor_left = 0.716
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 84.27991
-offset_top = 235.0
-offset_right = -57.0
-offset_bottom = -441.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("10_1xpwl")
-
-[node name="PanelContainer" type="PanelContainer" parent="SceneUI/CustomerPotionAcceptZone" unique_id=2101033987]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="SceneUI/CustomerPotionAcceptZone/PanelContainer" unique_id=1267114837]
-layout_mode = 2
-mouse_filter = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
-
-[node name="PanelContainer" type="PanelContainer" parent="SceneUI/CustomerPotionAcceptZone/PanelContainer/MarginContainer" unique_id=971140047]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="DraggableAcceptorComponent" type="Node" parent="SceneUI/CustomerPotionAcceptZone/PanelContainer/MarginContainer/PanelContainer" unique_id=1548293977]
-script = ExtResource("9_7cpb4")
-use_max_items = true
-metadata/_custom_type_script = "uid://b85c75nnvco20"
-
-[node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world", "potion_accept_zone")]
+[node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
 script = ExtResource("10_2ukpi")
 customer_anim_player = NodePath("AnimationPlayer")
 customer_interactable = NodePath("../Node3D/Customer/Interactable")
 customer_world = NodePath("../Node3D/Customer")
 dialogue_resource = ExtResource("11_mtuaq")
-potion_accept_zone = NodePath("../SceneUI/CustomerPotionAcceptZone")
+acceptor_dialogue_balloon = ExtResource("12_1xpwl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerManager" unique_id=1878084005]
 libraries/ = SubResource("AnimationLibrary_yuijs")

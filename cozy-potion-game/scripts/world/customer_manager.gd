@@ -4,7 +4,7 @@ extends Node
 @export var customer_interactable: Interactable
 @export var customer_world: CustomerWorld
 @export var dialogue_resource: DialogueResource
-@export var potion_accept_zone: CustomerPotionAcceptZone
+@export var acceptor_dialogue_balloon: PackedScene
 
 var customer_queue: Array[Customer]
 
@@ -13,7 +13,7 @@ func _ready() -> void:
 	
 	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
-	potion_accept_zone.potion_accepted.connect(_on_potion_accepted)
+
 
 #runs at the start of the day and sets up the list of customers and
 #also sends the first one to the shop
@@ -44,9 +44,21 @@ func _on_customer_interact(fuck, this) -> void:
 		customer_world.has_conveyed_request = true
 		Utils.corner_needs_list_manager.create_list(customer_world.customer)
 	else:
-		potion_accept_zone.show()
-		DialogueManager.show_example_dialogue_balloon(dialogue_resource, "start_accepting")
-		DialogueManager.active_balloon.will_block_other_input = false
+		show_acceptor_dialogue("start_accepting")
+
+func show_acceptor_dialogue(dialogue_start: String) -> void:
+	DialogueManager.show_dialogue_balloon_scene(acceptor_dialogue_balloon, dialogue_resource, dialogue_start)
+	if DialogueManager.active_balloon is ItemAcceptDialogueBalloon:
+		var potion_accept_zone = DialogueManager.active_balloon.potion_accept_zone
+		potion_accept_zone.potion_accepted.connect(_on_potion_accepted)
+		potion_accept_zone.other_accepted.connect(_on_other_accepted)
+	else:
+		assert(false)
+	
+func _on_other_accepted(other: Resource):
+	print_debug("other accepted")
+	DialogueManager.active_balloon.queue_free()
+	DialogueManager.show_example_dialogue_balloon(dialogue_resource, "not_potion")
 
 func _on_potion_accepted(potion: Potion) -> void:
 	if customer_world.customer.check_potion_sufficient(potion):
