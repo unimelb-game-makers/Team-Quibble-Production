@@ -2,6 +2,10 @@
 # will push a warning if this node isn't a container.
 class_name DraggableAcceptorComponent extends Node
 
+## If this is true, the acceptor will stop accepting draggables once its
+## parent has at least max_items number of children.
+@export var use_max_items: bool = false
+@export var max_items: int = 1
 var my_control: Control
 var accepting_items: bool = true
 
@@ -26,19 +30,25 @@ func _unhandled_input(event: InputEvent) -> void:
 		#print_debug(3)
 		return
 
-	if not accepting_items:
-		return
-
 		
 	var intersecting_mouse: bool = \
 	my_control.get_global_rect().has_point(get_viewport().get_mouse_position())
-	#print_debug(get_viewport().get_mouse_position())
 
-	if intersecting_mouse and DraggableComponent.pending_parent != my_control:
+	if intersecting_mouse and DraggableComponent.pending_parent != my_control and accepting_items and not is_full():
 		DraggableComponent.pending_parent = my_control
 	
 	if not intersecting_mouse and DraggableComponent.pending_parent == my_control:
 		DraggableComponent.pending_parent == null
+
+func is_full() -> bool:
+	if not use_max_items:
+		return false
+		
+	var child_count: int = 0
+	for child in my_control.get_children():
+		if child is Control:
+			child_count += 1
+	return child_count > max_items - 1
 
 #hack. Please let me be done with this
 func emit_accepted(draggable: Control):
