@@ -1,0 +1,72 @@
+[
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "HEAL_GEN_001",
+	"PERSONALITY": "SCARED",
+	"TEXT": "Ah! I cut myself! Help!"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "HEAL_GEN_002",
+	"PERSONALITY": "",
+	"TEXT": "Got anything that will patch me up?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "HEAL_GEN_003",
+	"PERSONALITY": "",
+	"TEXT": "Hi there. Do you sell healing potions here?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "STUDENT",
+	"DIALOGUE_ID": "HEAL_STUDENT_001",
+	"PERSONALITY": "EMBARRASSED",
+	"TEXT": "Ha... Yeah... I um... twisted my ankle during training today. Have you got anything for that?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "STUDENT",
+	"DIALOGUE_ID": "HEAL_STUDENT_002",
+	"PERSONALITY": "CONFIDENT",
+	"TEXT": "Got into a fight today. Damn jaw is killing me. Have you got anything for that?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "STUDENT",
+	"DIALOGUE_ID": "HEAL_STUDENT_003",
+	"PERSONALITY": "STUDIOUS",
+	"TEXT": "I was in the lab today and I nicked myself with a scalpel! My finger hasn't stopped bleeding."
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "COURIER",
+	"DIALOGUE_ID": "HEAL_COURIER_001",
+	"PERSONALITY": "EMBARRASSED",
+	"TEXT": "Heh... whoops! I um... fell off my bike while delivering the mail today. Hurt my leg pretty bad... Do you have anything for... that?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "COURIER",
+	"DIALOGUE_ID": "HEAL_COURIER_002",
+	"PERSONALITY": "ANNOYED",
+	"TEXT": "Varmint on the road! Slipped on the damn thing! You think with all them fancy-ass spells they could... disintegrate roadkill or somethin'. Anyways, I busted mah shoulder. Got anythang fer that?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "COURIER",
+	"DIALOGUE_ID": "HEAL_COURIER_003",
+	"PERSONALITY": "",
+	"TEXT": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "SPEC_NPC_GUY_NORMUS",
+	"DIALOGUE_ID": "SPEC_NPC_GUY_NORMUS_HEAL_001",
+	"PERSONALITY": "POLITE",
+	"TEXT": "Hey bud! Sorry to bother ya, but that goshdang cat scratched me today. Serves me right for taking care of my brother's pet, huh... Anyway, ya got something for the bleed?"
+  }
+]
