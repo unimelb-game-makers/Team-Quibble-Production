@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c8rv1a0qlm0i1"]
 
-[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://addons/dialogue_manager/example_balloon/example_balloon.tscn" id="1_4m3kb"]
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/user_interface/speech_bubble_balloon.tscn" id="1_4m3kb"]
 [ext_resource type="Script" uid="uid://d0e3x3ru126fm" path="res://scripts/ui/item_accept_dialogue_balloon.gd" id="2_4xx5q"]
 [ext_resource type="Script" uid="uid://bltn1i8oigeai" path="res://scripts/ui/customer_potion_accept_zone.gd" id="3_blsnt"]
 [ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="4_5h854"]
