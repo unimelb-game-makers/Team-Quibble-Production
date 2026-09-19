@@ -1,4 +1,7 @@
 extends Node
+
+const DEBUG: bool = false
+
 # This is a ductape solution. A better solution will probably need to be implemented in the future
 
 var popup_manager: PopupManager
