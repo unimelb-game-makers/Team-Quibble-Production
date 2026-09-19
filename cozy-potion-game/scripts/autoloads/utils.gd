@@ -52,16 +52,26 @@ static func pick_random_weighted(items: Array, weights: Array[float]):
 	assert(false, "something is wrong with this function")
 	return items.pick_random()
 
+
+## takes a integer enum value for attributes and gives
+## its string value
+static func attribute_id_to_string(id: int):
+	return Alchemy.AttributeID.find_key(id)
+
+## takes a integer enum value for needs and gives
+## its string value
+static func need_id_to_string(id: int):
+	return Alchemy.NeedID.find_key(id)
+
 ##takes one of the row or column names found in the json files such as 
 ##NEED_DARKNESS or NPC_STUDENT to Darkness and Student respectively.
 ###then returns the string whether it changed or not.
 ##Not great, I know.
 static func canonise_string(input: String) -> String:
-	if input.begins_with("NEED_"):
-		#removes this prefix
-		input = input.substr(5)
-	elif input.begins_with("NPC_"):
-		input = input.substr(4)
+	const prefixes: Array[String] = ["NEED_", "ATTR_","NPC_"]
+	for prefix in prefixes:
+		if input.begins_with(prefix):
+			input = input.substr(prefix.length())
 	input = input.capitalize()
 	return input
 
