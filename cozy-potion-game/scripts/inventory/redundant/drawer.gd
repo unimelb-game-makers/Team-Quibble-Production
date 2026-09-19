@@ -63,13 +63,13 @@ func _ready() -> void:
 		filled_stacks[i].item = ingredients[i]
 	
 	drawer = Inventory.new(inv_grid)
-	drawer.spawn_slots(filled_stacks)
+	drawer.spawn_hotbar_slots(filled_stacks)
 	drawer.sort_items(sort_keys[sort_index])
 	inv_component.attach_inventory(drawer)
 	
 	
 	hotbar = Inventory.new(hotbar_grid, 1)
-	hotbar.spawn_slots(Inventory.create_empty_stacks(3))
+	hotbar.spawn_hotbar_slots(Inventory.create_empty_stacks(3))
 	inv_component.attach_inventory(hotbar) 
 
 
