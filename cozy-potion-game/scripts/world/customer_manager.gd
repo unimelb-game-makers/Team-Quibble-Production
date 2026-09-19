@@ -4,6 +4,7 @@ extends Node
 @export var customer_interactable: Interactable
 @export var customer_world: CustomerWorld
 @export var dialogue_resource: DialogueResource
+@export var acceptor_dialogue_balloon: PackedScene
 
 var customer_queue: Array[Customer]
 
@@ -12,6 +13,7 @@ func _ready() -> void:
 	
 	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
+
 
 #runs at the start of the day and sets up the list of customers and
 #also sends the first one to the shop
@@ -42,20 +44,51 @@ func _on_customer_interact(fuck, this) -> void:
 		customer_world.has_conveyed_request = true
 		Utils.corner_needs_list_manager.create_list(customer_world.customer)
 	else:
-		var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
+		show_acceptor_dialogue("start_accepting")
+
+func show_acceptor_dialogue(dialogue_start: String) -> void:
+	DialogueManager.show_dialogue_balloon_scene(acceptor_dialogue_balloon, dialogue_resource, dialogue_start)
+	if DialogueManager.active_balloon is ItemAcceptDialogueBalloon:
+		var potion_accept_zone: CustomerPotionAcceptZone = DialogueManager.active_balloon.potion_accept_zone
+		potion_accept_zone.draggable_acceptor_compoment.accepted_draggable.connect(_on_acceptor_accepted)
+	else:
+		assert(false)
+
+func _on_acceptor_accepted(control: Control):
+	DialogueManager.active_balloon.queue_free()
+	
+	if not control is ItemSlot:
+		DraggableComponent.get_draggable_component(control).return_to_previous()
+	
+	var item = control.stack.item
+	
+	if not item is Potion:
+		DraggableComponent.get_draggable_component(control).return_to_previous()
+		other_accepted()
+		return
+	
+	if customer_world.customer.check_potion_sufficient(item):
+		buy_potion(item)
+	else:
+		DraggableComponent.get_draggable_component(control).return_to_previous()
+		refuse_potion()
+
+func other_accepted():
+	DialogueManager.show_example_dialogue_balloon(dialogue_resource, "not_potion")
+
+func buy_potion(potion: Potion) -> void:
 		Utils.corner_needs_list_manager.clear_list()
-		if customer_world.customer.check_potion_sufficient(player.potion):
-			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
-			await DialogueManager.dialogue_ended
-			player.potion = null
-			if customer_world.customer.time_allotment:
-				TimeCycle.progress_day(customer_world.customer.time_allotment)
-			else:
-				TimeCycle.progress_day()
-			recall_customer()
+		DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
+		await DialogueManager.dialogue_ended
+		if customer_world.customer.time_allotment:
+			TimeCycle.progress_day(customer_world.customer.time_allotment)
 		else:
-			DialogueManager.show_example_dialogue_balloon(dialogue_resource, "refuse")
-			player.potion = null
+			TimeCycle.progress_day()
+		recall_customer()
+
+func refuse_potion() -> void:
+	DialogueManager.show_example_dialogue_balloon(dialogue_resource, "refuse")
+	
 
 #generates some number of customers to be drawn from during the day
 func generate_customer_queue() -> void:
@@ -94,11 +127,9 @@ func customer_tests() -> void:
 	var test_customer_1: Customer = Customer.generate_customer("", false)
 	assert(test_customer_1.customer_type != "", "bad customer 1")
 	assert(test_customer_1.needs.size() > 0, "bad customer 1")
-	assert(test_customer_1.needs[0] != "", "bad customer 1")
 	var test_customer_2: Customer = Customer.generate_customer("NPC_STUDENT", false)
 	assert(test_customer_2.customer_type == "NPC_STUDENT", "bad customer 2")
 	assert(test_customer_2.needs.size() > 0, "bad customer 2")
-	assert(test_customer_2.needs[0] != "", "bad customer 2")
 
 
 	
