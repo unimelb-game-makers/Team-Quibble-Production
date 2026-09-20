@@ -8,7 +8,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4dvm4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
-size = Vector3(1.2932129, 1, 1)
+size = Vector3(2.0021057, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_032fp"]
 albedo_color = Color(1, 0.24705882, 0.08627451, 1)
@@ -37,7 +37,7 @@ collision_mask = 1048577
 script = ExtResource("3_qlg0r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimationPivot/InteractableCollisionShape" unique_id=696243504]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133395195, 0, 1.3472493)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.071160786, 0, 1.4658086)
 shape = SubResource("BoxShape3D_4dvm4")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="AnimationPivot" unique_id=1451786931]
@@ -47,12 +47,13 @@ polygon = PackedVector2Array(0.7617471, 0.8473878, 0.63597995, 0.976331, 1.04696
 material = SubResource("StandardMaterial3D_032fp")
 
 [node name="Sprites" type="Node3D" parent="AnimationPivot" unique_id=2058188210]
+transform = Transform3D(1.21, 0, 0, 0, 1.21, 0, 0, 0, 1.21, 0, 0, 0)
 
 [node name="MimiFrontBack" parent="AnimationPivot/Sprites" unique_id=2010580373 instance=ExtResource("4_6o77n")]
-transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.205, -0.009834781, -0.07802725, -0.15214801)
+transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.205, 0.012121186, -0.07802725, -0.020415366)
 
 [node name="MimiLeftRight" parent="AnimationPivot/Sprites" unique_id=503888036 instance=ExtResource("2_dqkch")]
-transform = Transform3D(0.049481273, 0, -0.9987751, 0, 1, 0, 0.9987751, 0, 0.049481273, 0, 0.477, 0)
+transform = Transform3D(0.001816079, 0, -0.9999984, 0, 1, 0, 0.9999984, 0, 0.001816079, 0.017564297, 0.477, 0.008782238)
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1669848937]
 

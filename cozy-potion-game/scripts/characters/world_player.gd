@@ -178,8 +178,8 @@ func activate_top_down_cam() -> void:
 	tween2.tween_property(camera, "position", Vector3(0,7.0,0), 0.2)
 
 func hide_unwanted_sprites() -> void:
-	var facing_up: bool = animation_pivot.rotation_degrees.y < 45 and animation_pivot.rotation_degrees.y > -45
-	var facing_down: bool = animation_pivot.rotation_degrees.y > 135 or animation_pivot.rotation_degrees.y < -135
+	var facing_up: bool = animation_pivot.rotation_degrees.y < 40 and animation_pivot.rotation_degrees.y > -40
+	var facing_down: bool = animation_pivot.rotation_degrees.y > 140 or animation_pivot.rotation_degrees.y < -140
 	if facing_up or facing_down:
 		left_right.hide()
 		front_back.show()
