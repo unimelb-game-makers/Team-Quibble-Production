@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgndfd2j2yjyj"
-path.s3tc="res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_Normal.png-751e6baeb9297a4221f1c66c0c2d10e0.s3tc.ctex"
-path.etc2="res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_Normal.png-751e6baeb9297a4221f1c66c0c2d10e0.etc2.ctex"
+path.s3tc="res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_Normal.png-56b6c7b8c532650690754a2bb9a3c4b2.s3tc.ctex"
+path.etc2="res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_Normal.png-56b6c7b8c532650690754a2bb9a3c4b2.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -15,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/PH/Cutting_Table_PH/Cutting_Table_Placeholder_T_WoodAsh_Normal.png"
-dest_files=["res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_Normal.png-751e6baeb9297a4221f1c66c0c2d10e0.s3tc.ctex", "res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_Normal.png-751e6baeb9297a4221f1c66c0c2d10e0.etc2.ctex"]
+source_file="res://assets/models/PH/Cutting_Table_PH/Outdated_Textures/Cutting_Table_Placeholder_T_WoodAsh_Normal.png"
+dest_files=["res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_Normal.png-56b6c7b8c532650690754a2bb9a3c4b2.s3tc.ctex", "res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_Normal.png-56b6c7b8c532650690754a2bb9a3c4b2.etc2.ctex"]
 
 [params]
 

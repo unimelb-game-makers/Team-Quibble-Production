@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btl2bvr371wda"
-path="res://.godot/imported/T_Cutting_Table_Placeholder.png-8f89b2dff1c2a9456cf984e211ec118e.ctex"
+uid="uid://b2y52fl2niq5k"
+path="res://.godot/imported/CutTableKnife_Displacement.exr-7b66b9ddee3e6140f3933fd9c43969f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/models/PH/Cutting_Table_PH/Outdated_Textures/T_Cutting_Table_Placeholder.png"
-dest_files=["res://.godot/imported/T_Cutting_Table_Placeholder.png-8f89b2dff1c2a9456cf984e211ec118e.ctex"]
+source_file="res://assets/models/PH/Cutting_Table_PH/New_Textures/CutTableKnife_Displacement.exr"
+dest_files=["res://.godot/imported/CutTableKnife_Displacement.exr-7b66b9ddee3e6140f3933fd9c43969f6.ctex"]
 
 [params]
 
