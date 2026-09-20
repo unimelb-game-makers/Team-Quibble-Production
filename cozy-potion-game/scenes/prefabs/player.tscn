@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b7wupl4oawgq1" path="res://scripts/characters/world_player.gd" id="1_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_dqkch"]
 [ext_resource type="Script" uid="uid://c5d8fk5q5gbku" path="res://scripts/world/player_interactable_detector.gd" id="3_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://dd257ohvyb7cs" path="res://assets/models/mimi/MimiFrontBack.glb" id="4_6o77n"]
 [ext_resource type="Texture2D" uid="uid://tdqco4cca8w5" path="res://assets/sprites/mimi-front.PNG" id="4_56dyf"]
 [ext_resource type="Texture2D" uid="uid://chluoksakxx8n" path="res://assets/sprites/mini-back.png" id="5_6o77n"]
 
@@ -47,8 +48,12 @@ cast_shadow = 0
 polygon = PackedVector2Array(0.7617471, 0.8473878, 0.63597995, 0.976331, 1.0469601, 0.97114205, 0.96082616, 0.56121916, 0.8524252, 0.6899427, 0, 0)
 material = SubResource("StandardMaterial3D_032fp")
 
+[node name="MimiFrontBack" parent="AnimationPivot" unique_id=2010580373 instance=ExtResource("4_6o77n")]
+transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.305, -0.009834781, -0.07802725, -0.15214801)
+
 [node name="FrontBackSprite" type="Node3D" parent="AnimationPivot" unique_id=228190944]
 transform = Transform3D(0.235, 0, 0, 0, 0.235, 0, 0, 0, 0.235, 0.012910485, 0.71911395, 0)
+visible = false
 
 [node name="Front" type="Sprite3D" parent="AnimationPivot/FrontBackSprite" unique_id=456207085]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
