@@ -34,7 +34,7 @@ func _process(delta: float) -> void:
 			info_sheet.visible = false
 		else:
 			info_sheet.visible = true
-			info_sheet.global_position = get_global_mouse_position()+Vector2(100,100)
+			info_sheet.global_position = get_global_mouse_position()+Vector2(10,10)
 
 
 func item_slot_entered(slot: ItemSlot) -> void:
