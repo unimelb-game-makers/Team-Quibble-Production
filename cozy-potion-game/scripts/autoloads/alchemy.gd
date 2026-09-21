@@ -181,7 +181,7 @@ func brew_potion(_ingredient_list: Array) -> Potion:
 	var potion := Potion.new()
 	potion.constructor(_attributes)
 	
-	return potion	
+	return potion
 
 func sum_attributes(_ingredient_list: Array) -> Dictionary[Alchemy.AttributeID, int]:
 	var _attributes: Dictionary[Alchemy.AttributeID, int]
@@ -191,6 +191,7 @@ func sum_attributes(_ingredient_list: Array) -> Dictionary[Alchemy.AttributeID, 
 	
 	for ingredient in range(1, _ingredient_list.size()):
 		for attribute in AttributeID.values():
+			print(_ingredient_list[ingredient], ingredient)
 			var new_value = _attributes[attribute] + _ingredient_list[ingredient].attributes[attribute]
 			_attributes[attribute] = new_value
 			

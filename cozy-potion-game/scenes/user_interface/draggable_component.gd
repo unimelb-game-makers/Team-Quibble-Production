@@ -23,14 +23,17 @@ signal draggable_picked_up
 func _ready() -> void:
 	assert(get_parent() is Control, "draggable component not child of control")
 	my_control = get_parent()
-	
+
+
 func _process(_delta: float) -> void:
 	if dragged_control == my_control:
 		move_to_mouse()
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("LMB"):
 		being_dragged = false
+		my_control.top_level = false
 		if dragged_control == my_control:
 			dragged_control = null
 			#if we don't have a parent waiting to pick up,
@@ -54,6 +57,7 @@ func assign_to_mouse() -> void:
 	draggable_picked_up.emit()
 	dragged_control = my_control
 	previous_parent = my_control.get_parent()
+	my_control.top_level = true
 	being_dragged = true
 
 func move_to_mouse() -> void:

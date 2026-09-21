@@ -1,38 +1,43 @@
 class_name ItemSlot
-extends Panel
+extends PanelContainer
 
-var stack : Stack :
-	set(value):
-		if stack != value:
-			if value != null:
-				value.updated_values.connect(update_stack)
-			if stack != null:
-				stack.updated_values.disconnect(update_stack)
-		stack = value
-		update_stack()
+@export var acceptor : DraggableAcceptorComponent
 
-@export var item_sprite: TextureRect
-@export var quantity_label: Label
-@export var draggable_component: DraggableComponent
+var item_holder : ItemHolder = null
 
-static func get_hotbar_item_slot_scene() -> PackedScene:
+static func get_scene() -> PackedScene:
 	return preload("uid://bcqi5ykyush3i")
 
+
 func _ready() -> void:
-	stack = Stack.new(0)
-	mouse_entered.connect(show_hover_information)
-	mouse_exited.connect(hide_hover_information)
+	acceptor.accepted_draggable.connect(placed_item_holder)
 
-# Updates stack visuals to current stack
-func update_stack() -> void:
-	if stack:
-		item_sprite.texture = stack.get_sprite()
-		quantity_label.text = stack.get_quantity_label()
+func set_item_holder(holder : ItemHolder) -> void:
+	if item_holder == null:
+		add_child(holder)
+		placed_item_holder(holder)
 
 
-func show_hover_information() -> void:
-	## TODO Relies on stack being different
+func removed_item_holder() -> void:
+	item_holder.draggable_component.draggable_accepted.disconnect(removed_item_holder)
+	item_holder = null
+	acceptor.accepting_items = true
 
 
-func hide_hover_information() -> void:
-	## TODO relies on stack being different
+func placed_item_holder(placed_control : Control) -> void:
+	if placed_control is ItemHolder:
+		item_holder = placed_control
+		acceptor.accepting_items = false
+		placed_control.draggable_component.draggable_accepted.connect\
+			.call_deferred(removed_item_holder)
+
+
+func get_item_stack() -> Stack:
+	if item_holder != null:
+		return item_holder.stack
+	return Stack.new()
+
+func set_item_stack(stack:Stack) -> void:
+	var new_item_holder: ItemHolder = ItemHolder.get_scene().instantiate()
+	set_item_holder(new_item_holder)
+	new_item_holder.stack = stack

@@ -21,9 +21,9 @@ func _ready() -> void:
 	potion_created_container.gui_input.connect(_on_potion_created_container_gui_input)
 
 func create_potion() -> void:
-	var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
-	var potion_recipe = player.hotbar.get_inventory_items()
-
+	player = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
+	var potion_recipe := player.hotbar_display.inventory.get_inventory_items()
+	
 	var created_potion := Alchemy.brew_potion(potion_recipe)
 
 	potion_created_container.show()

@@ -24,11 +24,6 @@ func _on_children_update() -> void:
 			continue
 		inventory.item_slots.append(child)
 
-func repopulate() -> void:
-	var new = hotbar_item_slot_scene.instantiate()
-	inventory.item_slots.append(new)
-	add_child(new)
-
 func get_item_slot_children() -> Array[ItemSlot]:
 	var res: Array[ItemSlot]
 	for child in get_children():

@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://cb4bw7nojinb5"]
+
+[ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/inventory/hover_inventory.gd" id="1_sfxcb"]
+
+[sub_resource type="Gradient" id="Gradient_sfxcb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.46666667)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6sj1v"]
+gradient = SubResource("Gradient_sfxcb")
+
+[node name="InventoryWithHover" type="Control" unique_id=414539128]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1724.0
+offset_bottom = -906.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_sfxcb")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1415238081]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="InfoSheet" type="TextureRect" parent="." unique_id=1111812476]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 149.0
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_6sj1v")
+
+[node name="ItemName" type="Label" parent="InfoSheet" unique_id=873049989]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 14.0
+offset_right = 85.0
+offset_bottom = 37.0
+
+[node name="ItemAttributes" type="Label" parent="InfoSheet" unique_id=1432051212]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 39.0
+offset_right = 86.0
+offset_bottom = 62.0
