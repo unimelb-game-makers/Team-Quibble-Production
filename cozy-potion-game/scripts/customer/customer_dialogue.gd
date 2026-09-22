@@ -37,8 +37,9 @@ static func populate_potion_request_lines() -> void:
 		var request_line: PotionRequestLine = PotionRequestLine.new()
 		request_line.attribute = Alchemy.AttributeID.keys().find(element["ATTR"])
 		request_line.customer = Customer.CustomerID.keys().find(element["NPC"])
-		request_line.text = element["TEXT"]
-		potion_request_lines.append(request_line)
+		request_line.text = element["PROBLEM"]
+		if request_line.attribute and request_line.customer and request_line.text:
+			potion_request_lines.append(request_line)
 	
 ## A tuple, a tuple, my life for a tuple
 class PotionRequestLine extends Resource:
