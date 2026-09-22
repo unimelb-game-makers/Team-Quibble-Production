@@ -16,7 +16,6 @@ func _ready() -> void:
 
 func interact():
 	if DialogueManager.active_balloon:
-		print_debug("got you")
 		return
 	var dummy
 	interacted.emit(dummy, dummy)
