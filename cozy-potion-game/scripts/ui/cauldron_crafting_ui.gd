@@ -22,7 +22,7 @@ func _ready() -> void:
 
 func create_potion() -> void:
 	player = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
-	var potion_recipe := player.hotbar_display.inventory.get_inventory_items()
+	var potion_recipe := player.hotbar_display.inventory.export_items()
 	
 	var created_potion := Alchemy.brew_potion(potion_recipe)
 

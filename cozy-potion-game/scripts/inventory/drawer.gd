@@ -13,20 +13,13 @@ var max_slots : int
 
 var sort_keys : Array[Callable] = [
 	func(a: ItemSlot, b: ItemSlot): 
-		if a.get_item_stack().isEmpty:
+		if a.get_stack().isEmpty:
 			return false
-		if b.get_item_stack().isEmpty:
+		if b.get_stack().isEmpty:
 			return true
-		return a.get_item_stack().get_item_name().naturalnocasecmp_to(b.get_item_stack().get_item_name()) < 0,
+		return a.get_stack().get_item_name().naturalnocasecmp_to(b.get_stack().get_item_name()) < 0,
 	func(a: ItemSlot, b: ItemSlot):
-		return a.get_item_stack().quantity > b.get_item_stack().quantity,
-	func(a: ItemSlot, b: ItemSlot):
-		if a.get_item_stack().isEmpty or b.get_item_stack().item is Potion:
-			return false
-		if b.get_item_stack().isEmpty or a.get_item_stack().item is Potion:
-			return true
-		return a.get_item_stack().attributes.get(Alchemy.AttributeID.ATTR_HEALING) < \
-			b.get_item_stack().attributes.get(Alchemy.AttributeID.ATTR_HEALING),
+		return a.get_stack().quantity > b.get_stack().quantity,
 		]
 var sort_index: int = 0
 
@@ -38,7 +31,6 @@ func _ready() -> void:
 	
 	sort_button.get_popup().add_item("Itemname", 0)
 	sort_button.get_popup().add_item("Quantity", 1)
-	sort_button.get_popup().add_item("Healing", 1)
 	sort_button.get_popup().index_pressed.connect(set_sort_key)
 	
 	var filled_stacks := Inventory.create_empty_stacks(hover_inv.max_slots)

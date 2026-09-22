@@ -1,6 +1,11 @@
 class_name ItemHolder
 extends Panel
 
+@export var item_sprite: TextureRect
+@export var quantity_label: Label
+@export var draggable_component: DraggableComponent
+
+# If stack updated reconnects stack update signal to new stack
 var stack : Stack :
 	set(value):
 		if stack != value:
@@ -11,20 +16,16 @@ var stack : Stack :
 		stack = value
 		update_stack()
 
-@export var item_sprite: TextureRect
-@export var quantity_label: Label
-@export var draggable_component: DraggableComponent
 
 static func get_scene() -> PackedScene:
 	return preload("uid://80sdcv4hsqa1")
 
+
 func _ready() -> void:
 	stack = Stack.new(0)
-	mouse_entered.connect(show_hover_information)
-	mouse_exited.connect(hide_hover_information)
 
 
-# Updates stack visuals to current stack
+# Updates slot visuals based on changes in stack
 func update_stack() -> void:
 	if stack:
 		item_sprite.texture = stack.get_sprite()
@@ -33,13 +34,3 @@ func update_stack() -> void:
 
 func get_stack() -> Stack:
 	return stack
-
-
-func show_hover_information() -> void:
-	## TODO Relies on stack being different
-	pass
-
-
-func hide_hover_information() -> void:
-	## TODO relies on stack being different
-	pass
