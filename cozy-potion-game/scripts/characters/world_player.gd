@@ -29,6 +29,14 @@ var potion: Potion
 
 var accepting_control: bool = true
 
+#hotbar stuff
+@export var hotbar_display: Hotbar
+var hotbar : Inventory:
+	get():
+		return hotbar_display.inventory
+var hotbar_grid: Container
+var input_stack_index: int = 0
+
 # this is called before _ready
 func _init() -> void:
 	add_to_group(Utils.Group.GROUP_PLAYER) # may seem overkill but trust
@@ -37,9 +45,11 @@ func _ready() -> void:
 	mouse_detector_left.mouse_entered.connect(rotate_camera.bind(-1))
 	mouse_detector_right.mouse_entered.connect(rotate_camera.bind(1))
 
+
 func _unhandled_input(event: InputEvent) -> void:
 	if accepting_control:
 		aesthetic_movement(event)
+
 
 func aesthetic_movement(event: InputEvent) -> void:
 	if event.is_action_pressed("camera_left"):
@@ -157,10 +167,11 @@ func activate_top_down_cam() -> void:
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween2.tween_property(camera, "position", Vector3(0,7.0,0), 0.2)
-	
+
 func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
 		if area is Interactable:
-			area.interacted.emit()
+			# parses index as Im fudging selecting stack
+			area.interacted.emit(hotbar, input_stack_index)
 			# probably bad to interact with two things at once
 			return
