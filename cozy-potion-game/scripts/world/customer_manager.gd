@@ -93,11 +93,11 @@ func get_next_customer() -> Customer:
 	return customer_queue.pop_front()
 	
 func customer_tests() -> void:
-	var test_customer_1: Customer = Customer.generate_customer("", false)
+	var test_customer_1: Customer = Customer.generate_customer("")
 	assert(test_customer_1.customer_type != "", "bad customer 1")
 	assert(test_customer_1.needs.size() > 0, "bad customer 1")
 	assert(test_customer_1.needs[0] != "", "bad customer 1")
-	var test_customer_2: Customer = Customer.generate_customer("NPC_STUDENT", false)
+	var test_customer_2: Customer = Customer.generate_customer("NPC_STUDENT")
 	assert(test_customer_2.customer_type == "NPC_STUDENT", "bad customer 2")
 	assert(test_customer_2.needs.size() > 0, "bad customer 2")
 	assert(test_customer_2.needs[0] != "", "bad customer 2")

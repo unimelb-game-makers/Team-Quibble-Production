@@ -10,10 +10,10 @@ var inventory: Inventory
 # Grid used for inventory
 @onready var grid: GridContainer = $GridContainer
 # Info Sheet
-@onready var info_sheet: TextureRect = $InfoSheet
-@onready var info_name: Label = $InfoSheet/ItemName
-@onready var info_attributes: Label = $InfoSheet/ItemAttributes
-
+@onready var info_sheet: PanelContainer = $InfoSheet
+@onready var info_name: Label = $InfoSheet/MarginContainer/VBoxContainer/ItemName
+@onready var info_attributes: Label = $InfoSheet/MarginContainer/VBoxContainer/ItemAttributes
+# Looked up how to do above idk if this is great
 
 func _ready() -> void:
 	max_slots = columns*rows
@@ -34,9 +34,28 @@ func slot_hovered(slot: ItemSlot) -> void:
 		return
 	
 	info_sheet.visible = true
-	info_name.text = slot.get_stack().get_item_name()
+	update_info_sheet(slot.get_stack())
 	
 	info_sheet.global_position = get_global_mouse_position()+Vector2(10,10)
+
+
+# Set Info sheet based on item
+func update_info_sheet(stack: Stack):
+	info_name.text = stack.get_item_name()
+	info_attributes.text = ""
+	
+	if stack.item is PotionIngredient:
+		var keys : Array[Alchemy.AttributeID]= stack.item.attributes.keys()
+		keys.sort_custom(func(a:Alchemy.AttributeID, b:Alchemy.AttributeID):\
+				return stack.item.attributes[a] > stack.item.attributes[b])
+		
+		for att in keys:
+			if stack.item.attributes[att] != 0:
+				if info_attributes.text != "":
+					info_attributes.text += "\n"
+				info_attributes.text += Alchemy.AttributeID.keys()[att].substr(5) +\
+					 ": " + str(stack.item.attributes[att])
+		info_sheet.reset_size()
 
 
 # Turns off info_sheet if mouse moves off a slot
