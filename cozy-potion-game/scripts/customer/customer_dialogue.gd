@@ -16,6 +16,9 @@ static func get_potion_request_line(attribute: Alchemy.AttributeID, customer: Cu
 	if not potion_request_lines:
 		populate_potion_request_lines()
 	
+	if not attribute or not customer:
+		return
+	
 	var shortlist = get_shortlist(attribute, customer)
 	
 	var text = shortlist.pick_random().text
@@ -24,7 +27,6 @@ static func get_potion_request_line(attribute: Alchemy.AttributeID, customer: Cu
 static func get_shortlist(attribute: Alchemy.AttributeID, customer: Customer.CustomerID) -> Array[PotionRequestLine]:
 	var res: Array[PotionRequestLine]
 	for element in potion_request_lines:
-		print_debug(element.attribute, attribute)
 		if element.attribute == attribute:
 			res.append(element)
 			if element.customer == customer:
@@ -48,7 +50,6 @@ static func populate_potion_request_lines() -> void:
 	var json_data = Utils.get_json(POTION_REQUEST_LINES_JSON)
 	
 	for element in json_data.data:
-		print_debug(element["ATTR"])
 		var request_line: PotionRequestLine = PotionRequestLine.new()
 		request_line.attribute = Alchemy.AttributeID.keys().find(element["ATTR"])
 		request_line.customer = Customer.CustomerID.keys().find(element["NPC"])

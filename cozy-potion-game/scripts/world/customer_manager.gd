@@ -54,16 +54,17 @@ func show_acceptor_dialogue() -> void:
 	balloon.set_severity_values(customer.need_severities.front())
 	
 	# Display dialogue for second request if able, and shift that dialogue's position
-	if customer.secondary_need:
+	if customer.secondary_need >= 0:
 		request_dialogue_resource = CustomerDialogue.get_potion_request_line(customer.secondary_need, customer.customer_id)
 		balloon = DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon, request_dialogue_resource,"start")
 		balloons.append(balloon)
 		balloon.flip_x()
 		balloon.set_severity_values(customer.need_severities.back())
-		
-	var function = func(x: Array): for i in x: if is_instance_valid(i): i.queue_free()
+	
+	# Oh my
+	var free_all = func(x: Array): for i in x: if is_instance_valid(i): i.queue_free()
 	for balloon_enumerated in balloons:
-		balloon_enumerated.tree_exited.connect(function.bind(balloons))
+		balloon_enumerated.tree_exited.connect(free_all.bind(balloons))
 	var acceptor_balloon = balloons.front()
 	if acceptor_balloon is ItemAcceptDialogueBalloon:
 		var potion_accept_zone: CustomerPotionAcceptZone = acceptor_balloon.potion_accept_zone
