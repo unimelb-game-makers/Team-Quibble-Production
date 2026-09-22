@@ -1,0 +1,15 @@
+[gd_resource type="Environment" format=3 uid="uid://bkyp0kx5716dg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
+sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)
+sky_horizon_color = Color(0.2, 0.16862746, 0.13333334, 1)
+ground_horizon_color = Color(0.2, 0.16862746, 0.13333334, 1)
+
+[sub_resource type="Sky" id="Sky_xfvoa"]
+sky_material = SubResource("ProceduralSkyMaterial_lx5au")
+
+[resource]
+background_mode = 1
+background_color = Color(0.2, 0.16862746, 0.13333334, 1)
+sky = SubResource("Sky_xfvoa")
+glow_enabled = true
