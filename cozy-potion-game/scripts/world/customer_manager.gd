@@ -96,7 +96,7 @@ func other_accepted():
 
 func buy_potion(potion: Potion) -> void:
 		Utils.corner_needs_list_manager.clear_list()
-		DialogueManager.show_example_dialogue_balloon(dialogue_resource, "accept")
+		DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon, dialogue_resource, "accept")
 		await DialogueManager.dialogue_ended
 		if customer_world.customer.time_allotment:
 			TimeCycle.progress_day(customer_world.customer.time_allotment)
@@ -105,7 +105,7 @@ func buy_potion(potion: Potion) -> void:
 		recall_customer()
 
 func refuse_potion() -> void:
-	DialogueManager.show_example_dialogue_balloon(dialogue_resource, "refuse")
+		DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon,dialogue_resource, "refuse")
 	
 
 #generates some number of customers to be drawn from during the day
