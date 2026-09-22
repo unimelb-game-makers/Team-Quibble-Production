@@ -25,13 +25,13 @@ mouse_filter = 2
 
 [node name="CustomerPotionAcceptZone" type="Control" parent="PotionAcceptor" index="0" unique_id=1524965548 node_paths=PackedStringArray("draggable_acceptor_compoment")]
 layout_mode = 1
-anchor_left = 0.716
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 84.27991
-offset_top = 235.0
-offset_right = -57.0
-offset_bottom = -441.0
+offset_left = 853.0
+offset_top = 332.0
+offset_right = -805.0
+offset_bottom = -476.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

@@ -173,6 +173,6 @@ func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
 		if area is Interactable:
 			# parses index as Im fudging selecting stack
-			area.interacted.emit(hotbar, input_stack_index)
+			area.interact()
 			# probably bad to interact with two things at once
 			return

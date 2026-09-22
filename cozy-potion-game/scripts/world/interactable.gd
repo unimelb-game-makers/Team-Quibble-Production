@@ -15,8 +15,11 @@ func _ready() -> void:
 	area_exited.connect(_area_exited)
 
 func interact():
-	print_debug(1)
-	interacted.emit()
+	if DialogueManager.active_balloon:
+		print_debug("got you")
+		return
+	var dummy
+	interacted.emit(dummy, dummy)
 	if popup: 
 		popup.queue_free()
 

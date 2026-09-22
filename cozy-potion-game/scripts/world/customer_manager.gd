@@ -49,9 +49,9 @@ func show_acceptor_dialogue() -> void:
 	var balloons: Array[SpeechBubbleBalloon]
 	# Display dialogue for first request
 	var request_dialogue_resource = CustomerDialogue.get_potion_request_line(customer.primary_need, customer.customer_id)
-	var balloon = DialogueManager.show_dialogue_balloon_scene(acceptor_dialogue_balloon, request_dialogue_resource,"start")
+	var balloon: SpeechBubbleBalloon = DialogueManager.show_dialogue_balloon_scene(acceptor_dialogue_balloon, request_dialogue_resource,"start")
 	balloons.append(balloon)
-	balloon.object_to_follow = customer_world
+	balloon.set_severity_values(customer.need_severities.front())
 	
 	# Display dialogue for second request if able, and shift that dialogue's position
 	if customer.secondary_need:
@@ -59,22 +59,18 @@ func show_acceptor_dialogue() -> void:
 		balloon = DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon, request_dialogue_resource,"start")
 		balloons.append(balloon)
 		balloon.flip_x()
-		balloon.object_to_follow = customer_world
+		balloon.set_severity_values(customer.need_severities.back())
 		
-
-	var balloon_parent: Control = Control.new()
-	add_child(balloon_parent)
-	for bal in balloons:
-		balloon_parent.add_child(bal)
-		bal.tree_exited.connect(balloon_parent.queue_free)
-		bal.will_block_other_input = false
-	
+	var function = func(x: Array): for i in x: if is_instance_valid(i): i.queue_free()
+	for balloon_enumerated in balloons:
+		balloon_enumerated.tree_exited.connect(function.bind(balloons))
 	var acceptor_balloon = balloons.front()
 	if acceptor_balloon is ItemAcceptDialogueBalloon:
 		var potion_accept_zone: CustomerPotionAcceptZone = acceptor_balloon.potion_accept_zone
 		potion_accept_zone.draggable_acceptor_compoment.accepted_draggable.connect(_on_acceptor_accepted)
 	else:
 		assert(false)
+
 
 func _on_acceptor_accepted(control: Control):
 	DialogueManager.active_balloon.queue_free()

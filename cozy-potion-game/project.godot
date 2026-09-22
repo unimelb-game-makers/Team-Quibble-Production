@@ -45,6 +45,10 @@ player=""
 popup_subwindow=""
 ingredient_ball=""
 
+[gui]
+
+common/snap_controls_to_pixels=false
+
 [input]
 
 LMB={
