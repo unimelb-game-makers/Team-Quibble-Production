@@ -49,7 +49,7 @@ func check_potion_sufficient(potion: Potion) -> bool:
 ##Returns a randomly created customer resource. 
 ## if set_type isn't null, it's type will always be that
 ## if debug is true, print debug information
-static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Customer:
+static func generate_customer(set_type: String = "") -> Customer:
 	var customer_resource = Customer.new()
 	
 	#These first lines initialise the json mapping character types to need
@@ -71,16 +71,16 @@ static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Cus
 				break
 		assert(customer_dictionary, "set customer type does not exist")
 		
-	if DEBUG:
+	if Utils.DEBUG:
 		print_debug("Customer type: %s" % customer_resource.customer_type)
 	
 	#TODO: allow for more game stages
-	var need_count = get_need_count(DEBUG)
+	var need_count = get_need_count(Utils.DEBUG)
 	
-	set_needs(customer_dictionary, customer_resource, need_count, DEBUG)
+	set_needs(customer_dictionary, customer_resource, need_count, Utils.DEBUG)
 	
 	#TODO: allow for more game stages
-	set_need_severities(customer_resource, need_count, DEBUG)
+	set_need_severities(customer_resource, need_count, Utils.DEBUG)
 
 	return customer_resource
 

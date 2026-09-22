@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5ohtuxsvhcwd"
-path.s3tc="res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-b872df9f21e650befd9d693b3a60967a.s3tc.ctex"
-path.etc2="res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-b872df9f21e650befd9d693b3a60967a.etc2.ctex"
+uid="uid://cth1ay7nohol4"
+path.s3tc="res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-93466114aba6919335921153caf05c96.s3tc.ctex"
+path.etc2="res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-93466114aba6919335921153caf05c96.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "9ab6e7e9d6a49e0c50c99b90cc48d53b"
+"md5": "a48b3bf5d06e3cf360424f0cad67d13e"
 }
 
 [deps]
 
-source_file="res://assets/models/PH/Knife_For_Cutting_Table_PH/Knife_Placeholder_Plastic Base Color.png"
-dest_files=["res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-b872df9f21e650befd9d693b3a60967a.s3tc.ctex", "res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-b872df9f21e650befd9d693b3a60967a.etc2.ctex"]
+source_file="res://assets/models/PH/Cutting_Table_PH/Outdated_Textures/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png"
+dest_files=["res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-93466114aba6919335921153caf05c96.s3tc.ctex", "res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-93466114aba6919335921153caf05c96.etc2.ctex"]
 
 [params]
 
