@@ -5,8 +5,10 @@
 ## because it doesn't need state
 class_name CustomerDialogue extends Node
 
-static var potion_request_lines: Array
+static var potion_request_lines: Array[PotionRequestLine]
 
+
+const MATCHING_CUSTOMER_TYPE_WEIGHT = 7
 const POTION_REQUEST_LINES_JSON: String = "res://resources/json/potion_request_lines.json"
 
 ## The one other classes call.
@@ -14,8 +16,21 @@ static func get_potion_request_line(attribute: Alchemy.AttributeID, customer: Cu
 	if not potion_request_lines:
 		populate_potion_request_lines()
 	
-	return DialogueManager.create_resource_from_text("~ start\n %s" % potion_request_lines.pick_random().text)
+	var shortlist = get_shortlist(attribute, customer)
 	
+	var text = shortlist.pick_random().text
+	return DialogueManager.create_resource_from_text("~ start\n %s" % text)
+	
+static func get_shortlist(attribute: Alchemy.AttributeID, customer: Customer.CustomerID) -> Array[PotionRequestLine]:
+	var res: Array[PotionRequestLine]
+	for element in potion_request_lines:
+		print_debug(element.attribute, attribute)
+		if element.attribute == attribute:
+			res.append(element)
+			if element.customer == customer:
+				for i in range(MATCHING_CUSTOMER_TYPE_WEIGHT):
+					res.append(element)
+	return res
 
 static func get_initial_dialogue(customer: Customer) -> DialogueResource:
 	var res: String = "Hello, I am a [%s]. Please help me, I have [%s]." % \
