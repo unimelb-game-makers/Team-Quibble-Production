@@ -64,6 +64,8 @@ func aesthetic_movement(event: InputEvent) -> void:
 		interact()
 
 func rotate_camera(direction: int) -> void:
+	if DraggableComponent.dragged_control or DialogueManager.active_balloon:
+		return
 	#i really hope this implementation isnt what i stick with
 	if not is_equal_approx(rotation_y_target, 0):
 		return

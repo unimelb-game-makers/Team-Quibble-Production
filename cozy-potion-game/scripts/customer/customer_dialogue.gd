@@ -10,14 +10,13 @@ static var potion_request_lines: Array
 const POTION_REQUEST_LINES_JSON: String = "res://resources/json/potion_request_lines.json"
 
 ## The one other classes call.
-static func get_potion_request_line(customer: Customer) -> PotionRequestLine:
+static func get_potion_request_line(attribute: Alchemy.AttributeID, customer: Customer.CustomerID) -> DialogueResource:
 	if not potion_request_lines:
 		populate_potion_request_lines()
 	
-	return potion_request_lines.pick_random()
+	return DialogueManager.create_resource_from_text("~ start\n %s" % potion_request_lines.pick_random().text)
 	
-##returns a dialogueline that the customer will say when
-##meeting the player for the first time
+
 static func get_initial_dialogue(customer: Customer) -> DialogueResource:
 	var res: String = "Hello, I am a [%s]. Please help me, I have [%s]." % \
 	[customer.customer_id, customer.primary_need]

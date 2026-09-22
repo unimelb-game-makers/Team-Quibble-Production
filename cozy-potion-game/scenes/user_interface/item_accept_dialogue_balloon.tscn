@@ -10,7 +10,7 @@ script = ExtResource("2_4xx5q")
 potion_accept_zone = NodePath("PotionAcceptor/CustomerPotionAcceptZone")
 will_block_other_input = false
 
-[node name="CenterContainer" parent="Balloon" parent_id_path=PackedInt32Array(154399927) index="1" unique_id=1087901387]
+[node name="CenterContainer" parent="Balloon" parent_id_path=PackedInt32Array(154399927) index="0" unique_id=1087901387]
 mouse_filter = 2
 
 [node name="PotionAcceptor" type="Control" parent="." index="2" unique_id=457457935]

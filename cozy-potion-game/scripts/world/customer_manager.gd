@@ -5,6 +5,7 @@ extends Node
 @export var customer_world: CustomerWorld
 @export var dialogue_resource: DialogueResource
 @export var acceptor_dialogue_balloon: PackedScene
+@export var speech_bubble_dialogue_balloon: PackedScene
 
 var customer_queue: Array[Customer]
 
@@ -15,6 +16,9 @@ func _ready() -> void:
 	TimeCycle.day_started.connect(_on_day_started)
 
 
+#func _input(event: InputEvent) -> void:
+	#if event.is_action_pressed("close_minigame") or event.is_action_pressed("ui_accept"):
+		#
 #runs at the start of the day and sets up the list of customers and
 #also sends the first one to the shop
 func _on_day_started() -> void:
@@ -31,7 +35,6 @@ func send_customer() -> void:
 		return
 		
 	customer_anim_player.play("person_in")
-	customer_world.has_conveyed_request = false
 
 func recall_customer() -> void:
 	customer_anim_player.play_backwards("person_in")
@@ -39,17 +42,36 @@ func recall_customer() -> void:
 	send_customer()
 
 func _on_customer_interact(fuck, this) -> void:
-	if not customer_world.has_conveyed_request:
-		DialogueManager.show_example_dialogue_balloon(CustomerDialogue.get_initial_dialogue(customer_world.customer), "start")
-		customer_world.has_conveyed_request = true
-		Utils.corner_needs_list_manager.create_list(customer_world.customer)
-	else:
-		show_acceptor_dialogue("start_accepting")
+	show_acceptor_dialogue()
 
-func show_acceptor_dialogue(dialogue_start: String) -> void:
-	DialogueManager.show_dialogue_balloon_scene(acceptor_dialogue_balloon, dialogue_resource, dialogue_start)
-	if DialogueManager.active_balloon is ItemAcceptDialogueBalloon:
-		var potion_accept_zone: CustomerPotionAcceptZone = DialogueManager.active_balloon.potion_accept_zone
+func show_acceptor_dialogue() -> void:
+	var customer = customer_world.customer
+	var balloons: Array[SpeechBubbleBalloon]
+	# Display dialogue for first request
+	var request_dialogue_resource = CustomerDialogue.get_potion_request_line(customer.primary_need, customer.customer_id)
+	var balloon = DialogueManager.show_dialogue_balloon_scene(acceptor_dialogue_balloon, request_dialogue_resource,"start")
+	balloons.append(balloon)
+	balloon.object_to_follow = customer_world
+	
+	# Display dialogue for second request if able, and shift that dialogue's position
+	if customer.secondary_need:
+		request_dialogue_resource = CustomerDialogue.get_potion_request_line(customer.secondary_need, customer.customer_id)
+		balloon = DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon, request_dialogue_resource,"start")
+		balloons.append(balloon)
+		balloon.flip_x()
+		balloon.object_to_follow = customer_world
+		
+
+	var balloon_parent: Control = Control.new()
+	add_child(balloon_parent)
+	for bal in balloons:
+		balloon_parent.add_child(bal)
+		bal.tree_exited.connect(balloon_parent.queue_free)
+		bal.will_block_other_input = false
+	
+	var acceptor_balloon = balloons.front()
+	if acceptor_balloon is ItemAcceptDialogueBalloon:
+		var potion_accept_zone: CustomerPotionAcceptZone = acceptor_balloon.potion_accept_zone
 		potion_accept_zone.draggable_acceptor_compoment.accepted_draggable.connect(_on_acceptor_accepted)
 	else:
 		assert(false)
@@ -130,8 +152,6 @@ func customer_tests() -> void:
 	var test_customer_2: Customer = Customer.generate_customer(Customer.CustomerID.NPC_STUDENT, false)
 	assert(test_customer_2.customer_id == Customer.CustomerID.NPC_STUDENT, "bad customer 2")
 	assert(test_customer_2.needs.size() > 0, "bad customer 2")
-
-	print_debug(CustomerDialogue.get_potion_request_line(test_customer_2).text)
 
 
 	

@@ -42,11 +42,13 @@ _data = {
 &"progress": SubResource("Animation_qkmqt")
 }
 
-[node name="SpeechBubbleBalloon" type="CanvasLayer" unique_id=38036521 node_paths=PackedStringArray("balloon_control")]
+[node name="SpeechBubbleBalloon" type="CanvasLayer" unique_id=38036521 node_paths=PackedStringArray("balloon_control", "balloon_rect")]
 layer = 100
 script = ExtResource("1_ihstb")
 balloon_control = NodePath("Balloon")
 default_position = Vector2(109, 79)
+balloon_rect = NodePath("Balloon/BubbleTextRect")
+flipped_position = Vector2(-651, -439)
 
 [node name="Balloon" type="Control" parent="." unique_id=154399927]
 unique_name_in_owner = true
@@ -64,6 +66,7 @@ mouse_filter = 2
 theme = ExtResource("2_ihstb")
 
 [node name="CenterContainer" type="CenterContainer" parent="Balloon" unique_id=1087901387]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
