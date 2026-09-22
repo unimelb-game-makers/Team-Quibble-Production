@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btl2bvr371wda"
-path="res://.godot/imported/T_Cutting_Table_Placeholder.png-8f89b2dff1c2a9456cf984e211ec118e.ctex"
+uid="uid://tdqco4cca8w5"
+path="res://.godot/imported/mimi-front.PNG-f8f7222cd27b9c324c40734e4250bae2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/models/PH/Cutting_Table_PH/Outdated_Textures/T_Cutting_Table_Placeholder.png"
-dest_files=["res://.godot/imported/T_Cutting_Table_Placeholder.png-8f89b2dff1c2a9456cf984e211ec118e.ctex"]
+source_file="res://assets/sprites/mimi-front.PNG"
+dest_files=["res://.godot/imported/mimi-front.PNG-f8f7222cd27b9c324c40734e4250bae2.ctex"]
 
 [params]
 

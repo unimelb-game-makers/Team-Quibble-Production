@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b25di7nrlev4q"
-path="res://.godot/imported/T_Knife_Placeholder.png-4cfe14da6159ae58be2883f9b481855e.ctex"
+path="res://.godot/imported/T_Knife_Placeholder.png-c128de4f8234ea24131d1f27bf482777.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/models/PH/Knife_For_Cutting_Table_PH/T_Knife_Placeholder.png"
-dest_files=["res://.godot/imported/T_Knife_Placeholder.png-4cfe14da6159ae58be2883f9b481855e.ctex"]
+source_file="res://assets/models/PH/Knife_For_Cutting_Table_PH/Outdated_Textures/T_Knife_Placeholder.png"
+dest_files=["res://.godot/imported/T_Knife_Placeholder.png-c128de4f8234ea24131d1f27bf482777.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btl2bvr371wda"
-path="res://.godot/imported/T_Cutting_Table_Placeholder.png-8f89b2dff1c2a9456cf984e211ec118e.ctex"
+uid="uid://dejqojs7i4xgo"
+path="res://.godot/imported/Cauldron_Disp.exr-653f4d8d3f671616ba154fcb70c6a60a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/models/PH/Cutting_Table_PH/Outdated_Textures/T_Cutting_Table_Placeholder.png"
-dest_files=["res://.godot/imported/T_Cutting_Table_Placeholder.png-8f89b2dff1c2a9456cf984e211ec118e.ctex"]
+source_file="res://assets/models/PH/Cauldron_PH/Cauldron_Textures/Cauldron_Disp.exr"
+dest_files=["res://.godot/imported/Cauldron_Disp.exr-653f4d8d3f671616ba154fcb70c6a60a.ctex"]
 
 [params]
 

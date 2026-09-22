@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btl2bvr371wda"
-path="res://.godot/imported/T_Cutting_Table_Placeholder.png-8f89b2dff1c2a9456cf984e211ec118e.ctex"
+uid="uid://bjxuwavyfehn7"
+path="res://.godot/imported/DecoctPot_M.png-7b3ee13add2bbe083456a23eef1dcb0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/models/PH/Cutting_Table_PH/Outdated_Textures/T_Cutting_Table_Placeholder.png"
-dest_files=["res://.godot/imported/T_Cutting_Table_Placeholder.png-8f89b2dff1c2a9456cf984e211ec118e.ctex"]
+source_file="res://assets/models/PH/Decoction_Pot/DecoctPot_T/DecoctPot_M.png"
+dest_files=["res://.godot/imported/DecoctPot_M.png-7b3ee13add2bbe083456a23eef1dcb0b.ctex"]
 
 [params]
 

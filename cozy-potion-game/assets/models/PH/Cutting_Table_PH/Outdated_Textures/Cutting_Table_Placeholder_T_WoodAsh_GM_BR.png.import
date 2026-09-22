@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cth1ay7nohol4"
-path.s3tc="res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-ff0f76b1952ca8c40ed9573d20d130cc.s3tc.ctex"
-path.etc2="res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-ff0f76b1952ca8c40ed9573d20d130cc.etc2.ctex"
+path.s3tc="res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-93466114aba6919335921153caf05c96.s3tc.ctex"
+path.etc2="res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-93466114aba6919335921153caf05c96.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -15,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/PH/Cutting_Table_PH/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png"
-dest_files=["res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-ff0f76b1952ca8c40ed9573d20d130cc.s3tc.ctex", "res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-ff0f76b1952ca8c40ed9573d20d130cc.etc2.ctex"]
+source_file="res://assets/models/PH/Cutting_Table_PH/Outdated_Textures/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png"
+dest_files=["res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-93466114aba6919335921153caf05c96.s3tc.ctex", "res://.godot/imported/Cutting_Table_Placeholder_T_WoodAsh_GM_BR.png-93466114aba6919335921153caf05c96.etc2.ctex"]
 
 [params]
 

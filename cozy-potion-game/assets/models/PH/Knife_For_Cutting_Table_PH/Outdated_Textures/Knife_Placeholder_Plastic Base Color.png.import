@@ -3,8 +3,8 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://5ohtuxsvhcwd"
-path.s3tc="res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-b872df9f21e650befd9d693b3a60967a.s3tc.ctex"
-path.etc2="res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-b872df9f21e650befd9d693b3a60967a.etc2.ctex"
+path.s3tc="res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-0aed64acbae60775a6f20f4d8fb9adaf.s3tc.ctex"
+path.etc2="res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-0aed64acbae60775a6f20f4d8fb9adaf.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -15,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://assets/models/PH/Knife_For_Cutting_Table_PH/Knife_Placeholder_Plastic Base Color.png"
-dest_files=["res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-b872df9f21e650befd9d693b3a60967a.s3tc.ctex", "res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-b872df9f21e650befd9d693b3a60967a.etc2.ctex"]
+source_file="res://assets/models/PH/Knife_For_Cutting_Table_PH/Outdated_Textures/Knife_Placeholder_Plastic Base Color.png"
+dest_files=["res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-0aed64acbae60775a6f20f4d8fb9adaf.s3tc.ctex", "res://.godot/imported/Knife_Placeholder_Plastic Base Color.png-0aed64acbae60775a6f20f4d8fb9adaf.etc2.ctex"]
 
 [params]
 
