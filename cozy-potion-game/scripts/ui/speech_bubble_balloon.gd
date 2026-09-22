@@ -15,7 +15,7 @@ func randomize_wiggle():
 func set_severity_values(severity: float):
 	randomize_wiggle()
 	var normal_severity = severity/100
-	wiggle_speed = 0.2 + 4 * normal_severity
+	wiggle_speed = 1 + 4 * normal_severity
 	wiggle_magnitude = 5 + 5 * normal_severity
 	balloon_control.scale = Vector2(0.8 + 0.4 * normal_severity, 0.8 + 0.4 * normal_severity)
 	balloon_rect.self_modulate = lerp(Color(1.0, 1.0, 1.0, 1.0), Color(0.996, 0.703, 0.765, 1.0), normal_severity)

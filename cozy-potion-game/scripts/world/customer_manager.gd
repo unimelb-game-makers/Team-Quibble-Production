@@ -35,6 +35,7 @@ func send_customer() -> void:
 		return
 		
 	customer_anim_player.play("person_in")
+	Utils.corner_needs_list_manager.create_list(customer_world.customer)
 
 func recall_customer() -> void:
 	customer_anim_player.play_backwards("person_in")
