@@ -101,7 +101,7 @@ func update_time_of_day(hour: int) -> void:
 		true
 	)
 
-	print("Mix changing to: ", time_of_day)
+	print_debug("Mix changing to: ", time_of_day)
 
 func _on_fmod_callback(data: Dictionary, type: int) -> void:
 	# receive timeline marker notifications from the audio engine when specific events occur
