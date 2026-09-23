@@ -60,3 +60,11 @@ layout_mode = 2
 size_flags_vertical = 0
 offset_transform_position = Vector2(5, 30)
 offset_transform_visual_only = false
+
+[node name="trash_collector" type="Control" parent="." unique_id=979495585]
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 10.0
+offset_right = 45.0
+offset_bottom = 50.0
+mouse_filter = 2

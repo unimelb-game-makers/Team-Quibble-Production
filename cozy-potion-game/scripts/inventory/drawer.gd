@@ -13,13 +13,13 @@ var max_slots : int
 
 var sort_keys : Array[Callable] = [
 	func(a: ItemSlot, b: ItemSlot): 
-		if a.get_stack().isEmpty:
+		if a.get_item_stack().isEmpty:
 			return false
-		if b.get_stack().isEmpty:
+		if b.get_item_stack().isEmpty:
 			return true
-		return a.get_stack().get_item_name().naturalnocasecmp_to(b.get_stack().get_item_name()) < 0,
+		return a.get_item_stack().get_item_name().naturalnocasecmp_to(b.get_item_stack().get_item_name()) < 0,
 	func(a: ItemSlot, b: ItemSlot):
-		return a.get_stack().quantity > b.get_stack().quantity,
+		return a.get_item_stack().quantity > b.get_item_stack().quantity,
 		]
 var sort_index: int = 0
 
@@ -40,7 +40,7 @@ func _ready() -> void:
 		filled_stacks[i].quantity = 40
 		filled_stacks[i].item = ingredients[i]
 	
-	hover_inv.inventory.spawn_slots(filled_stacks)
+	hover_inv.inventory.spawn_slots(filled_stacks, hover_inv.trash_collector)
 	hover_inv.inventory.sort_items(sort_keys[sort_index])
 
 

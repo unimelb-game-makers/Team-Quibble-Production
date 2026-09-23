@@ -7,7 +7,9 @@ class_name ClickableComponent extends Node
 #changing this code to use offset_transform
 
 static var dragged_control: Control
-static var pending_parent: Control
+static var pending_acceptor: ClickableAcceptorComponent
+
+@export var trash_collector: Control
 
 var previous_parent: Control
 
@@ -16,7 +18,6 @@ var my_control: Control
 
 #use these in the control that uses this component if you want
 #functionality when dragging or dropping
-signal clickable_dropped
 signal clickable_picked_up
 
 func _ready() -> void:
@@ -32,16 +33,21 @@ func _process(_delta: float) -> void:
 		move_to_mouse()
 		
 		# Following Inputs will try to place component
-		if Input.is_action_pressed("LMB"):
+		if Input.is_action_just_pressed("LMB"):
 			# If no new pending parent to
-			if not pending_parent or pending_parent == previous_parent:
-				return_to_previous()
+			if not pending_acceptor:
+				# erased idk
+				pass
 			else:
-				# Listen to acceptor
+				request_pending_parent_placement()
+				pending_acceptor.emit_request_left_placement(self)
 				pass
 			pass
-		elif Input.is_action_pressed("RMB"):
+		elif Input.is_action_just_pressed("RMB"):
 			#list to acceptor but for RMB
+			if pending_acceptor:
+				request_pending_parent_placement()
+				pending_acceptor.emit_request_right_placement(self)
 			pass
 
 
@@ -54,37 +60,17 @@ func _unhandled_input(event: InputEvent) -> void:
 			dragged_control == null:
 			
 			assign_to_mouse()
-	
-	
-	if event.is_action_released("LMB"):
-		being_dragged = false
-		my_control.top_level = false
-		if dragged_control == my_control:
-			dragged_control = null
-			#if we don't have a parent waiting to pick up,
-			#return to previous owner
-			if not pending_parent or pending_parent == my_control.get_parent():
-				return_to_previous()
-			else:
-				parent_to_acceptor()
-	
-	if !event.is_action_pressed("LMB"):
-		return
-
-	if !my_control.get_global_rect().has_point(my_control.get_global_mouse_position()):
-		return
-
-	if dragged_control:
-		return
-	assign_to_mouse()
 
 
 func assign_to_mouse() -> void:
 	clickable_picked_up.emit()
-	dragged_control = my_control
-	previous_parent = my_control.get_parent()
 	my_control.top_level = true
 	being_dragged = true
+	dragged_control = my_control
+	
+	my_control.reparent(trash_collector)
+	
+	move_to_mouse()
 	
 	set_process(true)
 
@@ -92,23 +78,27 @@ func move_to_mouse() -> void:
 	my_control.global_position = my_control.get_global_mouse_position() - my_control.get_global_rect().size/2
 
 # Called when dragged to ensure returns to orignal owner
-func return_to_previous() -> void:
-	#draggable_dropped.emit()
-	being_dragged = false
-	my_control.reparent(previous_parent)
-	my_control.position = Vector2.ZERO
-	if previous_parent is Container:
-		previous_parent.queue_sort()
+func request_pending_parent_placement() -> void:
+	# Actually Nothing
+	pass
 
-func parent_to_acceptor() -> void:
-	if not pending_parent:
-		return_to_previous()
-	if get_acceptor(pending_parent):
-		get_acceptor(pending_parent).emit_accepted(my_control)
-	my_control.reparent(pending_parent)
-	pending_parent = null
-	#draggable_accepted.emit()
+
+func place_clickable(new_parent : Control) -> void:
+	my_control.reparent(new_parent)
+	stop_dragging()
+
+
+func stop_dragging() -> void:
+	pending_acceptor = null
+	dragged_control = null
 	
+	being_dragged = false
+	set_process(false)
+	my_control.top_level = false
+	
+	#I hate everything
+	my_control.global_position = my_control.get_parent().global_position
+
 
 func get_acceptor(node: Node) -> DraggableAcceptorComponent:
 	for child in node.get_children():

@@ -261,6 +261,7 @@ offset_right = -1527.0
 offset_bottom = -655.0
 columns = 3
 rows = 1
+max_quantity = 1
 
 [node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
 script = ExtResource("10_qxqkn")
@@ -364,9 +365,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7538233, 8.734198, -5.0491
 visible = false
 script = ExtResource("18_oepbt")
 minigame_scene = ExtResource("22_jdbe1")
+interactable = NodePath("RecipeMinigameInteractable")
 indicator = NodePath("")
 indicator_pos = NodePath("")
-interactable = NodePath("RecipeMinigameInteractable")
 
 [node name="RecipeMinigameInteractable" type="Area3D" parent="Node3D/RecipeMinigame" unique_id=254663262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9055874, 0.51443744, 0.042072535)
