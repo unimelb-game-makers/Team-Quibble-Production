@@ -65,6 +65,7 @@ func move_to_mouse() -> void:
 
 # Called when dragged to ensure returns to orignal owner
 func return_to_previous() -> void:
+	print_debug(previous_parent)
 	draggable_dropped.emit()
 	being_dragged = false
 	my_control.reparent(previous_parent)
@@ -75,14 +76,23 @@ func return_to_previous() -> void:
 func parent_to_acceptor() -> void:
 	if not pending_parent:
 		return_to_previous()
-	if get_acceptor(pending_parent):
-		get_acceptor(pending_parent).emit_accepted(my_control)
+		return
+		
 	my_control.reparent(pending_parent)
-	pending_parent = null
 	draggable_accepted.emit()
 	
+	if get_acceptor(pending_parent):
+		get_acceptor(pending_parent).emit_accepted(my_control)
+	pending_parent = null
+	
+static func get_draggable_component(node: Node) -> DraggableComponent:
+	for child in node.get_children():
+		if child is DraggableComponent:
+			return child
+	
+	return null
 
-func get_acceptor(node: Node) -> DraggableAcceptorComponent:
+static func get_acceptor(node: Node) -> DraggableAcceptorComponent:
 	for child in node.get_children():
 		if child is DraggableAcceptorComponent:
 			return child

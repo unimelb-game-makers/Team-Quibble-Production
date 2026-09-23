@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dujmq0dhaeoms" path="res://scripts/inventory/item_slot.gd" id="1_6iuqr"]
 [ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="2_6iuqr"]
+[ext_resource type="Script" uid="uid://dtfvdcuy006ib" path="res://scripts/Inventory/item_slot.gd" id="1_5qwv8"]
+[ext_resource type="Script" uid="uid://bkt5imxfgerjv" path="res://scripts/ui/draggable_component.gd" id="3_q1wai"]
 
 [node name="ItemSlot" type="PanelContainer" unique_id=1630260444 node_paths=PackedStringArray("acceptor")]
 custom_minimum_size = Vector2(64, 64)

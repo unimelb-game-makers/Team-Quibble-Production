@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bkt5imxfgerjv" path="res://scenes/user_interface/draggable_component.gd" id="1_a127h"]
 [ext_resource type="Script" uid="uid://dtfvdcuy006ib" path="res://scripts/inventory/item_holder.gd" id="1_p1nqj"]
+[ext_resource type="Script" uid="uid://dtfvdcuy006ib" path="res://scripts/Inventory/item_slot.gd" id="1_jn4e4"]
+[ext_resource type="Script" uid="uid://bkt5imxfgerjv" path="res://scripts/ui/draggable_component.gd" id="3_16ala"]
 
 [node name="ItemHolder" type="Panel" unique_id=574462740 node_paths=PackedStringArray("item_sprite", "quantity_label", "draggable_component")]
 custom_minimum_size = Vector2(64, 64)

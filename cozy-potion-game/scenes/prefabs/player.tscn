@@ -3,33 +3,33 @@
 [ext_resource type="Script" uid="uid://b7wupl4oawgq1" path="res://scripts/characters/world_player.gd" id="1_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://cw4gylc4tjo2f" path="res://assets/models/mimi/Mimi.fbx" id="2_dqkch"]
 [ext_resource type="Script" uid="uid://c5d8fk5q5gbku" path="res://scripts/world/player_interactable_detector.gd" id="3_qlg0r"]
+[ext_resource type="PackedScene" uid="uid://dd257ohvyb7cs" path="res://assets/models/mimi/MimiFrontBack.glb" id="4_6o77n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4dvm4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
-size = Vector3(1.2932129, 1, 1)
+size = Vector3(2.0021057, 1, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_032fp"]
 albedo_color = Color(1, 0.24705882, 0.08627451, 1)
 
-[node name="Player" type="CharacterBody3D" unique_id=1588394108 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area", "mimi_sprite") groups=["player"]]
-transform = Transform3D(0.6654595, 0, -0.746434, 0, 1, 0, 0.746434, 0, 0.6654595, 0, 0, 0)
+[node name="Player" type="CharacterBody3D" unique_id=1588394108 node_paths=PackedStringArray("animation_pivot", "camera_pivot", "mouse_detector_left", "mouse_detector_right", "interactable_collision_area", "front_back", "left_right", "sprite_pivot") groups=["player"]]
 script = ExtResource("1_qhqgy")
 animation_pivot = NodePath("AnimationPivot")
 camera_pivot = NodePath("CameraPivot")
 mouse_detector_left = NodePath("MouseDetectorLeft")
 mouse_detector_right = NodePath("MouseDetectorRight")
 interactable_collision_area = NodePath("AnimationPivot/InteractableCollisionShape")
-mimi_sprite = NodePath("AnimationPivot/Mimi")
+front_back = NodePath("AnimationPivot/Sprites/MimiFrontBack")
+left_right = NodePath("AnimationPivot/Sprites/MimiLeftRight")
+sprite_pivot = NodePath("AnimationPivot/Sprites")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1425070557]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040551424, 0.9759979, 0)
 shape = SubResource("CapsuleShape3D_4dvm4")
 
 [node name="AnimationPivot" type="Node3D" parent="." unique_id=142382121]
-
-[node name="Mimi" parent="AnimationPivot" unique_id=503888036 instance=ExtResource("2_dqkch")]
-transform = Transform3D(0.049481273, 0, -0.9987751, 0, 1, 0, 0.9987751, 0, 0.049481273, 0, 0.477, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.29673386, 0)
 
 [node name="InteractableCollisionShape" type="Area3D" parent="AnimationPivot" unique_id=1369403033]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0661669, 0.11184323, -2.5223014)
@@ -37,7 +37,7 @@ collision_mask = 1048577
 script = ExtResource("3_qlg0r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AnimationPivot/InteractableCollisionShape" unique_id=696243504]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133395195, 0, 1.3472493)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.071160786, 0, 1.4658086)
 shape = SubResource("BoxShape3D_4dvm4")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="AnimationPivot" unique_id=1451786931]
@@ -45,6 +45,15 @@ transform = Transform3D(0.6980141, -0.7157583, -0.021601157, 0.017767817, -0.012
 cast_shadow = 0
 polygon = PackedVector2Array(0.7617471, 0.8473878, 0.63597995, 0.976331, 1.0469601, 0.97114205, 0.96082616, 0.56121916, 0.8524252, 0.6899427, 0, 0)
 material = SubResource("StandardMaterial3D_032fp")
+
+[node name="Sprites" type="Node3D" parent="AnimationPivot" unique_id=2058188210]
+transform = Transform3D(1.21, 0, 0, 0, 1.21, 0, 0, 0, 1.21, 0, 0, 0)
+
+[node name="MimiFrontBack" parent="AnimationPivot/Sprites" unique_id=2010580373 instance=ExtResource("4_6o77n")]
+transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.205, 0.012121186, -0.07802725, -0.020415366)
+
+[node name="MimiLeftRight" parent="AnimationPivot/Sprites" unique_id=503888036 instance=ExtResource("2_dqkch")]
+transform = Transform3D(0.001816079, 0, -0.9999984, 0, 1, 0, 0.9999984, 0, 0.001816079, 0.017564297, 0.477, 0.008782238)
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1669848937]
 
