@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bevv56yxkl1y7"]
 
-[ext_resource type="Script" uid="uid://dlkassy77awq8" path="res://scenes/user_interface/draggable_ui.gd" id="1_eej16"]
+[ext_resource type="Script" uid="uid://dlkassy77awq8" path="res://scripts/ui/draggable_ui.gd" id="1_eej16"]
 
 [node name="Ingredient" type="Panel" unique_id=289371094]
 custom_minimum_size = Vector2(293, 92)

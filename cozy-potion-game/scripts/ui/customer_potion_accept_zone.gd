@@ -1,0 +1,3 @@
+class_name CustomerPotionAcceptZone extends Control
+
+@export var draggable_acceptor_compoment: DraggableAcceptorComponent

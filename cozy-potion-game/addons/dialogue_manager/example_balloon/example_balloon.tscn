@@ -114,6 +114,7 @@ _data = {
 [node name="ExampleBalloon" type="CanvasLayer" unique_id=38036521]
 layer = 100
 script = ExtResource("1_36de5")
+skip_action = &"ui_accept"
 
 [node name="Balloon" type="Control" parent="." unique_id=154399927]
 unique_name_in_owner = true
@@ -121,8 +122,11 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme = SubResource("Theme_qq3yp")
 
 [node name="MarginContainer" type="MarginContainer" parent="Balloon" unique_id=1302081376]
@@ -188,6 +192,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 0
 
 [node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/CenterContainer" unique_id=1801308483 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true

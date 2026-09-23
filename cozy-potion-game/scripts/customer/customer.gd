@@ -4,18 +4,26 @@ class_name Customer extends Resource
 var customer_type: String
 ##array of customer needs: NEED_HEALING, NEED_LIGHT, etc
 ##the first element is the primary need, others are secondary
-var needs: Array[String]
+var needs: Array[Alchemy.NeedID]
 ##each element in needs has a corresponding severity in this array at
 ##the same index.
 var need_severities: Array[float]
 ##the first need. Ooh, that souds philosophical. root of all desires and shit.
-var primary_need: String:
+var primary_need: Alchemy.NeedID:
 	get():
 		return needs.front()
 	#this isn't neccessary
 	set(value):
-		assert(value is String, "tried to set nonstring primary need")
 		needs[0] = value
+
+var secondary_need: Alchemy.NeedID:
+	get():
+		if needs.size() < 2:
+			return -1
+		return needs.back()
+	#this isn't neccessary
+	set(value):
+		needs.insert(1, value)
 
 ##how much time a customer will progress the day by when satisfied
 var time_allotment: float
@@ -30,13 +38,18 @@ const GAME_STAGE_1_SEVERITY_CURVE: String = "res://scripts/customer/game_stage_1
 ## not sure yet. TODO: update this function after the rest of the potion system
 ## is done
 func check_potion_sufficient(potion: Potion) -> bool:
-	return true
+	var match_primary = Alchemy.attribute_to_need_index[potion.potion_primary] == primary_need
+	var match_secondary = true
+	if secondary_need >= 0:
+		Alchemy.attribute_to_need_index[potion.potion_secondary] == secondary_need
+	
+	return match_primary and match_secondary
 
 
 ##Returns a randomly created customer resource. 
 ## if set_type isn't null, it's type will always be that
 ## if debug is true, print debug information
-static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Customer:
+static func generate_customer(set_type: String = "") -> Customer:
 	var customer_resource = Customer.new()
 	
 	#These first lines initialise the json mapping character types to need
@@ -58,16 +71,16 @@ static func generate_customer(set_type: String = "", DEBUG: bool = false) -> Cus
 				break
 		assert(customer_dictionary, "set customer type does not exist")
 		
-	if DEBUG:
+	if Utils.DEBUG:
 		print_debug("Customer type: %s" % customer_resource.customer_type)
 	
 	#TODO: allow for more game stages
-	var need_count = get_need_count(DEBUG)
+	var need_count = get_need_count(Utils.DEBUG)
 	
-	set_needs(customer_dictionary, customer_resource, need_count, DEBUG)
+	set_needs(customer_dictionary, customer_resource, need_count, Utils.DEBUG)
 	
 	#TODO: allow for more game stages
-	set_need_severities(customer_resource, need_count, DEBUG)
+	set_need_severities(customer_resource, need_count, Utils.DEBUG)
 
 	return customer_resource
 
@@ -88,7 +101,8 @@ static func set_needs(customer_dictionary: Dictionary, customer_resource: Custom
 		print_debug("Ailment Weights: ", ailment_weights)
 	
 	var first_ailment: String = Utils.pick_random_weighted(ailments_array, Utils.array_to_float_array(ailment_weights))
-	customer_resource.needs.append(first_ailment)
+	var first_need_id: Alchemy.NeedID = Alchemy.NeedID.keys().find(first_ailment)
+	customer_resource.needs.append(first_need_id)
 	if DEBUG:
 		print_debug("first need is %s" % first_ailment)
 	
@@ -112,7 +126,8 @@ static func set_needs(customer_dictionary: Dictionary, customer_resource: Custom
 	while (j > 1):
 		j -= 1
 		var secondary_ailment = Utils.pick_random_weighted(secondary_ailment_array, Utils.array_to_float_array(secondary_ailment_weights))
-		customer_resource.needs.append(secondary_ailment)
+		var secondary_need_id: Alchemy.NeedID = Alchemy.NeedID.keys().find(secondary_ailment)
+		customer_resource.needs.append(secondary_need_id)
 		
 		#remove this index from the list
 		var index = secondary_ailment_array.find(secondary_ailment)
@@ -127,6 +142,8 @@ static func get_need_count(DEBUG) -> int:
 	var need_count: int = 0
 	while(randf() < need_chance_array[need_count] and need_count < need_chance_array.size()):
 		need_count+=1
+		if need_count >= 2:
+			break;
 	if DEBUG:
 		print_debug("%d needs" % need_count)
 	return need_count
