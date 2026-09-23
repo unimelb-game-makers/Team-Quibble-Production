@@ -134,7 +134,7 @@ func _on_loop_started(loop_name: String) -> void:
 
 	# if roll fails then follow next loop like normal
 	if randf() > RANDOM_LOOP_CHANCE:
-		print("No random jump - continuing normally")
+		print_debug("No random jump - continuing normally")
 		return
 
 	randomise_next_loop(loop_name, parameter_name)
