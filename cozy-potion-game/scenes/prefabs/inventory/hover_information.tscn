@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://cb4bw7nojinb5"]
+
+[ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/inventory/hover_inventory.gd" id="1_sfxcb"]
+
+[sub_resource type="Gradient" id="Gradient_2i0qe"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 0.5647059)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3p56h"]
+gradient = SubResource("Gradient_2i0qe")
+
+[node name="InventoryWithHover" type="Control" unique_id=414539128]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1724.0
+offset_bottom = -906.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_sfxcb")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=1415238081]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="InfoSheet" type="PanelContainer" parent="." unique_id=490063165]
+layout_mode = 0
+offset_right = 133.0
+offset_bottom = 80.0
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="InfoSheet" unique_id=412527959]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_3p56h")
+
+[node name="MarginContainer" type="MarginContainer" parent="InfoSheet" unique_id=2070359248]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InfoSheet/MarginContainer" unique_id=1454231319]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="ItemName" type="Label" parent="InfoSheet/MarginContainer/VBoxContainer" unique_id=873049989]
+layout_mode = 2
+size_flags_vertical = 0
+offset_transform_position = Vector2(5, 5)
+offset_transform_visual_only = false
+theme_override_font_sizes/font_size = 25
+
+[node name="ItemAttributes" type="Label" parent="InfoSheet/MarginContainer/VBoxContainer" unique_id=1432051212]
+layout_mode = 2
+size_flags_vertical = 0
+offset_transform_position = Vector2(5, 30)
+offset_transform_visual_only = false

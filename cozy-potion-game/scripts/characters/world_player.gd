@@ -35,12 +35,7 @@ var top_down_active: bool = false
 var accepting_control: bool = true
 
 #hotbar stuff
-@export var hotbar_display: Hotbar
-var hotbar : Inventory:
-	get():
-		return hotbar_display.inventory
-var hotbar_grid: Container
-var input_stack_index: int = 0
+@export var hotbar_display : HoverInventory
 
 # this is called before _ready
 func _init() -> void:
@@ -195,6 +190,6 @@ func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
 		if area is Interactable:
 			# parses index as Im fudging selecting stack
-			area.interacted.emit(hotbar, input_stack_index)
+			area.interacted.emit()
 			# probably bad to interact with two things at once
 			return
