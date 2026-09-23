@@ -1,37 +1,37 @@
-[gd_scene format=3 uid="uid://bec7ovcvsvc5q"]
+[gd_scene format=3 uid="uid://bji46dagac6b6"]
 
-[ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_7mqwv"]
-[ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/ui/news_popup.gd" id="3_gobkm"]
-[ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="4_j14q8"]
-[ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/ui/list_manager.gd" id="5_pqync"]
-[ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="6_heatd"]
-[ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="6_yuijs"]
-[ext_resource type="Script" uid="uid://c60gdvx5xbpwi" path="res://scripts/ui/hotbar.gd" id="7_c8dfh"]
-[ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/mini_games/recipe_scene.tscn" id="7_m4ofw"]
-[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
-[ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
-[ext_resource type="PackedScene" uid="uid://bcqi5ykyush3i" path="res://assets/prefabs/inventory/hotbar_item_slot.tscn" id="8_mt8ix"]
-[ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="9_a6g3j"]
-[ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="9_m4ofw"]
-[ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
-[ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="10_p0at6"]
-[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
-[ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
-[ext_resource type="PackedScene" uid="uid://ccvp68inp2bhf" path="res://scenes/mini_games/ingredient_drawer.tscn" id="11_gobkm"]
-[ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
-[ext_resource type="Environment" uid="uid://bkyp0kx5716dg" path="res://resources/new_environment.tres" id="12_a6g3j"]
-[ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/prefabs/player.tscn" id="12_ouqob"]
-[ext_resource type="Script" uid="uid://b6xdw32473ggf" path="res://scripts/ui/indicator.gd" id="13_ru2r1"]
-[ext_resource type="Texture2D" uid="uid://c2mvlk1clgcro" path="res://assets/sprites/potion_red_64.png" id="14_lxs01"]
-[ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="16_j14q8"]
-[ext_resource type="Texture2D" uid="uid://dc41ulmsyvhxi" path="res://assets/sprites/mooncap_full.png" id="17_6nbx6"]
-[ext_resource type="Texture2D" uid="uid://cy0nmubfx1two" path="res://assets/sprites/blue_mortar_pestle_full.png" id="19_mihhf"]
-[ext_resource type="PackedScene" uid="uid://dl2b8oidm5fcn" path="res://assets/models/PH/Mortar_Pestle_Table_PH/Mortar_Pestle_Placeholder.glb" id="23_p0at6"]
-[ext_resource type="PackedScene" uid="uid://b4ym8cxp6836g" path="res://scenes/shop_layout.tscn" id="24_6nbx6"]
-[ext_resource type="PackedScene" uid="uid://lefumu5skmny" path="res://assets/models/PH/Mortar_Pestle_Only_PH/Pestle_Placeholder.glb" id="24_c8dfh"]
-[ext_resource type="PackedScene" uid="uid://w65i7h10tgrw" path="res://assets/models/PH/Mortar_Pestle_Only_PH/Mortar_Placeholder.glb" id="25_ccf1r"]
-[ext_resource type="PackedScene" uid="uid://bbymrxpal4myo" path="res://assets/models/PH/Cauldron_PH/Cauldron_Placeholder.glb" id="26_mt8ix"]
-[ext_resource type="PackedScene" uid="uid://bq881rwv1qjfj" path="res://assets/models/PH/Spice_Cabinet_PH/Spice_Cabinet_Placeholder.glb" id="27_a6g3j"]
+[ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="1_4f4la"]
+[ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_1xpwl"]
+[ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/ui/news_popup.gd" id="3_8n7hp"]
+[ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="4_h7msc"]
+[ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/ui/list_manager.gd" id="5_kytfo"]
+[ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="6_fagg5"]
+[ext_resource type="Script" uid="uid://c60gdvx5xbpwi" path="res://scripts/ui/hotbar.gd" id="7_ed0df"]
+[ext_resource type="PackedScene" uid="uid://bcqi5ykyush3i" path="res://assets/prefabs/Inventory/hotbar_item_slot.tscn" id="8_4ddaa"]
+[ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="9_7cpb4"]
+[ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="10_2ukpi"]
+[ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="11_mtuaq"]
+[ext_resource type="PackedScene" uid="uid://c8rv1a0qlm0i1" path="res://scenes/user_interface/item_accept_dialogue_balloon.tscn" id="12_1xpwl"]
+[ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="12_egm7a"]
+[ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="13_5yugc"]
+[ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="14_gss6t"]
+[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="15_0gg37"]
+[ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/prefabs/player.tscn" id="16_dm0f0"]
+[ext_resource type="PackedScene" uid="uid://bq881rwv1qjfj" path="res://assets/models/PH/Spice_Cabinet_PH/Spice_Cabinet_Placeholder.glb" id="17_5ts64"]
+[ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="18_rnse5"]
+[ext_resource type="PackedScene" uid="uid://ccvp68inp2bhf" path="res://scenes/mini_games/ingredient_drawer.tscn" id="19_7d8qr"]
+[ext_resource type="Script" uid="uid://b6xdw32473ggf" path="res://scripts/ui/indicator.gd" id="20_773hc"]
+[ext_resource type="Texture2D" uid="uid://dc41ulmsyvhxi" path="res://assets/sprites/mooncap_full.png" id="21_bu7km"]
+[ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/mini_games/recipe_scene.tscn" id="22_mp4v0"]
+[ext_resource type="PackedScene" uid="uid://dl2b8oidm5fcn" path="res://assets/models/PH/Mortar_Pestle_Table_PH/Mortar_Pestle_Placeholder.glb" id="23_ysj86"]
+[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="24_if1ar"]
+[ext_resource type="Texture2D" uid="uid://cy0nmubfx1two" path="res://assets/sprites/blue_mortar_pestle_full.png" id="25_315n1"]
+[ext_resource type="PackedScene" uid="uid://lefumu5skmny" path="res://assets/models/PH/Mortar_Pestle_Only_PH/Pestle_Placeholder.glb" id="26_v0vm1"]
+[ext_resource type="PackedScene" uid="uid://w65i7h10tgrw" path="res://assets/models/PH/Mortar_Pestle_Only_PH/Mortar_Placeholder.glb" id="27_mcva3"]
+[ext_resource type="PackedScene" uid="uid://bbymrxpal4myo" path="res://assets/models/PH/Cauldron_PH/Cauldron_Placeholder.glb" id="28_urkro"]
+[ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="29_0upmu"]
+[ext_resource type="Texture2D" uid="uid://c2mvlk1clgcro" path="res://assets/sprites/potion_red_64.png" id="30_rplnm"]
+[ext_resource type="PackedScene" uid="uid://b4ym8cxp6836g" path="res://scenes/shop_layout.tscn" id="31_cqwpx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 124
@@ -71,6 +71,20 @@ _data = {
 &"person_in": SubResource("Animation_tbgi4")
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lx5au"]
+sky_top_color = Color(0.2, 0.16862746, 0.13333334, 1)
+sky_horizon_color = Color(0.2, 0.16862746, 0.13333334, 1)
+ground_horizon_color = Color(0.2, 0.16862746, 0.13333334, 1)
+
+[sub_resource type="Sky" id="Sky_xfvoa"]
+sky_material = SubResource("ProceduralSkyMaterial_lx5au")
+
+[sub_resource type="Environment" id="Environment_1l46r"]
+background_mode = 1
+background_color = Color(0.2, 0.16862746, 0.13333334, 1)
+sky = SubResource("Sky_xfvoa")
+glow_enabled = true
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_pitpm"]
 size = Vector3(100, 1, 100)
 
@@ -91,7 +105,7 @@ corner_radius_bottom_left = 25
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=2120733313]
 
-[node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 groups=["popup_subwindow"] instance=ExtResource("8_m4ofw")]
+[node name="PopupSubWindow" parent="SceneUI" unique_id=519353967 groups=["popup_subwindow"] instance=ExtResource("1_4f4la")]
 
 [node name="TimeUI" type="CanvasLayer" parent="SceneUI" unique_id=1010363722]
 
@@ -102,7 +116,7 @@ anchor_bottom = 0.166
 offset_bottom = -2.1601563
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_7mqwv")
+script = ExtResource("2_1xpwl")
 time_label = NodePath("PanelContainer/CenterContainer/TimeLabel")
 day_label = NodePath("PanelContainer/MarginContainer/DayLabel")
 advance_time_button = NodePath("Button")
@@ -157,7 +171,7 @@ anchor_right = 0.7
 anchor_bottom = 0.653
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_gobkm")
+script = ExtResource("3_8n7hp")
 headline_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/HeadlineLabel")
 description_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/DescriptionLabel")
 accept_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/AcceptButton")
@@ -200,7 +214,7 @@ theme_override_font_sizes/font_size = 32
 text = "Ok, Whatever."
 
 [node name="PopupManager" type="CanvasLayer" parent="SceneUI" unique_id=25847526]
-script = ExtResource("4_j14q8")
+script = ExtResource("4_h7msc")
 
 [node name="ListManager" type="Control" parent="SceneUI" unique_id=1083800987 node_paths=PackedStringArray("vbox")]
 layout_mode = 3
@@ -210,7 +224,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
-script = ExtResource("5_pqync")
+script = ExtResource("5_kytfo")
 vbox = NodePath("PanelContainer/MarginContainer/VBoxContainer/VBoxContainer")
 
 [node name="PanelContainer" type="PanelContainer" parent="SceneUI/ListManager" unique_id=1354279208]
@@ -236,7 +250,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="SceneUI/ListManager/PanelContainer/MarginContainer/VBoxContainer" unique_id=1913433969]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("6_yuijs")
+theme_override_fonts/font = ExtResource("6_fagg5")
 theme_override_font_sizes/font_size = 32
 text = "Customer Needs:"
 
@@ -264,20 +278,23 @@ mouse_filter = 2
 [node name="Hotbar" type="HBoxContainer" parent="SceneUI/Control/PanelContainer" unique_id=411067347 node_paths=PackedStringArray("acceptor")]
 layout_mode = 2
 mouse_filter = 2
-script = ExtResource("7_c8dfh")
-hotbar_item_slot_scene = ExtResource("8_mt8ix")
+script = ExtResource("7_ed0df")
+hotbar_item_slot_scene = ExtResource("8_4ddaa")
 acceptor = NodePath("DraggableAcceptorComponent")
 
 [node name="DraggableAcceptorComponent" type="Node" parent="SceneUI/Control/PanelContainer/Hotbar" unique_id=55537982]
-script = ExtResource("9_a6g3j")
+script = ExtResource("9_7cpb4")
+use_max_items = true
+max_items = 3
 metadata/_custom_type_script = "uid://b85c75nnvco20"
 
 [node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
-script = ExtResource("11_24it5")
+script = ExtResource("10_2ukpi")
 customer_anim_player = NodePath("AnimationPlayer")
 customer_interactable = NodePath("../Node3D/Customer/Interactable")
 customer_world = NodePath("../Node3D/Customer")
-dialogue_resource = ExtResource("12_7mqwv")
+dialogue_resource = ExtResource("11_mtuaq")
+acceptor_dialogue_balloon = ExtResource("12_1xpwl")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerManager" unique_id=1878084005]
 libraries/ = SubResource("AnimationLibrary_yuijs")
@@ -289,11 +306,11 @@ light_color = Color(0.9946533, 0.9195563, 0.8045114, 1)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=135441025]
-environment = ExtResource("12_a6g3j")
+environment = SubResource("Environment_1l46r")
 
 [node name="OutOfBoundsCollider" type="Area3D" parent="." unique_id=1001117953]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)
-script = ExtResource("16_j14q8")
+script = ExtResource("12_egm7a")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBoundsCollider" unique_id=108824546]
 shape = SubResource("BoxShape3D_pitpm")
@@ -302,28 +319,28 @@ shape = SubResource("BoxShape3D_pitpm")
 
 [node name="Customer" type="Sprite3D" parent="Node3D" unique_id=1499924403]
 transform = Transform3D(-0.16495134, 5.2823457e-10, 0.0040073646, -9.1087546e-05, 0.16495737, -0.003749372, -0.0040063295, -0.0037504784, -0.16490872, 0.7299187, 0.96952724, 7.4823575)
-texture = ExtResource("10_p0at6")
-script = ExtResource("10_44xle")
+texture = ExtResource("13_5yugc")
+script = ExtResource("14_gss6t")
 
 [node name="Interactable" type="Area3D" parent="Node3D/Customer" unique_id=27802250]
-script = ExtResource("11_7mqwv")
+script = ExtResource("15_0gg37")
 metadata/_custom_type_script = "uid://ciwktypwu667m"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Customer/Interactable" unique_id=1310426984]
 transform = Transform3D(5.825, 0, 0, 0, 5.825, 0, 0, 0, 5.825, 0, -0.1376704, 1.6061554)
 shape = SubResource("BoxShape3D_0n2di")
 
-[node name="Player" parent="Node3D" unique_id=1588394108 node_paths=PackedStringArray("hotbar_display") instance=ExtResource("12_ouqob")]
+[node name="Player" parent="Node3D" unique_id=1588394108 node_paths=PackedStringArray("hotbar_display") instance=ExtResource("16_dm0f0")]
 transform = Transform3D(0.6654595, 0, -0.746434, 0, 1, 0, 0.746434, 0, 0.6654595, -3.4541292, 0.31614017, -2.2616043)
 hotbar_display = NodePath("../../SceneUI/Control/PanelContainer/Hotbar")
 
-[node name="PantryObject" parent="Node3D" unique_id=953873510 instance=ExtResource("27_a6g3j")]
+[node name="PantryObject" parent="Node3D" unique_id=953873510 instance=ExtResource("17_5ts64")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6162415, -0.29058182, -4.981637)
 
 [node name="PantryMinigame" type="Node3D" parent="Node3D/PantryObject" unique_id=437026515 node_paths=PackedStringArray("interactable", "indicator", "indicator_pos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15099335, 0.29058182, -0.23813152)
-script = ExtResource("6_heatd")
-minigame_scene = ExtResource("11_gobkm")
+script = ExtResource("18_rnse5")
+minigame_scene = ExtResource("19_7d8qr")
 interactable = NodePath("PantryMinigameInteractable")
 indicator = NodePath("indicator_pos/indicator2")
 indicator_pos = NodePath("indicator_pos")
@@ -332,7 +349,7 @@ indicator_pos = NodePath("indicator_pos")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.097729206, -4.7683716e-07, 0.39548683)
 collision_layer = 1048576
 collision_mask = 67108865
-script = ExtResource("11_7mqwv")
+script = ExtResource("15_0gg37")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/PantryObject/PantryMinigame/PantryMinigameInteractable" unique_id=2102240272]
 shape = SubResource("BoxShape3D_aue3q")
@@ -341,7 +358,7 @@ shape = SubResource("BoxShape3D_aue3q")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15099335, 0.7722844, 0.23813152)
 
 [node name="indicator2" type="Node2D" parent="Node3D/PantryObject/PantryMinigame/indicator_pos" unique_id=1538501089]
-script = ExtResource("13_ru2r1")
+script = ExtResource("20_773hc")
 
 [node name="PanelContainer" type="PanelContainer" parent="Node3D/PantryObject/PantryMinigame/indicator_pos/indicator2" unique_id=1605988447]
 anchors_preset = 7
@@ -366,14 +383,14 @@ theme_override_constants/margin_bottom = 10
 
 [node name="TextureRect" type="TextureRect" parent="Node3D/PantryObject/PantryMinigame/indicator_pos/indicator2/PanelContainer/MarginContainer" unique_id=1805208279]
 layout_mode = 2
-texture = ExtResource("17_6nbx6")
+texture = ExtResource("21_bu7km")
 expand_mode = 2
 
 [node name="RecipeMinigame" type="Node3D" parent="Node3D" unique_id=1914127599 node_paths=PackedStringArray("interactable")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7538233, 8.734198, -5.0491524)
 visible = false
-script = ExtResource("6_heatd")
-minigame_scene = ExtResource("7_m4ofw")
+script = ExtResource("18_rnse5")
+minigame_scene = ExtResource("22_mp4v0")
 interactable = NodePath("RecipeMinigameInteractable")
 indicator = NodePath("")
 indicator_pos = NodePath("")
@@ -382,18 +399,18 @@ indicator_pos = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9055874, 0.51443744, 0.042072535)
 collision_layer = 1048576
 collision_mask = 67108865
-script = ExtResource("11_7mqwv")
+script = ExtResource("15_0gg37")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RecipeMinigame/RecipeMinigameInteractable" unique_id=660347118]
 shape = SubResource("BoxShape3D_aue3q")
 
-[node name="CrushingMinigameObject" parent="Node3D" unique_id=439115647 instance=ExtResource("23_p0at6")]
+[node name="CrushingMinigameObject" parent="Node3D" unique_id=439115647 instance=ExtResource("23_ysj86")]
 transform = Transform3D(-0.0024510622, 0, 0.99999696, 0, 1, 0, -0.99999696, 0, -0.0024510622, -3.4722857, -0.15564966, -8.568851)
 
 [node name="CrushingMinigame" type="Node3D" parent="Node3D/CrushingMinigameObject" unique_id=1694996626 node_paths=PackedStringArray("interactable", "indicator", "indicator_pos")]
 transform = Transform3D(-0.0024510624, 0, -0.9999971, 0, 1, 0, 0.9999971, 0, -0.0024510624, -0.2770443, 0.15564966, -0.010984659)
-script = ExtResource("6_heatd")
-minigame_scene = ExtResource("7_y6sft")
+script = ExtResource("18_rnse5")
+minigame_scene = ExtResource("24_if1ar")
 interactable = NodePath("CrushingMinigameInteractable")
 indicator = NodePath("indicator_pos/indicator3")
 indicator_pos = NodePath("indicator_pos")
@@ -402,7 +419,7 @@ indicator_pos = NodePath("indicator_pos")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.039976597, 0.8729181, -0.15556145)
 
 [node name="indicator3" type="Node2D" parent="Node3D/CrushingMinigameObject/CrushingMinigame/indicator_pos" unique_id=748834340]
-script = ExtResource("13_ru2r1")
+script = ExtResource("20_773hc")
 
 [node name="PanelContainer" type="PanelContainer" parent="Node3D/CrushingMinigameObject/CrushingMinigame/indicator_pos/indicator3" unique_id=737561529]
 anchors_preset = 7
@@ -427,40 +444,48 @@ theme_override_constants/margin_bottom = 10
 
 [node name="TextureRect" type="TextureRect" parent="Node3D/CrushingMinigameObject/CrushingMinigame/indicator_pos/indicator3/PanelContainer/MarginContainer" unique_id=2133647434]
 layout_mode = 2
-texture = ExtResource("19_mihhf")
+texture = ExtResource("25_315n1")
 expand_mode = 2
 
 [node name="CrushingMinigameInteractable" type="Area3D" parent="Node3D/CrushingMinigameObject/CrushingMinigame" unique_id=2000709200]
 collision_layer = 1048576
 collision_mask = 67108865
-script = ExtResource("11_7mqwv")
+script = ExtResource("15_0gg37")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CrushingMinigameObject/CrushingMinigame/CrushingMinigameInteractable" unique_id=957162740]
 shape = SubResource("BoxShape3D_aue3q")
 
-[node name="Pestle_Placeholder2" parent="Node3D/CrushingMinigameObject" unique_id=1820010639 instance=ExtResource("24_c8dfh")]
+[node name="Pestle_Placeholder2" parent="Node3D/CrushingMinigameObject" unique_id=1820010639 instance=ExtResource("26_v0vm1")]
 transform = Transform3D(-0.0020001906, 0.0014166669, -0.9999971, 0.57798076, 0.8160504, 0, 0.816048, -0.5779791, -0.0024510624, -0.074035645, 0.8571267, 0.013839483)
 
-[node name="Mortar_Placeholder2" parent="Node3D/CrushingMinigameObject" unique_id=889055010 instance=ExtResource("25_ccf1r")]
+[node name="Mortar_Placeholder2" parent="Node3D/CrushingMinigameObject" unique_id=889055010 instance=ExtResource("27_mcva3")]
 transform = Transform3D(-0.0024510624, 0, -0.9999971, 0, 1, 0, 0.9999971, 0, -0.0024510624, -0.12246895, 0.7485452, -0.038268566)
 
-[node name="CauldronMinigame" type="Node3D" parent="Node3D" unique_id=204147175]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.783, -0.258, -5.073)
+[node name="CauldronObject" parent="Node3D" unique_id=907428328 instance=ExtResource("28_urkro")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.7827945, -0.25750732, -5.0727077)
 
-[node name="CauldronMinigame2" type="Node3D" parent="Node3D/CauldronMinigame" unique_id=1925488483 node_paths=PackedStringArray("interactable", "indicator", "indicator_pos")]
-script = ExtResource("6_heatd")
-minigame_scene = ExtResource("9_m4ofw")
+[node name="OmniLight3D" type="OmniLight3D" parent="Node3D/CauldronObject" unique_id=1853608334]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13842916, 0.77194476, 0.012871265)
+light_color = Color(1, 0.32156864, 0, 1)
+light_energy = 0.70173943
+light_bake_mode = 1
+omni_attenuation = 3.951
+
+[node name="CauldronMinigame2" type="Node3D" parent="Node3D/CauldronObject" unique_id=1925488483 node_paths=PackedStringArray("interactable", "indicator", "indicator_pos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7827945, 0.25750732, 5.0727077)
+script = ExtResource("18_rnse5")
+minigame_scene = ExtResource("29_0upmu")
 interactable = NodePath("CauldronMinigameInteractable")
 indicator = NodePath("indicator_pos/indicator1")
 indicator_pos = NodePath("indicator_pos")
 
-[node name="indicator_pos" type="Node3D" parent="Node3D/CauldronMinigame/CauldronMinigame2" unique_id=1620973947]
+[node name="indicator_pos" type="Node3D" parent="Node3D/CauldronObject/CauldronMinigame2" unique_id=1620973947]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8239136, 0.90270996, -4.99292)
 
-[node name="indicator1" type="Node2D" parent="Node3D/CauldronMinigame/CauldronMinigame2/indicator_pos" unique_id=94547233]
-script = ExtResource("13_ru2r1")
+[node name="indicator1" type="Node2D" parent="Node3D/CauldronObject/CauldronMinigame2/indicator_pos" unique_id=94547233]
+script = ExtResource("20_773hc")
 
-[node name="PanelContainer" type="PanelContainer" parent="Node3D/CauldronMinigame/CauldronMinigame2/indicator_pos/indicator1" unique_id=1282988357]
+[node name="PanelContainer" type="PanelContainer" parent="Node3D/CauldronObject/CauldronMinigame2/indicator_pos/indicator1" unique_id=1282988357]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -474,35 +499,27 @@ grow_vertical = 0
 offset_transform_enabled = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_csqtc")
 
-[node name="MarginContainer" type="MarginContainer" parent="Node3D/CauldronMinigame/CauldronMinigame2/indicator_pos/indicator1/PanelContainer" unique_id=546532654]
+[node name="MarginContainer" type="MarginContainer" parent="Node3D/CauldronObject/CauldronMinigame2/indicator_pos/indicator1/PanelContainer" unique_id=546532654]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TextureRect" type="TextureRect" parent="Node3D/CauldronMinigame/CauldronMinigame2/indicator_pos/indicator1/PanelContainer/MarginContainer" unique_id=1654922310]
+[node name="TextureRect" type="TextureRect" parent="Node3D/CauldronObject/CauldronMinigame2/indicator_pos/indicator1/PanelContainer/MarginContainer" unique_id=1654922310]
 layout_mode = 2
-texture = ExtResource("14_lxs01")
+texture = ExtResource("30_rplnm")
 
-[node name="CauldronMinigameInteractable" type="Area3D" parent="Node3D/CauldronMinigame/CauldronMinigame2" unique_id=593043815]
+[node name="CauldronMinigameInteractable" type="Area3D" parent="Node3D/CauldronObject/CauldronMinigame2" unique_id=593043815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9212236, 0.51443744, -5.0598364)
 collision_layer = 1048576
 collision_mask = 67108865
-script = ExtResource("11_7mqwv")
+script = ExtResource("15_0gg37")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CauldronMinigame/CauldronMinigame2/CauldronMinigameInteractable" unique_id=1825936252]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CauldronObject/CauldronMinigame2/CauldronMinigameInteractable" unique_id=1825936252]
 shape = SubResource("BoxShape3D_4dvm4")
 
-[node name="CauldronObject" parent="Node3D/CauldronMinigame" unique_id=907428328 instance=ExtResource("26_mt8ix")]
-transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 0, 0, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Node3D/CauldronMinigame" unique_id=1853608334]
-light_color = Color(1, 0.32156864, 0, 1)
-light_energy = 0.70173943
-light_bake_mode = 1
-omni_attenuation = 3.951
-
-[node name="ShopLayout" parent="Node3D" unique_id=634199379 instance=ExtResource("24_6nbx6")]
+[node name="ShopLayout" parent="Node3D" unique_id=634199379 instance=ExtResource("31_cqwpx")]
 
 [node name="Node3D_PantryMinigame#PantryMinigameInteractable" type="Area3D" parent="." unique_id=1253357072]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029011726, 0.48404193, 3.8048701)

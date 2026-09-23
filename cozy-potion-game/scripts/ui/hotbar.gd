@@ -10,20 +10,29 @@ var inventory: Inventory
 func _ready() -> void:
 	inventory = Inventory.new(self)
 	acceptor.accepted_draggable.connect(_on_accept)
-	child_order_changed.connect(_on_children_update)
+	#child_order_changed.connect(_on_children_update)
+	create_and_add_test_potion()
 
 func _on_accept(control: Control):
 	pass
 
-# Checks to see if we can accept more children
-func _on_children_update() -> void:
-	acceptor.accepting_items = (get_child_count() <= 3)
-	inventory.item_slots.resize(0)
-	for child in get_children():
-		if child is not ItemSlot:
-			continue
-		inventory.item_slots.append(child)
+## Checks to see if we can accept more children
+#func _on_children_update() -> void:
+	#acceptor.accepting_items = (get_child_count() <= 3)
+	#inventory.item_slots.resize(0)
+	#for child in get_children():
+		#if child is not ItemSlot:
+			#continue
+		#inventory.item_slots.append(child)
 
+func create_and_add_test_potion() -> void:
+	if Utils.get("DEBUG") == null or Utils.get("DEBUG"):
+		var ingredients: Array[PotionIngredient]
+		ingredients.append(Alchemy.ingredient_list.front())
+		var potion: Potion = Potion.new()
+		PotionBrewing.new().attempt_brewing(ingredients)
+		var stack = Stack.new(1,potion)
+		inventory.add_new_slot_from_stack(stack)
 func repopulate() -> void:
 	var new = hotbar_item_slot_scene.instantiate()
 	inventory.item_slots.append(new)

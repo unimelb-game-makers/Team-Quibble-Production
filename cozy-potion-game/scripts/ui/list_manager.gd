@@ -13,7 +13,7 @@ func create_list(customer: Customer):
 	for need in customer.needs:
 		var label: Label = customer_need_label.instantiate()
 		vbox.add_child(label)
-		label.text = "- " + Utils.canonise_string(need)
+		label.text = "- " + Utils.canonise_string(Utils.need_id_to_string(need))
 
 func clear_list():
 	if vbox.get_child_count() > 0:
