@@ -2,6 +2,7 @@ class_name Potion
 extends Resource
 
 var potion_name: String = "Inert Potion"
+var potion_sprite: Texture2D = preload("uid://35tpkynmm1aw")
 var potion_value: int = 0
 
 var potion_id: Alchemy.PotionID

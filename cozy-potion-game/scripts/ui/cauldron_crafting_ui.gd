@@ -8,6 +8,7 @@ extends Minigame
 @export var potion_created_container: PanelContainer
 @export var potion_created_name_label: Label
 @export var potion_created_value_label: Label
+@export var inventory: HoverInventory
 
 var ingredient_button: PackedScene = preload("uid://b6r6ktehhfb10")
 
@@ -21,8 +22,7 @@ func _ready() -> void:
 	potion_created_container.gui_input.connect(_on_potion_created_container_gui_input)
 
 func create_potion() -> void:
-	player = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
-	var potion_recipe := player.hotbar_display.inventory.export_items()
+	var potion_recipe := inventory.get_inventory()
 	
 	var created_potion := Alchemy.brew_potion(potion_recipe)
 
@@ -30,7 +30,8 @@ func create_potion() -> void:
 	potion_created_name_label.text = "You made a %s!" % created_potion.potion_name
 	potion_created_value_label.text = "(which you can sell for $%d.)" % created_potion.potion_value
 	
-	get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER).potion = created_potion
+	#get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER).potion = created_potion
+	player.inventory().blind_add_stack(Stack.new(1, created_potion))
 	#reset_potion()
 
 

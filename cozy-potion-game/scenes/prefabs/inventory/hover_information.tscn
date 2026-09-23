@@ -23,14 +23,16 @@ script = ExtResource("1_sfxcb")
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=1415238081]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 11.0
+offset_right = 185.0
+offset_bottom = 174.0
 mouse_filter = 2
 
 [node name="InfoSheet" type="PanelContainer" parent="." unique_id=490063165]
 layout_mode = 0
-offset_right = 133.0
-offset_bottom = 80.0
+offset_left = 11.0
+offset_right = 185.0
+offset_bottom = 174.0
 mouse_filter = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="InfoSheet" unique_id=412527959]

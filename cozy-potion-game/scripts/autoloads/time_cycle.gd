@@ -1,5 +1,9 @@
 extends Node
 
+signal day_complete
+signal day_progress_changed
+signal day_started
+
 #parameters
 const DAYS = ["Monday",
 "Tuesday",
@@ -10,7 +14,8 @@ const DAYS = ["Monday",
 "Sunday",
 ]
 #the speed that the day progresses when it has a time to progress towards
-const day_progress_rate_per_second: float = 0.09
+const DAY_TICK_RATE_SECONDS: float = 0.09
+
 var customers_per_day: int = 12
 var day_start_hour: int = 12
 var day_length: int = 10
@@ -19,10 +24,6 @@ var day_length: int = 10
 var day_progress: float = 0
 var days_passed: int = 0
 var target_day_progress: float = 0
-
-signal day_complete
-signal day_progress_changed
-signal day_started
 
 func _ready() -> void:
 	#wait for other autoloads to connect their signals 
@@ -34,8 +35,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var init = day_progress
 
-	day_progress = move_toward(day_progress, target_day_progress, day_progress_rate_per_second * delta)
-	if is_equal_approx(day_progress_rate_per_second, 0) or day_progress_rate_per_second < 0:
+	day_progress = move_toward(day_progress, target_day_progress, DAY_TICK_RATE_SECONDS * delta)
+	if is_equal_approx(DAY_TICK_RATE_SECONDS, 0) or DAY_TICK_RATE_SECONDS < 0:
 		day_progress = target_day_progress
 	
 	#could cause issues at insanely high framerates, but i dont want to redraw 

@@ -60,7 +60,17 @@ func _ready() -> void:
 	update_time_of_day(TimeCycle.get_current_hour())
 
 	music.start()
+	
+	if OS.has_feature("standalone"):
+		unpause()
+	else:
+		pause()
 
+func pause() -> void:
+	music.paused = true
+
+func unpause() -> void:
+	music.paused = false
 
 func _on_day_progress_changed() -> void:
 	update_time_of_day(TimeCycle.get_current_hour())

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b05k1s1jgk3jh" path="res://scripts/ui/cauldron_crafting_ui.gd" id="1_c2v7o"]
 [ext_resource type="Texture2D" uid="uid://co3mgwg1g4mx6" path="res://assets/sprites/cauldron_placeholder.jpg" id="2_6g1p8"]
+[ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/prefabs/inventory/hover_information.tscn" id="2_rpwsn"]
 [ext_resource type="Script" uid="uid://bytx8uyvjb5ht" path="res://scripts/minigame/potion_crafting/potion_brewing.gd" id="3_nsau4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvm4"]
@@ -14,14 +15,15 @@ corner_radius_bottom_left = 15
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 23
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1608703175 node_paths=PackedStringArray("potion_brewer", "reset_button", "make_button", "potion_created_container", "potion_created_name_label", "potion_created_value_label")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1608703175 node_paths=PackedStringArray("potion_brewer", "reset_button", "make_button", "potion_created_container", "potion_created_name_label", "potion_created_value_label", "inventory")]
 script = ExtResource("1_c2v7o")
 potion_brewer = NodePath("PotionBrewing")
 reset_button = NodePath("MarginContainer/Button")
-make_button = NodePath("MarginContainer/CurrentPotion/CreatePotion")
+make_button = NodePath("MarginContainer/Container/CurrentPotion/CreatePotion")
 potion_created_container = NodePath("MarginContainer/PotionCreateContainer")
 potion_created_name_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/NameLabel")
 potion_created_value_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/ValueLabel")
+inventory = NodePath("MarginContainer/Container/CurrentPotion/AspectRatioContainer/InventoryWithHover")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=884297072]
 custom_minimum_size = Vector2(10, 10)
@@ -34,20 +36,6 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-
-[node name="CurrentPotion" type="VBoxContainer" parent="MarginContainer" unique_id=2085211380]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="MarginContainer/CurrentPotion" unique_id=62312173]
-layout_mode = 2
-text = "CurrentPotion"
-horizontal_alignment = 1
-
-[node name="CreatePotion" type="Button" parent="MarginContainer/CurrentPotion" unique_id=829514689]
-layout_mode = 2
-text = "Create"
 
 [node name="Button" type="Button" parent="MarginContainer" unique_id=1774481802]
 layout_mode = 2
@@ -87,7 +75,45 @@ layout_mode = 2
 text = "(that you can sell for $$$)"
 horizontal_alignment = 1
 
-[node name="CauldronPlaceholder" type="TextureRect" parent="MarginContainer" unique_id=677183550]
+[node name="Container" type="VBoxContainer" parent="MarginContainer" unique_id=487341122]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="CurrentPotion" type="VBoxContainer" parent="MarginContainer/Container" unique_id=2085211380]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/Container/CurrentPotion" unique_id=62312173]
+layout_mode = 2
+text = "CurrentPotion"
+horizontal_alignment = 1
+
+[node name="CreatePotion" type="Button" parent="MarginContainer/Container/CurrentPotion" unique_id=829514689]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Create"
+
+[node name="AspectRatioContainer" type="MarginContainer" parent="MarginContainer/Container/CurrentPotion" unique_id=1693209846]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="InventoryWithHover" parent="MarginContainer/Container/CurrentPotion/AspectRatioContainer" unique_id=414539128 instance=ExtResource("2_rpwsn")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+rows = 1
+
+[node name="CauldronPlaceholder" type="TextureRect" parent="MarginContainer/Container" unique_id=677183550]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
