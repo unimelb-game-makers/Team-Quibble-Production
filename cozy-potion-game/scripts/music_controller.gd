@@ -167,4 +167,4 @@ func randomise_next_loop(current_loop: String, parameter_name: String) -> void:
 		true
 	)
 
-	print("Random jump selected: ", current_loop, " -> ", next_loop)
+	print_debug("Random jump selected: ", current_loop, " -> ", next_loop)
