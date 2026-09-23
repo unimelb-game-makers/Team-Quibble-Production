@@ -96,6 +96,8 @@ var _expression_parser: DMExpressionParser = DMExpressionParser.new()
 
 var _rng: RandomNumberGenerator = RandomNumberGenerator.new()
 
+var active_balloon: DialogueManagerExampleBalloon
+
 
 func _ready() -> void:
 	reseed_randomizer(hash(ProjectSettings.get_setting("application/config/name")))
@@ -621,6 +623,8 @@ func set_default_balloon(balloon_scene: Variant) -> Error:
 ## Show the example balloon
 func show_example_dialogue_balloon(resource: DialogueResource, cue: String = "", extra_game_states: Array = []) -> CanvasLayer:
 	var balloon: Node = load(_get_example_balloon_path()).instantiate()
+	assert(balloon is DialogueManagerExampleBalloon)
+	active_balloon = balloon
 	_start_balloon.call_deferred(balloon, resource, cue, extra_game_states)
 	return balloon
 
@@ -642,6 +646,7 @@ func show_dialogue_balloon_scene(balloon_scene: Variant, resource: DialogueResou
 
 	var balloon: Node = balloon_scene
 	_start_balloon.call_deferred(balloon, resource, cue, extra_game_states)
+	active_balloon = balloon
 	return balloon
 
 

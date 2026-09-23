@@ -31,7 +31,6 @@ const FLOAT_WIGGLE_SPEED = 2
 
 var rotation_y_target: float = 0
 var top_down_active: bool = false
-var potion: Potion
 
 var accepting_control: bool = true
 
@@ -116,7 +115,7 @@ func get_input_vector_unnormalised() -> Vector2i:
 	return res
 
 func _physics_process(delta: float) -> void:
-	if accepting_control:
+	if accepting_control and not DialogueManager.active_balloon:
 		# Add the gravity.
 		if not is_on_floor():
 			velocity += get_gravity() * delta

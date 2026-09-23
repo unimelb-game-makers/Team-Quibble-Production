@@ -20,6 +20,9 @@ class_name DialogueManagerExampleBalloon extends CanvasLayer
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
+## Whether the balloon will accept mouse clicks 
+@export var clicks_advance_dialogue: bool = false
+
 ## A sound player for voice lines (if they exist).
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
 
@@ -95,17 +98,14 @@ func _ready() -> void:
 	balloon.add_child(warning)
 	balloon.move_child(warning, 0)
 	# /EXAMPLE MESSAGE
+	
+	DialogueManager.active_balloon = self
 
 
 func _process(_delta: float) -> void:
 	if is_instance_valid(dialogue_line):
 		progress.visible = not dialogue_label.is_typing and dialogue_line.responses.size() == 0 and not dialogue_line.has_tag("voice")
 
-
-func _unhandled_input(_event: InputEvent) -> void:
-	# Only the balloon is allowed to handle input while it's showing
-	if will_block_other_input:
-		get_viewport().set_input_as_handled()
 
 
 func _notification(what: int) -> void:
@@ -197,7 +197,9 @@ func _on_mutated(mutation: Dictionary) -> void:
 		mutation_cooldown.start(0.1)
 
 
-func _on_balloon_gui_input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
+	if will_block_other_input:
+		get_viewport().set_input_as_handled()
 	# See if we need to skip typing of the dialogue
 	if dialogue_label.is_typing:
 		var mouse_was_clicked: bool = event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed()
@@ -211,9 +213,10 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	if dialogue_line.responses.size() > 0: return
 
 	# When there are no response options the balloon itself is the clickable thing
-	get_viewport().set_input_as_handled()
+	if clicks_advance_dialogue:
+		get_viewport().set_input_as_handled()
 
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT and clicks_advance_dialogue:
 		next(dialogue_line.next_id)
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
@@ -223,4 +226,7 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
 
 
+func _exit_tree() -> void:
+	if DialogueManager.active_balloon == self:
+		DialogueManager.active_balloon == null
 #endregion

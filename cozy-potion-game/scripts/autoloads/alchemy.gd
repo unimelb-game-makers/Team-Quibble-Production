@@ -112,19 +112,51 @@ enum ProcessID {
 	PROC_DISTILL,
 } 
 
+enum NeedID {
+	NEED_HEAL,
+	NEED_MANA,
+	NEED_CURE,
+	NEED_FOCUS,
+	NEED_STRENGTH,
+	NEED_PERCEPTION,
+	NEED_ENDURANCE,
+	NEED_CHARISMA,
+	NEED_INTELLIGENCE,
+	NEED_AGILITY,
+	NEED_LUCK,
+	NEED_FLAME,
+	NEED_FROST,
+	NEED_SHOCK,
+	NEED_WIND,
+	NEED_EARTH,
+	NEED_WATER,
+	NEED_PURIFICATION,
+	NEED_ANTIDOTE,
+	NEED_SLEEP,
+	NEED_CALM,
+	NEED_LIGHT,
+	NEED_DARK,
+	NEED_PAIN_RELIEF,
+}
+
+
+
 const INGREDIENT_JSON: String = "res://resources/json/ingredients.json"
 const PROCESSES_JSON: String = "res://resources/json/processes.json"
 const POTION_JSON: String = "res://resources/json/potion_list.json"
 const INGREDIENT_SPRITES: String = "res://assets/sprites/ingredients/"
+const ATTRIBUTE_NEED_MAP_JSON: String = "res://resources/json/attribute_need_map.json"
 
 var sprite_directory: PackedStringArray
 var ingredient_list: Array[PotionIngredient] = []
 var potion_referance: Array[PotionReference] = []
+var attribute_to_need_index: Dictionary[AttributeID, NeedID]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	read_ingredient_data()
 	read_potion_data()
+	read_attribute_need_map()
 	# brew_potion([ingredient_list[IngredientID.INGR_APPLE], 
 	# 			ingredient_list[IngredientID.INGR_GINSENG], 
 	# 			ingredient_list[IngredientID.INGR_HONEY]])
@@ -175,6 +207,15 @@ func read_potion_data() -> void:
 
 		potion_referance[temp_potion.potion_id] = temp_potion
 
+func read_attribute_need_map() -> void:
+	var json_data: JSON = Utils.get_json(ATTRIBUTE_NEED_MAP_JSON)
+	
+	for attribute in json_data.data:
+		var attr_id = AttributeID.keys().find(attribute["VALID_ATTR_TO_SOLVE_PROBLEM"]) as AttributeID
+		var need_id = NeedID.keys().find(attribute["NEEDS_ID"]) as NeedID
+		attribute_to_need_index[attr_id] = need_id
+		
+
 func brew_potion(_ingredient_list: Array) -> Potion:
 	var _attributes := sum_attributes(_ingredient_list)
 	
@@ -195,6 +236,7 @@ func sum_attributes(_ingredient_list: Array) -> Dictionary[Alchemy.AttributeID, 
 			_attributes[attribute] = new_value
 			
 	return _attributes
+
 
 const MISSING_IMAGE = preload("uid://dexko6nfrs6tc")
 
