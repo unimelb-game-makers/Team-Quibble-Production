@@ -28,3 +28,6 @@ render_target_update_mode = 4
 script = ExtResource("1_th4xb")
 
 [node name="Shop" parent="ViewportControl/SubViewportContainer/SubViewport" unique_id=428524118 instance=ExtResource("2_k2gmx")]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1247178073]
+bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
