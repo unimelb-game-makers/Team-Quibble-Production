@@ -2,18 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chluoksakxx8n"
-path.s3tc="res://.godot/imported/mini-back.png-309d71d5cbf6fa688ba0c5a051de9130.s3tc.ctex"
-path.etc2="res://.godot/imported/mini-back.png-309d71d5cbf6fa688ba0c5a051de9130.etc2.ctex"
+uid="uid://b6cgx72pnpow6"
+path.s3tc="res://.godot/imported/MimiFrontBack_mini-back.png-77305a4dd15c44afa8a9a0294c92a0a2.s3tc.ctex"
+path.etc2="res://.godot/imported/MimiFrontBack_mini-back.png-77305a4dd15c44afa8a9a0294c92a0a2.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "efed7593239d168ddb24c507d5c5492c"
+}
 
 [deps]
 
-source_file="res://assets/sprites/mini-back.png"
-dest_files=["res://.godot/imported/mini-back.png-309d71d5cbf6fa688ba0c5a051de9130.s3tc.ctex", "res://.godot/imported/mini-back.png-309d71d5cbf6fa688ba0c5a051de9130.etc2.ctex"]
+source_file="res://assets/models/mimi/MimiFrontBack_mini-back.png"
+dest_files=["res://.godot/imported/MimiFrontBack_mini-back.png-77305a4dd15c44afa8a9a0294c92a0a2.s3tc.ctex", "res://.godot/imported/MimiFrontBack_mini-back.png-77305a4dd15c44afa8a9a0294c92a0a2.etc2.ctex"]
 
 [params]
 

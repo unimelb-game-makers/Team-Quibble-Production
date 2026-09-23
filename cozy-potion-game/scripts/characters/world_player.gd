@@ -14,14 +14,20 @@ class_name WorldPlayer extends CharacterBody3D
 @export var mouse_detector_left: Control
 @export var mouse_detector_right: Control
 @export var interactable_collision_area: Area3D
-@export var mimi_sprite: Node3D
+@export var front_back: Node3D
+@export var left_right: Node3D
+@export var sprite_pivot: Node3D
+
+var float_wiggle_time: float = 0
 
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 const CAMERA_ZOOM_MAGNITUDE = 0.1
-const INTERACTABLE_AREA_TURN_RATE = 10 * PI
+const INTERACTABLE_AREA_TURN_RATE = 4 * PI
 const CAMERA_ROTATION_SPEED = 2 * PI
+const FLOAT_WIGGLE_MAGNITUDE = 0.1
+const FLOAT_WIGGLE_SPEED = 2
 
 var rotation_y_target: float = 0
 var top_down_active: bool = false
@@ -130,9 +136,12 @@ func _physics_process(delta: float) -> void:
 			var angle_to_move_dir = pivot_direction.signed_angle_to(direction, Vector3(0,1,0))
 			var _rotation = min(delta * INTERACTABLE_AREA_TURN_RATE, abs(angle_to_move_dir)) * sign(angle_to_move_dir)
 			animation_pivot.rotate_y(_rotation)
+			hide_unwanted_sprites()
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
+
+		float_wiggle(delta)
 
 		move_and_slide()
 
@@ -166,6 +175,21 @@ func activate_top_down_cam() -> void:
 	tween.set_ease(Tween.EASE_IN_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween2.tween_property(camera, "position", Vector3(0,7.0,0), 0.2)
+
+func hide_unwanted_sprites() -> void:
+	var facing_up: bool = animation_pivot.rotation_degrees.y < 40 and animation_pivot.rotation_degrees.y > -40
+	var facing_down: bool = animation_pivot.rotation_degrees.y > 140 or animation_pivot.rotation_degrees.y < -140
+	if facing_up or facing_down:
+		left_right.hide()
+		front_back.show()
+	else:
+		left_right.show()
+		front_back.hide()
+
+func float_wiggle(delta: float) -> void:
+	float_wiggle_time += delta
+	sprite_pivot.position.y = FLOAT_WIGGLE_MAGNITUDE * sin(float_wiggle_time * FLOAT_WIGGLE_SPEED)
+	# print_debug(sprite_pivot.position.y)
 
 func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
