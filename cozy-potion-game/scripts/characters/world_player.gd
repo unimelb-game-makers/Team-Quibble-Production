@@ -189,7 +189,7 @@ func hide_unwanted_sprites() -> void:
 func float_wiggle(delta: float) -> void:
 	float_wiggle_time += delta
 	sprite_pivot.position.y = FLOAT_WIGGLE_MAGNITUDE * sin(float_wiggle_time * FLOAT_WIGGLE_SPEED)
-	print_debug(sprite_pivot.position.y)
+	# print_debug(sprite_pivot.position.y)
 
 func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
