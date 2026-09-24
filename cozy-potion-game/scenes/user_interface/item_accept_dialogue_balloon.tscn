@@ -8,12 +8,12 @@
 [node name="ItemAcceptDialogueBalloon" unique_id=38036521 node_paths=PackedStringArray("potion_accept_zone") instance=ExtResource("1_4m3kb")]
 script = ExtResource("2_4xx5q")
 potion_accept_zone = NodePath("PotionAcceptor/CustomerPotionAcceptZone")
-will_block_other_input = false
 
 [node name="CenterContainer" parent="Balloon" parent_id_path=PackedInt32Array(154399927) index="0" unique_id=1087901387]
 mouse_filter = 2
 
 [node name="PotionAcceptor" type="Control" parent="." index="2" unique_id=457457935]
+visible = false
 z_index = -1
 layout_mode = 3
 anchors_preset = 15

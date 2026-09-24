@@ -211,6 +211,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		next(dialogue_line.next_id)
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
+	if event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() != null:
+		print_debug("Current Focus: " + get_viewport().gui_get_focus_owner().name)
+	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == null:
+		print_debug("No current focus")
+		next(dialogue_line.next_id)
+	elif event.is_action_pressed("force_dialogue"):
+		next(dialogue_line.next_id)
+
 
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:

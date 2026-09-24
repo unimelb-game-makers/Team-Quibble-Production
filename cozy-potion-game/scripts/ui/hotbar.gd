@@ -33,7 +33,7 @@ func create_and_add_test_potion() -> void:
 		var potion: Potion = Potion.new()
 		PotionBrewing.new().attempt_brewing(ingredients)
 		var stack = Stack.new(1,potion)
-		inventory.add_new_slot_from_stack(stack)
+		inventory.add_new_slot_from_stack(stack, Control.new())
 func repopulate() -> void:
 	var new = hotbar_item_slot_scene.instantiate()
 	inventory.item_slots.append(new)

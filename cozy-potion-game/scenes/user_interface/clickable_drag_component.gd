@@ -7,7 +7,12 @@ class_name ClickableComponent extends Node
 #changing this code to use offset_transform
 
 static var dragged_control: Control
+static var the_cunt: ClickableComponent
 static var pending_acceptor: ClickableAcceptorComponent
+
+static func end_me(_dragged, cunt):
+	dragged_control = _dragged
+	the_cunt = cunt
 
 @export var trash_collector: Control
 
@@ -63,7 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func assign_to_mouse() -> void:
 	my_control.top_level = true
 	being_dragged = true
-	dragged_control = my_control
+	end_me(my_control, self)
 	
 	my_control.reparent(trash_collector)
 	
@@ -85,10 +90,14 @@ func place_clickable(new_parent : Control) -> void:
 	my_control.reparent(new_parent)
 	stop_dragging()
 
+func die():
+	stop_dragging()
+	queue_free()
 
 func stop_dragging() -> void:
 	pending_acceptor = null
 	dragged_control = null
+	the_cunt = null
 	
 	being_dragged = false
 	set_process(false)

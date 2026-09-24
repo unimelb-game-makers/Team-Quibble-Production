@@ -8,13 +8,28 @@ extends Node
 @export var speech_bubble_dialogue_balloon: PackedScene
 
 var customer_queue: Array[Customer]
+var can_force_potion_to_customer: bool = false
 
 func _ready() -> void:
 	customer_tests()
-	
+	DialogueManager.dialogue_started.connect(func(idk = null): can_force_potion_to_customer = true)
+	DialogueManager.dialogue_ended.connect(func(idk = null): can_force_potion_to_customer = false)
 	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
+	var crack
+	DevTools.PLEASE_FUCKOFF.connect(buy_potion.bind(crack))
 
+func _unhandled_input(_event: InputEvent) -> void:
+	if !can_force_potion_to_customer:
+		return
+
+	if DraggableComponent.dragged_control != null:
+		_on_acceptor_accepted(DraggableComponent.dragged_control)
+		return
+
+	if ClickableComponent.dragged_control != null:
+		_on_acceptor_accepted(ClickableComponent.dragged_control)
+		return
 
 #func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("close_minigame") or event.is_action_pressed("ui_accept"):
@@ -45,6 +60,7 @@ func recall_customer() -> void:
 func _on_customer_interact() -> void:
 	show_acceptor_dialogue()
 
+
 func show_acceptor_dialogue() -> void:
 	var customer = customer_world.customer
 	var balloons: Array[SpeechBubbleBalloon]
@@ -73,38 +89,69 @@ func show_acceptor_dialogue() -> void:
 	else:
 		assert(false)
 
+const DYLAN = 1
+const RAMSEY = 2
+
+func nightmare(control: Control) -> int:
+	if DraggableComponent.get_draggable_component(control) != null:
+		return RAMSEY
+	
+	if ClickableComponent.dragged_control == control:
+		return DYLAN
+	return 1
+		
 
 func _on_acceptor_accepted(control: Control):
 	DialogueManager.active_balloon.queue_free()
 	
-	if not control is ItemSlot:
-		DraggableComponent.get_draggable_component(control).return_to_previous()
+	if not control is ItemHolder:
+		if nightmare(control) == RAMSEY:
+			DraggableComponent.get_draggable_component(control).return_to_previous()
+		else:
+			ClickableComponent.the_cunt.stop_dragging()
 	
+	if control.stack == null:
+		return
+	
+	if control.stack.item == null:
+		return
+
 	var item = control.stack.item
 	
 	if not item is Potion:
-		DraggableComponent.get_draggable_component(control).return_to_previous()
+		if nightmare(control) == RAMSEY:
+			DraggableComponent.get_draggable_component(control).return_to_previous()
+		else:
+			ClickableComponent.the_cunt.die()
 		other_accepted()
 		return
 	
 	if customer_world.customer.check_potion_sufficient(item):
+		if nightmare(control) == RAMSEY:
+			DraggableComponent.get_draggable_component(control).return_to_previous()
+		else:
+			ClickableComponent.the_cunt.die()
 		buy_potion(item)
 	else:
-		DraggableComponent.get_draggable_component(control).return_to_previous()
+		if nightmare(control) == RAMSEY:
+			DraggableComponent.get_draggable_component(control).return_to_previous()
+		else:
+			ClickableComponent.the_cunt.die()
 		refuse_potion()
 
 func other_accepted():
 	DialogueManager.show_example_dialogue_balloon(dialogue_resource, "not_potion")
 
 func buy_potion(potion: Potion) -> void:
-		Utils.corner_needs_list_manager.clear_list()
-		DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon, dialogue_resource, "accept")
-		await DialogueManager.dialogue_ended
-		if customer_world.customer.time_allotment:
-			TimeCycle.progress_day(customer_world.customer.time_allotment)
-		else:
-			TimeCycle.progress_day()
-		recall_customer()
+
+	Utils.corner_needs_list_manager.clear_list()
+	DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon, dialogue_resource, "accept")
+	await DialogueManager.dialogue_ended
+	if customer_world.customer.time_allotment:
+		TimeCycle.progress_day(customer_world.customer.time_allotment)
+	else:
+		TimeCycle.progress_day()
+	recall_customer()
 
 func refuse_potion() -> void:
 		DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon,dialogue_resource, "refuse")
