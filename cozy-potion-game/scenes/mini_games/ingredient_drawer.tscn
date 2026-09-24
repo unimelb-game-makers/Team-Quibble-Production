@@ -24,6 +24,32 @@ offset_bottom = -706.0
 columns = 10
 rows = 5
 
+[node name="InfoDisplay" type="Control" parent="Storage" unique_id=1653964864]
+anchors_preset = 0
+offset_left = 1417.0
+offset_top = 152.0
+offset_right = 1780.0
+offset_bottom = 686.0
+
+[node name="InfoDisplay" type="Sprite2D" parent="Storage/InfoDisplay" unique_id=1971800519]
+position = Vector2(191, 76)
+
+[node name="InfoName" type="Label" parent="Storage/InfoDisplay" unique_id=622583794]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 16.0
+offset_right = 360.0
+offset_bottom = 39.0
+horizontal_alignment = 1
+
+[node name="InfoDescription" type="Label" parent="Storage/InfoDisplay" unique_id=518790238]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 114.0
+offset_right = 360.0
+offset_bottom = 219.0
+horizontal_alignment = 1
+
 [node name="SortButton" type="MenuButton" parent="Storage" unique_id=2075698012]
 layout_mode = 0
 offset_left = 545.0

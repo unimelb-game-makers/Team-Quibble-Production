@@ -40,6 +40,7 @@ func emulate_mouse_inside() -> void:
 		ishovering = false
 		mouse_exited.emit()
 
+const ITEM_HOLDER = preload("uid://80sdcv4hsqa1")
 
 # Creates new ItemHolder from stack to set as holder
 func set_stack(stack:Stack) -> void:
@@ -47,7 +48,7 @@ func set_stack(stack:Stack) -> void:
 	if item_holder != null:
 		item_holder.queue_free()
 	# Creates new holder from stack
-	var new_item_holder: ItemHolder = ItemHolder.get_scene().instantiate()
+	var new_item_holder = ITEM_HOLDER.instantiate()
 	set_item_holder(new_item_holder)
 	new_item_holder.stack = stack
 	

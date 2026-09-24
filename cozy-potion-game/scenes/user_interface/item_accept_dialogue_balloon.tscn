@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://c8rv1a0qlm0i1"]
+
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://addons/dialogue_manager/example_balloon/example_balloon.tscn" id="1_4m3kb"]
+[ext_resource type="Script" uid="uid://d0e3x3ru126fm" path="res://scripts/ui/item_accept_dialogue_balloon.gd" id="2_4xx5q"]
+[ext_resource type="Script" uid="uid://bltn1i8oigeai" path="res://scripts/ui/customer_potion_accept_zone.gd" id="3_blsnt"]
+[ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="4_5h854"]
+
+[node name="ItemAcceptDialogueBalloon" unique_id=38036521 node_paths=PackedStringArray("potion_accept_zone") instance=ExtResource("1_4m3kb")]
+script = ExtResource("2_4xx5q")
+potion_accept_zone = NodePath("PotionAcceptor/CustomerPotionAcceptZone")
+will_block_other_input = false
+
+[node name="CenterContainer" parent="Balloon" parent_id_path=PackedInt32Array(154399927) index="1" unique_id=1087901387]
+mouse_filter = 2
+
+[node name="PotionAcceptor" type="Control" parent="." index="2" unique_id=457457935]
+z_index = -1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CustomerPotionAcceptZone" type="Control" parent="PotionAcceptor" index="0" unique_id=1524965548 node_paths=PackedStringArray("draggable_acceptor_compoment")]
+layout_mode = 1
+anchor_left = 0.716
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 84.27991
+offset_top = 235.0
+offset_right = -57.0
+offset_bottom = -441.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_blsnt")
+draggable_acceptor_compoment = NodePath("PanelContainer/MarginContainer/PanelContainer/DraggableAcceptorComponent")
+
+[node name="PanelContainer" type="PanelContainer" parent="PotionAcceptor/CustomerPotionAcceptZone" index="0" unique_id=193145976]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PotionAcceptor/CustomerPotionAcceptZone/PanelContainer" index="0" unique_id=116472586]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="PotionAcceptor/CustomerPotionAcceptZone/PanelContainer/MarginContainer" index="0" unique_id=826241438]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="DraggableAcceptorComponent" type="Node" parent="PotionAcceptor/CustomerPotionAcceptZone/PanelContainer/MarginContainer/PanelContainer" index="0" unique_id=1703400148]
+script = ExtResource("4_5h854")
+use_max_items = true
+metadata/_custom_type_script = "uid://b85c75nnvco20"
