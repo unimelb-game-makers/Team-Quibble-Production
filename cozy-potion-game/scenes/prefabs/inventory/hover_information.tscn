@@ -9,8 +9,7 @@ colors = PackedColorArray(0, 0, 0, 0.5647059)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3p56h"]
 gradient = SubResource("Gradient_2i0qe")
 
-[node name="InventoryWithHover" type="Control" unique_id=414539128]
-layout_mode = 3
+[node name="InventoryWithHover" type="CenterContainer" unique_id=214262869]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,15 +21,11 @@ mouse_filter = 2
 script = ExtResource("1_sfxcb")
 
 [node name="GridContainer" type="GridContainer" parent="." unique_id=1415238081]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="InfoSheet" type="PanelContainer" parent="." unique_id=490063165]
-layout_mode = 0
-offset_right = 133.0
-offset_bottom = 80.0
+layout_mode = 2
 mouse_filter = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="InfoSheet" unique_id=412527959]
