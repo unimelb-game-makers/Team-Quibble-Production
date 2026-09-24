@@ -30,6 +30,12 @@ func _ready() -> void:
 	inventory.mouse_exit_slot.connect(slot_exited)
 	info_sheet.visible = false
 
+func get_inventory() -> Array[Resource]:
+	var inventory_resources: Array[Resource]
+	for item in inventory.item_slots:
+		if item.item_holder != null:
+			inventory_resources.append(item.item_holder.stack.item)
+	return inventory_resources
 
 # Turns info_sheet on if mouse is hovering over slot with stack inside
 func slot_hovered(slot: ItemSlot) -> void:

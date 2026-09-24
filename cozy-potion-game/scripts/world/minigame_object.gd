@@ -12,6 +12,8 @@ func _ready() -> void:
 	if indicator: indicator.set_pivot(indicator_pos.global_position)
 
 func _on_interact():
-	popup_subwindow.start_display_popup(minigame_scene)
 	if indicator:
 		indicator.visible = false
+		
+	popup_subwindow.start_display_popup(minigame_scene)
+

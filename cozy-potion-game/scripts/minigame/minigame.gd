@@ -11,9 +11,9 @@ signal ingredient_added(stack: Stack)
 signal ingredient_processed(_processed_ingredient: Stack)
 
 var input_ingredients: Array[Stack]
-var output_ingredient: Stack
+var output_ingredient: Stack = Stack.new()
 
-var player: WorldPlayer
+@onready var player: WorldPlayer = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
 
 func _ready() -> void:
 	acceptor.accepted_draggable.connect(emit_ingredient_added)
@@ -23,8 +23,7 @@ func win_minigame() -> void:
 	ingredient_processed.emit(output_ingredient)
 	process_mode = Node.PROCESS_MODE_DISABLED
 	
-	player = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
-	player.hotbar_display.inventory.blind_add_stack(output_ingredient)
+	player.inventory().blind_add_stack(output_ingredient)
 	minigame_won.emit()
 
 func set_ingredient_list(_new_ingredient_list: Array[Stack]) -> void:

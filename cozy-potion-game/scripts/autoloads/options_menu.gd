@@ -1,7 +1,11 @@
 extends CanvasLayer
 
+@export var blur_rect: ColorRect
 @export var options_menu_container: Container
 @export var exit_game_button: Button
+@export_range(0.0, 5.0, 0.1) var blur_amount: float = 1.5
+
+var blur_shader: ShaderMaterial
 var open: bool = false
 
 func _ready() -> void:
@@ -10,6 +14,11 @@ func _ready() -> void:
 		await options_menu_container.ready
 	options_menu_container.offset_transform_enabled = true
 	
+	blur_rect.material = load("uid://47ub0xvf0cjt")
+	blur_shader = blur_rect.material
+	blur_shader.set_shader_parameter("blur_amount", 0)
+	blur_rect.hide()
+
 	#wait for container resize
 	await get_tree().process_frame
 	options_menu_container.offset_transform_position = get_options_menu_out_position()
@@ -57,11 +66,13 @@ func animate_options_menu_in() -> void:
 	#calls show at start and end of animation in case of user spamming
 	#the menu button
 	options_menu_container.show()
+	blur_rect.show()
 	var tween = get_tree().create_tween()
 	
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
-	
+
+	tween.tween_property(blur_shader, "shader_parameter/blur_amount", blur_amount, 0.1)
 	tween.tween_property(options_menu_container, "offset_transform_position", Vector2.ZERO, 0.2)
 	tween.tween_callback(options_menu_container.show)
 
@@ -74,8 +85,10 @@ func animate_options_menu_out() -> void:
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	var out_pos = get_options_menu_out_position()
+	tween.tween_property(blur_shader, "shader_parameter/blur_amount", 0, 0.1)
 	tween.tween_property(options_menu_container, "offset_transform_position", out_pos, 0.2)
 	tween.tween_callback(options_menu_container.hide)
+	tween.tween_callback(blur_rect.hide)
 
 func get_options_menu_out_position() -> Vector2:
 	return Vector2(-(options_menu_container.global_position.x + options_menu_container.size.x), 0)
