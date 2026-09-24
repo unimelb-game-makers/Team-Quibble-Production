@@ -242,10 +242,10 @@ text = "Customer Needs:"
 layout_mode = 2
 
 [node name="HotbarHover" parent="SceneUI" unique_id=414539128 instance=ExtResource("7_ccf1r")]
-offset_left = 132.0
-offset_top = 259.0
-offset_right = -1527.0
-offset_bottom = -655.0
+offset_left = 83.0
+offset_top = 230.0
+offset_right = -1576.0
+offset_bottom = -684.0
 columns = 3
 rows = 1
 

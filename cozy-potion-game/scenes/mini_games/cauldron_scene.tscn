@@ -23,7 +23,7 @@ make_button = NodePath("MarginContainer/Container/CurrentPotion/CreatePotion")
 potion_created_container = NodePath("MarginContainer/PotionCreateContainer")
 potion_created_name_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/NameLabel")
 potion_created_value_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/ValueLabel")
-inventory = NodePath("MarginContainer/Container/CurrentPotion/AspectRatioContainer/InventoryWithHover")
+inventory = NodePath("MarginContainer/Container/CurrentPotion/InventoryWithHover")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=884297072]
 custom_minimum_size = Vector2(10, 10)
@@ -97,6 +97,13 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Create"
 
+[node name="InventoryWithHover" parent="MarginContainer/Container/CurrentPotion" unique_id=414539128 instance=ExtResource("2_rpwsn")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+rows = 1
+
 [node name="AspectRatioContainer" type="MarginContainer" parent="MarginContainer/Container/CurrentPotion" unique_id=1693209846]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -105,13 +112,6 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-
-[node name="InventoryWithHover" parent="MarginContainer/Container/CurrentPotion/AspectRatioContainer" unique_id=414539128 instance=ExtResource("2_rpwsn")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-columns = 3
-rows = 1
 
 [node name="CauldronPlaceholder" type="TextureRect" parent="MarginContainer/Container" unique_id=677183550]
 layout_mode = 2
