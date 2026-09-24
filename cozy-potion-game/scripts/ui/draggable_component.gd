@@ -53,6 +53,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 	assign_to_mouse()
 
+
 func assign_to_mouse() -> void:
 	draggable_picked_up.emit()
 	dragged_control = my_control

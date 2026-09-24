@@ -25,10 +25,13 @@ func _init(container: Container = null, max_stack_size:int = 999) -> void:
 
 
 # Creates new slot from a stack, places it in a holder if stack is not empty
-func add_new_slot_from_stack(item: Stack) -> void:
+func add_new_slot_from_stack(item: Stack, trash_collector: Control) -> void:
 	var new_item_slot: ItemSlot = ItemSlot.get_scene().instantiate()
 	storage.add_child(new_item_slot)
 	item_slots.append(new_item_slot)
+	
+	new_item_slot.max_quantity = max_quantity
+	new_item_slot.trash_collector = trash_collector
 	
 	# Connections made for hovering slots
 	# idk if this good considering you can use inventory without them
@@ -50,14 +53,14 @@ func mouse_exit_slot_emit() -> void:
 
 
 # Replaces itemslots with parsed stacks
-func spawn_slots(item_list: Array[Stack]) -> void:
+func spawn_slots(item_list: Array[Stack], trash_collector: Control) -> void:
 	# Removes previous slots
 	for slot in item_slots:
 		storage.remove_child(slot)
 	
 	item_slots = []
 	for new_item in item_list:
-		add_new_slot_from_stack(new_item);
+		add_new_slot_from_stack(new_item, trash_collector)
 
 
 # Currently unused
@@ -75,8 +78,8 @@ func assign_slots(item_list: Array[Stack], slot_list: Array[ItemSlot]) -> void:
 func blind_add_stack(new_item: Stack) -> Stack:
 	# Adds to existing stacks
 	for i in range(item_slots.size()):
-		if item_slots[i].get_stack().compare_stacks(new_item):
-			new_item = add_stack_to_slot(new_item, item_slots[i])
+		if item_slots[i].get_item_stack().compare_stacks(new_item):
+			new_item = item_slots[i].add_stack(new_item)
 			
 			# If stack is now empty end
 			if new_item.isEmpty:
@@ -84,32 +87,12 @@ func blind_add_stack(new_item: Stack) -> Stack:
 	
 	# Add to empty slots
 	for i in range(item_slots.size()):
-		if item_slots[i].get_stack().isEmpty:
-			new_item = add_stack_to_slot(new_item, item_slots[i])
+		if item_slots[i].get_item_stack().isEmpty:
+			new_item = item_slots[i].add_to_stack(new_item)
 			
 			# If stack is now empty end
 			if new_item.isEmpty:
 				return new_item
-	
-	return new_item
-
-
-# Adds stack to another stack in a slot,
-# Returns leftover of stack
-func add_stack_to_slot(new_item: Stack, slot: ItemSlot) -> Stack:
-	# Make sure valid to add item to slot 
-	# (this creates weird redundancy thats semi nesscary, 
-	# but like want to prevent misuse as well) 
-	if slot.get_stack().isEmpty:
-		slot.set_stack(Stack.new(0, new_item.item))
-	elif not slot.get_stack().compare_stacks(new_item):
-		return new_item
-	
-	# Adds as much as can be added to stack
-	var add_to_stack : int = \
-		min(max_quantity - slot.get_stack().quantity, new_item.quantity)
-	slot.get_stack().quantity += add_to_stack
-	new_item.quantity -= add_to_stack
 	
 	return new_item
 
@@ -127,7 +110,7 @@ func add_some_to_slot(stack: Stack, slot: ItemSlot, amount: int) -> Stack:
 	
 	var clone := Stack.new(amount).clone_type(stack)
 	stack.quantity -= amount
-	return add_stack_to_slot(clone, slot)
+	return slot.add_stack_to_slot(clone)
 
 
 # Orders items in inventory according to parsed sort key
@@ -155,7 +138,7 @@ func export_items() -> Array:
 	var inventory_items: Array
 	
 	for slot in item_slots:
-		var stack = slot.get_stack()
+		var stack = slot.get_item_stack()
 		if not stack.isEmpty:
 			inventory_items.append(stack.item)
 	
