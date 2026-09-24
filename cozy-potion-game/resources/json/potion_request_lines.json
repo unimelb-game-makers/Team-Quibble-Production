@@ -1,0 +1,1343 @@
+[
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "HEAL_GEN_001",
+	"PERSONALITY": "SCARED",
+	"GREETING": "",
+	"PROBLEM": "Ah! I cut myself!",
+	"REQUEST": "Help!"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "HEAL_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": "Got anything that will patch me up?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "HEAL_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Hi there. ",
+	"PROBLEM": "",
+	"REQUEST": "Do you sell healing potions here?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "STUDENT",
+	"DIALOGUE_ID": "HEAL_STUDENT_001",
+	"PERSONALITY": "EMBARRASSED",
+	"GREETING": "Ha... Yeah... ",
+	"PROBLEM": "I um... twisted my ankle during training today.",
+	"REQUEST": "Have you got anything for that?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "STUDENT",
+	"DIALOGUE_ID": "HEAL_STUDENT_002",
+	"PERSONALITY": "CONFIDENT",
+	"GREETING": "",
+	"PROBLEM": "Got into a fight today. Damn jaw is killing me.",
+	"REQUEST": "Have you got anything for that?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "STUDENT",
+	"DIALOGUE_ID": "HEAL_STUDENT_003",
+	"PERSONALITY": "STUDIOUS",
+	"GREETING": "",
+	"PROBLEM": "I was in the lab today and I nicked myself with a scalpel! My finger hasn't stopped bleeding.",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "COURIER",
+	"DIALOGUE_ID": "HEAL_COURIER_001",
+	"PERSONALITY": "EMBARRASSED",
+	"GREETING": "Heh... whoops!",
+	"PROBLEM": "I um... fell off my bike while delivering the mail today. Hurt my leg pretty bad...\n",
+	"REQUEST": "Do you have anything for... that?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "COURIER",
+	"DIALOGUE_ID": "HEAL_COURIER_002",
+	"PERSONALITY": "ANNOYED",
+	"GREETING": "",
+	"PROBLEM": "Varmint on the road! Slipped on the damn thing! You think with all them fancy-ass spells they could... disintegrate roadkill or somethin'. Anyways, I busted mah shoulder. Got anythang fer that?",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "COURIER",
+	"DIALOGUE_ID": "HEAL_COURIER_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "BAKER",
+	"DIALOGUE_ID": "HEAL_BAKER_001",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "My hands are killing me from kneading all this dough.",
+	"REQUEST": "Got something for that?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "BAKER",
+	"DIALOGUE_ID": "HEAL_BAKER_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "I didn't get enough sleep last night... and I burned my hand on the oven.",
+	"REQUEST": "Help?"
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "BAKER",
+	"DIALOGUE_ID": "HEAL_BAKER_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "LUMBERJACK",
+	"DIALOGUE_ID": "HEAL_LUMBERJACK_001",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "LUMBERJACK",
+	"DIALOGUE_ID": "HEAL_LUMBERJACK_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "LUMBERJACK",
+	"DIALOGUE_ID": "HEAL_LUMBERJACK_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "HUNTER",
+	"DIALOGUE_ID": "HEAL_HUNTER_001",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "HUNTER",
+	"DIALOGUE_ID": "HEAL_HUNTER_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "HUNTER",
+	"DIALOGUE_ID": "HEAL_HUNTER_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "HERBALIST",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "HERBALIST",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "HERBALIST",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "MONSTER_CONTROL",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "MONSTER_CONTROL",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "MONSTER_CONTROL",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "CONSTRUCTION_WORKER",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "CONSTRUCTION_WORKER",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "CONSTRUCTION_WORKER",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "PRIVATE_INVESTIGATOR",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "PRIVATE_INVESTIGATOR",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "PRIVATE_INVESTIGATOR",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_HEALING",
+	"NPC": "SPEC_NPC_GUY_NORMUS",
+	"DIALOGUE_ID": "SPEC_NPC_GUY_NORMUS_HEAL_001",
+	"PERSONALITY": "POLITE",
+	"GREETING": "",
+	"PROBLEM": "Hey bud! Sorry to bother ya, but that goshdang cat scratched me today. Serves me right for taking care of my brother's pet, huh... Anyway, ya got something for the bleed?",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_MANA",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "MANA_GEN_001",
+	"PERSONALITY": "TIRED",
+	"GREETING": "Hey there.",
+	"PROBLEM": "I've been casting spells all day, but I've gotta keep going.",
+	"REQUEST": "Got anything for me?"
+  },
+  {
+	"ATTR": "ATTR_MANA",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "MANA_GEN_002",
+	"PERSONALITY": "NERVOUS",
+	"GREETING": "Uh, howdy.",
+	"PROBLEM": "",
+	"REQUEST": "You got any... potions for spells and stuff?"
+  },
+  {
+	"ATTR": "ATTR_MANA",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "MANA_GEN_003",
+	"PERSONALITY": "EASYGOING",
+	"GREETING": "Wassup.",
+	"PROBLEM": "Got a long day of spellcasting today.",
+	"REQUEST": "Got something?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_PARALYSIS",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PARALYSIS_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "I gotta catch some pests.",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_PARALYSIS",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PARALYSIS_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "These damn rats are too fast for me!",
+	"REQUEST": "You gotta help me out, dude!"
+  },
+  {
+	"ATTR": "ATTR_PARALYSIS",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PARALYSIS_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Hi. This is gonna sound weird, but...",
+	"PROBLEM": "I need to make someo-- something stay still.",
+	"REQUEST": "You got a potion for that?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_FOCUS",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "FOCUS_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Yo.",
+	"PROBLEM": "I gotta lock in bro.",
+	"REQUEST": "You gotta potion for that?"
+  },
+  {
+	"ATTR": "ATTR_FOCUS",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "FOCUS_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "Greetings.",
+	"PROBLEM": "I'm having trouble concentrating.",
+	"REQUEST": "Is there a potion for this problem?"
+  },
+  {
+	"ATTR": "ATTR_FOCUS",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "FOCUS_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Hey.",
+	"PROBLEM": "I'm really tired but I've got a long day ahead.",
+	"REQUEST": "Can you help?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_STRENGTH",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "STRENGTH_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Yo.",
+	"PROBLEM": "I got a big workout today.",
+	"REQUEST": "Got a potion for this?"
+  },
+  {
+	"ATTR": "ATTR_STRENGTH",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "STRENGTH_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "Hey...",
+	"PROBLEM": "I'm tryna bulk myself up at the gym.",
+	"REQUEST": "Can you help me get stronger?"
+  },
+  {
+	"ATTR": "ATTR_STRENGTH",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "STRENGTH_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Hi.",
+	"PROBLEM": "Gotta lift a lot of heavy stuff today.",
+	"REQUEST": "Do you have a potion for that?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_PERCEPTION",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PERCEPTION_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Greetings.",
+	"PROBLEM": "I lost my glasses.",
+	"REQUEST": "Can you help me out?"
+  },
+  {
+	"ATTR": "ATTR_PERCEPTION",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PERCEPTION_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "HELLO!",
+	"PROBLEM": "I AM STRUGGLING TO HEAR THINGS.",
+	"REQUEST": "DO YOU HAVE SOMETHING FOR THAT?"
+  },
+  {
+	"ATTR": "ATTR_PERCEPTION",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PERCEPTION_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Uh hi.",
+	"PROBLEM": "There's this new game out but I don't have the reaction time for it.",
+	"REQUEST": "Can you fix that?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_ENDURANCE",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "ENDURANCE_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Sup.",
+	"PROBLEM": "Got a long day today.",
+	"REQUEST": "Got something to get me through?"
+  },
+  {
+	"ATTR": "ATTR_ENDURANCE",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "ENDURANCE_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "Hi there.",
+	"PROBLEM": "Man, I got so many chores to do today!",
+	"REQUEST": "Do you have anything for my stamina?"
+  },
+  {
+	"ATTR": "ATTR_ENDURANCE",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "ENDURANCE_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Heya.",
+	"PROBLEM": "I've not got a chance to rest today.",
+	"REQUEST": "Is there anything to help me get through the day?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_CHARISMA",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "CHARISMA_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "What's cookin'?",
+	"PROBLEM": "Got a big date on tonight.",
+	"REQUEST": "Got anything to... rizz me up?"
+  },
+  {
+	"ATTR": "ATTR_CHARISMA",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "CHARISMA_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "Uh... hi!",
+	"PROBLEM": "Look um, I've got uh. A big um. Thing. To... talk about today. And I'm... well... super nervous about it.",
+	"REQUEST": "Help me. Please?"
+  },
+  {
+	"ATTR": "ATTR_CHARISMA",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "CHARISMA_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Ayup.",
+	"PROBLEM": "Listen blud. The boys, yeh? They're countin' on me to give a big speech to the guy in the big chair, 'ey? Problem is, I got nuffin prepared.",
+	"REQUEST": "D'you have any liquid courage?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_INTELLIGENCE",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "INTELLIGENCE_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Greetings, young witch.",
+	"PROBLEM": "I have a terribly important task due tonight, but alas, I feel totally inadequate to solve it.",
+	"REQUEST": "Mayhaps you possess a potion to remedy this quandary of mine?"
+  },
+  {
+	"ATTR": "ATTR_INTELLIGENCE",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "INTELLIGENCE_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "DURR.",
+	"PROBLEM": "HURR. DURR.",
+	"REQUEST": "*expectant grunt*"
+  },
+  {
+	"ATTR": "ATTR_INTELLIGENCE",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "INTELLIGENCE_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Agh!",
+	"PROBLEM": "I've been wracking my brain trying to remember something for the past few days, but I just can't find it! It's driving me mad!",
+	"REQUEST": "Do you have a potion for this?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_AGILITY",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "AGILITY_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Heya.",
+	"PROBLEM": "I'm late and I gotta get to work ASAP.",
+	"REQUEST": "Do you have something for that?"
+  },
+  {
+	"ATTR": "ATTR_AGILITY",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "AGILITY_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "Hi.",
+	"PROBLEM": "Today, I've got a lot of errands to do but not enough time to do them.",
+	"REQUEST": "Where do you keep your fast stores?"
+  },
+  {
+	"ATTR": "ATTR_AGILITY",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "AGILITY_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Howdy!",
+	"PROBLEM": "I gotta go fast as hell.",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_LUCK",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "LUCK_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": "Got any liquid luck?"
+  },
+  {
+	"ATTR": "ATTR_LUCK",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "LUCK_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "Man...",
+	"PROBLEM": "Woe is me. I'm in such a harsh realm dude.",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_LUCK",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "LUCK_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "I've lost something but I don't know how to find it?",
+	"REQUEST": "Got anything to improve my odds?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_FLAME",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "FLAME_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "I've got some weeds to get rid of.",
+	"REQUEST": "Got something for that?"
+  },
+  {
+	"ATTR": "ATTR_FLAME",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "FLAME_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "There is so much garbage in my house and I don't want to deal with it all.",
+	"REQUEST": "How can I fix this?"
+  },
+  {
+	"ATTR": "ATTR_FLAME",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "FLAME_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "I'm so cold... My fireplace won't start.",
+	"REQUEST": "Can you fix that?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_FROST",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "FROST_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Hey.",
+	"PROBLEM": "My fridge broke down.",
+	"REQUEST": "Do you sell anything cold?"
+  },
+  {
+	"ATTR": "ATTR_FROST",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "FROST_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "I've got some remains to preserve but it's too warm today.",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_FROST",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "FROST_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Wazzap.",
+	"PROBLEM": "I need some ice.",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_SHOCK",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "SHOCK_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "*tsk* Maaan...",
+	"PROBLEM": "My TV's broken. I think one of the fairies exploded.",
+	"REQUEST": "Got something for that?"
+  },
+  {
+	"ATTR": "ATTR_SHOCK",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "SHOCK_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "Hey!",
+	"PROBLEM": "My damn computer's on the fritz again!",
+	"REQUEST": "Can you help?"
+  },
+  {
+	"ATTR": "ATTR_SHOCK",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "SHOCK_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Heyo. Uh...",
+	"PROBLEM": "I blew a fuse.",
+	"REQUEST": "Do you have something to help?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_WIND",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "WIND_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "My laundry is taking too long to dry!",
+	"REQUEST": "Is there something available to help me?"
+  },
+  {
+	"ATTR": "ATTR_WIND",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "WIND_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_WIND",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "WIND_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_EARTH",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "EARTH_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Hi there.",
+	"PROBLEM": "I have this huge boulder in my front yard. No, it's not a rock.",
+	"REQUEST": "Can you help me move some dirt?"
+  },
+  {
+	"ATTR": "ATTR_EARTH",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "EARTH_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_EARTH",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "EARTH_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_WATER",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "WATER_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "I'm... so... thirsty...",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_WATER",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "WATER_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "Uh hi.",
+	"PROBLEM": "My toilet's clogged and yes, I've tried a plunger. I need the might of Poseidon to fix it.",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_WATER",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "WATER_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "They say a certain wizard can turn water into wine. Well, I have too much damn wine.",
+	"REQUEST": "Is there a solution?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_PURIFICATION",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PURIFICATION_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "I've been hearing a strange voice whispering my name at night. Am I haunted?",
+	"REQUEST": "I beg you, please help me!"
+  },
+  {
+	"ATTR": "ATTR_PURIFICATION",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PURIFICATION_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_PURIFICATION",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PURIFICATION_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_ANTIDOTE",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "ANTIDOTE_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Urgh... Hi...",
+	"PROBLEM": "I ate something funny yesterday. And let's just say... my bathroom has a different colour now.",
+	"REQUEST": "Please help me!"
+  },
+  {
+	"ATTR": "ATTR_ANTIDOTE",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "ANTIDOTE_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "Um.",
+	"PROBLEM": "You know those silica gel packets that say they shouldn't be eaten? Well I... yeah.",
+	"REQUEST": "Help?"
+  },
+  {
+	"ATTR": "ATTR_ANTIDOTE",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "ANTIDOTE_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Hello.",
+	"PROBLEM": "My pet's been stung by a waspette.",
+	"REQUEST": "Can you get rid of the poison?"
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_SLEEP",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "SLEEP_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "*groan*",
+	"PROBLEM": "I've been really struggling to get a good night's sleep lately.",
+	"REQUEST": "Got anything to help me rest?"
+  },
+  {
+	"ATTR": "ATTR_SLEEP",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "SLEEP_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "Rragh!",
+	"PROBLEM": "Bloody neighbours! They won't stop arguing at night!",
+	"REQUEST": "I... so... need to get some sleep."
+  },
+  {
+	"ATTR": "ATTR_SLEEP",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "SLEEP_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "Geez dude!",
+	"PROBLEM": "These stray dogs are going to be the death of me.",
+	"REQUEST": "I could really do with a fat nap right now bro."
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_CALMING",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "CALMING_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "H-hi.",
+	"PROBLEM": "I'm feeling super anxious all the time.",
+	"REQUEST": "Have you got anything for the nerves?"
+  },
+  {
+	"ATTR": "ATTR_CALMING",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "CALMING_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "I hate this. I got a big speech to give today! And I can't stop shaking!",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_CALMING",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "CALMING_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_LIGHT",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "LIGHT_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Dude.",
+	"PROBLEM": "The bulbs in my house are fading and I don't want to buy all new ones.",
+	"REQUEST": "Can you fix that?"
+  },
+  {
+	"ATTR": "ATTR_LIGHT",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "LIGHT_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_LIGHT",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "LIGHT_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_DARK",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "DARK_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Hi there.",
+	"PROBLEM": "There's too much darn sunlight streaming through my windows! But I can't afford to get the windows tinted.",
+	"REQUEST": "Do you have something for that?"
+  },
+  {
+	"ATTR": "ATTR_DARK",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "DARK_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_DARK",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "DARK_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "",
+	"NPC": "",
+	"DIALOGUE_ID": "",
+	"PERSONALITY": "",
+	"GREETING": "",
+	"PROBLEM": "",
+	"REQUEST": ""
+  },
+  {
+	"ATTR": "ATTR_PAIN_RELIEF",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PAIN_RELIEF_GEN_001",
+	"PERSONALITY": "",
+	"GREETING": "Aw jeez.",
+	"PROBLEM": "This headache is KILLING me.",
+	"REQUEST": "Got anything for the pain?"
+  },
+  {
+	"ATTR": "ATTR_PAIN_RELIEF",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PAIN_RELIEF_GEN_002",
+	"PERSONALITY": "",
+	"GREETING": "...Aaaagh.",
+	"PROBLEM": "I really banged my knee. Stupid coffee table.",
+	"REQUEST": "Can you give me some relief?"
+  },
+  {
+	"ATTR": "ATTR_PAIN_RELIEF",
+	"NPC": "GENERIC",
+	"DIALOGUE_ID": "PAIN_RELIEF_GEN_003",
+	"PERSONALITY": "",
+	"GREETING": "...FFFSSSOOHHH...",
+	"PROBLEM": "GOD. This hurts. Agh.",
+	"REQUEST": "Please help me."
+  }
+]

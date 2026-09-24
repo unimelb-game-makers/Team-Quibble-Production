@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://c8rv1a0qlm0i1" path="res://scenes/user_interface/item_accept_dialogue_balloon.tscn" id="12_1xpwl"]
 [ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="12_egm7a"]
 [ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="13_5yugc"]
-[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/user_interface/speech_bubble_balloon.tscn" id="13_8n7hp"]
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="14_gss6t"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="15_0gg37"]
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/prefabs/player.tscn" id="16_dm0f0"]
@@ -296,7 +295,6 @@ customer_interactable = NodePath("../Node3D/Customer/Interactable")
 customer_world = NodePath("../Node3D/Customer")
 dialogue_resource = ExtResource("11_mtuaq")
 acceptor_dialogue_balloon = ExtResource("12_1xpwl")
-speech_bubble_dialogue_balloon = ExtResource("13_8n7hp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerManager" unique_id=1878084005]
 libraries/ = SubResource("AnimationLibrary_yuijs")

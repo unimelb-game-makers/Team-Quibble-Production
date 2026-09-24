@@ -89,15 +89,6 @@ func _ready() -> void:
 		if not is_instance_valid(dialogue_resource):
 			assert(false, DMConstants.get_error_message(DMConstants.ERR_MISSING_RESOURCE_FOR_AUTOSTART))
 		start()
-
-	# EXAMPLE MESSAGE
-	var warning: Button = Button.new()
-	warning.text = DMConstants.translate("This is an example balloon. Create your own balloon in 'Project > Tools > Dialogue > Create Balloon...'")
-	warning.disabled = true
-	warning.set_anchors_and_offsets_preset(Control.PRESET_TOP_WIDE)
-	balloon.add_child(warning)
-	balloon.move_child(warning, 0)
-	# /EXAMPLE MESSAGE
 	
 	DialogueManager.active_balloon = self
 
@@ -220,6 +211,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		next(dialogue_line.next_id)
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
+	if event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() != null:
+		print_debug("Current Focus: " + get_viewport().gui_get_focus_owner().name)
+	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == null:
+		print_debug("No current focus")
+		next(dialogue_line.next_id)
+	elif event.is_action_pressed("force_dialogue"):
+		next(dialogue_line.next_id)
+
 
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:

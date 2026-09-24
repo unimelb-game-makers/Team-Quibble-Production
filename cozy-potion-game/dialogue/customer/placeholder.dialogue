@@ -18,17 +18,14 @@ Man: Give me a potion of poison.
 => END
 
 ~ refuse
-Man: I don't want that. Try again.
+I don't want that. Try again.
 => END
 
 ~ accept
-Man: yeah thats what i wanted.
+yeah thats what i wanted.
 => END
 
-~ start_accepting
-Man: Do you have something for me?
-=> END
 
 ~ not_potion
-Man: That doesn't look like a potion.
+That doesn't look like a potion.
 => END

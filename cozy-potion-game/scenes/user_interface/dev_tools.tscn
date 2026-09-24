@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c4kh85g7istfr" path="res://scripts/autoloads/dev_tools.gd" id="1_lyhx2"]
 
-[node name="DevTools" type="CanvasLayer" unique_id=1875863142 node_paths=PackedStringArray("debug_panel")]
+[node name="DevTools" type="CanvasLayer" unique_id=1875863142 node_paths=PackedStringArray("customer_fuck_off")]
 process_mode = 3
 script = ExtResource("1_lyhx2")
-debug_panel = NodePath("MarginContainer/Panel")
+customer_fuck_off = NodePath("MarginContainer/Panel/VBoxContainer/Button")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2014769689]
 anchors_preset = 15
@@ -25,3 +25,8 @@ layout_mode = 2
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="MarginContainer/Panel/VBoxContainer" unique_id=1096899646]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Force Customer to FUck off"

@@ -67,6 +67,8 @@ func aesthetic_movement(event: InputEvent) -> void:
 		interact()
 
 func rotate_camera(direction: int) -> void:
+	if DraggableComponent.dragged_control or DialogueManager.active_balloon:
+		return
 	#i really hope this implementation isnt what i stick with
 	if not is_equal_approx(rotation_y_target, 0):
 		return
@@ -192,6 +194,6 @@ func interact() -> void:
 	for area in interactable_collision_area.get_overlapping_areas():
 		if area is Interactable:
 			# parses index as Im fudging selecting stack
-			area.interacted.emit()
+			area.interact()
 			# probably bad to interact with two things at once
 			return

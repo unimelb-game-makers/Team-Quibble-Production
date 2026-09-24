@@ -1,7 +1,29 @@
 class_name Customer extends Resource
 
+enum CustomerID{
+	NPC_STUDENT,
+	NPC_COURIER,
+	NPC_WIZARD,
+	NPC_WITCH,
+	NPC_BAKER,
+	NPC_LUMBERJACK,
+	NPC_HUNTER,
+	NPC_HERBALIST,
+	NPC_ARTIST,
+	NPC_COMEDIAN,
+	NPC_MUSICIAN,
+	NPC_TAXI_DRIVER,
+	NPC_RAVER,
+	NPC_CULTIST,
+	NPC_CORPORATE_MAGE,
+	NPC_MONSTER_CONTROL,
+	NPC_CONSTRUCTION_WORKER,
+	NPC_APPRENTICE_WIZARD,
+	NPC_RUNE_PROGRAMMER,
+	NPC_PRIVATE_INVESTIGATOR,
+}
 ##customer occupation: student, cultist, etc
-var customer_type: String
+var customer_id: CustomerID
 ##array of customer needs: NEED_HEALING, NEED_LIGHT, etc
 ##the first element is the primary need, others are secondary
 var needs: Array[Alchemy.NeedID]
@@ -46,10 +68,9 @@ func check_potion_sufficient(potion: Potion) -> bool:
 	return match_primary and match_secondary
 
 
-##Returns a randomly created customer resource. 
+## Returns a randomly created customer resource. 
 ## if set_type isn't null, it's type will always be that
-## if debug is true, print debug information
-static func generate_customer(set_type: String = "") -> Customer:
+static func generate_customer(set_type: CustomerID = -1) -> Customer:
 	var customer_resource = Customer.new()
 	
 	#These first lines initialise the json mapping character types to need
@@ -60,15 +81,16 @@ static func generate_customer(set_type: String = "") -> Customer:
 	#once we choose a customer randomly or not, their json data is put
 	#here. This is not the customer resource.
 	var customer_dictionary: Dictionary
-	if set_type == "":
+	if set_type < 0:
 		customer_dictionary = get_random_customer(customers)
-		customer_resource.customer_type = customer_dictionary.get("NPC")
+		customer_resource.customer_id = CustomerID.keys().find(customer_dictionary.get("NPC")) as CustomerID
 	else:
 		for dict in customers:
-			if dict.get("NPC") == set_type:
+			if dict.get("NPC") == CustomerID.find_key(set_type):
 				customer_dictionary = dict
-				customer_resource.customer_type = customer_dictionary.get("NPC")
+				customer_resource.customer_id = set_type
 				break
+		
 		assert(customer_dictionary, "set customer type does not exist")
 		
 	if Utils.DEBUG:
