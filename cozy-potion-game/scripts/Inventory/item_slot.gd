@@ -47,8 +47,11 @@ func set_stack(stack:Stack) -> void:
 	# Kills pre existing holder if there
 	if item_holder != null:
 		item_holder.queue_free()
+	
 	# Creates new holder from stack
 	var new_item_holder = ITEM_HOLDER.instantiate()
+	add_child(new_item_holder)
+	
 	set_item_holder(new_item_holder)
 	new_item_holder.stack = stack
 	
@@ -59,17 +62,22 @@ func set_stack(stack:Stack) -> void:
 # Adds ItemHolder that does not exist in scene yet, as child and stores in slot
 func set_item_holder(holder : ItemHolder) -> void:
 	if item_holder == null:
-		add_child(holder)
 		item_holder = holder
-		holder.clickable_component.clickable_picked_up.connect\
-			.call_deferred(removed_item_holder)
+		holder.clickable_component.request_pickup.connect(pickup_request)
 
 
-# Called when held ItemHolder signals that is had been removed from slot
-func removed_item_holder() -> void:
-	item_holder.clickable_component.\
-		clickable_picked_up.disconnect(removed_item_holder)
-	item_holder = null
+func pickup_request() -> void:
+	var new_item_holder :ItemHolder= ITEM_HOLDER.instantiate()
+	add_child(new_item_holder)
+	new_item_holder.stack = item_holder.take_from_stack(1)
+	
+	# Hatred is friend of this line of code
+	new_item_holder.clickable_component.trash_collector = trash_collector
+	new_item_holder.clickable_component.assign_to_mouse()
+	
+	if item_holder.stack.isEmpty:
+		item_holder.queue_free()
+		item_holder = null
 
 
 # Called to place ItemHolder in slot
@@ -91,9 +99,9 @@ func placed_holder_clickable(placed_clickable : ClickableComponent) -> void:
 			placed_clickable.place_clickable(self)
 			placed_clickable.trash_collector = trash_collector
 			item_holder.clickable_component.assign_to_mouse()
+			item_holder.clickable_component.request_pickup.disconnect(pickup_request)
 			item_holder = placed
-			placed.clickable_component.clickable_picked_up.connect\
-				.call_deferred(removed_item_holder)
+			placed.clickable_component.request_pickup.connect(pickup_request)
 
 
 func placed_RMB_clickable(placed_clickable : ClickableComponent) -> void:

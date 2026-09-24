@@ -16,7 +16,7 @@ var my_control: Control
 
 #use these in the control that uses this component if you want
 #functionality when dragging or dropping
-signal clickable_picked_up
+signal request_pickup
 
 func _ready() -> void:
 	assert(get_parent() is Control, "draggable component not child of control")
@@ -57,11 +57,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			my_control.get_global_mouse_position()) and \
 			dragged_control == null:
 			
-			assign_to_mouse()
+			request_pickup.emit()
 
 
 func assign_to_mouse() -> void:
-	clickable_picked_up.emit()
 	my_control.top_level = true
 	being_dragged = true
 	dragged_control = my_control
@@ -71,6 +70,7 @@ func assign_to_mouse() -> void:
 	move_to_mouse()
 	
 	set_process(true)
+
 
 func move_to_mouse() -> void:
 	my_control.global_position = my_control.get_global_mouse_position() - my_control.get_global_rect().size/2
