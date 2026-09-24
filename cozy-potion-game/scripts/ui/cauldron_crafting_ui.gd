@@ -22,6 +22,10 @@ func _ready() -> void:
 	potion_created_container.gui_input.connect(_on_potion_created_container_gui_input)
 
 func create_potion() -> void:
+	if inventory.get_inventory().size() == 0:
+		minigame_won.emit()
+		return
+		
 	var potion_recipe := inventory.get_inventory()
 	
 	var created_potion := Alchemy.brew_potion(potion_recipe)
