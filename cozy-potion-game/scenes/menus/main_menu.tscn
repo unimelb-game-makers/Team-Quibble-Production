@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bwmeocdqaeu4l"]
 
-[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://assets/main_theme.tres" id="1_l6cm7"]
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/main_theme.tres" id="1_l6cm7"]
 [ext_resource type="Script" uid="uid://drd1spct1hl1y" path="res://scripts/main_menu.gd" id="2_ekxnf"]
 [ext_resource type="PackedScene" uid="uid://bec7ovcvsvc5q" path="res://scenes/shop.tscn" id="3_ng0o5"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="3_wu84c"]
