@@ -5,10 +5,10 @@
 
 [node name="ItemHolder" type="Panel" unique_id=574462740 node_paths=PackedStringArray("item_sprite", "quantity_label", "clickable_component")]
 custom_minimum_size = Vector2(64, 64)
-offset_right = 64.0
-offset_bottom = 64.0
+offset_right = 59.0
+offset_bottom = 63.0
 mouse_filter = 2
-script = ExtResource("1_jn4e4")
+script = ExtResource("1_p1nqj")
 item_sprite = NodePath("TextureRect")
 quantity_label = NodePath("QuantityLabel")
 clickable_component = NodePath("ClickableComponent")

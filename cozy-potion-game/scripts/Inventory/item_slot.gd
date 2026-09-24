@@ -40,7 +40,7 @@ func emulate_mouse_inside() -> void:
 		ishovering = false
 		mouse_exited.emit()
 
-const ITEM_HOLDER = preload("uid://80sdcv4hsqa1")
+const ITEM_HOLDER = preload("res://scenes/prefabs/inventory/item_holder_scene.tscn")
 
 # Creates new ItemHolder from stack to set as holder
 func set_stack(stack:Stack) -> void:
