@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bec7ovcvsvc5q"]
 
 [ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_7mqwv"]
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/main_theme.tres" id="2_a6g3j"]
 [ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/ui/news_popup.gd" id="3_gobkm"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="4_j14q8"]
+[ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="5_posyw"]
 [ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/ui/list_manager.gd" id="5_pqync"]
 [ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="6_heatd"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="6_yuijs"]
@@ -37,11 +39,29 @@ font_size = 124
 [sub_resource type="LabelSettings" id="LabelSettings_aue3q"]
 font_size = 26
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xogfe"]
+texture = ExtResource("5_posyw")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
 [sub_resource type="LabelSettings" id="LabelSettings_0n2di"]
 font_size = 46
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ar3d"]
 font_size = 22
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_11hi1"]
+texture = ExtResource("5_posyw")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -100,6 +120,7 @@ anchor_bottom = 0.166
 offset_bottom = -2.1601563
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_a6g3j")
 script = ExtResource("2_7mqwv")
 time_label = NodePath("PanelContainer/CenterContainer/TimeLabel")
 day_label = NodePath("PanelContainer/MarginContainer/DayLabel")
@@ -155,6 +176,7 @@ anchor_right = 0.7
 anchor_bottom = 0.653
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_a6g3j")
 script = ExtResource("3_gobkm")
 headline_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/HeadlineLabel")
 description_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/DescriptionLabel")
@@ -167,6 +189,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xogfe")
 
 [node name="MarginContainer" type="MarginContainer" parent="SceneUI/TimeUI/NewsPopup/PanelContainer" unique_id=1814893937]
 layout_mode = 2
@@ -208,6 +231,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
+theme = ExtResource("2_a6g3j")
 script = ExtResource("5_pqync")
 vbox = NodePath("PanelContainer/MarginContainer/VBoxContainer/VBoxContainer")
 
@@ -221,6 +245,7 @@ offset_top = 60.0
 offset_right = -51.0
 offset_bottom = 177.0
 grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_11hi1")
 
 [node name="MarginContainer" type="MarginContainer" parent="SceneUI/ListManager/PanelContainer" unique_id=1277090194]
 layout_mode = 2
