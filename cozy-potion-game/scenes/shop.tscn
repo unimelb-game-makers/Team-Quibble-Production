@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/ui/list_manager.gd" id="5_pqync"]
 [ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="6_heatd"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="6_yuijs"]
-[ext_resource type="Script" uid="uid://c60gdvx5xbpwi" path="res://scripts/ui/hotbar.gd" id="7_c8dfh"]
+[ext_resource type="Script" uid="uid://dgpmwdw7hqtib" path="res://scripts/ui/hotbar.gd" id="7_c8dfh"]
 [ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://scenes/mini_games/recipe_scene.tscn" id="7_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/mini_games/crushing_minigame_scene.tscn" id="7_y6sft"]
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]

@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bkcxf27kqxplr"]
 
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="1_7xhhn"]
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/main_theme.tres" id="2_7xhhn"]
 [ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_nilqj"]
 [ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/ui/news_popup.gd" id="3_451sc"]
+[ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="3_o27ie"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="4_icj0f"]
 [ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/ui/list_manager.gd" id="5_m7jkc"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="6_fnx3q"]
@@ -36,11 +38,29 @@ font_size = 124
 [sub_resource type="LabelSettings" id="LabelSettings_aue3q"]
 font_size = 26
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7xhhn"]
+texture = ExtResource("3_o27ie")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
 [sub_resource type="LabelSettings" id="LabelSettings_0n2di"]
 font_size = 46
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ar3d"]
 font_size = 22
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o27ie"]
+texture = ExtResource("3_o27ie")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -113,6 +133,7 @@ anchor_bottom = 0.166
 offset_bottom = -2.1601563
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_7xhhn")
 script = ExtResource("2_nilqj")
 time_label = NodePath("PanelContainer/CenterContainer/TimeLabel")
 day_label = NodePath("PanelContainer/MarginContainer/DayLabel")
@@ -168,6 +189,7 @@ anchor_right = 0.7
 anchor_bottom = 0.653
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_7xhhn")
 script = ExtResource("3_451sc")
 headline_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/HeadlineLabel")
 description_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/DescriptionLabel")
@@ -180,6 +202,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7xhhn")
 
 [node name="MarginContainer" type="MarginContainer" parent="SceneUI/TimeUI/NewsPopup/PanelContainer" unique_id=1814893937]
 layout_mode = 2
@@ -234,6 +257,8 @@ offset_top = 60.0
 offset_right = -51.0
 offset_bottom = 177.0
 grow_horizontal = 0
+theme = ExtResource("2_7xhhn")
+theme_override_styles/panel = SubResource("StyleBoxTexture_o27ie")
 
 [node name="MarginContainer" type="MarginContainer" parent="SceneUI/ListManager/PanelContainer" unique_id=1277090194]
 layout_mode = 2
@@ -364,9 +389,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7538233, 8.734198, -5.0491
 visible = false
 script = ExtResource("18_oepbt")
 minigame_scene = ExtResource("22_jdbe1")
+interactable = NodePath("RecipeMinigameInteractable")
 indicator = NodePath("")
 indicator_pos = NodePath("")
-interactable = NodePath("RecipeMinigameInteractable")
 
 [node name="RecipeMinigameInteractable" type="Area3D" parent="Node3D/RecipeMinigame" unique_id=254663262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9055874, 0.51443744, 0.042072535)
