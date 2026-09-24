@@ -9,6 +9,8 @@ class_name DraggableAcceptorComponent extends Node
 var my_control: Control
 var accepting_items: bool = true
 
+var mouse_intersecting : bool = false
+
 #use this in the control that uses this if you want
 signal accepted_draggable(draggable: Control)
 
@@ -16,6 +18,7 @@ func _ready() -> void:
 	if not get_parent() is Container:
 		push_warning("DraggableAcceptorComponent child of non-container")
 	my_control = get_parent()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventMouseMotion:
@@ -30,9 +33,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		#print_debug(3)
 		return
 
-		
+	if not accepting_items:
+		return
+
+	
 	var intersecting_mouse: bool = \
-	my_control.get_global_rect().has_point(get_viewport().get_mouse_position())
+	my_control.get_global_rect().has_point(my_control.get_global_mouse_position())
+	#print_debug(get_viewport().get_mouse_position())
 
 	if intersecting_mouse and DraggableComponent.pending_parent != my_control and accepting_items and not is_full():
 		DraggableComponent.pending_parent = my_control

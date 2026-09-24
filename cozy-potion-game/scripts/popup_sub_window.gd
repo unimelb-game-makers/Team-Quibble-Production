@@ -31,10 +31,9 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("close_minigame"):
-		if popup: end_display_popup(null)
+		if popup: end_display_popup()
 
-func start_display_popup(_scene_to_load: PackedScene, hotbar: Inventory,\
-		input_index: int) -> void:
+func start_display_popup(_scene_to_load: PackedScene) -> void:
 	player.accepting_control = false
 	popup = _scene_to_load.instantiate()
 
@@ -42,17 +41,9 @@ func start_display_popup(_scene_to_load: PackedScene, hotbar: Inventory,\
 
 	sub_viewport.add_child(popup)
 	animation_player.play(&"fade_in")
-	
-	# if the popup is a minigame, connect signals from this viewport
-	# to that one
-	if popup is Minigame:
-		popup.set_hotbar(hotbar, input_index)
-		popup.ingredient_processed.connect(hotbar.add_new_slot_from_stack)
 
-func end_display_popup(output_hotbar: Inventory = null) -> void:
-	#if output_hotbar != null:
-		#player.hotbar.assign_new_inventory(output_hotbar)
-	
+
+func end_display_popup() -> void:
 	animation_player.play_backwards(&"fade_in")
 	await animation_player.animation_finished
 	# Raise errors but idk what they do

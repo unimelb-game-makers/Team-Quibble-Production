@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scenes/prefabs/minigame/crushing_minigame/pestle.tscn" id="1_j31fb"]
 [ext_resource type="Texture2D" uid="uid://d4j1fyiiegfeq" path="res://assets/sprites/minigame/crushing_minigame/Mortar.png" id="2_eukv0"]
 [ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scenes/prefabs/minigame/crushing_minigame/ingredient_ball.tscn" id="2_fhxy2"]
-[ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/ui/draggable_acceptor_component.gd" id="5_7jnv1"]
+[ext_resource type="Script" uid="uid://cpl11lanx3nfh" path="res://scripts/ui/clickable_drag_acceptor_component.gd" id="5_7jnv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvm4"]
 size = Vector2(853, 21)
@@ -13,7 +13,7 @@ size = Vector2(853, 21)
 script = ExtResource("1_fhxy2")
 ball_spawn_marker = NodePath("BallSpawnMarker")
 ingredient_ball_scene = ExtResource("2_fhxy2")
-acceptor = NodePath("Control/DraggableAcceptorComponent")
+acceptor = NodePath("Control/ClickableAcceptorComponent")
 draggable_hint_rect = NodePath("Control/ColorRect")
 metadata/_custom_type_script = "uid://5vr6exm8hl07"
 
@@ -62,7 +62,7 @@ offset_right = 1075.0
 offset_bottom = 806.0
 mouse_filter = 2
 
-[node name="DraggableAcceptorComponent" type="Node" parent="Control" unique_id=1491720030]
+[node name="ClickableAcceptorComponent" type="Node" parent="Control" unique_id=1355736645]
 script = ExtResource("5_7jnv1")
 metadata/_custom_type_script = "uid://b85c75nnvco20"
 

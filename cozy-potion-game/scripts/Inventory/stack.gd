@@ -53,7 +53,7 @@ func get_item_sprite() -> Texture2D:
 	if item is PotionIngredient:
 		return item.ingredient_sprite
 	elif item is Potion:
-		return null
+		return item.potion_sprite
 	return null
 
 
@@ -68,7 +68,7 @@ func clone_type(stack : Stack) -> Stack:
 	return self
 
 
-func compare_items(comp_stack: Stack) -> bool:
+func compare_stacks(comp_stack: Stack) -> bool:
 	#Bad
 	if comp_stack.item is PotionIngredient and item is PotionIngredient:
 		comp_stack.item.process_applied.sort()

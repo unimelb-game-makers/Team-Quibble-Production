@@ -42,7 +42,7 @@ func recall_customer() -> void:
 	await get_tree().create_timer(1).timeout
 	send_customer()
 
-func _on_customer_interact(fuck, this) -> void:
+func _on_customer_interact() -> void:
 	show_acceptor_dialogue()
 
 func show_acceptor_dialogue() -> void:

@@ -212,6 +212,7 @@ theme_override_constants/margin_bottom = 30
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer" unique_id=591983263]
 layout_mode = 2
+size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("2_2rywg")
 theme_override_font_sizes/font_size = 64
 text = "Q to exit"

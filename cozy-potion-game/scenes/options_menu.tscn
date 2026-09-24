@@ -1,14 +1,24 @@
 [gd_scene format=3 uid="uid://c7rl0bd26eupb"]
 
 [ext_resource type="Script" uid="uid://ddiesd3y05efc" path="res://scripts/autoloads/options_menu.gd" id="1_liyum"]
+[ext_resource type="Material" uid="uid://47ub0xvf0cjt" path="res://assets/materials/shaders/blur_shader.tres" id="2_ijpji"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 33
 
-[node name="OptionsMenu" type="CanvasLayer" unique_id=1433898098 node_paths=PackedStringArray("options_menu_container", "exit_game_button")]
+[node name="OptionsMenu" type="CanvasLayer" unique_id=1433898098 node_paths=PackedStringArray("blur_rect", "options_menu_container", "exit_game_button")]
 script = ExtResource("1_liyum")
+blur_rect = NodePath("ScreenBlur")
 options_menu_container = NodePath("Control/MarginContainer/Control/OptionsMenuContainer")
-exit_game_button = NodePath("Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer/ExitGameButton")
+exit_game_button = NodePath("Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/ExitGameButton")
+
+[node name="ScreenBlur" type="ColorRect" parent="." unique_id=622338059]
+material = ExtResource("2_ijpji")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Control" type="Control" parent="." unique_id=897544671]
 layout_mode = 3
@@ -72,7 +82,15 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="ExitGameButton" type="Button" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=726220320]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=433006603]
+layout_mode = 2
+
+[node name="SoundOptions" type="Button" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1013532109]
+layout_mode = 2
+text = "Sound"
+alignment = 0
+
+[node name="ExitGameButton" type="Button" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=726220320]
 layout_mode = 2
 text = "Exit Game"
 alignment = 0
