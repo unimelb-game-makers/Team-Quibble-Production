@@ -17,8 +17,7 @@ func _ready() -> void:
 func interact():
 	if DialogueManager.active_balloon:
 		return
-	var dummy
-	interacted.emit(dummy, dummy)
+	interacted.emit()
 	if popup: 
 		popup.queue_free()
 

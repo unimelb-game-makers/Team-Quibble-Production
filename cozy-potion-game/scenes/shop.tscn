@@ -21,6 +21,8 @@
 [ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="12_7mqwv"]
 [ext_resource type="Environment" uid="uid://bkyp0kx5716dg" path="res://resources/new_environment.tres" id="12_a6g3j"]
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/prefabs/player.tscn" id="12_ouqob"]
+[ext_resource type="PackedScene" uid="uid://c8rv1a0qlm0i1" path="res://scenes/user_interface/item_accept_dialogue_balloon.tscn" id="12_xogfe"]
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/user_interface/speech_bubble_balloon.tscn" id="13_11hi1"]
 [ext_resource type="Script" uid="uid://b6xdw32473ggf" path="res://scripts/ui/indicator.gd" id="13_ru2r1"]
 [ext_resource type="Texture2D" uid="uid://c2mvlk1clgcro" path="res://assets/sprites/potion_red_64.png" id="14_lxs01"]
 [ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="16_j14q8"]
@@ -280,6 +282,8 @@ customer_anim_player = NodePath("AnimationPlayer")
 customer_interactable = NodePath("../Node3D/Customer/Interactable")
 customer_world = NodePath("../Node3D/Customer")
 dialogue_resource = ExtResource("12_7mqwv")
+acceptor_dialogue_balloon = ExtResource("12_xogfe")
+speech_bubble_dialogue_balloon = ExtResource("13_11hi1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerManager" unique_id=1878084005]
 libraries/ = SubResource("AnimationLibrary_yuijs")

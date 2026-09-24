@@ -7,6 +7,7 @@ extends CanvasLayer
 
 var blur_shader: ShaderMaterial
 var open: bool = false
+var animation_running: bool = false
 
 func _ready() -> void:
 	options_menu_container = get_tree().get_first_node_in_group("OptionsMenuContainer")
@@ -34,6 +35,8 @@ func _input(event: InputEvent) -> void:
 	#print_debug(event.as_text())
 	#print_debug(event.is_action_pressed("open_options_menu"))
 	if event.is_action_pressed("open_options_menu"):
+		if animation_running:
+			return
 		if not open:
 			open_options_menu()
 		else:
@@ -65,6 +68,7 @@ func animate_options_menu_in() -> void:
 		return
 	#calls show at start and end of animation in case of user spamming
 	#the menu button
+	animation_running = true
 	options_menu_container.show()
 	blur_rect.show()
 	var tween = get_tree().create_tween()
@@ -75,13 +79,15 @@ func animate_options_menu_in() -> void:
 	tween.tween_property(blur_shader, "shader_parameter/blur_amount", blur_amount, 0.1)
 	tween.tween_property(options_menu_container, "offset_transform_position", Vector2.ZERO, 0.2)
 	tween.tween_callback(options_menu_container.show)
+	tween.tween_callback(func():animation_running = false)
 
 func animate_options_menu_out() -> void:
 	if not options_menu_container:
 		return
 		
 	var tween = get_tree().create_tween()
-	
+	animation_running = true
+
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	var out_pos = get_options_menu_out_position()
@@ -89,6 +95,7 @@ func animate_options_menu_out() -> void:
 	tween.tween_property(options_menu_container, "offset_transform_position", out_pos, 0.2)
 	tween.tween_callback(options_menu_container.hide)
 	tween.tween_callback(blur_rect.hide)
+	tween.tween_callback(func():animation_running = false)
 
 func get_options_menu_out_position() -> Vector2:
 	return Vector2(-(options_menu_container.global_position.x + options_menu_container.size.x), 0)
