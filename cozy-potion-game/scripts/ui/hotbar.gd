@@ -1,4 +1,5 @@
-class_name Hotbar extends Container
+class_name Hotbar
+extends Container
 
 #a resource that allows for inventory actions
 var inventory: Inventory

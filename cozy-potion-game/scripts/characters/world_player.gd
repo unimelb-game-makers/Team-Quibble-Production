@@ -8,6 +8,14 @@ class_name WorldPlayer extends CharacterBody3D
 ## for future interactable objects, use collision with the child
 ## InteractableCollision to determine whether the player is facing it
 
+const SPEED = 5.0
+const JUMP_VELOCITY = 4.5
+const CAMERA_ZOOM_MAGNITUDE = 0.1
+const INTERACTABLE_AREA_TURN_RATE = 4 * PI
+const CAMERA_ROTATION_SPEED = 2 * PI
+const FLOAT_WIGGLE_MAGNITUDE = 0.1
+const FLOAT_WIGGLE_SPEED = 2
+
 @export var animation_pivot: Node3D
 @onready var camera = get_viewport().get_camera_3d()
 @export var camera_pivot: Node3D
@@ -19,19 +27,8 @@ class_name WorldPlayer extends CharacterBody3D
 @export var sprite_pivot: Node3D
 
 var float_wiggle_time: float = 0
-
-
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
-const CAMERA_ZOOM_MAGNITUDE = 0.1
-const INTERACTABLE_AREA_TURN_RATE = 4 * PI
-const CAMERA_ROTATION_SPEED = 2 * PI
-const FLOAT_WIGGLE_MAGNITUDE = 0.1
-const FLOAT_WIGGLE_SPEED = 2
-
 var rotation_y_target: float = 0
 var top_down_active: bool = false
-
 var accepting_control: bool = true
 
 #hotbar stuff
@@ -49,6 +46,11 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if accepting_control:
 		aesthetic_movement(event)
+
+func inventory() -> Inventory:
+	assert(hotbar_display != null, "Player's inventory could not be found")
+
+	return hotbar_display.inventory
 
 
 func aesthetic_movement(event: InputEvent) -> void:

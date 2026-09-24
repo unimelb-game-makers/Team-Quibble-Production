@@ -1,4 +1,5 @@
-class_name CrushingMinigame extends Minigame
+class_name CrushingMinigame
+extends Minigame
 #controller for mortar and pestle scene
 
 @export var ball_spawn_marker: Marker2D

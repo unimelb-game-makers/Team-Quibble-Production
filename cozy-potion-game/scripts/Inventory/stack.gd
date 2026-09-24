@@ -53,7 +53,7 @@ func get_item_sprite() -> Texture2D:
 	if item is PotionIngredient:
 		return item.ingredient_sprite
 	elif item is Potion:
-		return null
+		return item.potion_sprite
 	return null
 
 
