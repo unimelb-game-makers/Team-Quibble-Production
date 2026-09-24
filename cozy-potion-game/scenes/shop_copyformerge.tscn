@@ -286,6 +286,7 @@ offset_right = -1527.0
 offset_bottom = -655.0
 columns = 3
 rows = 1
+max_quantity = 1
 
 [node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
 script = ExtResource("10_qxqkn")

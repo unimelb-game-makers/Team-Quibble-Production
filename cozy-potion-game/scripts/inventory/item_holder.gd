@@ -3,7 +3,7 @@ extends Panel
 
 @export var item_sprite: TextureRect
 @export var quantity_label: Label
-@export var draggable_component: DraggableComponent
+@export var clickable_component: ClickableComponent
 
 # If stack updated reconnects stack update signal to new stack
 var stack : Stack :
@@ -32,5 +32,14 @@ func update_stack() -> void:
 		quantity_label.text = stack.get_quantity_label()
 
 
-func get_stack() -> Stack:
+func get_item_stack() -> Stack:
 	return stack
+
+
+func take_from_stack(amount: int) -> Stack:
+	var new_item := Stack.new().clone_type(stack)
+	var take_amount : int = min(stack.quantity, amount)
+	stack.quantity -= take_amount
+	new_item.quantity += take_amount
+	
+	return new_item

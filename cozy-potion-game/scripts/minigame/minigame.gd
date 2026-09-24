@@ -2,7 +2,7 @@ class_name Minigame extends CanvasLayer
 
 signal minigame_won
 
-@export var acceptor: DraggableAcceptorComponent
+@export var acceptor: ClickableAcceptorComponent
 @export var draggable_hint_rect: ColorRect
 #emitted when an item is added to the minigame.
 # this is usually done by dragging from the hotbar
@@ -39,3 +39,15 @@ func emit_ingredient_added(draggable: Control):
 		ingredient_added.emit(draggable.get_stack())
 	else:
 		assert(false," added non ingredient")
+
+
+# Copy of above for clickable
+func emit_clickable_added(clickable: ClickableComponent):
+	if draggable_hint_rect:
+		draggable_hint_rect.hide()
+	if clickable.my_control is ItemHolder:
+		ingredient_added.emit(clickable.my_control.get_item_stack())
+	else:
+		assert(false," added non ingredient")
+	
+	clickable.my_control.queue_free()
