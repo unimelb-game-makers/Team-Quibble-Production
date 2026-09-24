@@ -11,8 +11,6 @@ static var pending_acceptor: ClickableAcceptorComponent
 
 @export var trash_collector: Control
 
-var previous_parent: Control
-
 var being_dragged: bool = false
 var my_control: Control
 
