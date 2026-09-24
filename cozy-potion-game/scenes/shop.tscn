@@ -352,8 +352,6 @@ visible = false
 script = ExtResource("6_heatd")
 minigame_scene = ExtResource("7_m4ofw")
 interactable = NodePath("RecipeMinigameInteractable")
-indicator = NodePath("")
-indicator_pos = NodePath("")
 
 [node name="RecipeMinigameInteractable" type="Area3D" parent="Node3D/RecipeMinigame" unique_id=254663262]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9055874, 0.51443744, 0.042072535)
@@ -432,7 +430,6 @@ indicator = NodePath("indicator_pos/indicator1")
 indicator_pos = NodePath("indicator_pos")
 
 [node name="indicator_pos" type="Node3D" parent="Node3D/CauldronMinigame/CauldronMinigame2" unique_id=1620973947]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8239136, 0.90270996, -4.99292)
 
 [node name="indicator1" type="Node2D" parent="Node3D/CauldronMinigame/CauldronMinigame2/indicator_pos" unique_id=94547233]
 script = ExtResource("13_ru2r1")
