@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://c7a7w81ecgyv1"]
+
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/main_theme.tres" id="1_7hrnt"]
+[ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_nd8pm"]
+[ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/user_interface/news_popup.gd" id="3_2fgp6"]
+[ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="4_mge8t"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
+font_size = 124
+
+[sub_resource type="LabelSettings" id="LabelSettings_aue3q"]
+font_size = 26
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xogfe"]
+texture = ExtResource("4_mge8t")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_0n2di"]
+font_size = 46
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ar3d"]
+font_size = 22
+
+[node name="TimeUI" type="CanvasLayer" unique_id=1025226181]
+
+[node name="DigitalClock" type="Control" parent="." unique_id=469322107 node_paths=PackedStringArray("time_label", "day_label", "advance_time_button")]
+layout_mode = 3
+anchor_right = 0.233
+anchor_bottom = 0.166
+offset_bottom = -2.1601563
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7hrnt")
+script = ExtResource("2_nd8pm")
+time_label = NodePath("PanelContainer/CenterContainer/TimeLabel")
+day_label = NodePath("PanelContainer/MarginContainer/DayLabel")
+advance_time_button = NodePath("Button")
+
+[node name="PanelContainer" type="PanelContainer" parent="DigitalClock" unique_id=1891763331]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="DigitalClock/PanelContainer" unique_id=1309229688]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="DigitalClock/PanelContainer/CenterContainer" unique_id=153237212]
+layout_mode = 2
+text = "07:00"
+label_settings = SubResource("LabelSettings_4dvm4")
+
+[node name="MarginContainer" type="MarginContainer" parent="DigitalClock/PanelContainer" unique_id=311473154]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DayLabel" type="Label" parent="DigitalClock/PanelContainer/MarginContainer" unique_id=1025774431]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Monday"
+label_settings = SubResource("LabelSettings_aue3q")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="DigitalClock" unique_id=1318430763]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 6.109
+offset_left = 100.0
+offset_top = 177.0
+offset_right = -123.359985
+offset_bottom = -850.02515
+theme_override_font_sizes/font_size = 28
+text = "Advance Time"
+
+[node name="NewsPopup" type="Control" parent="." unique_id=1137931393 node_paths=PackedStringArray("headline_label", "description_label", "accept_button")]
+layout_mode = 3
+anchor_left = 0.3
+anchor_top = 0.292
+anchor_right = 0.7
+anchor_bottom = 0.653
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7hrnt")
+script = ExtResource("3_2fgp6")
+headline_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/HeadlineLabel")
+description_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/DescriptionLabel")
+accept_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/AcceptButton")
+
+[node name="PanelContainer" type="PanelContainer" parent="NewsPopup" unique_id=1318688150]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_xogfe")
+
+[node name="MarginContainer" type="MarginContainer" parent="NewsPopup/PanelContainer" unique_id=1082834090]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewsPopup/PanelContainer/MarginContainer" unique_id=676237118]
+layout_mode = 2
+theme_override_constants/separation = 21
+
+[node name="HeadlineLabel" type="Label" parent="NewsPopup/PanelContainer/MarginContainer/VBoxContainer" unique_id=1488006653]
+layout_mode = 2
+text = "HEADLINE!"
+label_settings = SubResource("LabelSettings_0n2di")
+horizontal_alignment = 1
+
+[node name="DescriptionLabel" type="Label" parent="NewsPopup/PanelContainer/MarginContainer/VBoxContainer" unique_id=501428070]
+layout_mode = 2
+text = "lorem ipsum dolor sit amet lorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit ametlorem ipsum dolor sit amet"
+label_settings = SubResource("LabelSettings_6ar3d")
+autowrap_mode = 2
+
+[node name="AcceptButton" type="Button" parent="NewsPopup/PanelContainer/MarginContainer/VBoxContainer" unique_id=758657128]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 32
+text = "Ok, Whatever."

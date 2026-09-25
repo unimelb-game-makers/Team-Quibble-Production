@@ -4,6 +4,8 @@ extends PanelContainer
 # Emitted every frame if cursor inside slot
 signal hovering
 
+const ITEM_HOLDER = preload("uid://80sdcv4hsqa1")
+
 @export var acceptor : ClickableAcceptorComponent
 
 var item_holder : ItemHolder = null
@@ -39,8 +41,6 @@ func emulate_mouse_inside() -> void:
 		# if was hovering and no longer is emits mouse_existed signal
 		ishovering = false
 		mouse_exited.emit()
-
-const ITEM_HOLDER = preload("res://scenes/prefabs/inventory/item_holder_scene.tscn")
 
 # Creates new ItemHolder from stack to set as holder
 func set_stack(stack:Stack) -> void:

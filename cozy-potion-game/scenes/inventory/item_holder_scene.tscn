@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://80sdcv4hsqa1"]
+
+[ext_resource type="Script" uid="uid://dtfvdcuy006ib" path="res://scripts/inventory/item_holder.gd" id="1_p1nqj"]
+[ext_resource type="Script" uid="uid://b0pfahpfkvu4l" path="res://scripts/user_interface/clickable_drag_component.gd" id="2_2bf1q"]
+
+[node name="ItemHolder" type="Panel" unique_id=574462740 node_paths=PackedStringArray("item_sprite", "quantity_label", "clickable_component")]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 59.0
+offset_bottom = 63.0
+mouse_filter = 2
+script = ExtResource("1_p1nqj")
+item_sprite = NodePath("TextureRect")
+quantity_label = NodePath("QuantityLabel")
+clickable_component = NodePath("ClickableComponent")
+
+[node name="ClickableComponent" type="Node" parent="." unique_id=1275172061]
+script = ExtResource("2_2bf1q")
+metadata/_custom_type_script = "uid://bkt5imxfgerjv"
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1860948356]
+custom_maximum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="QuantityLabel" type="Label" parent="." unique_id=1717377117]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 59.0
+offset_bottom = 63.0
+horizontal_alignment = 2

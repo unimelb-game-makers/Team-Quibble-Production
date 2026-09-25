@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://cgwcxn7koxnq4"]
+
+[ext_resource type="Script" uid="uid://b6xdw32473ggf" path="res://scripts/user_interface/indicator.gd" id="1_1t5fv"]
+[ext_resource type="Texture2D" uid="uid://dc41ulmsyvhxi" path="res://assets/sprites/mooncap_full.png" id="2_53orv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csqtc"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 8
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[node name="IndicatorAnchor" type="Node3D" unique_id=1791509362]
+
+[node name="Indicator2D" type="Node2D" parent="." unique_id=1349877842]
+script = ExtResource("1_1t5fv")
+
+[node name="PanelContainer" type="PanelContainer" parent="Indicator2D" unique_id=1474258706]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 32.0
+grow_horizontal = 2
+grow_vertical = 0
+offset_transform_enabled = true
+theme_override_styles/panel = SubResource("StyleBoxFlat_csqtc")
+
+[node name="MarginContainer" type="MarginContainer" parent="Indicator2D/PanelContainer" unique_id=2111041926]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="TextureRect" type="TextureRect" parent="Indicator2D/PanelContainer/MarginContainer" unique_id=235461624]
+layout_mode = 2
+texture = ExtResource("2_53orv")
+expand_mode = 2

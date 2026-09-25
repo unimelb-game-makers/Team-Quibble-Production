@@ -1,15 +1,15 @@
-##A class that handles the creation of dialogue for customers
-##It gets passed customers as arguments for its methods
+class_name CustomerDialogue 
+extends Node
+## A class that handles the creation of dialogue for customers
+## It gets passed customers as arguments for its methods
 ## and returns DialogueResources
 ## this is a (in actuality) static class and not an autoload
 ## because it doesn't need state
-class_name CustomerDialogue extends Node
-
-static var potion_request_lines: Array[PotionRequestLine]
-
 
 const MATCHING_CUSTOMER_TYPE_WEIGHT = 7
 const POTION_REQUEST_LINES_JSON: String = "res://resources/json/potion_request_lines.json"
+
+static var potion_request_lines: Array[PotionRequestLine]
 
 ## The one other classes call.
 static func get_potion_request_line(attribute: Alchemy.AttributeID, customer: Customer.CustomerID) -> DialogueResource:

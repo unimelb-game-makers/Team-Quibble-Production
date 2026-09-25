@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://5m7lrht8t50u" path="res://shaders/wavy_text.gdshader" id="1_228b5"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="1_ajxwf"]
-[ext_resource type="Script" uid="uid://dp2yqek8qlyij" path="res://scripts/ui/popup_text.gd" id="1_c1qsl"]
+[ext_resource type="Script" uid="uid://dp2yqek8qlyij" path="res://scripts/user_interface/popup_text.gd" id="1_c1qsl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ajxwf"]
 shader = ExtResource("1_228b5")
