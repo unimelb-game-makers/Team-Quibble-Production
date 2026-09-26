@@ -1,0 +1,120 @@
+[gd_scene format=3 uid="uid://bxq7bq8537rse"]
+
+[ext_resource type="Script" uid="uid://cx4e7cbvnke4v" path="res://scripts/foraging/foliage_manager.gd" id="1_ij0qq"]
+[ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/prefabs/player.tscn" id="1_k08co"]
+[ext_resource type="Script" uid="uid://ddb2nwyl1rdqy" path="res://scripts/foraging/foraging_ui/foraging_bag.gd" id="1_q7g5v"]
+[ext_resource type="Texture2D" uid="uid://de6w6cprhyuol" path="res://assets/test/placeholderbag.png" id="2_ij0qq"]
+[ext_resource type="PackedScene" uid="uid://80sdcv4hsqa1" path="res://scenes/prefabs/inventory/item_holder_scene.tscn" id="3_lb4jd"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4dvm4"]
+size = Vector2(10, 10)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sbisr"]
+points = PackedVector3Array(2.53, 0, 2.9825, -2.53, 0, 2.9825, 2.53, 0, -2.9825, -2.53, 0, -2.9825)
+
+[node name="Forest" type="Node3D" unique_id=529053958]
+
+[node name="FoliageManager" type="Node" parent="." unique_id=1037012145]
+script = ExtResource("1_ij0qq")
+
+[node name="SceneUI" type="CanvasLayer" parent="." unique_id=127223334]
+
+[node name="ForagingBag" type="CanvasLayer" parent="SceneUI" unique_id=2066214678 node_paths=PackedStringArray("player", "bag_button", "bag_display")]
+script = ExtResource("1_q7g5v")
+player = NodePath("../../Player")
+bag_button = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/TextureButton")
+bag_display = NodePath("Control/MarginContainer/BagDisplay")
+
+[node name="Control" type="Control" parent="SceneUI/ForagingBag" unique_id=866487725]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI/ForagingBag/Control" unique_id=933279788]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="BagDisplay" type="CenterContainer" parent="SceneUI/ForagingBag/Control/MarginContainer" unique_id=158531928]
+layout_mode = 2
+
+[node name="PlaceholderBagTextureRect" type="TextureRect" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay" unique_id=235728472]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_ij0qq")
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect" unique_id=1997727082]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 183
+theme_override_constants/margin_right = 29
+theme_override_constants/margin_bottom = 51
+
+[node name="CenterContainer" type="CenterContainer" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer" unique_id=460370190]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer/CenterContainer" unique_id=529508661]
+layout_mode = 2
+columns = 5
+
+[node name="ItemHolder" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer/CenterContainer/GridContainer" unique_id=574462740 instance=ExtResource("3_lb4jd")]
+layout_mode = 2
+
+[node name="ItemHolder2" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer/CenterContainer/GridContainer" unique_id=625235480 instance=ExtResource("3_lb4jd")]
+layout_mode = 2
+
+[node name="ItemHolder3" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer/CenterContainer/GridContainer" unique_id=701347136 instance=ExtResource("3_lb4jd")]
+layout_mode = 2
+
+[node name="ItemHolder4" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer/CenterContainer/GridContainer" unique_id=541812761 instance=ExtResource("3_lb4jd")]
+layout_mode = 2
+
+[node name="ItemHolder5" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer/CenterContainer/GridContainer" unique_id=544527210 instance=ExtResource("3_lb4jd")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/ForagingBag/Control/MarginContainer" unique_id=1519650284]
+layout_mode = 2
+alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SceneUI/ForagingBag/Control/MarginContainer/VBoxContainer" unique_id=309355731]
+layout_mode = 2
+alignment = 2
+
+[node name="TextureButton" type="TextureButton" parent="SceneUI/ForagingBag/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=688293616]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("2_ij0qq")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="PlaceholderPlane" type="MeshInstance3D" parent="." unique_id=1550249663]
+mesh = SubResource("PlaneMesh_4dvm4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PlaceholderPlane" unique_id=1241853183]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlaceholderPlane/StaticBody3D" unique_id=1030732782]
+shape = SubResource("ConvexPolygonShape3D_sbisr")
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=943629651]
+bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
+
+[node name="Player" parent="." unique_id=1588394108 instance=ExtResource("1_k08co")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119140625, 0)
