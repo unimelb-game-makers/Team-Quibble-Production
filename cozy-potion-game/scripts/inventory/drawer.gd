@@ -40,7 +40,7 @@ func _ready() -> void:
 		filled_stacks[i].quantity = 40
 		filled_stacks[i].item = ingredients[i]
 	
-	hover_inv.inventory.spawn_slots(filled_stacks, hover_inv.trash_collector)
+	hover_inv.inventory.spawn_slots(filled_stacks)
 	hover_inv.inventory.sort_items(sort_keys[sort_index])
 
 

@@ -9,6 +9,8 @@ class_name DraggableComponent extends Node
 static var dragged_control: Control
 static var pending_parent: Control
 
+@export var requests_consent: bool
+
 var previous_parent: Control
 
 var being_dragged: bool = false
@@ -19,6 +21,7 @@ var my_control: Control
 signal draggable_dropped
 signal draggable_accepted
 signal draggable_picked_up
+signal drag_request_pick_up
 
 func _ready() -> void:
 	assert(get_parent() is Control, "draggable component not child of control")

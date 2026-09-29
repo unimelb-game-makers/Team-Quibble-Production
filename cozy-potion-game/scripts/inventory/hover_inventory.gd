@@ -16,14 +16,12 @@ var inventory: Inventory
 @onready var info_attributes: Label = $InfoSheet/MarginContainer/VBoxContainer/ItemAttributes
 # Looked up how to do above idk if this is great
 
-@onready var trash_collector: Control = $trash_collector
-
 
 func _ready() -> void:
 	max_slots = columns*rows
 	grid.columns = columns
 	inventory = Inventory.new(grid, max_quantity)
-	inventory.spawn_slots(Inventory.create_empty_stacks(max_slots), trash_collector)
+	inventory.spawn_slots(Inventory.create_empty_stacks(max_slots))
 	
 	# Connections needed for hovering
 	inventory.hovering_slot.connect(slot_hovered)

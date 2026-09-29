@@ -25,13 +25,12 @@ func _init(container: Container = null, max_stack_size:int = 999) -> void:
 
 
 # Creates new slot from a stack, places it in a holder if stack is not empty
-func add_new_slot_from_stack(item: Stack, trash_collector: Control) -> void:
+func add_new_slot_from_stack(item: Stack) -> void:
 	var new_item_slot: ItemSlot = ItemSlot.get_scene().instantiate()
 	storage.add_child(new_item_slot)
 	item_slots.append(new_item_slot)
 	
 	new_item_slot.max_quantity = max_quantity
-	new_item_slot.trash_collector = trash_collector
 	
 	# Connections made for hovering slots
 	# idk if this good considering you can use inventory without them
@@ -53,14 +52,14 @@ func mouse_exit_slot_emit() -> void:
 
 
 # Replaces itemslots with parsed stacks
-func spawn_slots(item_list: Array[Stack], trash_collector: Control) -> void:
+func spawn_slots(item_list: Array[Stack]) -> void:
 	# Removes previous slots
 	for slot in item_slots:
 		storage.remove_child(slot)
 	
 	item_slots = []
 	for new_item in item_list:
-		add_new_slot_from_stack(new_item, trash_collector)
+		add_new_slot_from_stack(new_item)
 
 
 # Currently unused
