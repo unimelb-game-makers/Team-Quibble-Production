@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://clj5c5k0meh56"]
+
+[ext_resource type="Script" uid="uid://jusf4fjwy8qp" path="res://scripts/audio/audio_player_3d.gd" id="1_mcopy"]
+[ext_resource type="Script" uid="uid://bdhleqgxddfht" path="res://scripts/audio/audio_resource.gd" id="2_l2k12"]
+[ext_resource type="Script" uid="uid://cq5al3gu6x3r4" path="res://scripts/audio/audio_library.gd" id="3_npxiw"]
+
+[sub_resource type="Resource" id="Resource_mcopy"]
+script = ExtResource("3_npxiw")
+metadata/_custom_type_script = "uid://cq5al3gu6x3r4"
+
+[node name="AudioPlayer3D" type="AudioStreamPlayer3D" unique_id=1085515549]
+script = ExtResource("1_mcopy")
+audio_library = SubResource("Resource_mcopy")
