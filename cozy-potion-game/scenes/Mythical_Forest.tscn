@@ -66,6 +66,12 @@ lod0_range = 128.0
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_sbv6l"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_is1wo")])
 
+[sub_resource type="PlaneMesh" id="PlaneMesh_4dvm4"]
+size = Vector2(140, 70)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kds0c"]
+points = PackedVector3Array(-70, 0, -35, -70, 0, 35, 70, 0, -35, 70, 0, 35)
+
 [node name="MythicalForest" type="Node3D" unique_id=1236479139]
 
 [node name="Terrain3D" type="Terrain3D" parent="." unique_id=1609805999]
@@ -76,10 +82,21 @@ show_checkered = true
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." unique_id=1588394108 node_paths=PackedStringArray("hotbar_display") instance=ExtResource("1_kds0c")]
+[node name="Player" parent="." unique_id=1588394108 instance=ExtResource("1_kds0c")]
 transform = Transform3D(0.6654595, 0, -0.746434, 0, 1, 0, 0.746434, 0, 0.6654595, -3.4541292, 0.31614017, -2.2616043)
-hotbar_display = NodePath("")
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=810623302]
 transform = Transform3D(12.075, 0, 0, 0, -5.27815e-07, 12.075, 0, -12.075, -5.27815e-07, 54.043674, 0.09669495, -27.67838)
 texture = ExtResource("2_a4g2n")
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1824571935]
+bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
+
+[node name="PLACEHOLDERCOLLISION" type="MeshInstance3D" parent="." unique_id=1772939313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.27614, 0, -28.261654)
+mesh = SubResource("PlaneMesh_4dvm4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="PLACEHOLDERCOLLISION" unique_id=759029202]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PLACEHOLDERCOLLISION/StaticBody3D" unique_id=2125336965]
+shape = SubResource("ConvexPolygonShape3D_kds0c")
