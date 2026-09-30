@@ -9,6 +9,7 @@ extends Minigame
 @export var potion_created_name_label: Label
 @export var potion_created_value_label: Label
 @export var inventory: HoverInventory
+@export var cauldron_sfx: AudioStreamPlayer
 
 var ingredient_button: PackedScene = preload("uid://b6r6ktehhfb10")
 
@@ -20,6 +21,9 @@ func _ready() -> void:
 	#reset_button.pressed.connect(reset_potion)
 	make_button.pressed.connect(create_potion)
 	potion_created_container.gui_input.connect(_on_potion_created_container_gui_input)
+	
+	cauldron_sfx.play()
+	print(cauldron_sfx.bus)
 
 func create_potion() -> void:
 	if inventory.get_inventory().size() == 0:
@@ -29,6 +33,8 @@ func create_potion() -> void:
 	var potion_recipe := inventory.get_inventory()
 	
 	var created_potion := Alchemy.brew_potion(potion_recipe)
+	
+	cauldron_sfx.stop()
 
 	potion_created_container.show()
 	potion_created_name_label.text = "You made a %s!" % created_potion.potion_name
@@ -47,4 +53,5 @@ func _on_potion_created_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		potion_created_container.hide()
 		PotionBrewing.recipe.clear()
+		cauldron_sfx.stop()
 		minigame_won.emit()

@@ -44,9 +44,9 @@ func _ready() -> void:
 	hover_inv.inventory.sort_items(sort_keys[sort_index])
 
 
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("close_minigame"):
-		#leave_drawer.emit(hotbar)
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("close_minigame"):
+		leave_drawer.emit(hotbar)
 
 
 func set_sort_key(index: int) -> void:

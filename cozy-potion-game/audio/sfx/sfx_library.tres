@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AudioLibrary" format=3 uid="uid://cw6p1h3mrx1uh"]
+
+[ext_resource type="Script" uid="uid://bdhleqgxddfht" path="res://scripts/audio/audio_resource.gd" id="1_eljrc"]
+[ext_resource type="Script" uid="uid://cq5al3gu6x3r4" path="res://scripts/audio/audio_library.gd" id="2_dm68c"]
+[ext_resource type="Resource" uid="uid://xo07w1faeggt" path="res://audio/sfx/drawer_open.tres" id="2_ygi7k"]
+[ext_resource type="Resource" uid="uid://ck0cvju84yfor" path="res://audio/sfx/drawer_close.tres" id="3_prhxf"]
+
+[resource]
+script = ExtResource("2_dm68c")
+library = Dictionary[StringName, ExtResource("1_eljrc")]({
+&"drawer_close": ExtResource("3_prhxf"),
+&"drawer_open": ExtResource("2_ygi7k")
+})
+metadata/_custom_type_script = "uid://cq5al3gu6x3r4"
