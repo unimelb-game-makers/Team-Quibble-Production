@@ -79,7 +79,7 @@ func blind_add_stack(new_item: Stack) -> Stack:
 	# Adds to existing stacks
 	for i in range(item_slots.size()):
 		if item_slots[i].get_item_stack().compare_stacks(new_item):
-			new_item = item_slots[i].add_stack(new_item)
+			new_item = item_slots[i].add_to_stack(new_item)
 			
 			# If stack is now empty end
 			if new_item.isEmpty:

@@ -1,9 +1,10 @@
-class_name ForagingBag extends Control
+class_name ForagingBag extends CanvasLayer
 
 
 @export var player: WorldPlayer
 @export var bag_button: TextureButton
 @export var bag_display: Control
+@export var hover_inventory: HoverInventory
 
 func _ready() -> void:
 	if not player:

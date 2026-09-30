@@ -4,7 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/prefabs/player.tscn" id="1_k08co"]
 [ext_resource type="Script" uid="uid://ddb2nwyl1rdqy" path="res://scripts/foraging/foraging_ui/foraging_bag.gd" id="1_q7g5v"]
 [ext_resource type="Texture2D" uid="uid://de6w6cprhyuol" path="res://assets/test/placeholderbag.png" id="2_ij0qq"]
+[ext_resource type="PackedScene" uid="uid://c7nu4svmt7tcy" path="res://scenes/foraging/foliage/test_cone_foliage.tscn" id="2_lb4jd"]
 [ext_resource type="PackedScene" uid="uid://80sdcv4hsqa1" path="res://scenes/prefabs/inventory/item_holder_scene.tscn" id="3_lb4jd"]
+[ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/prefabs/inventory/hover_information.tscn" id="6_as4uu"]
+[ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="7_f3vpa"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4dvm4"]
 size = Vector2(10, 10)
@@ -14,16 +17,41 @@ points = PackedVector3Array(2.53, 0, 2.9825, -2.53, 0, 2.9825, 2.53, 0, -2.9825,
 
 [node name="Forest" type="Node3D" unique_id=529053958]
 
-[node name="FoliageManager" type="Node" parent="." unique_id=1037012145]
+[node name="FoliageManager" type="Node" parent="." unique_id=1037012145 node_paths=PackedStringArray("ingredient_foliage_spawn_points", "forest_root")]
 script = ExtResource("1_ij0qq")
+ingredient_foliage_spawn_points = [NodePath("Marker3D"), NodePath("Marker3D2"), NodePath("Marker3D3"), NodePath("Marker3D4"), NodePath("Marker3D5"), NodePath("Marker3D6")]
+ingredient_foliages = Dictionary[PackedScene, float]({
+ExtResource("2_lb4jd"): 1.0
+})
+ingredient_foliage_spawn_rate = 0.75
+forest_root = NodePath("..")
+
+[node name="Marker3D" type="Marker3D" parent="FoliageManager" unique_id=268192490]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.350976, 0, -2.9585311)
+
+[node name="Marker3D2" type="Marker3D" parent="FoliageManager" unique_id=1958869844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15849209, 0, -3.6717486)
+
+[node name="Marker3D3" type="Marker3D" parent="FoliageManager" unique_id=1925582841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.1170235, 0, -2.8792849)
+
+[node name="Marker3D4" type="Marker3D" parent="FoliageManager" unique_id=1538765406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.037777, 0, 1.8226666)
+
+[node name="Marker3D5" type="Marker3D" parent="FoliageManager" unique_id=73410749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18490696, 0, 2.4302218)
+
+[node name="Marker3D6" type="Marker3D" parent="FoliageManager" unique_id=2130191955]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.350977, 0, 1.5849273)
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=127223334]
 
-[node name="ForagingBag" type="CanvasLayer" parent="SceneUI" unique_id=2066214678 node_paths=PackedStringArray("player", "bag_button", "bag_display")]
+[node name="ForagingBag" type="CanvasLayer" parent="SceneUI" unique_id=2066214678 node_paths=PackedStringArray("player", "bag_button", "bag_display", "hover_inventory") groups=["foraging_bag"]]
 script = ExtResource("1_q7g5v")
 player = NodePath("../../Player")
 bag_button = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/TextureButton")
 bag_display = NodePath("Control/MarginContainer/BagDisplay")
+hover_inventory = NodePath("Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer/InventoryWithHover")
 
 [node name="Control" type="Control" parent="SceneUI/ForagingBag" unique_id=866487725]
 layout_mode = 3
@@ -69,6 +97,7 @@ theme_override_constants/margin_right = 29
 theme_override_constants/margin_bottom = 51
 
 [node name="CenterContainer" type="CenterContainer" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer" unique_id=460370190]
+visible = false
 layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer/CenterContainer" unique_id=529508661]
@@ -90,6 +119,12 @@ layout_mode = 2
 [node name="ItemHolder5" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer/CenterContainer/GridContainer" unique_id=544527210 instance=ExtResource("3_lb4jd")]
 layout_mode = 2
 
+[node name="InventoryWithHover" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/MarginContainer" unique_id=584691377 instance=ExtResource("6_as4uu")]
+layout_mode = 2
+columns = 5
+rows = 3
+max_quantity = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/ForagingBag/Control/MarginContainer" unique_id=1519650284]
 layout_mode = 2
 alignment = 2
@@ -101,9 +136,13 @@ alignment = 2
 [node name="TextureButton" type="TextureButton" parent="SceneUI/ForagingBag/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=688293616]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+focus_mode = 0
 texture_normal = ExtResource("2_ij0qq")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="PopupManager" type="CanvasLayer" parent="SceneUI" unique_id=540881292]
+script = ExtResource("7_f3vpa")
 
 [node name="PlaceholderPlane" type="MeshInstance3D" parent="." unique_id=1550249663]
 mesh = SubResource("PlaneMesh_4dvm4")
@@ -111,6 +150,7 @@ mesh = SubResource("PlaneMesh_4dvm4")
 [node name="StaticBody3D" type="StaticBody3D" parent="PlaceholderPlane" unique_id=1241853183]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlaceholderPlane/StaticBody3D" unique_id=1030732782]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_sbisr")
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=943629651]
