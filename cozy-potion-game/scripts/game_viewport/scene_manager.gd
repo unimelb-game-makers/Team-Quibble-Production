@@ -14,7 +14,7 @@ func _ready() -> void:
 	sub_viewport = get_tree().get_first_node_in_group("GameSubViewport")
 
 func change_active_scene_to_packed(scene: PackedScene) -> bool:
-	if not scene.can_instantiate() or not sub_viewport:
+	if not scene or not scene.can_instantiate() or not sub_viewport:
 		return false
 		
 	var new_scene_node = scene.instantiate()
