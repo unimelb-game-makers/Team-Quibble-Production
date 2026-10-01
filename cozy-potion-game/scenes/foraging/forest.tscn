@@ -8,13 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://80sdcv4hsqa1" path="res://scenes/prefabs/inventory/item_holder_scene.tscn" id="3_lb4jd"]
 [ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/prefabs/inventory/hover_information.tscn" id="6_as4uu"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="7_f3vpa"]
-[ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="9_54ec3"]
+[ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/prefabs/portal.tscn" id="9_54ec3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4dvm4"]
 size = Vector2(10, 10)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sbisr"]
 points = PackedVector3Array(2.53, 0, 2.9825, -2.53, 0, 2.9825, 2.53, 0, -2.9825, -2.53, 0, -2.9825)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_54ec3"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="Forest" type="Node3D" unique_id=529053958]
 
@@ -161,5 +164,6 @@ bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119140625, 0)
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1.59, 0, 1, -6.9501105e-08, 1.6546631, 1.2883911, 0)
+transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
+texture = SubResource("ViewportTexture_54ec3")
 destination_path = &"uid://bec7ovcvsvc5q"
