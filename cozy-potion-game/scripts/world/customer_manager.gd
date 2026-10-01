@@ -46,9 +46,9 @@ func _on_day_started() -> void:
 
 func send_customer() -> void:
 	customer_world.customer = get_next_customer()
-	if not customer_world.customer :
+	if not customer_world.customer:
 		return
-		
+	
 	customer_anim_player.play("person_in")
 	Utils.corner_needs_list_manager.create_list(customer_world.customer)
 
