@@ -1,3 +1,5 @@
+// Shader sourced from https://godotshaders.com/shader/wormhole-blackhole/
+
 shader_type canvas_item;
 render_mode unshaded;
 
