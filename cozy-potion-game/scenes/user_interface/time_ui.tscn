@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c7a7w81ecgyv1"]
 
-[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/main_theme.tres" id="1_7hrnt"]
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/themes/main_theme.tres" id="1_7hrnt"]
 [ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_nd8pm"]
 [ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/user_interface/news_popup.gd" id="3_2fgp6"]
 [ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="4_mge8t"]

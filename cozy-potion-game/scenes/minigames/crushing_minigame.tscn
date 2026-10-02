@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c3d0b384c1s1b"]
+
+[ext_resource type="PackedScene" uid="uid://dl2b8oidm5fcn" path="res://assets/models/PH/Mortar_Pestle_Table_PH/Mortar_Pestle_Placeholder.glb" id="1_fjp4r"]
+[ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="2_wywh3"]
+[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/minigames/components/crushing_minigame_scene.tscn" id="3_tywb5"]
+[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="4_0o2nb"]
+[ext_resource type="PackedScene" uid="uid://cgwcxn7koxnq4" path="res://scenes/user_interface/indicator_anchor.tscn" id="5_n73ok"]
+[ext_resource type="PackedScene" uid="uid://lefumu5skmny" path="res://assets/models/PH/Mortar_Pestle_Only_PH/Pestle_Placeholder.glb" id="6_w7qyw"]
+[ext_resource type="PackedScene" uid="uid://w65i7h10tgrw" path="res://assets/models/PH/Mortar_Pestle_Only_PH/Mortar_Placeholder.glb" id="7_2wnjf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1khlx"]
+
+[node name="CrushingMinigame" type="Node3D" unique_id=93761189 node_paths=PackedStringArray("interactable", "indicator_pos")]
+script = ExtResource("2_wywh3")
+minigame_scene = ExtResource("3_tywb5")
+interactable = NodePath("CrushingMinigameInteractable")
+indicator_pos = NodePath("IndicatorAnchor")
+
+[node name="CrushingMinigameInteractable" type="Area3D" parent="." unique_id=188938070]
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("4_0o2nb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrushingMinigameInteractable" unique_id=898391114]
+shape = SubResource("BoxShape3D_1khlx")
+
+[node name="CrushingStationModel" parent="." unique_id=125084332 instance=ExtResource("1_fjp4r")]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+
+[node name="Pestle_Placeholder2" parent="CrushingStationModel" unique_id=2104218799 instance=ExtResource("6_w7qyw")]
+transform = Transform3D(-0.0020001906, 0.0014166669, -0.9999971, 0.57798076, 0.8160504, 0, 0.816048, -0.5779791, -0.0024510624, -0.074035645, 0.8571267, 0.013839483)
+
+[node name="Mortar_Placeholder2" parent="CrushingStationModel" unique_id=1151704717 instance=ExtResource("7_2wnjf")]
+transform = Transform3D(-0.0024510624, 0, -0.9999971, 0, 1, 0, 0.9999971, 0, -0.0024510624, -0.12246895, 0.7485452, -0.038268566)
+
+[node name="IndicatorAnchor" parent="." unique_id=1791509362 instance=ExtResource("5_n73ok")]

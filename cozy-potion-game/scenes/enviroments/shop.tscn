@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bec7ovcvsvc5q"]
 
-[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/main_theme.tres" id="2_a6g3j"]
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/themes/main_theme.tres" id="2_a6g3j"]
 [ext_resource type="PackedScene" uid="uid://c7a7w81ecgyv1" path="res://scenes/user_interface/time_ui.tscn" id="2_efgiu"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/user_interface/popup_manager.gd" id="4_j14q8"]
 [ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="5_posyw"]
@@ -8,10 +8,9 @@
 [ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="6_heatd"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="6_yuijs"]
 [ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/inventory/hover_information.tscn" id="7_ccf1r"]
-[ext_resource type="PackedScene" uid="uid://dggr5lsckq1da" path="res://on_the_chopping_block/recipe_scene.tscn" id="7_m4ofw"]
-[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/minigames/crushing_minigame_scene.tscn" id="7_y6sft"]
+[ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/minigames/components/crushing_minigame_scene.tscn" id="7_y6sft"]
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/viewports/popup_sub_window.tscn" id="8_m4ofw"]
-[ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/minigames/cauldron_scene.tscn" id="9_m4ofw"]
+[ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/minigames/components/cauldron_scene.tscn" id="9_m4ofw"]
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
 [ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="10_p0at6"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
@@ -205,26 +204,6 @@ script = ExtResource("11_7mqwv")
 shape = SubResource("BoxShape3D_aue3q")
 
 [node name="IndicatorAnchor" parent="Node3D/PantryObject/PantryMinigame" unique_id=1791509362 instance=ExtResource("22_f7hvh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15099335, 0.7722844, 0.23813152)
-
-[node name="RecipeMinigame" type="Node3D" parent="Node3D" unique_id=1914127599 node_paths=PackedStringArray("interactable", "indicator_pos")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7538233, 8.734198, -5.0491524)
-visible = false
-script = ExtResource("6_heatd")
-minigame_scene = ExtResource("7_m4ofw")
-interactable = NodePath("RecipeMinigameInteractable")
-indicator_pos = NodePath("IndicatorAnchor")
-
-[node name="RecipeMinigameInteractable" type="Area3D" parent="Node3D/RecipeMinigame" unique_id=254663262]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9055874, 0.51443744, 0.042072535)
-collision_layer = 1048576
-collision_mask = 67108865
-script = ExtResource("11_7mqwv")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/RecipeMinigame/RecipeMinigameInteractable" unique_id=660347118]
-shape = SubResource("BoxShape3D_aue3q")
-
-[node name="IndicatorAnchor" parent="Node3D/RecipeMinigame" unique_id=2110471001 instance=ExtResource("22_f7hvh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15099335, 0.7722844, 0.23813152)
 
 [node name="CrushingMinigameObject" parent="Node3D" unique_id=439115647 instance=ExtResource("23_p0at6")]
