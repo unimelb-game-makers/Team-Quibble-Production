@@ -9,6 +9,7 @@ var item_holder : ItemHolder = null
 var ishovering := false
 var max_quantity: int = 999
 
+var max_pickup: int = 1
 
 static func get_scene() -> PackedScene:
 	return preload("uid://bcqi5ykyush3i")
@@ -20,8 +21,8 @@ func _ready() -> void:
 
 # Exists so panel can be filter Ignore, emulates mouse_exited/entered
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		emulate_mouse_inside()
+	# Previously this would only emit motion but not justs emits if cursor hovering
+	emulate_mouse_inside()
 
 
 # If cursor inside emits hovering signal, emits mouse_exited if cursor leaves
@@ -39,8 +40,9 @@ func emulate_mouse_inside() -> void:
 
 const ITEM_HOLDER = preload("res://scenes/prefabs/inventory/item_holder_scene.tscn")
 
-func create_holder(stack : Stack) -> ItemHolder:
+func create_holder_as_child(stack : Stack) -> ItemHolder:
 	var new_item_holder = ITEM_HOLDER.instantiate()
+	add_child(new_item_holder)
 	new_item_holder.stack = stack
 	
 	return new_item_holder
@@ -54,8 +56,7 @@ func set_stack(stack:Stack) -> void:
 		disconnect_holder()
 	
 	# Creates new holder from stack
-	var holder := create_holder(stack)
-	add_child(holder)
+	var holder := create_holder_as_child(stack)
 	set_item_holder(holder)
 
 

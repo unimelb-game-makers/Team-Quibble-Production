@@ -28,7 +28,7 @@ func _ready() -> void:
 # Updates slot visuals based on changes in stack
 func update_stack() -> void:
 	if stack:
-		item_sprite.texture = stack.get_sprite()
+		item_sprite.texture = stack.get_item_sprite()
 		quantity_label.text = stack.get_quantity_label()
 
 

@@ -29,9 +29,11 @@ func _ready() -> void:
 		object.connect("interacted", start_display_popup)
 		print_debug("connected to node %s" % object)
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("close_minigame"):
 		if popup: end_display_popup()
+
 
 func start_display_popup(_scene_to_load: PackedScene) -> void:
 	player.accepting_control = false
@@ -41,6 +43,17 @@ func start_display_popup(_scene_to_load: PackedScene) -> void:
 
 	sub_viewport.add_child(popup)
 	animation_player.play(&"fade_in")
+
+
+# Edited version of above, didn't want to touch, with stuff removed for notebook
+func start_return_display_popup(_scene_to_load: PackedScene) -> Node:
+	player.accepting_control = false
+	var temp_popup = _scene_to_load.instantiate()
+
+	temp_popup.minigame_won.connect(end_specfic_display_popup.bind(temp_popup), ConnectFlags.CONNECT_ONE_SHOT)
+
+	sub_viewport.add_child(temp_popup)
+	return temp_popup
 
 
 func end_display_popup() -> void:
@@ -54,3 +67,8 @@ func end_display_popup() -> void:
 	popup.queue_free()
 	
 	player.accepting_control = true
+
+
+func end_specfic_display_popup(temp_popup: Node) -> void:
+	sub_viewport.remove_child(temp_popup)
+	temp_popup.queue_free()
