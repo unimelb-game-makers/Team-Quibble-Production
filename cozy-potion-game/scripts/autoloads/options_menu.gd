@@ -16,6 +16,8 @@ var blur_shader: ShaderMaterial
 var open: bool = false
 var animation_running: bool = false
 
+var current_menu: Control
+
 func _ready() -> void:
 	options_menu_container = get_tree().get_first_node_in_group("OptionsMenuContainer")
 	if not options_menu_container.is_node_ready():
@@ -47,9 +49,19 @@ func _input(event: InputEvent) -> void:
 		if animation_running:
 			return
 		if not open:
+			current_menu = options_menu_container
 			open_options_menu()
-		else:
+		elif open and current_menu == options_menu_container:
 			close_options_menu()
+		elif open:
+			blur_rect.hide()
+			current_menu.hide()
+			current_menu = options_menu_container
+			open = false
+			
+			var focus_owner = get_viewport().gui_get_focus_owner()
+			if focus_owner:
+				focus_owner.release_focus()
 		# this key should always open the options menu, and only
 		# open the options menu
 		get_viewport().set_input_as_handled()
@@ -59,16 +71,22 @@ func _input(event: InputEvent) -> void:
 func return_button_pressed() -> void:
 	options_menu_container.visible = true
 	sound_menu.visible = false
+	
+	current_menu = options_menu_container
 
 func open_sound_menu() -> void:
-	sound_menu.visible = true	
+	sound_menu.visible = true
 	options_menu_container.visible = false
+	
+	current_menu = sound_menu
+	animate_options_menu_out()
 
 func open_options_menu() -> void:
 	#TODO give focus to first button in the options menu for non-mouse users
 	if not options_menu_container:
 		return
 	open = true
+	animate_blur()
 	animate_options_menu_in()
 
 func close_options_menu() -> void:
@@ -76,6 +94,7 @@ func close_options_menu() -> void:
 		return
 	
 	open = false
+	animate_unblur()
 	animate_options_menu_out()
 	
 	var focus_owner = get_viewport().gui_get_focus_owner()
@@ -89,13 +108,12 @@ func animate_options_menu_in() -> void:
 	#the menu button
 	animation_running = true
 	options_menu_container.show()
-	blur_rect.show()
+	
 	var tween = get_tree().create_tween()
 	
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
-
-	tween.tween_property(blur_shader, "shader_parameter/blur_amount", blur_amount, 0.1)
+	
 	tween.tween_property(options_menu_container, "offset_transform_position", Vector2.ZERO, 0.2)
 	tween.tween_callback(options_menu_container.show)
 	tween.tween_callback(func():animation_running = false)
@@ -103,18 +121,26 @@ func animate_options_menu_in() -> void:
 func animate_options_menu_out() -> void:
 	if not options_menu_container:
 		return
-		
-	var tween = get_tree().create_tween()
 	animation_running = true
 	
+	var tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	var out_pos = get_options_menu_out_position()
-	tween.tween_property(blur_shader, "shader_parameter/blur_amount", 0, 0.1)
 	tween.tween_property(options_menu_container, "offset_transform_position", out_pos, 0.2)
+	
 	tween.tween_callback(options_menu_container.hide)
-	tween.tween_callback(blur_rect.hide)
 	tween.tween_callback(func():animation_running = false)
+
+func animate_blur() -> void:
+	blur_rect.show()
+	var tween = get_tree().create_tween()
+	tween.tween_property(blur_shader, "shader_parameter/blur_amount", blur_amount, 0.1)
+
+func animate_unblur() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(blur_shader, "shader_parameter/blur_amount", 0, 0.1)
+	tween.tween_callback(blur_rect.hide)
 
 func get_options_menu_out_position() -> Vector2:
 	return Vector2(-(options_menu_container.global_position.x + options_menu_container.size.x), 0)
