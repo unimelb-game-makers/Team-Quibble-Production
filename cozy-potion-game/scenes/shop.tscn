@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bec7ovcvsvc5q"]
 
 [ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_7mqwv"]
-[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/main_theme.tres" id="2_a6g3j"]
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/ui_themes/main_theme.tres" id="2_a6g3j"]
 [ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/ui/news_popup.gd" id="3_gobkm"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="4_j14q8"]
 [ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="5_posyw"]
@@ -41,7 +41,7 @@ font_size = 124
 [sub_resource type="LabelSettings" id="LabelSettings_aue3q"]
 font_size = 26
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xogfe"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_11hi1"]
 texture = ExtResource("5_posyw")
 texture_margin_left = 64.0
 texture_margin_top = 64.0
@@ -55,15 +55,6 @@ font_size = 46
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ar3d"]
 font_size = 22
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_11hi1"]
-texture = ExtResource("5_posyw")
-texture_margin_left = 64.0
-texture_margin_top = 64.0
-texture_margin_right = 64.0
-texture_margin_bottom = 64.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -191,7 +182,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxTexture_xogfe")
+theme_override_styles/panel = SubResource("StyleBoxTexture_11hi1")
 
 [node name="MarginContainer" type="MarginContainer" parent="SceneUI/TimeUI/NewsPopup/PanelContainer" unique_id=1814893937]
 layout_mode = 2

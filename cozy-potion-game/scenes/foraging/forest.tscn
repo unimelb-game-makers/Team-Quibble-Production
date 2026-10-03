@@ -5,10 +5,20 @@
 [ext_resource type="Script" uid="uid://ddb2nwyl1rdqy" path="res://scripts/foraging/foraging_ui/foraging_bag.gd" id="1_q7g5v"]
 [ext_resource type="Texture2D" uid="uid://de6w6cprhyuol" path="res://assets/test/placeholderbag.png" id="2_ij0qq"]
 [ext_resource type="PackedScene" uid="uid://c7nu4svmt7tcy" path="res://scenes/foraging/foliage/test_cone_foliage.tscn" id="2_lb4jd"]
+[ext_resource type="Theme" uid="uid://5xdceq6g4wen" path="res://resources/ui_themes/merchant_ui_theme.tres" id="3_28u7r"]
 [ext_resource type="PackedScene" uid="uid://80sdcv4hsqa1" path="res://scenes/prefabs/inventory/item_holder_scene.tscn" id="3_lb4jd"]
+[ext_resource type="PackedScene" uid="uid://c28p44surqk5m" path="res://scenes/user_interface/merchant_item_box.tscn" id="4_iyol6"]
+[ext_resource type="Texture2D" uid="uid://bsdig3qrvg1dj" path="res://assets/sprites/dialogue/speech_bubble.png" id="5_qrrdt"]
 [ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/prefabs/inventory/hover_information.tscn" id="6_as4uu"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="7_f3vpa"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/prefabs/portal.tscn" id="9_54ec3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_aue3q"]
+font_size = 19
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4dvm4"]
 size = Vector2(10, 10)
@@ -16,7 +26,7 @@ size = Vector2(10, 10)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sbisr"]
 points = PackedVector3Array(2.53, 0, 2.9825, -2.53, 0, 2.9825, 2.53, 0, -2.9825, -2.53, 0, -2.9825)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_54ec3"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qrrdt"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="Forest" type="Node3D" unique_id=529053958]
@@ -50,7 +60,101 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.350977, 0, 1.5849273)
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=127223334]
 
+[node name="MerchantUI" type="CanvasLayer" parent="SceneUI" unique_id=1074401360]
+
+[node name="Control" type="Control" parent="SceneUI/MerchantUI" unique_id=642165156]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_28u7r")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SceneUI/MerchantUI/Control" unique_id=786940866]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI/MerchantUI/Control/HBoxContainer" unique_id=376812208]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="PanelContainer" type="PanelContainer" parent="SceneUI/MerchantUI/Control/HBoxContainer/MarginContainer" unique_id=1099200742]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI/MerchantUI/Control/HBoxContainer/MarginContainer/PanelContainer" unique_id=1831434363]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/MerchantUI/Control/HBoxContainer/MarginContainer/PanelContainer/MarginContainer" unique_id=187399160]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SceneUI/MerchantUI/Control/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2064529436]
+layout_mode = 2
+text = "Wares (Illicit)"
+label_settings = SubResource("LabelSettings_4dvm4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/MerchantUI/Control/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1099323238]
+layout_mode = 2
+
+[node name="MerchantItemBox" parent="SceneUI/MerchantUI/Control/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1789233082 instance=ExtResource("4_iyol6")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/MerchantUI/Control/HBoxContainer" unique_id=1805485488]
+layout_mode = 2
+
+[node name="MerchantSpeechBubbleControl" type="Control" parent="SceneUI/MerchantUI/Control/HBoxContainer/VBoxContainer" unique_id=880427118]
+custom_minimum_size = Vector2(500, 340)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="SceneUI/MerchantUI/Control/HBoxContainer/VBoxContainer/MerchantSpeechBubbleControl" unique_id=826904734]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_qrrdt")
+flip_h = true
+flip_v = true
+
+[node name="Control" type="Control" parent="SceneUI/MerchantUI/Control/HBoxContainer/VBoxContainer/MerchantSpeechBubbleControl" unique_id=167657177]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 88.0
+offset_right = -90.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SceneUI/MerchantUI/Control/HBoxContainer/VBoxContainer/MerchantSpeechBubbleControl/Control" unique_id=161434724]
+custom_minimum_size = Vector2(354, 179)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Don't complain about the prices. The conversion rates from USD to Gold are killing me these days."
+label_settings = SubResource("LabelSettings_aue3q")
+autowrap_mode = 2
+
 [node name="ForagingBag" type="CanvasLayer" parent="SceneUI" unique_id=2066214678 node_paths=PackedStringArray("player", "bag_button", "bag_display", "hover_inventory") groups=["foraging_bag"]]
+visible = false
 script = ExtResource("1_q7g5v")
 player = NodePath("../../Player")
 bag_button = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/TextureButton")
@@ -165,5 +269,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119140625, 0)
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
 transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
-texture = SubResource("ViewportTexture_54ec3")
+texture = SubResource("ViewportTexture_qrrdt")
 destination_path = &"uid://bec7ovcvsvc5q"

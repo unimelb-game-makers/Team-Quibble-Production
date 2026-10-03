@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bkcxf27kqxplr"]
 
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="1_7xhhn"]
-[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/main_theme.tres" id="2_7xhhn"]
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/ui_themes/main_theme.tres" id="2_7xhhn"]
 [ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_nilqj"]
 [ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/ui/news_popup.gd" id="3_451sc"]
 [ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="3_o27ie"]
@@ -119,7 +119,7 @@ corner_radius_bottom_left = 25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_451sc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_nilqj"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="Shop" type="Node" unique_id=428524118]
@@ -531,5 +531,5 @@ size = Vector3(14.65332, 0.001, 17.708008)
 
 [node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("32_nilqj")]
 transform = Transform3D(-0.041659415, 0, -1.5886197, 0, 0.99999994, 0, 0.9991318, 0, -0.06623846, 3.1275687, 1.5330745, 0.5069723)
-texture = SubResource("ViewportTexture_451sc")
+texture = SubResource("ViewportTexture_nilqj")
 destination_path = &"uid://bxq7bq8537rse"
