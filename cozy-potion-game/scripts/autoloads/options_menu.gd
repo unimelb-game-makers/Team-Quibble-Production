@@ -1,8 +1,15 @@
 extends CanvasLayer
 
-@export var blur_rect: ColorRect
+@export_group("Menus")
 @export var options_menu_container: Container
+@export var sound_menu: Control
+
+@export_group("Buttons")
 @export var exit_game_button: Button
+@export var sound_menu_button: Button
+
+@export_group("Blur")
+@export var blur_rect: ColorRect
 @export_range(0.0, 5.0, 0.1) var blur_amount: float = 1.5
 
 var blur_shader: ShaderMaterial
@@ -24,12 +31,14 @@ func _ready() -> void:
 	await get_tree().process_frame
 	options_menu_container.offset_transform_position = get_options_menu_out_position()
 	options_menu_container.hide()
+	sound_menu.hide()
 	
 	connect_buttons()
 
 func connect_buttons() -> void:
 	#TODO: exiting the game should probably be more graceful than this
 	exit_game_button.pressed.connect(get_tree().quit)
+	sound_menu_button.pressed.connect(open_sound_menu)
 
 func _input(event: InputEvent) -> void:
 	#print_debug(event.as_text())
@@ -44,6 +53,16 @@ func _input(event: InputEvent) -> void:
 		# this key should always open the options menu, and only
 		# open the options menu
 		get_viewport().set_input_as_handled()
+
+# Return to main menu. Close all other menus.
+# Each return button must connect to this function
+func return_button_pressed() -> void:
+	options_menu_container.visible = true
+	sound_menu.visible = false
+
+func open_sound_menu() -> void:
+	sound_menu.visible = true	
+	options_menu_container.visible = false
 
 func open_options_menu() -> void:
 	#TODO give focus to first button in the options menu for non-mouse users
@@ -87,7 +106,7 @@ func animate_options_menu_out() -> void:
 		
 	var tween = get_tree().create_tween()
 	animation_running = true
-
+	
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	var out_pos = get_options_menu_out_position()
