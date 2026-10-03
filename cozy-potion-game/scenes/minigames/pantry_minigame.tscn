@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b3i1syayp1xcd"]
+
+[ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="1_0eavj"]
+[ext_resource type="PackedScene" uid="uid://ccvp68inp2bhf" path="res://scenes/inventory/ingredient_drawer.tscn" id="2_ul8ib"]
+[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="3_1dddh"]
+[ext_resource type="PackedScene" uid="uid://cgwcxn7koxnq4" path="res://scenes/user_interface/indicator_anchor.tscn" id="4_k7v8y"]
+[ext_resource type="PackedScene" uid="uid://bq881rwv1qjfj" path="res://assets/models/PH/Spice_Cabinet_PH/Spice_Cabinet_Placeholder.glb" id="5_2j7ns"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8g8s0"]
+
+[node name="PantryMinigame" type="Node3D" unique_id=1793620988 node_paths=PackedStringArray("interactable", "indicator_pos")]
+script = ExtResource("1_0eavj")
+minigame_scene = ExtResource("2_ul8ib")
+interactable = NodePath("PantryMinigameInteractable")
+indicator_pos = NodePath("IndicatorAnchor")
+
+[node name="PantryMinigameInteractable" type="Area3D" parent="." unique_id=1348770449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52213943, 0)
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("3_1dddh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PantryMinigameInteractable" unique_id=689192513]
+shape = SubResource("BoxShape3D_8g8s0")
+
+[node name="IndicatorAnchor" parent="." unique_id=1791509362 instance=ExtResource("4_k7v8y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15099335, 0.7722844, 0.23813152)
+
+[node name="PantryStationModel" parent="." unique_id=1608011355 instance=ExtResource("5_2j7ns")]

@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cwlhmldq60ndb"]
+
+[ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="1_4i137"]
+[ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="2_j2y3d"]
+[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="3_annak"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0n2di"]
+
+[node name="Customer" type="Node3D" unique_id=1525976529 node_paths=PackedStringArray("interactable", "sprite_3d")]
+script = ExtResource("2_j2y3d")
+interactable = NodePath("Interactable")
+sprite_3d = NodePath("Sprite3D")
+
+[node name="Interactable" type="Area3D" parent="." unique_id=1588744533]
+script = ExtResource("3_annak")
+metadata/_custom_type_script = "uid://ciwktypwu667m"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=730711486]
+shape = SubResource("BoxShape3D_0n2di")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=318467772]
+transform = Transform3D(0.165, 0, 0, 0, 0.165, 0, 0, 0, 0.165, 0, 0, 0)
+texture = ExtResource("1_4i137")

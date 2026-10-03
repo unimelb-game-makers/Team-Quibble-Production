@@ -1,21 +1,147 @@
 [gd_scene format=3 uid="uid://d0ioco1bxt26p"]
 
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/viewports/popup_sub_window.tscn" id="1_20pkh"]
+[ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="1_ljw4x"]
 [ext_resource type="PackedScene" uid="uid://b4ym8cxp6836g" path="res://scenes/enviroments/shop_layout.tscn" id="1_m0d6u"]
 [ext_resource type="Environment" uid="uid://bkyp0kx5716dg" path="res://resources/new_environment.tres" id="2_suouy"]
+[ext_resource type="Resource" uid="uid://d4earwityq5q6" path="res://dialogue/customer/placeholder.dialogue" id="2_yt3dh"]
+[ext_resource type="PackedScene" uid="uid://c8rv1a0qlm0i1" path="res://scenes/dialogue/item_accept_dialogue_balloon.tscn" id="3_q822s"]
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/player.tscn" id="4_p210v"]
+[ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/dialogue/speech_bubble_balloon.tscn" id="4_t7nsl"]
+[ext_resource type="PackedScene" uid="uid://cwlhmldq60ndb" path="res://scenes/customer_node.tscn" id="5_2de5a"]
 [ext_resource type="PackedScene" uid="uid://c3d0b384c1s1b" path="res://scenes/minigames/crushing_minigame.tscn" id="5_p210v"]
 [ext_resource type="PackedScene" uid="uid://c434m62jy0xis" path="res://scenes/minigames/cauldron_minigame.tscn" id="6_giko4"]
+[ext_resource type="PackedScene" uid="uid://c7a7w81ecgyv1" path="res://scenes/user_interface/time_ui.tscn" id="6_yt3dh"]
 [ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="7_7orju"]
+[ext_resource type="PackedScene" uid="uid://b3i1syayp1xcd" path="res://scenes/minigames/pantry_minigame.tscn" id="7_ja4bt"]
+[ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/user_interface/popup_manager.gd" id="7_q822s"]
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/themes/main_theme.tres" id="8_aef86"]
+[ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/user_interface/list_manager.gd" id="9_fg6qk"]
+[ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="10_jn854"]
+[ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="11_jjrkg"]
+[ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/inventory/hover_information.tscn" id="12_fg6qk"]
+
+[sub_resource type="Animation" id="Animation_jyhfs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Customer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.7299187, 0.96952724, 7.4823575)]
+}
+
+[sub_resource type="Animation" id="Animation_tbgi4"]
+resource_name = "person_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Customer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.7299187, 0.96952724, 7.4823575), Vector3(1.4094231, 0.96952724, 3.462338)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xua33"]
+_data = {
+&"RESET": SubResource("Animation_jyhfs"),
+&"person_in": SubResource("Animation_tbgi4")
+}
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r5foe"]
+texture = ExtResource("10_jn854")
+texture_margin_left = 64.0
+texture_margin_top = 64.0
+texture_margin_right = 64.0
+texture_margin_bottom = 64.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ja4bt"]
 size = Vector3(100, 1, 100)
 
 [node name="ShopRevamp" type="Node3D" unique_id=1366204913]
 
+[node name="CustomerManager" type="Node" parent="." unique_id=761875196 node_paths=PackedStringArray("customer_anim_player", "customer_world")]
+script = ExtResource("1_ljw4x")
+customer_anim_player = NodePath("AnimationPlayer")
+customer_world = NodePath("../Customer")
+dialogue_resource = ExtResource("2_yt3dh")
+acceptor_dialogue_balloon = ExtResource("3_q822s")
+speech_bubble_dialogue_balloon = ExtResource("4_t7nsl")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerManager" unique_id=1483230470]
+libraries/ = SubResource("AnimationLibrary_xua33")
+
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=1356840973]
 
 [node name="PopupSubWindow" parent="SceneUI" unique_id=1360167922 groups=["popup_subwindow"] instance=ExtResource("1_20pkh")]
+
+[node name="TimeUI" parent="SceneUI" unique_id=1025226181 instance=ExtResource("6_yt3dh")]
+
+[node name="PopupManager" type="CanvasLayer" parent="SceneUI" unique_id=2006291860]
+script = ExtResource("7_q822s")
+
+[node name="ListManager" type="Control" parent="SceneUI" unique_id=1599500917 node_paths=PackedStringArray("vbox")]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme = ExtResource("8_aef86")
+script = ExtResource("9_fg6qk")
+vbox = NodePath("PanelContainer/MarginContainer/VBoxContainer/VBoxContainer")
+
+[node name="PanelContainer" type="PanelContainer" parent="SceneUI/ListManager" unique_id=1039413420]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 60.0
+offset_right = -51.0
+offset_bottom = 177.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_r5foe")
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI/ListManager/PanelContainer" unique_id=515838446]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/ListManager/PanelContainer/MarginContainer" unique_id=1841308446]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SceneUI/ListManager/PanelContainer/MarginContainer/VBoxContainer" unique_id=1340906008]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_jjrkg")
+theme_override_font_sizes/font_size = 32
+text = "Customer Needs:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/ListManager/PanelContainer/MarginContainer/VBoxContainer" unique_id=2107617834]
+layout_mode = 2
+
+[node name="HotbarHover" parent="SceneUI" unique_id=584691377 instance=ExtResource("12_fg6qk")]
+z_index = 101
+offset_left = 83.0
+offset_top = 230.0
+offset_right = -1576.0
+offset_bottom = -684.0
+columns = 3
+rows = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1800487255]
 environment = ExtResource("2_suouy")
@@ -28,14 +154,21 @@ shadow_enabled = true
 
 [node name="ShopLayout" parent="." unique_id=634199379 instance=ExtResource("1_m0d6u")]
 
-[node name="Player" parent="." unique_id=1588394108 instance=ExtResource("4_p210v")]
+[node name="Player" parent="." unique_id=1588394108 node_paths=PackedStringArray("hotbar_display") instance=ExtResource("4_p210v")]
 transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70710677, -4, 0, 0)
+hotbar_display = NodePath("../SceneUI/HotbarHover")
+
+[node name="Customer" parent="." unique_id=159717773 instance=ExtResource("5_2de5a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7299187, 0.96952724, 7.4823575)
 
 [node name="CrushingMinigame" parent="." unique_id=474952040 instance=ExtResource("5_p210v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, -0.24897656, -8.501)
 
 [node name="CauldronMinigame" parent="." unique_id=1117195076 instance=ExtResource("6_giko4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2419014, -0.25551674, -4.594636)
+
+[node name="PantryMinigame" parent="." unique_id=1793620988 instance=ExtResource("7_ja4bt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1343, -0.2378484, -4.131275)
 
 [node name="OutOfBoundsCollider" type="Area3D" parent="." unique_id=1356654418]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7, 0)

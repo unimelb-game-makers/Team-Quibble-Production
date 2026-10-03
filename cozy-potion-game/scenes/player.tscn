@@ -65,6 +65,7 @@ size = 8.177
 far = 100.0
 
 [node name="MouseDetectorLeft" type="Control" parent="." unique_id=2018549294]
+visible = false
 top_level = true
 layout_mode = 3
 anchors_preset = 9
@@ -76,6 +77,7 @@ mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="MouseDetectorRight" type="Control" parent="." unique_id=1208150611]
+visible = false
 top_level = true
 custom_minimum_size = Vector2(100, 1080)
 layout_mode = 3

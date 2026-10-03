@@ -11,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://cty6lpq8trkc8" path="res://scenes/minigames/components/crushing_minigame_scene.tscn" id="7_y6sft"]
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/viewports/popup_sub_window.tscn" id="8_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/minigames/components/cauldron_scene.tscn" id="9_m4ofw"]
-[ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
-[ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="10_p0at6"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
 [ext_resource type="PackedScene" uid="uid://ccvp68inp2bhf" path="res://scenes/inventory/ingredient_drawer.tscn" id="11_gobkm"]
@@ -21,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/player.tscn" id="12_ouqob"]
 [ext_resource type="PackedScene" uid="uid://c8rv1a0qlm0i1" path="res://scenes/dialogue/item_accept_dialogue_balloon.tscn" id="12_xogfe"]
 [ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/dialogue/speech_bubble_balloon.tscn" id="13_11hi1"]
+[ext_resource type="PackedScene" uid="uid://cwlhmldq60ndb" path="res://scenes/customer_node.tscn" id="15_p1sst"]
 [ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="16_j14q8"]
 [ext_resource type="PackedScene" uid="uid://cgwcxn7koxnq4" path="res://scenes/user_interface/indicator_anchor.tscn" id="22_f7hvh"]
 [ext_resource type="PackedScene" uid="uid://dl2b8oidm5fcn" path="res://assets/models/PH/Mortar_Pestle_Table_PH/Mortar_Pestle_Placeholder.glb" id="23_p0at6"]
@@ -67,8 +66,6 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pitpm"]
 size = Vector3(100, 1, 100)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_0n2di"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aue3q"]
 
@@ -137,11 +134,9 @@ offset_bottom = -684.0
 columns = 3
 rows = 1
 
-[node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
+[node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player")]
 script = ExtResource("11_24it5")
 customer_anim_player = NodePath("AnimationPlayer")
-customer_interactable = NodePath("../Node3D/Customer/Interactable")
-customer_world = NodePath("../Node3D/Customer")
 dialogue_resource = ExtResource("12_7mqwv")
 acceptor_dialogue_balloon = ExtResource("12_xogfe")
 speech_bubble_dialogue_balloon = ExtResource("13_11hi1")
@@ -167,18 +162,8 @@ shape = SubResource("BoxShape3D_pitpm")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=385553193]
 
-[node name="Customer" type="Sprite3D" parent="Node3D" unique_id=1499924403]
-transform = Transform3D(-0.16495134, 5.2823457e-10, 0.0040073646, -9.1087546e-05, 0.16495737, -0.003749372, -0.0040063295, -0.0037504784, -0.16490872, 0.7299187, 0.96952724, 7.4823575)
-texture = ExtResource("10_p0at6")
-script = ExtResource("10_44xle")
-
-[node name="Interactable" type="Area3D" parent="Node3D/Customer" unique_id=27802250]
-script = ExtResource("11_7mqwv")
-metadata/_custom_type_script = "uid://ciwktypwu667m"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Customer/Interactable" unique_id=1310426984]
-transform = Transform3D(5.825, 0, 0, 0, 5.825, 0, 0, 0, 5.825, 0, -0.1376704, 1.6061554)
-shape = SubResource("BoxShape3D_0n2di")
+[node name="Customer" parent="Node3D" unique_id=159717773 instance=ExtResource("15_p1sst")]
+transform = Transform3D(-0.16495134, 5.2823457e-10, 0.0040073646, -9.108755e-05, 0.16495737, -0.0037493724, -0.0040063295, -0.0037504788, -0.16490872, 0.7299187, 0.96952724, 7.4823575)
 
 [node name="Player" parent="Node3D" unique_id=1588394108 node_paths=PackedStringArray("hotbar_display") instance=ExtResource("12_ouqob")]
 transform = Transform3D(0.6654595, 0, -0.746434, 0, 1, 0, 0.746434, 0, 0.6654595, -3.4541292, 0.31614017, -2.2616043)
