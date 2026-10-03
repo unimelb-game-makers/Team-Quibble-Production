@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="AudioResource" format=3 uid="uid://xo07w1faeggt"]
-
-[ext_resource type="AudioStream" uid="uid://x5i3jhlcodga" path="res://audio/sfx/drawer_open.mp3" id="1_8t1uy"]
-[ext_resource type="Script" uid="uid://bdhleqgxddfht" path="res://scripts/audio/audio_resource.gd" id="1_wvodj"]
-
-[resource]
-script = ExtResource("1_wvodj")
-resource_array = Array[AudioStream]([ExtResource("1_8t1uy")])
-metadata/_custom_type_script = "uid://bdhleqgxddfht"

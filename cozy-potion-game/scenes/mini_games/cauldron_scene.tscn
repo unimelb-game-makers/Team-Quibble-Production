@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://co3mgwg1g4mx6" path="res://assets/sprites/cauldron_placeholder.jpg" id="2_6g1p8"]
 [ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/prefabs/inventory/hover_information.tscn" id="2_rpwsn"]
 [ext_resource type="Script" uid="uid://bytx8uyvjb5ht" path="res://scripts/minigame/potion_crafting/potion_brewing.gd" id="3_nsau4"]
-[ext_resource type="AudioStream" uid="uid://ds3xf7y3m316t" path="res://audio/sfx/freesound_community-boiling-water-79323.mp3" id="5_rpwsn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvm4"]
 bg_color = Color(0.16206557, 0.1620656, 0.16206554, 0.80784315)
@@ -16,7 +15,7 @@ corner_radius_bottom_left = 15
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 23
 
-[node name="CanvasLayer" type="CanvasLayer" unique_id=1608703175 node_paths=PackedStringArray("potion_brewer", "reset_button", "make_button", "potion_created_container", "potion_created_name_label", "potion_created_value_label", "inventory", "cauldron_sfx")]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1608703175 node_paths=PackedStringArray("potion_brewer", "reset_button", "make_button", "potion_created_container", "potion_created_name_label", "potion_created_value_label", "inventory")]
 script = ExtResource("1_c2v7o")
 potion_brewer = NodePath("PotionBrewing")
 reset_button = NodePath("MarginContainer/Button")
@@ -25,7 +24,6 @@ potion_created_container = NodePath("MarginContainer/PotionCreateContainer")
 potion_created_name_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/NameLabel")
 potion_created_value_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/ValueLabel")
 inventory = NodePath("MarginContainer/Container/CurrentPotion/InventoryWithHover")
-cauldron_sfx = NodePath("CauldronSFX")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=884297072]
 custom_minimum_size = Vector2(10, 10)
@@ -124,9 +122,3 @@ horizontal_alignment = 1
 [node name="PotionBrewing" type="Node" parent="." unique_id=1885634969]
 script = ExtResource("3_nsau4")
 metadata/_custom_type_script = "uid://bytx8uyvjb5ht"
-
-[node name="CauldronSFX" type="AudioStreamPlayer" parent="." unique_id=1257605013]
-stream = ExtResource("5_rpwsn")
-autoplay = true
-bus = &"Minigames"
-parameters/looping = true
