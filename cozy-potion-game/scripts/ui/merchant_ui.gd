@@ -7,8 +7,9 @@ func _ready() -> void:
 	populate_container()
 
 func populate_container()-> void:
-	var item: PotionIngredient = Alchemy.ingredient_list.front()
 	for i in range(4):
+		var item = Alchemy.ingredient_list.filter(func(x:PotionIngredient): return x.purchaseable).pick_random()
 		var box: MerchantItemBox = merchant_item_box_scene.instantiate()
 		box.initialise(item)
 		item_box_container.add_child(box)
+	
