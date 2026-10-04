@@ -27,9 +27,6 @@ func display_notebook() -> void:
 
 
 func change_displayed(slot: ItemSlot) -> void:
-	if not Input.is_action_pressed("RMB"):
-		return
-	
 	if notebook == null:
 		display_notebook()
 	

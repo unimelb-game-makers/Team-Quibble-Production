@@ -22,21 +22,30 @@ func _ready() -> void:
 # Exists so panel can be filter Ignore, emulates mouse_exited/entered
 func _input(event: InputEvent) -> void:
 	# Previously this would only emit motion but not justs emits if cursor hovering
-	emulate_mouse_inside()
+	var hovering = emulate_mouse_inside()
+	
+	if not hovering and Input.is_action_just_pressed("RMB"):
+		if item_holder:
+			item_holder.highlight_turn_off()
 
 
 # If cursor inside emits hovering signal, emits mouse_exited if cursor leaves
-func emulate_mouse_inside() -> void:
+func emulate_mouse_inside() -> bool:
 	var intersecting_mouse: bool = \
 		get_global_rect().has_point(get_global_mouse_position())
 	if intersecting_mouse:
 		# if hovering emits signal
 		hovering.emit()
 		ishovering = true
+		if Input.is_action_just_pressed("RMB"):
+			if item_holder:
+				item_holder.highlight_turn_on()
 	elif ishovering:
 		# if was hovering and no longer is emits mouse_existed signal
 		ishovering = false
 		mouse_exited.emit()
+	
+	return intersecting_mouse
 
 const ITEM_HOLDER = preload("res://scenes/prefabs/inventory/item_holder_scene.tscn")
 
@@ -77,6 +86,7 @@ func disconnect_holder() -> void:
 
 func requested_pickup(requesting_draggable : DraggableComponent) -> void:
 	if true:
+		item_holder.highlight_turn_off()
 		requesting_draggable.assign_to_mouse()
 	pass
 
