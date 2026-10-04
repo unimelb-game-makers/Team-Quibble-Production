@@ -171,16 +171,20 @@ func read_ingredient_data() -> void:
 	var start = Time.get_ticks_msec()
 	for ingredient in json_data.data:
 		var temp_ingredient := PotionIngredient.new()
-		temp_ingredient.ingredient_name = ingredient["Ingredient Name"]
+		temp_ingredient.ingredient_name = ingredient["INGR_NAME"]
 
 		# Used to index an enum with a string
-		temp_ingredient.ingredient_id = IngredientID.keys().find(ingredient["Ingredient ID"]) as IngredientID
+		temp_ingredient.ingredient_id = IngredientID.keys().find(ingredient["INGR_ID"]) as IngredientID
 		
-		for process in ingredient["Compatible Process IDs"].split(", "):
+		temp_ingredient.ingredient_price = ingredient["BASE_GOLD_VALUE"]
+		if ingredient["PURCHASABLE"] == "TRUE":
+			temp_ingredient.purchaseable = true
+		
+		for process in ingredient["COMPATIBLE_PROCESS_ID"].split(", "):
 			temp_ingredient.valid_process_methods.append(ProcessID.keys().find(process))
 
 		for attribute in AttributeID.values():
-			temp_ingredient.attributes.set(attribute, ingredient[AttributeID.keys()[attribute]])
+			temp_ingredient.attributes.set(attribute, int(ingredient[AttributeID.keys()[attribute]]))
 
 		temp_ingredient.ingredient_sprite = get_sprite(IngredientID.keys()[temp_ingredient.ingredient_id])
 
