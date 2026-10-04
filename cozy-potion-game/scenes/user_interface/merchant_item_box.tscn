@@ -63,7 +63,7 @@ stretch_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=2052198337]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 9
+theme_override_constants/separation = 16
 
 [node name="ItemNameLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=561931565]
 layout_mode = 2
