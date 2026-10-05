@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/prefabs/inventory/hover_information.tscn" id="6_as4uu"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="7_f3vpa"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/prefabs/portal.tscn" id="9_54ec3"]
+[ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="14_v7bn7"]
+[ext_resource type="Script" uid="uid://dadiseehi3rsp" path="res://scripts/foraging/world_merchant.gd" id="15_ewpas"]
+[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="16_dofmw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 42
@@ -29,6 +32,9 @@ points = PackedVector3Array(2.53, 0, 2.9825, -2.53, 0, 2.9825, 2.53, 0, -2.9825,
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qrrdt"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
+size = Vector3(7.3502197, 6.5742188, 3.7713623)
 
 [node name="Forest" type="Node3D" unique_id=529053958]
 
@@ -111,6 +117,9 @@ label_settings = SubResource("LabelSettings_4dvm4")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/MerchantUI/Control/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1099323238]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 22
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/MerchantUI/Control/HBoxContainer" unique_id=1805485488]
 layout_mode = 2
@@ -274,3 +283,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119140625, 0)
 transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
 texture = SubResource("ViewportTexture_qrrdt")
 destination_path = &"uid://bec7ovcvsvc5q"
+
+[node name="Shopkeeper" type="Sprite3D" parent="." unique_id=1375560561 node_paths=PackedStringArray("interactable", "merchant_ui")]
+transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, -1.9421082, 1.6038818, -0.19445801)
+texture = ExtResource("14_v7bn7")
+script = ExtResource("15_ewpas")
+interactable = NodePath("Interactable")
+merchant_ui = NodePath("../SceneUI/MerchantUI")
+
+[node name="Interactable" type="Area3D" parent="Shopkeeper" unique_id=791366174]
+script = ExtResource("16_dofmw")
+metadata/_custom_type_script = "uid://ciwktypwu667m"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shopkeeper/Interactable" unique_id=1671487037]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7199099, -2.787109, 1.3856812)
+shape = SubResource("BoxShape3D_4dvm4")

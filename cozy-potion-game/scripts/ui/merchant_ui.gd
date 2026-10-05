@@ -6,6 +6,10 @@ class_name MerchantUI extends CanvasLayer
 func _ready() -> void:
 	populate_container()
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("close_minigame"):
+		hide()
+
 func populate_container()-> void:
 	for i in range(4):
 		var item = Alchemy.ingredient_list.filter(func(x:PotionIngredient): return x.purchaseable).pick_random()
