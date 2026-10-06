@@ -142,6 +142,12 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 theme_override_constants/separation = 10
 
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1079956059]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Sound Settings"
+horizontal_alignment = 1
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1532413130]
 layout_mode = 2
 
