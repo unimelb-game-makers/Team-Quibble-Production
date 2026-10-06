@@ -25,9 +25,10 @@ func _init(container: Container = null, max_stack_size:int = 999) -> void:
 
 
 # Creates new slot from a stack, places it in a holder if stack is not empty
-func add_new_slot_from_stack(item: Stack, trash_collector: Control) -> void:
+func add_new_slot_from_stack(item: Stack, trash_collector: Control, \
+custom_storage: Container = storage) -> void:
 	var new_item_slot: ItemSlot = ItemSlot.get_scene().instantiate()
-	storage.add_child(new_item_slot)
+	custom_storage.add_child(new_item_slot)
 	item_slots.append(new_item_slot)
 	
 	new_item_slot.max_quantity = max_quantity
@@ -62,6 +63,14 @@ func spawn_slots(item_list: Array[Stack], trash_collector: Control) -> void:
 	for new_item in item_list:
 		add_new_slot_from_stack(new_item, trash_collector)
 
+## spawns item slots from item_list into the storage parameter
+## and adds them to the inventory's item slots.
+func spawn_new_slots_to_arbitrary_storage(item_list: Array[Stack], \
+new_storage: Container, \
+trash_collector: Control) -> void:
+	
+	for item in item_list:
+		add_new_slot_from_stack(item, trash_collector, new_storage)
 
 # Currently unused
 # Similar to the above, but accepts a premade list of slots.
