@@ -42,7 +42,7 @@ size = Vector2(10, 10)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sbisr"]
 points = PackedVector3Array(2.53, 0, 2.9825, -2.53, 0, 2.9825, 2.53, 0, -2.9825, -2.53, 0, -2.9825)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_u7blp"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ewpas"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
@@ -364,7 +364,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119140625, 0)
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
 transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
-texture = SubResource("ViewportTexture_u7blp")
+texture = SubResource("ViewportTexture_ewpas")
 destination_path = &"uid://bec7ovcvsvc5q"
 
 [node name="Shopkeeper" type="Sprite3D" parent="." unique_id=1375560561 node_paths=PackedStringArray("interactable", "merchant_ui")]

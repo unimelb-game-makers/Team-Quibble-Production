@@ -16,4 +16,4 @@ func _ready() -> void:
 
 func _on_bag_button_pressed():
 	bag_display.visible = not bag_display.visible
-	player.accepting_control = not player.accepting_control
+	player.accepting_control = not bag_display.visible
