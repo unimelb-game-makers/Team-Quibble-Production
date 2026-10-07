@@ -71,25 +71,23 @@ func _input(event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 # This will need continued refactoring such that each menu has its own script to call show and hide logic.
-func open_menu(menu) -> void:
-	menu.show()
+func open_menu(menu: Control) -> void:
+	menu.visible = true
 	for _menu in menus:
 		if _menu != menu:
-			menu.hide()
+			_menu.hide()
+	current_menu = menu
 
 # Return to main menu. Close all other menus.
 # Each return button must connect to this function
 func return_button_pressed() -> void:
 	open_menu(options_menu_container)
-	
-	current_menu = options_menu_container
 	animate_options_menu_in()
 
 func open_sound_menu() -> void:
 	open_menu(sound_menu)
-	
-	current_menu = sound_menu
 	animate_options_menu_out()
+	print(sound_menu.visible)
 
 func open_options_menu() -> void:
 	#TODO give focus to first button in the options menu for non-mouse users
