@@ -10,8 +10,24 @@ var sub_viewport: SubViewport:
 			return sub_viewport
 		return null
 
+var screen_transition_rect_anim_player: AnimationPlayer:
+	get():
+		if screen_transition_rect_anim_player:
+			return screen_transition_rect_anim_player
+		elif is_inside_tree():
+			screen_transition_rect_anim_player = get_tree().get_first_node_in_group("SceneTransitionRectAnimPlayer")
+			return screen_transition_rect_anim_player
+		return null
+
+enum TRANSITIONS{
+	NONE,
+	FADE,
+}
+
 func _ready() -> void:
 	sub_viewport = get_tree().get_first_node_in_group("GameSubViewport")
+	screen_transition_rect_anim_player = get_tree().get_first_node_in_group("SceneTransitionRectAnimPlayer")
+
 
 func change_active_scene_to_packed(scene: PackedScene) -> bool:
 	if not scene or not scene.can_instantiate() or not sub_viewport:
@@ -26,7 +42,7 @@ func change_active_scene_to_packed(scene: PackedScene) -> bool:
 	sub_viewport.add_child(new_scene_node)
 	return true
 
-func change_active_scene_to_file(path: String) -> bool:
+func change_active_scene_to_file(path: String, transition_name: TRANSITIONS = TRANSITIONS.NONE) -> bool:
 	assert(sub_viewport, "A sub viewport could not be found")
 		
 	var error = ResourceLoader.load_threaded_request(path)
@@ -35,11 +51,17 @@ func change_active_scene_to_file(path: String) -> bool:
 		print_debug("error while loading scene resource with code: %s" % error)
 		return false
 		
+	if transition_name != TRANSITIONS.NONE:
+		screen_transition_rect_anim_player.play(TRANSITIONS.find_key(transition_name))
+		await screen_transition_rect_anim_player.animation_finished
+	
 	var scene = await wait_for_resource(path)
 	
 	if not scene or not scene is PackedScene:
 		return false
-	
+		
+	if transition_name != TRANSITIONS.NONE:
+		screen_transition_rect_anim_player.play_backwards(TRANSITIONS.find_key(transition_name))
 	return await change_active_scene_to_packed(scene)
 	
 func wait_for_resource(path: String) -> Resource:

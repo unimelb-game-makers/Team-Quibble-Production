@@ -41,6 +41,12 @@ func _init() -> void:
 func _ready() -> void:
 	mouse_detector_left.mouse_entered.connect(rotate_camera.bind(-1))
 	mouse_detector_right.mouse_entered.connect(rotate_camera.bind(1))
+	
+	if Portal.spawn_at_portal:
+		Portal.spawn_at_portal = false
+		var portal = get_tree().get_first_node_in_group(Utils.Group.GROUP_PORTAL)
+		if portal and portal is Portal:
+			global_position = portal.player_spawn_position.global_position
 
 
 func _unhandled_input(event: InputEvent) -> void:
