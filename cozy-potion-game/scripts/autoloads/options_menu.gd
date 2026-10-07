@@ -1,13 +1,22 @@
 extends CanvasLayer
 
-@export var blur_rect: ColorRect
+@export_group("Menus")
 @export var options_menu_container: Container
+@export var sound_menu: Control
+
+@export_group("Buttons")
 @export var exit_game_button: Button
+@export var sound_menu_button: Button
+
+@export_group("Blur")
+@export var blur_rect: ColorRect
 @export_range(0.0, 5.0, 0.1) var blur_amount: float = 1.5
 
 var blur_shader: ShaderMaterial
 var open: bool = false
 var animation_running: bool = false
+
+var menus: Array[Control]
 
 func _ready() -> void:
 	options_menu_container = get_tree().get_first_node_in_group("OptionsMenuContainer")
@@ -23,13 +32,16 @@ func _ready() -> void:
 	#wait for container resize
 	await get_tree().process_frame
 	options_menu_container.offset_transform_position = get_options_menu_out_position()
-	options_menu_container.hide()
+	# Handle Menus
+	menus.append(sound_menu)
+	hide_menus()
 	
 	connect_buttons()
 
 func connect_buttons() -> void:
 	#TODO: exiting the game should probably be more graceful than this
 	exit_game_button.pressed.connect(get_tree().quit)
+	sound_menu_button.pressed.connect(open_sound_menu)
 
 func _input(event: InputEvent) -> void:
 	#print_debug(event.as_text())
@@ -39,17 +51,47 @@ func _input(event: InputEvent) -> void:
 			return
 		if not open:
 			open_options_menu()
-		else:
-			close_options_menu()
+		elif open:
+			hide_menus()
+			blur_rect.hide()
+			open = false
+			
+			var focus_owner = get_viewport().gui_get_focus_owner()
+			if focus_owner:
+				focus_owner.release_focus()
 		# this key should always open the options menu, and only
 		# open the options menu
 		get_viewport().set_input_as_handled()
+
+# This will need continued refactoring such that each menu has its own script to call show and hide logic.
+func open_menu(menu: Control) -> void:
+	menu.visible = true
+	for _menu in menus:
+		if _menu != menu and _menu != options_menu_container:
+			_menu.hide()
+
+# Return to main menu. Close all other menus.
+# Each return button must connect to this function
+func return_button_pressed() -> void:
+	open_menu(options_menu_container)
+	animate_options_menu_in()
+
+func hide_menus():
+	close_options_menu()
+	for menu in menus:
+		menu.hide()
+
+func open_sound_menu() -> void:
+	open_menu(sound_menu)
+	#animate_options_menu_out()
+	#print(sound_menu.visible)
 
 func open_options_menu() -> void:
 	#TODO give focus to first button in the options menu for non-mouse users
 	if not options_menu_container:
 		return
 	open = true
+	animate_blur()
 	animate_options_menu_in()
 
 func close_options_menu() -> void:
@@ -57,6 +99,7 @@ func close_options_menu() -> void:
 		return
 	
 	open = false
+	animate_unblur()
 	animate_options_menu_out()
 	
 	var focus_owner = get_viewport().gui_get_focus_owner()
@@ -70,13 +113,12 @@ func animate_options_menu_in() -> void:
 	#the menu button
 	animation_running = true
 	options_menu_container.show()
-	blur_rect.show()
+	
 	var tween = get_tree().create_tween()
 	
 	tween.set_ease(Tween.EASE_OUT)
 	tween.set_trans(Tween.TRANS_CUBIC)
-
-	tween.tween_property(blur_shader, "shader_parameter/blur_amount", blur_amount, 0.1)
+	
 	tween.tween_property(options_menu_container, "offset_transform_position", Vector2.ZERO, 0.2)
 	tween.tween_callback(options_menu_container.show)
 	tween.tween_callback(func():animation_running = false)
@@ -84,18 +126,26 @@ func animate_options_menu_in() -> void:
 func animate_options_menu_out() -> void:
 	if not options_menu_container:
 		return
-		
-	var tween = get_tree().create_tween()
 	animation_running = true
-
+	
+	var tween = get_tree().create_tween()
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	var out_pos = get_options_menu_out_position()
-	tween.tween_property(blur_shader, "shader_parameter/blur_amount", 0, 0.1)
 	tween.tween_property(options_menu_container, "offset_transform_position", out_pos, 0.2)
+	
 	tween.tween_callback(options_menu_container.hide)
-	tween.tween_callback(blur_rect.hide)
 	tween.tween_callback(func():animation_running = false)
+
+func animate_blur() -> void:
+	blur_rect.show()
+	var tween = get_tree().create_tween()
+	tween.tween_property(blur_shader, "shader_parameter/blur_amount", blur_amount, 0.1)
+
+func animate_unblur() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(blur_shader, "shader_parameter/blur_amount", 0, 0.1)
+	tween.tween_callback(blur_rect.hide)
 
 func get_options_menu_out_position() -> Vector2:
 	return Vector2(-(options_menu_container.global_position.x + options_menu_container.size.x), 0)
