@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2qiws8u3tfkj"]
 
 [ext_resource type="Script" uid="uid://bekvcfp1wjd0x" path="res://scripts/game_viewport/game_sub_viewport.gd" id="1_th4xb"]
-[ext_resource type="PackedScene" uid="uid://bkcxf27kqxplr" path="res://scenes/shop_copyformerge.tscn" id="2_k2gmx"]
+[ext_resource type="PackedScene" uid="uid://bec7ovcvsvc5q" path="res://scenes/shop.tscn" id="2_k2gmx"]
 
 [sub_resource type="Animation" id="Animation_i7jsx"]
 resource_name = "FADE"
