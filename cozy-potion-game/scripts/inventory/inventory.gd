@@ -137,8 +137,8 @@ func sort_items(sort_func: Callable) -> void:
 func export_stacks() -> Array[Stack]:
 	var stacks : Array[Stack]
 	for slot in item_slots:
-		stacks.append(slot.get_stack())
-	
+		if slot.get_item_stack().quantity > 0:
+			stacks.append(slot.get_item_stack())
 	return stacks
 
 

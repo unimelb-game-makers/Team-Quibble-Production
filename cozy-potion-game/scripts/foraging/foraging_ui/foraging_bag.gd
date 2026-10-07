@@ -14,6 +14,13 @@ func _ready() -> void:
 	
 	bag_display.visible = false
 
-func _on_bag_button_pressed():
+func _on_bag_button_pressed() -> void:
 	bag_display.visible = not bag_display.visible
 	player.accepting_control = not bag_display.visible
+
+func add_stacks_to_pantry() -> void:
+	var stacks: Array[Stack] = hover_inventory.inventory.export_stacks()
+	PersistentInventory.pantry.append_array(stacks)
+
+func _exit_tree() -> void:
+	add_stacks_to_pantry()

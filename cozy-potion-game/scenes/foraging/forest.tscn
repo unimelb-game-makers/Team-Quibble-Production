@@ -42,7 +42,6 @@ size = Vector2(10, 10)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sbisr"]
 points = PackedVector3Array(2.53, 0, 2.9825, -2.53, 0, 2.9825, 2.53, 0, -2.9825, -2.53, 0, -2.9825)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_dofmw"]
 [sub_resource type="ViewportTexture" id="ViewportTexture_ewpas"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
@@ -81,6 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.350977, 0, 1.5849273)
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=127223334]
 
 [node name="ForagingBag" type="CanvasLayer" parent="SceneUI" unique_id=2066214678 node_paths=PackedStringArray("player", "bag_button", "bag_display", "hover_inventory") groups=["foraging_bag"]]
+visible = false
 script = ExtResource("1_q7g5v")
 player = NodePath("../../Player")
 bag_button = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/TextureButton")
@@ -228,6 +228,7 @@ texture_focused = ExtResource("12_g8fsv")
 stretch_mode = 3
 
 [node name="MerchantUI" type="CanvasLayer" parent="SceneUI" unique_id=1074401360 node_paths=PackedStringArray("item_box_container")]
+visible = false
 script = ExtResource("3_iyol6")
 merchant_item_box_scene = ExtResource("4_iyol6")
 item_box_container = NodePath("Control/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer")
@@ -365,7 +366,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119140625, 0)
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
 transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
-texture = SubResource("ViewportTexture_dofmw")
 texture = SubResource("ViewportTexture_ewpas")
 destination_path = &"uid://bec7ovcvsvc5q"
 

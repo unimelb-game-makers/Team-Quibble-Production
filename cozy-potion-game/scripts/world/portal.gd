@@ -12,3 +12,5 @@ func _ready() -> void:
 func _on_interact() -> void:
 	spawn_at_portal = true
 	SceneManager.change_active_scene_to_file(destination_path, SceneManager.TRANSITIONS.FADE)
+	
+	

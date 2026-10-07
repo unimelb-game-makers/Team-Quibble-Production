@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2qiws8u3tfkj"]
 
 [ext_resource type="Script" uid="uid://bekvcfp1wjd0x" path="res://scripts/game_viewport/game_sub_viewport.gd" id="1_th4xb"]
-[ext_resource type="PackedScene" uid="uid://bec7ovcvsvc5q" path="res://scenes/shop.tscn" id="2_k2gmx"]
+[ext_resource type="PackedScene" uid="uid://bkcxf27kqxplr" path="res://scenes/shop_copyformerge.tscn" id="2_k2gmx"]
 
 [sub_resource type="Animation" id="Animation_i7jsx"]
 resource_name = "FADE"
@@ -85,7 +85,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 script = ExtResource("1_th4xb")
 
-[node name="Shop" parent="ViewportControl/SubViewportContainer/SubViewport" unique_id=428524118 instance=ExtResource("2_k2gmx")]
+[node name="Shop2" parent="ViewportControl/SubViewportContainer/SubViewport" unique_id=428524118 instance=ExtResource("2_k2gmx")]
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1247178073]
 bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
