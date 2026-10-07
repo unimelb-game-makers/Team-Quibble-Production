@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c66riynsumk0a"]
+
+[ext_resource type="Shader" uid="uid://cyudbvy6qwv8e" path="res://assets/materials/shaders/portal_shader.gdshader" id="1_g6b22"]
+
+[resource]
+shader = ExtResource("1_g6b22")
+shader_parameter/radius = 0.46400001878012
+shader_parameter/black_core = 0.17500000668256
+shader_parameter/inner_ring = 0.18100000696756
+shader_parameter/edge_softness = 0.0210000009975
+shader_parameter/rotation_speed = 0.22
+shader_parameter/turbulence_speed = 0.32
+shader_parameter/swirl_strength = 3.5130001668675
+shader_parameter/turbulence_scale = 6.09200024187
+shader_parameter/turbulence_amount = 0.3990000189525
+shader_parameter/center_color = Color(0.25271392, 6.6901744e-06, 0.19511059, 1)
+shader_parameter/deep_blue = Color(0.523223, 0.002167809, 0.48940557, 1)
+shader_parameter/blue = Color(0.8047793, 0.19980225, 0.9999998, 1)
+shader_parameter/bright_blue = Color(0.8405552, 0.0003053415, 0.7783281, 1)
+shader_parameter/cyan = Color(0.7173504, 0.08313619, 0.64565766, 1)
+shader_parameter/glow_strength = 1.65
+shader_parameter/cloud_brightness = 1.15
+shader_parameter/star_density = 0.0
+shader_parameter/star_brightness = 0.0
+shader_parameter/pulse_strength = 0.0210000009975
+shader_parameter/pulse_speed = 3.058000145255
+shader_parameter/activity = 0.0

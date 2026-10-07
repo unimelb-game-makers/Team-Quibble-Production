@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://86hobw64ehjg"]
+
+[ext_resource type="Script" uid="uid://bh0y3jag2cl60" path="res://scripts/world/portal.gd" id="2_dr012"]
+[ext_resource type="Material" uid="uid://c66riynsumk0a" path="res://assets/materials/shaders/portal_shader_material.tres" id="3_fbfsp"]
+[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="3_nbarb"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_aue3q"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
+size = Vector3(1.395752, 2.437622, 0.42712402)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fbfsp"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.45
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 51.53
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_max = 1.0
+gravity = Vector3(0, -10, 0)
+scale_min = 0.2
+color = Color(1, 0.59621036, 0.9847309, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aue3q"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.9075292, 0.00072407903, 0.91740686, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4dvm4"]
+material = SubResource("StandardMaterial3D_aue3q")
+size = Vector3(0.05, 0.05, 0.05)
+
+[node name="PlaceholderPortal" type="Sprite3D" unique_id=480202819 node_paths=PackedStringArray("interactable", "player_spawn_position") groups=["portal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.59, 0, 0, 0)
+alpha_cut = 3
+alpha_scissor_threshold = 0.37
+texture = SubResource("ViewportTexture_aue3q")
+script = ExtResource("2_dr012")
+interactable = NodePath("Interactable")
+player_spawn_position = NodePath("PlayerSpawnPosition")
+
+[node name="Interactable" type="Area3D" parent="." unique_id=1905026754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4665616e-08, -0.044896297)
+script = ExtResource("3_nbarb")
+metadata/_custom_type_script = "uid://ciwktypwu667m"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=1295939060 groups=["portal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -1.5987212e-13, 1, 0.0008544922, 0.12652586, 0.039245605)
+shape = SubResource("BoxShape3D_4dvm4")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1182180335]
+offset_left = -1125.0
+offset_top = -770.0
+offset_right = -613.0
+offset_bottom = -258.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=934454135]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(300, 300)
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1722460392]
+material = ExtResource("3_fbfsp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 63.0
+offset_right = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1036035905]
+light_color = Color(0.85290444, 0.00060625497, 0.85832006, 1)
+light_energy = 2.0
+
+[node name="PortalParticles" type="GPUParticles3D" parent="." unique_id=1194320629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0034324778)
+amount = 30
+lifetime = 0.6
+fixed_fps = 0
+visibility_aabb = AABB(-3.415, -2.77, -2.39, 5, 5, 5)
+trail_lifetime = 1.17
+process_material = SubResource("ParticleProcessMaterial_fbfsp")
+draw_pass_1 = SubResource("BoxMesh_4dvm4")
+
+[node name="PlayerSpawnPosition" type="Marker3D" parent="." unique_id=1781611079]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2515603, 0)
