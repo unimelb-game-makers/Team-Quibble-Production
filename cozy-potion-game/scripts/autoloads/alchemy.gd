@@ -252,7 +252,7 @@ func get_sprite(_name: String) -> Resource:
 		var sprite = sprite_directory[index].to_camel_case().to_lower()
 		if sprite.contains(_name.to_camel_case().to_lower()):
 			var sprite_path = INGREDIENT_SPRITES+sprite_directory[index]
-			return ResourceLoader.load(sprite_path)
+			return ResourceLoader.load(sprite_path.rstrip(".import"))
 
 	print_debug(_name.to_camel_case().to_lower(), " is missing a sprite")
 	return MISSING_IMAGE
