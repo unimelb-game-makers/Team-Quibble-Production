@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://47ub0xvf0cjt" path="res://assets/materials/shaders/blur_shader.tres" id="2_ijpji"]
 [ext_resource type="FontFile" uid="uid://ioopiwohmh2h" path="res://assets/sprites/ui/beholden-book-font/BeholdenBook-Bold.ttf" id="3_hm4m4"]
 [ext_resource type="FontFile" uid="uid://cqorj4se30uga" path="res://assets/sprites/ui/beholden-book-font/BeholdenBook-Light.ttf" id="3_lfjc7"]
+[ext_resource type="StyleBox" uid="uid://bspaxd8ocmbvd" path="res://resources/ui_themes/art_stylebox_texture.tres" id="5_3xsyx"]
 
 [sub_resource type="Theme" id="Theme_hm4m4"]
 Button/font_sizes/font_size = 22
@@ -76,6 +77,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="PanelContainer" type="PanelContainer" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer" unique_id=1692637642]
 layout_mode = 2
+theme_override_styles/panel = ExtResource("5_3xsyx")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer" unique_id=2090836535]
 layout_mode = 2
@@ -130,6 +132,7 @@ offset_right = 77.5
 offset_bottom = 102.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("5_3xsyx")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer" unique_id=983138465]
 layout_mode = 2

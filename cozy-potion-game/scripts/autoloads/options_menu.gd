@@ -17,6 +17,7 @@ var open: bool = false
 var animation_running: bool = false
 
 var current_menu: Control
+var menus: Array[Control]
 
 func _ready() -> void:
 	options_menu_container = get_tree().get_first_node_in_group("OptionsMenuContainer")
@@ -32,8 +33,11 @@ func _ready() -> void:
 	#wait for container resize
 	await get_tree().process_frame
 	options_menu_container.offset_transform_position = get_options_menu_out_position()
-	options_menu_container.hide()
-	sound_menu.hide()
+	# Handle Menus
+	menus.append(options_menu_container)
+	menus.append(sound_menu)
+	for menu in menus:
+		menu.hide()
 	
 	connect_buttons()
 
@@ -66,17 +70,23 @@ func _input(event: InputEvent) -> void:
 		# open the options menu
 		get_viewport().set_input_as_handled()
 
+# This will need continued refactoring such that each menu has its own script to call show and hide logic.
+func open_menu(menu) -> void:
+	menu.show()
+	for _menu in menus:
+		if _menu != menu:
+			menu.hide()
+
 # Return to main menu. Close all other menus.
 # Each return button must connect to this function
 func return_button_pressed() -> void:
-	options_menu_container.visible = true
-	sound_menu.visible = false
+	open_menu(options_menu_container)
 	
 	current_menu = options_menu_container
+	animate_options_menu_in()
 
 func open_sound_menu() -> void:
-	sound_menu.visible = true
-	options_menu_container.visible = false
+	open_menu(sound_menu)
 	
 	current_menu = sound_menu
 	animate_options_menu_out()
