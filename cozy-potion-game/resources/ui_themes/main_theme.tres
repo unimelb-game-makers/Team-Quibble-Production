@@ -2,9 +2,54 @@
 
 [ext_resource type="FontFile" uid="uid://ldmkcpeycyq0" path="res://assets/sprites/ui/beholden-book-font/BeholdenBook-Regular.ttf" id="1_ols5k"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_biaja"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.22, 0.22, 0.22, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vnc4k"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.37, 0.37, 0.37, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ols5k"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.26800004, 0.10800001, 0.3, 0.7490196)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0, 0, 0, 0.7490196)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
 [sub_resource type="FontVariation" id="FontVariation_451sc"]
 base_font = ExtResource("1_ols5k")
 
 [resource]
 default_font = SubResource("FontVariation_451sc")
 Button/font_sizes/font_size = 32
+Button/styles/hover = SubResource("StyleBoxFlat_biaja")
+Button/styles/normal = SubResource("StyleBoxFlat_biaja")
+Button/styles/pressed = SubResource("StyleBoxFlat_vnc4k")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ols5k")
