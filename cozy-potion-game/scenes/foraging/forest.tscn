@@ -6,12 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://c7nu4svmt7tcy" path="res://scenes/foraging/foliage/test_cone_foliage.tscn" id="2_lb4jd"]
 [ext_resource type="Theme" uid="uid://5xdceq6g4wen" path="res://resources/ui_themes/merchant_ui_theme.tres" id="3_28u7r"]
 [ext_resource type="Script" uid="uid://ci3bywoe6ik6b" path="res://scripts/ui/merchant_ui.gd" id="3_iyol6"]
+[ext_resource type="Texture2D" uid="uid://yjhweuu18wcl" path="res://assets/sprites/foraging/backpack_base.png" id="4_ewpas"]
 [ext_resource type="PackedScene" uid="uid://c28p44surqk5m" path="res://scenes/user_interface/merchant_item_box.tscn" id="4_iyol6"]
 [ext_resource type="Texture2D" uid="uid://bsdig3qrvg1dj" path="res://assets/sprites/dialogue/speech_bubble.png" id="5_qrrdt"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="7_dofmw"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="7_f3vpa"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/prefabs/portal.tscn" id="9_54ec3"]
-[ext_resource type="Texture2D" uid="uid://dtbfe7jjirq1v" path="res://assets/sprites/foraging/backpack_grid.png" id="9_jfdwa"]
 [ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/Inventory/hover_inventory.gd" id="10_dofmw"]
 [ext_resource type="Texture2D" uid="uid://bro5ya0bdgk6h" path="res://assets/sprites/foraging/backpack_grid_small.png" id="12_g8fsv"]
 [ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="14_v7bn7"]
@@ -42,7 +42,7 @@ size = Vector2(10, 10)
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sbisr"]
 points = PackedVector3Array(2.53, 0, 2.9825, -2.53, 0, 2.9825, 2.53, 0, -2.9825, -2.53, 0, -2.9825)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_u7blp"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dofmw"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
@@ -120,7 +120,7 @@ mouse_filter = 2
 custom_minimum_size = Vector2(650, 650)
 layout_mode = 2
 mouse_filter = 2
-texture = ExtResource("9_jfdwa")
+texture = ExtResource("4_ewpas")
 expand_mode = 3
 
 [node name="InventoryWithHover" type="CenterContainer" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect" unique_id=584691377 node_paths=PackedStringArray("grid", "additional_grid")]
@@ -364,7 +364,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.119140625, 0)
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
 transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
-texture = SubResource("ViewportTexture_u7blp")
+texture = SubResource("ViewportTexture_dofmw")
 destination_path = &"uid://bec7ovcvsvc5q"
 
 [node name="Shopkeeper" type="Sprite3D" parent="." unique_id=1375560561 node_paths=PackedStringArray("interactable", "merchant_ui")]
