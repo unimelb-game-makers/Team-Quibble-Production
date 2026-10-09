@@ -5,6 +5,7 @@ var notebook : NotebookItemDisplay = null
 
 @onready var storage: Drawer = $Storage
 @onready var inventory_with_hover: HoverInventory = $Storage/InventoryWithHover
+@onready var item_display: CenterContainer = $ItemDisplay
 
 
 func _ready() -> void:
@@ -19,13 +20,12 @@ func win_minigame() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 	minigame_won.emit(output_stacks)
 
-const NOTEBOOK_PEDIA_VIEW = preload("uid://deay4dct1lmci")
+const NOTEBOOK_ITEM_DISPLAY = preload("uid://tvqhfnp8lc0h")
 
 # Cheat to see it, also idk if it counts as a minigame
 func display_notebook() -> void:
-	notebook = NOTEBOOK_PEDIA_VIEW.instantiate()
-	add_child(notebook)
-	notebook.set_item_grid_visbile(false)
+	notebook = NOTEBOOK_ITEM_DISPLAY.instantiate()
+	item_display.add_child(notebook)
 
 
 func change_displayed(slot: ItemSlot) -> void:

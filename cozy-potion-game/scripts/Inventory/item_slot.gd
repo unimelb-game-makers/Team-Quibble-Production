@@ -42,7 +42,8 @@ func emulate_mouse_inside() -> bool:
 	elif ishovering:
 		# if was hovering and no longer is emits mouse_existed signal
 		ishovering = false
-		item_holder.highlight_turn_off()
+		if item_holder:
+			item_holder.highlight_turn_off()
 		mouse_exited.emit()
 	
 	return intersecting_mouse
