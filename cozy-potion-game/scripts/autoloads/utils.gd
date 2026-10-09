@@ -6,6 +6,7 @@ const DEBUG: bool = false
 
 var popup_manager: PopupManager
 var corner_needs_list_manager: CornerNeedsListManager
+var audio_manager: AudioManager
 
 # project group names
 const Group = {
