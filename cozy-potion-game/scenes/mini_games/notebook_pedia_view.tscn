@@ -1,0 +1,119 @@
+[gd_scene format=3 uid="uid://deay4dct1lmci"]
+
+[ext_resource type="Script" uid="uid://coyi7brtbik0o" path="res://scripts/minigame/notebook/notebook_item_display.gd" id="1_ja5e2"]
+[ext_resource type="Texture2D" uid="uid://ccbkqsk6810wi" path="res://assets/sprites/ingredients/cinnamon_128.png" id="2_twa86"]
+[ext_resource type="Script" uid="uid://cqv7uiefhmy1y" path="res://scripts/minigame/notebook/notebook_item_array_display.gd" id="3_twa86"]
+
+[sub_resource type="Gradient" id="Gradient_twa86"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.046002887, 0.2838374, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8tn5n"]
+gradient = SubResource("Gradient_twa86")
+
+[sub_resource type="Gradient" id="Gradient_ddgbt"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.046002887, 0.2838374, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ko5d2"]
+gradient = SubResource("Gradient_ddgbt")
+
+[node name="NotebookPediaView" type="CanvasLayer" unique_id=315969602]
+script = ExtResource("1_ja5e2")
+
+[node name="ItemDisplayPage" type="Control" parent="." unique_id=1274468678]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 963.0
+offset_top = 172.0
+offset_right = 1432.0
+offset_bottom = 735.0
+
+[node name="Sprite" type="TextureRect" parent="ItemDisplayPage" unique_id=1183761357]
+custom_minimum_size = Vector2(128, 128)
+custom_maximum_size = Vector2(128, 128)
+layout_mode = 0
+offset_left = 31.0
+offset_top = 22.0
+offset_right = 159.0
+offset_bottom = 150.0
+texture = ExtResource("2_twa86")
+stretch_mode = 2
+
+[node name="Name" type="Label" parent="ItemDisplayPage" unique_id=2057724537]
+custom_maximum_size = Vector2(195, -1)
+layout_mode = 0
+offset_left = 181.0
+offset_top = 59.0
+offset_right = 376.0
+offset_bottom = 117.0
+theme_override_font_sizes/font_size = 42
+text = "Apple"
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="ItemDisplayPage" unique_id=1948623985]
+custom_minimum_size = Vector2(370, 153)
+custom_maximum_size = Vector2(370, 153)
+layout_mode = 0
+offset_left = 30.0
+offset_top = 178.0
+offset_right = 400.0
+offset_bottom = 331.0
+text = "I am in love with ducks, all types of ducks. A lymric I rhyme with ducks I sleep. But Alone I feel that my a duck can not sustiate my love for gooses. A goose can be red blue or yellow, given the right type of paint, with thunder they can even be turnt entirely black."
+autowrap_mode = 2
+
+[node name="AttributeTitle" type="Label" parent="ItemDisplayPage" unique_id=1222936359]
+layout_mode = 0
+offset_left = 33.0
+offset_top = 358.0
+offset_right = 204.0
+offset_bottom = 407.0
+theme_override_font_sizes/font_size = 35
+text = "Attributes"
+
+[node name="AttributeList" type="Label" parent="ItemDisplayPage" unique_id=1612796566]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 416.0
+offset_right = 214.0
+offset_bottom = 489.0
+theme_override_font_sizes/font_size = 25
+text = "Gas me up
+Gas me down"
+
+[node name="Pedia" type="Control" parent="." unique_id=61069302]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 994.0
+offset_top = 194.0
+offset_right = 1034.0
+offset_bottom = 234.0
+
+[node name="ItemArray" type="GridContainer" parent="Pedia" unique_id=1510992778]
+layout_mode = 0
+offset_left = -674.0
+offset_top = -5.0
+offset_right = -22.0
+offset_bottom = 505.0
+columns = 3
+script = ExtResource("3_twa86")
+cols = 5
+rows = 5
+
+[node name="RightArrow" type="TextureButton" parent="Pedia" unique_id=586060652]
+layout_mode = 0
+offset_left = -160.0
+offset_top = 546.0
+offset_right = -26.0
+offset_bottom = 680.0
+texture_normal = SubResource("GradientTexture2D_8tn5n")
+stretch_mode = 0
+
+[node name="LeftArrow" type="TextureButton" parent="Pedia" unique_id=181327421]
+layout_mode = 0
+offset_left = -687.0
+offset_top = 525.0
+offset_right = -537.0
+offset_bottom = 680.0
+texture_normal = SubResource("GradientTexture2D_ko5d2")
+stretch_mode = 0

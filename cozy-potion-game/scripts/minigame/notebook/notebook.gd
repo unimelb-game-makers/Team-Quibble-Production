@@ -1,17 +1,34 @@
 class_name Notebook
 extends Minigame
 
-@onready var item_display_page: NotebookItemDisplay = $ItemDisplayPage
+
+var loaded_page : CanvasLayer
+
+@onready var display: Control = $Display
+
+@onready var tutorial_page_button: TextureButton = $TutorialPageButton
+@onready var pedia_page_button: TextureButton = $PediaPageButton
 @onready var exit_button: TextureButton = $ExitButton
 
+const NOTEBOOK_TUTORIAL = preload("uid://bio4negeixv1a")
+const NOTEBOOK_PEDIA_VIEW = preload("uid://deay4dct1lmci")
+
 func _ready() -> void:
-	item_display_page.reset_display()
-	exit_button.pressed.connect(close_notebook)
+	load_page(NOTEBOOK_PEDIA_VIEW)
+	
+	exit_button.pressed.connect(win_minigame)
+	
+	# Cheat but only like 3 buttons so what does it matter
+	tutorial_page_button.pressed.connect(load_page.bind(NOTEBOOK_TUTORIAL))
+	pedia_page_button.pressed.connect(load_page.bind(NOTEBOOK_PEDIA_VIEW))
 
 
-func set_display(ingre : PotionIngredient) -> void:
-	item_display_page.reset_display()
-	item_display_page.set_potion_ingredient(ingre)
+func load_page(new_page : PackedScene) -> void:
+	if loaded_page != null:
+		loaded_page.queue_free()
+	
+	loaded_page = new_page.instantiate()
+	display.add_child(loaded_page)
 
 
 func close_notebook() -> void:

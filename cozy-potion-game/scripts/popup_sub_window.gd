@@ -45,17 +45,6 @@ func start_display_popup(_scene_to_load: PackedScene) -> void:
 	animation_player.play(&"fade_in")
 
 
-# Edited version of above, didn't want to touch, with stuff removed for notebook
-func start_return_display_popup(_scene_to_load: PackedScene) -> Node:
-	player.accepting_control = false
-	var temp_popup = _scene_to_load.instantiate()
-
-	temp_popup.minigame_won.connect(end_specfic_display_popup.bind(temp_popup), ConnectFlags.CONNECT_ONE_SHOT)
-
-	sub_viewport.add_child(temp_popup)
-	return temp_popup
-
-
 func end_display_popup() -> void:
 	animation_player.play_backwards(&"fade_in")
 	await animation_player.animation_finished

@@ -1,88 +1,82 @@
 [gd_scene format=3 uid="uid://bgulnwmxdnlnl"]
 
-[ext_resource type="Texture2D" uid="uid://tw3oqsd60xb2" path="res://assets/sprites/ingredients/apple_red_128.png" id="1_mayfx"]
 [ext_resource type="Script" uid="uid://bm6l5l6jpl6af" path="res://scripts/minigame/notebook/notebook.gd" id="1_ue0xe"]
-[ext_resource type="Script" uid="uid://coyi7brtbik0o" path="res://scripts/minigame/notebook/notebook_item_display.gd" id="2_vj1gq"]
+
+[sub_resource type="Gradient" id="Gradient_mayfx"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 0.7848672, 0.54354614, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6sj1v"]
+gradient = SubResource("Gradient_mayfx")
+
+[sub_resource type="Gradient" id="Gradient_ue0xe"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.1737754, 0.5209348, 0.26398683, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ai6g8"]
+gradient = SubResource("Gradient_ue0xe")
 
 [sub_resource type="Gradient" id="Gradient_vj1gq"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(1, 0, 0, 1)
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.061257802, 0.2313096, 0.104829766, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8tn5n"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0mdqp"]
 gradient = SubResource("Gradient_vj1gq")
 
-[sub_resource type="Gradient" id="Gradient_0mdqp"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0.58431375, 0, 0, 1)
+[sub_resource type="Gradient" id="Gradient_v0hih"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.8452538, 0.16197422, 0.25141394, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_3p56h"]
-gradient = SubResource("Gradient_0mdqp")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_annh4"]
+gradient = SubResource("Gradient_v0hih")
+
+[sub_resource type="Gradient" id="Gradient_ap7gl"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.33628163, 0.029458895, 0.07379597, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ocaha"]
+gradient = SubResource("Gradient_ap7gl")
 
 [node name="Notebook" type="CanvasLayer" unique_id=525430404]
 script = ExtResource("1_ue0xe")
 
-[node name="ItemDisplayPage" type="Control" parent="." unique_id=1234778948]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2123190034]
+offset_left = 214.0
+offset_top = 133.0
+offset_right = 1232.0
+offset_bottom = 918.0
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_6sj1v")
+
+[node name="TutorialPageButton" type="TextureButton" parent="." unique_id=289792356]
+offset_left = 218.0
+offset_top = 48.0
+offset_right = 509.0
+offset_bottom = 133.0
+texture_normal = SubResource("GradientTexture2D_ai6g8")
+texture_hover = SubResource("GradientTexture2D_0mdqp")
+stretch_mode = 0
+
+[node name="PediaPageButton" type="TextureButton" parent="." unique_id=2021792960]
+offset_left = 512.0
+offset_top = 48.0
+offset_right = 803.0
+offset_bottom = 133.0
+texture_normal = SubResource("GradientTexture2D_annh4")
+texture_hover = SubResource("GradientTexture2D_ocaha")
+stretch_mode = 0
+
+[node name="ExitButton" type="TextureButton" parent="." unique_id=1703632084]
+offset_left = 1125.0
+offset_top = 48.0
+offset_right = 1233.0
+offset_bottom = 133.0
+texture_normal = SubResource("GradientTexture2D_annh4")
+texture_hover = SubResource("GradientTexture2D_ocaha")
+stretch_mode = 0
+
+[node name="Display" type="Control" parent="." unique_id=1650927227]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 1197.0
-offset_top = 235.0
-offset_right = 1666.0
-offset_bottom = 798.0
-script = ExtResource("2_vj1gq")
-
-[node name="Sprite" type="TextureRect" parent="ItemDisplayPage" unique_id=1849279964]
-layout_mode = 0
-offset_left = 31.0
-offset_top = 22.0
-offset_right = 159.0
-offset_bottom = 150.0
-texture = ExtResource("1_mayfx")
-
-[node name="Name" type="Label" parent="ItemDisplayPage" unique_id=1918673306]
-custom_maximum_size = Vector2(195, -1)
-layout_mode = 0
-offset_left = 181.0
-offset_top = 59.0
-offset_right = 376.0
-offset_bottom = 117.0
-theme_override_font_sizes/font_size = 42
-text = "Apple"
-autowrap_mode = 2
-
-[node name="Description" type="Label" parent="ItemDisplayPage" unique_id=2019802655]
-custom_minimum_size = Vector2(370, 153)
-custom_maximum_size = Vector2(370, 153)
-layout_mode = 0
-offset_left = 30.0
-offset_top = 178.0
-offset_right = 400.0
-offset_bottom = 331.0
-text = "I am in love with ducks, all types of ducks. A lymric I rhyme with ducks I sleep. But Alone I feel that my a duck can not sustiate my love for gooses. A goose can be red blue or yellow, given the right type of paint, with thunder they can even be turnt entirely black."
-autowrap_mode = 2
-
-[node name="AttributeTitle" type="Label" parent="ItemDisplayPage" unique_id=232231424]
-layout_mode = 0
-offset_left = 33.0
-offset_top = 358.0
-offset_right = 204.0
-offset_bottom = 407.0
-theme_override_font_sizes/font_size = 35
-text = "Attributes"
-
-[node name="AttributeList" type="Label" parent="ItemDisplayPage" unique_id=219015386]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 416.0
-offset_right = 214.0
-offset_bottom = 489.0
-theme_override_font_sizes/font_size = 25
-text = "Gas me up
-Gas me down"
-
-[node name="ExitButton" type="TextureButton" parent="." unique_id=1791974139]
-offset_left = 1510.0
-offset_top = 222.0
-offset_right = 1574.0
-offset_bottom = 286.0
-texture_normal = SubResource("GradientTexture2D_8tn5n")
-texture_hover = SubResource("GradientTexture2D_3p56h")
+offset_right = 40.0
+offset_bottom = 40.0
