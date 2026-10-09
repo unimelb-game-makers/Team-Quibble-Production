@@ -18,6 +18,7 @@ class_name IngredientBall extends RigidBody2D
 @export var collision_area: Area2D
 @export var ingredient_sprite: Sprite2D
 @export var ingredient_background: Sprite2D
+@export var crush_sounds: Array[AudioStream]
 
 # WHY are these all exports :(
 # best practice ;(
@@ -29,6 +30,7 @@ var internal_scale = 1
 @export var base_grace_period: float = 0.2
 var grace_period: float = 0.2
 
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	grace_period = base_grace_period
@@ -45,9 +47,17 @@ func split() -> void:
 			new_ball.set_internal_scale(internal_scale * split_scale)
 		
 			get_parent().call_deferred("add_child", new_ball)
-		
+		play_sound()
 		queue_free()
 
+func play_sound() -> void:
+	#if audio_player.playing:
+		#return
+	var rand_idx: int = randi_range(0, len(crush_sounds) - 1)
+	var sfx: AudioStream = crush_sounds[rand_idx]
+	audio_player.stream = sfx
+	audio_player.play()
+	print(audio_player.stream, sfx)
 
 #update the internal scale of the rigidbody and scale all of its children
 #to match. the markers are also moved inward

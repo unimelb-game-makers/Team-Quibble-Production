@@ -3,6 +3,12 @@
 [ext_resource type="Script" uid="uid://ieqfw76u2c8q" path="res://scripts/minigame/crushing_minigame/ingredient_ball.gd" id="1_sli4w"]
 [ext_resource type="Texture2D" uid="uid://b3hiyhm3l3hid" path="res://assets/sprites/minigame/crushing_minigame/ball.png" id="2_fv063"]
 [ext_resource type="Texture2D" uid="uid://dxjv147f0i0pi" path="res://assets/sprites/apple_red_64.png" id="3_la51t"]
+[ext_resource type="AudioStream" uid="uid://cnqp4i2ps3m7c" path="res://audio/sfx/mortar_pestle_grind_2.mp3" id="3_nqtyv"]
+[ext_resource type="AudioStream" uid="uid://c7kjqxiv721ew" path="res://audio/sfx/mortar_pestle_grind_3.mp3" id="4_anb3p"]
+[ext_resource type="AudioStream" uid="uid://n57xankpkmdb" path="res://audio/sfx/mortar_pestle_grind_1.mp3" id="4_la51t"]
+[ext_resource type="AudioStream" uid="uid://b7rf4sfs8gbhl" path="res://audio/sfx/mortar_pestle_grind_4.mp3" id="5_hp3tm"]
+[ext_resource type="AudioStream" uid="uid://cata03kafpsw3" path="res://audio/sfx/mortar_pestle_grind_5.mp3" id="6_1srim"]
+[ext_resource type="AudioStream" uid="uid://cjs3ncl16u41k" path="res://audio/sfx/mortar_pestle_grind_6.mp3" id="7_y5bwd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4dvm4"]
 radius = 65.45
@@ -25,6 +31,7 @@ collision_shape = NodePath("CollisionShape2D")
 collision_area = NodePath("Area2D")
 ingredient_sprite = NodePath("IngredientSprite")
 ingredient_background = NodePath("IngredientSpriteBackground")
+crush_sounds = Array[AudioStream]([ExtResource("4_la51t"), ExtResource("3_nqtyv"), ExtResource("4_anb3p"), ExtResource("5_hp3tm"), ExtResource("6_1srim"), ExtResource("7_y5bwd")])
 base_grace_period = 0.15
 
 [node name="SplitSpawn1" type="Marker2D" parent="." unique_id=155698116]
@@ -49,6 +56,10 @@ texture = ExtResource("3_la51t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=72396208]
 shape = SubResource("CircleShape2D_aue3q")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=65248364]
+stream = ExtResource("4_la51t")
+autoplay = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
