@@ -47,7 +47,7 @@ func split() -> void:
 			new_ball.set_internal_scale(internal_scale * split_scale)
 		
 			get_parent().call_deferred("add_child", new_ball)
-		play_sound()
+			play_sound()
 		queue_free()
 
 func play_sound() -> void:

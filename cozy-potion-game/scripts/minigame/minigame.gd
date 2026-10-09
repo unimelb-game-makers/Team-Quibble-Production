@@ -26,6 +26,9 @@ func win_minigame() -> void:
 	player.inventory().blind_add_stack(output_ingredient)
 	minigame_won.emit()
 
+func close_minigame() -> void:
+	pass
+
 func set_ingredient_list(_new_ingredient_list: Array[Stack]) -> void:
 	pass
 

@@ -50,7 +50,10 @@ func end_display_popup() -> void:
 	sub_viewport.remove_child(popup)
 	if popup.is_connected("minigame_won", end_display_popup):
 		popup.minigame_won.disconnect(end_display_popup)
-
+	
+	if popup is Minigame:
+		popup.close_minigame()
+	
 	popup.queue_free()
 	
 	player.accepting_control = true
