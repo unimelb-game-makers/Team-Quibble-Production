@@ -28,8 +28,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not DraggableComponent.dragged_control:
 		# print_debug(2)
 		return
-	
-	print(my_control)
+
 
 	if not my_control.is_visible_in_tree():
 		print_debug(3)
@@ -38,7 +37,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not accepting_items:
 		return
 
-	print("draggable acceptor")
+	
 	
 	var intersecting_mouse: bool = \
 	my_control.get_global_rect().has_point(my_control.get_global_mouse_position())

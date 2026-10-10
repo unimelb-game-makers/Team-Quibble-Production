@@ -29,9 +29,11 @@ func _ready() -> void:
 		object.connect("interacted", start_display_popup)
 		print_debug("connected to node %s" % object)
 
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("close_minigame"):
 		if popup: end_display_popup()
+
 
 func start_display_popup(_scene_to_load: PackedScene) -> void:
 	player.accepting_control = false
@@ -54,3 +56,8 @@ func end_display_popup() -> void:
 	popup.queue_free()
 	
 	player.accepting_control = true
+
+
+func end_specfic_display_popup(temp_popup: Node) -> void:
+	sub_viewport.remove_child(temp_popup)
+	temp_popup.queue_free()

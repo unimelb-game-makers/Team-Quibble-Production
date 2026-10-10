@@ -3,7 +3,8 @@ extends Panel
 
 @export var item_sprite: TextureRect
 @export var quantity_label: Label
-@export var clickable_component: ClickableComponent
+@export var draggable_component: DraggableComponent
+@onready var highlight_text: TextureRect = $Highlight
 
 # If stack updated reconnects stack update signal to new stack
 var stack : Stack :
@@ -22,14 +23,23 @@ static func get_scene() -> PackedScene:
 
 
 func _ready() -> void:
+	highlight_text.visible = false
 	stack = Stack.new(0)
 
 
 # Updates slot visuals based on changes in stack
 func update_stack() -> void:
 	if stack:
-		item_sprite.texture = stack.get_sprite()
+		item_sprite.texture = stack.get_item_sprite()
 		quantity_label.text = stack.get_quantity_label()
+
+
+func highlight_turn_off() -> void:
+	highlight_text.visible = false
+
+
+func highlight_turn_on() -> void:
+	highlight_text.visible = true
 
 
 func get_item_stack() -> Stack:

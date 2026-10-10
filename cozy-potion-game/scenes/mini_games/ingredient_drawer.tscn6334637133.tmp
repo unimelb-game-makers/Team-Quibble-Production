@@ -27,9 +27,3 @@ text = "Itemname"
 layout_mode = 2
 columns = 10
 rows = 5
-
-[node name="ItemDisplay" type="CenterContainer" parent="." unique_id=755041674]
-offset_left = 1267.0
-offset_top = 310.0
-offset_right = 1307.0
-offset_bottom = 350.0
