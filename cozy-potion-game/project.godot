@@ -51,6 +51,7 @@ player=""
 popup_subwindow=""
 ingredient_ball=""
 portal=""
+money_display=""
 
 [gui]
 

@@ -26,14 +26,15 @@ func create_potion() -> void:
 		minigame_won.emit()
 		return
 		
-	var potion_recipe := inventory.get_inventory()
+	var potion_recipe : Array[PotionIngredient]
+	
+	potion_recipe.assign(inventory.get_inventory())
 	
 	var created_potion := Alchemy.brew_potion(potion_recipe)
 
 	potion_created_container.show()
 	potion_created_name_label.text = "You made a %s!" % created_potion.potion_name
-	potion_created_value_label.text = "(which you can sell for $%d.)" % created_potion.potion_value
-	
+	potion_created_value_label.text = "(which you can sell for like, $%s.)" % created_potion.base_gold_value
 	#get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER).potion = created_potion
 	player.inventory().blind_add_stack(Stack.new(1, created_potion))
 	#reset_potion()

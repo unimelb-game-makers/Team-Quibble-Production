@@ -3,14 +3,18 @@ extends Resource
 
 var potion_name: String = "Inert Potion"
 var potion_sprite: Texture2D = preload("uid://35tpkynmm1aw")
-var potion_value: int = 0
 
+##sum of ingredient values
+var base_gold_value: int
 var potion_id: Alchemy.PotionID
 var potion_primary: Alchemy.AttributeID
 var potion_secondary: Alchemy.AttributeID
 var potion_attribute_strength: int
 
-func constructor(_attributes: Dictionary[Alchemy.AttributeID, int]) -> void:
+func constructor(_attributes: Dictionary[Alchemy.AttributeID, int], _ingredients: Array[PotionIngredient]) -> void:
+	for ingredient in _ingredients:
+		base_gold_value += ingredient.ingredient_price
+	
 	var keys := _attributes.keys()
 	keys.sort_custom(func(a, b): return _attributes[a] > _attributes[b])
 	
@@ -36,7 +40,7 @@ func constructor(_attributes: Dictionary[Alchemy.AttributeID, int]) -> void:
 
 	potion_name += Alchemy.AttributeID.keys()[potion_primary].trim_prefix("ATTR_").capitalize()
 
-	if _attributes[keys[0]] != _attributes[keys[1]]:
+	if  _attributes[keys[0]] != _attributes[keys[1]]:
 		return
 
 	potion_secondary = keys[1]

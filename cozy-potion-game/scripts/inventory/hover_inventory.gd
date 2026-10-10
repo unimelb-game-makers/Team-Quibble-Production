@@ -75,6 +75,9 @@ func update_info_sheet(stack: Stack):
 				info_attributes.text += Alchemy.AttributeID.keys()[att].substr(5) +\
 					 ": " + str(stack.item.attributes[att])
 		info_sheet.reset_size()
+	elif stack.item is Potion:
+		info_attributes.text = "Sells for about $%d" % stack.item.base_gold_value
+		info_sheet.reset_size()
 
 
 # Turns off info_sheet if mouse moves off a slot
