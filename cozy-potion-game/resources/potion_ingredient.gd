@@ -4,6 +4,8 @@ extends Resource
 # Todo: change this to a binary string cus faster probably
 var ingredient_name: String
 var ingredient_sprite: Texture2D
+var ingredient_price: float = 50
+var purchaseable: bool
 # so it will throw an out of bounds error if not set
 var ingredient_id: Alchemy.IngredientID
 var valid_process_methods: Array[Alchemy.ProcessID]
