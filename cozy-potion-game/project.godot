@@ -31,6 +31,7 @@ NewsManager="*uid://brtfnh3amack8"
 Alchemy="*uid://brexs4dtg3b08"
 DevTools="*uid://do8xg03yglhhw"
 MusicController="*uid://b6lf77n5cesvk"
+PersistentInventory="*uid://okowyngxw7yo"
 
 [display]
 
@@ -49,6 +50,8 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 player=""
 popup_subwindow=""
 ingredient_ball=""
+portal=""
+money_display=""
 
 [gui]
 

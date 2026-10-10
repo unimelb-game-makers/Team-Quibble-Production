@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://c7buurds4lwef"]
+
+[ext_resource type="Script" uid="uid://vhvqn7oafk1c" path="res://scripts/ui/money_display.gd" id="1_rvyuu"]
+[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/ui_themes/main_theme.tres" id="2_svfqg"]
+[ext_resource type="Texture2D" uid="uid://cgiu7e8wgfbbr" path="res://assets/sprites/coin.png" id="3_otnhx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_01dp5"]
+font_size = 30
+
+[node name="MoneyDisplay" type="CanvasLayer" unique_id=1711600455 node_paths=PackedStringArray("label") groups=["money_display"]]
+script = ExtResource("1_rvyuu")
+label = NodePath("Control/MarginContainer/PanelContainer/MarginContainer/HBoxContainer/Label")
+
+[node name="Control" type="Control" parent="." unique_id=2098306615]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_svfqg")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=941086040]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_right = 100.0
+offset_bottom = 115.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer" unique_id=876620197]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/PanelContainer" unique_id=2141101420]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/PanelContainer/MarginContainer" unique_id=960266290]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=805943068]
+custom_minimum_size = Vector2(50, 35)
+layout_mode = 2
+texture = ExtResource("3_otnhx")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1006372805]
+layout_mode = 2
+text = ":999"
+label_settings = SubResource("LabelSettings_01dp5")
