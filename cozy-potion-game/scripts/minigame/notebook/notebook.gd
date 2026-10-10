@@ -1,17 +1,15 @@
 class_name Notebook
 extends Minigame
 
-
-var loaded_page : CanvasLayer
+const NOTEBOOK_TUTORIAL = preload("uid://bio4negeixv1a")
+const NOTEBOOK_PEDIA_VIEW = preload("uid://deay4dct1lmci")
 
 @onready var display: Control = $Display
-
 @onready var tutorial_page_button: TextureButton = $TutorialPageButton
 @onready var pedia_page_button: TextureButton = $PediaPageButton
 @onready var exit_button: TextureButton = $ExitButton
 
-const NOTEBOOK_TUTORIAL = preload("uid://bio4negeixv1a")
-const NOTEBOOK_PEDIA_VIEW = preload("uid://deay4dct1lmci")
+var loaded_page : CanvasLayer
 
 func _ready() -> void:
 	load_page(NOTEBOOK_PEDIA_VIEW)
