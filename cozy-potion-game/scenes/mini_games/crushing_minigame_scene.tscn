@@ -80,6 +80,5 @@ color = Color(0.54509807, 1, 0.54509807, 0.18039216)
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=957697711]
 stream = ExtResource("6_2tac5")
-autoplay = true
 script = ExtResource("7_dp2bl")
 metadata/_custom_type_script = "uid://coe1t2e6118dr"
