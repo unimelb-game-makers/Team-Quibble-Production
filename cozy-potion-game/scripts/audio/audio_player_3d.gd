@@ -10,6 +10,7 @@ enum playback_condition { # Defined in UML as playback_type but that already exi
 }
 
 func _ready() -> void:
+	finished.connect(func(): if !is_playing(): queue_free())
 	add_to_group(Utils.Group.GROUP_AUDIO)
 
 func play_file(audio_file: StringName, play_options: playback_condition = playback_condition.PLAY_ONESHOT) -> void:

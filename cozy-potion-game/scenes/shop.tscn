@@ -330,6 +330,10 @@ shape = SubResource("BoxShape3D_0n2di")
 transform = Transform3D(0.6654595, 0, -0.746434, 0, 1, 0, 0.746434, 0, 0.6654595, -3.4541292, 0.31614017, -2.2616043)
 hotbar_display = NodePath("../../SceneUI/HotbarHover")
 
+[node name="AudioListener3D" type="AudioListener3D" parent="Node3D/Player" unique_id=1815354424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0115004, 0)
+current = true
+
 [node name="PantryObject" parent="Node3D" unique_id=953873510 instance=ExtResource("27_a6g3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6162415, -0.29058182, -4.981637)
 

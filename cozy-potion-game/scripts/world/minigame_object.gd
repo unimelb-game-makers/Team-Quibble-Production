@@ -4,6 +4,7 @@ class_name MinigameObject extends Node3D
 @export var interactable: Interactable
 @export var indicator: Indicator
 @export var indicator_pos: Node3D
+@export var audio_player: AudioStreamPlayer3D
 var popup_subwindow: PopupSubWindow
 
 func _ready() -> void:
