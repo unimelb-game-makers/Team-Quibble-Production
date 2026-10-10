@@ -12,13 +12,13 @@ func _ready() -> void:
 	visible = false
 	# This may seem overkill but trust the process. You can't miss spell a const
 	var ineteractable_objects = get_tree().get_nodes_in_group(Utils.Group.GROUP_INTERACTABLE_OBJECTS)
-
+	
 	# This also sucks but a more modular method will be made in the future. This way we don't have to
 	# go looking for the player.
 	player = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
-
+	
 	assert(player, "Could not find player. Something is wrong")
-
+	
 	if ineteractable_objects.size() <= 0:
 		push_warning("Current Scene has no interactable objects. This may be an issue")
 		return
@@ -36,12 +36,11 @@ func _input(event: InputEvent) -> void:
 func start_display_popup(_scene_to_load: PackedScene) -> void:
 	player.accepting_control = false
 	popup = _scene_to_load.instantiate()
-
+	
 	popup.minigame_won.connect(end_display_popup, ConnectFlags.CONNECT_ONE_SHOT)
-
+	
 	sub_viewport.add_child(popup)
 	animation_player.play(&"fade_in")
-
 
 func end_display_popup() -> void:
 	animation_player.play_backwards(&"fade_in")
@@ -50,7 +49,10 @@ func end_display_popup() -> void:
 	sub_viewport.remove_child(popup)
 	if popup.is_connected("minigame_won", end_display_popup):
 		popup.minigame_won.disconnect(end_display_popup)
-
+	
+	if popup is Minigame:
+		popup.close_minigame()
+	
 	popup.queue_free()
 	
 	player.accepting_control = true

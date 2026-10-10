@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/user_interface/popup_sub_window.tscn" id="8_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/mini_games/cauldron_scene.tscn" id="9_m4ofw"]
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
+[ext_resource type="Script" uid="uid://ddq4xbbyhtwx4" path="res://scripts/audio/audio_manager.gd" id="10_ovj2c"]
 [ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="10_p0at6"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
 [ext_resource type="Script" uid="uid://dro1wxwpemjqr" path="res://scripts/world/customer_manager.gd" id="11_24it5"]
@@ -34,6 +35,8 @@
 [ext_resource type="PackedScene" uid="uid://w65i7h10tgrw" path="res://assets/models/PH/Mortar_Pestle_Only_PH/Mortar_Placeholder.glb" id="25_ccf1r"]
 [ext_resource type="PackedScene" uid="uid://bbymrxpal4myo" path="res://assets/models/PH/Cauldron_PH/Cauldron_Placeholder.glb" id="26_mt8ix"]
 [ext_resource type="PackedScene" uid="uid://bq881rwv1qjfj" path="res://assets/models/PH/Spice_Cabinet_PH/Spice_Cabinet_Placeholder.glb" id="27_a6g3j"]
+[ext_resource type="AudioStream" uid="uid://ds3xf7y3m316t" path="res://audio/sfx/freesound_community-boiling-water-79323.mp3" id="33_k40kd"]
+[ext_resource type="Script" uid="uid://jusf4fjwy8qp" path="res://scripts/audio/audio_player_3d.gd" id="34_ovj2c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 124
@@ -277,6 +280,9 @@ offset_bottom = -684.0
 columns = 3
 rows = 1
 
+[node name="AudioManager" type="AudioStreamPlayer" parent="." unique_id=2136724672]
+script = ExtResource("10_ovj2c")
+
 [node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
 script = ExtResource("11_24it5")
 customer_anim_player = NodePath("AnimationPlayer")
@@ -323,6 +329,10 @@ shape = SubResource("BoxShape3D_0n2di")
 [node name="Player" parent="Node3D" unique_id=1588394108 node_paths=PackedStringArray("hotbar_display") instance=ExtResource("12_ouqob")]
 transform = Transform3D(0.6654595, 0, -0.746434, 0, 1, 0, 0.746434, 0, 0.6654595, -3.4541292, 0.31614017, -2.2616043)
 hotbar_display = NodePath("../../SceneUI/HotbarHover")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Node3D/Player" unique_id=1815354424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0115004, 0)
+current = true
 
 [node name="PantryObject" parent="Node3D" unique_id=953873510 instance=ExtResource("27_a6g3j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6162415, -0.29058182, -4.981637)
@@ -496,6 +506,13 @@ script = ExtResource("11_7mqwv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/CauldronMinigame/CauldronMinigame2/CauldronMinigameInteractable" unique_id=1825936252]
 shape = SubResource("BoxShape3D_4dvm4")
+
+[node name="AudioPlayer3D" type="AudioStreamPlayer3D" parent="Node3D/CauldronMinigame/CauldronMinigame2" unique_id=296089474]
+stream = ExtResource("33_k40kd")
+autoplay = true
+parameters/looping = true
+script = ExtResource("34_ovj2c")
+metadata/_custom_type_script = "uid://jusf4fjwy8qp"
 
 [node name="CauldronObject" parent="Node3D/CauldronMinigame" unique_id=907428328 instance=ExtResource("26_mt8ix")]
 transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 0, 0, 0)

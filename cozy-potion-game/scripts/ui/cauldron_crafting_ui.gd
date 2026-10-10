@@ -9,6 +9,7 @@ extends Minigame
 @export var potion_created_name_label: Label
 @export var potion_created_value_label: Label
 @export var inventory: HoverInventory
+@export var potion_created_sfx: AudioStream
 
 var ingredient_button: PackedScene = preload("uid://b6r6ktehhfb10")
 
@@ -29,7 +30,7 @@ func create_potion() -> void:
 	var potion_recipe := inventory.get_inventory()
 	
 	var created_potion := Alchemy.brew_potion(potion_recipe)
-
+	
 	potion_created_container.show()
 	potion_created_name_label.text = "You made a %s!" % created_potion.potion_name
 	potion_created_value_label.text = "(which you can sell for $%d.)" % created_potion.potion_value
@@ -37,6 +38,7 @@ func create_potion() -> void:
 	#get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER).potion = created_potion
 	player.inventory().blind_add_stack(Stack.new(1, created_potion))
 	#reset_potion()
+	Utils.audio_manager.play_audio(potion_created_sfx)
 
 
 #func reset_potion() -> void:
