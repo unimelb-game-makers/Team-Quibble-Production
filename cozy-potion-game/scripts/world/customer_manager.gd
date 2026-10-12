@@ -17,7 +17,7 @@ func _ready() -> void:
 	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
 	var crack
-	DevTools.PLEASE_FUCKOFF.connect(buy_potion.bind(crack))
+	DevTools.forced_customer_leave.connect(buy_potion.bind(crack))
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if !can_force_potion_to_customer:
