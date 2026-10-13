@@ -67,7 +67,7 @@ func aesthetic_movement(event: InputEvent) -> void:
 		interact()
 	
 	if event.is_action_pressed("open_notebook"):
-		open_notebook()
+		Notebook.open_notebook(get_tree().get_first_node_in_group(Utils.Group.GROUP_POPUP_SUBWINDOW))
 
 func rotate_camera(direction: int) -> void:
 	if DraggableComponent.dragged_control or DialogueManager.active_balloon:
@@ -200,10 +200,3 @@ func interact() -> void:
 			area.interact()
 			# probably bad to interact with two things at once
 			return
-
-
-const NOTEBOOK = preload("uid://bgulnwmxdnlnl")
-
-func open_notebook() -> void:
-	var popup_subwindow = get_tree().get_first_node_in_group(Utils.Group.GROUP_POPUP_SUBWINDOW)
-	popup_subwindow.start_display_popup(NOTEBOOK)

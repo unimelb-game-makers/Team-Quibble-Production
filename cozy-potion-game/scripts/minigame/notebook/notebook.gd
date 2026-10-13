@@ -12,6 +12,11 @@ var loaded_page : CanvasLayer
 
 const NOTEBOOK_TUTORIAL = preload("uid://bio4negeixv1a")
 const NOTEBOOK_PEDIA_VIEW = preload("uid://deay4dct1lmci")
+const NOTEBOOK = preload("uid://bgulnwmxdnlnl")
+
+static func open_notebook(popup_subwindow : PopupSubWindow) -> void:
+	popup_subwindow.start_display_popup(NOTEBOOK)
+
 
 func _ready() -> void:
 	load_page(NOTEBOOK_PEDIA_VIEW)

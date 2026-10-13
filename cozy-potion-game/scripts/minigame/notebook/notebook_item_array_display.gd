@@ -3,6 +3,8 @@ extends GridContainer
 
 signal item_clicked(holder: ItemHolder)
 
+const ITEM_HOLDER_SCENE = preload("uid://80sdcv4hsqa1")
+
 var currently_displayed: ItemHolder = null
 var current_page : int = 0
 
@@ -28,8 +30,6 @@ func get_items_from_page(page_num: int) -> Array[PotionIngredient]:
 		items.append(Alchemy.ingredient_list[i])
 	
 	return items
-
-const ITEM_HOLDER_SCENE = preload("uid://80sdcv4hsqa1")
 
 
 func create_item(ingre : PotionIngredient) -> ItemHolder:

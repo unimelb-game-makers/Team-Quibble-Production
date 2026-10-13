@@ -1,5 +1,7 @@
 extends Minigame
 
+const NOTEBOOK_ITEM_DISPLAY = preload("uid://tvqhfnp8lc0h")
+
 var output_stacks : Inventory
 var notebook : NotebookItemDisplay = null
 
@@ -20,7 +22,6 @@ func win_minigame() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 	minigame_won.emit(output_stacks)
 
-const NOTEBOOK_ITEM_DISPLAY = preload("uid://tvqhfnp8lc0h")
 
 # Cheat to see it, also idk if it counts as a minigame
 func display_notebook() -> void:
