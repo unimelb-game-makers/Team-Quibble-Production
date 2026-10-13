@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bo2651b4sguc6"]
+
+[ext_resource type="Texture2D" uid="uid://dfyvsqba3n23e" path="res://assets/textures/mythical_forest/trees/variations/ColorAlpha_PlantAtlasV2.bb0009.png" id="1_83y28"]
+[ext_resource type="Texture2D" uid="uid://dilhwyk1bc5m7" path="res://assets/models/enviroment/Mythical_Forest/Tree 1_PlantAtlasv2_roughness.png" id="2_h2pdk"]
+[ext_resource type="Texture2D" uid="uid://bo5yqaajpva3j" path="res://assets/models/enviroment/Mythical_Forest/Tree 1_PlantAtlasv2_normal.png" id="3_jdrr7"]
+
+[resource]
+resource_name = "PlantAtlasDarkGreen"
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("1_83y28")
+metallic_texture = ExtResource("2_h2pdk")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_h2pdk")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_jdrr7")
+metadata/_gltf_primary_texture_coord = 0
