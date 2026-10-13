@@ -1,18 +1,16 @@
 class_name Notebook
 extends Minigame
 
+const NOTEBOOK_TUTORIAL = preload("uid://bio4negeixv1a")
+const NOTEBOOK_PEDIA_VIEW = preload("uid://deay4dct1lmci")
+const NOTEBOOK = preload("uid://bgulnwmxdnlnl")
 
 var loaded_page : CanvasLayer
 
 @onready var display: Control = $Display
-
 @onready var tutorial_page_button: TextureButton = $TutorialPageButton
 @onready var pedia_page_button: TextureButton = $PediaPageButton
 @onready var exit_button: TextureButton = $ExitButton
-
-const NOTEBOOK_TUTORIAL = preload("uid://bio4negeixv1a")
-const NOTEBOOK_PEDIA_VIEW = preload("uid://deay4dct1lmci")
-const NOTEBOOK = preload("uid://bgulnwmxdnlnl")
 
 
 # Uses the popup subwindow to open notebook
