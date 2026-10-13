@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bc1q0jwhyjj0r"]
+
+[ext_resource type="Script" uid="uid://cmwyr63ewp5ms" path="res://scripts/foraging/foliage.gd" id="1_cmtiv"]
+[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="2_01727"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="BaseFoliage" type="Node3D" unique_id=1126630017 node_paths=PackedStringArray("interactable")]
+script = ExtResource("1_cmtiv")
+interactable = NodePath("Interactable")
+
+[node name="Interactable" type="Area3D" parent="." unique_id=1663026376]
+script = ExtResource("2_01727")
+metadata/_custom_type_script = "uid://ciwktypwu667m"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable" unique_id=33012576]
+shape = SubResource("BoxShape3D_4dvm4")

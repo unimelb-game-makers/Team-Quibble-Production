@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://5xdceq6g4wen"]
+
+[ext_resource type="FontFile" uid="uid://ldmkcpeycyq0" path="res://assets/sprites/ui/beholden-book-font/BeholdenBook-Regular.ttf" id="1_6egty"]
+[ext_resource type="StyleBox" uid="uid://bpb82txmkfrfi" path="res://resources/ui_themes/vine_style_box.tres" id="1_rtg4i"]
+
+[sub_resource type="FontVariation" id="FontVariation_451sc"]
+base_font = ExtResource("1_6egty")
+
+[resource]
+default_font = SubResource("FontVariation_451sc")
+Button/font_sizes/font_size = 32
+Panel/styles/panel = ExtResource("1_rtg4i")
+PanelContainer/styles/panel = ExtResource("1_rtg4i")
