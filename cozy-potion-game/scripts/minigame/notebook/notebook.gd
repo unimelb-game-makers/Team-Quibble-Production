@@ -14,6 +14,8 @@ const NOTEBOOK_TUTORIAL = preload("uid://bio4negeixv1a")
 const NOTEBOOK_PEDIA_VIEW = preload("uid://deay4dct1lmci")
 const NOTEBOOK = preload("uid://bgulnwmxdnlnl")
 
+
+# Uses the popup subwindow to open notebook
 static func open_notebook(popup_subwindow : PopupSubWindow) -> void:
 	popup_subwindow.start_display_popup(NOTEBOOK)
 
