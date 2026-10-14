@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://c7nu4svmt7tcy"]
+
+[ext_resource type="PackedScene" uid="uid://bc1q0jwhyjj0r" path="res://scenes/foraging/foliage/base_foliage.tscn" id="1_q1ded"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q1ded"]
+resource_local_to_scene = true
+albedo_color = Color(0.26739502, 0.9113483, 1.1551381e-06, 1)
+
+[node name="TestConeFoliage" unique_id=1126630017 node_paths=PackedStringArray("model") instance=ExtResource("1_q1ded")]
+model = NodePath("CSGCylinder3D")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." index="1" unique_id=422748933]
+material = SubResource("StandardMaterial3D_q1ded")

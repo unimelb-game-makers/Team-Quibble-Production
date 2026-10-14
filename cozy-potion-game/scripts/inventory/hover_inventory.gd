@@ -10,8 +10,13 @@ signal slot_is_hovered(slot: ItemSlot)
 var max_slots: int
 var inventory: Inventory
 
-# Grid used for inventory
-@onready var grid: GridContainer = $GridContainer
+# Grids used for inventory
+@export var grid: GridContainer
+@export var columns: int
+@export var rows: int
+@export var additional_grid: GridContainer
+@export var additional_grid_columns: int
+@export var additional_grid_rows: int
 # Info Sheet
 @onready var info_sheet: PanelContainer = $InfoSheet
 @onready var info_name: Label = $InfoSheet/MarginContainer/VBoxContainer/ItemName
@@ -22,6 +27,11 @@ func _ready() -> void:
 	grid.columns = columns
 	inventory = Inventory.new(grid, max_quantity)
 	inventory.spawn_slots(Inventory.create_empty_stacks(max_slots))
+	
+	if additional_grid:
+		max_slots = additional_grid_columns * additional_grid_rows
+		additional_grid.columns = additional_grid_columns
+		inventory.spawn_new_slots_to_arbitrary_storage(Inventory.create_empty_stacks(max_slots), additional_grid,trash_collector)
 	
 	# Connections needed for hovering
 	inventory.hovering_slot.connect(slot_hovered)
