@@ -11,6 +11,7 @@ var max_slots : int
 
 @onready var sort_button: MenuButton = $SortButton
 
+
 var sort_keys : Array[Callable] = [
 	func(a: ItemSlot, b: ItemSlot): 
 		if a.get_item_stack().isEmpty:
@@ -40,16 +41,16 @@ func _ready() -> void:
 		filled_stacks[i].quantity = 40
 		filled_stacks[i].item = ingredients[i]
 	
-	hover_inv.inventory.spawn_slots(filled_stacks, hover_inv.trash_collector)
+	hover_inv.inventory.spawn_slots(filled_stacks)
 	hover_inv.inventory.sort_items(sort_keys[sort_index])
-
-
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("close_minigame"):
-		#leave_drawer.emit(hotbar)
 
 
 func set_sort_key(index: int) -> void:
 	sort_index = index
 	sort_button.text = sort_button.get_popup().get_item_text(index)
 	hover_inv.inventory.sort_items(sort_keys[sort_index])
+
+
+func update_large_info() -> void:
+	
+	pass
