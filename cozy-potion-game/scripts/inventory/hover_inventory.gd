@@ -3,13 +3,6 @@ extends Control
 
 signal slot_is_hovered(slot: ItemSlot)
 
-@export var columns: int
-@export var rows: int
-@export var max_quantity : int = 999
-
-var max_slots: int
-var inventory: Inventory
-
 # Grids used for inventory
 @export var grid: GridContainer
 @export var columns: int
@@ -17,10 +10,15 @@ var inventory: Inventory
 @export var additional_grid: GridContainer
 @export var additional_grid_columns: int
 @export var additional_grid_rows: int
+@export var max_quantity : int = 999
+@export var trash_collector: Control
+
+var max_slots: int
+var inventory: Inventory
+
 # Info Sheet
 @onready var info_sheet: PanelContainer = $InfoSheet
 @onready var info_name: Label = $InfoSheet/MarginContainer/VBoxContainer/ItemName
-
 
 func _ready() -> void:
 	max_slots = columns*rows
@@ -31,7 +29,7 @@ func _ready() -> void:
 	if additional_grid:
 		max_slots = additional_grid_columns * additional_grid_rows
 		additional_grid.columns = additional_grid_columns
-		inventory.spawn_new_slots_to_arbitrary_storage(Inventory.create_empty_stacks(max_slots), additional_grid,trash_collector)
+		inventory.spawn_new_slots_to_arbitrary_storage(Inventory.create_empty_stacks(max_slots), additional_grid, trash_collector)
 	
 	# Connections needed for hovering
 	inventory.hovering_slot.connect(slot_hovered)
@@ -59,10 +57,10 @@ func slot_hovered(slot: ItemSlot) -> void:
 
 # Set Info sheet based on item
 func update_info_sheet(stack: Stack):
-	info_sheet.visible = true
-	info_name.text = stack.get_item_name()
-	
 	info_sheet.global_position = get_global_mouse_position()+Vector2(10,10)
+	info_name.text = stack.get_item_name()
+	info_sheet.visible = true
+	
 	# Used to have alot more
 
 

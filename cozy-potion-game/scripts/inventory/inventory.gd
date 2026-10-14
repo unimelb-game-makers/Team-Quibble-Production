@@ -25,7 +25,7 @@ func _init(container: Container = null, max_stack_size:int = 999) -> void:
 
 
 # Creates new slot from a stack, places it in a holder if stack is not empty
-func add_new_slot_from_stack(item: Stack, trash_collector: Control, \
+func add_new_slot_from_stack(item: Stack, trash_collector: Control = null, \
 custom_storage: Container = storage) -> void:
 	var new_item_slot: ItemSlot = ItemSlot.get_scene().instantiate()
 	custom_storage.add_child(new_item_slot)

@@ -32,7 +32,7 @@ var top_down_active: bool = false
 var accepting_control: bool = true
 
 #hotbar stuff
-@export var hotbar_display : HoverInventory
+@export var hotbar_display: HoverInventory
 
 # this is called before _ready
 func _init() -> void:
