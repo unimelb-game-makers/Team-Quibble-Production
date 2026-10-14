@@ -16,4 +16,3 @@ func _on_interact():
 		indicator.visible = false
 		
 	popup_subwindow.start_display_popup(minigame_scene)
-
