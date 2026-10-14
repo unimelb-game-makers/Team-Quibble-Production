@@ -16,6 +16,8 @@ const Group = {
 	GROUP_HOTBAR = "hotbar",
 	GROUP_INGREDIENT_BALL = "ingredient_ball",
 	GROUP_AUDIO = "audio",
+	GROUP_FORAGING_BAG = "foraging_bag",
+	GROUP_PORTAL = "portal",
 }
 
 #takes a string path and returns the json file at that location

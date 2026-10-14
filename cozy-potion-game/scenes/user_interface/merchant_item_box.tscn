@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://c28p44surqk5m"]
+
+[ext_resource type="Theme" uid="uid://5xdceq6g4wen" path="res://resources/ui_themes/merchant_ui_theme.tres" id="1_jymkn"]
+[ext_resource type="Texture2D" uid="uid://tw3oqsd60xb2" path="res://assets/sprites/ingredients/apple_red_128.png" id="1_lswux"]
+[ext_resource type="Script" uid="uid://bn5nvgob4hqy4" path="res://scripts/ui/merchant_item_box.gd" id="2_oay0i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvm4"]
+bg_color = Color(0.16565639, 0.16565642, 0.1656563, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0n2di"]
+font_size = 32
+
+[node name="MerchantItemBox" type="Control" unique_id=1789233082 node_paths=PackedStringArray("item_texture_rect", "item_name_label", "purchase_button")]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_jymkn")
+script = ExtResource("2_oay0i")
+item_texture_rect = NodePath("PanelContainer/MarginContainer/HBoxContainer/Panel/TextureRect")
+item_name_label = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/ItemNameLabel")
+purchase_button = NodePath("PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/PurchaseButton")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=385691153]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1636465338]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer" unique_id=520169122]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=790808609]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4dvm4")
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer/Panel" unique_id=1714476897]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_lswux")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer" unique_id=2052198337]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+
+[node name="ItemNameLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=561931565]
+layout_mode = 2
+text = "Item Name very long"
+label_settings = SubResource("LabelSettings_0n2di")
+
+[node name="PurchaseButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=231397958]
+layout_mode = 2
+text = "Purchase?"
