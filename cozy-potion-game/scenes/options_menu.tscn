@@ -2,15 +2,26 @@
 
 [ext_resource type="Script" uid="uid://ddiesd3y05efc" path="res://scripts/autoloads/options_menu.gd" id="1_liyum"]
 [ext_resource type="Material" uid="uid://47ub0xvf0cjt" path="res://assets/materials/shaders/blur_shader.tres" id="2_ijpji"]
+[ext_resource type="FontFile" uid="uid://ioopiwohmh2h" path="res://assets/sprites/ui/beholden-book-font/BeholdenBook-Bold.ttf" id="3_hm4m4"]
+[ext_resource type="FontFile" uid="uid://cqorj4se30uga" path="res://assets/sprites/ui/beholden-book-font/BeholdenBook-Light.ttf" id="3_lfjc7"]
+[ext_resource type="StyleBox" uid="uid://bspaxd8ocmbvd" path="res://resources/ui_themes/art_stylebox_texture.tres" id="5_3xsyx"]
+
+[sub_resource type="Theme" id="Theme_hm4m4"]
+Button/font_sizes/font_size = 22
+Button/fonts/font = ExtResource("3_lfjc7")
+Label/font_sizes/font_size = 18
+Label/fonts/font = ExtResource("3_hm4m4")
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 33
 
-[node name="OptionsMenu" type="CanvasLayer" unique_id=1433898098 node_paths=PackedStringArray("blur_rect", "options_menu_container", "exit_game_button")]
+[node name="OptionsMenu" type="CanvasLayer" unique_id=1433898098 node_paths=PackedStringArray("options_menu_container", "sound_menu", "exit_game_button", "sound_menu_button", "blur_rect")]
 script = ExtResource("1_liyum")
+options_menu_container = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer")
+sound_menu = NodePath("MainMenu/MarginContainer/Control/SoundMenu")
+exit_game_button = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ExitGameButton")
+sound_menu_button = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SoundOptions")
 blur_rect = NodePath("ScreenBlur")
-options_menu_container = NodePath("Control/MarginContainer/Control/OptionsMenuContainer")
-exit_game_button = NodePath("Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer/ExitGameButton")
 
 [node name="ScreenBlur" type="ColorRect" parent="." unique_id=622338059]
 material = ExtResource("2_ijpji")
@@ -20,7 +31,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="." unique_id=897544671]
+[node name="MainMenu" type="Control" parent="." unique_id=897544671]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,8 +39,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_hm4m4")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1525534556]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu" unique_id=1525534556]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,55 +54,153 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Control" type="Control" parent="Control/MarginContainer" unique_id=1292584816]
+[node name="Control" type="HBoxContainer" parent="MainMenu/MarginContainer" unique_id=599737324]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="OptionsMenuContainer" type="MarginContainer" parent="Control/MarginContainer/Control" unique_id=279762709 groups=["OptionsMenuContainer"]]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.058000002
-anchor_top = 0.059000004
-anchor_right = 0.259
-anchor_bottom = 0.919
-offset_left = -0.040000916
-offset_top = -0.36000443
-offset_right = -0.9200134
-offset_bottom = 0.23999023
+[node name="OptionsMenuContainer" type="MarginContainer" parent="MainMenu/MarginContainer/Control" unique_id=279762709 groups=["OptionsMenuContainer"]]
+custom_minimum_size = Vector2(432, 895)
+layout_mode = 2
 offset_transform_enabled = true
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer/Control/OptionsMenuContainer" unique_id=1692637642]
+[node name="PanelContainer" type="PanelContainer" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer" unique_id=1692637642]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_3xsyx")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer" unique_id=2090836535]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer" unique_id=1983870235]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer" unique_id=1983870235]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer" unique_id=760924181]
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=760924181]
 layout_mode = 2
 text = "This is a main menu"
 label_settings = SubResource("LabelSettings_4dvm4")
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer" unique_id=285426307]
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=285426307]
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer" unique_id=433006603]
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer" unique_id=433006603]
 layout_mode = 2
+alignment = 2
 
-[node name="SoundOptions" type="Button" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1013532109]
+[node name="Video" type="Button" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=806307481]
 layout_mode = 2
-text = "Sound"
+text = "Video"
 alignment = 0
 
-[node name="ExitGameButton" type="Button" parent="Control/MarginContainer/Control/OptionsMenuContainer/PanelContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=726220320]
+[node name="SoundOptions" type="Button" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1013532109]
 layout_mode = 2
-text = "Exit Game"
+text = "Audio
+"
 alignment = 0
+
+[node name="Controls" type="Button" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1451665905]
+layout_mode = 2
+text = "Controls"
+alignment = 0
+
+[node name="ReturnToGame" type="Button" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1723235840]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Return To Game"
+alignment = 0
+
+[node name="QuitToMenu" type="Button" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=78293881]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Quit to Menu"
+alignment = 0
+
+[node name="ExitGameButton" type="Button" parent="MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" unique_id=726220320]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Quit to Desktop"
+alignment = 0
+
+[node name="SoundMenu" type="MarginContainer" parent="MainMenu/MarginContainer/Control" unique_id=1745699283]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenu/MarginContainer/Control/SoundMenu" unique_id=68875593]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("5_3xsyx")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer" unique_id=983138465]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer" unique_id=264033358]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1079956059]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Sound Settings"
+horizontal_alignment = 1
+
+[node name="MasterControl" type="HBoxContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1207209057]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/MasterControl" unique_id=467148266]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/MasterControl" unique_id=1040055300]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+value = 100.0
+
+[node name="MusicControl" type="HBoxContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1532413130]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/MusicControl" unique_id=308361285]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/MusicControl" unique_id=1860604986]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+value = 100.0
+
+[node name="SFXControl" type="HBoxContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=738213172]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/SFXControl" unique_id=1548145617]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Sound Effects"
+
+[node name="HSlider" type="HSlider" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/SFXControl" unique_id=1923321064]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+value = 100.0
+
+[node name="ReturnButton" type="Button" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=361773709]
+visible = false
+layout_mode = 2
+text = "Return"
+
+[connection signal="pressed" from="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/ReturnButton" to="." method="return_button_pressed"]
