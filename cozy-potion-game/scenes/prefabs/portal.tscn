@@ -1,11 +1,32 @@
 [gd_scene format=3 uid="uid://86hobw64ehjg"]
 
 [ext_resource type="Script" uid="uid://bh0y3jag2cl60" path="res://scripts/world/portal.gd" id="2_dr012"]
+[ext_resource type="AudioStream" uid="uid://baonbgph3mnnq" path="res://audio/sfx/portal/enter_portal.wav" id="2_m5orc"]
 [ext_resource type="Material" uid="uid://c66riynsumk0a" path="res://assets/materials/shaders/portal_shader_material.tres" id="3_fbfsp"]
+[ext_resource type="AudioStream" uid="uid://bsbn4bt4qkwfp" path="res://audio/sfx/portal/enter_portal2.wav" id="3_gj6dn"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="3_nbarb"]
+[ext_resource type="Script" uid="uid://bdhleqgxddfht" path="res://scripts/audio/audio_resource.gd" id="4_6qbyj"]
+[ext_resource type="AudioStream" uid="uid://c4udi5ehdqvir" path="res://audio/sfx/portal/portal_spawn.wav" id="5_arak2"]
+[ext_resource type="AudioStream" uid="uid://bq5mhbboy2rra" path="res://audio/sfx/portal/portal_spawn2.wav" id="6_8rces"]
+[ext_resource type="AudioStream" uid="uid://ch4s2yd41afr" path="res://audio/sfx/portal/portal_despawn.wav" id="7_oqhwi"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_aue3q"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="Resource" id="Resource_si06s"]
+script = ExtResource("4_6qbyj")
+resource_array = Array[AudioStream]([ExtResource("2_m5orc"), ExtResource("3_gj6dn")])
+metadata/_custom_type_script = "uid://bdhleqgxddfht"
+
+[sub_resource type="Resource" id="Resource_4tov5"]
+script = ExtResource("4_6qbyj")
+resource_array = Array[AudioStream]([ExtResource("5_arak2"), ExtResource("6_8rces")])
+metadata/_custom_type_script = "uid://bdhleqgxddfht"
+
+[sub_resource type="Resource" id="Resource_417ed"]
+script = ExtResource("4_6qbyj")
+resource_array = Array[AudioStream]([ExtResource("7_oqhwi")])
+metadata/_custom_type_script = "uid://bdhleqgxddfht"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
 size = Vector3(1.395752, 2.437622, 0.42712402)
@@ -45,6 +66,9 @@ texture = SubResource("ViewportTexture_aue3q")
 script = ExtResource("2_dr012")
 interactable = NodePath("Interactable")
 player_spawn_position = NodePath("PlayerSpawnPosition")
+enter_portal_sounds = SubResource("Resource_si06s")
+portal_spawn_sounds = SubResource("Resource_4tov5")
+portal_despawn_sounds = SubResource("Resource_417ed")
 
 [node name="Interactable" type="Area3D" parent="." unique_id=1905026754]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4665616e-08, -0.044896297)

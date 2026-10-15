@@ -5,11 +5,13 @@ extends Minigame
 
 var output_stacks : Inventory
 @onready var storage: Drawer = $Storage
-@onready var audio_player: AudioPlayer = $AudioStreamPlayer
 
 func _ready() -> void:
 	storage.leave_drawer.connect(set_output)
 	Utils.audio_manager.play_audio(drawer_close_sfx)
+	Utils.audio_manager.play_ambience(load("res://audio/sfx/portal/enter_portal2.wav"))
+
+
 
 func set_output(stacks: Inventory) -> void:
 	output_stacks = stacks
