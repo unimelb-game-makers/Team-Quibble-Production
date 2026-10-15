@@ -9,9 +9,6 @@ var output_stacks : Inventory
 func _ready() -> void:
 	storage.leave_drawer.connect(set_output)
 	Utils.audio_manager.play_audio(drawer_close_sfx)
-	Utils.audio_manager.play_ambience(load("res://audio/sfx/portal/enter_portal2.wav"))
-
-
 
 func set_output(stacks: Inventory) -> void:
 	output_stacks = stacks
