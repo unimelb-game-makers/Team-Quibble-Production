@@ -60,22 +60,6 @@ func update_info_sheet(stack: Stack):
 	info_sheet.global_position = get_global_mouse_position()+Vector2(10,10)
 	info_name.text = stack.get_item_name()
 	info_sheet.visible = true
-	
-	if stack.item is PotionIngredient:
-		var keys : Array[Alchemy.AttributeID]= stack.item.attributes.keys()
-		keys.sort_custom(func(a:Alchemy.AttributeID, b:Alchemy.AttributeID):\
-				return stack.item.attributes[a] > stack.item.attributes[b])
-		
-		for att in keys:
-			if stack.item.attributes[att] != 0:
-				if info_attributes.text != "":
-					info_attributes.text += "\n"
-				info_attributes.text += Alchemy.AttributeID.keys()[att].substr(5) +\
-					 ": " + str(stack.item.attributes[att])
-		info_sheet.reset_size()
-	elif stack.item is Potion:
-		info_attributes.text = "Sells for about $%d" % stack.item.base_gold_value
-		info_sheet.reset_size()
 
 
 # Turns off info_sheet if mouse moves off a slot
