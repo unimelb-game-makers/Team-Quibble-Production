@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bxq7bq8537rse"]
 
+[ext_resource type="PackedScene" uid="uid://d1s3n3yh2tev5" path="res://scenes/Mythical_Forest.tscn" id="1_ewpas"]
 [ext_resource type="Script" uid="uid://cx4e7cbvnke4v" path="res://scripts/foraging/foliage_manager.gd" id="1_ij0qq"]
 [ext_resource type="Script" uid="uid://ddb2nwyl1rdqy" path="res://scripts/foraging/foraging_ui/foraging_bag.gd" id="1_q7g5v"]
 [ext_resource type="Theme" uid="uid://5xdceq6g4wen" path="res://resources/ui_themes/merchant_ui_theme.tres" id="3_28u7r"]
@@ -35,13 +36,15 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("7_dofmw")
 font_size = 42
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_v7bn7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_dofmw"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v7bn7"]
 data = PackedVector3Array(-56.950684, -0.5, 33.864746, -56.950684, -0.5, -33.864746, -56.950684, 0.5, -33.864746, 56.950684, -0.5, -33.864746, -56.950684, -0.5, -33.864746, -56.950684, -0.5, 33.864746, -56.950684, 0.5, -33.864746, -56.950684, -0.5, -33.864746, 56.950684, -0.5, -33.864746, -56.950684, 0.5, -33.864746, -56.950684, 0.5, 33.864746, -56.950684, -0.5, 33.864746, -56.950684, -0.5, 33.864746, -56.950684, 0.5, 33.864746, 56.950684, 0.5, 33.864746, 56.950684, 0.5, 33.864746, -56.950684, 0.5, 33.864746, -56.950684, 0.5, -33.864746, -56.950684, -0.5, 33.864746, 56.950684, -0.5, 33.864746, 56.950684, -0.5, -33.864746, 56.950684, 0.5, 33.864746, 56.950684, -0.5, 33.864746, -56.950684, -0.5, 33.864746, 56.950684, -0.5, -33.864746, 56.950684, -0.5, 33.864746, 56.950684, 0.5, 33.864746, 56.950684, -0.5, -33.864746, 56.950684, 0.5, -33.864746, -56.950684, 0.5, -33.864746, -56.950684, 0.5, -33.864746, 56.950684, 0.5, -33.864746, 56.950684, 0.5, 33.864746, 56.950684, 0.5, 33.864746, 56.950684, 0.5, -33.864746, 56.950684, -0.5, -33.864746)
 
 [node name="Forest" type="Node3D" unique_id=529053958]
+
+[node name="MythicalForest" parent="." unique_id=1236479139 instance=ExtResource("1_ewpas")]
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=127223334]
 
@@ -324,12 +327,9 @@ label_settings = SubResource("LabelSettings_0n2di")
 [node name="PopupManager" type="CanvasLayer" parent="SceneUI" unique_id=540881292]
 script = ExtResource("7_f3vpa")
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=943629651]
-bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
-
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
 transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
-texture = SubResource("ViewportTexture_v7bn7")
+texture = SubResource("ViewportTexture_dofmw")
 destination_path = &"uid://bec7ovcvsvc5q"
 
 [node name="Merchant" parent="." unique_id=992939819 node_paths=PackedStringArray("merchant_ui") instance=ExtResource("15_v7bn7")]
@@ -425,13 +425,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.184494, 6.689865, -81.5935
 
 [node name="UpQuadrant" type="Area3D" parent="." unique_id=594636816]
 
+[node name="Marker3D" type="Marker3D" parent="UpQuadrant" unique_id=1934250924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.49823, 6.689865, -103.96913)
+
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="UpQuadrant" unique_id=2136570113]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 47.975864, 0, -54.021618)
 depth = 10.14
 polygon = PackedVector2Array(90.930695, -62.459606, -3.725502, -60.92705, 35.917103, -41.261715, 55.264378, -41.42995)
-
-[node name="Marker3D" type="Marker3D" parent="UpQuadrant" unique_id=1934250924]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.49823, 6.689865, -103.96913)
 
 [node name="DownQuadrant" type="Area3D" parent="." unique_id=1323558570]
 
@@ -455,6 +455,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.32195, 6.689865, -94.8843
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1851091395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.16712, 0, -83.09408)
+visible = false
 size = Vector3(113.90137, 1, 67.72949)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D" unique_id=142134201]
@@ -464,3 +465,6 @@ shape = SubResource("ConcavePolygonShape3D_v7bn7")
 
 [node name="Player" parent="." unique_id=1588394108 instance=ExtResource("18_dofmw")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 46.656143, 4.207901, -50.911747)
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=943629651]
+bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
