@@ -7,14 +7,16 @@
 [ext_resource type="PackedScene" uid="uid://cgwcxn7koxnq4" path="res://scenes/user_interface/indicator_anchor.tscn" id="5_n73ok"]
 [ext_resource type="PackedScene" uid="uid://lefumu5skmny" path="res://assets/models/PH/Mortar_Pestle_Only_PH/Pestle_Placeholder.glb" id="6_w7qyw"]
 [ext_resource type="PackedScene" uid="uid://w65i7h10tgrw" path="res://assets/models/PH/Mortar_Pestle_Only_PH/Mortar_Placeholder.glb" id="7_2wnjf"]
+[ext_resource type="Script" uid="uid://jusf4fjwy8qp" path="res://scripts/audio/audio_player_3d.gd" id="8_wywh3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1khlx"]
 
-[node name="CrushingMinigame" type="Node3D" unique_id=93761189 node_paths=PackedStringArray("interactable", "indicator_pos")]
+[node name="CrushingMinigame" type="Node3D" unique_id=93761189 node_paths=PackedStringArray("interactable", "indicator_pos", "audio_player")]
 script = ExtResource("2_wywh3")
 minigame_scene = ExtResource("3_tywb5")
 interactable = NodePath("CrushingMinigameInteractable")
 indicator_pos = NodePath("IndicatorAnchor")
+audio_player = NodePath("AudioPlayer3D")
 
 [node name="CrushingMinigameInteractable" type="Area3D" parent="." unique_id=188938070]
 collision_layer = 1048576
@@ -34,3 +36,7 @@ transform = Transform3D(-0.0020001906, 0.0014166669, -0.9999971, 0.57798076, 0.8
 transform = Transform3D(-0.0024510624, 0, -0.9999971, 0, 1, 0, 0.9999971, 0, -0.0024510624, -0.12246895, 0.7485452, -0.038268566)
 
 [node name="IndicatorAnchor" parent="." unique_id=1791509362 instance=ExtResource("5_n73ok")]
+
+[node name="AudioPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=809065451]
+script = ExtResource("8_wywh3")
+metadata/_custom_type_script = "uid://jusf4fjwy8qp"

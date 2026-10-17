@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="7_7orju"]
 [ext_resource type="PackedScene" uid="uid://b3i1syayp1xcd" path="res://scenes/minigames/pantry_minigame.tscn" id="7_ja4bt"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/user_interface/popup_manager.gd" id="7_q822s"]
-[ext_resource type="Theme" uid="uid://85dmvce53jyf" path="res://resources/themes/main_theme.tres" id="8_aef86"]
+[ext_resource type="Theme" uid="uid://bx5pwv2f7qea6" path="res://resources/ui_themes/main_theme.tres" id="8_aef86"]
 [ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/user_interface/list_manager.gd" id="9_fg6qk"]
 [ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="10_jn854"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="11_jjrkg"]

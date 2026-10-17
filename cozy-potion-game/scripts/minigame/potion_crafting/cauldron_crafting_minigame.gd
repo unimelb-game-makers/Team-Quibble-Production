@@ -23,7 +23,9 @@ func _ready() -> void:
 
 func create_potion() -> void:
 	if inventory.get_inventory().size() == 0:
+		breakpoint
 		minigame_won.emit()
+		print_debug("Nothing given")
 		return
 		
 	var potion_recipe : Array[PotionIngredient]
@@ -38,7 +40,7 @@ func create_potion() -> void:
 	#get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER).potion = created_potion
 	player.inventory().blind_add_stack(Stack.new(1, created_potion))
 	#reset_potion()
-	Utils.audio_manager.play_audio(potion_created_sfx)
+	AudioManager.play_audio(potion_created_sfx)
 
 
 #func reset_potion() -> void:

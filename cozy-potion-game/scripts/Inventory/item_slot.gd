@@ -4,7 +4,7 @@ extends PanelContainer
 # Emitted every frame if cursor inside slot
 signal hovering
 
-const ITEM_HOLDER = preload("res://scenes/prefabs/inventory/item_holder_scene.tscn")
+const ITEM_HOLDER = preload("uid://80sdcv4hsqa1")
 
 var item_holder : ItemHolder = null
 var ishovering := false

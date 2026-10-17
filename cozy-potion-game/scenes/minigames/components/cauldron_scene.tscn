@@ -122,10 +122,6 @@ layout_mode = 2
 text = "(that you can sell for $$$)"
 horizontal_alignment = 1
 
-[node name="PotionBrewing" type="Node" parent="." unique_id=1885634969]
-script = ExtResource("3_nsau4")
-metadata/_custom_type_script = "uid://bytx8uyvjb5ht"
-
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=674375806]
 stream = ExtResource("5_lm5eh")
 script = ExtResource("6_dkifx")

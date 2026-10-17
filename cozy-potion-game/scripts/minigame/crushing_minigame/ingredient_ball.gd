@@ -50,7 +50,7 @@ func split() -> void:
 func play_sound() -> void:
 	#if audio_player.playing:
 		#return
-	Utils.audio_manager.play_audio(crush_sounds.get_random())
+	AudioManager.play_audio(crush_sounds.get_random())
 
 #update the internal scale of the rigidbody and scale all of its children
 #to match. the markers are also moved inward
