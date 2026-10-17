@@ -1,14 +1,21 @@
 extends Minigame
 
+const NOTEBOOK_ITEM_DISPLAY = preload("uid://tvqhfnp8lc0h")
+
 @export var drawer_open_sfx: AudioStream
 @export var drawer_close_sfx: AudioStream
 
-var output_stacks : Inventory
 @onready var storage: Drawer = $Storage
+@onready var inventory_with_hover: HoverInventory = $Storage/InventoryWithHover
+@onready var item_display: CenterContainer = $ItemDisplay
+
+var output_stacks : Inventory
+var notebook : NotebookItemDisplay = null
 
 func _ready() -> void:
 	storage.leave_drawer.connect(set_output)
 	Utils.audio_manager.play_audio(drawer_close_sfx)
+	inventory_with_hover.slot_is_hovered.connect(change_displayed)
 
 func set_output(stacks: Inventory) -> void:
 	output_stacks = stacks
@@ -20,3 +27,15 @@ func win_minigame() -> void:
 
 func close_minigame() -> void:
 	Utils.audio_manager.play_audio(drawer_close_sfx)
+
+# Cheat to see it, also idk if it counts as a minigame
+func display_notebook() -> void:
+	notebook = NOTEBOOK_ITEM_DISPLAY.instantiate()
+	item_display.add_child(notebook)
+
+
+func change_displayed(slot: ItemSlot) -> void:
+	if notebook == null:
+		display_notebook()
+	
+	notebook.set_potion_ingredient(slot.get_item_stack().item)

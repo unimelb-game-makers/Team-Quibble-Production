@@ -32,30 +32,8 @@ layout_mode = 2
 columns = 10
 rows = 5
 
-[node name="InfoDisplay" type="Control" parent="." unique_id=1653964864]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_left = 955.0
-offset_top = 545.0
-offset_right = 955.0
-offset_bottom = 545.0
-
-[node name="InfoDisplay" type="Sprite2D" parent="InfoDisplay" unique_id=1971800519]
-position = Vector2(191, 76)
-
-[node name="InfoName" type="Label" parent="InfoDisplay" unique_id=622583794]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 16.0
-offset_right = 360.0
-offset_bottom = 39.0
-horizontal_alignment = 1
-
-[node name="InfoDescription" type="Label" parent="InfoDisplay" unique_id=518790238]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 114.0
-offset_right = 360.0
-offset_bottom = 219.0
-horizontal_alignment = 1
+[node name="ItemDisplay" type="CenterContainer" parent="." unique_id=755041674]
+offset_left = 1267.0
+offset_top = 310.0
+offset_right = 1307.0
+offset_bottom = 350.0
