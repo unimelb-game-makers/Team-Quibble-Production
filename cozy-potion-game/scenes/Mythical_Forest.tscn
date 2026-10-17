@@ -549,6 +549,7 @@ sky_mode = 1
 data_directory = "res://terrain_data"
 material = SubResource("Terrain3DMaterial_snumg")
 assets = SubResource("Terrain3DAssets_sbv6l")
+collision_mode = 3
 top_level = true
 metadata/_edit_lock_ = true
 
