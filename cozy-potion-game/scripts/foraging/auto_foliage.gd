@@ -10,7 +10,7 @@ func _ready() -> void:
 func initialise(ingredient: Alchemy.IngredientID) -> void:
 	self.ingredient = ingredient
 	populate_markers()
-	interactable.interact_popup_text = Alchemy.ingredient_list[ingredient].ingredient_name
+	interactable.interact_popup_text = Alchemy.find_ingredient_by_id(ingredient).ingredient_name
 
 func _on_interact():
 	super()
@@ -22,7 +22,7 @@ func _on_interact():
 func populate_markers() -> void:
 	for marker in markers:
 		var sprite: IngredientMedallion = ingredient_medallion_scene.instantiate()
-		var ingredient: PotionIngredient = Alchemy.ingredient_list[ingredient]
+		var ingredient: PotionIngredient = Alchemy.find_ingredient_by_id(ingredient)
 		sprite.initialise(ingredient.ingredient_sprite)
 		marker.add_child(sprite)
 		sprite.position = Vector3.ZERO

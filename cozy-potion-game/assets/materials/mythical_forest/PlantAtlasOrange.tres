@@ -18,5 +18,6 @@ roughness_texture_channel = 1
 normal_enabled = true
 normal_texture = ExtResource("3_n78fy")
 distance_fade_mode = 2
-distance_fade_min_distance = 3.0
+distance_fade_min_distance = 8.0
+distance_fade_max_distance = 13.0
 metadata/_gltf_primary_texture_coord = 0
