@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b18nfiye242g"]
 
-[ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="1_h0r2m"]
 [ext_resource type="Script" uid="uid://dadiseehi3rsp" path="res://scripts/foraging/world_merchant.gd" id="2_2543b"]
+[ext_resource type="Texture2D" uid="uid://cgsnb674nd7va" path="res://assets/sprites/foraging/NPC_Merchant.png" id="2_h0r2m"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="3_q2dhr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
@@ -13,7 +13,8 @@ interactable = NodePath("MerchantSprite/Interactable")
 
 [node name="MerchantSprite" type="Sprite3D" parent="." unique_id=992939819]
 transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 1.206543, 0)
-texture = ExtResource("1_h0r2m")
+billboard = 2
+texture = ExtResource("2_h0r2m")
 
 [node name="Interactable" type="Area3D" parent="MerchantSprite" unique_id=271016206]
 script = ExtResource("3_q2dhr")
