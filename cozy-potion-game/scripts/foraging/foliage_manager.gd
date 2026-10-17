@@ -20,10 +20,16 @@ func _ready() -> void:
 	for marker in get_children():
 		if marker is Marker3D:
 			ingredient_foliage_spawn_points.append(marker)
+	
+	adjust_foliage_weights()
 
 	await get_tree().process_frame
 	spawn_foliage()
-	
+
+func adjust_foliage_weights() -> void:
+	for item in ForestSceneModifications.weighted_items:
+		if ingredients.has(item):
+			ingredients[item] *= ForestSceneModifications.weighted_items[item]
 
 func spawn_foliage() -> void:
 	for marker in ingredient_foliage_spawn_points:

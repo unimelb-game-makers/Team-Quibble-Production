@@ -47,6 +47,8 @@ func _ready() -> void:
 		var portal = get_tree().get_first_node_in_group(Utils.Group.GROUP_PORTAL)
 		if portal and portal is Portal:
 			global_position = portal.player_spawn_position.global_position
+	elif ForestSceneModifications.spawn_location:
+		position = ForestSceneModifications.spawn_location
 	
 	#zooms the player out if we are in a foraging scene
 	if get_tree().get_first_node_in_group(Utils.Group.GROUP_FORAGING_BAG):
