@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://dcjdghhx2rh7q"]
 
 [ext_resource type="Texture2D" uid="uid://bvtvtm6am71de" path="res://assets/textures/mythical_forest/trees/variations/ColorAlpha_PlantAtlasV2.ffb505.png" id="1_wsa1a"]
-[ext_resource type="Texture2D" uid="uid://dilhwyk1bc5m7" path="res://assets/models/enviroment/Mythical_Forest/Tree 1_PlantAtlasv2_roughness.png" id="2_j1wy1"]
-[ext_resource type="Texture2D" uid="uid://bo5yqaajpva3j" path="res://assets/models/enviroment/Mythical_Forest/Tree 1_PlantAtlasv2_normal.png" id="3_n78fy"]
+[ext_resource type="Texture2D" uid="uid://dilhwyk1bc5m7" path="res://assets/models/enviroment/Mythical_Forest/Foliage/Tree 1_PlantAtlasv2_roughness.png" id="2_j1wy1"]
+[ext_resource type="Texture2D" uid="uid://bo5yqaajpva3j" path="res://assets/models/enviroment/Mythical_Forest/Foliage/Tree 1_PlantAtlasv2_normal.png" id="3_n78fy"]
 
 [resource]
 resource_name = "PlantAtlasDarkGreen"
