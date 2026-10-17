@@ -86,3 +86,13 @@ static func canonise_string(input: String) -> String:
 static func need_to_potion_name(input: String) -> String:
 	input = canonise_string(input)
 	return "Potion of %s" % input
+
+## creates a raycast pointing down from a given marker and returns the 
+## hit position
+func get_marker_ground_pos(marker: Marker3D) -> Vector3:
+	var raycast = RayCast3D.new()
+	marker.add_child(raycast)
+	raycast.target_position = Vector3(0,-20,0)
+	raycast.force_raycast_update()
+	raycast.queue_free()
+	return raycast.get_collision_point() if raycast.is_colliding() else marker.global_position
