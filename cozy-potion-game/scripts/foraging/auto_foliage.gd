@@ -10,6 +10,7 @@ func _ready() -> void:
 func initialise(ingredient: Alchemy.IngredientID) -> void:
 	self.ingredient = ingredient
 	populate_markers()
+	interactable.interact_popup_text = Alchemy.ingredient_list[ingredient].ingredient_name
 
 func _on_interact():
 	super()
