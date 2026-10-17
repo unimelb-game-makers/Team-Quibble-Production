@@ -31,6 +31,7 @@ NewsManager="*uid://brtfnh3amack8"
 Alchemy="*uid://brexs4dtg3b08"
 DevTools="*uid://do8xg03yglhhw"
 MusicController="*uid://fmu0thgkusvs"
+PersistentInventory="*uid://okowyngxw7yo"
 
 [display]
 
@@ -50,6 +51,7 @@ player=""
 popup_subwindow=""
 ingredient_ball=""
 portal=""
+money_display=""
 
 [gui]
 

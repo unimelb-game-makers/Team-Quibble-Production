@@ -220,11 +220,11 @@ func read_attribute_need_map() -> void:
 		attribute_to_need_index[attr_id] = need_id
 		
 
-func brew_potion(_ingredient_list: Array) -> Potion:
+func brew_potion(_ingredient_list: Array[PotionIngredient]) -> Potion:
 	var _attributes := sum_attributes(_ingredient_list)
 	
 	var potion := Potion.new()
-	potion.constructor(_attributes)
+	potion.constructor(_attributes, _ingredient_list)
 	
 	return potion
 
