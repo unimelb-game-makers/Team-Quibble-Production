@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://ltqst45s5t8m" path="res://FORESTREADME.gd" id="1_dofmw"]
 [ext_resource type="Script" uid="uid://cx4e7cbvnke4v" path="res://scripts/foraging/foliage_manager.gd" id="1_ij0qq"]
-[ext_resource type="PackedScene" uid="uid://d1s3n3yh2tev5" path="res://scenes/Mythical_Forest.tscn" id="1_mc46m"]
 [ext_resource type="Script" uid="uid://ddb2nwyl1rdqy" path="res://scripts/foraging/foraging_ui/foraging_bag.gd" id="1_q7g5v"]
 [ext_resource type="TextFile" path="res://scenes/foraging/forestREADME.txt" id="2_jfdwa"]
 [ext_resource type="PackedScene" uid="uid://c7nu4svmt7tcy" path="res://scenes/foraging/foliage/test_cone_foliage.tscn" id="2_lb4jd"]
@@ -37,7 +36,7 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("7_dofmw")
 font_size = 42
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_g8fsv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ewpas"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="Forest" type="Node3D" unique_id=529053958]
@@ -327,15 +326,12 @@ label_settings = SubResource("LabelSettings_0n2di")
 [node name="PopupManager" type="CanvasLayer" parent="SceneUI" unique_id=540881292]
 script = ExtResource("7_f3vpa")
 
-[node name="MythicalForest" parent="." unique_id=1236479139 instance=ExtResource("1_mc46m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9421082, 1.6038818, -0.19445801)
-
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=943629651]
 bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
 transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
-texture = SubResource("ViewportTexture_g8fsv")
+texture = SubResource("ViewportTexture_ewpas")
 destination_path = &"uid://bec7ovcvsvc5q"
 
 [node name="Merchant" parent="." unique_id=992939819 node_paths=PackedStringArray("merchant_ui") instance=ExtResource("15_v7bn7")]
