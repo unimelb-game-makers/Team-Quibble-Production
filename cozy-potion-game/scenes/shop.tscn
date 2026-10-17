@@ -276,12 +276,12 @@ script = ExtResource("10_ovj2c")
 
 [node name="CustomerManager" type="Node" parent="." unique_id=1532308594 node_paths=PackedStringArray("customer_anim_player", "customer_interactable", "customer_world")]
 script = ExtResource("11_24it5")
-customer_anim_player = NodePath("AnimationPlayer")
-customer_interactable = NodePath("../Node3D/Customer/Interactable")
-customer_world = NodePath("../Node3D/Customer")
 dialogue_resource = ExtResource("12_7mqwv")
 acceptor_dialogue_balloon = ExtResource("12_xogfe")
 speech_bubble_dialogue_balloon = ExtResource("13_11hi1")
+customer_anim_player = NodePath("AnimationPlayer")
+customer_interactable = NodePath("../Node3D/Customer/Interactable")
+customer_world = NodePath("../Node3D/Customer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerManager" unique_id=1878084005]
 libraries/ = SubResource("AnimationLibrary_yuijs")
