@@ -1,10 +1,13 @@
-extends Foliage
+class_name AutoFoliage extends Foliage
 
 @export var markers: Array[Marker3D]
-var ingredient_sprites: Sprite2D
+var ingredient_sprites: Array[Sprite3D]
 
 func _ready() -> void:
 	super()
+
+func initialise(ingredient: Alchemy.IngredientID) -> void:
+	self.ingredient = ingredient
 	populate_markers()
 
 func _on_interact():
@@ -21,5 +24,6 @@ func populate_markers() -> void:
 		sprite.texture = ingredient.ingredient_sprite
 		marker.add_child(sprite)
 		sprite.scale = Vector3.ONE * 0.35
-		sprite.billboard = true
+		sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		sprite.position = Vector3.ZERO
+		ingredient_sprites.append(sprite)

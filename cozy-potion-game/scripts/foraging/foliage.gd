@@ -22,7 +22,4 @@ func _on_interact():
 	foraging_bag.hover_inventory.inventory.blind_add_stack(item_stack)
 	
 	interactable.queue_free()
-	
-	if model and model.material:
-		model.material.albedo_color -= Color(.5,.5,.5)
 		

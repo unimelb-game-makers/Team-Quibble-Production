@@ -3,11 +3,14 @@
 class_name FoliageManager extends Node
 
 var ingredient_foliage_spawn_points: Array[Marker3D]
+
 @export var ingredient_foliage_marker_parent: Node
 
 @export var decorative_foliages: Dictionary[PackedScene, float]
 
-@export var ingredient_foliages: Dictionary[PackedScene, float]
+@export var ingredients: Array[Alchemy.IngredientID]
+
+@export var auto_foliage_scene: PackedScene
 
 @export var ingredient_foliage_spawn_rate: float
 
@@ -27,9 +30,8 @@ func spawn_foliage() -> void:
 		if not does_spawn:
 			continue
 		
-		var foliage_to_spawn: PackedScene = Utils.pick_random_weighted(\
-		ingredient_foliages.keys(), ingredient_foliages.values())
-		
-		var foliage_instance: Foliage = foliage_to_spawn.instantiate()
+		var ingredient: Alchemy.IngredientID = ingredients.pick_random()
+		var foliage_instance: AutoFoliage = auto_foliage_scene.instantiate()
+		foliage_instance.initialise(ingredient)
 		forest_root.add_child(foliage_instance)
 		foliage_instance.global_position = Utils.get_marker_ground_pos(marker)

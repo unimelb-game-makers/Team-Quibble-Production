@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://bxq7bq8537rse"]
 
-[ext_resource type="Script" uid="uid://ltqst45s5t8m" path="res://FORESTREADME.gd" id="1_dofmw"]
 [ext_resource type="Script" uid="uid://cx4e7cbvnke4v" path="res://scripts/foraging/foliage_manager.gd" id="1_ij0qq"]
 [ext_resource type="Script" uid="uid://ddb2nwyl1rdqy" path="res://scripts/foraging/foraging_ui/foraging_bag.gd" id="1_q7g5v"]
-[ext_resource type="TextFile" path="res://scenes/foraging/forestREADME.txt" id="2_jfdwa"]
-[ext_resource type="PackedScene" uid="uid://c7nu4svmt7tcy" path="res://scenes/foraging/foliage/test_cone_foliage.tscn" id="2_lb4jd"]
 [ext_resource type="Theme" uid="uid://5xdceq6g4wen" path="res://resources/ui_themes/merchant_ui_theme.tres" id="3_28u7r"]
 [ext_resource type="Script" uid="uid://ci3bywoe6ik6b" path="res://scripts/ui/merchant_ui.gd" id="3_iyol6"]
 [ext_resource type="Texture2D" uid="uid://yjhweuu18wcl" path="res://assets/sprites/foraging/backpack_base.png" id="4_ewpas"]
@@ -16,7 +13,9 @@
 [ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/Inventory/hover_inventory.gd" id="10_dofmw"]
 [ext_resource type="Texture2D" uid="uid://bro5ya0bdgk6h" path="res://assets/sprites/foraging/backpack_grid_small.png" id="12_g8fsv"]
 [ext_resource type="PackedScene" uid="uid://b18nfiye242g" path="res://scenes/foraging/shopkeeper.tscn" id="15_v7bn7"]
+[ext_resource type="PackedScene" uid="uid://dnnx46vv3j8s" path="res://scenes/foraging/foliage/auto_foliage_1.tscn" id="16_ewpas"]
 [ext_resource type="Script" uid="uid://ovkukftdmfbw" path="res://scenes/foraging/merchant_spawner.gd" id="16_v7bn7"]
+[ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/prefabs/player.tscn" id="18_dofmw"]
 
 [sub_resource type="Gradient" id="Gradient_2i0qe"]
 offsets = PackedFloat32Array(0)
@@ -36,14 +35,13 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("7_dofmw")
 font_size = 42
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ewpas"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_v7bn7"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
-[node name="Forest" type="Node3D" unique_id=529053958]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_v7bn7"]
+data = PackedVector3Array(-56.950684, -0.5, 33.864746, -56.950684, -0.5, -33.864746, -56.950684, 0.5, -33.864746, 56.950684, -0.5, -33.864746, -56.950684, -0.5, -33.864746, -56.950684, -0.5, 33.864746, -56.950684, 0.5, -33.864746, -56.950684, -0.5, -33.864746, 56.950684, -0.5, -33.864746, -56.950684, 0.5, -33.864746, -56.950684, 0.5, 33.864746, -56.950684, -0.5, 33.864746, -56.950684, -0.5, 33.864746, -56.950684, 0.5, 33.864746, 56.950684, 0.5, 33.864746, 56.950684, 0.5, 33.864746, -56.950684, 0.5, 33.864746, -56.950684, 0.5, -33.864746, -56.950684, -0.5, 33.864746, 56.950684, -0.5, 33.864746, 56.950684, -0.5, -33.864746, 56.950684, 0.5, 33.864746, 56.950684, -0.5, 33.864746, -56.950684, -0.5, 33.864746, 56.950684, -0.5, -33.864746, 56.950684, -0.5, 33.864746, 56.950684, 0.5, 33.864746, 56.950684, -0.5, -33.864746, 56.950684, 0.5, -33.864746, -56.950684, 0.5, -33.864746, -56.950684, 0.5, -33.864746, 56.950684, 0.5, -33.864746, 56.950684, 0.5, 33.864746, 56.950684, 0.5, 33.864746, 56.950684, 0.5, -33.864746, 56.950684, -0.5, -33.864746)
 
-[node name="README" type="Node" parent="." unique_id=639986543]
-script = ExtResource("1_dofmw")
-README = ExtResource("2_jfdwa")
+[node name="Forest" type="Node3D" unique_id=529053958]
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=127223334]
 
@@ -331,7 +329,7 @@ bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
 transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
-texture = SubResource("ViewportTexture_ewpas")
+texture = SubResource("ViewportTexture_v7bn7")
 destination_path = &"uid://bec7ovcvsvc5q"
 
 [node name="Merchant" parent="." unique_id=992939819 node_paths=PackedStringArray("merchant_ui") instance=ExtResource("15_v7bn7")]
@@ -341,9 +339,8 @@ merchant_ui = NodePath("../SceneUI/MerchantUI")
 [node name="LeftQuadrantFoliageManager" type="Node" parent="." unique_id=1037012145 node_paths=PackedStringArray("ingredient_foliage_marker_parent", "forest_root")]
 script = ExtResource("1_ij0qq")
 ingredient_foliage_marker_parent = NodePath("../LeftQuadrantMarkers")
-ingredient_foliages = Dictionary[PackedScene, float]({
-ExtResource("2_lb4jd"): 1.0
-})
+ingredients = Array[int]([0, 17])
+auto_foliage_scene = ExtResource("16_ewpas")
 ingredient_foliage_spawn_rate = 0.75
 forest_root = NodePath("..")
 
@@ -455,3 +452,15 @@ polygon = PackedVector2Array(61.031002, -38.35635, 94.78287, -63.474026, 94.3903
 
 [node name="Marker3D" type="Marker3D" parent="RightQuadrant" unique_id=816738741]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.32195, 6.689865, -94.88432)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1851091395]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.16712, 0, -83.09408)
+size = Vector3(113.90137, 1, 67.72949)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D" unique_id=142134201]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D" unique_id=1951068490]
+shape = SubResource("ConcavePolygonShape3D_v7bn7")
+
+[node name="Player" parent="." unique_id=1588394108 instance=ExtResource("18_dofmw")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 46.656143, 4.207901, -50.911747)
