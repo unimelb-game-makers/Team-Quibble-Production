@@ -32,7 +32,7 @@ var top_down_active: bool = false
 var accepting_control: bool = true
 
 #hotbar stuff
-@export var hotbar_display : HoverInventory
+@export var hotbar_display: HoverInventory
 
 # this is called before _ready
 func _init() -> void:
@@ -41,6 +41,12 @@ func _init() -> void:
 func _ready() -> void:
 	mouse_detector_left.mouse_entered.connect(rotate_camera.bind(-1))
 	mouse_detector_right.mouse_entered.connect(rotate_camera.bind(1))
+	
+	if Portal.spawn_at_portal:
+		Portal.spawn_at_portal = false
+		var portal = get_tree().get_first_node_in_group(Utils.Group.GROUP_PORTAL)
+		if portal and portal is Portal:
+			global_position = portal.player_spawn_position.global_position
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -65,6 +71,9 @@ func aesthetic_movement(event: InputEvent) -> void:
 		
 	if event.is_action_pressed("interact"):
 		interact()
+	
+	if event.is_action_pressed("open_notebook"):
+		Notebook.open_notebook(get_tree().get_first_node_in_group(Utils.Group.GROUP_POPUP_SUBWINDOW))
 
 func rotate_camera(direction: int) -> void:
 	if DraggableComponent.dragged_control or DialogueManager.active_balloon:

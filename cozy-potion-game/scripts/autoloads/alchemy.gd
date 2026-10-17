@@ -171,16 +171,20 @@ func read_ingredient_data() -> void:
 	var start = Time.get_ticks_msec()
 	for ingredient in json_data.data:
 		var temp_ingredient := PotionIngredient.new()
-		temp_ingredient.ingredient_name = ingredient["Ingredient Name"]
+		temp_ingredient.ingredient_name = ingredient["INGR_NAME"]
 
 		# Used to index an enum with a string
-		temp_ingredient.ingredient_id = IngredientID.keys().find(ingredient["Ingredient ID"]) as IngredientID
+		temp_ingredient.ingredient_id = IngredientID.keys().find(ingredient["INGR_ID"]) as IngredientID
 		
-		for process in ingredient["Compatible Process IDs"].split(", "):
+		temp_ingredient.ingredient_price = ingredient["BASE_GOLD_VALUE"]
+		if ingredient["PURCHASABLE"] == "TRUE":
+			temp_ingredient.purchaseable = true
+		
+		for process in ingredient["COMPATIBLE_PROCESS_ID"].split(", "):
 			temp_ingredient.valid_process_methods.append(ProcessID.keys().find(process))
 
 		for attribute in AttributeID.values():
-			temp_ingredient.attributes.set(attribute, ingredient[AttributeID.keys()[attribute]])
+			temp_ingredient.attributes.set(attribute, int(ingredient[AttributeID.keys()[attribute]]))
 
 		temp_ingredient.ingredient_sprite = get_sprite(IngredientID.keys()[temp_ingredient.ingredient_id])
 
@@ -216,11 +220,11 @@ func read_attribute_need_map() -> void:
 		attribute_to_need_index[attr_id] = need_id
 		
 
-func brew_potion(_ingredient_list: Array) -> Potion:
+func brew_potion(_ingredient_list: Array[PotionIngredient]) -> Potion:
 	var _attributes := sum_attributes(_ingredient_list)
 	
 	var potion := Potion.new()
-	potion.constructor(_attributes)
+	potion.constructor(_attributes, _ingredient_list)
 	
 	return potion
 
@@ -248,7 +252,7 @@ func get_sprite(_name: String) -> Resource:
 		var sprite = sprite_directory[index].to_camel_case().to_lower()
 		if sprite.contains(_name.to_camel_case().to_lower()):
 			var sprite_path = INGREDIENT_SPRITES+sprite_directory[index]
-			return ResourceLoader.load(sprite_path)
+			return ResourceLoader.load(sprite_path.rstrip(".import"))
 
 	print_debug(_name.to_camel_case().to_lower(), " is missing a sprite")
 	return MISSING_IMAGE

@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://cty6lpq8trkc8"]
 
-[ext_resource type="Script" uid="uid://cms2728e0rt6h" path="res://scripts/minigame/crushing_minigame/crushing_minigame_scene.gd" id="1_nk5qi"]
-[ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scenes/minigames/components/ingredient_ball.tscn" id="2_vb3df"]
-[ext_resource type="Texture2D" uid="uid://d4j1fyiiegfeq" path="res://assets/sprites/minigame/crushing_minigame/Mortar.png" id="3_r8a31"]
-[ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scenes/minigames/components/pestle.tscn" id="4_73gys"]
-[ext_resource type="Script" uid="uid://cpl11lanx3nfh" path="res://scripts/user_interface/clickable_drag_acceptor_component.gd" id="5_f3myw"]
+[ext_resource type="Script" uid="uid://cms2728e0rt6h" path="res://scripts/minigame/crushing_minigame/crushing_minigame_scene.gd" id="1_fhxy2"]
+[ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scenes/prefabs/minigame/crushing_minigame/pestle.tscn" id="1_j31fb"]
+[ext_resource type="Texture2D" uid="uid://d4j1fyiiegfeq" path="res://assets/sprites/minigame/crushing_minigame/Mortar.png" id="2_eukv0"]
+[ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scenes/prefabs/minigame/crushing_minigame/ingredient_ball.tscn" id="2_fhxy2"]
+[ext_resource type="Script" uid="uid://cpl11lanx3nfh" path="res://scripts/ui/clickable_drag_acceptor_component.gd" id="5_7jnv1"]
+[ext_resource type="AudioStream" uid="uid://bno2eeqej66eu" path="res://audio/sfx/ingredient_drop_in_bowl.mp3" id="6_2tac5"]
+[ext_resource type="Script" uid="uid://coe1t2e6118dr" path="res://scripts/audio/audio_player.gd" id="7_dp2bl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvm4"]
 size = Vector2(853, 21)
@@ -75,3 +77,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.54509807, 1, 0.54509807, 0.18039216)
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=957697711]
+stream = ExtResource("6_2tac5")
+script = ExtResource("7_dp2bl")
+metadata/_custom_type_script = "uid://coe1t2e6118dr"

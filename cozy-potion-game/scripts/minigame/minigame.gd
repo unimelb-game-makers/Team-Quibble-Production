@@ -19,12 +19,16 @@ func _ready() -> void:
 	acceptor.accepted_draggable.connect(emit_ingredient_added)
 
 func win_minigame() -> void:
-	print_debug("created a %s and added to hotbar" % output_ingredient.item.ingredient_name)
-	ingredient_processed.emit(output_ingredient)
+	if output_ingredient.item != null:
+		print_debug("created a %s and added to hotbar" % output_ingredient.item.ingredient_name)
+		ingredient_processed.emit(output_ingredient)
 	process_mode = Node.PROCESS_MODE_DISABLED
 	
 	player.inventory().blind_add_stack(output_ingredient)
 	minigame_won.emit()
+
+func close_minigame() -> void:
+	pass
 
 func set_ingredient_list(_new_ingredient_list: Array[Stack]) -> void:
 	pass

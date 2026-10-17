@@ -3,7 +3,7 @@ class_name MinigameObject extends Node3D
 @export var minigame_scene: PackedScene
 @export var interactable: Interactable
 @export var indicator_pos: Node3D
-
+@export var audio_player: AudioStreamPlayer3D
 var popup_subwindow: PopupSubWindow
 var indicator: Indicator
 

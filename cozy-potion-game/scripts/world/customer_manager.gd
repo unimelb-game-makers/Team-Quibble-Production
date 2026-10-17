@@ -19,7 +19,7 @@ func _ready() -> void:
 	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
 	var crack
-	DevTools.PLEASE_FUCKOFF.connect(buy_potion.bind(crack))
+	DevTools.forced_customer_leave.connect(buy_potion.bind(crack))
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if !can_force_potion_to_customer:
@@ -145,7 +145,6 @@ func other_accepted():
 	DialogueManager.show_example_dialogue_balloon(dialogue_resource, "not_potion")
 
 func buy_potion(potion: Potion) -> void:
-
 	Utils.corner_needs_list_manager.clear_list()
 	DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon, dialogue_resource, "accept")
 	await DialogueManager.dialogue_ended
@@ -154,10 +153,11 @@ func buy_potion(potion: Potion) -> void:
 	else:
 		TimeCycle.progress_day()
 	recall_customer()
+	
+	PersistentInventory.money += get_potion_value(potion, customer_world.customer)
 
 func refuse_potion() -> void:
-		DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon,dialogue_resource, "refuse")
-	
+	DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon,dialogue_resource, "refuse")
 
 #generates some number of customers to be drawn from during the day
 func generate_customer_queue() -> void:
@@ -191,6 +191,10 @@ func generate_customer_time_allotments() -> Array[float]:
 #gets the next customer of the day, or else null
 func get_next_customer() -> Customer:
 	return customer_queue.pop_front()
+
+func get_potion_value(potion: Potion, customer: Customer) -> int:
+	var strength_diff = potion.potion_attribute_strength - customer.need_severities.front()
+	return max(0, (2 * potion.base_gold_value + 20)/(1 + exp(-0.05*strength_diff)))
 	
 func customer_tests() -> void:
 	var test_customer_1: Customer = Customer.generate_customer(-1)
@@ -199,6 +203,5 @@ func customer_tests() -> void:
 	var test_customer_2: Customer = Customer.generate_customer(Customer.CustomerID.NPC_STUDENT)
 	assert(test_customer_2.customer_id == Customer.CustomerID.NPC_STUDENT, "bad customer 2")
 	assert(test_customer_2.needs.size() > 0, "bad customer 2")
-
-
-	
+	var test_potion: Potion = Alchemy.brew_potion([Alchemy.ingredient_list.front()])
+	get_potion_value(test_potion, test_customer_1)

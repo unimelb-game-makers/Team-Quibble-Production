@@ -25,13 +25,13 @@ func _init(container: Container = null, max_stack_size:int = 999) -> void:
 
 
 # Creates new slot from a stack, places it in a holder if stack is not empty
-func add_new_slot_from_stack(item: Stack, trash_collector: Control) -> void:
+func add_new_slot_from_stack(item: Stack, trash_collector: Control = null, \
+custom_storage: Container = storage) -> void:
 	var new_item_slot: ItemSlot = ItemSlot.get_scene().instantiate()
-	storage.add_child(new_item_slot)
+	custom_storage.add_child(new_item_slot)
 	item_slots.append(new_item_slot)
 	
 	new_item_slot.max_quantity = max_quantity
-	new_item_slot.trash_collector = trash_collector
 	
 	# Connections made for hovering slots
 	# idk if this good considering you can use inventory without them
@@ -53,15 +53,23 @@ func mouse_exit_slot_emit() -> void:
 
 
 # Replaces itemslots with parsed stacks
-func spawn_slots(item_list: Array[Stack], trash_collector: Control) -> void:
+func spawn_slots(item_list: Array[Stack]) -> void:
 	# Removes previous slots
 	for slot in item_slots:
 		storage.remove_child(slot)
 	
 	item_slots = []
 	for new_item in item_list:
-		add_new_slot_from_stack(new_item, trash_collector)
+		add_new_slot_from_stack(new_item)
 
+## spawns item slots from item_list into the storage parameter
+## and adds them to the inventory's item slots.
+func spawn_new_slots_to_arbitrary_storage(item_list: Array[Stack], \
+new_storage: Container, \
+trash_collector: Control) -> void:
+	
+	for item in item_list:
+		add_new_slot_from_stack(item, trash_collector, new_storage)
 
 # Currently unused
 # Similar to the above, but accepts a premade list of slots.
@@ -79,7 +87,7 @@ func blind_add_stack(new_item: Stack) -> Stack:
 	# Adds to existing stacks
 	for i in range(item_slots.size()):
 		if item_slots[i].get_item_stack().compare_stacks(new_item):
-			new_item = item_slots[i].add_stack(new_item)
+			new_item = item_slots[i].add_to_stack(new_item)
 			
 			# If stack is now empty end
 			if new_item.isEmpty:
@@ -128,8 +136,8 @@ func sort_items(sort_func: Callable) -> void:
 func export_stacks() -> Array[Stack]:
 	var stacks : Array[Stack]
 	for slot in item_slots:
-		stacks.append(slot.get_stack())
-	
+		if slot.get_item_stack().quantity > 0:
+			stacks.append(slot.get_item_stack())
 	return stacks
 
 
