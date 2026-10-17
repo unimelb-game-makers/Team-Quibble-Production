@@ -6,6 +6,7 @@ const DEBUG: bool = false
 
 var popup_manager: PopupManager
 var corner_needs_list_manager: CornerNeedsListManager
+var audio_manager: AudioManager
 
 # project group names
 const Group = {
@@ -14,6 +15,9 @@ const Group = {
 	GROUP_POPUP_SUBWINDOW = "popup_subwindow",
 	GROUP_HOTBAR = "hotbar",
 	GROUP_INGREDIENT_BALL = "ingredient_ball",
+	GROUP_AUDIO = "audio",
+	GROUP_FORAGING_BAG = "foraging_bag",
+	GROUP_PORTAL = "portal",
 }
 
 #takes a string path and returns the json file at that location
