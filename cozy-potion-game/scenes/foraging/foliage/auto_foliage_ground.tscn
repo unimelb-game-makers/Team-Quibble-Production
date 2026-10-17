@@ -4,10 +4,17 @@
 [ext_resource type="Script" uid="uid://dwjiokj6l4j5u" path="res://scripts/foraging/auto_foliage.gd" id="2_4pfvr"]
 [ext_resource type="PackedScene" uid="uid://oly1h5v563vy" path="res://scenes/foraging/foliage/ingredient_medallion.tscn" id="3_onxks"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_p2jnn"]
+size = Vector3(2.235962, 0.5, 2.5863037)
+
 [node name="AutoFoliageGround" unique_id=1126630017 node_paths=PackedStringArray("markers") instance=ExtResource("1_nywcp")]
 script = ExtResource("2_4pfvr")
 markers = [NodePath("Marker3D"), NodePath("Marker3D4"), NodePath("Marker3D2"), NodePath("Marker3D3")]
 ingredient_medallion_scene = ExtResource("3_onxks")
+
+[node name="CollisionShape3D" parent="Interactable" parent_id_path=PackedInt32Array(1663026376) index="0" unique_id=33012576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06414795, 0, -0.059143066)
+shape = SubResource("BoxShape3D_p2jnn")
 
 [node name="Marker3D" type="Marker3D" parent="." index="1" unique_id=1012536560]
 transform = Transform3D(0.99994725, -0.01026884, 0, 0.01026884, 0.99994725, 0, 0, 0, 1, 1.1620095, 0.21645892, 0.035151422)

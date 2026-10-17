@@ -6,10 +6,17 @@
 [ext_resource type="Material" uid="uid://flomtblpwx7x" path="res://assets/materials/mythical_forest/PlantAtlasLightRed.tres" id="4_5jpw4"]
 [ext_resource type="ArrayMesh" uid="uid://i8lt6omwioyv" path="res://assets/models/enviroment/Mythical_Forest/Foliage/Bush 1.glb" id="5_8j1b2"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_bup2i"]
+size = Vector3(1.5662842, 2.9666748, 1.3309326)
+
 [node name="AutoFoliageTree" unique_id=1126630017 node_paths=PackedStringArray("markers") instance=ExtResource("1_bup2i")]
 script = ExtResource("2_fmxpw")
 markers = [NodePath("Marker3D"), NodePath("Marker3D4"), NodePath("Marker3D2"), NodePath("Marker3D3")]
 ingredient_medallion_scene = ExtResource("3_kvxox")
+
+[node name="CollisionShape3D" parent="Interactable" parent_id_path=PackedInt32Array(1663026376) index="0" unique_id=33012576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01361084, 1.2333374, 0.042907715)
+shape = SubResource("BoxShape3D_bup2i")
 
 [node name="Marker3D" type="Marker3D" parent="." index="1" unique_id=1012536560]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5419893, 1.7121922, -0.6651683)
