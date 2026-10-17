@@ -1,12 +1,19 @@
-The player will spawn wherever the player prefab is in the scene, unless
-there is a portal in the scene and the portal static var spawn_at_portal is true,
-in which case they will spawn at the portal.
+If the player spawns in the forest from a portal, they will spawn at the
+portal in the forest, currently in the cave.
 
-There are four foliagemanagers, one for each quadrant. each has an array of
-markers which are positions where foliage will spawn, and an array of
-foliages that will spawn on those markers. 
+foliage is spawned by foliage managers, one for each type of foliage
 
-ignore decorative foliages for now
+foliage is spawned on markers that are children of these managers, 
+or more precisely on the position of the ground underneath the markers
 
-each marker is placed far above the forest, but casts a ray down to determine the spawn point
-on the ground
+You can change the spawn location or the player and the weight
+of certain items in the FOrestSceneModifications autoload
+
+items picked up during foraging will go in the bag which can be viewed
+with a button at thebotto of the screen, and will go to the pantry
+autoload when the foraging bag exits the tree
+
+the dithering so we dont obscure the player is a material setting,
+so if you want to change it you have to go throuugh all 12 or so of 
+the materials used in the forest and change the Distance Fade parameters
+for each

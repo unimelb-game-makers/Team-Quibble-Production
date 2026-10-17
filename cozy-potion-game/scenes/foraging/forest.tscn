@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="7_f3vpa"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/prefabs/portal.tscn" id="9_54ec3"]
 [ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/Inventory/hover_inventory.gd" id="10_dofmw"]
+[ext_resource type="Texture2D" uid="uid://cgsnb674nd7va" path="res://assets/sprites/foraging/NPC_Merchant.png" id="12_bdats"]
 [ext_resource type="Texture2D" uid="uid://bro5ya0bdgk6h" path="res://assets/sprites/foraging/backpack_grid_small.png" id="12_g8fsv"]
 [ext_resource type="Script" uid="uid://biw1qiukgvxb5" path="res://scripts/foraging/portal_spawner.gd" id="13_bdats"]
 [ext_resource type="PackedScene" uid="uid://bfeb8kf6vd3pe" path="res://scenes/foraging/foliage/auto_foliage_ground.tscn" id="13_dofmw"]
@@ -53,7 +54,7 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("7_dofmw")
 font_size = 42
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_pjwkr"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_67phx"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4dvm4"]
@@ -234,7 +235,6 @@ texture_disabled = ExtResource("6_pjwkr")
 texture_focused = ExtResource("6_pjwkr")
 
 [node name="MerchantUI" type="CanvasLayer" parent="SceneUI" unique_id=1074401360 node_paths=PackedStringArray("item_box_container")]
-visible = false
 script = ExtResource("3_iyol6")
 merchant_item_box_scene = ExtResource("4_iyol6")
 item_box_container = NodePath("Control/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer")
@@ -256,6 +256,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.19215687, 0.19215687, 0.19215687, 0.77254903)
+
+[node name="TextureRect" type="TextureRect" parent="SceneUI/MerchantUI/Control" unique_id=1313255848]
+layout_mode = 0
+offset_left = 657.0
+offset_top = 17.0
+offset_right = 1987.0
+offset_bottom = 1097.0
+mouse_filter = 2
+texture = ExtResource("12_bdats")
+expand_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SceneUI/MerchantUI/Control" unique_id=786940866]
 layout_mode = 1
@@ -648,8 +658,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.51564, -15.827637, -55.712
 merchant_ui = NodePath("../SceneUI/MerchantUI")
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
-transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
-texture = SubResource("ViewportTexture_pjwkr")
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 1.5899999, 90.811584, 3.1055298, -79.952934)
+texture = SubResource("ViewportTexture_67phx")
 destination_path = &"uid://bec7ovcvsvc5q"
 
 [node name="LeftQuadrant" type="Area3D" parent="." unique_id=1142467544]
