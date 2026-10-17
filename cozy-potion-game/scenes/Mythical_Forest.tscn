@@ -553,7 +553,7 @@ top_level = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." unique_id=1588394108 instance=ExtResource("1_kds0c")]
-transform = Transform3D(0.6654595, 0, -0.746434, 0, 1, 0, 0.746434, 0, 0.6654595, 44.86233, 0.31613255, -52.192917)
+transform = Transform3D(0.6654595, 0, -0.746434, 0, 1, 0, 0.746434, 0, 0.6654595, 108.394844, 8.012544, -74.46384)
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1824571935]
 bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
@@ -3808,3 +3808,13 @@ mesh = SubResource("ArrayMesh_1sf4c")
 [node name="FlyAgaricGroup2" type="MeshInstance3D" parent="Mushrooms" unique_id=1763756140]
 transform = Transform3D(0.0118441265, -0.048576917, 2.1233646e-09, 0, -2.1855695e-09, -0.05, 0.048576917, 0.0118441265, -5.177232e-10, 96.09664, -1.102531, -86.18002)
 mesh = SubResource("ArrayMesh_tcs35")
+
+[node name="FloatOnWaterCollision" type="StaticBody3D" parent="." unique_id=787402852]
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="FloatOnWaterCollision" unique_id=865567362]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 64.05, -1, -72.337)
+polygon = PackedVector2Array(-0.791893, 0.60595703, -4.873703, -1.6617126, -5.4784164, -9.3214035, 11.0504, -16.880318, 15.343147, -14.929382, 14.608688, -12.250755, 15.083923, -9.053688, 16.64399, -3.5766373)
+
+[node name="CollisionPolygon3D2" type="CollisionPolygon3D" parent="FloatOnWaterCollision" unique_id=1683987204]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, -0.6, 0)
+polygon = PackedVector2Array(107.46181, -89.96869, 131.85173, -96.84585, 136.01003, -95.886246, 139.04877, -93.3273, 142.72725, -95.246506, 146.08586, -95.566376, 146.00589, -85.73044, 142.72725, -85.8104, 140.6481, -88.84915, 136.01003, -87.00991, 129.85257, -86.45014, 122.735504, -82.051956, 115.69841, -78.2935, 106.42223, -77.094)

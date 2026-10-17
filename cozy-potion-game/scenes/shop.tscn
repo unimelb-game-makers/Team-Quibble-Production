@@ -34,7 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://w65i7h10tgrw" path="res://assets/models/PH/Mortar_Pestle_Only_PH/Mortar_Placeholder.glb" id="25_ccf1r"]
 [ext_resource type="PackedScene" uid="uid://bbymrxpal4myo" path="res://assets/models/PH/Cauldron_PH/Cauldron_Placeholder.glb" id="26_mt8ix"]
 [ext_resource type="PackedScene" uid="uid://bq881rwv1qjfj" path="res://assets/models/PH/Spice_Cabinet_PH/Spice_Cabinet_Placeholder.glb" id="27_a6g3j"]
-[ext_resource type="PackedScene" uid="uid://dnnx46vv3j8s" path="res://scenes/foraging/foliage/auto_foliage_1.tscn" id="35_11hi1"]
+[ext_resource type="PackedScene" uid="uid://dnnx46vv3j8s" path="res://scenes/foraging/foliage/auto_foliage_tree.tscn" id="35_11hi1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 124
