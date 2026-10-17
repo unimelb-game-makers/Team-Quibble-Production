@@ -43,6 +43,8 @@ var time_of_day: String = ""
 
 
 func _ready() -> void:
+	## TODO: this should go to the Music bus
+	
 	music = FmodServer.create_event_instance(EVENT_PATH)
 	
 	# get timeline markers to report fmod loop
