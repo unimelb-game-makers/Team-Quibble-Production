@@ -1,7 +1,8 @@
 class_name AutoFoliage extends Foliage
 
 @export var markers: Array[Marker3D]
-var ingredient_sprites: Array[Sprite3D]
+@export var ingredient_medallion_scene: PackedScene
+var ingredient_sprites: Array[IngredientMedallion]
 
 func _ready() -> void:
 	super()
@@ -13,17 +14,16 @@ func initialise(ingredient: Alchemy.IngredientID) -> void:
 func _on_interact():
 	super()
 	for sprite in ingredient_sprites:
-		sprite.queue_free()
+		sprite.die()
 		
 ## creates a 3dsprite for each ingredient marker and gives it the texture of
 ## the ingredient in question
 func populate_markers() -> void:
 	for marker in markers:
-		var sprite = Sprite3D.new()
+		var sprite: IngredientMedallion = ingredient_medallion_scene.instantiate()
 		var ingredient: PotionIngredient = Alchemy.ingredient_list[ingredient]
-		sprite.texture = ingredient.ingredient_sprite
+		sprite.initialise(ingredient.ingredient_sprite)
 		marker.add_child(sprite)
-		sprite.scale = Vector3.ONE * 0.35
-		sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		sprite.position = Vector3.ZERO
+		sprite.rotation.y = randf()
 		ingredient_sprites.append(sprite)

@@ -3473,7 +3473,6 @@ mesh = ExtResource("13_6kaec")
 
 [node name="Bushes" type="Node3D" parent="." unique_id=203495605]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 89.44489, -0.020498872, -33.99642)
-visible = false
 
 [node name="Bush1" type="MeshInstance3D" parent="Bushes" unique_id=1449005623]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.479736, 0.012917876, -33.713966)
@@ -3486,6 +3485,11 @@ material_override = ExtResource("16_g2j1f")
 mesh = ExtResource("18_3mh07")
 
 [node name="LeafBall" type="MeshInstance3D" parent="Bushes" unique_id=1570787639]
+transform = Transform3D(1.8571348, 0, 0, 0, 1, 0, 0, 0, 1.639255, -27.466923, 0.49765956, -24.408257)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("20_eqm7c")
+
+[node name="LeafBall20" type="MeshInstance3D" parent="Bushes" unique_id=1566221642]
 transform = Transform3D(1.8571348, 0, 0, 0, 1, 0, 0, 0, 1.639255, -27.466923, 0.49765956, -24.408257)
 material_override = ExtResource("19_xg4sl")
 mesh = ExtResource("20_eqm7c")
