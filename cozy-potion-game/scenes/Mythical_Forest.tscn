@@ -122,12 +122,6 @@ uv_scale = 0.14
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_is1wo")])
 texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_md61m"), SubResource("Terrain3DTextureAsset_y68v2")])
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_4dvm4"]
-size = Vector2(140, 70)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kds0c"]
-points = PackedVector3Array(-70, 0, -35, -70, 0, 35, 70, 0, -35, 70, 0, 35)
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_dmvtt"]
 
 [sub_resource type="Gradient" id="Gradient_5knbb"]
@@ -563,16 +557,6 @@ transform = Transform3D(0.6654595, 0, -0.746434, 0, 1, 0, 0.746434, 0, 0.6654595
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1824571935]
 bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
-
-[node name="PLACEHOLDERCOLLISION" type="MeshInstance3D" parent="." unique_id=1772939313]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 106.59996, -3.59758, -79.76265)
-visible = false
-mesh = SubResource("PlaneMesh_4dvm4")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="PLACEHOLDERCOLLISION" unique_id=759029202]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PLACEHOLDERCOLLISION/StaticBody3D" unique_id=2125336965]
-shape = SubResource("ConvexPolygonShape3D_kds0c")
 
 [node name="Water_Plane" type="MeshInstance3D" parent="." unique_id=1776273301]
 transform = Transform3D(14.528191, 0, 0, 0, 1, 0, 0, 0, 9.552793, 67.6918, -0.19145823, -80.46103)
@@ -3759,17 +3743,14 @@ mesh = ExtResource("34_66erv")
 
 [node name="NamaqualandStones01D3" type="MeshInstance3D" parent="Rocks" unique_id=1427122492]
 transform = Transform3D(-2.3869624, -54.441566, 141.6708, 36.83946, 137.24315, 53.360794, -147.23235, 35.222645, 11.054762, 86.16889, 6.170315, -83.747444)
-visible = false
 mesh = ExtResource("34_66erv")
 
 [node name="NamaqualandStones01D4" type="MeshInstance3D" parent="Rocks" unique_id=588447981]
 transform = Transform3D(9.365174, -62.47941, 138.01744, -37.21735, -134.99225, -58.584568, 146.8583, -30.225895, -23.648087, 101.14661, 6.170315, -84.503075)
-visible = false
 mesh = ExtResource("34_66erv")
 
 [node name="NamaqualandStones01D5" type="MeshInstance3D" parent="Rocks" unique_id=253074079]
 transform = Transform3D(-21.483704, 12.754791, -149.71965, 31.800766, 148.20224, 8.062335, 146.8583, -30.225899, -23.648087, 93.27915, 7.2542877, -84.503075)
-visible = false
 mesh = ExtResource("34_66erv")
 
 [node name="NamaqualandStones01D6" type="MeshInstance3D" parent="Rocks" unique_id=307726469]

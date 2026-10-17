@@ -92,7 +92,8 @@ static func need_to_potion_name(input: String) -> String:
 func get_marker_ground_pos(marker: Marker3D) -> Vector3:
 	var raycast = RayCast3D.new()
 	marker.add_child(raycast)
-	raycast.target_position = Vector3(0,-20,0)
+	raycast.target_position = Vector3(1,-20,1)
 	raycast.force_raycast_update()
 	raycast.queue_free()
+	print(raycast.get_collider())
 	return raycast.get_collision_point() if raycast.is_colliding() else marker.global_position

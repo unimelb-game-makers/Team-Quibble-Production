@@ -13,6 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/prefabs/portal.tscn" id="9_54ec3"]
 [ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/Inventory/hover_inventory.gd" id="10_dofmw"]
 [ext_resource type="Texture2D" uid="uid://bro5ya0bdgk6h" path="res://assets/sprites/foraging/backpack_grid_small.png" id="12_g8fsv"]
+[ext_resource type="PackedScene" uid="uid://bfeb8kf6vd3pe" path="res://scenes/foraging/foliage/auto_foliage_ground.tscn" id="13_dofmw"]
+[ext_resource type="PackedScene" uid="uid://c478kxsov5ein" path="res://scenes/foraging/foliage/auto_foliage_kelp.tscn" id="13_ewpas"]
+[ext_resource type="PackedScene" uid="uid://dnnx46vv3j8s" path="res://scenes/foraging/foliage/auto_foliage_tree.tscn" id="13_g8fsv"]
+[ext_resource type="PackedScene" uid="uid://e2jkygf0wewl" path="res://scenes/foraging/foliage/auto_foliage_bush.tscn" id="14_u7blp"]
 [ext_resource type="PackedScene" uid="uid://b18nfiye242g" path="res://scenes/foraging/shopkeeper.tscn" id="15_v7bn7"]
 [ext_resource type="Script" uid="uid://ovkukftdmfbw" path="res://scenes/foraging/merchant_spawner.gd" id="16_v7bn7"]
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/prefabs/player.tscn" id="18_dofmw"]
@@ -47,14 +51,11 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("7_dofmw")
 font_size = 42
 
-[sub_resource type="Resource" id="Resource_g8fsv"]
-metadata/__load_path__ = "res://scenes/foraging/foliage/auto_foliage_1.tscn"
-
-[sub_resource type="Resource" id="Resource_u7blp"]
-metadata/__load_path__ = "res://scenes/foraging/foliage/auto_foliage_1.tscn"
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_jfdwa"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ewpas"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4dvm4"]
+radius = 20.191406
 
 [node name="Forest" type="Node3D" unique_id=529053958]
 
@@ -346,23 +347,280 @@ script = ExtResource("7_f3vpa")
 
 [node name="TreeFoliageManager" type="Node" parent="." unique_id=1037012145]
 script = ExtResource("1_ij0qq")
-auto_foliage_scene = SubResource("Resource_g8fsv")
+ingredients = Dictionary[int, float]({
+0: 3.0,
+2: 3.0,
+6: 3.0,
+16: 2.0
+})
+auto_foliage_scene = ExtResource("13_g8fsv")
 ingredient_foliage_spawn_rate = 0.75
+
+[node name="Marker3D" type="Marker3D" parent="TreeFoliageManager" unique_id=92988184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.236115, 0, -73.113556)
+
+[node name="Marker3D2" type="Marker3D" parent="TreeFoliageManager" unique_id=936925474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.15297, 0, -90.11311)
+
+[node name="Marker3D3" type="Marker3D" parent="TreeFoliageManager" unique_id=54923160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.644295, 0, -92.31676)
+
+[node name="Marker3D4" type="Marker3D" parent="TreeFoliageManager" unique_id=404075599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.024017, 0, -77.99306)
+
+[node name="Marker3D5" type="Marker3D" parent="TreeFoliageManager" unique_id=491013039]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.866615, 0, -62.410122)
+
+[node name="Marker3D6" type="Marker3D" parent="TreeFoliageManager" unique_id=2022788214]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.94976, 0, -110.73295)
+
+[node name="Marker3D7" type="Marker3D" parent="TreeFoliageManager" unique_id=1884614048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 67.949326, 0, -115.92726)
+
+[node name="Marker3D8" type="Marker3D" parent="TreeFoliageManager" unique_id=1586523914]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.68921, 0, -117.02908)
+
+[node name="Marker3D9" type="Marker3D" parent="TreeFoliageManager" unique_id=1661115918]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 105.25391, 0, -117.02908)
+
+[node name="Marker3D10" type="Marker3D" parent="TreeFoliageManager" unique_id=575297627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.37398, 0, -109.473724)
+
+[node name="Marker3D11" type="Marker3D" parent="TreeFoliageManager" unique_id=390791552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.45184, 0, -104.90588)
+
+[node name="Marker3D12" type="Marker3D" parent="TreeFoliageManager" unique_id=2085104636]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.132126, 0, -96.91217)
+
+[node name="Marker3D13" type="Marker3D" parent="TreeFoliageManager" unique_id=439668649]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 142.6874, 0, -97.8638)
+
+[node name="Marker3D14" type="Marker3D" parent="TreeFoliageManager" unique_id=257269252]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.02911, 0, -85.6829)
+
+[node name="Marker3D15" type="Marker3D" parent="TreeFoliageManager" unique_id=877333414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 137.54858, 0, -60.75011)
+
+[node name="Marker3D16" type="Marker3D" parent="TreeFoliageManager" unique_id=412814529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 133.17107, 0, -56.753254)
+
+[node name="Marker3D17" type="Marker3D" parent="TreeFoliageManager" unique_id=1674442915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 129.17421, 0, -58.466194)
+
+[node name="Marker3D18" type="Marker3D" parent="TreeFoliageManager" unique_id=1734649451]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.89343, 0, -56.943584)
+
+[node name="Marker3D19" type="Marker3D" parent="TreeFoliageManager" unique_id=224810642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.75777, 0, -52.946728)
+
+[node name="Marker3D20" type="Marker3D" parent="TreeFoliageManager" unique_id=229502844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.63466, 0, -53.517704)
+
+[node name="Marker3D21" type="Marker3D" parent="TreeFoliageManager" unique_id=1098633936]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96.43805, 0, -95.77021)
 
 [node name="BushFoliageManager" type="Node" parent="." unique_id=1486755959]
 script = ExtResource("1_ij0qq")
-auto_foliage_scene = SubResource("Resource_u7blp")
+ingredients = Dictionary[int, float]({
+4: 3.0,
+7: 3.0,
+9: 3.0,
+10: 3.0,
+11: 3.0,
+13: 3.0,
+17: 1.0,
+20: 1.0,
+26: 1.0,
+28: 1.0
+})
+auto_foliage_scene = ExtResource("14_u7blp")
 ingredient_foliage_spawn_rate = 0.75
+
+[node name="Marker3D" type="Marker3D" parent="BushFoliageManager" unique_id=987873924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.7647, 0, -57.935104)
+
+[node name="Marker3D2" type="Marker3D" parent="BushFoliageManager" unique_id=464255018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.480064, 0, -65.05101)
+
+[node name="Marker3D3" type="Marker3D" parent="BushFoliageManager" unique_id=1555625349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.57334, 0, -67.61273)
+
+[node name="Marker3D4" type="Marker3D" parent="BushFoliageManager" unique_id=1606148584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.54316, 0, -71.45532)
+
+[node name="Marker3D5" type="Marker3D" parent="BushFoliageManager" unique_id=1597434192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.514015, 0, -70.4591)
+
+[node name="Marker3D6" type="Marker3D" parent="BushFoliageManager" unique_id=360528602]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.589474, 0, -70.17446)
+
+[node name="Marker3D7" type="Marker3D" parent="BushFoliageManager" unique_id=1736479171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.11725, 0, -93.79928)
+
+[node name="Marker3D8" type="Marker3D" parent="BushFoliageManager" unique_id=614947408]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.443382, 0, -95.22246)
+
+[node name="Marker3D9" type="Marker3D" parent="BushFoliageManager" unique_id=1603797167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.70811, 0, -108.74268)
+
+[node name="Marker3D10" type="Marker3D" parent="BushFoliageManager" unique_id=1467425138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.91352, 0, -72.73618)
+
+[node name="Marker3D11" type="Marker3D" parent="BushFoliageManager" unique_id=458266991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.9852, 0, -53.238586)
+
+[node name="Marker3D12" type="Marker3D" parent="BushFoliageManager" unique_id=1639238351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.67087, 0, -62.446846)
+
+[node name="Marker3D13" type="Marker3D" parent="BushFoliageManager" unique_id=1829490056]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.47244, 0, -71.655106)
+
+[node name="Marker3D14" type="Marker3D" parent="BushFoliageManager" unique_id=1184488976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.11487, 0, -101.20718)
+
+[node name="Marker3D15" type="Marker3D" parent="BushFoliageManager" unique_id=234599117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.256325, 0, -117.26809)
+
+[node name="Marker3D16" type="Marker3D" parent="BushFoliageManager" unique_id=1887175959]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.05004, 0, -117.05394)
+
+[node name="Marker3D17" type="Marker3D" parent="BushFoliageManager" unique_id=824667911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 132.24258, 0, -63.08929)
+
+[node name="Marker3D18" type="Marker3D" parent="BushFoliageManager" unique_id=1508799807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.02058, 0, -97.78085)
+
+[node name="Marker3D19" type="Marker3D" parent="BushFoliageManager" unique_id=721473875]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 118.965576, 0, -109.3447)
 
 [node name="GroundFoliageManager" type="Node" parent="." unique_id=2055485863]
 script = ExtResource("1_ij0qq")
-auto_foliage_scene = SubResource("Resource_u7blp")
+ingredients = Dictionary[int, float]({
+1: 3.0,
+3: 3.0,
+5: 3.0,
+8: 3.0,
+12: 3.0,
+15: 3.0,
+18: 1.0,
+21: 1.0,
+22: 1.0,
+23: 1.0,
+25: 1.0,
+27: 0.5,
+29: 0.5,
+30: 1.0,
+32: 0.5,
+37: 0.5,
+38: 0.5,
+39: 0.2
+})
+auto_foliage_scene = ExtResource("13_dofmw")
 ingredient_foliage_spawn_rate = 0.75
+
+[node name="Marker3D" type="Marker3D" parent="GroundFoliageManager" unique_id=260592081]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.99875, 6.306885, -70.15933)
+
+[node name="Marker3D2" type="Marker3D" parent="GroundFoliageManager" unique_id=1560731800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.286774, 6.306885, -69.31174)
+
+[node name="Marker3D3" type="Marker3D" parent="GroundFoliageManager" unique_id=1691357119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.99875, 6.306885, -92.31788)
+
+[node name="Marker3D4" type="Marker3D" parent="GroundFoliageManager" unique_id=951940663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.55606, 6.306885, -103.3366)
+
+[node name="Marker3D5" type="Marker3D" parent="GroundFoliageManager" unique_id=643532299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.35974, 6.306885, -114.71858)
+
+[node name="Marker3D6" type="Marker3D" parent="GroundFoliageManager" unique_id=67826183]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 108.56833, 6.306885, -115.324005)
+
+[node name="Marker3D7" type="Marker3D" parent="GroundFoliageManager" unique_id=516990627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 111.95872, 6.306885, -99.58296)
+
+[node name="Marker3D8" type="Marker3D" parent="GroundFoliageManager" unique_id=1448111787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140.2926, 6.306885, -114.23424)
+
+[node name="Marker3D9" type="Marker3D" parent="GroundFoliageManager" unique_id=1873681375]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 139.80826, 6.306885, -84.205185)
+
+[node name="Marker3D10" type="Marker3D" parent="GroundFoliageManager" unique_id=891214734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 138.5974, 6.306885, -57.687588)
+
+[node name="Marker3D11" type="Marker3D" parent="GroundFoliageManager" unique_id=942023589]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.20928, 6.306885, -55.629147)
+
+[node name="Marker3D12" type="Marker3D" parent="GroundFoliageManager" unique_id=910250019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.38462, 6.306885, -69.06957)
+
+[node name="CaveFoliageManager" type="Node" parent="." unique_id=460972500]
+script = ExtResource("1_ij0qq")
+ingredients = Dictionary[int, float]({
+14: 5.0,
+31: 0.5,
+34: 0.5,
+35: 0.5,
+36: 0.5
+})
+auto_foliage_scene = ExtResource("13_dofmw")
+ingredient_foliage_spawn_rate = 0.75
+
+[node name="Marker3D" type="Marker3D" parent="CaveFoliageManager" unique_id=771061493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.483, 2.5818481, -84.78479)
+
+[node name="Marker3D2" type="Marker3D" parent="CaveFoliageManager" unique_id=1190964332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.34751, 2.5818481, -80.246155)
+
+[node name="Marker3D3" type="Marker3D" parent="CaveFoliageManager" unique_id=53380136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.85537, 2.5818481, -85.433174)
+
+[node name="Marker3D4" type="Marker3D" parent="CaveFoliageManager" unique_id=1534866769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.17956, 2.5818481, -81.21872)
+
+[node name="Marker3D5" type="Marker3D" parent="CaveFoliageManager" unique_id=2123741598]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.26353, 2.5818481, -83.379974)
 
 [node name="KelpFoliageManager" type="Node" parent="." unique_id=810205538]
 script = ExtResource("1_ij0qq")
-auto_foliage_scene = SubResource("Resource_u7blp")
-ingredient_foliage_spawn_rate = 0.75
+ingredients = Dictionary[int, float]({
+24: 5.0
+})
+auto_foliage_scene = ExtResource("13_ewpas")
+ingredient_foliage_spawn_rate = 0.4
+
+[node name="Marker3D" type="Marker3D" parent="KelpFoliageManager" unique_id=570183014]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.211205, 0, -75.44757)
+
+[node name="Marker3D2" type="Marker3D" parent="KelpFoliageManager" unique_id=1653752160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.58854, 0, -80.831856)
+
+[node name="Marker3D3" type="Marker3D" parent="KelpFoliageManager" unique_id=2045829381]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.30901, 0, -78.692894)
+
+[node name="Marker3D4" type="Marker3D" parent="KelpFoliageManager" unique_id=1287309090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.07063, 0, -83.7084)
+
+[node name="Marker3D5" type="Marker3D" parent="KelpFoliageManager" unique_id=359385519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.07063, 0, -77.7084)
+
+[node name="Marker3D6" type="Marker3D" parent="KelpFoliageManager" unique_id=2099157667]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 109.159134, 0, -86.99532)
+
+[node name="Marker3D7" type="Marker3D" parent="KelpFoliageManager" unique_id=1016986312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 110.57948, 0, -81.532425)
+
+[node name="Marker3D8" type="Marker3D" parent="KelpFoliageManager" unique_id=1836959635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 114.185, 0, -90.27306)
+
+[node name="Marker3D9" type="Marker3D" parent="KelpFoliageManager" unique_id=57656593]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.54782, 0, -89.617516)
+
+[node name="Marker3D10" type="Marker3D" parent="KelpFoliageManager" unique_id=1897033276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.55872, 0, -93.22303)
+
+[node name="Marker3D11" type="Marker3D" parent="KelpFoliageManager" unique_id=1389862338]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.57199, 0, -83.60832)
 
 [node name="MerchantSpawner" type="Node" parent="." unique_id=1646638554 node_paths=PackedStringArray("markers", "polygons", "merchant", "forest")]
 script = ExtResource("16_v7bn7")
@@ -372,12 +630,12 @@ merchant = NodePath("../Merchant")
 forest = NodePath("..")
 
 [node name="Merchant" parent="." unique_id=992939819 node_paths=PackedStringArray("merchant_ui") instance=ExtResource("15_v7bn7")]
-transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, -1.9421082, -9.808258, -0.19445801)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.51564, 2.5665283, -55.712257)
 merchant_ui = NodePath("../SceneUI/MerchantUI")
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
 transform = Transform3D(0.8847742, 0, -0.74097174, 0, 1, 0, 0.46601996, 0, 1.406791, 1.6546631, 1.4436646, 0)
-texture = SubResource("ViewportTexture_jfdwa")
+texture = SubResource("ViewportTexture_ewpas")
 destination_path = &"uid://bec7ovcvsvc5q"
 
 [node name="LeftQuadrant" type="Area3D" parent="." unique_id=1142467544]
@@ -385,7 +643,7 @@ destination_path = &"uid://bec7ovcvsvc5q"
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="LeftQuadrant" unique_id=950486851]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 47.975864, 0, -54.021618)
 depth = 10.14
-polygon = PackedVector2Array(27.11681, -40.823994, -3.725502, -60.92705, -3.2869568, 1.5073624, 26.912075, -15.696339)
+polygon = PackedVector2Array(26.33279, -39.811283, -3.243679, -57.726284, -1.7277031, -1.2900238, 25.641644, -17.88834)
 
 [node name="Marker3D" type="Marker3D" parent="LeftQuadrant" unique_id=236075706]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.184494, 6.689865, -81.59358)
@@ -411,17 +669,17 @@ polygon = PackedVector2Array(33.558544, -16.378391, 58.10256, -16.532238, 91.455
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.430145, 7.5776215, -55.467953)
 
 [node name="RightQuadrant" type="Area3D" parent="." unique_id=2127367679]
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="RightQuadrant" unique_id=1786145807]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 47.975864, 0, -54.021618)
-depth = 10.14
-polygon = PackedVector2Array(61.031002, -38.35635, 94.78287, -63.474026, 94.390396, 1.478714, 60.04983, -17.948246)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.696335, 0, -42.341553)
 
 [node name="Marker3D" type="Marker3D" parent="RightQuadrant" unique_id=816738741]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.32195, 6.689865, -94.88432)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.307007, 6.689865, -49.15432)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightQuadrant" unique_id=1624922607]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.01564, 0, -45.68364)
+shape = SubResource("CylinderShape3D_4dvm4")
 
 [node name="Player" parent="." unique_id=1588394108 instance=ExtResource("18_dofmw")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 46.656143, 4.207901, -50.911747)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 41.74042, 4.207901, -48.012733)
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=943629651]
 bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
