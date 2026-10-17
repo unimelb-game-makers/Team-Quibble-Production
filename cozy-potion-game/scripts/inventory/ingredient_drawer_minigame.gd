@@ -2,16 +2,19 @@ extends Minigame
 
 const NOTEBOOK_ITEM_DISPLAY = preload("uid://tvqhfnp8lc0h")
 
-var output_stacks : Inventory
-var notebook : NotebookItemDisplay = null
+@export var drawer_open_sfx: AudioStream
+@export var drawer_close_sfx: AudioStream
 
 @onready var storage: Drawer = $Storage
 @onready var inventory_with_hover: HoverInventory = $Storage/InventoryWithHover
 @onready var item_display: CenterContainer = $ItemDisplay
 
+var output_stacks : Inventory
+var notebook : NotebookItemDisplay = null
 
 func _ready() -> void:
 	storage.leave_drawer.connect(set_output)
+	Utils.audio_manager.play_audio(drawer_close_sfx)
 	inventory_with_hover.slot_is_hovered.connect(change_displayed)
 
 func set_output(stacks: Inventory) -> void:
@@ -22,6 +25,8 @@ func win_minigame() -> void:
 	process_mode = Node.PROCESS_MODE_DISABLED
 	minigame_won.emit(output_stacks)
 
+func close_minigame() -> void:
+	Utils.audio_manager.play_audio(drawer_close_sfx)
 
 # Cheat to see it, also idk if it counts as a minigame
 func display_notebook() -> void:
