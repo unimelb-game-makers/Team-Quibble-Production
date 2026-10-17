@@ -1,15 +1,14 @@
 [remap]
 
-importer="ArrayMesh"
+importer="scene"
 importer_version=1
-type="ArrayMesh"
-uid="uid://i8lt6omwioyv"
-path="res://.godot/imported/Bush 1.glb-f09d630a034962a3418de3f01aaf8cce.res"
+type="PackedScene"
+uid="uid://bxgjf7loajvln"
+valid=false
 
 [deps]
 
 source_file="res://assets/models/enviroment/Mythical_Forest/Bush 1.glb"
-dest_files=["res://.godot/imported/Bush 1.glb-f09d630a034962a3418de3f01aaf8cce.res"]
 
 [params]
 
