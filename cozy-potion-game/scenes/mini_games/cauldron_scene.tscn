@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://co3mgwg1g4mx6" path="res://assets/sprites/cauldron_placeholder.jpg" id="2_6g1p8"]
 [ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/prefabs/inventory/hover_information.tscn" id="2_rpwsn"]
 [ext_resource type="Script" uid="uid://bytx8uyvjb5ht" path="res://scripts/minigame/potion_crafting/potion_brewing.gd" id="3_nsau4"]
+[ext_resource type="AudioStream" uid="uid://dxhlotrvnibmx" path="res://audio/sfx/freesound_community-short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="5_lm5eh"]
+[ext_resource type="Script" uid="uid://coe1t2e6118dr" path="res://scripts/audio/audio_player.gd" id="6_dkifx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvm4"]
 bg_color = Color(0.16206557, 0.1620656, 0.16206554, 0.80784315)
@@ -24,6 +26,7 @@ potion_created_container = NodePath("MarginContainer/PotionCreateContainer")
 potion_created_name_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/NameLabel")
 potion_created_value_label = NodePath("MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer/ValueLabel")
 inventory = NodePath("MarginContainer/Container/CurrentPotion/InventoryWithHover")
+potion_created_sfx = ExtResource("5_lm5eh")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=884297072]
 custom_minimum_size = Vector2(10, 10)
@@ -122,3 +125,8 @@ horizontal_alignment = 1
 [node name="PotionBrewing" type="Node" parent="." unique_id=1885634969]
 script = ExtResource("3_nsau4")
 metadata/_custom_type_script = "uid://bytx8uyvjb5ht"
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=674375806]
+stream = ExtResource("5_lm5eh")
+script = ExtResource("6_dkifx")
+metadata/_custom_type_script = "uid://coe1t2e6118dr"
