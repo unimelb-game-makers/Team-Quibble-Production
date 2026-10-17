@@ -2,7 +2,6 @@ class_name Foliage extends Node3D
 
 @export var interactable: Interactable
 @export var ingredient: Alchemy.IngredientID
-@export var model: Node3D
 
 var foraging_bag: ForagingBag
 
@@ -18,11 +17,7 @@ func _ready() -> void:
 	interactable.interacted.connect(_on_interact)
 
 func _on_interact():
-	var item_stack = Stack.new(1, Alchemy.ingredient_list[ingredient])
+	var item_stack = Stack.new(randf_range(2,4), Alchemy.ingredient_list[ingredient])
 	foraging_bag.hover_inventory.inventory.blind_add_stack(item_stack)
 	
 	interactable.queue_free()
-	
-	if model and model.material:
-		model.material.albedo_color -= Color(.5,.5,.5)
-		

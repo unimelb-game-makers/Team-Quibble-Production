@@ -1,20 +1,35 @@
 ## A class responsible for generating Foliage 
 ## objects around the map at a series of spawn points
+## the spawn points in question are the children of the node
 class_name FoliageManager extends Node
 
-@export var ingredient_foliage_spawn_points: Array[Marker3D]
+var ingredient_foliage_spawn_points: Array[Marker3D]
 
-@export var decorative_foliages: Dictionary[PackedScene, float]
+##ingredients that this manger spawns. the keys are the ingredients,
+## and the values are the weights
+@export var ingredients: Dictionary[Alchemy.IngredientID, float]
 
-@export var ingredient_foliages: Dictionary[PackedScene, float]
+##the actual object that gets spawned
+@export var auto_foliage_scene: PackedScene
 
+## for each marker, the chance that it spawns a foliage
 @export var ingredient_foliage_spawn_rate: float
 
-@export var forest_root: Node3D
 
 func _ready() -> void:
+	for marker in get_children():
+		if marker is Marker3D:
+			ingredient_foliage_spawn_points.append(marker)
+	
+	adjust_foliage_weights()
+
 	await get_tree().process_frame
 	spawn_foliage()
+
+func adjust_foliage_weights() -> void:
+	for item in ForestSceneModifications.weighted_items:
+		if ingredients.has(item):
+			ingredients[item] *= ForestSceneModifications.weighted_items[item]
 
 func spawn_foliage() -> void:
 	for marker in ingredient_foliage_spawn_points:
@@ -22,9 +37,8 @@ func spawn_foliage() -> void:
 		if not does_spawn:
 			continue
 		
-		var foliage_to_spawn: PackedScene = Utils.pick_random_weighted(\
-		ingredient_foliages.keys(), ingredient_foliages.values())
-		
-		var foliage_instance: Foliage = foliage_to_spawn.instantiate()
-		forest_root.add_child(foliage_instance)
-		foliage_instance.global_position = marker.global_position
+		var ingredient: Alchemy.IngredientID = Utils.pick_random_weighted(ingredients.keys(), ingredients.values())
+		var foliage_instance: AutoFoliage = auto_foliage_scene.instantiate()
+		foliage_instance.initialise(ingredient)
+		marker.add_child(foliage_instance)
+		foliage_instance.global_position = Utils.get_marker_ground_pos(marker)
