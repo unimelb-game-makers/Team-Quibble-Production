@@ -8,7 +8,7 @@ class_name WorldPlayer extends CharacterBody3D
 ## for future interactable objects, use collision with the child
 ## InteractableCollision to determine whether the player is facing it
 
-const SPEED = 5.0
+const SPEED = 40
 const JUMP_VELOCITY = 4.5
 const CAMERA_ZOOM_MAGNITUDE = 0.1
 const INTERACTABLE_AREA_TURN_RATE = 4 * PI

@@ -433,15 +433,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.75777, 5, -52.946728)
 [node name="Marker3D20" type="Marker3D" parent="TreeFoliageManager" unique_id=229502844]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 88.63466, 5, -55.770145)
 
-[node name="Marker3D21" type="Marker3D" parent="TreeFoliageManager" unique_id=1098633936]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94.20856, 5, -95.00211)
-
-[node name="Marker3D22" type="Marker3D" parent="TreeFoliageManager" unique_id=1846151971]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.66, 5, -51.613)
-
-[node name="Marker3D23" type="Marker3D" parent="TreeFoliageManager" unique_id=1986842682]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87.532104, 13.703552, -56.395134)
-
 [node name="BushFoliageManager" type="Node" parent="." unique_id=1486755959]
 script = ExtResource("1_ij0qq")
 ingredients = Dictionary[int, float]({
@@ -653,7 +644,7 @@ merchant = NodePath("../Merchant")
 forest = NodePath("..")
 
 [node name="Merchant" parent="." unique_id=992939819 node_paths=PackedStringArray("merchant_ui") instance=ExtResource("15_v7bn7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.51564, 2.5665283, -55.712257)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.51564, -15.827637, -55.712257)
 merchant_ui = NodePath("../SceneUI/MerchantUI")
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
@@ -702,7 +693,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.01564, 0, -45.68364)
 shape = SubResource("CylinderShape3D_4dvm4")
 
 [node name="Player" parent="." unique_id=1588394108 instance=ExtResource("18_dofmw")]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 41.74042, 4.207901, -48.012733)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 47.384357, 4.207901, -54.40923)
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=943629651]
 bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
