@@ -187,7 +187,7 @@ mesh = SubResource("ArrayMesh_lagtt")
 transform = Transform3D(1, 0, 0, 0, 0.7071067, 0.7071067, 0, -0.7071067, 0.7071067, 0, 7, 7)
 projection = 1
 current = true
-size = 8.177
+size = 14.268
 far = 100.0
 
 [node name="MouseDetectorLeft" type="Control" parent="." unique_id=2018549294]
