@@ -17,7 +17,7 @@ func _ready() -> void:
 	interactable.interacted.connect(_on_interact)
 
 func _on_interact():
-	var item_stack = Stack.new(randf_range(2,4), Alchemy.ingredient_list[ingredient])
+	var item_stack = Stack.new(randf_range(2,4), Alchemy.find_ingredient_by_id(ingredient))
 	foraging_bag.hover_inventory.inventory.blind_add_stack(item_stack)
 	
 	interactable.queue_free()

@@ -4,14 +4,14 @@
 [ext_resource type="Script" uid="uid://cx4e7cbvnke4v" path="res://scripts/foraging/foliage_manager.gd" id="1_ij0qq"]
 [ext_resource type="Script" uid="uid://ddb2nwyl1rdqy" path="res://scripts/foraging/foraging_ui/foraging_bag.gd" id="1_q7g5v"]
 [ext_resource type="Theme" uid="uid://5xdceq6g4wen" path="res://resources/ui_themes/merchant_ui_theme.tres" id="3_28u7r"]
-[ext_resource type="Script" uid="uid://ci3bywoe6ik6b" path="res://scripts/ui/merchant_ui.gd" id="3_iyol6"]
+[ext_resource type="Script" uid="uid://ci3bywoe6ik6b" path="res://scripts/user_interface/merchant_ui.gd" id="3_iyol6"]
 [ext_resource type="Texture2D" uid="uid://yjhweuu18wcl" path="res://assets/sprites/foraging/backpack_base.png" id="4_ewpas"]
 [ext_resource type="PackedScene" uid="uid://c28p44surqk5m" path="res://scenes/user_interface/merchant_item_box.tscn" id="4_iyol6"]
 [ext_resource type="Texture2D" uid="uid://bsdig3qrvg1dj" path="res://assets/sprites/dialogue/speech_bubble.png" id="5_qrrdt"]
 [ext_resource type="Texture2D" uid="uid://2nthx860o8a1" path="res://assets/sprites/foraging/placeholder_portal_button.png" id="6_pjwkr"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="7_dofmw"]
-[ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/ui/popup_manager.gd" id="7_f3vpa"]
-[ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/prefabs/portal.tscn" id="9_54ec3"]
+[ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/user_interface/popup_manager.gd" id="7_f3vpa"]
+[ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="9_54ec3"]
 [ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/Inventory/hover_inventory.gd" id="10_dofmw"]
 [ext_resource type="Texture2D" uid="uid://cgsnb674nd7va" path="res://assets/sprites/foraging/NPC_Merchant.png" id="12_bdats"]
 [ext_resource type="Texture2D" uid="uid://bro5ya0bdgk6h" path="res://assets/sprites/foraging/backpack_grid_small.png" id="12_g8fsv"]
@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://e2jkygf0wewl" path="res://scenes/foraging/foliage/auto_foliage_bush.tscn" id="14_u7blp"]
 [ext_resource type="PackedScene" uid="uid://b18nfiye242g" path="res://scenes/foraging/shopkeeper.tscn" id="15_v7bn7"]
 [ext_resource type="Script" uid="uid://ovkukftdmfbw" path="res://scenes/foraging/merchant_spawner.gd" id="16_v7bn7"]
-[ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/prefabs/player.tscn" id="18_dofmw"]
+[ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/player.tscn" id="18_dofmw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v7bn7"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -54,7 +54,7 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("7_dofmw")
 font_size = 42
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_67phx"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_bdats"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4dvm4"]
@@ -137,13 +137,13 @@ grow_vertical = 2
 scale = Vector2(1.215, 1.215)
 mouse_filter = 2
 script = ExtResource("10_dofmw")
-max_quantity = 5
 grid = NodePath("Control/GridContainerUpper")
 columns = 3
 rows = 2
 additional_grid = NodePath("GridContainerLower")
 additional_grid_columns = 5
 additional_grid_rows = 2
+max_quantity = 5
 
 [node name="GridContainerLower" type="GridContainer" parent="SceneUI/ForagingBag/Control/MarginContainer/BagDisplay/PlaceholderBagTextureRect/InventoryWithHover" unique_id=1415238081]
 layout_mode = 2
@@ -235,6 +235,7 @@ texture_disabled = ExtResource("6_pjwkr")
 texture_focused = ExtResource("6_pjwkr")
 
 [node name="MerchantUI" type="CanvasLayer" parent="SceneUI" unique_id=1074401360 node_paths=PackedStringArray("item_box_container")]
+visible = false
 script = ExtResource("3_iyol6")
 merchant_item_box_scene = ExtResource("4_iyol6")
 item_box_container = NodePath("Control/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer")
@@ -658,9 +659,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.51564, -15.827637, -55.712
 merchant_ui = NodePath("../SceneUI/MerchantUI")
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
-transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 1.5899999, 90.811584, 3.1055298, -79.952934)
-texture = SubResource("ViewportTexture_67phx")
-destination_path = &"uid://bec7ovcvsvc5q"
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 1.5899999, 90.812, -0.149, -79.953)
+texture = SubResource("ViewportTexture_bdats")
+destination_path = &"res://scenes/enviroments/shop_revamp.tscn"
 
 [node name="LeftQuadrant" type="Area3D" parent="." unique_id=1142467544]
 
