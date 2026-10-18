@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="10_jn854"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="11_jjrkg"]
 [ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/inventory/hover_information.tscn" id="12_fg6qk"]
+[ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="21_jn854"]
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -68,6 +69,9 @@ axis_stretch_vertical = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ja4bt"]
 size = Vector3(100, 1, 100)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jjrkg"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="ShopRevamp" type="Node3D" unique_id=1366204913]
 
@@ -176,3 +180,8 @@ script = ExtResource("7_7orju")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBoundsCollider" unique_id=279533657]
 shape = SubResource("BoxShape3D_ja4bt")
+
+[node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("21_jn854")]
+transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 2.0632324, 2.015686, 0.99554443)
+texture = SubResource("ViewportTexture_jjrkg")
+destination_path = &"uid://bxq7bq8537rse"
