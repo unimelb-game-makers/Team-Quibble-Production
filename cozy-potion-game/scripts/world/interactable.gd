@@ -7,6 +7,8 @@ signal interacted
 
 const INTERACTABLE_LAYER: int = 21
 
+@export var interact_popup_text: String
+
 var popup: PopupText = null
 
 func _ready() -> void:
@@ -24,7 +26,10 @@ func interact():
 ## Handle when an area enters the box
 func _area_entered(area: Area3D):
 	if area is PlayerInteractableDetector:
-		popup = Utils.popup_manager.spawn_popup(self)
+		if interact_popup_text:
+			popup = Utils.popup_manager.spawn_popup(self, interact_popup_text)
+		else:
+			popup = Utils.popup_manager.spawn_popup(self)
 
 ## When area leaves box
 func _area_exited(area: Area3D):
