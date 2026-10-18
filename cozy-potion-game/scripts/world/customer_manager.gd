@@ -5,6 +5,9 @@ extends Node
 @export var dialogue_resource: DialogueResource
 @export var acceptor_dialogue_balloon: PackedScene
 @export var speech_bubble_dialogue_balloon: PackedScene
+##maps customer ids to their models
+@export var customer_models: Dictionary[Customer.CustomerID, PackedScene]
+@export var customer_model_offset: Vector3
 
 var customer_interactable: Interactable
 var customer_queue: Array[Customer]
@@ -33,6 +36,19 @@ func _unhandled_input(_event: InputEvent) -> void:
 		_on_acceptor_accepted(ClickableComponent.dragged_control)
 		return
 
+func add_model_to_customer(customer: CustomerWorld, id: Customer.CustomerID) -> void:
+	var model_scene = customer_models.get(id)
+	if not model_scene:
+		return
+	
+	for child in customer.get_children():
+		if not child is Interactable:
+			child.queue_free()
+			
+	var model = model_scene.instantiate()
+	customer.add_child(model)
+	model.position += customer_model_offset
+
 #func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("close_minigame") or event.is_action_pressed("ui_accept"):
 		#
@@ -50,7 +66,8 @@ func send_customer() -> void:
 	customer_world.customer = get_next_customer()
 	if not customer_world.customer :
 		return
-		
+	
+	add_model_to_customer(customer_world, customer_world.customer.customer_id)
 	customer_anim_player.play("person_in")
 	Utils.corner_needs_list_manager.create_list(customer_world.customer)
 

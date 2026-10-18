@@ -8,18 +8,34 @@
 [ext_resource type="PackedScene" uid="uid://c8rv1a0qlm0i1" path="res://scenes/dialogue/item_accept_dialogue_balloon.tscn" id="3_q822s"]
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/player.tscn" id="4_p210v"]
 [ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/dialogue/speech_bubble_balloon.tscn" id="4_t7nsl"]
+[ext_resource type="PackedScene" uid="uid://b1csd8u8tubvh" path="res://assets/models/Customers/NPC_Base_1_Cultist.glb" id="5_0tb7t"]
 [ext_resource type="PackedScene" uid="uid://cwlhmldq60ndb" path="res://scenes/customer_node.tscn" id="5_2de5a"]
 [ext_resource type="PackedScene" uid="uid://c3d0b384c1s1b" path="res://scenes/minigames/crushing_minigame.tscn" id="5_p210v"]
 [ext_resource type="PackedScene" uid="uid://c434m62jy0xis" path="res://scenes/minigames/cauldron_minigame.tscn" id="6_giko4"]
+[ext_resource type="PackedScene" uid="uid://tx0v31l40aab" path="res://assets/models/Customers/NPC_Base_1_MonsterControl.glb" id="6_p6xtf"]
 [ext_resource type="PackedScene" uid="uid://c7a7w81ecgyv1" path="res://scenes/user_interface/time_ui.tscn" id="6_yt3dh"]
 [ext_resource type="Script" uid="uid://ci7o5mfcv0ejn" path="res://scripts/debug/out_of_bounds.gd" id="7_7orju"]
+[ext_resource type="PackedScene" uid="uid://du0iayi5hhy2b" path="res://assets/models/Customers/NPC_Base_1_RuneProgrammer.glb" id="7_8f1ch"]
 [ext_resource type="PackedScene" uid="uid://b3i1syayp1xcd" path="res://scenes/minigames/pantry_minigame.tscn" id="7_ja4bt"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/user_interface/popup_manager.gd" id="7_q822s"]
 [ext_resource type="Theme" uid="uid://bx5pwv2f7qea6" path="res://resources/ui_themes/main_theme.tres" id="8_aef86"]
+[ext_resource type="PackedScene" uid="uid://ck5cra1btw4tq" path="res://assets/models/Customers/NPC_Base_2_Baker.glb" id="8_vb12q"]
+[ext_resource type="PackedScene" uid="uid://4myaodb70j83" path="res://assets/models/Customers/NPC_Base_2_Courier.glb" id="9_4sck7"]
 [ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/user_interface/list_manager.gd" id="9_fg6qk"]
 [ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="10_jn854"]
+[ext_resource type="PackedScene" uid="uid://duepgsna73jdx" path="res://assets/models/Customers/NPC_Base_2_Musician.glb" id="10_kh5es"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="11_jjrkg"]
+[ext_resource type="PackedScene" uid="uid://c2dggmeibidsk" path="res://assets/models/Customers/NPC_Base_2_Student.glb" id="11_qwmll"]
+[ext_resource type="PackedScene" uid="uid://d1ct4ax66pj58" path="res://assets/models/Customers/NPC_Base_3_Apprentice_Wizard.glb" id="12_10j44"]
 [ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/inventory/hover_information.tscn" id="12_fg6qk"]
+[ext_resource type="PackedScene" uid="uid://dkydohhut1ndo" path="res://assets/models/Customers/NPC_Base_3_Construction_Worker.glb" id="13_2x3wa"]
+[ext_resource type="PackedScene" uid="uid://dsm8dotxrchat" path="res://assets/models/Customers/NPC_Base_3_Herbalist.glb" id="14_n1o4x"]
+[ext_resource type="PackedScene" uid="uid://bejaalirie7qj" path="res://assets/models/Customers/NPC_Base_3_Hunter.glb" id="15_e5tqh"]
+[ext_resource type="PackedScene" uid="uid://bm55o4twdnjtx" path="res://assets/models/Customers/NPC_Base_3_Lumberjack.glb" id="16_va5sy"]
+[ext_resource type="PackedScene" uid="uid://0b0yfsgvsfjq" path="res://assets/models/Customers/NPC_Base_4_Artist.glb" id="17_gx2l2"]
+[ext_resource type="PackedScene" uid="uid://r82ahn0m1s7j" path="res://assets/models/Customers/NPC_Base_4_CorporateMage.glb" id="18_n43pq"]
+[ext_resource type="PackedScene" uid="uid://c3lafvmmmyvrb" path="res://assets/models/Customers/NPC_Base_4_PrivateInvestigator.glb" id="19_1fwfe"]
+[ext_resource type="PackedScene" uid="uid://4vp1yyotwumu" path="res://assets/models/Customers/NPC_Base_4_Witch.glb" id="20_ix2hi"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="21_jn854"]
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
@@ -82,6 +98,24 @@ customer_world = NodePath("../Customer")
 dialogue_resource = ExtResource("2_yt3dh")
 acceptor_dialogue_balloon = ExtResource("3_q822s")
 speech_bubble_dialogue_balloon = ExtResource("4_t7nsl")
+customer_models = Dictionary[int, PackedScene]({
+0: ExtResource("11_qwmll"),
+1: ExtResource("9_4sck7"),
+3: ExtResource("20_ix2hi"),
+4: ExtResource("8_vb12q"),
+5: ExtResource("16_va5sy"),
+6: ExtResource("15_e5tqh"),
+7: ExtResource("14_n1o4x"),
+8: ExtResource("17_gx2l2"),
+10: ExtResource("10_kh5es"),
+13: ExtResource("5_0tb7t"),
+14: ExtResource("18_n43pq"),
+15: ExtResource("6_p6xtf"),
+16: ExtResource("13_2x3wa"),
+17: ExtResource("12_10j44"),
+18: ExtResource("7_8f1ch"),
+19: ExtResource("19_1fwfe")
+})
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CustomerManager" unique_id=1483230470]
 libraries/ = SubResource("AnimationLibrary_xua33")
