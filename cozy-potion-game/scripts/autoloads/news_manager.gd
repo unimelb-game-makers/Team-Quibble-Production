@@ -5,6 +5,7 @@ var current_news_event: NewsEvent
 const NEWS_JSON_PATH: String = "res://scripts/autoloads/news_events.json"
 
 signal new_news_event
+signal new_news_event_attribute_data(need: Alchemy.NeedID, multiplier: float)
 
 func _ready() -> void:
 	test_news()
@@ -14,6 +15,7 @@ func _ready() -> void:
 func set_new_news_event() -> void:
 	current_news_event = generate_news_event()
 	new_news_event.emit()
+	new_news_event_attribute_data.emit(current_news_event.get_effect("NEED_PROBABILITY").target, current_news_event.get_effect("NEED_PROBABILITY").magnitude)
 
 func get_news_headline() -> String:
 	return current_news_event.headline
