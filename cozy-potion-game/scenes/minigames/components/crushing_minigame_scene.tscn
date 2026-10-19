@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cty6lpq8trkc8"]
 
 [ext_resource type="Script" uid="uid://cms2728e0rt6h" path="res://scripts/minigame/crushing_minigame/crushing_minigame_scene.gd" id="1_fhxy2"]
-[ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scenes/prefabs/minigame/crushing_minigame/pestle.tscn" id="1_j31fb"]
+[ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scenes/minigames/components/pestle.tscn" id="1_j31fb"]
 [ext_resource type="Texture2D" uid="uid://d4j1fyiiegfeq" path="res://assets/sprites/minigame/crushing_minigame/Mortar.png" id="2_eukv0"]
-[ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scenes/prefabs/minigame/crushing_minigame/ingredient_ball.tscn" id="2_fhxy2"]
-[ext_resource type="Script" uid="uid://cpl11lanx3nfh" path="res://scripts/ui/clickable_drag_acceptor_component.gd" id="5_7jnv1"]
+[ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scenes/minigames/components/ingredient_ball.tscn" id="2_fhxy2"]
 [ext_resource type="AudioStream" uid="uid://bno2eeqej66eu" path="res://audio/sfx/ingredient_drop_in_bowl.mp3" id="6_2tac5"]
+[ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/user_interface/draggable_acceptor_component.gd" id="6_73gys"]
 [ext_resource type="Script" uid="uid://coe1t2e6118dr" path="res://scripts/audio/audio_player.gd" id="7_dp2bl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4dvm4"]
@@ -15,8 +15,9 @@ size = Vector2(853, 21)
 script = ExtResource("1_fhxy2")
 ball_spawn_marker = NodePath("BallSpawnMarker")
 ingredient_ball_scene = ExtResource("2_fhxy2")
-acceptor = NodePath("Control/ClickableAcceptorComponent")
+acceptor = NodePath("Control/DraggableAcceptorComponent")
 draggable_hint_rect = NodePath("Control/ColorRect")
+process = 1
 metadata/_custom_type_script = "uid://5vr6exm8hl07"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1194482863]
@@ -64,10 +65,6 @@ offset_right = 1075.0
 offset_bottom = 806.0
 mouse_filter = 2
 
-[node name="ClickableAcceptorComponent" type="Node" parent="Control" unique_id=1355736645]
-script = ExtResource("5_7jnv1")
-metadata/_custom_type_script = "uid://b85c75nnvco20"
-
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=439333258]
 layout_mode = 1
 anchors_preset = 15
@@ -77,6 +74,10 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.54509807, 1, 0.54509807, 0.18039216)
+
+[node name="DraggableAcceptorComponent" type="Node" parent="Control" unique_id=263375117]
+script = ExtResource("6_73gys")
+metadata/_custom_type_script = "uid://b85c75nnvco20"
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=957697711]
 stream = ExtResource("6_2tac5")
