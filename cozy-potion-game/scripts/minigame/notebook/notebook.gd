@@ -17,7 +17,6 @@ var loaded_page : CanvasLayer
 static func open_notebook(popup_subwindow : PopupSubWindow) -> void:
 	popup_subwindow.start_display_popup(NOTEBOOK)
 
-
 func _ready() -> void:
 	load_page_without_animation(NOTEBOOK_PEDIA_VIEW)
 	

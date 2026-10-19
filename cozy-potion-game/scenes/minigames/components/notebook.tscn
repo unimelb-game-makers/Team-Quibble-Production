@@ -261,6 +261,15 @@ texture_normal = SubResource("GradientTexture2D_ai6g8")
 texture_hover = SubResource("GradientTexture2D_0mdqp")
 stretch_mode = 0
 
+[node name="Label" type="Label" parent="TutorialPageButton" unique_id=16653960]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 20.0
+offset_right = 209.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 28
+text = "Tutorial"
+
 [node name="PediaPageButton" type="TextureButton" parent="." unique_id=2021792960]
 offset_left = 512.0
 offset_top = 48.0
@@ -270,6 +279,15 @@ texture_normal = SubResource("GradientTexture2D_annh4")
 texture_hover = SubResource("GradientTexture2D_ocaha")
 stretch_mode = 0
 
+[node name="Label" type="Label" parent="PediaPageButton" unique_id=2025926771]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 20.0
+offset_right = 266.0
+offset_bottom = 59.0
+theme_override_font_sizes/font_size = 28
+text = "Item Encyclopedia"
+
 [node name="ExitButton" type="TextureButton" parent="." unique_id=1703632084]
 offset_left = 1125.0
 offset_top = 48.0
@@ -278,6 +296,15 @@ offset_bottom = 133.0
 texture_normal = SubResource("GradientTexture2D_annh4")
 texture_hover = SubResource("GradientTexture2D_ocaha")
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="ExitButton" unique_id=2068065570]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 23.0
+offset_right = 75.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 28
+text = "Exit"
 
 [node name="Display" type="Control" parent="." unique_id=1650927227]
 layout_mode = 3

@@ -146,10 +146,21 @@ const PROCESSES_JSON: String = "res://resources/json/processes.json"
 const POTION_JSON: String = "res://resources/json/potion_list.json"
 const INGREDIENT_SPRITES: String = "res://assets/sprites/ingredients/"
 const ATTRIBUTE_NEED_MAP_JSON: String = "res://resources/json/attribute_need_map.json"
+var PROCESS_SPRITES: Dictionary[Alchemy.ProcessID, Texture2D] = {
+	ProcessID.PROC_CHOP: preload("res://assets/sprites/ingredients/chopped_fill_128.png"),
+	ProcessID.PROC_GRIND: preload("res://assets/sprites/ingredients/ground_fill_128.png"),
+	ProcessID.PROC_PRESS: preload("res://assets/sprites/ingredients/pressed_fill_128.png"),
+	ProcessID.PROC_BOIL: preload("res://assets/sprites/ingredients/bottle_liquid_128.png"),
+	ProcessID.PROC_DRY: null,
+	ProcessID.PROC_FREEZE: null,
+	ProcessID.PROC_FRY: null,
+	ProcessID.PROC_DISTILL: preload("res://assets/sprites/ingredients/bottle_liquid_128.png"),
+}
 
 var sprite_directory: PackedStringArray
 var ingredient_list: Array[PotionIngredient] = []
 var potion_referance: Array[PotionReference] = []
+var process_list: Array[Process] = []
 var attribute_to_need_index: Dictionary[AttributeID, NeedID]
 
 # Called when the node enters the scene tree for the first time.
@@ -157,6 +168,7 @@ func _ready() -> void:
 	read_ingredient_data()
 	read_potion_data()
 	read_attribute_need_map()
+	read_processes()
 	# brew_potion([ingredient_list[IngredientID.INGR_APPLE], 
 	# 			ingredient_list[IngredientID.INGR_GINSENG], 
 	# 			ingredient_list[IngredientID.INGR_HONEY]])
@@ -185,7 +197,8 @@ func read_ingredient_data() -> void:
 
 		for attribute in AttributeID.values():
 			temp_ingredient.attributes.set(attribute, int(ingredient[AttributeID.keys()[attribute]]))
-
+		
+		temp_ingredient.ingredient_color = Color(ingredient["COLOUR_HEX"])
 		temp_ingredient.ingredient_sprite = get_sprite(IngredientID.keys()[temp_ingredient.ingredient_id])
 
 		ingredient_list[index] = temp_ingredient
@@ -219,6 +232,22 @@ func read_attribute_need_map() -> void:
 		var need_id = NeedID.keys().find(attribute["NEEDS_ID"]) as NeedID
 		attribute_to_need_index[attr_id] = need_id
 		
+
+func read_processes() -> void:
+	var json_data: JSON = Utils.get_json(PROCESSES_JSON)
+	
+	for process in json_data.data:
+		var process_resource: Process = Process.new()
+		print_debug(ProcessID.find_key(process["PROCESS_ID"]), process["PROCESS_ID"])
+		process_resource.id = ProcessID.keys().find(process["PROCESS_ID"])
+		process_resource.texture = PROCESS_SPRITES[process_resource.id]
+		for attribute in process:
+			var id = AttributeID.keys().find(attribute)
+			if id < 0:
+				continue
+			process_resource.attribute_changes[id] = process[attribute]
+	
+		process_list.append(process_resource)
 
 func brew_potion(_ingredient_list: Array[PotionIngredient]) -> Potion:
 	var _attributes := sum_attributes(_ingredient_list)
@@ -260,5 +289,11 @@ func get_sprite(_name: String) -> Resource:
 func find_ingredient_by_id(id: IngredientID) -> PotionIngredient:
 	for item in ingredient_list:
 		if item.ingredient_id == id:
+			return item
+	return null
+
+func find_process_by_id(id: ProcessID) -> Process:
+	for item: Process in process_list:
+		if item.id == id:
 			return item
 	return null	

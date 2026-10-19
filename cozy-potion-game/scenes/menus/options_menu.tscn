@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://ioopiwohmh2h" path="res://assets/sprites/ui/beholden-book-font/BeholdenBook-Bold.ttf" id="3_hm4m4"]
 [ext_resource type="FontFile" uid="uid://cqorj4se30uga" path="res://assets/sprites/ui/beholden-book-font/BeholdenBook-Light.ttf" id="3_lfjc7"]
 [ext_resource type="StyleBox" uid="uid://bspaxd8ocmbvd" path="res://resources/ui_themes/art_stylebox_texture.tres" id="5_3xsyx"]
+[ext_resource type="PackedScene" uid="uid://bo2l4x3kk75wg" path="res://scenes/menus/options_menu/sound_menu.tscn" id="6_erhyl"]
 
 [sub_resource type="Theme" id="Theme_hm4m4"]
 Button/font_sizes/font_size = 22
@@ -130,77 +131,5 @@ size_flags_vertical = 8
 text = "Quit to Desktop"
 alignment = 0
 
-[node name="SoundMenu" type="MarginContainer" parent="MainMenu/MarginContainer/Control" unique_id=1745699283]
+[node name="SoundMenu" parent="MainMenu/MarginContainer/Control" unique_id=111586457 instance=ExtResource("6_erhyl")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="PanelContainer" type="PanelContainer" parent="MainMenu/MarginContainer/Control/SoundMenu" unique_id=68875593]
-layout_mode = 2
-theme_override_styles/panel = ExtResource("5_3xsyx")
-
-[node name="MarginContainer" type="MarginContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer" unique_id=983138465]
-layout_mode = 2
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer" unique_id=264033358]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1079956059]
-layout_mode = 2
-theme_override_font_sizes/font_size = 33
-text = "Sound Settings"
-horizontal_alignment = 1
-
-[node name="MasterControl" type="HBoxContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1207209057]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/MasterControl" unique_id=467148266]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-text = "Master"
-
-[node name="HSlider" type="HSlider" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/MasterControl" unique_id=1040055300]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-value = 100.0
-
-[node name="MusicControl" type="HBoxContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=1532413130]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/MusicControl" unique_id=308361285]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-text = "Music"
-
-[node name="HSlider" type="HSlider" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/MusicControl" unique_id=1860604986]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-value = 100.0
-
-[node name="SFXControl" type="HBoxContainer" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=738213172]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/SFXControl" unique_id=1548145617]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-text = "Sound Effects"
-
-[node name="HSlider" type="HSlider" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/SFXControl" unique_id=1923321064]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-value = 100.0
-
-[node name="ReturnButton" type="Button" parent="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer" unique_id=361773709]
-visible = false
-layout_mode = 2
-text = "Return"
-
-[connection signal="pressed" from="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/ReturnButton" to="." method="return_button_pressed"]

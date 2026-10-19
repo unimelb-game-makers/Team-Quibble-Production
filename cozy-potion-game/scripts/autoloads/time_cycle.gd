@@ -16,6 +16,8 @@ const DAYS = ["Monday",
 #the speed that the day progresses when it has a time to progress towards
 const DAY_TICK_RATE_SECONDS: float = 0.09
 
+var current_day: DayResource
+
 var customers_per_day: int = 12
 var day_start_hour: int = 12
 var day_length: int = 10
