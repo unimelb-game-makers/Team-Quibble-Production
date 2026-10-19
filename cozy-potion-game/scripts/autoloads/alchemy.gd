@@ -146,6 +146,16 @@ const PROCESSES_JSON: String = "res://resources/json/processes.json"
 const POTION_JSON: String = "res://resources/json/potion_list.json"
 const INGREDIENT_SPRITES: String = "res://assets/sprites/ingredients/"
 const ATTRIBUTE_NEED_MAP_JSON: String = "res://resources/json/attribute_need_map.json"
+var PROCESS_SPRITES: Dictionary[Alchemy.ProcessID, Texture2D] = {
+	ProcessID.PROC_CHOP: preload("res://assets/sprites/ingredients/chopped_fill_128.png"),
+	ProcessID.PROC_GRIND: preload("res://assets/sprites/ingredients/ground_fill_128.png"),
+	ProcessID.PROC_PRESS: preload("res://assets/sprites/ingredients/pressed_fill_128.png"),
+	ProcessID.PROC_BOIL: preload("res://assets/sprites/ingredients/bottle_liquid_128.png"),
+	ProcessID.PROC_DRY: null,
+	ProcessID.PROC_FREEZE: null,
+	ProcessID.PROC_FRY: null,
+	ProcessID.PROC_DISTILL: preload("res://assets/sprites/ingredients/bottle_liquid_128.png"),
+}
 
 var sprite_directory: PackedStringArray
 var ingredient_list: Array[PotionIngredient] = []
@@ -187,7 +197,8 @@ func read_ingredient_data() -> void:
 
 		for attribute in AttributeID.values():
 			temp_ingredient.attributes.set(attribute, int(ingredient[AttributeID.keys()[attribute]]))
-
+		
+		temp_ingredient.ingredient_color = Color(ingredient["COLOUR_HEX"])
 		temp_ingredient.ingredient_sprite = get_sprite(IngredientID.keys()[temp_ingredient.ingredient_id])
 
 		ingredient_list[index] = temp_ingredient
@@ -229,6 +240,7 @@ func read_processes() -> void:
 		var process_resource: Process = Process.new()
 		print_debug(ProcessID.find_key(process["PROCESS_ID"]), process["PROCESS_ID"])
 		process_resource.id = ProcessID.keys().find(process["PROCESS_ID"])
+		process_resource.texture = PROCESS_SPRITES[process_resource.id]
 		for attribute in process:
 			var id = AttributeID.keys().find(attribute)
 			if id < 0:
@@ -236,6 +248,7 @@ func read_processes() -> void:
 			process_resource.attribute_changes[id] = process[attribute]
 	
 		process_list.append(process_resource)
+
 func brew_potion(_ingredient_list: Array[PotionIngredient]) -> Potion:
 	var _attributes := sum_attributes(_ingredient_list)
 	
