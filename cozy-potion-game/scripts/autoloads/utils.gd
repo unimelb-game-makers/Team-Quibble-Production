@@ -96,5 +96,4 @@ func get_marker_ground_pos(marker: Marker3D) -> Vector3:
 	raycast.target_position = Vector3(0.1,-20,0.1)
 	raycast.force_raycast_update()
 	raycast.queue_free()
-	print(marker.name, raycast.get_collider())
 	return raycast.get_collision_point() if raycast.is_colliding() else marker.global_position
