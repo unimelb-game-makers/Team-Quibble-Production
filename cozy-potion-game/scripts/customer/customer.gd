@@ -182,7 +182,6 @@ static func set_need_severities(customer: Customer, ailment_count: int, DEBUG: b
 	if DEBUG:
 		print_debug("need severities: ", customer.need_severities)
 	
-
 static func get_random_customer(customers: Array) -> Dictionary:
 	var customer_weights: Array[float]
 	var effect: NewsEvent.NewsEffect = NewsManager.get_news_effect("NPC_SPAWN_PROBABILITY")
