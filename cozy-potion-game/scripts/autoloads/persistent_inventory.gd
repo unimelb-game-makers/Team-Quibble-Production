@@ -8,7 +8,7 @@ var money: int:
 		money = value
 		money_changed.emit(money)
 
-var pantry: Array[Stack]
+@onready var pantry: Array[Stack] = [Stack.new(1,Alchemy.ingredient_list.front())]
 
 func add_stacks_to_pantry(stacks: Array[Stack]) -> void:
 	pantry.append_array(stacks)

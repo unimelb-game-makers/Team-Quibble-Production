@@ -1,4 +1,4 @@
-extends Minigame
+class_name BoilingMinigame extends Minigame
 
 @export var progress_variance_array: Array[Curve]
 @onready var progress_variance: Curve = progress_variance_array.pick_random()
