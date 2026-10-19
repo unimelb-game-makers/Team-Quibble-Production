@@ -80,7 +80,7 @@ func aesthetic_movement(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("open_notebook"):
 		var temp = get_tree().get_first_node_in_group(Utils.Group.GROUP_POPUP_SUBWINDOW)
-		if false:
+		if temp:
 			Notebook.open_notebook(temp)
 
 
