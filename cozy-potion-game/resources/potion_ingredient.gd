@@ -15,3 +15,9 @@ var attributes: Dictionary[Alchemy.AttributeID, int]
 
 # What processes have been applied to thing
 var process_applied: Array[Alchemy.ProcessID]
+
+func apply_process(id: Alchemy.ProcessID) -> void:
+	var process: Process = Alchemy.find_process_by_id(id)
+	process_applied.append(id)
+	for attribute in process.attribute_changes:
+		attributes[attribute] *= process.attribute_changes[attribute]
