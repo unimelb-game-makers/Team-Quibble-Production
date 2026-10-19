@@ -6,6 +6,9 @@ extends Panel
 @export var draggable_component: DraggableComponent
 @onready var highlight_text: TextureRect = $Highlight
 
+
+signal holder_dropped_elsewhere
+
 # If stack updated reconnects stack update signal to new stack
 var stack : Stack :
 	set(value):
@@ -20,8 +23,7 @@ var stack : Stack :
 
 static func get_scene() -> PackedScene:
 	return preload("uid://80sdcv4hsqa1")
-
-
+	
 func _ready() -> void:
 	highlight_text.visible = false
 	stack = Stack.new(0)
