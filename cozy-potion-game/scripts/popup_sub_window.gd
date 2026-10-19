@@ -31,9 +31,11 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("close_minigame"):
-		if popup: end_display_popup()
-
+	if event.is_action_pressed("close_minigame") or \
+		event.is_action_pressed("open_options_menu"):
+		if popup: 
+			end_display_popup()
+			get_viewport().set_input_as_handled()
 
 func start_display_popup(_scene_to_load: PackedScene) -> void:
 	player.accepting_control = false
