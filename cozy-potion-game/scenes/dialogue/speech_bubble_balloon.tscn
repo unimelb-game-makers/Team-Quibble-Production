@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/nodes/dialogue_label/dialogue_label.tscn" id="2_a8ve6"]
 [ext_resource type="Theme" uid="uid://hmby85llvh1j" path="res://resources/ui_themes/dialogue_bubble_theme.tres" id="2_ihstb"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/nodes/responses_menu/dialogue_responses_menu.gd" id="3_72ixx"]
-[ext_resource type="Texture2D" uid="uid://bsdig3qrvg1dj" path="res://assets/sprites/dialogue/speech_bubble.png" id="4_cf71v"]
+[ext_resource type="Texture2D" uid="uid://bf1iww4xs8cbc" path="res://assets/sprites/dialogue/Speech_Bubble.png" id="4_sl38t"]
 
 [sub_resource type="Animation" id="Animation_nlsx6"]
 length = 0.001
@@ -93,12 +93,14 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -26.0
+offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 offset_transform_enabled = true
 mouse_filter = 2
-texture = ExtResource("4_cf71v")
+texture = ExtResource("4_sl38t")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Balloon/BubbleTextRect" unique_id=1685890612]
 layout_mode = 1
