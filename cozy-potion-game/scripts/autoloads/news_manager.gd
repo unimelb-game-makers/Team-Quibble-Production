@@ -37,7 +37,7 @@ func generate_news_event() -> NewsEvent:
 	# Pick a random effect to be the attribute NPCS want
 	var event_dict: Dictionary = events.pick_random()
 	var event: NewsEvent = NewsEvent.new()
-	breakpoint
+	
 	event.initialise(event_dict)
 	
 	
