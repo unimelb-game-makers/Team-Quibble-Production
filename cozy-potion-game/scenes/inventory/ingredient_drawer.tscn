@@ -37,6 +37,7 @@ rows = 5
 z_index = -1
 custom_minimum_size = Vector2(750, 450)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("6_83lib")
 
 [node name="ItemDisplay" type="CenterContainer" parent="." unique_id=755041674]
