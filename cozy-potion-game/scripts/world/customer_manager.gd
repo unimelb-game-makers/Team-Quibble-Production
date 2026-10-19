@@ -1,4 +1,4 @@
-extends Node
+class_name CustomerManager extends Node
 
 @export var customer_anim_player: AnimationPlayer
 @export var customer_world: CustomerWorld
@@ -10,9 +10,10 @@ extends Node
 @export var customer_model_offset: Vector3
 
 var customer_interactable: Interactable
-var customer_queue: Array[Customer]
+static var customer_queue: Array[Customer]
 var customer_queue_needs_list: Array[Alchemy.NeedID]
 var can_force_potion_to_customer: bool = false
+static var returning_from_forest: bool = false
 
 func _ready() -> void:
 	assert(customer_world, "Customer Manager wasn't assigned a customer")
@@ -24,6 +25,12 @@ func _ready() -> void:
 	TimeCycle.day_started.connect(_on_day_started)
 	var crack
 	DevTools.forced_customer_leave.connect(buy_potion.bind(crack))
+	
+	await get_tree().process_frame
+	if returning_from_forest:
+		send_customer()
+		returning_from_forest = false
+	
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if !can_force_potion_to_customer:
@@ -66,6 +73,7 @@ func _on_day_started() -> void:
 
 #generates some number of customers to be drawn from during the day
 func generate_customer_queue(_customer_queue: Array[Customer] = []) -> void:
+	customer_queue.clear()
 	var customer_needs_list: Dictionary[Alchemy.NeedID, int]
 	if _customer_queue.size() == 0:
 		for i in range(TimeCycle.customers_per_day):
@@ -114,6 +122,7 @@ func send_customer() -> void:
 	Utils.corner_needs_list_manager.create_list(customer_world.customer)
 
 func recall_customer() -> void:
+	customer_queue.pop_front()
 	customer_anim_player.play_backwards("person_in")
 	await get_tree().create_timer(1).timeout
 	send_customer()
@@ -219,7 +228,7 @@ func refuse_potion() -> void:
 
 #gets the next customer of the day, or else null
 func get_next_customer() -> Customer:
-	return customer_queue.pop_front()
+	return customer_queue.front()
 
 func get_potion_value(potion: Potion, customer: Customer) -> int:
 	var strength_diff = potion.potion_attribute_strength - customer.need_severities.front()

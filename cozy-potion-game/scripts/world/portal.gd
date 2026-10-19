@@ -20,3 +20,4 @@ func _on_interact() -> void:
 	spawn_at_portal = true
 	SceneManager.change_active_scene_to_file(destination_path, SceneManager.TRANSITIONS.FADE)
 	AudioManager.play_audio(enter_portal_sounds.get_random())
+	CustomerManager.returning_from_forest = true
