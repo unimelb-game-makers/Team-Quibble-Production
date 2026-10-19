@@ -70,7 +70,7 @@ axis_stretch_vertical = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_ja4bt"]
 size = Vector3(100, 1, 100)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_jjrkg"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_jn854"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="ShopRevamp" type="Node3D" unique_id=1366204913]
@@ -183,5 +183,5 @@ shape = SubResource("BoxShape3D_ja4bt")
 
 [node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("21_jn854")]
 transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 2.0632324, 2.015686, 0.99554443)
-texture = SubResource("ViewportTexture_jjrkg")
+texture = SubResource("ViewportTexture_jn854")
 destination_path = &"uid://bxq7bq8537rse"
