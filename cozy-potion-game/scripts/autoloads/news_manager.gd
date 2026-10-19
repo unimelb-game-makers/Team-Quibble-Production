@@ -34,6 +34,7 @@ func generate_news_event() -> NewsEvent:
 	var news_json: JSON = Utils.get_json(NEWS_JSON_PATH)
 	var events: Array = news_json.data
 	
+	# Pick a random effect to be the attribute NPCS want
 	var event_dict: Dictionary = events.pick_random()
 	var event: NewsEvent = NewsEvent.new()
 	event.initialise(event_dict)

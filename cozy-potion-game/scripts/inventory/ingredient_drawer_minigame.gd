@@ -14,7 +14,7 @@ var notebook : NotebookItemDisplay = null
 
 func _ready() -> void:
 	storage.leave_drawer.connect(set_output)
-	Utils.audio_manager.play_audio(drawer_close_sfx)
+	AudioManager.play_audio(drawer_close_sfx)
 	inventory_with_hover.slot_is_hovered.connect(change_displayed)
 
 func set_output(stacks: Inventory) -> void:
@@ -26,7 +26,7 @@ func win_minigame() -> void:
 	minigame_won.emit(output_stacks)
 
 func close_minigame() -> void:
-	Utils.audio_manager.play_audio(drawer_close_sfx)
+	AudioManager.play_audio(drawer_close_sfx)
 
 # Cheat to see it, also idk if it counts as a minigame
 func display_notebook() -> void:

@@ -4,6 +4,7 @@ extends PanelContainer
 # Emitted every frame if cursor inside slot
 signal hovering
 
+const ITEM_HOLDER = preload("uid://80sdcv4hsqa1")
 
 var item_holder : ItemHolder = null
 var ishovering := false
@@ -14,10 +15,8 @@ var max_pickup: int = 1
 static func get_scene() -> PackedScene:
 	return preload("uid://bcqi5ykyush3i")
 
-
 func _ready() -> void:
 	pass
-
 
 # Exists so panel can be filter Ignore, emulates mouse_exited/entered
 func _input(event: InputEvent) -> void:
@@ -27,7 +26,6 @@ func _input(event: InputEvent) -> void:
 	if not hovering and Input.is_action_just_pressed("RMB"):
 		if item_holder:
 			item_holder.highlight_turn_off()
-
 
 # If cursor inside emits hovering signal, emits mouse_exited if cursor leaves
 func emulate_mouse_inside() -> bool:
@@ -47,8 +45,6 @@ func emulate_mouse_inside() -> bool:
 		mouse_exited.emit()
 	
 	return intersecting_mouse
-
-const ITEM_HOLDER = preload("res://scenes/prefabs/inventory/item_holder_scene.tscn")
 
 func create_holder_as_child(stack : Stack) -> ItemHolder:
 	var new_item_holder = ITEM_HOLDER.instantiate()

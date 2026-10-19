@@ -256,3 +256,9 @@ func get_sprite(_name: String) -> Resource:
 
 	print_debug(_name.to_camel_case().to_lower(), " is missing a sprite")
 	return MISSING_IMAGE
+	
+func find_ingredient_by_id(id: IngredientID) -> PotionIngredient:
+	for item in ingredient_list:
+		if item.ingredient_id == id:
+			return item
+	return null	

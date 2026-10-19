@@ -32,6 +32,8 @@ Alchemy="*uid://brexs4dtg3b08"
 DevTools="*uid://do8xg03yglhhw"
 MusicController="*uid://fmu0thgkusvs"
 PersistentInventory="*uid://okowyngxw7yo"
+AudioManager="*uid://ddq4xbbyhtwx4"
+ForestSceneModifications="*uid://fnarcmnys0pr"
 
 [display]
 
@@ -43,7 +45,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [global_group]
 

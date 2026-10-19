@@ -1,4 +1,4 @@
-class_name AudioManager extends AudioStreamPlayer
+extends AudioStreamPlayer
 ## One source of audio for minigames
 
 @onready var ambiencePlayer := AudioStreamPlayer.new()
@@ -6,7 +6,6 @@ class_name AudioManager extends AudioStreamPlayer
 func _ready() -> void:
 	bus = &"Sfx"
 	ambiencePlayer.bus = &"Ambience"
-	Utils.audio_manager = self
 	add_child(ambiencePlayer)
 
 ## This plays audio to the Sfx bus.

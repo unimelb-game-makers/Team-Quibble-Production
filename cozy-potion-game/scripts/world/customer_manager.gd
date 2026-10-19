@@ -1,23 +1,25 @@
 extends Node
 
 @export var customer_anim_player: AnimationPlayer
-@export var customer_interactable: Interactable
 @export var customer_world: CustomerWorld
 @export var dialogue_resource: DialogueResource
 @export var acceptor_dialogue_balloon: PackedScene
 @export var speech_bubble_dialogue_balloon: PackedScene
 
+var customer_interactable: Interactable
 var customer_queue: Array[Customer]
 var can_force_potion_to_customer: bool = false
 
 func _ready() -> void:
+	assert(customer_world, "Customer Manager wasn't assigned a customer")
+	customer_interactable = customer_world.interactable
 	customer_tests()
 	DialogueManager.dialogue_started.connect(func(idk = null): can_force_potion_to_customer = true)
 	DialogueManager.dialogue_ended.connect(func(idk = null): can_force_potion_to_customer = false)
 	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
 	var crack
-	DevTools.PLEASE_FUCKOFF.connect(buy_potion.bind(crack))
+	DevTools.forced_customer_leave.connect(buy_potion.bind(crack))
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if !can_force_potion_to_customer:

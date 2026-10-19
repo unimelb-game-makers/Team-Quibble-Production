@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bql2wuifailnm"]
+
+[ext_resource type="Texture2D" uid="uid://cicmlyjifhrsw" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_a_namaqualand_stones_01_diff.jpg" id="1_je6oh"]
+[ext_resource type="Texture2D" uid="uid://cwvkkrxnlq3y6" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_a_namaqualand_stones_01_rough.png" id="2_fg8ke"]
+[ext_resource type="Texture2D" uid="uid://ylhslfrpuiu6" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_a_namaqualand_stones_01_nor_gl.png" id="3_t2p8n"]
+
+[resource]
+resource_name = "namaqualand_stones_01"
+cull_mode = 2
+albedo_texture = ExtResource("1_je6oh")
+metallic_texture = ExtResource("2_fg8ke")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_fg8ke")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_t2p8n")
+distance_fade_mode = 2
+distance_fade_min_distance = 8.0
+distance_fade_max_distance = 13.0
+metadata/_gltf_primary_texture_coord = 0

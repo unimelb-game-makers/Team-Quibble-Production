@@ -1,7 +1,11 @@
 class_name ForagingBag extends CanvasLayer
 
 
-@export var player: WorldPlayer
+var player: WorldPlayer:
+	get():
+		if not player:
+			player = get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER)
+		return player
 @export var bag_button: TextureButton
 @export var bag_display: Control
 @export var blur_rect: ColorRect
