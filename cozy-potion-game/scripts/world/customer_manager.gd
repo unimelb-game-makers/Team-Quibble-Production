@@ -221,7 +221,8 @@ func buy_potion(potion: Potion) -> void:
 		TimeCycle.progress_day()
 	recall_customer()
 	
-	PersistentInventory.money += get_potion_value(potion, customer_world.customer)
+	if potion:
+		PersistentInventory.money += get_potion_value(potion, customer_world.customer)
 
 func refuse_potion() -> void:
 	DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon,dialogue_resource, "refuse")
