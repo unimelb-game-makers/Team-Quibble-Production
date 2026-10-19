@@ -73,8 +73,18 @@ func set_item_holder(holder : ItemHolder) -> void:
 
 func remove_holder() -> void:
 	item_holder.draggable_component.draggable_accepted.disconnect(remove_holder)
-	drag_acceptor.accepting_items = true
-	item_holder = null
+	#item_holder = null
+	#drag_acceptor.accepting_items = true
+	
+	# Remove HERE if you want to remove 1 item taking from stack
+	var previous_quant := item_holder.get_item_stack().quantity
+	if previous_quant <= 1:
+		item_holder = null
+		drag_acceptor.accepting_items = true
+	else:
+		item_holder.get_item_stack().quantity = 1
+		set_stack(Stack.new(previous_quant - 1).
+			clone_type(item_holder.get_item_stack()))
 
 
 
