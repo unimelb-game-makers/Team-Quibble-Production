@@ -43,7 +43,7 @@ func connect_buttons() -> void:
 	exit_game_button.pressed.connect(get_tree().quit)
 	sound_menu_button.pressed.connect(open_sound_menu)
 
-func _input(event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	#print_debug(event.as_text())
 	#print_debug(event.is_action_pressed("open_options_menu"))
 	if event.is_action_pressed("open_options_menu"):
@@ -61,7 +61,7 @@ func _input(event: InputEvent) -> void:
 				focus_owner.release_focus()
 		# this key should always open the options menu, and only
 		# open the options menu
-		get_viewport().set_input_as_handled()
+		#get_viewport().set_input_as_handled()
 
 # This will need continued refactoring such that each menu has its own script to call show and hide logic.
 func open_menu(menu: Control) -> void:

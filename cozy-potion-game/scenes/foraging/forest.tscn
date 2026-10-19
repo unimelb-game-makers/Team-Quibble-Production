@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://ci3bywoe6ik6b" path="res://scripts/user_interface/merchant_ui.gd" id="3_iyol6"]
 [ext_resource type="Texture2D" uid="uid://yjhweuu18wcl" path="res://assets/sprites/foraging/backpack_base.png" id="4_ewpas"]
 [ext_resource type="PackedScene" uid="uid://c28p44surqk5m" path="res://scenes/user_interface/merchant_item_box.tscn" id="4_iyol6"]
-[ext_resource type="Texture2D" uid="uid://bsdig3qrvg1dj" path="res://assets/sprites/dialogue/speech_bubble.png" id="5_qrrdt"]
+[ext_resource type="Texture2D" uid="uid://sqn20v77gp4b" path="res://assets/sprites/dialogue/speech_bubble.png" id="5_qrrdt"]
 [ext_resource type="Texture2D" uid="uid://2nthx860o8a1" path="res://assets/sprites/foraging/placeholder_portal_button.png" id="6_pjwkr"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="7_dofmw"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/user_interface/popup_manager.gd" id="7_f3vpa"]
@@ -22,9 +22,12 @@
 [ext_resource type="PackedScene" uid="uid://c478kxsov5ein" path="res://scenes/foraging/foliage/auto_foliage_kelp.tscn" id="13_ewpas"]
 [ext_resource type="PackedScene" uid="uid://dnnx46vv3j8s" path="res://scenes/foraging/foliage/auto_foliage_tree.tscn" id="13_g8fsv"]
 [ext_resource type="PackedScene" uid="uid://e2jkygf0wewl" path="res://scenes/foraging/foliage/auto_foliage_bush.tscn" id="14_u7blp"]
+[ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/viewports/popup_sub_window.tscn" id="15_67phx"]
 [ext_resource type="PackedScene" uid="uid://b18nfiye242g" path="res://scenes/foraging/shopkeeper.tscn" id="15_v7bn7"]
 [ext_resource type="Script" uid="uid://ovkukftdmfbw" path="res://scenes/foraging/merchant_spawner.gd" id="16_v7bn7"]
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/player.tscn" id="18_dofmw"]
+[ext_resource type="Script" uid="uid://c14xedth331vd" path="res://scenes/foraging/forest_music_p_laceholder.gd" id="24_vq4f2"]
+[ext_resource type="AudioStream" uid="uid://ctt05trglkycb" path="res://audio/music/ForestMusicPLACEHOLDER/75bpm_Forest_Theme_Night_FullMix(1).wav" id="25_vq4f2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v7bn7"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -381,6 +384,8 @@ button = NodePath("../ForagingBag/Control/MarginContainer/VBoxContainer/HBoxCont
 player = NodePath("../../Player")
 offset = Vector3(0, 1.5, 0)
 
+[node name="PopupSubWindow" parent="SceneUI" unique_id=1360167922 groups=["popup_subwindow"] instance=ExtResource("15_67phx")]
+
 [node name="TreeFoliageManager" type="Node" parent="." unique_id=1037012145]
 script = ExtResource("1_ij0qq")
 ingredients = Dictionary[int, float]({
@@ -716,3 +721,8 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 47.384357, 
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=943629651]
 bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2078302876]
+stream = ExtResource("25_vq4f2")
+autoplay = true
+script = ExtResource("24_vq4f2")
