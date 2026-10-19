@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dlv4nt5n2kge0"]
+
+[ext_resource type="PackedScene" uid="uid://4vp1yyotwumu" path="res://assets/models/Customers/NPC_Base_4_Witch.glb" id="1_k8jfi"]
+
+[node name="NPC_Base_4_Witch2" unique_id=1681058952 instance=ExtResource("1_k8jfi")]
+
+[node name="NPC_Base_4_Witch" parent="." index="0" unique_id=1335084748]
+transform = Transform3D(2.0554268, 0, 0, 0, -8.9845564e-08, -2.0554268, 0, 2.0554268, -8.9845564e-08, 0, 0, 0)
