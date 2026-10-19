@@ -23,8 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://b18nfiye242g" path="res://scenes/foraging/shopkeeper.tscn" id="15_v7bn7"]
 [ext_resource type="Script" uid="uid://ovkukftdmfbw" path="res://scenes/foraging/merchant_spawner.gd" id="16_v7bn7"]
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/player.tscn" id="18_dofmw"]
-[ext_resource type="Script" uid="uid://c14xedth331vd" path="res://scenes/foraging/forest_music_p_laceholder.gd" id="24_vq4f2"]
-[ext_resource type="AudioStream" uid="uid://ctt05trglkycb" path="res://audio/music/ForestMusicPLACEHOLDER/75bpm_Forest_Theme_Night_FullMix(1).wav" id="25_vq4f2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v7bn7"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -710,10 +708,3 @@ transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 47.384357, 
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=943629651]
 bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
-
-[node name="ForestMusicPLaceholder" type="Node" parent="." unique_id=1913017494]
-script = ExtResource("24_vq4f2")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ForestMusicPLaceholder" unique_id=1495031566]
-stream = ExtResource("25_vq4f2")
-autoplay = true
