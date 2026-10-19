@@ -21,6 +21,7 @@
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="11_jjrkg"]
 [ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/inventory/hover_information.tscn" id="12_fg6qk"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="21_jn854"]
+[ext_resource type="Script" uid="uid://c63vcvaayrcgx" path="res://scenes/enviroments/shop_music.gd" id="22_jjrkg"]
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -185,3 +186,7 @@ shape = SubResource("BoxShape3D_ja4bt")
 transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 2.0632324, 2.015686, 0.99554443)
 texture = SubResource("ViewportTexture_jn854")
 destination_path = &"uid://bxq7bq8537rse"
+
+[node name="ShopMusicStarter" type="Node" parent="." unique_id=1890158475]
+script = ExtResource("22_jjrkg")
+metadata/_custom_type_script = "uid://c63vcvaayrcgx"
