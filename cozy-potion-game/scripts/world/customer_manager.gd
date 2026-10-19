@@ -49,6 +49,7 @@ func add_model_to_customer(customer: CustomerWorld, id: Customer.CustomerID) -> 
 	var model = model_scene.instantiate()
 	customer.add_child(model)
 	model.position += customer_model_offset
+	model.scale *= 1.2
 
 #func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("close_minigame") or event.is_action_pressed("ui_accept"):
