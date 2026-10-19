@@ -25,7 +25,9 @@ func win_minigame() -> void:
 		ingredient_processed.emit(output_ingredient)
 	process_mode = Node.PROCESS_MODE_DISABLED
 	
-	player.inventory().blind_add_stack(output_ingredient)
+	if player.inventory():
+		player.inventory().blind_add_stack(output_ingredient)
+		
 	minigame_won.emit()
 
 func close_minigame() -> void:
