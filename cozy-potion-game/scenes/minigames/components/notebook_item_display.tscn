@@ -3,6 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://ccbkqsk6810wi" path="res://assets/sprites/ingredients/cinnamon_128.png" id="1_4o8a3"]
 [ext_resource type="Script" uid="uid://ceke6iiqmiep8" path="res://scripts/minigame/notebook/notebook_item_display.gd" id="1_iee8v"]
 
+[sub_resource type="SystemFont" id="SystemFont_0cbu8"]
+fallbacks = Array[Font]([null])
+font_names = PackedStringArray("Kristen ITC")
+
 [node name="NotebookItemDisplay" type="Control" unique_id=477526058]
 layout_mode = 3
 anchors_preset = 0
@@ -25,6 +29,10 @@ offset_left = 152.0
 offset_top = 37.0
 offset_right = 347.0
 offset_bottom = 95.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_0cbu8")
 theme_override_font_sizes/font_size = 42
 text = "Apple"
 autowrap_mode = 2
@@ -37,6 +45,10 @@ offset_left = 1.0
 offset_top = 156.0
 offset_right = 371.0
 offset_bottom = 309.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_0cbu8")
 text = "I am in love with ducks, all types of ducks. A lymric I rhyme with ducks I sleep. But Alone I feel that my a duck can not sustiate my love for gooses. A goose can be red blue or yellow, given the right type of paint, with thunder they can even be turnt entirely black."
 autowrap_mode = 2
 
@@ -46,6 +58,10 @@ offset_left = 4.0
 offset_top = 336.0
 offset_right = 175.0
 offset_bottom = 385.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_0cbu8")
 theme_override_font_sizes/font_size = 35
 text = "Attributes"
 
@@ -55,6 +71,10 @@ offset_left = 21.0
 offset_top = 394.0
 offset_right = 185.0
 offset_bottom = 467.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = SubResource("SystemFont_0cbu8")
 theme_override_font_sizes/font_size = 25
 text = "Gas me up
 Gas me down"
