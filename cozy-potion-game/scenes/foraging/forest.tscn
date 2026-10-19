@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d1s3n3yh2tev5" path="res://scenes/Mythical_Forest.tscn" id="1_ewpas"]
 [ext_resource type="Script" uid="uid://cx4e7cbvnke4v" path="res://scripts/foraging/foliage_manager.gd" id="1_ij0qq"]
 [ext_resource type="Script" uid="uid://ddb2nwyl1rdqy" path="res://scripts/foraging/foraging_ui/foraging_bag.gd" id="1_q7g5v"]
+[ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/viewports/popup_sub_window.tscn" id="2_67phx"]
 [ext_resource type="Theme" uid="uid://5xdceq6g4wen" path="res://resources/ui_themes/merchant_ui_theme.tres" id="3_28u7r"]
 [ext_resource type="Script" uid="uid://ci3bywoe6ik6b" path="res://scripts/user_interface/merchant_ui.gd" id="3_iyol6"]
 [ext_resource type="Texture2D" uid="uid://yjhweuu18wcl" path="res://assets/sprites/foraging/backpack_base.png" id="4_ewpas"]
@@ -73,6 +74,8 @@ environment = SubResource("Environment_dofmw")
 [node name="MythicalForest" parent="." unique_id=1236479139 instance=ExtResource("1_ewpas")]
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=127223334]
+
+[node name="PopupSubWindow" parent="SceneUI" unique_id=1360167922 groups=["popup_subwindow"] instance=ExtResource("2_67phx")]
 
 [node name="ForagingBag" type="CanvasLayer" parent="SceneUI" unique_id=2066214678 node_paths=PackedStringArray("bag_button", "bag_display", "blur_rect", "hover_inventory") groups=["foraging_bag"]]
 script = ExtResource("1_q7g5v")

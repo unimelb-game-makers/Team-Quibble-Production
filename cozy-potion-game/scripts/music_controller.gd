@@ -61,7 +61,8 @@ func _ready() -> void:
 	
 	music.start()
 	# If it is in editor, pause.
-	if not OS.has_feature("standalone"): pause()
+	if OS.is_debug_build():
+		music.volume = 0
 
 func pause() -> void:
 	music.paused = true

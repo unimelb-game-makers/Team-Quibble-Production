@@ -21,10 +21,8 @@ func _ready() -> void:
 	make_button.pressed.connect(create_potion)
 	potion_created_container.gui_input.connect(_on_potion_created_container_gui_input)
 	
-
 func create_potion() -> void:
 	if inventory.get_inventory().size() == 0:
-		
 		minigame_won.emit()
 		print_debug("Nothing given")
 		return
