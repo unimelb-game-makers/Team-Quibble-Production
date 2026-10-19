@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bxq7bq8537rse"]
 
+[ext_resource type="Script" uid="uid://c52px5thderj" path="res://scripts/foraging/foraging_director.gd" id="1_67phx"]
 [ext_resource type="PackedScene" uid="uid://d1s3n3yh2tev5" path="res://scenes/Mythical_Forest.tscn" id="1_ewpas"]
 [ext_resource type="Script" uid="uid://cx4e7cbvnke4v" path="res://scripts/foraging/foliage_manager.gd" id="1_ij0qq"]
 [ext_resource type="Script" uid="uid://ddb2nwyl1rdqy" path="res://scripts/foraging/foraging_ui/foraging_bag.gd" id="1_q7g5v"]
@@ -12,7 +13,7 @@
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="7_dofmw"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/user_interface/popup_manager.gd" id="7_f3vpa"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="9_54ec3"]
-[ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/Inventory/hover_inventory.gd" id="10_dofmw"]
+[ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/inventory/hover_inventory.gd" id="10_dofmw"]
 [ext_resource type="Texture2D" uid="uid://cgsnb674nd7va" path="res://assets/sprites/foraging/NPC_Merchant.png" id="12_bdats"]
 [ext_resource type="Texture2D" uid="uid://bro5ya0bdgk6h" path="res://assets/sprites/foraging/backpack_grid_small.png" id="12_g8fsv"]
 [ext_resource type="Script" uid="uid://biw1qiukgvxb5" path="res://scripts/foraging/portal_spawner.gd" id="13_bdats"]
@@ -54,13 +55,17 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("7_dofmw")
 font_size = 42
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_bdats"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_vq4f2"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4dvm4"]
 radius = 20.191406
 
 [node name="Forest" type="Node3D" unique_id=529053958]
+
+[node name="ForagingDirector" type="Node" parent="." unique_id=505864972 node_paths=PackedStringArray("foliage_managers")]
+script = ExtResource("1_67phx")
+foliage_managers = [NodePath("../TreeFoliageManager"), NodePath("../BushFoliageManager"), NodePath("../GroundFoliageManager"), NodePath("../CaveFoliageManager"), NodePath("../KelpFoliageManager")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1396059457]
 environment = SubResource("Environment_dofmw")
@@ -660,7 +665,7 @@ merchant_ui = NodePath("../SceneUI/MerchantUI")
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
 transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 1.5899999, 90.812, -0.149, -79.953)
-texture = SubResource("ViewportTexture_bdats")
+texture = SubResource("ViewportTexture_vq4f2")
 destination_path = &"res://scenes/enviroments/shop_revamp.tscn"
 
 [node name="LeftQuadrant" type="Area3D" parent="." unique_id=1142467544]

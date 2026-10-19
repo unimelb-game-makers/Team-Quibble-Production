@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" uid="uid://i84nwvi1juy1" path="res://scripts/tutorial_director.gd" id="1_2sfqc"]
 [ext_resource type="Script" uid="uid://bh1olcq0so2ta" path="res://scripts/customer/customer.gd" id="2_4rkbm"]
-
-[sub_resource type="Resource" id="Resource_pitpm"]
-script = ExtResource("2_4rkbm")
-metadata/_custom_type_script = "uid://bh1olcq0so2ta"
+[ext_resource type="Resource" uid="uid://ddxayg6mbp6pb" path="res://resources/tutorial_resources/first_npc.tres" id="3_7u3h0"]
+[ext_resource type="Resource" uid="uid://dg8xcyxm8bnpc" path="res://resources/tutorial_resources/second_npc.tres" id="4_rhryq"]
+[ext_resource type="Resource" uid="uid://bp51xldbd1jgn" path="res://resources/tutorial_resources/third_npc.tres" id="5_rhryq"]
 
 [node name="TutorialDirector" type="Node" unique_id=53706943]
 script = ExtResource("1_2sfqc")
-customer_day_1_healing = SubResource("Resource_pitpm")
+custom_customer = Array[ExtResource("2_4rkbm")]([ExtResource("3_7u3h0"), ExtResource("4_rhryq"), ExtResource("5_rhryq")])

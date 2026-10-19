@@ -23,10 +23,11 @@ enum CustomerID{
 	NPC_PRIVATE_INVESTIGATOR,
 }
 ##customer occupation: student, cultist, etc
-var customer_id: CustomerID
+@export var customer_id: CustomerID
+
 ##array of customer needs: NEED_HEALING, NEED_LIGHT, etc
 ##the first element is the primary need, others are secondary
-var needs: Array[Alchemy.NeedID]
+@export var needs: Array[Alchemy.NeedID]
 ##each element in needs has a corresponding severity in this array at
 ##the same index.
 var need_severities: Array[float]

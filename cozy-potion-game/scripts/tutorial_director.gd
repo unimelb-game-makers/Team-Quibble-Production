@@ -1,6 +1,6 @@
 extends Node
 
-@export var customer_day_1_healing: Customer
+@export var custom_customer: Array[Customer]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
