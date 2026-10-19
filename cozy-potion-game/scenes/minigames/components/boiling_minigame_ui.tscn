@@ -145,6 +145,7 @@ thermometer_sprite = NodePath("Thermometer")
 needle_sprite = NodePath("Thermometer/Needle")
 acceptor = NodePath("Control/DraggableAcceptorComponent")
 draggable_hint_rect = NodePath("Control/ColorRect")
+process = 3
 
 [node name="TeapotFull" type="Sprite2D" parent="." unique_id=2053737364]
 position = Vector2(930, 480)
