@@ -8,6 +8,7 @@ extends Node
 
 var customer_interactable: Interactable
 var customer_queue: Array[Customer]
+var customer_queue_needs_list: Array[Alchemy.NeedID]
 var can_force_potion_to_customer: bool = false
 
 func _ready() -> void:
@@ -48,12 +49,20 @@ func _on_day_started() -> void:
 
 #generates some number of customers to be drawn from during the day
 func generate_customer_queue(_customer_queue: Array[Customer] = []) -> void:
+	var customer_needs_list: Dictionary[Alchemy.NeedID, int]
 	if _customer_queue.size() == 0:
 		for i in range(TimeCycle.customers_per_day):
 			customer_queue.append(Customer.generate_customer())
 	else:
 		customer_queue = _customer_queue
-
+	
+	for customer in customer_queue:
+		customer_needs_list[customer.primary_need] = 0
+		if customer.secondary_need > 0:
+			customer_needs_list[customer.secondary_need] = 0
+	
+	customer_queue_needs_list = customer_needs_list.keys()
+	
 	var time_allotments = generate_customer_time_allotments()
 	for i in range(time_allotments.size()):
 		customer_queue[i].time_allotment = time_allotments[i]
@@ -93,7 +102,6 @@ func recall_customer() -> void:
 
 func _on_customer_interact() -> void:
 	show_acceptor_dialogue()
-
 
 func show_acceptor_dialogue() -> void:
 	var customer = customer_world.customer
