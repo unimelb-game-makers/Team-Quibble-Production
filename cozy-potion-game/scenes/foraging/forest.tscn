@@ -248,11 +248,12 @@ texture_hover = ExtResource("6_pjwkr")
 texture_disabled = ExtResource("6_pjwkr")
 texture_focused = ExtResource("6_pjwkr")
 
-[node name="MerchantUI" type="CanvasLayer" parent="SceneUI" unique_id=1074401360 node_paths=PackedStringArray("item_box_container")]
-visible = false
+[node name="MerchantUI" type="CanvasLayer" parent="SceneUI" unique_id=1074401360 node_paths=PackedStringArray("item_box_container", "dialogue_label")]
 script = ExtResource("3_iyol6")
 merchant_item_box_scene = ExtResource("4_iyol6")
 item_box_container = NodePath("Control/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer")
+merchant_dialogue = Array[String](["Don't complain about the prices. The conversion rates from USD to Doubloons are killing me these days.", "Always lovely to see a loyal customer.", "No refunds!", "Hey, watch the broom!", "No, faries don't trap you in confusing magical contracts anymore. Excluding my ex-wife, of course..."])
+dialogue_label = NodePath("Control/HBoxContainer/MarginContainer2/VBoxContainer/MerchantSpeechBubbleControl/Control/Label")
 
 [node name="Control" type="Control" parent="SceneUI/MerchantUI" unique_id=642165156]
 layout_mode = 3
