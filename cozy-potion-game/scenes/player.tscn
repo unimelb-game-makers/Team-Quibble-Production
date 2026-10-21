@@ -162,6 +162,7 @@ shape = SubResource("BoxShape3D_4dvm4")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="AnimationPivot" unique_id=1451786931]
 transform = Transform3D(0.6980141, -0.7157583, -0.021601157, 0.017767817, -0.012844771, 0.9997597, -0.7158635, -0.69823027, 0.003751712, -0.106, 0.95, -0.548)
+visible = false
 cast_shadow = 0
 polygon = PackedVector2Array(0.7617471, 0.8473878, 0.63597995, 0.976331, 1.0469601, 0.97114205, 0.96082616, 0.56121916, 0.8524252, 0.6899427, 0, 0)
 material = SubResource("StandardMaterial3D_032fp")
@@ -172,13 +173,13 @@ transform = Transform3D(1.21, 0, 0, 0, 1.21, 0, 0, 0, 1.21, 0, 0, 0)
 [node name="MimiFrontBack" parent="AnimationPivot/Sprites" unique_id=2010580373 instance=ExtResource("4_6o77n")]
 transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.205, 0.012121186, -0.07802725, -0.020415366)
 
-[node name="mimi-front" parent="AnimationPivot/Sprites/MimiFrontBack" index="1" unique_id=542018268]
+[node name="mimi-front" parent="AnimationPivot/Sprites/MimiFrontBack" index="1" unique_id=531760448]
 mesh = SubResource("ArrayMesh_50rl7")
 
 [node name="MimiLeftRight" parent="AnimationPivot/Sprites" unique_id=503888036 instance=ExtResource("2_dqkch")]
 transform = Transform3D(0.001816079, 0, -0.9999984, 0, 1, 0, 0.9999984, 0, 0.001816079, 0.017564297, 0.477, 0.008782238)
 
-[node name="Plane" parent="AnimationPivot/Sprites/MimiLeftRight" index="0" unique_id=1337423863]
+[node name="Plane" parent="AnimationPivot/Sprites/MimiLeftRight" index="0" unique_id=1084512468]
 mesh = SubResource("ArrayMesh_lagtt")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1669848937]

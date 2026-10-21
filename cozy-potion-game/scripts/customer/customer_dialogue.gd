@@ -17,7 +17,9 @@ static func get_potion_request_line(attribute: Alchemy.AttributeID, customer: Cu
 		populate_potion_request_lines()
 	
 	if not attribute or not customer:
-		return
+		print_debug(attribute, customer)
+		DialogueManager.create_resource_from_text("~ start\n %s" % potion_request_lines.pick_random().text)
+
 	
 	var shortlist = get_shortlist(attribute, customer)
 	

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://djwvfhxhrfr83"]
+
+[ext_resource type="PackedScene" uid="uid://c3lafvmmmyvrb" path="res://assets/models/Customers/NPC_Base_4_PrivateInvestigator.glb" id="1_c3krt"]
+
+[node name="NPC_Base_4_PrivateInvestigator2" unique_id=1561659950 instance=ExtResource("1_c3krt")]
+
+[node name="NPC_Base_4_PrivateInvestigator" parent="." index="0" unique_id=566509937]
+transform = Transform3D(2.030149, 0, 0, 0, -8.874063e-08, -2.030149, 0, 2.030149, -8.874063e-08, 0, 0, 0)
