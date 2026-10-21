@@ -15,7 +15,6 @@ var ingredient_foliage_spawn_points: Array[Marker3D]
 ## for each marker, the chance that it spawns a foliage
 @export var ingredient_foliage_spawn_rate: float
 
-
 func _ready() -> void:
 	for marker in get_children():
 		if marker is Marker3D:
@@ -31,6 +30,11 @@ func adjust_foliage_weights() -> void:
 		if ingredients.has(item):
 			ingredients[item] *= ForestSceneModifications.weighted_items[item]
 
+func filter_ingredients_by_needed() -> void:
+	## sets the weight of ingredients that do not contain a needed attribute
+	for ingredient in ingredients:
+		var ing_res: PotionIngredient = Alchemy.find_ingredient_by_id(ingredient)
+	
 func spawn_foliage() -> void:
 	for marker in ingredient_foliage_spawn_points:
 		var does_spawn: bool = randf() <= ingredient_foliage_spawn_rate
