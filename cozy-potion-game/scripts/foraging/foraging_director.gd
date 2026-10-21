@@ -18,6 +18,7 @@ var foliage_managers: Array[FoliageManager]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	foliage_managers.resize(5)
 	foliage_managers[TREE_MNGR] = tree_manager
 	foliage_managers[BUSH_MNGR] = bush_manager
 	foliage_managers[GROUND_MNGR] = ground_manager

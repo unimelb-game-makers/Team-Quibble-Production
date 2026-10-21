@@ -40,4 +40,4 @@ func apply_process(id: Alchemy.ProcessID) -> void:
 		attributes[attribute] *= process.attribute_changes[attribute]
 
 func get_greatest_attribute() -> Alchemy.AttributeID:
-	return attributes.find_key(max(attributes.values()))
+	return attributes.find_key(attributes.values().max())

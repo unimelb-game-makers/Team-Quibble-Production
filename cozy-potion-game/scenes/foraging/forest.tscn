@@ -66,8 +66,13 @@ radius = 20.191406
 
 [node name="Forest" type="Node3D" unique_id=529053958]
 
-[node name="ForagingDirector" type="Node" parent="." unique_id=505864972]
+[node name="ForagingDirector" type="Node" parent="." unique_id=505864972 node_paths=PackedStringArray("tree_manager", "bush_manager", "ground_manager", "cave_manager", "kelp_manager")]
 script = ExtResource("1_67phx")
+tree_manager = NodePath("../TreeFoliageManager")
+bush_manager = NodePath("../BushFoliageManager")
+ground_manager = NodePath("../GroundFoliageManager")
+cave_manager = NodePath("../CaveFoliageManager")
+kelp_manager = NodePath("../KelpFoliageManager")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1396059457]
 environment = SubResource("Environment_dofmw")
@@ -625,7 +630,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.26353, 2.5818481, -83.3799
 [node name="KelpFoliageManager" type="Node" parent="." unique_id=810205538]
 script = ExtResource("1_ij0qq")
 ingredients = Dictionary[int, float]({
-24: 5.0
+24: 5.0,
+33: 0.5
 })
 auto_foliage_scene = ExtResource("13_ewpas")
 ingredient_foliage_spawn_rate = 0.4

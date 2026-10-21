@@ -21,6 +21,7 @@ func _ready() -> void:
 			ingredient_foliage_spawn_points.append(marker)
 	
 	adjust_foliage_weights()
+	filter_ingredients_by_needed()
 
 	await get_tree().process_frame
 	spawn_foliage()
@@ -34,7 +35,10 @@ func filter_ingredients_by_needed() -> void:
 	## sets the weight of ingredients that do not contain a needed attribute
 	for ingredient in ingredients:
 		var ing_res: PotionIngredient = Alchemy.find_ingredient_by_id(ingredient)
-	
+		if not ing_res.get_greatest_attribute() in CustomerManager.customer_queue_needs_list:
+			ingredients[ingredient] = 0
+			print_debug("%s will not spawn" % ing_res.ingredient_name)
+			
 func spawn_foliage() -> void:
 	for marker in ingredient_foliage_spawn_points:
 		var does_spawn: bool = randf() <= ingredient_foliage_spawn_rate
