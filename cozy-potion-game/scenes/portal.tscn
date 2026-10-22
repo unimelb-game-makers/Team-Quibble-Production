@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://86hobw64ehjg"]
 
 [ext_resource type="Script" uid="uid://bh0y3jag2cl60" path="res://scripts/world/portal.gd" id="2_dr012"]
-[ext_resource type="AudioStream" uid="uid://baonbgph3mnnq" path="res://audio/sfx/portal/enter_portal.wav" id="2_m5orc"]
+[ext_resource type="AudioStream" uid="uid://c51flh2dxslb6" path="res://audio/sfx/portal/enter_portal.ogg" id="2_m5orc"]
 [ext_resource type="Material" uid="uid://c66riynsumk0a" path="res://assets/materials/shaders/portal_shader_material.tres" id="3_fbfsp"]
-[ext_resource type="AudioStream" uid="uid://bsbn4bt4qkwfp" path="res://audio/sfx/portal/enter_portal2.wav" id="3_gj6dn"]
+[ext_resource type="AudioStream" uid="uid://c27y0jvqnp1gl" path="res://audio/sfx/portal/enter_portal2.ogg" id="3_gj6dn"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="3_nbarb"]
 [ext_resource type="Script" uid="uid://bdhleqgxddfht" path="res://scripts/audio/audio_resource.gd" id="4_6qbyj"]
-[ext_resource type="AudioStream" uid="uid://c4udi5ehdqvir" path="res://audio/sfx/portal/portal_spawn.wav" id="5_arak2"]
-[ext_resource type="AudioStream" uid="uid://bq5mhbboy2rra" path="res://audio/sfx/portal/portal_spawn2.wav" id="6_8rces"]
-[ext_resource type="AudioStream" uid="uid://ch4s2yd41afr" path="res://audio/sfx/portal/portal_despawn.wav" id="7_oqhwi"]
+[ext_resource type="AudioStream" uid="uid://uqexym2phy8q" path="res://audio/sfx/portal/portal_spawn.ogg" id="5_arak2"]
+[ext_resource type="AudioStream" uid="uid://c725mfbmld0j1" path="res://audio/sfx/portal/portal_spawn2.ogg" id="6_8rces"]
+[ext_resource type="AudioStream" uid="uid://2xp165pe4e2r" path="res://audio/sfx/portal/portal_despawn.ogg" id="7_oqhwi"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_aue3q"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
