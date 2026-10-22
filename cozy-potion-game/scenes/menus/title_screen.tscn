@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cojeu84h7sn82"]
+
+[ext_resource type="PackedScene" uid="uid://ba6o7krm0dacy" path="res://scenes/title_screen_fake_forest.tscn" id="1_n17qi"]
+[ext_resource type="Theme" uid="uid://b5rk2obep48bo" path="res://resources/ui_themes/main_menu_theme.tres" id="2_eqhve"]
+[ext_resource type="Script" uid="uid://1uplvo1hvm7y" path="res://scripts/user_interface/main_menu.gd" id="3_yx444"]
+
+[node name="TitleScreen" type="CanvasLayer" unique_id=1226151043]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1747670831]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=722494161]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="TitleScreenFakeForest" parent="SubViewportContainer/SubViewport" unique_id=1357049931 instance=ExtResource("1_n17qi")]
+
+[node name="Control" type="Control" parent="." unique_id=47089385 node_paths=PackedStringArray("options_button", "continue_button", "new_game_button", "quit_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_eqhve")
+script = ExtResource("3_yx444")
+options_button = NodePath("MarginContainer/HBoxContainer/OptionsButton")
+continue_button = NodePath("MarginContainer/HBoxContainer/ContinueButton")
+new_game_button = NodePath("MarginContainer/HBoxContainer/NewGameButton")
+quit_button = NodePath("MarginContainer/HBoxContainer/QuitButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1248815175]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer" unique_id=1583759392]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TitleLabel" type="Label" parent="Control/MarginContainer/VBoxContainer" unique_id=729100067]
+layout_mode = 2
+text = "AlcheMiMi: Straight Outta Cauldron"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=846358728]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="OptionsButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=1992492330]
+layout_mode = 2
+text = "Options
+"
+
+[node name="ContinueButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=1548561905]
+layout_mode = 2
+text = "Continue
+"
+
+[node name="NewGameButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=1659971811]
+layout_mode = 2
+text = "New Game
+"
+
+[node name="QuitButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=2056569277]
+layout_mode = 2
+text = "Quit
+"
