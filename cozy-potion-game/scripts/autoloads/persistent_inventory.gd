@@ -3,7 +3,7 @@ extends Node
 signal money_changed(new_money: float)
 const PANTRY_SIZE = 40
 
-var money: int:
+var money: int = 200:
 	set(value):
 		money = value
 		money_changed.emit(money)
