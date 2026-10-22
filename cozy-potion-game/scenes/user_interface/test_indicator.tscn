@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cy4b7vyvfm6pt"]
 
-[ext_resource type="Script" uid="uid://b6xdw32473ggf" path="res://scripts/ui/indicator.gd" id="1_csqtc"]
+[ext_resource type="Script" uid="uid://b6xdw32473ggf" path="res://scripts/user_interface/indicator.gd" id="1_csqtc"]
 [ext_resource type="Texture2D" uid="uid://dxjv147f0i0pi" path="res://assets/sprites/apple_red_64.png" id="1_sb22v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_csqtc"]

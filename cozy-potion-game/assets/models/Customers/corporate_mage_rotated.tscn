@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://v4oujqpdk52o"]
+
+[ext_resource type="PackedScene" uid="uid://r82ahn0m1s7j" path="res://assets/models/Customers/NPC_Base_4_CorporateMage.glb" id="1_peu5t"]
+
+[node name="NPC_Base_4_CorporateMage2" unique_id=1029717405 instance=ExtResource("1_peu5t")]
+
+[node name="NPC_Base_4_CorporateMage" parent="." index="0" unique_id=1822017751]
+transform = Transform3D(2.1087804, 0, 0, 0, -9.217772e-08, -2.1087804, 0, 2.1087804, -9.217772e-08, 0, 0, 0)

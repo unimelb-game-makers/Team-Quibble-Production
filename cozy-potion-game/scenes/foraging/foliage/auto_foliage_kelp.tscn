@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://c478kxsov5ein"]
+
+[ext_resource type="PackedScene" uid="uid://bc1q0jwhyjj0r" path="res://scenes/foraging/foliage/base_foliage.tscn" id="1_smo3c"]
+[ext_resource type="Script" uid="uid://dwjiokj6l4j5u" path="res://scripts/foraging/auto_foliage.gd" id="2_df21s"]
+[ext_resource type="PackedScene" uid="uid://oly1h5v563vy" path="res://scenes/foraging/foliage/ingredient_medallion.tscn" id="3_wf1hy"]
+[ext_resource type="PackedScene" uid="uid://bglmv6wy3dpwy" path="res://assets/models/enviroment/Mythical_Forest/Kelp/Kelp_2_P.glb" id="4_02igo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_02igo"]
+size = Vector3(1.5288086, 5.840576, 1.9903564)
+
+[node name="AutoFoliage1" unique_id=1126630017 node_paths=PackedStringArray("markers") instance=ExtResource("1_smo3c")]
+script = ExtResource("2_df21s")
+markers = [NodePath("Marker3D"), NodePath("Marker3D4"), NodePath("Marker3D2"), NodePath("Marker3D3")]
+ingredient_medallion_scene = ExtResource("3_wf1hy")
+
+[node name="Interactable" parent="." index="0" unique_id=1663026376]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
+
+[node name="CollisionShape3D" parent="Interactable" index="0" unique_id=33012576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15698242, 1.1702881, 0.026428223)
+shape = SubResource("BoxShape3D_02igo")
+
+[node name="Marker3D" type="Marker3D" parent="." index="1" unique_id=1012536560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20612812, -1.5, -0.54444075)
+
+[node name="Marker3D2" type="Marker3D" parent="." index="2" unique_id=707724141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6540821, -1.5, -0.51384705)
+
+[node name="Marker3D3" type="Marker3D" parent="." index="3" unique_id=1438312894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012317181, -1.5, 0)
+
+[node name="Marker3D5" type="Marker3D" parent="." index="4" unique_id=1950856219]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200935, -1.5, -0.00055110455)
+
+[node name="Marker3D4" type="Marker3D" parent="." index="5" unique_id=584250443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18476915, -1.5, 0.763345)
+
+[node name="Kelp_2_P" parent="." index="6" unique_id=2002265903 instance=ExtResource("4_02igo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)

@@ -4,6 +4,7 @@ extends PanelContainer
 # Emitted every frame if cursor inside slot
 signal hovering
 
+const ITEM_HOLDER = preload("uid://80sdcv4hsqa1")
 
 var item_holder : ItemHolder = null
 var ishovering := false
@@ -11,13 +12,14 @@ var max_quantity: int = 999
 
 var max_pickup: int = 1
 
+@onready var drag_acceptor: DraggableAcceptorComponent = $DraggableAcceptorComponent
+
 static func get_scene() -> PackedScene:
 	return preload("uid://bcqi5ykyush3i")
 
-
 func _ready() -> void:
+	drag_acceptor.accepted_draggable.connect(set_item_holder)
 	pass
-
 
 # Exists so panel can be filter Ignore, emulates mouse_exited/entered
 func _input(event: InputEvent) -> void:
@@ -27,7 +29,6 @@ func _input(event: InputEvent) -> void:
 	if not hovering and Input.is_action_just_pressed("RMB"):
 		if item_holder:
 			item_holder.highlight_turn_off()
-
 
 # If cursor inside emits hovering signal, emits mouse_exited if cursor leaves
 func emulate_mouse_inside() -> bool:
@@ -48,8 +49,6 @@ func emulate_mouse_inside() -> bool:
 	
 	return intersecting_mouse
 
-const ITEM_HOLDER = preload("res://scenes/prefabs/inventory/item_holder_scene.tscn")
-
 func create_holder_as_child(stack : Stack) -> ItemHolder:
 	var new_item_holder = ITEM_HOLDER.instantiate()
 	add_child(new_item_holder)
@@ -60,11 +59,6 @@ func create_holder_as_child(stack : Stack) -> ItemHolder:
 
 # Creates new ItemHolder from stack to set as holder
 func set_stack(stack:Stack) -> void:
-	# Kills pre existing holder if there is one
-	if item_holder != null:
-		item_holder.queue_free()
-		disconnect_holder()
-	
 	# Creates new holder from stack
 	var holder := create_holder_as_child(stack)
 	set_item_holder(holder)
@@ -74,8 +68,27 @@ func set_stack(stack:Stack) -> void:
 func set_item_holder(holder : ItemHolder) -> void:
 	if item_holder == null:
 		item_holder = holder
-		item_holder.draggable_component.drag_request_pick_up\
-			.connect(requested_pickup)
+		drag_acceptor.accepting_items = false
+		item_holder.draggable_component.draggable_accepted.connect(remove_holder)
+
+func remove_holder() -> void:
+	item_holder.draggable_component.draggable_accepted.disconnect(remove_holder)
+	#item_holder = null
+	#drag_acceptor.accepting_items = true
+	
+	# Remove HERE if you want to remove 1 item taking from stack
+	var previous_quant := item_holder.get_item_stack().quantity
+	if previous_quant <= 1:
+		item_holder = null
+		drag_acceptor.accepting_items = true
+	else:
+		item_holder.get_item_stack().quantity = 1
+		set_stack(Stack.new(previous_quant - 1).
+			clone_type(item_holder.get_item_stack()))
+
+
+
+# NOT USED BELOW
 
 
 func disconnect_holder() -> void:
@@ -90,6 +103,10 @@ func requested_pickup(requesting_draggable : DraggableComponent) -> void:
 		item_holder.highlight_turn_off()
 		requesting_draggable.assign_to_mouse()
 	pass
+
+# NOT USED ABOVE
+
+
 
 # Returns stack held by ItemHolder, gives empty if no ItemHolder
 func get_item_stack() -> Stack:

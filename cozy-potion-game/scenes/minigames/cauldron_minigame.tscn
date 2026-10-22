@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://c434m62jy0xis"]
+
+[ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="1_7bpkm"]
+[ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/minigames/components/cauldron_scene.tscn" id="2_hglip"]
+[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="3_ldnel"]
+[ext_resource type="PackedScene" uid="uid://cgwcxn7koxnq4" path="res://scenes/user_interface/indicator_anchor.tscn" id="4_7g54g"]
+[ext_resource type="ArrayMesh" uid="uid://dx5msv8g5p0oc" path="res://assets/models/PH/Cauldron_PH/mesh/Cauldron_Placeholder_Cube_008.res" id="5_7bpkm"]
+[ext_resource type="Material" uid="uid://coiuk8mk5hytq" path="res://assets/models/PH/Cauldron_PH/cauldron_material.tres" id="5_hglip"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s2nun"]
+
+[node name="CauldronMinigame" type="Node3D" unique_id=1117195076 node_paths=PackedStringArray("interactable", "indicator_pos")]
+script = ExtResource("1_7bpkm")
+minigame_scene = ExtResource("2_hglip")
+interactable = NodePath("CauldronMinigameInteractable")
+indicator_pos = NodePath("IndicatorAnchor")
+
+[node name="CauldronMinigameInteractable" type="Area3D" parent="." unique_id=1733128794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("3_ldnel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CauldronMinigameInteractable" unique_id=346750688]
+shape = SubResource("BoxShape3D_s2nun")
+
+[node name="IndicatorAnchor" parent="." unique_id=1791509362 instance=ExtResource("4_7g54g")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=57090748]
+light_color = Color(1, 0.32156864, 0, 1)
+light_energy = 0.70173943
+light_bake_mode = 1
+omni_attenuation = 3.951
+
+[node name="CauldronStationMesh" type="MeshInstance3D" parent="." unique_id=952463777]
+transform = Transform3D(0.013, 0, 0, 0, 0.013, 0, 0, 0, 0.013, 0, 0, 0)
+material_override = ExtResource("5_hglip")
+mesh = ExtResource("5_7bpkm")

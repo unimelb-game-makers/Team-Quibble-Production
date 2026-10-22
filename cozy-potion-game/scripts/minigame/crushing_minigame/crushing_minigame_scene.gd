@@ -9,7 +9,7 @@ extends Minigame
 var win_check_timer: float
 
 func _ready() -> void:
-	acceptor.request_left_placement.connect(emit_clickable_added)
+	super()
 	ingredient_added.connect(_on_ingredient_added)
 
 func _on_ingredient_added(ingredient_stack: Stack):
@@ -17,12 +17,6 @@ func _on_ingredient_added(ingredient_stack: Stack):
 	
 	output_ingredient = process_ingredient(ingredient_stack)
 	$AudioPlayer.play()
-
-
-func process_ingredient(input_stack: Stack) -> Stack:
-	print_debug("IT IS NOW TIME TO IMPLEMENT ITEM PROCESSING ON THIS LINE")
-	input_stack.item.process_applied.append(Alchemy.ProcessID.PROC_PRESS)
-	return input_stack
 
 
 func spawn_ball(ingredient: Stack):

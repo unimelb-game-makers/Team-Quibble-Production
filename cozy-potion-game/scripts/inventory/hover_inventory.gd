@@ -60,8 +60,6 @@ func update_info_sheet(stack: Stack):
 	info_sheet.global_position = get_global_mouse_position()+Vector2(10,10)
 	info_name.text = stack.get_item_name()
 	info_sheet.visible = true
-	
-	# Used to have alot more
 
 
 # Turns off info_sheet if mouse moves off a slot

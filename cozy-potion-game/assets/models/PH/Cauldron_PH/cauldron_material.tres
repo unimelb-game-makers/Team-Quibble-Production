@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://coiuk8mk5hytq"]
+
+[ext_resource type="Texture2D" uid="uid://cuqm2v7eyc2yn" path="res://assets/models/PH/Cauldron_PH/Cauldron_Textures/Cauldron_Al.png" id="1_q8rp2"]
+[ext_resource type="Texture2D" uid="uid://eijr00jht38o" path="res://assets/models/PH/Cauldron_PH/Cauldron_Textures/Cauldron_M.png" id="2_13tjq"]
+[ext_resource type="Texture2D" uid="uid://cj60vwn2o7ef6" path="res://assets/models/PH/Cauldron_PH/Cauldron_Textures/Cauldron_N.png" id="3_yta4u"]
+[ext_resource type="Texture2D" uid="uid://cl0huv0v2elbs" path="res://assets/models/PH/Cauldron_PH/Cauldron_Textures/Cauldron_R.png" id="4_vsxjb"]
+
+[resource]
+albedo_texture = ExtResource("1_q8rp2")
+metallic = 1.0
+metallic_texture = ExtResource("2_13tjq")
+roughness_texture = ExtResource("4_vsxjb")
+normal_enabled = true
+normal_texture = ExtResource("3_yta4u")

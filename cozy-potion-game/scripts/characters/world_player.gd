@@ -47,7 +47,13 @@ func _ready() -> void:
 		var portal = get_tree().get_first_node_in_group(Utils.Group.GROUP_PORTAL)
 		if portal and portal is Portal:
 			global_position = portal.player_spawn_position.global_position
-
+	# since this is after it gets priority
+	if ForestSceneModifications.spawn_location != Vector3.ZERO:
+		position = ForestSceneModifications.spawn_location
+	
+	#zooms the player out if we are in a foraging scene
+	if get_tree().get_first_node_in_group(Utils.Group.GROUP_FORAGING_BAG):
+		camera.size = 15
 
 func _unhandled_input(event: InputEvent) -> void:
 	if accepting_control:
@@ -73,7 +79,10 @@ func aesthetic_movement(event: InputEvent) -> void:
 		interact()
 	
 	if event.is_action_pressed("open_notebook"):
-		Notebook.open_notebook(get_tree().get_first_node_in_group(Utils.Group.GROUP_POPUP_SUBWINDOW))
+		var temp = get_tree().get_first_node_in_group(Utils.Group.GROUP_POPUP_SUBWINDOW)
+		if temp:
+			Notebook.open_notebook(temp)
+
 
 func rotate_camera(direction: int) -> void:
 	if DraggableComponent.dragged_control or DialogueManager.active_balloon:

@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://2qiws8u3tfkj"]
+
+[ext_resource type="Script" uid="uid://bekvcfp1wjd0x" path="res://scripts/game_viewport/game_sub_viewport.gd" id="1_th4xb"]
+[ext_resource type="PackedScene" uid="uid://bkcxf27kqxplr" path="res://scenes/shop_copyformerge.tscn" id="2_k2gmx"]
+
+[sub_resource type="Animation" id="Animation_i7jsx"]
+resource_name = "FADE"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sygov"]
+resource_name = "FADE_OUT"
+
+[sub_resource type="Animation" id="Animation_atojv"]
+resource_name = "FADE_START"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k2gmx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sygov"]
+_data = {
+&"FADE": SubResource("Animation_i7jsx"),
+&"FADE_OUT": SubResource("Animation_sygov"),
+&"FADE_START": SubResource("Animation_atojv"),
+&"RESET": SubResource("Animation_k2gmx")
+}
+
+[node name="Node" type="Node" unique_id=46579256]
+
+[node name="ViewportControl" type="Control" parent="." unique_id=2029353996]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="ViewportControl" unique_id=1426887070]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="ViewportControl/SubViewportContainer" unique_id=1316752655 groups=["GameSubViewport"]]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+script = ExtResource("1_th4xb")
+
+[node name="Shop" parent="ViewportControl/SubViewportContainer/SubViewport" unique_id=428524118 instance=ExtResource("2_k2gmx")]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=1247178073]
+bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
+
+[node name="ScreenTransitionRect" type="ColorRect" parent="." unique_id=896721575]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ScreenTransitionRect" unique_id=460488566 groups=["SceneTransitionRectAnimPlayer"]]
+libraries/ = SubResource("AnimationLibrary_sygov")
+autoplay = &"FADE_START"
