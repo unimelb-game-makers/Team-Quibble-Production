@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://ovkukftdmfbw" path="res://scenes/foraging/merchant_spawner.gd" id="16_v7bn7"]
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/player.tscn" id="18_dofmw"]
 [ext_resource type="Script" uid="uid://c14xedth331vd" path="res://scenes/foraging/forest_music_p_laceholder.gd" id="24_vq4f2"]
-[ext_resource type="AudioStream" uid="uid://ctt05trglkycb" path="res://audio/music/ForestMusicPLACEHOLDER/75bpm_Forest_Theme_Night_FullMix(1).wav" id="25_vq4f2"]
+[ext_resource type="AudioStream" uid="uid://d4nglhda3n3m2" path="res://audio/music/ForestMusicPLACEHOLDER/Forest_Theme_NightMix_Daniel_Edit_shorter.ogg" id="25_vq4f2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_v7bn7"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -66,8 +66,13 @@ radius = 20.191406
 
 [node name="Forest" type="Node3D" unique_id=529053958]
 
-[node name="ForagingDirector" type="Node" parent="." unique_id=505864972]
+[node name="ForagingDirector" type="Node" parent="." unique_id=505864972 node_paths=PackedStringArray("tree_manager", "bush_manager", "ground_manager", "cave_manager", "kelp_manager")]
 script = ExtResource("1_67phx")
+tree_manager = NodePath("../TreeFoliageManager")
+bush_manager = NodePath("../BushFoliageManager")
+ground_manager = NodePath("../GroundFoliageManager")
+cave_manager = NodePath("../CaveFoliageManager")
+kelp_manager = NodePath("../KelpFoliageManager")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1396059457]
 environment = SubResource("Environment_dofmw")
