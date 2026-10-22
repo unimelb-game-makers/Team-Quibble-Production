@@ -36,6 +36,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ycb2hienwrxt" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_d.glb" id="34_66erv"]
 [ext_resource type="ArrayMesh" uid="uid://02ywctfdy27a" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_e.glb" id="35_w3ps2"]
 [ext_resource type="ArrayMesh" uid="uid://c7yw1oynfh5uw" path="res://assets/models/enviroment/Mythical_Forest/Mushrooms/Amethyst_Deceiver_Group_1.glb" id="36_66erv"]
+[ext_resource type="Material" uid="uid://bqv7qrtahkkhm" path="res://assets/materials/mythical_forest/Mushooms_MAT.004.tres" id="36_w3ps2"]
 [ext_resource type="Texture2D" uid="uid://cg2213qkp31uv" path="res://assets/textures/mythical_forest/Mushrooms/Amethyst_Deceiver_Group_2_Mushrooms_C.png" id="37_66erv"]
 [ext_resource type="Texture2D" uid="uid://duq0gxmubnq7j" path="res://assets/textures/mythical_forest/Mushrooms/Bay_Bolete_Group_1_Mushrooms_C.png" id="38_w3ps2"]
 [ext_resource type="Texture2D" uid="uid://dx0up0clr0xbi" path="res://assets/textures/mythical_forest/Mushrooms/Bay_Bolete_Group_2_Mushrooms_C.png" id="39_md61m"]
@@ -4153,6 +4154,7 @@ surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="AmethystDeceiverGroup1" type="MeshInstance3D" parent="Mushrooms" unique_id=1691153879]
 transform = Transform3D(0.092942536, 0.136333, -5.9593046e-09, 0, -7.212379e-09, -0.165, -0.136333, 0.092942536, -4.062647e-09, 99.545364, -1.2099737, -79.029076)
+material_override = ExtResource("36_w3ps2")
 mesh = ExtResource("36_66erv")
 
 [node name="AmethystDeceiverGroup2" type="MeshInstance3D" parent="Mushrooms" unique_id=1058592828]
@@ -4161,6 +4163,7 @@ mesh = SubResource("ArrayMesh_btawh")
 
 [node name="BayBoleteGroup1" type="MeshInstance3D" parent="Mushrooms" unique_id=2013140059]
 transform = Transform3D(0.09363802, -0.06676019, 2.9181804e-09, 0, -5.026809e-09, -0.115, 0.06676019, 0.09363802, -4.0930472e-09, 90.055176, -1.4388607, -79.449745)
+material_override = ExtResource("36_w3ps2")
 mesh = SubResource("ArrayMesh_8mee4")
 
 [node name="BayBoleteGroup2" type="MeshInstance3D" parent="Mushrooms" unique_id=2128356571]
