@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://bm55o4twdnjtx" path="res://assets/models/Customers/NPC_Base_3_Lumberjack.glb" id="16_va5sy"]
 [ext_resource type="PackedScene" uid="uid://djwvfhxhrfr83" path="res://assets/models/Customers/investigator_rotated.tscn" id="20_qwmll"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="21_jn854"]
+[ext_resource type="PackedScene" uid="uid://c7buurds4lwef" path="res://scenes/user_interface/money_display.tscn" id="21_kh5es"]
 [ext_resource type="Script" uid="uid://c63vcvaayrcgx" path="res://scenes/enviroments/shop_music.gd" id="22_jjrkg"]
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
@@ -87,7 +88,7 @@ axis_stretch_vertical = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_ja4bt"]
 size = Vector3(100, 1, 100)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_4sck7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_qwmll"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="ShopRevamp" type="Node3D" unique_id=1366204913]
@@ -123,6 +124,8 @@ customer_model_offset = Vector3(0, -1, 0.25)
 libraries/ = SubResource("AnimationLibrary_xua33")
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=1356840973]
+
+[node name="MoneyDisplay" parent="SceneUI" unique_id=1711600455 instance=ExtResource("21_kh5es")]
 
 [node name="PopupSubWindow" parent="SceneUI" unique_id=1360167922 groups=["popup_subwindow"] instance=ExtResource("1_20pkh")]
 
@@ -219,7 +222,7 @@ shape = SubResource("BoxShape3D_ja4bt")
 
 [node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("21_jn854")]
 transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 3.2892015, 1.6600952, 0.16595316)
-texture = SubResource("ViewportTexture_4sck7")
+texture = SubResource("ViewportTexture_qwmll")
 destination_path = &"uid://bxq7bq8537rse"
 
 [node name="ShopMusicStarter" type="Node" parent="." unique_id=1890158475]

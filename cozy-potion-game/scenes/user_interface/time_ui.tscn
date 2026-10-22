@@ -4,8 +4,6 @@
 [ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_nd8pm"]
 [ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/user_interface/news_popup.gd" id="3_2fgp6"]
 [ext_resource type="Texture2D" uid="uid://bpv31ofl8ieaf" path="res://assets/sprites/ui/scroll.png" id="4_7hrnt"]
-[ext_resource type="Texture2D" uid="uid://cgiu7e8wgfbbr" path="res://assets/sprites/coin.png" id="5_nd8pm"]
-[ext_resource type="Script" uid="uid://du80v4y4y46hu" path="res://scripts/user_interface/money_label.gd" id="6_2fgp6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_83lib"]
 texture = ExtResource("4_7hrnt")
@@ -30,9 +28,6 @@ font_size = 124
 
 [sub_resource type="LabelSettings" id="LabelSettings_aue3q"]
 font_size = 26
-
-[sub_resource type="LabelSettings" id="LabelSettings_hk50q"]
-font_size = 35
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1025226181]
 
@@ -154,40 +149,3 @@ offset_right = -123.359985
 offset_bottom = -850.02515
 theme_override_font_sizes/font_size = 28
 text = "Advance Time"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=501781822]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=1858705856]
-custom_minimum_size = Vector2(0, 5)
-layout_mode = 2
-
-[node name="Control" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=1947478643]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/VBoxContainer/Control" unique_id=384574146]
-layout_mode = 0
-offset_right = 103.0
-offset_bottom = 40.0
-
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer/Control/PanelContainer" unique_id=2029248434]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/Control/PanelContainer/MarginContainer" unique_id=62831828]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer/Control/PanelContainer/MarginContainer/HBoxContainer" unique_id=719417585]
-custom_minimum_size = Vector2(35, 35)
-layout_mode = 2
-texture = ExtResource("5_nd8pm")
-expand_mode = 1
-
-[node name="MoneyLabel" type="Label" parent="HBoxContainer/VBoxContainer/Control/PanelContainer/MarginContainer/HBoxContainer" unique_id=1126440304]
-layout_mode = 2
-text = ":666"
-label_settings = SubResource("LabelSettings_hk50q")
-script = ExtResource("6_2fgp6")
