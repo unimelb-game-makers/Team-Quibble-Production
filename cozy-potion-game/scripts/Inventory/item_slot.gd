@@ -23,11 +23,11 @@ func _ready() -> void:
 	pass
 
 # Exists so panel can be filter Ignore, emulates mouse_exited/entered
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	# Previously this would only emit motion but not justs emits if cursor hovering
-	var hovering = emulate_mouse_inside()
+	var is_hovering = emulate_mouse_inside()
 	
-	if not hovering and Input.is_action_just_pressed("RMB"):
+	if not is_hovering and Input.is_action_just_pressed("RMB"):
 		if item_holder:
 			item_holder.highlight_turn_off()
 
@@ -140,9 +140,9 @@ func add_to_stack(new_item: Stack) -> Stack:
 		return new_item
 
 	# Adds as much as can be added to stack
-	var add_to_stack : int = \
+	var to_add : int = \
 		min(max_quantity - get_item_stack().quantity, new_item.quantity)
-	item_holder.stack.quantity += add_to_stack
-	new_item.quantity -= add_to_stack
+	item_holder.stack.quantity += to_add
+	new_item.quantity -= to_add
 	
 	return new_item
