@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://ioopiwohmh2h" path="res://assets/sprites/ui/beholden-book-font/BeholdenBook-Bold.ttf" id="3_hm4m4"]
 [ext_resource type="FontFile" uid="uid://cqorj4se30uga" path="res://assets/sprites/ui/beholden-book-font/BeholdenBook-Light.ttf" id="3_lfjc7"]
 [ext_resource type="StyleBox" uid="uid://bspaxd8ocmbvd" path="res://resources/ui_themes/art_stylebox_texture.tres" id="5_3xsyx"]
+[ext_resource type="Script" uid="uid://bcov7msm4e5wi" path="res://scripts/ui/sound_menu.gd" id="6_dhn0l"]
 
 [sub_resource type="Theme" id="Theme_hm4m4"]
 Button/font_sizes/font_size = 22
@@ -137,6 +138,7 @@ theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
+script = ExtResource("6_dhn0l")
 
 [node name="PanelContainer" type="PanelContainer" parent="MainMenu/MarginContainer/Control/SoundMenu" unique_id=68875593]
 layout_mode = 2
@@ -203,4 +205,7 @@ visible = false
 layout_mode = 2
 text = "Return"
 
+[connection signal="value_changed" from="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/MasterControl/HSlider" to="MainMenu/MarginContainer/Control/SoundMenu" method="master_volume_changes"]
+[connection signal="value_changed" from="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/MusicControl/HSlider" to="MainMenu/MarginContainer/Control/SoundMenu" method="music_volume_changes"]
+[connection signal="value_changed" from="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/SFXControl/HSlider" to="MainMenu/MarginContainer/Control/SoundMenu" method="sfx_volume_changes"]
 [connection signal="pressed" from="MainMenu/MarginContainer/Control/SoundMenu/PanelContainer/MarginContainer/VBoxContainer/ReturnButton" to="." method="return_button_pressed"]
