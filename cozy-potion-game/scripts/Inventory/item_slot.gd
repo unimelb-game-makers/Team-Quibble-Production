@@ -138,7 +138,6 @@ func add_to_stack(new_item: Stack) -> Stack:
 		set_stack(Stack.new(0, new_item.item))
 	elif not get_item_stack().compare_stacks(new_item):
 		return new_item
-
 	# Adds as much as can be added to stack
 	var to_add : int = \
 		min(max_quantity - get_item_stack().quantity, new_item.quantity)
