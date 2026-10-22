@@ -7,6 +7,8 @@ extends CanvasLayer
 @export_group("Buttons")
 @export var exit_game_button: Button
 @export var sound_menu_button: Button
+@export var button_container: VBoxContainer
+@export var return_to_game_button: Button
 
 @export_group("Blur")
 @export var blur_rect: ColorRect
@@ -17,6 +19,8 @@ var open: bool = false
 var animation_running: bool = false
 
 var menus: Array[Control]
+
+signal options_menu_closed
 
 func _ready() -> void:
 	options_menu_container = get_tree().get_first_node_in_group("OptionsMenuContainer")
@@ -42,6 +46,7 @@ func connect_buttons() -> void:
 	#TODO: exiting the game should probably be more graceful than this
 	exit_game_button.pressed.connect(get_tree().quit)
 	sound_menu_button.pressed.connect(open_sound_menu)
+	return_to_game_button.pressed.connect(close_options_menu)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#print_debug(event.as_text())
@@ -87,12 +92,12 @@ func open_sound_menu() -> void:
 	#print(sound_menu.visible)
 
 func open_options_menu() -> void:
-	#TODO give focus to first button in the options menu for non-mouse users
 	if not options_menu_container:
 		return
 	open = true
 	animate_blur()
 	animate_options_menu_in()
+	button_container.get_child(0).grab_focus()
 
 func close_options_menu() -> void:
 	if not options_menu_container:
@@ -102,9 +107,12 @@ func close_options_menu() -> void:
 	animate_unblur()
 	animate_options_menu_out()
 	
+	
 	var focus_owner = get_viewport().gui_get_focus_owner()
 	if focus_owner:
 		focus_owner.release_focus()
+	
+	options_menu_closed.emit()
 
 func animate_options_menu_in() -> void:
 	if not options_menu_container:

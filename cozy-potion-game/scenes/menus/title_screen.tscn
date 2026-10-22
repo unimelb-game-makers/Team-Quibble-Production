@@ -17,7 +17,7 @@ render_target_update_mode = 4
 
 [node name="TitleScreenFakeForest" parent="SubViewportContainer/SubViewport" unique_id=1357049931 instance=ExtResource("1_n17qi")]
 
-[node name="Control" type="Control" parent="." unique_id=47089385 node_paths=PackedStringArray("options_button", "continue_button", "new_game_button", "quit_button")]
+[node name="Control" type="Control" parent="." unique_id=47089385 node_paths=PackedStringArray("options_button", "continue_button", "new_game_button", "quit_button", "buttons_container", "title_label", "options_container")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,10 +26,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_eqhve")
 script = ExtResource("3_yx444")
-options_button = NodePath("MarginContainer/HBoxContainer/OptionsButton")
-continue_button = NodePath("MarginContainer/HBoxContainer/ContinueButton")
-new_game_button = NodePath("MarginContainer/HBoxContainer/NewGameButton")
-quit_button = NodePath("MarginContainer/HBoxContainer/QuitButton")
+options_button = NodePath("MarginContainer/ButtonsContainer/OptionsButton")
+continue_button = NodePath("MarginContainer/ButtonsContainer/ContinueButton")
+new_game_button = NodePath("MarginContainer/ButtonsContainer/NewGameButton")
+quit_button = NodePath("MarginContainer/ButtonsContainer/QuitButton")
+buttons_container = NodePath("MarginContainer/ButtonsContainer")
+title_label = NodePath("MarginContainer/VBoxContainer/TitleLabel")
+options_container = NodePath("")
+shop_path = "res://scenes/enviroments/shop_revamp.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1248815175]
 layout_mode = 1
@@ -51,28 +55,28 @@ size_flags_horizontal = 4
 layout_mode = 2
 text = "AlcheMiMi: Straight Outta Cauldron"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=846358728]
+[node name="ButtonsContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=846358728]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="OptionsButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=1992492330]
+[node name="OptionsButton" type="Button" parent="Control/MarginContainer/ButtonsContainer" unique_id=1992492330]
 layout_mode = 2
 text = "Options
 "
 
-[node name="ContinueButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=1548561905]
+[node name="ContinueButton" type="Button" parent="Control/MarginContainer/ButtonsContainer" unique_id=1548561905]
 layout_mode = 2
 text = "Continue
 "
 
-[node name="NewGameButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=1659971811]
+[node name="NewGameButton" type="Button" parent="Control/MarginContainer/ButtonsContainer" unique_id=1659971811]
 layout_mode = 2
 text = "New Game
 "
 
-[node name="QuitButton" type="Button" parent="Control/MarginContainer/HBoxContainer" unique_id=2056569277]
+[node name="QuitButton" type="Button" parent="Control/MarginContainer/ButtonsContainer" unique_id=2056569277]
 layout_mode = 2
 text = "Quit
 "
