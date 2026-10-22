@@ -38,8 +38,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not accepting_items:
 		return
 
-	
-	
 	var intersecting_mouse: bool = \
 	my_control.get_global_rect().has_point(my_control.get_global_mouse_position())
 	#print_debug(get_viewport().get_mouse_position())

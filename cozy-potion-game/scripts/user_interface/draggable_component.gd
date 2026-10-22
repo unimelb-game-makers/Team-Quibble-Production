@@ -46,7 +46,6 @@ func _process(_delta: float) -> void:
 	if dragged_control == my_control:
 		move_to_mouse()
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("LMB"):
 		being_dragged = false

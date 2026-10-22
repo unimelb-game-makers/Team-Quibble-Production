@@ -95,10 +95,8 @@ func is_item_blacklist(_item: Resource) -> bool:
 	if blacklist.size() == 0:
 		return false
 
-	breakpoint
-
 	for item in blacklist:
-		if item.resource_path == _item.resource_path:
+		if item.get_script() == _item.get_script():
 			return true
 	
 	return false
