@@ -28,6 +28,11 @@ func _ready() -> void:
 	highlight_text.visible = false
 	stack = Stack.new(0)
 
+func delete() -> void:
+	for child in get_children():
+		child.queue_free()
+		
+	queue_free()
 
 # Updates slot visuals based on changes in stack
 func update_stack() -> void:
