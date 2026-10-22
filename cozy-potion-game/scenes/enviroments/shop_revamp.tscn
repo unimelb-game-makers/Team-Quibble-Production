@@ -199,7 +199,6 @@ offset_right = -1576.0
 offset_bottom = -684.0
 columns = 3
 rows = 1
-include_trash_bin = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1800487255]
 environment = ExtResource("2_suouy")

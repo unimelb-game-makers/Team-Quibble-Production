@@ -9,6 +9,7 @@ const ITEM_HOLDER = preload("uid://80sdcv4hsqa1")
 var item_holder : ItemHolder = null
 var ishovering := false
 var max_quantity: int = 999
+var blacklist: Array[Resource]
 
 var max_pickup: int = 1
 
@@ -29,6 +30,10 @@ func _input(event: InputEvent) -> void:
 	if not hovering and Input.is_action_just_pressed("RMB"):
 		if item_holder:
 			item_holder.highlight_turn_off()
+
+func add_blacklist(_list: Array) -> void:
+	blacklist = _list
+	drag_acceptor.blacklist = _list
 
 # If cursor inside emits hovering signal, emits mouse_exited if cursor leaves
 func emulate_mouse_inside() -> bool:
@@ -86,7 +91,17 @@ func remove_holder() -> void:
 		set_stack(Stack.new(previous_quant - 1).
 			clone_type(item_holder.get_item_stack()))
 
+func is_item_blacklist(_item: Resource) -> bool:
+	if blacklist.size() == 0:
+		return false
 
+	breakpoint
+
+	for item in blacklist:
+		if item.resource_path == _item.resource_path:
+			return true
+	
+	return false
 
 # NOT USED BELOW
 

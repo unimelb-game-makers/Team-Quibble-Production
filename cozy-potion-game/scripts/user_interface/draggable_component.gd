@@ -6,22 +6,36 @@ class_name DraggableComponent extends Node
 #if you encounter bugs to do with positioning while dragging, consider
 #changing this code to use offset_transform
 
-static var dragged_control: Control
-static var pending_parent: Control
-
-@export var requests_consent: bool
-
-var previous_parent: Control
-
-var being_dragged: bool = false
-var my_control: Control
-
 #use these in the control that uses this component if you want
 #functionality when dragging or dropping
 signal draggable_dropped
 signal draggable_accepted
 signal draggable_picked_up
 signal drag_request_pick_up
+
+static var dragged_control: Control
+static var pending_parent: Control
+
+@export var requests_consent: bool
+
+var previous_parent: Control
+var item_resource: Resource # In order to check blacklist
+var being_dragged: bool = false
+var my_control: Control
+
+static func get_draggable_component(node: Node) -> DraggableComponent:
+	for child in node.get_children():
+		if child is DraggableComponent:
+			return child
+	
+	return null
+
+static func get_acceptor(node: Node) -> DraggableAcceptorComponent:
+	for child in node.get_children():
+		if child is DraggableAcceptorComponent:
+			return child
+	
+	return null
 
 func _ready() -> void:
 	assert(get_parent() is Control, "draggable component not child of control")
@@ -54,6 +68,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 	if dragged_control:
 		return
+
 	assign_to_mouse()
 
 
@@ -81,6 +96,10 @@ func parent_to_acceptor() -> void:
 	if not pending_parent:
 		return_to_previous()
 		return
+
+	if check_blacklist():
+		return_to_previous()
+		return
 		
 	my_control.reparent(pending_parent)
 	draggable_accepted.emit()
@@ -88,17 +107,9 @@ func parent_to_acceptor() -> void:
 	if get_acceptor(pending_parent):
 		get_acceptor(pending_parent).emit_accepted(my_control)
 	pending_parent = null
-	
-static func get_draggable_component(node: Node) -> DraggableComponent:
-	for child in node.get_children():
-		if child is DraggableComponent:
-			return child
-	
-	return null
 
-static func get_acceptor(node: Node) -> DraggableAcceptorComponent:
-	for child in node.get_children():
-		if child is DraggableAcceptorComponent:
-			return child
-	
-	return null
+func check_blacklist() -> bool:
+	if pending_parent is not ItemSlot:
+		return false
+
+	return pending_parent.is_item_blacklist(item_resource)
