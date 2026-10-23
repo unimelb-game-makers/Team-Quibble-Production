@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://cwy02a43c58wd"]
+
+[ext_resource type="Script" uid="uid://cf6fbunev5t0f" path="res://scripts/option_menu/controls_options_menu.gd" id="1_2j8rq"]
+[ext_resource type="StyleBox" uid="uid://bspaxd8ocmbvd" path="res://resources/ui_themes/art_stylebox_texture.tres" id="2_4pj5a"]
+
+[node name="ControlsMenu" type="MarginContainer" unique_id=111586457]
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_2j8rq")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=235589810]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_4pj5a")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1398534323]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=323857358]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=839827624]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Sound Settings"
+horizontal_alignment = 1
+
+[node name="ReturnButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1490055924]
+visible = false
+layout_mode = 2
+text = "Return"
