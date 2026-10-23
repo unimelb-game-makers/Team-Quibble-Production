@@ -16,19 +16,34 @@ var portal_popup: PortalPopup
 static var spawn_at_portal: bool = false
 
 func _ready() -> void:
+	if TimeCycle.visited_forest_this_day:
+		position += Vector3(0,-100,0)
+		
 	interactable.interacted.connect(_on_interact)
 	portal_popup = get_tree().get_first_node_in_group("portal_popup")
 	if portal_popup:
 		portal_popup.no_clicked.connect(cancel_popup)
 		portal_popup.yes_clicked.connect(teleport)
+	
+	TimeCycle.day_started.connect(return_from_underground)
 
 func _on_interact() -> void:
-	if not spawn_at_portal:
+	if not portal_popup:
 		teleport()
 	else:
+		TimeCycle.visited_forest_this_day = true
 		portal_popup.show()
 		get_tree().get_first_node_in_group("player").accepting_control = false
 
+func return_from_underground() -> void:
+	position += Vector3(0,100,0)
+	animate_spawn()
+
+func animate_spawn() -> void:
+	var tween = get_tree().create_tween()
+	scale = Vector3.ONE * 0.1
+	tween.tween_property(self, "scale", Vector3.ONE, 0.2)
+	
 func cancel_popup() -> void:
 	get_tree().get_first_node_in_group("player").accepting_control = true
 	portal_popup.hide()
