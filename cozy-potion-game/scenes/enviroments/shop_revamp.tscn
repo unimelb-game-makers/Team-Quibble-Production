@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://c7buurds4lwef" path="res://scenes/user_interface/money_display.tscn" id="21_kh5es"]
 [ext_resource type="Script" uid="uid://c63vcvaayrcgx" path="res://scenes/enviroments/shop_music.gd" id="22_jjrkg"]
 [ext_resource type="PackedScene" uid="uid://c42y0lkc4tsam" path="res://scenes/user_interface/notebook_hint.tscn" id="29_kh5es"]
+[ext_resource type="Script" uid="uid://bkv0jpacagup1" path="res://scripts/day_starter.gd" id="40_qwmll"]
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -89,7 +90,7 @@ axis_stretch_vertical = 2
 [sub_resource type="BoxShape3D" id="BoxShape3D_ja4bt"]
 size = Vector3(100, 1, 100)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_qwmll"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_10j44"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="ShopRevamp" type="Node3D" unique_id=1366204913]
@@ -127,6 +128,7 @@ libraries/ = SubResource("AnimationLibrary_xua33")
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=1356840973]
 
 [node name="MoneyDisplay" parent="SceneUI" unique_id=1711600455 instance=ExtResource("21_kh5es")]
+
 [node name="MarginContainer" type="MarginContainer" parent="SceneUI" unique_id=1952891633]
 anchors_preset = 15
 anchor_right = 1.0
@@ -238,10 +240,13 @@ script = ExtResource("7_7orju")
 shape = SubResource("BoxShape3D_ja4bt")
 
 [node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("21_jn854")]
-transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 3.2892015, 1.6600952, 0.16595316)
-texture = SubResource("ViewportTexture_qwmll")
+transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 3.349, 1.475, 0.245)
+texture = SubResource("ViewportTexture_10j44")
 destination_path = &"uid://bxq7bq8537rse"
 
 [node name="ShopMusicStarter" type="Node" parent="." unique_id=1890158475]
 script = ExtResource("22_jjrkg")
 metadata/_custom_type_script = "uid://c63vcvaayrcgx"
+
+[node name="DayStarter" type="Node" parent="." unique_id=872273419]
+script = ExtResource("40_qwmll")

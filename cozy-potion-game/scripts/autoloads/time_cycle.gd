@@ -28,11 +28,6 @@ var days_passed: int = 0
 var target_day_progress: float = 0
 var visited_forest_this_day: bool = false
 
-func _ready() -> void:
-	#wait for other autoloads to connect their signals 
-	await get_tree().process_frame
-	start_day()
-
 #this block is responsible for actually progressing the day towards
 #the target day progress and checking if the day is over
 func _process(delta: float) -> void:
