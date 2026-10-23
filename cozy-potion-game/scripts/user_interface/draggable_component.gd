@@ -83,7 +83,6 @@ func move_to_mouse() -> void:
 
 # Called when dragged to ensure returns to orignal owner
 func return_to_previous() -> void:
-	print_debug(previous_parent)
 	draggable_dropped.emit()
 	being_dragged = false
 	my_control.reparent(previous_parent)
