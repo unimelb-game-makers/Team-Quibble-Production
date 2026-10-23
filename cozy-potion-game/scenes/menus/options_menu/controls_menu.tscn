@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cwy02a43c58wd"]
 
-[ext_resource type="Script" uid="uid://cf6fbunev5t0f" path="res://scripts/option_menu/controls_options_menu.gd" id="1_2j8rq"]
+[ext_resource type="Script" uid="uid://cf6fbunev5t0f" path="res://scripts/menus/options/controls_options_menu.gd" id="1_2j8rq"]
 [ext_resource type="StyleBox" uid="uid://bspaxd8ocmbvd" path="res://resources/ui_themes/art_stylebox_texture.tres" id="2_4pj5a"]
 
 [node name="ControlsMenu" type="MarginContainer" unique_id=111586457]

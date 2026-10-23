@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://dtsoufmiy8x8d"]
 
-[ext_resource type="Script" uid="uid://cba4ugu62og7w" path="res://scripts/option_menu/key_bind_entry.gd" id="1_7325p"]
+[ext_resource type="Script" uid="uid://cba4ugu62og7w" path="res://scripts/menus/options/key_bind_entry.gd" id="1_7325p"]
 
 [node name="KeyBindEntry" type="HBoxContainer" unique_id=1791180790]
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
