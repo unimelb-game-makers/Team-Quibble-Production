@@ -96,6 +96,7 @@ func parent_to_acceptor() -> void:
 		return
 
 	if check_blacklist():
+		print_debug("item blocked by blacklist")
 		return_to_previous()
 		return
 		

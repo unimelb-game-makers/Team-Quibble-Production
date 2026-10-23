@@ -14,10 +14,15 @@ var portal_popup: PortalPopup
 
 
 static var spawn_at_portal: bool = false
+#this is a bit of a hack. Actually, everything i've written
+#this week has been a hack. Sorry, reviewer.
+var underground: bool = false
 
 func _ready() -> void:
 	if TimeCycle.visited_forest_this_day:
 		position += Vector3(0,-100,0)
+		underground = true
+		force_update_transform()
 		
 	interactable.interacted.connect(_on_interact)
 	portal_popup = get_tree().get_first_node_in_group("portal_popup")
@@ -36,8 +41,11 @@ func _on_interact() -> void:
 		get_tree().get_first_node_in_group("player").accepting_control = false
 
 func return_from_underground() -> void:
-	position += Vector3(0,100,0)
-	animate_spawn()
+	if underground:
+		underground = false
+		position += Vector3(0,100,0)
+		animate_spawn()
+		force_update_transform()
 
 func animate_spawn() -> void:
 	var tween = get_tree().create_tween()
