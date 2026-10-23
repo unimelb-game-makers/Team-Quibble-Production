@@ -10,10 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://yjhweuu18wcl" path="res://assets/sprites/foraging/backpack_base.png" id="4_ewpas"]
 [ext_resource type="PackedScene" uid="uid://c28p44surqk5m" path="res://scenes/user_interface/merchant_item_box.tscn" id="4_iyol6"]
 [ext_resource type="Texture2D" uid="uid://2nthx860o8a1" path="res://assets/sprites/foraging/placeholder_portal_button.png" id="6_pjwkr"]
+[ext_resource type="PackedScene" uid="uid://c42y0lkc4tsam" path="res://scenes/user_interface/notebook_hint.tscn" id="7_4j0k8"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="7_dofmw"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/user_interface/popup_manager.gd" id="7_f3vpa"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="9_54ec3"]
-[ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/Inventory/hover_inventory.gd" id="10_dofmw"]
+[ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/inventory/hover_inventory.gd" id="10_dofmw"]
 [ext_resource type="Texture2D" uid="uid://bf1iww4xs8cbc" path="res://assets/sprites/dialogue/speech_bubble.png" id="11_bdats"]
 [ext_resource type="Texture2D" uid="uid://cgsnb674nd7va" path="res://assets/sprites/foraging/NPC_Merchant.png" id="12_bdats"]
 [ext_resource type="Texture2D" uid="uid://bro5ya0bdgk6h" path="res://assets/sprites/foraging/backpack_grid_small.png" id="12_g8fsv"]
@@ -75,8 +76,13 @@ radius = 20.191406
 
 [node name="Forest" type="Node3D" unique_id=529053958]
 
-[node name="ForagingDirector" type="Node" parent="." unique_id=505864972]
+[node name="ForagingDirector" type="Node" parent="." unique_id=505864972 node_paths=PackedStringArray("tree_manager", "bush_manager", "ground_manager", "cave_manager", "kelp_manager")]
 script = ExtResource("1_67phx")
+tree_manager = NodePath("../TreeFoliageManager")
+bush_manager = NodePath("../BushFoliageManager")
+ground_manager = NodePath("../GroundFoliageManager")
+cave_manager = NodePath("../CaveFoliageManager")
+kelp_manager = NodePath("../KelpFoliageManager")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1396059457]
 environment = SubResource("Environment_dofmw")
@@ -232,6 +238,9 @@ alignment = 2
 layout_mode = 2
 mouse_filter = 2
 alignment = 2
+
+[node name="NotebookHint" parent="SceneUI/ForagingBag/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1638977271 instance=ExtResource("7_4j0k8")]
+layout_mode = 2
 
 [node name="BagButton" type="TextureButton" parent="SceneUI/ForagingBag/Control/MarginContainer/VBoxContainer/HBoxContainer" unique_id=688293616]
 custom_minimum_size = Vector2(100, 100)

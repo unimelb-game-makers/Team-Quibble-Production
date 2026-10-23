@@ -3,6 +3,8 @@ extends Control
 
 signal slot_is_hovered(slot: ItemSlot)
 
+const TRASH_BIN_SCENE := "uid://ca6c5ffkbovtm"
+
 # Grids used for inventory
 @export var grid: GridContainer
 @export var columns: int
@@ -12,6 +14,8 @@ signal slot_is_hovered(slot: ItemSlot)
 @export var additional_grid_rows: int
 @export var max_quantity : int = 999
 @export var trash_collector: Control
+@export var include_trash_bin: bool = false
+@export var blacklist: Array[Resource]
 
 var max_slots: int
 var inventory: Inventory
@@ -24,13 +28,16 @@ func _ready() -> void:
 	max_slots = columns*rows
 	grid.columns = columns
 	inventory = Inventory.new(grid, max_quantity)
-	inventory.spawn_slots(Inventory.create_empty_stacks(max_slots))
+	inventory.spawn_slots(Inventory.create_empty_stacks(max_slots), blacklist)
 	
 	if additional_grid:
 		max_slots = additional_grid_columns * additional_grid_rows
 		additional_grid.columns = additional_grid_columns
-		inventory.spawn_new_slots_to_arbitrary_storage(Inventory.create_empty_stacks(max_slots), additional_grid, trash_collector)
+		inventory.spawn_new_slots_to_arbitrary_storage(Inventory.create_empty_stacks(max_slots), additional_grid, blacklist)
 	
+	if include_trash_bin:
+		$VBoxContainer.add_child(preload(TRASH_BIN_SCENE).instantiate())
+
 	# Connections needed for hovering
 	inventory.hovering_slot.connect(slot_hovered)
 	inventory.mouse_exit_slot.connect(slot_exited)

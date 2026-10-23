@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="21_jn854"]
 [ext_resource type="PackedScene" uid="uid://c7buurds4lwef" path="res://scenes/user_interface/money_display.tscn" id="21_kh5es"]
 [ext_resource type="Script" uid="uid://c63vcvaayrcgx" path="res://scenes/enviroments/shop_music.gd" id="22_jjrkg"]
+[ext_resource type="PackedScene" uid="uid://c42y0lkc4tsam" path="res://scenes/user_interface/notebook_hint.tscn" id="29_kh5es"]
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -126,6 +127,21 @@ libraries/ = SubResource("AnimationLibrary_xua33")
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=1356840973]
 
 [node name="MoneyDisplay" parent="SceneUI" unique_id=1711600455 instance=ExtResource("21_kh5es")]
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI" unique_id=1952891633]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="NotebookHint" parent="SceneUI/MarginContainer" unique_id=1638977271 instance=ExtResource("29_kh5es")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 
 [node name="PopupSubWindow" parent="SceneUI" unique_id=1360167922 groups=["popup_subwindow"] instance=ExtResource("1_20pkh")]
 
@@ -185,6 +201,7 @@ offset_right = -1576.0
 offset_bottom = -684.0
 columns = 3
 rows = 1
+include_trash_bin = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1800487255]
 environment = ExtResource("2_suouy")
