@@ -30,11 +30,13 @@ func _ready() -> void:
 		create_keybind_entry(key)
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if rebinding_key and \
 		((entry_changing.mouse_bind and event is InputEventMouseButton) ||
 		(not entry_changing.mouse_bind and event is not InputEventMouse)):
 		remap_key(event)
+		get_viewport().set_input_as_handled()
+		
 
 
 func get_custom_input_maps() -> Array[StringName]:
