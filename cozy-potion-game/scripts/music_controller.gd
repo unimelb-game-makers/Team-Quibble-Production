@@ -44,7 +44,6 @@ var time_of_day: String = ""
 
 func _ready() -> void:
 	## TODO: this should go to the Music bus
-	
 	music = FmodServer.create_event_instance(EVENT_PATH)
 	
 	# get timeline markers to report fmod loop
@@ -61,8 +60,8 @@ func _ready() -> void:
 	
 	music.start()
 	# If it is in editor, pause.
-	if OS.is_debug_build():
-		music.volume = 0
+	#if OS.is_debug_build():
+		#music.volume = 0
 
 func pause() -> void:
 	music.paused = true
