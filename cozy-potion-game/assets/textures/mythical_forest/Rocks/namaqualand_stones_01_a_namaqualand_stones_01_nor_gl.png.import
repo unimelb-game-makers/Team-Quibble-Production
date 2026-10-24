@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://blad0rwyikdll"
+uid="uid://ylhslfrpuiu6"
 path.s3tc="res://.godot/imported/namaqualand_stones_01_a_namaqualand_stones_01_nor_gl.png-9a83e2df3e513f533b63ea6b3f439692.s3tc.ctex"
 path.etc2="res://.godot/imported/namaqualand_stones_01_a_namaqualand_stones_01_nor_gl.png-9a83e2df3e513f533b63ea6b3f439692.etc2.ctex"
 metadata={
@@ -31,7 +31,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://assets/textures/mythical_forest/namaqualand_stones_01_a_namaqualand_stones_01_nor_gl.png"
+roughness/src_normal="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_a_namaqualand_stones_01_nor_gl.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2
@@ -41,5 +41,5 @@ process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
-process/size_limit=0
+process/size_limit=1024
 detect_3d/compress_to=0

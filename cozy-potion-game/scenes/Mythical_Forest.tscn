@@ -29,12 +29,14 @@
 [ext_resource type="ArrayMesh" uid="uid://dpbc0tcebtnjv" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_rocks_01_a.glb" id="28_xg4sl"]
 [ext_resource type="ArrayMesh" uid="uid://0hy15papu3p8" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_rocks_01_c.glb" id="29_eqm7c"]
 [ext_resource type="ArrayMesh" uid="uid://db85ghru4flg5" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_rocks_01_d.glb" id="30_i3pqx"]
+[ext_resource type="Material" uid="uid://bql2wuifailnm" path="res://assets/materials/mythical_forest/namaqualand_stones_01.tres" id="31_66erv"]
 [ext_resource type="ArrayMesh" uid="uid://c8q548ggpojhc" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_a.glb" id="31_cnol4"]
 [ext_resource type="ArrayMesh" uid="uid://bq2l4c5pvlnrp" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_b.glb" id="32_q482l"]
 [ext_resource type="ArrayMesh" uid="uid://bfxlhis3gaifi" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_c.glb" id="33_xpopa"]
 [ext_resource type="ArrayMesh" uid="uid://ycb2hienwrxt" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_d.glb" id="34_66erv"]
 [ext_resource type="ArrayMesh" uid="uid://02ywctfdy27a" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_e.glb" id="35_w3ps2"]
 [ext_resource type="ArrayMesh" uid="uid://c7yw1oynfh5uw" path="res://assets/models/enviroment/Mythical_Forest/Mushrooms/Amethyst_Deceiver_Group_1.glb" id="36_66erv"]
+[ext_resource type="Material" uid="uid://bqv7qrtahkkhm" path="res://assets/materials/mythical_forest/Mushooms_MAT.004.tres" id="36_w3ps2"]
 [ext_resource type="Texture2D" uid="uid://cg2213qkp31uv" path="res://assets/textures/mythical_forest/Mushrooms/Amethyst_Deceiver_Group_2_Mushrooms_C.png" id="37_66erv"]
 [ext_resource type="Texture2D" uid="uid://duq0gxmubnq7j" path="res://assets/textures/mythical_forest/Mushrooms/Bay_Bolete_Group_1_Mushrooms_C.png" id="38_w3ps2"]
 [ext_resource type="Texture2D" uid="uid://dx0up0clr0xbi" path="res://assets/textures/mythical_forest/Mushrooms/Bay_Bolete_Group_2_Mushrooms_C.png" id="39_md61m"]
@@ -4071,69 +4073,88 @@ surface_material_override/0 = ExtResource("27_3mh07")
 [node name="NamaqualandRocks01A" type="MeshInstance3D" parent="Rocks" unique_id=692454924]
 transform = Transform3D(-18.10145, -4.2043627e-07, 21.643099, -20.33973, 9.643405, -17.01136, -7.3972416, -26.515862, -6.1867666, 95.13309, 2.1452208, -88.29351)
 mesh = ExtResource("28_xg4sl")
+surface_material_override/0 = ExtResource("27_3mh07")
 
 [node name="NamaqualandRocks01C" type="MeshInstance3D" parent="Rocks" unique_id=1437234623]
 transform = Transform3D(43.996254, 0, 7.0287666, 0, 44.995, 0, -9.427596, 0, 32.80151, 100.77383, 3.101059, -86.63522)
 material_override = ExtResource("27_3mh07")
 mesh = ExtResource("29_eqm7c")
+surface_material_override/0 = ExtResource("27_3mh07")
 
 [node name="NamaqualandRocks01D" type="MeshInstance3D" parent="Rocks" unique_id=1256656690]
 transform = Transform3D(13.662229, -2.6047603e-06, 36.363136, -34.889038, 10.9480295, 13.108387, -10.248544, -37.270294, 3.850544, 84.721825, 0.61334443, -87.41126)
 material_override = ExtResource("27_3mh07")
 mesh = ExtResource("30_i3pqx")
+surface_material_override/0 = ExtResource("27_3mh07")
 
 [node name="NamaqualandStones01A" type="MeshInstance3D" parent="Rocks" unique_id=819151910]
 transform = Transform3D(-6.512118, 2.8888219e-06, -60.62123, -60.616425, -0.76747817, 6.511602, -0.7630876, 60.96517, 0.0819761, 98.31713, 0.9611294, -77.082596)
 mesh = ExtResource("31_cnol4")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01B" type="MeshInstance3D" parent="Rocks" unique_id=1495894579]
 transform = Transform3D(55.41899, 0, -0.33437645, 0, 55.42, 0, 0.33437645, 0, 55.41899, 85.748985, -0.19529897, -77.6004)
 mesh = ExtResource("32_q482l")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01B3" type="MeshInstance3D" parent="Rocks" unique_id=1503062699]
 transform = Transform3D(53.942665, -12.706664, -0.3254689, 10.986778, 47.324375, -26.665886, 6.3918633, 25.890528, 48.58189, 85.748985, 4.322511, -77.6004)
 mesh = ExtResource("32_q482l")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01B2" type="MeshInstance3D" parent="Rocks" unique_id=1306330295]
 transform = Transform3D(-55.132217, 5.46694, 1.3882504, -4.8251123, -52.776054, 16.210562, 2.9211187, 16.005516, 52.97799, 86.51533, 2.5149872, -77.6004)
 mesh = ExtResource("32_q482l")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01C" type="MeshInstance3D" parent="Rocks" unique_id=1269274330]
 transform = Transform3D(-4.899588, 3.271053, -74.362015, 74.429535, 1.0242184, -4.8589835, 0.80794895, -74.51621, -3.3310702, 101.89722, 0.4607395, -89.138596)
 mesh = ExtResource("33_xpopa")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01D" type="MeshInstance3D" parent="Rocks" unique_id=790054672]
 transform = Transform3D(-38.96399, -145.35207, 19.869274, -15.062099, 24.41307, 149.05481, -145.92857, 36.29024, -20.690018, 81.48202, -0.91534185, -83.747444)
 mesh = ExtResource("34_66erv")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01D3" type="MeshInstance3D" parent="Rocks" unique_id=1427122492]
 transform = Transform3D(-2.3869624, -54.441566, 141.6708, 36.83946, 137.24315, 53.360794, -147.23235, 35.222645, 11.054762, 86.16889, 6.170315, -83.747444)
+material_override = ExtResource("31_66erv")
 mesh = ExtResource("34_66erv")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01D4" type="MeshInstance3D" parent="Rocks" unique_id=588447981]
 transform = Transform3D(9.365174, -62.47941, 138.01744, -37.21735, -134.99225, -58.584568, 146.8583, -30.225895, -23.648087, 101.14661, 6.170315, -84.503075)
+material_override = ExtResource("31_66erv")
 mesh = ExtResource("34_66erv")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01D5" type="MeshInstance3D" parent="Rocks" unique_id=253074079]
 transform = Transform3D(-21.483704, 12.754791, -149.71965, 31.800766, 148.20224, 8.062335, 146.8583, -30.225899, -23.648087, 93.27915, 7.2542877, -84.503075)
+material_override = ExtResource("31_66erv")
 mesh = ExtResource("34_66erv")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01D6" type="MeshInstance3D" parent="Rocks" unique_id=307726469]
 transform = Transform3D(-48.073204, 12.659429, 76.04228, 75.70553, -9.14812, 49.383274, 14.538339, 89.49734, -5.708413, 99.91757, 2.4602828, -77.00471)
 mesh = ExtResource("34_66erv")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01D2" type="MeshInstance3D" parent="Rocks" unique_id=1694982506]
 transform = Transform3D(28.490253, 147.56438, -21.289995, -15.0621, 24.413069, 149.05481, 148.32953, -25.864264, 19.22501, 105.36405, -0.91534185, -83.25012)
 mesh = ExtResource("34_66erv")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="NamaqualandStones01E" type="MeshInstance3D" parent="Rocks" unique_id=518741459]
 transform = Transform3D(29.613317, -23.265913, 23.95895, -28.80585, -1.5917816, 34.058365, -16.898432, -38.058456, -16.071074, 103.29236, 4.0323305, -78.59947)
 mesh = ExtResource("35_w3ps2")
+surface_material_override/0 = ExtResource("31_66erv")
 
 [node name="Mushrooms" type="Node3D" parent="." unique_id=1491162536]
 
 [node name="AmethystDeceiverGroup1" type="MeshInstance3D" parent="Mushrooms" unique_id=1691153879]
 transform = Transform3D(0.092942536, 0.136333, -5.9593046e-09, 0, -7.212379e-09, -0.165, -0.136333, 0.092942536, -4.062647e-09, 99.545364, -1.2099737, -79.029076)
+material_override = ExtResource("36_w3ps2")
 mesh = ExtResource("36_66erv")
 
 [node name="AmethystDeceiverGroup2" type="MeshInstance3D" parent="Mushrooms" unique_id=1058592828]
@@ -4142,6 +4163,7 @@ mesh = SubResource("ArrayMesh_btawh")
 
 [node name="BayBoleteGroup1" type="MeshInstance3D" parent="Mushrooms" unique_id=2013140059]
 transform = Transform3D(0.09363802, -0.06676019, 2.9181804e-09, 0, -5.026809e-09, -0.115, 0.06676019, 0.09363802, -4.0930472e-09, 90.055176, -1.4388607, -79.449745)
+material_override = ExtResource("36_w3ps2")
 mesh = SubResource("ArrayMesh_8mee4")
 
 [node name="BayBoleteGroup2" type="MeshInstance3D" parent="Mushrooms" unique_id=2128356571]

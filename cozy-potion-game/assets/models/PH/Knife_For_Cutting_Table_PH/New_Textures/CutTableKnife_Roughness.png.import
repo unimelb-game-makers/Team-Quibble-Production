@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cllqwr2632u3l"
-path="res://.godot/imported/CutTableKnife_Roughness.png-8ad4632373441ed6eeb8e555455f0a41.ctex"
+path.s3tc="res://.godot/imported/CutTableKnife_Roughness.png-8ad4632373441ed6eeb8e555455f0a41.s3tc.ctex"
+path.etc2="res://.godot/imported/CutTableKnife_Roughness.png-8ad4632373441ed6eeb8e555455f0a41.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/PH/Knife_For_Cutting_Table_PH/New_Textures/CutTableKnife_Roughness.png"
-dest_files=["res://.godot/imported/CutTableKnife_Roughness.png-8ad4632373441ed6eeb8e555455f0a41.ctex"]
+dest_files=["res://.godot/imported/CutTableKnife_Roughness.png-8ad4632373441ed6eeb8e555455f0a41.s3tc.ctex", "res://.godot/imported/CutTableKnife_Roughness.png-8ad4632373441ed6eeb8e555455f0a41.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0d5l4mc5na6p"
-path="res://.godot/imported/DecoctPot_Disp.exr-70871fa964bb54182b69ffaec82ba689.ctex"
+path.bptc="res://.godot/imported/DecoctPot_Disp.exr-70871fa964bb54182b69ffaec82ba689.bptc.ctex"
+path.astc="res://.godot/imported/DecoctPot_Disp.exr-70871fa964bb54182b69ffaec82ba689.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/PH/Decoction_Pot/DecoctPot_T/DecoctPot_Disp.exr"
-dest_files=["res://.godot/imported/DecoctPot_Disp.exr-70871fa964bb54182b69ffaec82ba689.ctex"]
+dest_files=["res://.godot/imported/DecoctPot_Disp.exr-70871fa964bb54182b69ffaec82ba689.bptc.ctex", "res://.godot/imported/DecoctPot_Disp.exr-70871fa964bb54182b69ffaec82ba689.astc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
