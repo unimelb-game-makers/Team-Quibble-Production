@@ -24,9 +24,38 @@ func _init(container: Container = null, max_stack_size:int = 999) -> void:
 	max_quantity = max_stack_size
 
 
+# Chains hovering signal from slots
+func hovering_slot_emit(slot: ItemSlot) -> void:
+	hovering_slot.emit(slot)
+
+
+# Chains mouse_exited signal from slots
+func mouse_exit_slot_emit() -> void:
+	mouse_exit_slot.emit()
+
+
+# Replaces itemslots with parsed stacks
+func spawn_slots(item_list: Array[Stack], blacklist: Array = []) -> void:
+	# Removes previous slots
+	for slot in item_slots:
+		storage.remove_child(slot)
+	
+	item_slots = []
+	for new_item in item_list:
+		add_new_slot_from_stack(new_item, blacklist)
+
+## spawns item slots from item_list into the storage parameter
+## and adds them to the inventory's item slots.
+func spawn_new_slots_to_arbitrary_storage(item_list: Array[Stack], \
+new_storage: Container, blacklist: Array = []) -> void:
+	
+	for item in item_list:
+		add_new_slot_from_stack(item, blacklist, new_storage)
+
+
 # Creates new slot from a stack, places it in a holder if stack is not empty
-func add_new_slot_from_stack(item: Stack, trash_collector: Control = null, \
-custom_storage: Container = storage) -> void:
+func add_new_slot_from_stack(item: Stack, blacklist: Array = [], \
+							custom_storage: Container = storage) -> void:
 	var new_item_slot: ItemSlot = ItemSlot.get_scene().instantiate()
 	custom_storage.add_child(new_item_slot)
 	item_slots.append(new_item_slot)
@@ -41,35 +70,8 @@ custom_storage: Container = storage) -> void:
 	if not item.isEmpty:
 		new_item_slot.set_stack(item)
 
-
-# Chains hovering signal from slots
-func hovering_slot_emit(slot: ItemSlot) -> void:
-	hovering_slot.emit(slot)
-
-
-# Chains mouse_exited signal from slots
-func mouse_exit_slot_emit() -> void:
-	mouse_exit_slot.emit()
-
-
-# Replaces itemslots with parsed stacks
-func spawn_slots(item_list: Array[Stack]) -> void:
-	# Removes previous slots
-	for slot in item_slots:
-		storage.remove_child(slot)
-	
-	item_slots = []
-	for new_item in item_list:
-		add_new_slot_from_stack(new_item)
-
-## spawns item slots from item_list into the storage parameter
-## and adds them to the inventory's item slots.
-func spawn_new_slots_to_arbitrary_storage(item_list: Array[Stack], \
-new_storage: Container, \
-trash_collector: Control) -> void:
-	
-	for item in item_list:
-		add_new_slot_from_stack(item, trash_collector, new_storage)
+	if blacklist.size() > 0:
+		new_item_slot.add_blacklist(blacklist)
 
 # Currently unused
 # Similar to the above, but accepts a premade list of slots.
