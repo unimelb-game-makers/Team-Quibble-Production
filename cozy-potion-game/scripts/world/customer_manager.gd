@@ -68,19 +68,20 @@ func _on_day_started() -> void:
 	#news at the start of the day, has time to do that
 	#before we need to use it here
 	await get_tree().create_timer(1).timeout
-	generate_customer_queue()
+	if !TutorialDirector.tutorial_day:
+		generate_customer_queue()
+	else:
+		generate_tutorial_customers()
 	send_customer()
 
 #generates some number of customers to be drawn from during the day
-func generate_customer_queue(_customer_queue: Array[Customer] = []) -> void:
+func generate_customer_queue() -> void:
 	customer_queue.clear()
 	var customer_needs_list: Dictionary[Alchemy.NeedID, int]
-	if _customer_queue.size() == 0:
-		for i in range(TimeCycle.customers_per_day):
-			customer_queue.append(Customer.generate_customer())
-	else:
-		customer_queue = _customer_queue
 	
+	for i in range(TimeCycle.customers_per_day):
+		customer_queue.append(Customer.generate_customer())
+
 	for customer in customer_queue:
 		customer_needs_list[customer.primary_need] = 0
 		if customer.secondary_need > 0:
@@ -111,6 +112,9 @@ func generate_customer_time_allotments() -> Array[float]:
 	#a little bit of padding is added to this value to ensure that it ends the day
 	customer_time_allotments.append(1.1-points.back())
 	return customer_time_allotments
+
+func generate_tutorial_customers() -> void:
+	pass
 
 func send_customer() -> void:
 	customer_world.customer = get_next_customer()
