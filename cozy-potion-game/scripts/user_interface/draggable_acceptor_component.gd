@@ -8,6 +8,7 @@ class_name DraggableAcceptorComponent extends Node
 @export var max_items: int = 1
 var my_control: Control
 var accepting_items: bool = true
+var blacklist: Array[Resource]
 
 var mouse_intersecting : bool = false
 
@@ -37,8 +38,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if not accepting_items:
 		return
 
-	
-	
 	var intersecting_mouse: bool = \
 	my_control.get_global_rect().has_point(my_control.get_global_mouse_position())
 	#print_debug(get_viewport().get_mouse_position())
@@ -64,6 +63,7 @@ func get_accepted_controls() -> Array[Control]:
 		if child is Control:
 			res.append(child)
 	return res
+
 #hack. Please let me be done with this
 func emit_accepted(draggable: Control):
 	accepted_draggable.emit(draggable)

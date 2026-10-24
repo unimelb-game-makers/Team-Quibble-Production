@@ -13,6 +13,10 @@ func play_audio(audio: AudioStream):
 	stream = audio
 	play()
 
+# input value from 0.0 to 1.0
+func set_volume(value: float):
+	volume_linear = value
+
 func play_ambience(ambience: AudioStream):
 	ambiencePlayer.stream = ambience
 	ambiencePlayer.play()
