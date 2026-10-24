@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c42y0lkc4tsam"]
+
+[ext_resource type="Texture2D" uid="uid://bufxejf0tcvs0" path="res://assets/sprites/icons/OIP-160251272.jpg" id="2_1vh4j"]
+[ext_resource type="Texture2D" uid="uid://duow2jcpcbmvo" path="res://assets/sprites/icons/controller_icons/l_key.png" id="2_vb0n5"]
+
+[node name="NotebookHint" type="HBoxContainer" unique_id=1638977271]
+custom_minimum_size = Vector2(130, 63.465)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1920.0
+offset_top = -1080.0
+offset_right = -1790.0
+offset_bottom = -1016.535
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=547566755]
+layout_mode = 2
+texture = ExtResource("2_vb0n5")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=925097937]
+layout_mode = 2
+texture = ExtResource("2_1vh4j")
+expand_mode = 2
