@@ -26,9 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/viewports/popup_sub_window.tscn" id="15_67phx"]
 [ext_resource type="PackedScene" uid="uid://b18nfiye242g" path="res://scenes/foraging/shopkeeper.tscn" id="15_v7bn7"]
 [ext_resource type="Script" uid="uid://ovkukftdmfbw" path="res://scenes/foraging/merchant_spawner.gd" id="16_v7bn7"]
-[ext_resource type="Theme" uid="uid://b5rk2obep48bo" path="res://resources/ui_themes/main_menu_theme.tres" id="18_05h0o"]
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/player.tscn" id="18_dofmw"]
-[ext_resource type="Script" uid="uid://bhgdky2jesod7" path="res://scripts/user_interface/portal_popup.gd" id="18_fbiof"]
+[ext_resource type="PackedScene" uid="uid://yb5b6cpub8qh" path="res://scenes/user_interface/portal_popup.tscn" id="19_fbiof"]
 [ext_resource type="Script" uid="uid://c14xedth331vd" path="res://scenes/foraging/forest_music_p_laceholder.gd" id="24_vq4f2"]
 [ext_resource type="AudioStream" uid="uid://ctt05trglkycb" path="res://audio/music/ForestMusicPLACEHOLDER/75bpm_Forest_Theme_Night_FullMix(1).wav" id="25_vq4f2"]
 
@@ -61,12 +60,6 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_0n2di"]
 font = ExtResource("7_dofmw")
 font_size = 42
-
-[sub_resource type="LabelSettings" id="LabelSettings_6ar3d"]
-font_size = 54
-
-[sub_resource type="LabelSettings" id="LabelSettings_q2fix"]
-font_size = 24
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2cr7a"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
@@ -409,67 +402,7 @@ offset = Vector3(0, 1.5, 0)
 
 [node name="PopupSubWindow2" parent="SceneUI" unique_id=190725734 groups=["popup_subwindow"] instance=ExtResource("15_67phx")]
 
-[node name="PortalPopup" type="CanvasLayer" parent="SceneUI" unique_id=702502607 node_paths=PackedStringArray("yes_button", "no_button") groups=["portal_popup"]]
-visible = false
-script = ExtResource("18_fbiof")
-yes_button = NodePath("Control/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/Button2")
-no_button = NodePath("Control/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/Button")
-
-[node name="Control" type="Control" parent="SceneUI/PortalPopup" unique_id=548746468]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("18_05h0o")
-
-[node name="CenterContainer" type="CenterContainer" parent="SceneUI/PortalPopup/Control" unique_id=16267930]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="SceneUI/PortalPopup/Control/CenterContainer" unique_id=1385668203]
-custom_minimum_size = Vector2(400, 150)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="SceneUI/PortalPopup/Control/CenterContainer/PanelContainer" unique_id=1868685835]
-layout_mode = 2
-theme_override_constants/separation = 8
-
-[node name="Label" type="Label" parent="SceneUI/PortalPopup/Control/CenterContainer/PanelContainer/VBoxContainer" unique_id=808967784]
-layout_mode = 2
-text = "Return Home?"
-label_settings = SubResource("LabelSettings_6ar3d")
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="SceneUI/PortalPopup/Control/CenterContainer/PanelContainer/VBoxContainer" unique_id=933477773]
-custom_minimum_size = Vector2(400, 0)
-layout_mode = 2
-text = "You won't be able to come back until tomorrow. (You're a busy girl.)"
-label_settings = SubResource("LabelSettings_q2fix")
-horizontal_alignment = 1
-autowrap_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="SceneUI/PortalPopup/Control/CenterContainer/PanelContainer/VBoxContainer" unique_id=1705768768]
-layout_mode = 2
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="Button2" type="Button" parent="SceneUI/PortalPopup/Control/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=669197143]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Leave"
-
-[node name="Button" type="Button" parent="SceneUI/PortalPopup/Control/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1700309943]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Stay"
+[node name="PortalPopup" parent="SceneUI" unique_id=640943272 instance=ExtResource("19_fbiof")]
 
 [node name="TreeFoliageManager" type="Node" parent="." unique_id=1037012145]
 script = ExtResource("1_ij0qq")
