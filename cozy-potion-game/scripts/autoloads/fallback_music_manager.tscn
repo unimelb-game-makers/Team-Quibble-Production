@@ -19,3 +19,4 @@ track_dict = Dictionary[int, AudioStream]({
 })
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2123312227]
+bus = &"Music"

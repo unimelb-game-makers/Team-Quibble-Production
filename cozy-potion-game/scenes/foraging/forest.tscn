@@ -730,9 +730,6 @@ shape = SubResource("CylinderShape3D_4dvm4")
 [node name="Player" parent="." unique_id=1588394108 instance=ExtResource("18_dofmw")]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 47.384357, 4.207901, -54.40923)
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=943629651]
-bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]
-
 [node name="ForestMusicController" type="Node" parent="." unique_id=1404648022]
 script = ExtResource("29_05h0o")
 day_track = 3
