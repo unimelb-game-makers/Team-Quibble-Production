@@ -186,4 +186,5 @@ locale/translations_pot_files=PackedStringArray("res://dialogue/customer/placeho
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true
