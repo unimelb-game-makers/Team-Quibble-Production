@@ -10,8 +10,6 @@ extends Minigame
 @export var inventory: HoverInventory
 @export var potion_created_sfx: AudioStream
 
-var ingredient_button: PackedScene = preload("uid://b6r6ktehhfb10")
-
 #signal money_changed(new_value: int)
 
 func _ready() -> void:

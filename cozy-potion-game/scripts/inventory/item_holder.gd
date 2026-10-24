@@ -28,12 +28,18 @@ func _ready() -> void:
 	highlight_text.visible = false
 	stack = Stack.new(0)
 
+func delete() -> void:
+	for child in get_children():
+		child.queue_free()
+		
+	queue_free()
 
 # Updates slot visuals based on changes in stack
 func update_stack() -> void:
 	if stack:
 		item_sprite.texture = stack.get_item_sprite()
 		quantity_label.text = stack.get_quantity_label()
+		draggable_component.item_resource = stack.item
 
 
 func highlight_turn_off() -> void:
