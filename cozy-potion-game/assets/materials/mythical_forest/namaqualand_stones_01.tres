@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://bql2wuifailnm"]
 
-[ext_resource type="Texture2D" uid="uid://cicmlyjifhrsw" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_a_namaqualand_stones_01_diff.jpg" id="1_je6oh"]
-[ext_resource type="Texture2D" uid="uid://cwvkkrxnlq3y6" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_a_namaqualand_stones_01_rough.png" id="2_fg8ke"]
-[ext_resource type="Texture2D" uid="uid://ylhslfrpuiu6" path="res://assets/models/enviroment/Mythical_Forest/Rock/namaqualand_stones_01_a_namaqualand_stones_01_nor_gl.png" id="3_t2p8n"]
+[ext_resource type="Texture2D" uid="uid://cicmlyjifhrsw" path="res://assets/textures/mythical_forest/Rocks/namaqualand_stones_01_a_namaqualand_stones_01_diff.jpg" id="1_je6oh"]
+[ext_resource type="Texture2D" uid="uid://cwvkkrxnlq3y6" path="res://assets/textures/mythical_forest/Rocks/namaqualand_stones_01_a_namaqualand_stones_01_rough.png" id="2_fg8ke"]
+[ext_resource type="Texture2D" uid="uid://ylhslfrpuiu6" path="res://assets/textures/mythical_forest/Rocks/namaqualand_stones_01_a_namaqualand_stones_01_nor_gl.png" id="3_t2p8n"]
 
 [resource]
 resource_name = "namaqualand_stones_01"

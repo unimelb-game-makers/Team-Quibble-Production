@@ -4,12 +4,14 @@ extends CanvasLayer
 @export var options_menu_container: Container
 @export var sound_menu: Control
 @export var video_menu: MarginContainer
+@export var controls_menu: Control
 
 @export_group("Buttons")
 @export var exit_game_button: Button
 @export var sound_menu_button: Button
 @export var video_menu_button: Button
 
+@export var controls_menu_button: Button
 
 @export_group("Blur")
 @export var blur_rect: ColorRect
@@ -38,6 +40,7 @@ func _ready() -> void:
 	# Handle Menus
 	menus.append(sound_menu)
 	menus.append(video_menu)
+	menus.append(controls_menu)
 	hide_menus()
 	
 	connect_buttons()
@@ -47,6 +50,7 @@ func connect_buttons() -> void:
 	exit_game_button.pressed.connect(get_tree().quit)
 	sound_menu_button.pressed.connect(open_sound_menu)
 	video_menu_button.pressed.connect(open_video_menu)
+	controls_menu_button.pressed.connect(open_controls_menu)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#print_debug(event.as_text())
@@ -93,6 +97,12 @@ func open_sound_menu() -> void:
 
 func open_video_menu() -> void:
 	open_menu(video_menu)
+
+func open_controls_menu() -> void:
+	open_menu(controls_menu)
+	#animate_options_menu_out()
+	#print(controls_menu.visible)
+
 
 func open_options_menu() -> void:
 	#TODO give focus to first button in the options menu for non-mouse users

@@ -1,15 +1,15 @@
 [remap]
 
-importer="scene"
+importer="ArrayMesh"
 importer_version=1
-type="PackedScene"
+type="ArrayMesh"
 uid="uid://cs3dt73sju2bn"
-path="res://.godot/imported/Cutting_Table_Placeholder.glb-5e345168fa7f0f0a453e2fe167371eff.scn"
+path="res://.godot/imported/Cutting_Table_Placeholder.glb-5e345168fa7f0f0a453e2fe167371eff.res"
 
 [deps]
 
 source_file="res://assets/models/PH/Cutting_Table_PH/Cutting_Table_Placeholder.glb"
-dest_files=["res://.godot/imported/Cutting_Table_Placeholder.glb-5e345168fa7f0f0a453e2fe167371eff.scn"]
+dest_files=["res://.godot/imported/Cutting_Table_Placeholder.glb-5e345168fa7f0f0a453e2fe167371eff.res"]
 
 [params]
 
