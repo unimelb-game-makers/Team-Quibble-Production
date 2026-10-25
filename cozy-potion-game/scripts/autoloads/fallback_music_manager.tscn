@@ -17,6 +17,13 @@ track_dict = Dictionary[int, AudioStream]({
 3: ExtResource("6_g41vb"),
 4: ExtResource("4_oj20q")
 })
+track_names = Dictionary[int, String]({
+0: "Main Menu",
+1: "Shop - Day",
+2: "Shop - Night",
+3: "Forest - Day",
+4: "Forest - Night"
+})
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2123312227]
 bus = &"Music"

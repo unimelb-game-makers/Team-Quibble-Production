@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ba6o7krm0dacy" path="res://scenes/title_screen_fake_forest.tscn" id="1_n17qi"]
 [ext_resource type="Theme" uid="uid://b5rk2obep48bo" path="res://resources/ui_themes/main_menu_theme.tres" id="2_eqhve"]
 [ext_resource type="Script" uid="uid://1uplvo1hvm7y" path="res://scripts/user_interface/main_menu.gd" id="3_yx444"]
+[ext_resource type="Script" uid="uid://5pvk3tb41p66" path="res://scripts/world/scene_music_controller.gd" id="4_qc2aw"]
 
 [node name="TitleScreen" type="CanvasLayer" unique_id=1226151043]
 
@@ -17,7 +18,7 @@ render_target_update_mode = 4
 
 [node name="TitleScreenFakeForest" parent="SubViewportContainer/SubViewport" unique_id=1357049931 instance=ExtResource("1_n17qi")]
 
-[node name="Control" type="Control" parent="." unique_id=47089385 node_paths=PackedStringArray("options_button", "continue_button", "new_game_button", "quit_button", "buttons_container", "title_label", "options_container")]
+[node name="Control" type="Control" parent="." unique_id=47089385 node_paths=PackedStringArray("options_button", "continue_button", "new_game_button", "quit_button", "buttons_container", "title_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +33,6 @@ new_game_button = NodePath("MarginContainer/ButtonsContainer/NewGameButton")
 quit_button = NodePath("MarginContainer/ButtonsContainer/QuitButton")
 buttons_container = NodePath("MarginContainer/ButtonsContainer")
 title_label = NodePath("MarginContainer/VBoxContainer/TitleLabel")
-options_container = NodePath("")
 shop_path = "res://scenes/enviroments/shop_revamp.tscn"
 
 [node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1248815175]
@@ -80,3 +80,6 @@ text = "New Game
 layout_mode = 2
 text = "Quit
 "
+
+[node name="TitleMusicController" type="Node" parent="." unique_id=2130283347]
+script = ExtResource("4_qc2aw")

@@ -4,6 +4,15 @@
 [ext_resource type="Script" uid="uid://b6mwrfrnb10cs" path="res://scripts/world/digital_clock.gd" id="2_nd8pm"]
 [ext_resource type="Script" uid="uid://chl1s023d8end" path="res://scripts/user_interface/news_popup.gd" id="3_2fgp6"]
 [ext_resource type="Texture2D" uid="uid://bpv31ofl8ieaf" path="res://assets/sprites/ui/scroll.png" id="4_7hrnt"]
+[ext_resource type="Texture2D" uid="uid://bhlrk8qjl1w71" path="res://assets/sprites/radio/Radio_Base.png" id="5_gcw66"]
+[ext_resource type="Texture2D" uid="uid://dsvbutl5d0vej" path="res://assets/sprites/radio/Radio_Button_Screen.png" id="6_ypjrm"]
+[ext_resource type="Script" uid="uid://eke0c215jlqa" path="res://scripts/user_interface/radio.gd" id="7_y2trj"]
+[ext_resource type="FontFile" uid="uid://dcxwsf5djxbo4" path="res://resources/fonts/Segment7-4Gml.otf" id="8_vnjf7"]
+[ext_resource type="Texture2D" uid="uid://317l2hme7j13" path="res://assets/sprites/radio/Radio_Button_Skip_Left.png" id="9_3i57y"]
+[ext_resource type="Texture2D" uid="uid://bepitgqx2hh5y" path="res://assets/sprites/radio/Radio_Button_Play.png" id="9_ypjrm"]
+[ext_resource type="Texture2D" uid="uid://d1ni4oulf2wmc" path="res://assets/sprites/radio/Radio_Button_Pause.png" id="10_x7ynx"]
+[ext_resource type="Texture2D" uid="uid://ddsef3hf83n8j" path="res://assets/sprites/radio/Radio_Button_Skip_Right.png" id="11_6mu2b"]
+[ext_resource type="Texture2D" uid="uid://c6pb1t53d1gqm" path="res://assets/sprites/radio/Radio_Button_Repeat.png" id="12_ccf10"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_83lib"]
 texture = ExtResource("4_7hrnt")
@@ -24,7 +33,8 @@ expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
-font_size = 124
+font = ExtResource("8_vnjf7")
+font_size = 104
 
 [sub_resource type="LabelSettings" id="LabelSettings_aue3q"]
 font_size = 26
@@ -99,53 +109,121 @@ offset_right = 40.0
 offset_bottom = 40.0
 theme = ExtResource("1_7hrnt")
 
-[node name="DigitalClock" type="Control" parent="HBoxContainer" unique_id=469322107 node_paths=PackedStringArray("time_label", "day_label", "advance_time_button")]
+[node name="DigitalClock" type="Control" parent="HBoxContainer" unique_id=469322107 node_paths=PackedStringArray("time_label", "day_label")]
 custom_minimum_size = Vector2(447.36, 177.11984)
 layout_mode = 2
 theme = ExtResource("1_7hrnt")
 script = ExtResource("2_nd8pm")
-time_label = NodePath("PanelContainer/CenterContainer/TimeLabel")
-day_label = NodePath("PanelContainer/MarginContainer/DayLabel")
-advance_time_button = NodePath("Button")
+time_label = NodePath("Radio/Control/VBoxContainer/TimeLabel")
+day_label = NodePath("Radio/Control/VBoxContainer/DayLabel")
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/DigitalClock" unique_id=1891763331]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/DigitalClock" unique_id=1905313817]
+layout_mode = 0
+offset_right = 510.0
+offset_bottom = 272.0
+texture = ExtResource("5_gcw66")
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer/DigitalClock/PanelContainer" unique_id=1309229688]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/DigitalClock/TextureRect" unique_id=508156525]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 394.0
+offset_bottom = 209.0
+texture = ExtResource("6_ypjrm")
 
-[node name="TimeLabel" type="Label" parent="HBoxContainer/DigitalClock/PanelContainer/CenterContainer" unique_id=153237212]
+[node name="Radio" type="Control" parent="HBoxContainer/DigitalClock" unique_id=1661802040 node_paths=PackedStringArray("prev_button", "pause_toggle_button", "next_button", "replay_button", "track_label")]
+anchors_preset = 0
+offset_right = 509.0
+offset_bottom = 268.0
+script = ExtResource("7_y2trj")
+prev_button = NodePath("Control2/HBoxContainer/TextureButton")
+pause_toggle_button = NodePath("Control2/HBoxContainer/TextureButton2")
+next_button = NodePath("Control2/HBoxContainer/TextureButton3")
+replay_button = NodePath("Control2/HBoxContainer/TextureButton4")
+track_label = NodePath("Control/VBoxContainer/TrackLabel")
+pause_button_texture = ExtResource("10_x7ynx")
+play_button_texture = ExtResource("9_ypjrm")
+
+[node name="Control" type="Control" parent="HBoxContainer/DigitalClock/Radio" unique_id=1751213062]
+anchors_preset = 0
+offset_left = 27.0
+offset_top = 40.0
+offset_right = 396.0
+offset_bottom = 202.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/DigitalClock/Radio/Control" unique_id=743981237]
+layout_mode = 0
+offset_right = 367.0
+offset_bottom = 187.0
+
+[node name="TimeLabel" type="Label" parent="HBoxContainer/DigitalClock/Radio/Control/VBoxContainer" unique_id=153237212]
 layout_mode = 2
 text = "07:00"
 label_settings = SubResource("LabelSettings_4dvm4")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/DigitalClock/PanelContainer" unique_id=311473154]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="DayLabel" type="Label" parent="HBoxContainer/DigitalClock/PanelContainer/MarginContainer" unique_id=1025774431]
+[node name="DayLabel" type="Label" parent="HBoxContainer/DigitalClock/Radio/Control/VBoxContainer" unique_id=1025774431]
 layout_mode = 2
 size_flags_vertical = 8
 text = "Monday"
 label_settings = SubResource("LabelSettings_aue3q")
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="HBoxContainer/DigitalClock" unique_id=1318430763]
+[node name="TrackLabel" type="Label" parent="HBoxContainer/DigitalClock/Radio/Control/VBoxContainer" unique_id=308646787]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Mythical Forest - Day"
+label_settings = SubResource("LabelSettings_aue3q")
+horizontal_alignment = 1
+
+[node name="Control2" type="Control" parent="HBoxContainer/DigitalClock/Radio" unique_id=1409107942]
+anchors_preset = 0
+offset_left = 37.0
+offset_top = 213.0
+offset_right = 386.0
+offset_bottom = 258.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/DigitalClock/Radio/Control2" unique_id=943269351]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 6.109
-offset_left = 100.0
-offset_top = 177.0
-offset_right = -123.359985
-offset_bottom = -850.02515
-theme_override_font_sizes/font_size = 28
-text = "Advance Time"
+anchor_bottom = 1.0
+offset_top = 7.0
+offset_bottom = 7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+
+[node name="TextureButton" type="TextureButton" parent="HBoxContainer/DigitalClock/Radio/Control2/HBoxContainer" unique_id=1440347181]
+layout_mode = 2
+texture_normal = ExtResource("9_3i57y")
+texture_pressed = ExtResource("9_3i57y")
+texture_hover = ExtResource("9_3i57y")
+texture_disabled = ExtResource("9_3i57y")
+texture_focused = ExtResource("9_3i57y")
+
+[node name="TextureButton2" type="TextureButton" parent="HBoxContainer/DigitalClock/Radio/Control2/HBoxContainer" unique_id=48006231]
+layout_mode = 2
+texture_normal = ExtResource("10_x7ynx")
+texture_pressed = ExtResource("10_x7ynx")
+texture_hover = ExtResource("10_x7ynx")
+texture_disabled = ExtResource("10_x7ynx")
+texture_focused = ExtResource("10_x7ynx")
+
+[node name="TextureButton3" type="TextureButton" parent="HBoxContainer/DigitalClock/Radio/Control2/HBoxContainer" unique_id=462282482]
+layout_mode = 2
+texture_normal = ExtResource("11_6mu2b")
+texture_pressed = ExtResource("11_6mu2b")
+texture_hover = ExtResource("11_6mu2b")
+texture_disabled = ExtResource("11_6mu2b")
+texture_focused = ExtResource("11_6mu2b")
+
+[node name="TextureButton4" type="TextureButton" parent="HBoxContainer/DigitalClock/Radio/Control2/HBoxContainer" unique_id=887941998]
+modulate = Color(0.282, 0.282, 0.282, 0.729)
+layout_mode = 2
+texture_normal = ExtResource("12_ccf10")
+texture_pressed = ExtResource("12_ccf10")
+texture_hover = ExtResource("12_ccf10")
+texture_disabled = ExtResource("12_ccf10")
+texture_focused = ExtResource("12_ccf10")
