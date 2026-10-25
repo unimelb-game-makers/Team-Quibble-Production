@@ -53,10 +53,18 @@ func connect_buttons() -> void:
 	#TODO: exiting the game should probably be more graceful than this
 	exit_game_button.pressed.connect(get_tree().quit)
 	sound_menu_button.pressed.connect(open_sound_menu)
-	return_to_game_button.pressed.connect(close_options_menu)
+	return_to_game_button.pressed.connect(return_to_game)
 	video_menu_button.pressed.connect(open_video_menu)
 	controls_menu_button.pressed.connect(open_controls_menu)
 
+func return_to_game() -> void:
+			hide_menus()
+			blur_rect.hide()
+			open = false
+			
+			var focus_owner = get_viewport().gui_get_focus_owner()
+			if focus_owner:
+				focus_owner.release_focus()
 func _unhandled_input(event: InputEvent) -> void:
 	#print_debug(event.as_text())
 	#print_debug(event.is_action_pressed("open_options_menu"))
@@ -66,13 +74,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if not open:
 			open_options_menu()
 		elif open:
-			hide_menus()
-			blur_rect.hide()
-			open = false
-			
-			var focus_owner = get_viewport().gui_get_focus_owner()
-			if focus_owner:
-				focus_owner.release_focus()
+			return_to_game()
 		# this key should always open the options menu, and only
 		# open the options menu
 		#get_viewport().set_input_as_handled()
@@ -120,7 +122,7 @@ func open_options_menu() -> void:
 func close_options_menu() -> void:
 	if not options_menu_container:
 		return
-	
+
 	open = false
 	animate_unblur()
 	animate_options_menu_out()

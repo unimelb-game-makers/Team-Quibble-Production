@@ -35,12 +35,14 @@ func get_current_track_name() -> String:
 	
 func play_next_track(direction: int) -> void:
 	var id: TRACKS = track_dict.find_key(music_player.stream)
-	id += direction % track_dict.size()
+	id += direction
+	print(id)
 	play_music_track(id, FADE.BOTH)
 	
 func is_paused() -> bool:
 	return music_player.stream_paused
-var locked
+
+var locked = false
 
 func toggle_repeat_current_track() -> void:
 	locked = not locked

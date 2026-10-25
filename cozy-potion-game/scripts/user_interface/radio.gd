@@ -5,30 +5,43 @@ class_name Radio extends Control
 @export var next_button: TextureButton
 @export var replay_button: TextureButton
 @export var track_label: Label
+@export var music_volume: VSlider
 
 @export var pause_button_texture: Texture2D
 @export var play_button_texture: Texture2D
 
 func _ready() -> void:
-	prev_button.pressed.connect(FallbackMusicManager.play_next_track.bind(-1))
-	next_button.pressed.connect(FallbackMusicManager.play_next_track.bind(1))
+	prev_button.pressed.connect(prev_pressed.bind(-1))
+	next_button.pressed.connect(prev_pressed.bind(1))
 	pause_toggle_button.pressed.connect(paused_pressed)
 	replay_button.pressed.connect(replay_pressed)
+	music_volume.value_changed.connect(_on_music_volume_changed)
 	
 	FallbackMusicManager.track_changed.connect(update_track_name)
 	update_track_name()
 	
 
+func _on_music_volume_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(&"Music"), value)
+
+func prev_pressed(dir: int) -> void:
+	reset_replaye()
+	FallbackMusicManager.play_next_track(dir)
+	
 func update_track_name() -> void:
 	track_label.text = FallbackMusicManager.get_current_track_name()
 	
 func replay_pressed() -> void:
 	FallbackMusicManager.toggle_repeat_current_track()
 	if FallbackMusicManager.locked:
-		replay_button.modulate = Color(0.282, 0.282, 0.282, 0.729)
-	else:
 		replay_button.modulate = Color(1.0, 1.0, 1.0, 1.0)
-		
+	else:
+		replay_button.modulate = Color(0.282, 0.282, 0.282, 0.729)
+
+func reset_replaye() -> void:
+	replay_button.modulate = Color(0.282, 0.282, 0.282, 0.729)
+	FallbackMusicManager.locked = false
+	
 func paused_pressed() -> void:
 	if not FallbackMusicManager.is_paused():
 		pause_toggle_button.texture_normal = play_button_texture
