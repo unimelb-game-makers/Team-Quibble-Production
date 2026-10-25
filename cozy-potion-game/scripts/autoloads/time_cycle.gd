@@ -26,6 +26,7 @@ var day_length: int = 10
 var day_progress: float = 0
 var days_passed: int = 0
 var target_day_progress: float = 0
+var visited_forest_this_day: bool = false
 
 #this block is responsible for actually progressing the day towards
 #the target day progress and checking if the day is over
@@ -80,6 +81,7 @@ func start_day() -> void:
 	target_day_progress = 0
 	days_passed += 1
 	day_progress_changed.emit()
+	visited_forest_this_day = false
 
 func end_day() -> void:
 	day_complete.emit()

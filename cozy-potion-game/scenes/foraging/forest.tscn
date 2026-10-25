@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d1s3n3yh2tev5" path="res://scenes/Mythical_Forest.tscn" id="1_ewpas"]
 [ext_resource type="Script" uid="uid://cx4e7cbvnke4v" path="res://scripts/foraging/foliage_manager.gd" id="1_ij0qq"]
 [ext_resource type="Script" uid="uid://ddb2nwyl1rdqy" path="res://scripts/foraging/foraging_ui/foraging_bag.gd" id="1_q7g5v"]
+[ext_resource type="PackedScene" uid="uid://c7a7w81ecgyv1" path="res://scenes/user_interface/time_ui.tscn" id="3_4j0k8"]
 [ext_resource type="Theme" uid="uid://5xdceq6g4wen" path="res://resources/ui_themes/merchant_ui_theme.tres" id="3_28u7r"]
 [ext_resource type="Script" uid="uid://ci3bywoe6ik6b" path="res://scripts/user_interface/merchant_ui.gd" id="3_iyol6"]
 [ext_resource type="Texture2D" uid="uid://yjhweuu18wcl" path="res://assets/sprites/foraging/backpack_base.png" id="4_ewpas"]
@@ -13,7 +14,7 @@
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="7_dofmw"]
 [ext_resource type="Script" uid="uid://5dvo1njpnk48" path="res://scripts/user_interface/popup_manager.gd" id="7_f3vpa"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="9_54ec3"]
-[ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/inventory/hover_inventory.gd" id="10_dofmw"]
+[ext_resource type="Script" uid="uid://c28p5ftio0l0j" path="res://scripts/Inventory/hover_inventory.gd" id="10_dofmw"]
 [ext_resource type="Texture2D" uid="uid://bf1iww4xs8cbc" path="res://assets/sprites/dialogue/speech_bubble.png" id="11_bdats"]
 [ext_resource type="Texture2D" uid="uid://cgsnb674nd7va" path="res://assets/sprites/foraging/NPC_Merchant.png" id="12_bdats"]
 [ext_resource type="Texture2D" uid="uid://bro5ya0bdgk6h" path="res://assets/sprites/foraging/backpack_grid_small.png" id="12_g8fsv"]
@@ -26,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://b18nfiye242g" path="res://scenes/foraging/shopkeeper.tscn" id="15_v7bn7"]
 [ext_resource type="Script" uid="uid://ovkukftdmfbw" path="res://scenes/foraging/merchant_spawner.gd" id="16_v7bn7"]
 [ext_resource type="PackedScene" uid="uid://cs73l1h6me3yy" path="res://scenes/player.tscn" id="18_dofmw"]
+[ext_resource type="PackedScene" uid="uid://yb5b6cpub8qh" path="res://scenes/user_interface/portal_popup.tscn" id="19_fbiof"]
 [ext_resource type="Script" uid="uid://c14xedth331vd" path="res://scenes/foraging/forest_music_p_laceholder.gd" id="24_vq4f2"]
 [ext_resource type="AudioStream" uid="uid://ctt05trglkycb" path="res://audio/music/ForestMusicPLACEHOLDER/75bpm_Forest_Theme_Night_FullMix(1).wav" id="25_vq4f2"]
 
@@ -59,7 +61,7 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("7_dofmw")
 font_size = 42
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cg1iu"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2cr7a"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4dvm4"]
@@ -81,6 +83,8 @@ environment = SubResource("Environment_dofmw")
 [node name="MythicalForest" parent="." unique_id=1236479139 instance=ExtResource("1_ewpas")]
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=127223334]
+
+[node name="TimeUI" parent="SceneUI" unique_id=1025226181 instance=ExtResource("3_4j0k8")]
 
 [node name="PopupSubWindow" parent="SceneUI" unique_id=1360167922 groups=["popup_subwindow"] instance=ExtResource("15_67phx")]
 
@@ -398,6 +402,8 @@ offset = Vector3(0, 1.5, 0)
 
 [node name="PopupSubWindow2" parent="SceneUI" unique_id=190725734 groups=["popup_subwindow"] instance=ExtResource("15_67phx")]
 
+[node name="PortalPopup" parent="SceneUI" unique_id=640943272 instance=ExtResource("19_fbiof")]
+
 [node name="TreeFoliageManager" type="Node" parent="." unique_id=1037012145]
 script = ExtResource("1_ij0qq")
 ingredients = Dictionary[int, float]({
@@ -685,7 +691,7 @@ merchant_ui = NodePath("../SceneUI/MerchantUI")
 
 [node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
 transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 1.5899999, 90.812, -0.149, -79.953)
-texture = SubResource("ViewportTexture_cg1iu")
+texture = SubResource("ViewportTexture_2cr7a")
 destination_path = &"res://scenes/enviroments/shop_revamp.tscn"
 
 [node name="LeftQuadrant" type="Area3D" parent="." unique_id=1142467544]
