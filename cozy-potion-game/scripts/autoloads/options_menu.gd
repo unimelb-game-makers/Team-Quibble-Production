@@ -3,12 +3,17 @@ extends CanvasLayer
 @export_group("Menus")
 @export var options_menu_container: Container
 @export var sound_menu: Control
+@export var video_menu: MarginContainer
+@export var controls_menu: Control
 
 @export_group("Buttons")
 @export var exit_game_button: Button
 @export var sound_menu_button: Button
 @export var button_container: VBoxContainer
 @export var return_to_game_button: Button
+@export var video_menu_button: Button
+
+@export var controls_menu_button: Button
 
 @export_group("Blur")
 @export var blur_rect: ColorRect
@@ -38,6 +43,8 @@ func _ready() -> void:
 	options_menu_container.offset_transform_position = get_options_menu_out_position()
 	# Handle Menus
 	menus.append(sound_menu)
+	menus.append(video_menu)
+	menus.append(controls_menu)
 	hide_menus()
 	
 	connect_buttons()
@@ -47,6 +54,8 @@ func connect_buttons() -> void:
 	exit_game_button.pressed.connect(get_tree().quit)
 	sound_menu_button.pressed.connect(open_sound_menu)
 	return_to_game_button.pressed.connect(close_options_menu)
+	video_menu_button.pressed.connect(open_video_menu)
+	controls_menu_button.pressed.connect(open_controls_menu)
 
 func _unhandled_input(event: InputEvent) -> void:
 	#print_debug(event.as_text())
@@ -70,7 +79,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # This will need continued refactoring such that each menu has its own script to call show and hide logic.
 func open_menu(menu: Control) -> void:
-	menu.visible = true
+	menu.show()
 	for _menu in menus:
 		if _menu != menu and _menu != options_menu_container:
 			_menu.hide()
@@ -90,6 +99,15 @@ func open_sound_menu() -> void:
 	open_menu(sound_menu)
 	#animate_options_menu_out()
 	#print(sound_menu.visible)
+
+func open_video_menu() -> void:
+	open_menu(video_menu)
+
+func open_controls_menu() -> void:
+	open_menu(controls_menu)
+	#animate_options_menu_out()
+	#print(controls_menu.visible)
+
 
 func open_options_menu() -> void:
 	if not options_menu_container:

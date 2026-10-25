@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cynxtrl82vx8o"]
+
+[ext_resource type="Script" uid="uid://bw4ja3vk6vhkh" path="res://scripts/menus/options/video_menu.gd" id="1_802n7"]
+[ext_resource type="StyleBox" uid="uid://bspaxd8ocmbvd" path="res://resources/ui_themes/art_stylebox_texture.tres" id="2_1fxgg"]
+
+[node name="VideoMenu" type="MarginContainer" unique_id=111586457 node_paths=PackedStringArray("resolution_option_button", "fps_option_button", "full_screen_button")]
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_802n7")
+resolution_option_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/ResolutionControl/OptionButton")
+fps_option_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/FpsControl/OptionButton")
+full_screen_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/FullScreenControl/Button")
+resolution_options = Array[Vector2i]([Vector2i(1280, 720), Vector2i(1920, 1080)])
+fps_options = Array[int]([1, 30, 60, 0])
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=235589810]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_1fxgg")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1398534323]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=323857358]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=839827624]
+layout_mode = 2
+theme_override_font_sizes/font_size = 33
+text = "Video Settings"
+horizontal_alignment = 1
+
+[node name="ResolutionControl" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=550723833]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/ResolutionControl" unique_id=1998555783]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/ResolutionControl" unique_id=486787894]
+layout_mode = 2
+
+[node name="FpsControl" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=206916452]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/FpsControl" unique_id=1801090070]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "FPS"
+
+[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/FpsControl" unique_id=1254976878]
+layout_mode = 2
+
+[node name="FullScreenControl" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1132167269]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/FullScreenControl" unique_id=1629097165]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Full Screen"
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/FullScreenControl" unique_id=830006104]
+layout_mode = 2
+toggle_mode = true
+text = "cool checkbox here"

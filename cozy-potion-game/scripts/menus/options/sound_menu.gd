@@ -2,22 +2,51 @@ extends MarginContainer
 
 @export var master_volume: HSlider
 @export var music_volume: HSlider
+@export var ambience_control: HSlider
 @export var sfx_volume: HSlider
 
-## Its a bad idea to connect anything to value-changed because it
-## runs every frame. Every ~0.1 seconds is probably better
-@export var slider_poll_timer: Timer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	slider_poll_timer.timeout.connect(update_bus_volumes)
+	master_volume.value_changed.connect(_on_master_volume_changed)
+	music_volume.value_changed.connect(_on_music_volume_changed)
+	ambience_control.value_changed.connect(_on_ambience_volume_changed)
+	sfx_volume.value_changed.connect(_on_sfx_volume_changed)
+	
+	await MusicController.ready
+	
+	sync_with_controller()
 
-func update_bus_volumes() -> void:
-	## yeah, yeah, bad magic strings. We're shipping this.
-	var music_index = AudioServer.get_bus_index("Music")
-	AudioServer.set_bus_volume_linear(music_index,music_volume.ratio)
-	print_debug(AudioServer.get_bus_volume_linear(music_index))
-	var sfx_index = AudioServer.get_bus_index("Sfx")
-	AudioServer.set_bus_volume_linear(sfx_index, sfx_volume.ratio)
-	var master_index = AudioServer.get_bus_index("Master")
-	AudioServer.set_bus_volume_linear(master_index, master_volume.ratio)
+func sync_with_controller() -> void:
+	music_volume.set_value_no_signal(MusicController.music.volume)
+
+func get_volume(value: float) -> float:
+	var master = clamp(master_volume.value, 0.0, 100.0) / 100.0
+	var channel = clamp(value, 0.0, 100.0) / 100.0
+	return clamp(channel * master, 0.0, 1.0)
+	
+func _on_master_volume_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(&"Master"), value)
+
+func _on_music_volume_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(&"Music"), value)
+	#var volume = (value * (1.0 + master_volume.value /100.0))/100.0
+	#MusicController.music.volume = volume
+	#print(volume)
+
+func _on_ambience_volume_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(&"Ambience"), value)
+
+func _on_sfx_volume_changed(value: float) -> void:
+	AudioServer.set_bus_volume_linear(AudioServer.get_bus_index(&"Sfx"), value)
+
+# func _on_master_volume_changed(value: float) -> void:
+# 	# change both music and sfx volumes
+# 	MusicController.music.volume = get_volume(music_volume.value)
+# 	AudioManager.set_volume(get_volume(sfx_volume.value))
+
+# func _on_music_volume_changed(value: float) -> void:
+# 	MusicController.music.volume = get_volume(value)
+
+# func _on_sfx_volume_changed(value: float) -> void:
+# 	AudioManager.set_volume(get_volume(value))
