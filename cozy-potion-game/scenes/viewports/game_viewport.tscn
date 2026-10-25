@@ -101,6 +101,3 @@ color = Color(0, 0, 0, 1)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="ScreenTransitionRect" unique_id=460488566 groups=["SceneTransitionRectAnimPlayer"]]
 libraries/ = SubResource("AnimationLibrary_sygov")
 autoplay = &"FADE_START"
-
-[node name="FmodBankLoader" type="FmodBankLoader" parent="." unique_id=71857558]
-bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Master.bank", "res://audio/music/ShopMusicFMOD/Build/Desktop/Music.bank"]

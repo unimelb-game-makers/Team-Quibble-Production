@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c4ksg0rttbq1b" path="res://scripts/menus/options/sound_menu.gd" id="1_7fdhg"]
 [ext_resource type="StyleBox" uid="uid://bspaxd8ocmbvd" path="res://resources/ui_themes/art_stylebox_texture.tres" id="1_ujdih"]
 
-[node name="SoundMenu" type="MarginContainer" unique_id=111586457 node_paths=PackedStringArray("master_volume", "music_volume", "sfx_volume")]
+[node name="SoundMenu" type="MarginContainer" unique_id=111586457 node_paths=PackedStringArray("master_volume", "music_volume", "sfx_volume", "slider_poll_timer")]
 size_flags_horizontal = 3
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
@@ -13,6 +13,7 @@ script = ExtResource("1_7fdhg")
 master_volume = NodePath("PanelContainer/MarginContainer/VBoxContainer/MasterControl/HSlider")
 music_volume = NodePath("PanelContainer/MarginContainer/VBoxContainer/MusicControl/HSlider")
 sfx_volume = NodePath("PanelContainer/MarginContainer/VBoxContainer/SFXControl/HSlider")
+slider_poll_timer = NodePath("SliderPollTimer")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=235589810]
 layout_mode = 2
@@ -78,3 +79,7 @@ value = 100.0
 visible = false
 layout_mode = 2
 text = "Return"
+
+[node name="SliderPollTimer" type="Timer" parent="." unique_id=2091777715]
+wait_time = 0.3
+autostart = true
