@@ -5,6 +5,10 @@
 [ext_resource type="Script" uid="uid://1uplvo1hvm7y" path="res://scripts/user_interface/main_menu.gd" id="3_yx444"]
 [ext_resource type="Script" uid="uid://5pvk3tb41p66" path="res://scripts/world/scene_music_controller.gd" id="4_qc2aw"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
+line_spacing = 22.3
+font_size = 32
+
 [node name="TitleScreen" type="CanvasLayer" unique_id=1226151043]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1747670831]
@@ -18,7 +22,7 @@ render_target_update_mode = 4
 
 [node name="TitleScreenFakeForest" parent="SubViewportContainer/SubViewport" unique_id=1357049931 instance=ExtResource("1_n17qi")]
 
-[node name="Control" type="Control" parent="." unique_id=47089385 node_paths=PackedStringArray("options_button", "continue_button", "new_game_button", "quit_button", "buttons_container", "title_label")]
+[node name="Control" type="Control" parent="." unique_id=47089385 node_paths=PackedStringArray("options_button", "continue_button", "new_game_button", "quit_button", "credits_button", "close_credits_button", "credits_screen", "buttons_container", "title_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,6 +35,9 @@ options_button = NodePath("MarginContainer/ButtonsContainer/OptionsButton")
 continue_button = NodePath("MarginContainer/ButtonsContainer/ContinueButton")
 new_game_button = NodePath("MarginContainer/ButtonsContainer/NewGameButton")
 quit_button = NodePath("MarginContainer/ButtonsContainer/QuitButton")
+credits_button = NodePath("MarginContainer/ButtonsContainer/CreditsButton")
+close_credits_button = NodePath("MarginContainer2/Control/CloseCreditsButton")
+credits_screen = NodePath("MarginContainer2")
 buttons_container = NodePath("MarginContainer/ButtonsContainer")
 title_label = NodePath("MarginContainer/VBoxContainer/TitleLabel")
 shop_path = "res://scenes/enviroments/shop_revamp.tscn"
@@ -80,6 +87,78 @@ text = "New Game
 layout_mode = 2
 text = "Quit
 "
+
+[node name="CreditsButton" type="Button" parent="Control/MarginContainer/ButtonsContainer" unique_id=1418693150]
+layout_mode = 2
+text = "Credits"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control" unique_id=492695637]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 300
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 300
+
+[node name="Control" type="Control" parent="Control/MarginContainer2" unique_id=221982466]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/MarginContainer2/Control" unique_id=1805899474]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer2/Control/PanelContainer" unique_id=440248031]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer2/Control/PanelContainer/VBoxContainer" unique_id=724934630]
+layout_mode = 2
+text = "Team Quibble"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer2/Control/PanelContainer/VBoxContainer" unique_id=1027400341]
+layout_mode = 2
+theme_override_constants/separation = 150
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/MarginContainer2/Control/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1759481511]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Daniel Sandvik - Design lead, Producer, Music
+Hamish Luke - Programming lead, Design
+Ren Jackson - 3D Art, Design
+Stefanus Hanson Hadikristijanto - 3D Art
+Stephanie Min - 2D Art
+Damien Faustine - 2D Art
+Andrew Irvin - 2D Art"
+label_settings = SubResource("LabelSettings_4dvm4")
+
+[node name="Label2" type="Label" parent="Control/MarginContainer2/Control/PanelContainer/VBoxContainer/HBoxContainer" unique_id=138863995]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Dylan Wotherspoon - Programming
+Jay Kim - Programming
+Ramsey Morris - Programming
+Jeremy Wong - Music
+Thomas Afford - Music"
+label_settings = SubResource("LabelSettings_4dvm4")
+
+[node name="CloseCreditsButton" type="Button" parent="Control/MarginContainer2/Control" unique_id=2001097079]
+layout_mode = 0
+offset_left = 590.0
+offset_top = 495.0
+offset_right = 737.0
+offset_bottom = 566.0
+text = "Close"
 
 [node name="TitleMusicController" type="Node" parent="." unique_id=2130283347]
 script = ExtResource("4_qc2aw")

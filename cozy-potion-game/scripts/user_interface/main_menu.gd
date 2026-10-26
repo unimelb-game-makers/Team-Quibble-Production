@@ -4,10 +4,12 @@ extends Control
 @export var continue_button: Button
 @export var new_game_button: Button
 @export var quit_button: Button
+@export var credits_button: Button
+@export var close_credits_button: Button
+@export var credits_screen: Control
 
 @export var buttons_container: Container
 @export var title_label: Label
-@export var options_container: Container
 
 @export var shop_path: String
 
@@ -18,8 +20,9 @@ func _ready() -> void:
 	options_button.pressed.connect(open_options)
 	new_game_button.pressed.connect(new_game_pressed)
 	quit_button.pressed.connect(quit)
+	credits_button.pressed.connect(credits_screen.show)
+	close_credits_button.pressed.connect(credits_screen.hide)
 
-	
 func quit() -> void:
 	get_tree().quit()
 

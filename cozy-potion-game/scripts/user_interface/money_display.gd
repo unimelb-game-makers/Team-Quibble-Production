@@ -7,6 +7,7 @@ var internal_money_target: int
 
 func _ready() -> void:
 	PersistentInventory.money_changed.connect(update_money)
+	update_money(PersistentInventory.money)
 
 func _process(delta: float) -> void:
 	if not is_equal_approx(internal_money, internal_money_target):
