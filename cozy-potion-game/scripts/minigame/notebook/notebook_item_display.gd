@@ -2,11 +2,13 @@ class_name NotebookItemDisplay
 extends Node
 
 
-@onready var sprite: TextureRect = $Sprite
-@onready var label_name: Label = $Name
-@onready var label_descrip: Label = $Description
-@onready var label_att_title: Label = $AttributeTitle
-@onready var label_att_list: Label = $AttributeList
+@onready var sprite: TextureRect = $MarginContainer3/VBoxContainer/Sprite
+@onready var label_name: Label = $MarginContainer3/VBoxContainer/Name
+@onready var label_descrip: Label = $MarginContainer3/VBoxContainer/MarginContainer/VBoxContainer/Description
+@onready var label_att_title: Label = $MarginContainer3/VBoxContainer/AttributeTitle
+@onready var label_att_list: Label = $MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer/AttributeList
+
+@onready var background_container: CenterContainer = $CenterContainer
 
 
 func empty_display() -> void:
@@ -16,12 +18,18 @@ func empty_display() -> void:
 	label_att_title.text = ""
 	label_att_list.text = ""
 
+
 func reset_display() -> void:
 	sprite.texture = null
 	label_name.text = ""
 	label_descrip.text = ""
 	label_att_title.text = "Attributes"
 	label_att_list.text = ""
+
+
+func show_background() -> void:
+	background_container.visible = true
+
 
 func set_potion_ingredient(ingre :PotionIngredient) -> void:
 	reset_display()

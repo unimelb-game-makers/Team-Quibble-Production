@@ -71,10 +71,9 @@ func set_stack(stack:Stack) -> void:
 
 # Adds ItemHolder that does not exist in scene yet, as child and stores in slot
 func set_item_holder(holder : ItemHolder) -> void:
-	if item_holder == null:
-		item_holder = holder
-		drag_acceptor.accepting_items = false
-		item_holder.draggable_component.draggable_accepted.connect(remove_holder)
+	item_holder = holder
+	drag_acceptor.accepting_items = false
+	item_holder.draggable_component.draggable_accepted.connect(remove_holder)
 
 func remove_holder() -> void:
 	item_holder.draggable_component.draggable_accepted.disconnect(remove_holder)
@@ -90,6 +89,7 @@ func remove_holder() -> void:
 		item_holder.get_item_stack().quantity = 1
 		set_stack(Stack.new(previous_quant - 1).
 			clone_type(item_holder.get_item_stack()))
+
 
 func is_item_blacklist(_item: Resource) -> bool:
 	if blacklist.size() == 0:

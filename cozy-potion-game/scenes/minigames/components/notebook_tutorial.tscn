@@ -1,3 +1,5 @@
 [gd_scene format=3 uid="uid://bio4negeixv1a"]
 
-[node name="NotebookTutorial" type="CanvasLayer" unique_id=1376757691]
+[node name="NotebookTutorial" type="Control" unique_id=1551564634]
+layout_mode = 3
+anchors_preset = 0
