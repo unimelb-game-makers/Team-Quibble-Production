@@ -22,20 +22,24 @@ gradient = SubResource("Gradient_twa86")
 custom_minimum_size = Vector2(1440, 810)
 offset_right = 1444.0
 offset_bottom = 810.0
+mouse_filter = 2
 script = ExtResource("1_ja5e2")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2057694618]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 
 [node name="Pedia" type="VBoxContainer" parent="MarginContainer" unique_id=1201628451]
 custom_minimum_size = Vector2(720, 810)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="ItemArray" type="GridContainer" parent="MarginContainer/Pedia" unique_id=1762111887]
 custom_minimum_size = Vector2(0, 600)
 layout_mode = 2
+mouse_filter = 2
 columns = 3
 script = ExtResource("3_twa86")
 cols = 5
@@ -43,6 +47,7 @@ rows = 5
 
 [node name="Arrows" type="HBoxContainer" parent="MarginContainer/Pedia" unique_id=1307477899]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="LeftArrow" type="TextureButton" parent="MarginContainer/Pedia/Arrows" unique_id=975462088]
 layout_mode = 2

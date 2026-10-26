@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://bxumbhckfmkk0" path="res://assets/UI/Notebook/notebook_inside_cover.png" id="4_wkqyn"]
 [ext_resource type="Texture2D" uid="uid://b5rpmgsvtpbp3" path="res://assets/UI/Notebook/notebook_interior_spiral_full.png" id="5_naw0s"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x3b8q"]
+
 [sub_resource type="FontVariation" id="FontVariation_anejk"]
 base_font = ExtResource("3_0cbu8")
 
@@ -17,14 +19,18 @@ custom_maximum_size = Vector2(720, -1)
 clip_contents = true
 offset_right = 1440.0
 offset_bottom = 810.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_x3b8q")
 script = ExtResource("1_iee8v")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1954681402]
+visible = false
 custom_minimum_size = Vector2(1440, 405)
 propagate_maximum_size = false
 layout_mode = 2
 offset_transform_enabled = true
 offset_transform_position = Vector2(-360, 0)
+mouse_filter = 2
 
 [node name="CoverInside" type="TextureRect" parent="CenterContainer" unique_id=355548406]
 custom_maximum_size = Vector2(1440, 810)
@@ -43,11 +49,10 @@ texture = ExtResource("5_naw0s")
 [node name="MarginContainer3" type="MarginContainer" parent="." unique_id=2050937997]
 layout_mode = 2
 theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 125
+theme_override_constants/margin_top = 50
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3" unique_id=1100791470]
 custom_minimum_size = Vector2(409, 476)
-custom_maximum_size = Vector2(409, 476)
 layout_mode = 2
 
 [node name="Sprite" type="TextureRect" parent="MarginContainer3/VBoxContainer" unique_id=1153897943]
@@ -55,7 +60,7 @@ custom_minimum_size = Vector2(128, 128)
 custom_maximum_size = Vector2(128, 128)
 layout_mode = 2
 texture = ExtResource("1_4o8a3")
-stretch_mode = 2
+expand_mode = 4
 
 [node name="Name" type="Label" parent="MarginContainer3/VBoxContainer" unique_id=1512664830]
 custom_maximum_size = Vector2(325, -1)
@@ -71,12 +76,10 @@ autowrap_mode = 2
 layout_mode = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3/VBoxContainer/MarginContainer" unique_id=1385977881]
-layout_mode = 2
-
-[node name="Description" type="Label" parent="MarginContainer3/VBoxContainer/MarginContainer/VBoxContainer" unique_id=1983781362]
+[node name="Description" type="Label" parent="MarginContainer3/VBoxContainer/MarginContainer" unique_id=1983781362]
 custom_minimum_size = Vector2(370, 153)
 custom_maximum_size = Vector2(370, 153)
+propagate_maximum_size = true
 layout_mode = 2
 theme = SubResource("Theme_y5bu6")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -96,10 +99,8 @@ text = "Attributes"
 layout_mode = 2
 theme_override_constants/margin_left = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer3/VBoxContainer/MarginContainer2" unique_id=956539765]
-layout_mode = 2
-
-[node name="AttributeList" type="Label" parent="MarginContainer3/VBoxContainer/MarginContainer2/VBoxContainer" unique_id=487737558]
+[node name="AttributeList" type="Label" parent="MarginContainer3/VBoxContainer/MarginContainer2" unique_id=487737558]
+propagate_maximum_size = true
 layout_mode = 2
 theme = SubResource("Theme_y5bu6")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
