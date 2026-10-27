@@ -189,6 +189,7 @@ func _on_mutated(mutation: Dictionary) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	#print_debug(event)
 	if will_block_other_input:
 		get_viewport().set_input_as_handled()
 	# See if we need to skip typing of the dialogue
@@ -213,6 +214,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		next(dialogue_line.next_id)
 	if event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() != null:
 		print_debug("Current Focus: " + get_viewport().gui_get_focus_owner().name)
+		next(dialogue_line.next_id)
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == null:
 		print_debug("No current focus")
 		next(dialogue_line.next_id)

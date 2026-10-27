@@ -4,8 +4,6 @@ extends PanelContainer
 # Emitted every frame if cursor inside slot
 signal hovering
 
-const ITEM_HOLDER = preload("uid://80sdcv4hsqa1")
-
 var item_holder : ItemHolder = null
 var ishovering := false
 var max_quantity: int = 999
@@ -55,7 +53,7 @@ func emulate_mouse_inside() -> bool:
 	return intersecting_mouse
 
 func create_holder_as_child(stack : Stack) -> ItemHolder:
-	var new_item_holder = ITEM_HOLDER.instantiate()
+	var new_item_holder: ItemHolder = ItemHolder.get_scene().instantiate()
 	add_child(new_item_holder)
 	new_item_holder.stack = stack
 	

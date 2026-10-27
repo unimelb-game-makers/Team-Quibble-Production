@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://ck5cra1btw4tq" path="res://assets/models/Customers/NPC_Base_2_Baker.glb" id="8_vb12q"]
 [ext_resource type="PackedScene" uid="uid://4myaodb70j83" path="res://assets/models/Customers/NPC_Base_2_Courier.glb" id="9_4sck7"]
 [ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/user_interface/list_manager.gd" id="9_fg6qk"]
-[ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="10_jn854"]
 [ext_resource type="PackedScene" uid="uid://duepgsna73jdx" path="res://assets/models/Customers/NPC_Base_2_Musician.glb" id="10_kh5es"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="11_jjrkg"]
 [ext_resource type="PackedScene" uid="uid://c2dggmeibidsk" path="res://assets/models/Customers/NPC_Base_2_Student.glb" id="11_qwmll"]
@@ -37,8 +36,11 @@
 [ext_resource type="PackedScene" uid="uid://bm55o4twdnjtx" path="res://assets/models/Customers/NPC_Base_3_Lumberjack.glb" id="16_va5sy"]
 [ext_resource type="PackedScene" uid="uid://djwvfhxhrfr83" path="res://assets/models/Customers/investigator_rotated.tscn" id="20_qwmll"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="21_jn854"]
-[ext_resource type="Script" uid="uid://c63vcvaayrcgx" path="res://scenes/enviroments/shop_music.gd" id="22_jjrkg"]
+[ext_resource type="PackedScene" uid="uid://c7buurds4lwef" path="res://scenes/user_interface/money_display.tscn" id="21_kh5es"]
+[ext_resource type="StyleBox" uid="uid://cff3oxr8jourw" path="res://resources/ui_themes/wreath_style_box.tres" id="28_10j44"]
 [ext_resource type="PackedScene" uid="uid://c42y0lkc4tsam" path="res://scenes/user_interface/notebook_hint.tscn" id="29_kh5es"]
+[ext_resource type="Script" uid="uid://bkv0jpacagup1" path="res://scripts/day_starter.gd" id="40_qwmll"]
+[ext_resource type="Script" uid="uid://5pvk3tb41p66" path="res://scripts/world/scene_music_controller.gd" id="41_10j44"]
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -76,19 +78,10 @@ _data = {
 &"person_in": SubResource("Animation_tbgi4")
 }
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r5foe"]
-texture = ExtResource("10_jn854")
-texture_margin_left = 64.0
-texture_margin_top = 64.0
-texture_margin_right = 64.0
-texture_margin_bottom = 64.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ja4bt"]
 size = Vector3(100, 1, 100)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_kh5es"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2x3wa"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="ShopRevamp" type="Node3D" unique_id=1366204913]
@@ -124,6 +117,8 @@ customer_model_offset = Vector3(0, -1, 0.25)
 libraries/ = SubResource("AnimationLibrary_xua33")
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=1356840973]
+
+[node name="MoneyDisplay" parent="SceneUI" unique_id=1711600455 instance=ExtResource("21_kh5es")]
 
 [node name="MarginContainer" type="MarginContainer" parent="SceneUI" unique_id=1952891633]
 anchors_preset = 15
@@ -170,7 +165,7 @@ offset_top = 60.0
 offset_right = -51.0
 offset_bottom = 177.0
 grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_r5foe")
+theme_override_styles/panel = ExtResource("28_10j44")
 
 [node name="MarginContainer" type="MarginContainer" parent="SceneUI/ListManager/PanelContainer" unique_id=515838446]
 layout_mode = 2
@@ -236,10 +231,14 @@ script = ExtResource("7_7orju")
 shape = SubResource("BoxShape3D_ja4bt")
 
 [node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("21_jn854")]
-transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 3.2892015, 1.6600952, 0.16595316)
-texture = SubResource("ViewportTexture_kh5es")
+transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 3.349, 1.5, 0.245)
+texture = SubResource("ViewportTexture_2x3wa")
 destination_path = &"uid://bxq7bq8537rse"
 
-[node name="ShopMusicStarter" type="Node" parent="." unique_id=1890158475]
-script = ExtResource("22_jjrkg")
-metadata/_custom_type_script = "uid://c63vcvaayrcgx"
+[node name="DayStarter" type="Node" parent="." unique_id=872273419]
+script = ExtResource("40_qwmll")
+
+[node name="ShopMusicController" type="Node" parent="." unique_id=1189943893]
+script = ExtResource("41_10j44")
+day_track = 1
+night_track = 2
