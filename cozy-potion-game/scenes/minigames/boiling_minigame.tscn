@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://c4hnfe6y3qo4c"]
+
+[ext_resource type="Script" uid="uid://vuaeoe2cnhaa" path="res://scripts/world/minigame_object.gd" id="1_52nmd"]
+[ext_resource type="PackedScene" uid="uid://dwjhqwlvqsrte" path="res://scenes/minigames/components/boiling_minigame_ui.tscn" id="2_nqjha"]
+[ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="3_w5i0c"]
+[ext_resource type="PackedScene" uid="uid://cct0f51uinf4v" path="res://assets/models/PH/DecoctTable/DecoctTable.glb" id="6_nqjha"]
+[ext_resource type="PackedScene" uid="uid://cotyslk8lxn27" path="res://assets/models/PH/Decoction_Pot/DecoctPot.glb" id="7_52nmd"]
+[ext_resource type="PackedScene" uid="uid://cgwcxn7koxnq4" path="res://scenes/user_interface/indicator_anchor.tscn" id="7_wxpo5"]
+[ext_resource type="Script" uid="uid://jusf4fjwy8qp" path="res://scripts/audio/audio_player_3d.gd" id="8_k16yx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1khlx"]
+
+[node name="BoilingMinigame" type="Node3D" unique_id=93761189 node_paths=PackedStringArray("interactable", "indicator_pos", "audio_player")]
+script = ExtResource("1_52nmd")
+minigame_scene = ExtResource("2_nqjha")
+interactable = NodePath("BoilingMinigameInteractable")
+indicator_pos = NodePath("IndicatorAnchor")
+audio_player = NodePath("AudioPlayer3D")
+
+[node name="BoilingMinigameInteractable" type="Area3D" parent="." unique_id=188938070]
+collision_layer = 1048576
+collision_mask = 67108865
+script = ExtResource("3_w5i0c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoilingMinigameInteractable" unique_id=898391114]
+shape = SubResource("BoxShape3D_1khlx")
+
+[node name="BoilingStationModel" type="Node3D" parent="." unique_id=59197122]
+
+[node name="DecoctTable" parent="BoilingStationModel" unique_id=628227242 instance=ExtResource("6_nqjha")]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+
+[node name="DecoctPot" parent="BoilingStationModel" unique_id=604840710 instance=ExtResource("7_52nmd")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 1, 0)
+
+[node name="IndicatorAnchor" parent="." unique_id=1791509362 instance=ExtResource("7_wxpo5")]
+
+[node name="AudioPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=809065451]
+script = ExtResource("8_k16yx")
+metadata/_custom_type_script = "uid://jusf4fjwy8qp"
