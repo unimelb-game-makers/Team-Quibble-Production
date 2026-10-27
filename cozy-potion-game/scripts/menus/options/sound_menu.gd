@@ -2,7 +2,6 @@ extends MarginContainer
 
 @export var master_volume: HSlider
 @export var music_volume: HSlider
-@export var ambience_control: HSlider
 @export var sfx_volume: HSlider
 
 
@@ -10,15 +9,8 @@ extends MarginContainer
 func _ready() -> void:
 	master_volume.value_changed.connect(_on_master_volume_changed)
 	music_volume.value_changed.connect(_on_music_volume_changed)
-	ambience_control.value_changed.connect(_on_ambience_volume_changed)
 	sfx_volume.value_changed.connect(_on_sfx_volume_changed)
-	
-	await MusicController.ready
-	
-	sync_with_controller()
 
-func sync_with_controller() -> void:
-	music_volume.set_value_no_signal(MusicController.music.volume)
 
 func get_volume(value: float) -> float:
 	var master = clamp(master_volume.value, 0.0, 100.0) / 100.0

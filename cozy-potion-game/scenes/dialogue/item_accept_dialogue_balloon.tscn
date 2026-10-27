@@ -3,7 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://73jm5qjy52vq" path="res://scenes/dialogue/speech_bubble_balloon.tscn" id="1_4m3kb"]
 [ext_resource type="Script" uid="uid://d0e3x3ru126fm" path="res://scripts/user_interface/item_accept_dialogue_balloon.gd" id="2_4xx5q"]
 [ext_resource type="Script" uid="uid://bltn1i8oigeai" path="res://scripts/user_interface/customer_potion_accept_zone.gd" id="3_blsnt"]
+[ext_resource type="Theme" uid="uid://bx5pwv2f7qea6" path="res://resources/ui_themes/main_theme.tres" id="3_e4ovs"]
 [ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/user_interface/draggable_acceptor_component.gd" id="4_5h854"]
+[ext_resource type="StyleBox" uid="uid://cff3oxr8jourw" path="res://resources/ui_themes/wreath_style_box.tres" id="5_x4c7j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
+font_size = 27
 
 [node name="ItemAcceptDialogueBalloon" unique_id=38036521 node_paths=PackedStringArray("potion_accept_zone") instance=ExtResource("1_4m3kb")]
 script = ExtResource("2_4xx5q")
@@ -13,7 +18,6 @@ potion_accept_zone = NodePath("PotionAcceptor/CustomerPotionAcceptZone")
 mouse_filter = 2
 
 [node name="PotionAcceptor" type="Control" parent="." index="2" unique_id=457457935]
-visible = false
 z_index = -1
 layout_mode = 3
 anchors_preset = 15
@@ -22,16 +26,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("3_e4ovs")
 
 [node name="CustomerPotionAcceptZone" type="Control" parent="PotionAcceptor" index="0" unique_id=1524965548 node_paths=PackedStringArray("draggable_acceptor_compoment")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 853.0
-offset_top = 332.0
-offset_right = -805.0
-offset_bottom = -476.0
+offset_left = 774.0
+offset_top = 258.0
+offset_right = -746.0
+offset_bottom = -422.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -46,6 +51,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_styles/panel = ExtResource("5_x4c7j")
 
 [node name="MarginContainer" type="MarginContainer" parent="PotionAcceptor/CustomerPotionAcceptZone/PanelContainer" index="0" unique_id=116472586]
 layout_mode = 2
@@ -63,3 +69,12 @@ mouse_filter = 2
 script = ExtResource("4_5h854")
 use_max_items = true
 metadata/_custom_type_script = "uid://b85c75nnvco20"
+
+[node name="Label" type="Label" parent="PotionAcceptor/CustomerPotionAcceptZone" index="1" unique_id=919835068]
+layout_mode = 0
+offset_left = 109.0
+offset_top = -11.0
+offset_right = 292.0
+offset_bottom = 17.0
+text = "Drag Potion Here"
+label_settings = SubResource("LabelSettings_4dvm4")

@@ -45,6 +45,19 @@
 [ext_resource type="Texture2D" uid="uid://o1kwab67j3tx" path="res://assets/textures/mythical_forest/Mushrooms/Fly_Agaric_Group_1_Mushrooms_C.png" id="42_rduve"]
 [ext_resource type="Texture2D" uid="uid://cna0o7yl5h05f" path="res://assets/textures/mythical_forest/Mushrooms/Fly_Agaric_Group_2_Mushrooms_C.png" id="43_583gl"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xpopa"]
+sky_top_color = Color(0.36107546, 0.5173906, 0.69890016, 1)
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_66erv"]
+sky_material = SubResource("ProceduralSkyMaterial_xpopa")
+
+[sub_resource type="Environment" id="Environment_w3ps2"]
+background_mode = 2
+sky = SubResource("Sky_66erv")
+glow_enabled = true
+
 [sub_resource type="Gradient" id="Gradient_w0y5q"]
 offsets = PackedFloat32Array(0.2, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
@@ -532,6 +545,9 @@ size = Vector3(3.7128906, 5.095459, 2.6708984)
 size = Vector3(7.4765625, 18.809692, 115.96855)
 
 [node name="MythicalForest" type="Node3D" unique_id=1236479139]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1268247392]
+environment = SubResource("Environment_w3ps2")
 
 [node name="Mythical_Forest_Layout" type="Sprite3D" parent="." unique_id=810623302]
 transform = Transform3D(12.075, 0, 0, 0, -5.27815e-07, 12.075, 0, -12.075, -5.27815e-07, 107.23567, 2.3725243, -81.689644)

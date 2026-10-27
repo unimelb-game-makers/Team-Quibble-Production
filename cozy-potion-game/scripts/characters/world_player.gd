@@ -60,9 +60,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		aesthetic_movement(event)
 
 func inventory() -> Inventory:
-	assert(hotbar_display != null, "Player's inventory could not be found")
-
-	return hotbar_display.inventory
+	if hotbar_display:
+		return hotbar_display.inventory
+	return null
 
 
 func aesthetic_movement(event: InputEvent) -> void:
