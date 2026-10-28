@@ -65,7 +65,7 @@ func play_music_track(track_id: TRACKS, fade: FADE = FADE.NONE) -> void:
 		tween.tween_property(old_music_player, "volume_linear", 0, FADE_OUT_TIME)
 		tween.tween_callback(old_music_player.queue_free)
 	else:
-		old_music_player.queue_free()
+		old_music_player.queue_ree()
 	
 	if fade & (1 << 1):
 		music_player.volume_linear = 0
