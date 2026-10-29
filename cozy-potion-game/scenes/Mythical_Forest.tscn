@@ -45,6 +45,10 @@
 [ext_resource type="Texture2D" uid="uid://o1kwab67j3tx" path="res://assets/textures/mythical_forest/Mushrooms/Fly_Agaric_Group_1_Mushrooms_C.png" id="42_rduve"]
 [ext_resource type="Texture2D" uid="uid://cna0o7yl5h05f" path="res://assets/textures/mythical_forest/Mushrooms/Fly_Agaric_Group_2_Mushrooms_C.png" id="43_583gl"]
 [ext_resource type="ArrayMesh" uid="uid://dmaj21d210e4o" path="res://assets/models/enviroment/Mythical_Forest/Foliage/Hedge.glb" id="45_md61m"]
+[ext_resource type="ArrayMesh" uid="uid://dxsi8m3dosdfu" path="res://assets/models/enviroment/Mythical_Forest/Bridge.glb" id="46_583gl"]
+[ext_resource type="Texture2D" uid="uid://cy0id36xwhebv" path="res://assets/textures/mythical_forest/bridge/Bridge_Albedo.png" id="47_fopsw"]
+[ext_resource type="Texture2D" uid="uid://can42r528v0g6" path="res://assets/textures/mythical_forest/bridge/Bridge_Normal.png" id="48_hp4i1"]
+[ext_resource type="Texture2D" uid="uid://dovpghowhdux6" path="res://assets/textures/mythical_forest/bridge/Bridge_Roughness.png" id="49_btawh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xpopa"]
 sky_top_color = Color(0.36107546, 0.5173906, 0.69890016, 1)
@@ -545,6 +549,14 @@ size = Vector3(3.7128906, 5.095459, 2.6708984)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
 size = Vector3(7.4765625, 18.809692, 115.96855)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhbjr"]
+albedo_texture = ExtResource("47_fopsw")
+albedo_texture_force_srgb = true
+roughness_texture = ExtResource("49_btawh")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("48_hp4i1")
+
 [node name="MythicalForest" type="Node3D" unique_id=1236479139]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1268247392]
@@ -589,6 +601,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_xf7vt")
 
 [node name="PH_Bridge" type="MeshInstance3D" parent="." unique_id=1352672289]
 transform = Transform3D(-1.4057139e-07, 2.8967457, 0, -3.2158983, -1.2662078e-07, 0, 0, 0, 9.680066, 139.5467, 0, -91.13072)
+visible = false
 mesh = SubResource("CylinderMesh_gowr6")
 
 [node name="PH_Trees" type="Node3D" parent="." unique_id=1364501590]
@@ -1588,7 +1601,7 @@ material_override = ExtResource("11_yupop")
 mesh = ExtResource("12_8ndyy")
 
 [node name="Tree312" type="MeshInstance3D" parent="Trees" unique_id=321577833]
-transform = Transform3D(-0.79283106, 0, 0.6094415, 0, 1, 0, -0.6094415, 0, -0.79283106, 144.99269, -1.9073486e-06, -83.96614)
+transform = Transform3D(-0.79295206, 0, 0.6095345, 0, 1.0001526, 0, -0.6095345, 0, -0.79295206, 144.99269, -1.9073486e-06, -83.96614)
 material_override = SubResource("StandardMaterial3D_btawh")
 mesh = ExtResource("13_6kaec")
 
@@ -5006,3 +5019,8 @@ shape = SubResource("BoxShape3D_4dvm4")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D" unique_id=586329121]
 transform = Transform3D(-0.012100803, 0, 0.9999268, 0, 1, 0, -0.9999268, 0, -0.012100803, 95.09825, 8.904846, -121.1229)
 shape = SubResource("BoxShape3D_4dvm4")
+
+[node name="Bridge" type="MeshInstance3D" parent="." unique_id=706625622]
+transform = Transform3D(-0.05949862, 0, -1.9619938, 0, 1, 0, 1.0528607, 0, -0.110874996, 139.56367, 0.14937294, -90.8907)
+mesh = ExtResource("46_583gl")
+surface_material_override/0 = SubResource("StandardMaterial3D_bhbjr")
