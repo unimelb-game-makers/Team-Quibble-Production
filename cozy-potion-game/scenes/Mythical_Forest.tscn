@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://c05jahtsaubg3" path="res://assets/textures/mythical_forest/Mushrooms/Inky_Cap_Group_2_Mushrooms_C.png" id="41_4y38g"]
 [ext_resource type="Texture2D" uid="uid://o1kwab67j3tx" path="res://assets/textures/mythical_forest/Mushrooms/Fly_Agaric_Group_1_Mushrooms_C.png" id="42_rduve"]
 [ext_resource type="Texture2D" uid="uid://cna0o7yl5h05f" path="res://assets/textures/mythical_forest/Mushrooms/Fly_Agaric_Group_2_Mushrooms_C.png" id="43_583gl"]
+[ext_resource type="ArrayMesh" uid="uid://dmaj21d210e4o" path="res://assets/models/enviroment/Mythical_Forest/Foliage/Hedge.glb" id="45_md61m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xpopa"]
 sky_top_color = Color(0.36107546, 0.5173906, 0.69890016, 1)
@@ -1382,7 +1383,7 @@ material_override = ExtResource("14_rk1ij")
 mesh = ExtResource("5_xf7vt")
 
 [node name="Tree207" type="MeshInstance3D" parent="Trees" unique_id=679825525]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.275356, -0.3638878, -53.296482)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.275356, -0.3638878, -52.550865)
 material_override = ExtResource("14_rk1ij")
 mesh = ExtResource("9_j0v2y")
 
@@ -1527,7 +1528,7 @@ material_override = ExtResource("14_rk1ij")
 mesh = ExtResource("5_xf7vt")
 
 [node name="Tree234" type="MeshInstance3D" parent="Trees" unique_id=97108781]
-transform = Transform3D(-0.26953685, 0, 0.96299005, 0, 1, 0, -0.96299005, 0, -0.26953685, 52.12984, 0.13942862, -53.597015)
+transform = Transform3D(-0.26953685, 0, 0.96299005, 0, 1, 0, -0.96299005, 0, -0.26953685, 52.12984, 0.13942862, -52.628555)
 material_override = ExtResource("14_rk1ij")
 mesh = ExtResource("12_8ndyy")
 
@@ -1567,7 +1568,7 @@ material_override = ExtResource("11_yupop")
 mesh = ExtResource("12_8ndyy")
 
 [node name="Tree242" type="MeshInstance3D" parent="Trees" unique_id=1559193952]
-transform = Transform3D(0.9543333, 0, 0.29874387, 0, 1, 0, -0.29874387, 0, 0.9543333, 49.941944, -0.28854537, -53.47904)
+transform = Transform3D(0.9543333, 0, 0.29874387, 0, 1, 0, -0.29874387, 0, 0.9543333, 49.941944, -0.28854537, -52.29933)
 material_override = ExtResource("14_rk1ij")
 mesh = ExtResource("12_8ndyy")
 
@@ -2772,7 +2773,7 @@ material_override = ExtResource("15_oswds")
 mesh = ExtResource("12_8ndyy")
 
 [node name="Tree161" type="MeshInstance3D" parent="Trees" unique_id=101327939]
-transform = Transform3D(0.3868577, 0, -0.9221395, 0, 1, 0, 0.9221395, 0, 0.3868577, 45.30278, -0.023805141, -114.295494)
+transform = Transform3D(0.38685763, 0, -0.92213947, 0, 1, 0, 0.92213947, 0, 0.38685763, 42.570972, -0.023805141, -114.60109)
 material_override = ExtResource("11_yupop")
 mesh = ExtResource("13_6kaec")
 
@@ -4201,6 +4202,712 @@ mesh = SubResource("ArrayMesh_1sf4c")
 [node name="FlyAgaricGroup2" type="MeshInstance3D" parent="Mushrooms" unique_id=1763756140]
 transform = Transform3D(0.0118441265, -0.048576917, 2.1233646e-09, 0, -2.1855695e-09, -0.05, 0.048576917, 0.0118441265, -5.177232e-10, 96.09664, -1.102531, -86.18002)
 mesh = SubResource("ArrayMesh_tcs35")
+
+[node name="Hedges" type="Node3D" parent="." unique_id=1914994395]
+transform = Transform3D(0.00536864, 0, 0.9999856, 0, 1, 0, -0.9999856, 0, 0.00536864, 44.175026, 1.4654822, -55.648636)
+
+[node name="Hedge" type="MeshInstance3D" parent="Hedges" unique_id=1473502363]
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge2" type="MeshInstance3D" parent="Hedges" unique_id=1091609412]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6903114, 0, -0.014446259)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge3" type="MeshInstance3D" parent="Hedges" unique_id=1228079423]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.376869, 0, -0.028869629)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge4" type="MeshInstance3D" parent="Hedges" unique_id=1888765452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.067181, 0, -0.043315887)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge5" type="MeshInstance3D" parent="Hedges" unique_id=1092350983]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.851997, 0, -0.05826187)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge6" type="MeshInstance3D" parent="Hedges" unique_id=331587290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.542305, 0, -0.072711945)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge7" type="MeshInstance3D" parent="Hedges" unique_id=1436269347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.228859, 0, -0.087135315)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge8" type="MeshInstance3D" parent="Hedges" unique_id=2000741189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.919174, 0, -0.10157776)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge9" type="MeshInstance3D" parent="Hedges" unique_id=1130533273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.585396, 0, -0.11588669)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge10" type="MeshInstance3D" parent="Hedges" unique_id=1925033443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.275711, 0, -0.13033676)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge11" type="MeshInstance3D" parent="Hedges" unique_id=1044344276]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.962273, 0, -0.14476013)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge12" type="MeshInstance3D" parent="Hedges" unique_id=1470104513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.652588, 0, -0.15920258)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge13" type="MeshInstance3D" parent="Hedges" unique_id=1739957820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.437393, 0, -0.17414856)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge14" type="MeshInstance3D" parent="Hedges" unique_id=1869102790]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.127693, 0, -0.18859863)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge15" type="MeshInstance3D" parent="Hedges" unique_id=502147754]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.814255, 0, -0.203022)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge16" type="MeshInstance3D" parent="Hedges" unique_id=26120659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.50457, 0, -0.21746826)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge17" type="MeshInstance3D" parent="Hedges" unique_id=1971185819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.205544, 0, -0.2319603)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge18" type="MeshInstance3D" parent="Hedges" unique_id=2091141563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.89586, 0, -0.24641037)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge19" type="MeshInstance3D" parent="Hedges" unique_id=1278156199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.58242, 0, -0.26083374)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge20" type="MeshInstance3D" parent="Hedges" unique_id=897719230]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.272736, 0, -0.27528)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge21" type="MeshInstance3D" parent="Hedges" unique_id=1078932117]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.05754, 0, -0.29022217)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge22" type="MeshInstance3D" parent="Hedges" unique_id=1815643492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.747833, 0, -0.30467224)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge88" type="MeshInstance3D" parent="Hedges" unique_id=243499013]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.14669, 0, -0.31755066)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge66" type="MeshInstance3D" parent="Hedges" unique_id=1247925092]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.02009, 0, 0.40615082)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge67" type="MeshInstance3D" parent="Hedges" unique_id=483123269]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.03453, 0, 3.0964584)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge68" type="MeshInstance3D" parent="Hedges" unique_id=1020007053]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.04895, 0, 5.78302)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge69" type="MeshInstance3D" parent="Hedges" unique_id=2108614246]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.063393, 0, 8.473331)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge70" type="MeshInstance3D" parent="Hedges" unique_id=1662893791]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.078354, 0, 11.258152)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge71" type="MeshInstance3D" parent="Hedges" unique_id=354257122]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.092804, 0, 13.948452)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge72" type="MeshInstance3D" parent="Hedges" unique_id=409772441]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.10723, 0, 16.635017)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge73" type="MeshInstance3D" parent="Hedges" unique_id=1841290406]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.121666, 0, 19.325325)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge74" type="MeshInstance3D" parent="Hedges" unique_id=623447273]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.13598, 0, 21.991554)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge75" type="MeshInstance3D" parent="Hedges" unique_id=1714387721]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.15043, 0, 24.68187)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge76" type="MeshInstance3D" parent="Hedges" unique_id=1041027059]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.164856, 0, 27.368431)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge77" type="MeshInstance3D" parent="Hedges" unique_id=1068608749]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.179283, 0, 30.058746)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge78" type="MeshInstance3D" parent="Hedges" unique_id=562749035]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.19423, 0, 32.84356)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge79" type="MeshInstance3D" parent="Hedges" unique_id=754986748]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.20868, 0, 35.533844)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge80" type="MeshInstance3D" parent="Hedges" unique_id=1821839138]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.223106, 0, 38.22042)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge81" type="MeshInstance3D" parent="Hedges" unique_id=758288028]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.237556, 0, 40.910736)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge82" type="MeshInstance3D" parent="Hedges" unique_id=796074566]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.252052, 0, 43.611694)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge83" type="MeshInstance3D" parent="Hedges" unique_id=245953954]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.266495, 0, 46.30201)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge84" type="MeshInstance3D" parent="Hedges" unique_id=842756171]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.280907, 0, 48.98857)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge85" type="MeshInstance3D" parent="Hedges" unique_id=2119615981]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.295364, 0, 51.678886)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge86" type="MeshInstance3D" parent="Hedges" unique_id=1198880258]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.310303, 0, 54.4637)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge87" type="MeshInstance3D" parent="Hedges" unique_id=1478570977]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.324745, 0, 57.153984)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge89" type="MeshInstance3D" parent="Hedges" unique_id=817526323]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.337906, 0, 59.604225)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge90" type="MeshInstance3D" parent="Hedges" unique_id=1438562331]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.35235, 0, 62.294525)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge91" type="MeshInstance3D" parent="Hedges" unique_id=343675018]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.36676, 0, 64.98109)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge92" type="MeshInstance3D" parent="Hedges" unique_id=1870564391]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.381195, 0, 67.6714)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge93" type="MeshInstance3D" parent="Hedges" unique_id=1676605739]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.396156, 0, 70.45623)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge94" type="MeshInstance3D" parent="Hedges" unique_id=678882990]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.41062, 0, 73.14653)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge95" type="MeshInstance3D" parent="Hedges" unique_id=1738212107]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.42504, 0, 75.83309)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge96" type="MeshInstance3D" parent="Hedges" unique_id=871948021]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.43947, 0, 78.5234)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge97" type="MeshInstance3D" parent="Hedges" unique_id=103126925]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.453773, 0, 81.18963)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge98" type="MeshInstance3D" parent="Hedges" unique_id=1886636034]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.468246, 0, 83.879944)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge99" type="MeshInstance3D" parent="Hedges" unique_id=1642576187]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.482666, 0, 86.566505)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge100" type="MeshInstance3D" parent="Hedges" unique_id=1371668989]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.497093, 0, 89.25681)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge101" type="MeshInstance3D" parent="Hedges" unique_id=1264157502]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.51203, 0, 92.04162)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge102" type="MeshInstance3D" parent="Hedges" unique_id=246403823]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.526497, 0, 94.73191)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge103" type="MeshInstance3D" parent="Hedges" unique_id=201131720]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, 60.54091, 0, 97.418495)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge105" type="MeshInstance3D" parent="Hedges" unique_id=830172626]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.4702263, 0, 0.741642)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge106" type="MeshInstance3D" parent="Hedges" unique_id=1982422784]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.4557838, 0, 3.4319496)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge107" type="MeshInstance3D" parent="Hedges" unique_id=1646491333]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.441368, 0, 6.118511)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge108" type="MeshInstance3D" parent="Hedges" unique_id=429081930]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.4269218, 0, 8.808826)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge109" type="MeshInstance3D" parent="Hedges" unique_id=975064401]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.4119644, 0, 11.593643)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge110" type="MeshInstance3D" parent="Hedges" unique_id=248404585]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.3975067, 0, 14.283943)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge111" type="MeshInstance3D" parent="Hedges" unique_id=327268787]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.3830833, 0, 16.970512)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge112" type="MeshInstance3D" parent="Hedges" unique_id=1451085246]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.3686523, 0, 19.66082)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge113" type="MeshInstance3D" parent="Hedges" unique_id=791746496]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.3543396, 0, 22.327042)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge114" type="MeshInstance3D" parent="Hedges" unique_id=440500016]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.339882, 0, 25.017357)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge115" type="MeshInstance3D" parent="Hedges" unique_id=1739773582]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.3254585, 0, 27.703918)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge116" type="MeshInstance3D" parent="Hedges" unique_id=2073420422]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.3110313, 0, 30.394234)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge117" type="MeshInstance3D" parent="Hedges" unique_id=11917609]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.296093, 0, 33.179054)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge118" type="MeshInstance3D" parent="Hedges" unique_id=947865979]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.2816353, 0, 35.86934)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge119" type="MeshInstance3D" parent="Hedges" unique_id=1120378284]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.267212, 0, 38.55591)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge120" type="MeshInstance3D" parent="Hedges" unique_id=1162303887]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.2527618, 0, 41.24623)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge121" type="MeshInstance3D" parent="Hedges" unique_id=1705632698]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.238266, 0, 43.947174)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge122" type="MeshInstance3D" parent="Hedges" unique_id=542614418]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.2238235, 0, 46.63749)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge123" type="MeshInstance3D" parent="Hedges" unique_id=162067686]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.2094078, 0, 49.32406)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge124" type="MeshInstance3D" parent="Hedges" unique_id=237694731]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.1949577, 0, 52.014374)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge125" type="MeshInstance3D" parent="Hedges" unique_id=1483163313]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.1800156, 0, 54.799187)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge126" type="MeshInstance3D" parent="Hedges" unique_id=1503046236]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.1655693, 0, 57.48947)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge127" type="MeshInstance3D" parent="Hedges" unique_id=1547081495]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.1524086, 0, 59.939713)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge128" type="MeshInstance3D" parent="Hedges" unique_id=489154716]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.1379662, 0, 62.630013)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge129" type="MeshInstance3D" parent="Hedges" unique_id=1885743418]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.123558, 0, 65.316574)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge130" type="MeshInstance3D" parent="Hedges" unique_id=1654150476]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.1091194, 0, 68.00689)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge131" type="MeshInstance3D" parent="Hedges" unique_id=974362587]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.094162, 0, 70.79172)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge132" type="MeshInstance3D" parent="Hedges" unique_id=2026581414]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.079689, 0, 73.482025)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge133" type="MeshInstance3D" parent="Hedges" unique_id=386670770]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.0652733, 0, 76.16858)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge134" type="MeshInstance3D" parent="Hedges" unique_id=1679002125]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.05085, 0, 78.85889)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge135" type="MeshInstance3D" parent="Hedges" unique_id=301285721]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.0365448, 0, 81.525116)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge136" type="MeshInstance3D" parent="Hedges" unique_id=829961450]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.0220718, 0, 84.21543)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge137" type="MeshInstance3D" parent="Hedges" unique_id=219326342]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -2.007656, 0, 86.901985)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge138" type="MeshInstance3D" parent="Hedges" unique_id=1328022451]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -1.9932289, 0, 89.59231)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge139" type="MeshInstance3D" parent="Hedges" unique_id=1343783924]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -1.9782829, 0, 92.37711)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge140" type="MeshInstance3D" parent="Hedges" unique_id=564689410]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -1.9638176, 0, 95.06739)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge141" type="MeshInstance3D" parent="Hedges" unique_id=1914909230]
+transform = Transform3D(-4.377216e-08, 0, -1, 0, 1, 0, 1, 0, -4.377216e-08, -1.9494095, 0, 97.75399)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge23" type="MeshInstance3D" parent="Hedges" unique_id=1869961565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5327225, 0, 99.22723)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge24" type="MeshInstance3D" parent="Hedges" unique_id=725765237]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2230263, 0, 99.212776)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge35" type="MeshInstance3D" parent="Hedges" unique_id=760578155]
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge36" type="MeshInstance3D" parent="Hedges" unique_id=1651232745]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6903114, 0, -0.014446259)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge37" type="MeshInstance3D" parent="Hedges" unique_id=1183066567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.376869, 0, -0.028869629)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge38" type="MeshInstance3D" parent="Hedges" unique_id=1535957705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.067181, 0, -0.043315887)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge46" type="MeshInstance3D" parent="Hedges" unique_id=1649015449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.851997, 0, -0.05826187)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge47" type="MeshInstance3D" parent="Hedges" unique_id=767830248]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.542305, 0, -0.072711945)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge48" type="MeshInstance3D" parent="Hedges" unique_id=1122994100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.228859, 0, -0.087135315)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge49" type="MeshInstance3D" parent="Hedges" unique_id=1572108861]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.919174, 0, -0.10157776)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge50" type="MeshInstance3D" parent="Hedges" unique_id=708086572]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.585396, 0, -0.11588669)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge51" type="MeshInstance3D" parent="Hedges" unique_id=753854455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.275711, 0, -0.13033676)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge52" type="MeshInstance3D" parent="Hedges" unique_id=109632238]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.962273, 0, -0.14476013)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge53" type="MeshInstance3D" parent="Hedges" unique_id=322228418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.652588, 0, -0.15920258)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge54" type="MeshInstance3D" parent="Hedges" unique_id=871112484]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.437393, 0, -0.17414856)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge55" type="MeshInstance3D" parent="Hedges" unique_id=153797691]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.127693, 0, -0.18859863)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge56" type="MeshInstance3D" parent="Hedges" unique_id=1150542996]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.814255, 0, -0.203022)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge57" type="MeshInstance3D" parent="Hedges" unique_id=953533877]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.50457, 0, -0.21746826)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge58" type="MeshInstance3D" parent="Hedges" unique_id=957353158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.205544, 0, -0.2319603)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge59" type="MeshInstance3D" parent="Hedges" unique_id=2096094404]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.89586, 0, -0.24641037)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge60" type="MeshInstance3D" parent="Hedges" unique_id=1489736304]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.58242, 0, -0.26083374)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge61" type="MeshInstance3D" parent="Hedges" unique_id=592120501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.272736, 0, -0.27528)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge62" type="MeshInstance3D" parent="Hedges" unique_id=1001596274]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.05754, 0, -0.29022217)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge63" type="MeshInstance3D" parent="Hedges" unique_id=440763721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.747833, 0, -0.30467224)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge64" type="MeshInstance3D" parent="Hedges" unique_id=896344434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5327225, 0, 99.22723)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge65" type="MeshInstance3D" parent="Hedges" unique_id=1465997906]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2230263, 0, 99.212776)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge25" type="MeshInstance3D" parent="Hedges" unique_id=225170170]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.909584, 0, 99.19836)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge26" type="MeshInstance3D" parent="Hedges" unique_id=1777328763]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.599899, 0, 99.18391)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge27" type="MeshInstance3D" parent="Hedges" unique_id=186630689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.38472, 0, 99.16895)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge28" type="MeshInstance3D" parent="Hedges" unique_id=2015832098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.07502, 0, 99.15452)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge29" type="MeshInstance3D" parent="Hedges" unique_id=226599481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.761581, 0, 99.1401)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge30" type="MeshInstance3D" parent="Hedges" unique_id=206780926]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.451897, 0, 99.12565)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge31" type="MeshInstance3D" parent="Hedges" unique_id=50215290]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.118118, 0, 99.111336)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge32" type="MeshInstance3D" parent="Hedges" unique_id=734929045]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.808434, 0, 99.096886)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge33" type="MeshInstance3D" parent="Hedges" unique_id=842639068]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.494995, 0, 99.082466)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge34" type="MeshInstance3D" parent="Hedges" unique_id=132825954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.520386, 0, 99.07159)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge39" type="MeshInstance3D" parent="Hedges" unique_id=821827537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.73826, 0, 98.99526)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge45" type="MeshInstance3D" parent="Hedges" unique_id=906178300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.133636, 0, 99.00924)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge40" type="MeshInstance3D" parent="Hedges" unique_id=1310104406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.428574, 0, 98.98081)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge41" type="MeshInstance3D" parent="Hedges" unique_id=1528186005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.115135, 0, 98.96639)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge42" type="MeshInstance3D" parent="Hedges" unique_id=1518543018]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.80545, 0, 98.95196)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge43" type="MeshInstance3D" parent="Hedges" unique_id=751345365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.590263, 0, 98.937004)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge44" type="MeshInstance3D" parent="Hedges" unique_id=686035495]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.28054, 0, 98.922554)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
+
+[node name="Hedge104" type="MeshInstance3D" parent="Hedges" unique_id=1210658569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.454903, 0, 98.910866)
+material_override = ExtResource("19_xg4sl")
+mesh = ExtResource("45_md61m")
 
 [node name="FloatOnWaterCollision" type="StaticBody3D" parent="." unique_id=787402852]
 
