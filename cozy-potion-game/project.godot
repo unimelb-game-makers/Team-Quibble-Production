@@ -33,6 +33,7 @@ PersistentInventory="*uid://okowyngxw7yo"
 AudioManager="*uid://ddq4xbbyhtwx4"
 ForestSceneModifications="*uid://fnarcmnys0pr"
 FallbackMusicManager="*uid://dpf6cm5y8upkb"
+SaveManager="*uid://c33br6pmw1rok"
 
 [display]
 

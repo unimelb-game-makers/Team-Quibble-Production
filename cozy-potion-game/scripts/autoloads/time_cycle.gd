@@ -82,6 +82,7 @@ func start_day() -> void:
 	days_passed += 1
 	day_progress_changed.emit()
 	visited_forest_this_day = false
+	SaveManager.save_game()
 
 func end_day() -> void:
 	day_complete.emit()
