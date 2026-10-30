@@ -44,6 +44,9 @@ func load_game() -> void:
 				InputMap.action_add_event(action, new_event)
 	
 	PersistentInventory.pantry.assign(load_dict["pantry"].map(deserialize_stack))
+	PersistentInventory.money = load_dict["money"]
+	#no fucking clue why -1 needed
+	TimeCycle.days_passed = load_dict["day"] - 1
 
 
 func generate_save_dict() -> Dictionary[String, Variant]:
