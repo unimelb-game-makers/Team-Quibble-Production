@@ -21,7 +21,21 @@ func load_game() -> void:
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(&"Master"), load_dict["master_volume"])
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(&"Sfx"), load_dict["sfx_volume"])
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(&"Ambience"), load_dict["ambience_volume"])
-	pass
+	
+	for action in InputMap.get_actions():
+		if not action.begins_with("ui_") and not action.begins_with("hide_"):
+			var entry = load_dict[action]
+			if entry[0] == "k":
+				var new_event: InputEventKey = InputEventKey.new()
+				new_event.physical_keycode = entry[1]
+				InputMap.action_erase_events(action)
+				InputMap.action_add_event(action, new_event)
+			else:
+				var new_event: InputEventMouseButton = InputEventMouseButton.new()
+				new_event.button_index = entry[1]
+				InputMap.action_erase_events(action)
+				InputMap.action_add_event(action, new_event)
+				
 
 
 func generate_save_dict() -> Dictionary[String, Variant]:
@@ -37,6 +51,11 @@ func generate_save_dict() -> Dictionary[String, Variant]:
 
 	for action in InputMap.get_actions():
 		if not action.begins_with("ui_") and not action.begins_with("hide_"):
-			save_dict[action] = InputMap.action_get_events(action)
+			var events: Array[InputEvent] = InputMap.action_get_events(action)
+			var event: InputEvent = events.front()
+			if event is InputEventKey:
+				save_dict[action] = ["k",event.physical_keycode]
+			if event is InputEventMouseButton:
+				save_dict[action] = ["m", event.button_index]
 			
 	return save_dict
