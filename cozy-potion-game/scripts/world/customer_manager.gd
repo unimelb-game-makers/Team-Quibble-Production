@@ -57,6 +57,7 @@ func _on_day_started() -> void:
 func _on_tutorial_day_started() -> void:
 	await get_tree().create_timer(1).timeout
 	generate_tutorial_customers()
+	send_customer()
 
 #generates some number of customers to be drawn from during the day
 func generate_customer_queue() -> void:
@@ -99,11 +100,16 @@ func generate_customer_time_allotments() -> Array[float]:
 
 func generate_tutorial_customers() -> void:
 	customer_queue.clear()
-	
+	customer_queue = TutorialDirector.customer_manager_queue
+
+	var time_allotments = generate_customer_time_allotments()
+	for i in range(time_allotments.size()):
+		customer_queue[i].time_allotment = time_allotments[i]
 
 func send_customer() -> void:
 	customer_world.customer = get_next_customer()
 	if not customer_world.customer :
+		print_debug("customer_world is null!!!")
 		return
 	
 	add_model_to_customer(customer_world, customer_world.customer.customer_id)

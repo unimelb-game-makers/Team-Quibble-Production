@@ -81,6 +81,7 @@ func start_day() -> void:
 	else:
 		day_started.emit()
 		visited_forest_this_day = false
+		customers_per_day = 6
 
 	day_progress = 0
 	target_day_progress = 0

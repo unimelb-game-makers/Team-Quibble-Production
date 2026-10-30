@@ -19,6 +19,13 @@ static var spawn_at_portal: bool = false
 var underground: bool = false
 
 func _ready() -> void:
+	if !TutorialDirector.portal_open:
+		visible = false
+		position += Vector3(0,-100,0)
+		underground = true
+		force_update_transform()
+		return
+
 	if TimeCycle.visited_forest_this_day:
 		position += Vector3(0,-100,0)
 		underground = true
