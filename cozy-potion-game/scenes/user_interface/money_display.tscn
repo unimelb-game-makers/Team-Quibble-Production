@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://vhvqn7oafk1c" path="res://scripts/user_interface/money_display.gd" id="1_rvyuu"]
 [ext_resource type="Theme" uid="uid://bx5pwv2f7qea6" path="res://resources/ui_themes/main_theme.tres" id="2_svfqg"]
-[ext_resource type="Texture2D" uid="uid://cgiu7e8wgfbbr" path="res://assets/sprites/coin.png" id="3_otnhx"]
+[ext_resource type="Texture2D" uid="uid://d1wnvi0cfgqof" path="res://assets/sprites/Firefly.png" id="3_rvyuu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_01dp5"]
 font_size = 30
@@ -52,7 +52,7 @@ alignment = 1
 [node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=805943068]
 custom_minimum_size = Vector2(50, 35)
 layout_mode = 2
-texture = ExtResource("3_otnhx")
+texture = ExtResource("3_rvyuu")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="Control/MarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1006372805]

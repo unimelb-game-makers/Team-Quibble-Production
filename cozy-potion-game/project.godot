@@ -34,6 +34,12 @@ AudioManager="*uid://ddq4xbbyhtwx4"
 ForestSceneModifications="*uid://fnarcmnys0pr"
 FallbackMusicManager="*uid://dpf6cm5y8upkb"
 
+[debug]
+
+gdscript/warnings/static_called_on_instance=0
+gdscript/warnings/int_as_enum_without_cast=0
+gdscript/warnings/int_as_enum_without_match=0
+
 [display]
 
 window/size/viewport_width=1920
