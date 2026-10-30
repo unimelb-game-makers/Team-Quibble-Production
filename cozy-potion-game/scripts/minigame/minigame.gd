@@ -39,6 +39,7 @@ func set_ingredient_list(_new_ingredient_list: Array[Stack]) -> void:
 func process_ingredient(input_stack: Stack) -> Stack:
 	input_stack.item.apply_process(process)
 	return input_stack
+
 #this is one way of connecting the ingredient accepted signal
 # from the subviewportcontainer above this to the minigame
 func emit_ingredient_added(draggable: Control):
