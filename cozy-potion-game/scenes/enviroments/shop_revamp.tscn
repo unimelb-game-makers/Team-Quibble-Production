@@ -82,9 +82,6 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_ja4bt"]
 size = Vector3(100, 1, 100)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_10j44"]
-viewport_path = NodePath("SubViewportContainer/SubViewport")
-
 [node name="ShopRevamp" type="Node3D" unique_id=1366204913]
 
 [node name="CustomerManager" type="Node" parent="." unique_id=761875196 node_paths=PackedStringArray("customer_anim_player", "customer_world")]
@@ -234,11 +231,6 @@ script = ExtResource("7_7orju")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBoundsCollider" unique_id=279533657]
 shape = SubResource("BoxShape3D_ja4bt")
 
-[node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("21_jn854")]
-transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 3.349, 1.5, 0.245)
-texture = SubResource("ViewportTexture_10j44")
-destination_path = &"uid://bxq7bq8537rse"
-
 [node name="DayStarter" type="Node" parent="." unique_id=872273419]
 script = ExtResource("40_qwmll")
 
@@ -246,3 +238,7 @@ script = ExtResource("40_qwmll")
 script = ExtResource("41_10j44")
 day_track = 1
 night_track = 2
+
+[node name="PlaceholderPortal2" parent="." unique_id=1962374183 instance=ExtResource("21_jn854")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3435276, 1.1149747, 0.047812223)
+destination_path = &"res://scenes/foraging/forest.tscn"
