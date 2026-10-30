@@ -13,7 +13,7 @@ var potion_attribute_strength: int
 
 func constructor(_attributes: Dictionary[Alchemy.AttributeID, int], _ingredients: Array[PotionIngredient]) -> void:
 	for ingredient in _ingredients:
-		base_gold_value += ingredient.ingredient_price
+		base_gold_value += int(ingredient.ingredient_price)
 	
 	var keys := _attributes.keys()
 	keys.sort_custom(func(a, b): return _attributes[a] > _attributes[b])
