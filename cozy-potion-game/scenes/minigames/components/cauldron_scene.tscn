@@ -1,24 +1,22 @@
 [gd_scene format=3 uid="uid://b8cph38syc08d"]
 
 [ext_resource type="Script" uid="uid://b05k1s1jgk3jh" path="res://scripts/minigame/potion_crafting/cauldron_crafting_minigame.gd" id="1_c2v7o"]
-[ext_resource type="Texture2D" uid="uid://co3mgwg1g4mx6" path="res://assets/sprites/cauldron_placeholder.jpg" id="2_6g1p8"]
 [ext_resource type="PackedScene" uid="uid://cb4bw7nojinb5" path="res://scenes/inventory/hover_information.tscn" id="2_rpwsn"]
+[ext_resource type="Theme" uid="uid://b5rk2obep48bo" path="res://resources/ui_themes/main_menu_theme.tres" id="3_wtto1"]
 [ext_resource type="Script" uid="uid://bu125p88cqkpw" path="res://resources/potion.gd" id="4_o1t5o"]
 [ext_resource type="AudioStream" uid="uid://dxhlotrvnibmx" path="res://audio/sfx/freesound_community-short-success-sound-glockenspiel-treasure-video-game-6346.mp3" id="5_lm5eh"]
+[ext_resource type="Texture2D" uid="uid://b5xgmw20caea4" path="res://assets/sprites/cauldron_full.png" id="6_7wsh0"]
 [ext_resource type="Script" uid="uid://coe1t2e6118dr" path="res://scripts/audio/audio_player.gd" id="6_dkifx"]
+[ext_resource type="Texture2D" uid="uid://cpmbuankq03ve" path="res://assets/sprites/cauldron_liquid_full.png" id="7_ny32i"]
 
 [sub_resource type="Resource" id="Resource_4r8di"]
 script = ExtResource("4_o1t5o")
 metadata/_custom_type_script = "uid://bu125p88cqkpw"
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dvm4"]
-bg_color = Color(0.16206557, 0.1620656, 0.16206554, 0.80784315)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
+font_size = 23
+
+[sub_resource type="LabelSettings" id="LabelSettings_2x3wa"]
 font_size = 23
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1608703175 node_paths=PackedStringArray("reset_button", "make_button", "potion_created_container", "potion_created_name_label", "potion_created_value_label", "inventory")]
@@ -38,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_wtto1")
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -58,8 +57,10 @@ custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 19
 
 [node name="Label" type="Label" parent="MarginContainer/Container/CurrentPotion" unique_id=62312173]
+visible = false
 layout_mode = 2
 text = "CurrentPotion"
 horizontal_alignment = 1
@@ -79,6 +80,10 @@ columns = 3
 rows = 1
 blacklist = Array[Resource]([SubResource("Resource_4r8di")])
 
+[node name="GridContainer" parent="MarginContainer/Container/CurrentPotion/InventoryWithHover/VBoxContainer" parent_id_path=PackedInt32Array(414539128, 1149939348) index="0" unique_id=1415238081]
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+
 [node name="AspectRatioContainer" type="MarginContainer" parent="MarginContainer/Container/CurrentPotion" unique_id=1693209846]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -89,10 +94,23 @@ theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
 [node name="CauldronPlaceholder" type="TextureRect" parent="MarginContainer/Container" unique_id=677183550]
+custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-texture = ExtResource("2_6g1p8")
+texture = ExtResource("6_7wsh0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Container/CauldronPlaceholder" unique_id=24593425]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -5.0
+offset_right = 514.0
+offset_bottom = 483.0
+texture = ExtResource("7_ny32i")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="PotionCreateContainer" type="PanelContainer" parent="MarginContainer" unique_id=342408907]
 visible = false
@@ -100,7 +118,6 @@ custom_minimum_size = Vector2(400, 189.29)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_4dvm4")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PotionCreateContainer" unique_id=26754820]
 layout_mode = 2
@@ -124,9 +141,12 @@ horizontal_alignment = 1
 [node name="ValueLabel" type="Label" parent="MarginContainer/PotionCreateContainer/MarginContainer/CenterContainer/VBoxContainer" unique_id=2049008697]
 layout_mode = 2
 text = "(that you can sell for $$$)"
+label_settings = SubResource("LabelSettings_2x3wa")
 horizontal_alignment = 1
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=674375806]
 stream = ExtResource("5_lm5eh")
 script = ExtResource("6_dkifx")
 metadata/_custom_type_script = "uid://coe1t2e6118dr"
+
+[editable path="MarginContainer/Container/CurrentPotion/InventoryWithHover"]

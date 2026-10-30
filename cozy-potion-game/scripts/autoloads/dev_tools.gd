@@ -7,12 +7,14 @@ signal forced_customer_leave
 @export var scene_switcher_button: MenuButton
 @export var destination_strings: Array[String]
 @export var fill_pantry_button: Button
+@export var save_game_button: Button
 
 func _ready() -> void:
 	visible = false
 	customer_leave_button.pressed.connect(customer_leave)
 	setup_scene_switcher_menu_button()
 	fill_pantry_button.pressed.connect(fill_pantry)
+	save_game_button.pressed.connect(SaveManager.save_game)
 
 func setup_scene_switcher_menu_button() -> void:
 	for string in destination_strings:

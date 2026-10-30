@@ -1,4 +1,4 @@
-extends MarginContainer
+class_name SoundMenu extends MarginContainer
 
 @export var master_volume: HSlider
 @export var music_volume: HSlider
@@ -10,6 +10,13 @@ func _ready() -> void:
 	master_volume.value_changed.connect(_on_master_volume_changed)
 	music_volume.value_changed.connect(_on_music_volume_changed)
 	sfx_volume.value_changed.connect(_on_sfx_volume_changed)
+	
+	update_sliders()
+
+func update_sliders() -> void:
+	master_volume.value = AudioServer.get_bus_volume_linear(AudioServer.get_bus_index(&"Master"))
+	music_volume.value = AudioServer.get_bus_volume_linear(AudioServer.get_bus_index(&"Music"))
+	sfx_volume.value = AudioServer.get_bus_volume_linear(AudioServer.get_bus_index(&"Sfx"))
 
 
 func get_volume(value: float) -> float:

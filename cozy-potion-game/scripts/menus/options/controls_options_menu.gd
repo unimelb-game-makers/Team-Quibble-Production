@@ -25,11 +25,17 @@ var entry_changing: KeybindEntry = null
 
 func _ready() -> void:
 	set_process_input(false)
+	
+	populate_keybinds_menu()
+
+func populate_keybinds_menu() -> void:
 	keybinds = get_custom_input_maps()
+	for child in option_container.get_children():
+		child.queue_free()
+		
 	for key in keybinds:
 		create_keybind_entry(key)
-
-
+	
 func _input(event: InputEvent) -> void:
 	if rebinding_key and \
 		((entry_changing.mouse_bind and event is InputEventMouseButton) ||
