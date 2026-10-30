@@ -14,9 +14,16 @@ func save_game() -> void:
 
 func load_game() -> void:
 	print_debug("loaded!")
-	var load_dict = FileAccess.open(SAVE_PATH, FileAccess.READ)
-	if load_dict:
-		load_dict = JSON.parse_string(load_dict.get_line())
+	var loaded_file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var load_dict: Dictionary
+	if loaded_file:
+		var res = JSON.parse_string(loaded_file.get_line())
+		if res:
+			load_dict = res
+		else:
+			return
+	else:
+		return
 	print_debug("read master volume of %s" % load_dict["master_volume"])
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(&"Master"), load_dict["master_volume"])
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(&"Sfx"), load_dict["sfx_volume"])
@@ -35,12 +42,13 @@ func load_game() -> void:
 				new_event.button_index = entry[1]
 				InputMap.action_erase_events(action)
 				InputMap.action_add_event(action, new_event)
-				
+	
+	PersistentInventory.pantry.assign(load_dict["pantry"].map(deserialize_stack))
 
 
 func generate_save_dict() -> Dictionary[String, Variant]:
 	var save_dict: Dictionary[String, Variant]
-	save_dict["pantry"] = PersistentInventory.pantry
+	save_dict["pantry"] = PersistentInventory.pantry.map(serialize_stack)
 	save_dict["money"] = PersistentInventory.money
 	save_dict["day"] = TimeCycle.days_passed
 	
@@ -59,3 +67,14 @@ func generate_save_dict() -> Dictionary[String, Variant]:
 				save_dict[action] = ["m", event.button_index]
 			
 	return save_dict
+
+func serialize_stack(stack: Stack) -> Array:
+		var ingredient_id: Alchemy.IngredientID = stack.item.ingredient_id
+		var process_id: Alchemy.ProcessID = stack.item.process_applied.front() if stack.item.process_applied.front() else -1
+		return [stack.quantity, ingredient_id, process_id]
+
+func deserialize_stack(array: Array) -> Stack:
+	var item: PotionIngredient = Alchemy.find_ingredient_by_id(array[1])
+	if array[2] >= 0:
+		item.apply_process(array[2])
+	return Stack.new(array[0], item)
