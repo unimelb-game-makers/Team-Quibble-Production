@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://ba6o7krm0dacy" path="res://scenes/title_screen_fake_forest.tscn" id="1_n17qi"]
 [ext_resource type="Theme" uid="uid://b5rk2obep48bo" path="res://resources/ui_themes/main_menu_theme.tres" id="2_eqhve"]
 [ext_resource type="Script" uid="uid://1uplvo1hvm7y" path="res://scripts/user_interface/main_menu.gd" id="3_yx444"]
+[ext_resource type="Texture2D" uid="uid://c6sx1hlk7jgih" path="res://assets/sprites/Firefly_RemoveBackground.png" id="4_ptv5j"]
 [ext_resource type="Script" uid="uid://5pvk3tb41p66" path="res://scripts/world/scene_music_controller.gd" id="4_qc2aw"]
+[ext_resource type="Script" uid="uid://b5sj60w61ul7a" path="res://scenes/menus/logo_wiggle.gd" id="5_jhqb3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 line_spacing = 22.3
@@ -59,8 +61,18 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="TitleLabel" type="Label" parent="Control/MarginContainer/VBoxContainer" unique_id=729100067]
+visible = false
 layout_mode = 2
 text = "AlcheMiMi: Straight Outta Cauldron"
+
+[node name="TextureRect" type="TextureRect" parent="Control/MarginContainer/VBoxContainer" unique_id=1765974004]
+custom_minimum_size = Vector2(1300, 600)
+layout_mode = 2
+offset_transform_enabled = true
+texture = ExtResource("4_ptv5j")
+expand_mode = 1
+stretch_mode = 4
+script = ExtResource("5_jhqb3")
 
 [node name="ButtonsContainer" type="HBoxContainer" parent="Control/MarginContainer" unique_id=846358728]
 layout_mode = 2
@@ -137,7 +149,7 @@ text = "Daniel Sandvik - Design lead, Producer, Music
 Hamish Luke - Programming lead, Design
 Ren Jackson - 3D Art, Design
 Stefanus Hanson Hadikristijanto - 3D Art
-Stephanie Min - 2D Art
+Stephanie Seoyoung Min - 2D Art
 Damien Faustine - 2D Art
 Andrew Irvin - 2D Art"
 label_settings = SubResource("LabelSettings_4dvm4")

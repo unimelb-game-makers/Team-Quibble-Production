@@ -18,10 +18,10 @@ func _ready() -> void:
 		resolution_option_button.add_item(str(resolution.x) + "x" + str(resolution.y), i)
 	
 	for i in fps_options.size():
-		var name: String = str(fps_options[i])
+		var fps_value: String = str(fps_options[i])
 		if fps_options[i] == 0:
-			name = "Unlimited"
-		fps_option_button.add_item(name, i)
+			fps_value = "Unlimited"
+		fps_option_button.add_item(fps_value, i)
 
 func _on_resolution_option_button_item_selected(index: int) -> void:
 	get_tree().root.size = resolution_options[index]

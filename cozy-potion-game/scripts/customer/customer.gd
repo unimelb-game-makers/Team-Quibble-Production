@@ -64,7 +64,7 @@ func check_potion_sufficient(potion: Potion) -> bool:
 	var match_primary = Alchemy.attribute_to_need_index[potion.potion_primary] == primary_need
 	var match_secondary = true
 	if secondary_need >= 0:
-		Alchemy.attribute_to_need_index[potion.potion_secondary] == secondary_need
+		match_secondary = Alchemy.attribute_to_need_index[potion.potion_secondary] == secondary_need
 	
 	return match_primary and match_secondary
 
