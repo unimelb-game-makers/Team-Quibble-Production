@@ -23,6 +23,7 @@ var loaded_page : Control
 static func open_notebook(popup_subwindow : PopupSubWindow) -> void:
 	popup_subwindow.start_display_popup(NOTEBOOK)
 
+
 func _ready() -> void:
 	page_turn_animation.visible = false
 	load_page_without_animation(NOTEBOOK_PEDIA_VIEW)

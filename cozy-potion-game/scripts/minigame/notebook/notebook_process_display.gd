@@ -8,7 +8,6 @@ extends Node
 @onready var what_it_does_title: Label = $MarginContainer3/VBoxContainer/WhatItDoesTitle
 @onready var what_it_does_descrip: Label = $MarginContainer3/VBoxContainer/MarginContainer2/WhatItDoes
 
-
 @onready var background_container: CenterContainer = $CenterContainer
 
 
@@ -39,5 +38,5 @@ func set_process_display(pid : Alchemy.ProcessID) -> void:
 	
 	sprite.texture = process.texture
 	label_name.text = process.name
-	label_descrip.text = process.descripition
+	label_descrip.text = process.description
 	what_it_does_descrip.text = process.tooltip

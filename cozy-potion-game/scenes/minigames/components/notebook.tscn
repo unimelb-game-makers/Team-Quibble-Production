@@ -244,11 +244,11 @@ theme_override_constants/separation = 0
 layout_mode = 2
 
 [node name="TutCentreContainer" type="CenterContainer" parent="ThePage/PageBar" unique_id=1835320071]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
 [node name="TutorialPageButton" type="TextureButton" parent="ThePage/PageBar/TutCentreContainer" unique_id=289792356]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 texture_normal = SubResource("GradientTexture2D_ai6g8")
 texture_hover = SubResource("GradientTexture2D_0mdqp")
@@ -260,11 +260,11 @@ theme_override_font_sizes/font_size = 28
 text = "Tutorial"
 
 [node name="ItemPedia" type="CenterContainer" parent="ThePage/PageBar" unique_id=906823982]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
 [node name="PediaPageButton" type="TextureButton" parent="ThePage/PageBar/ItemPedia" unique_id=2021792960]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 texture_normal = SubResource("GradientTexture2D_annh4")
 texture_hover = SubResource("GradientTexture2D_ocaha")
@@ -276,11 +276,11 @@ theme_override_font_sizes/font_size = 28
 text = "Item Encyclopedia"
 
 [node name="ProcessView" type="CenterContainer" parent="ThePage/PageBar" unique_id=91630559]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
 [node name="ProcessViewButton" type="TextureButton" parent="ThePage/PageBar/ProcessView" unique_id=1365841417]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 texture_normal = SubResource("GradientTexture2D_annh4")
 texture_hover = SubResource("GradientTexture2D_f2kin")
@@ -292,11 +292,11 @@ theme_override_font_sizes/font_size = 28
 text = "Process List"
 
 [node name="Exit" type="CenterContainer" parent="ThePage/PageBar" unique_id=1557048303]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
 [node name="ExitButton" type="TextureButton" parent="ThePage/PageBar/Exit" unique_id=1703632084]
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 texture_normal = SubResource("GradientTexture2D_4yi3t")
 texture_hover = SubResource("GradientTexture2D_ocaha")

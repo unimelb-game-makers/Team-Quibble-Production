@@ -27,7 +27,7 @@ script = ExtResource("1_0rcr4")
 [node name="TemplateButton" type="Button" parent="MarginContainer/ProcessList" unique_id=71276396]
 visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 52
+theme_override_font_sizes/font_size = 36
 text = "Null"
 
 [node name="NotebookProcessDisplay" parent="." unique_id=1355663028 instance=ExtResource("2_0rcr4")]
