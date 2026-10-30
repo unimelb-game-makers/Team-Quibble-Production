@@ -37,14 +37,14 @@ func _ready() -> void:
 	var filled_stacks := Inventory.create_empty_stacks(hover_inv.max_slots)
 	var ingredients = Alchemy.ingredient_list
 	
-	#fill_stacks_from_pantry()
+	fill_stacks_from_pantry()
 	
-	for i in range(ingredients.size()):
-		filled_stacks[i].quantity = 40
-		filled_stacks[i].item = ingredients[i]
-	
-	hover_inv.inventory.spawn_slots(filled_stacks)
-	hover_inv.inventory.sort_items(sort_keys[sort_index])
+	#for i in range(ingredients.size()):
+		#filled_stacks[i].quantity = 40
+		#filled_stacks[i].item = ingredients[i]
+	#
+	#hover_inv.inventory.spawn_slots(filled_stacks)
+	#hover_inv.inventory.sort_items(sort_keys[sort_index])
 
 func fill_stacks_from_pantry() -> void:
 	var empty_stacks = hover_inv.inventory.create_empty_stacks(40)

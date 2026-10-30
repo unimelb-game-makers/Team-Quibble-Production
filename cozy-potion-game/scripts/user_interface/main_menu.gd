@@ -30,6 +30,7 @@ func open_options() -> void:
 	OptionsMenu.open_options_menu()
 
 func continue_pressed() -> void:
+	SaveManager.load_game()
 	start()
 	
 func new_game_pressed() -> void:

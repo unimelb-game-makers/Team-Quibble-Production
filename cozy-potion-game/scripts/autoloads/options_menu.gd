@@ -2,9 +2,9 @@ extends CanvasLayer
 
 @export_group("Menus")
 @export var options_menu_container: Container
-@export var sound_menu: Control
+@export var sound_menu: SoundMenu
 @export var video_menu: MarginContainer
-@export var controls_menu: Control
+@export var controls_menu: ControlsOptionMenu
 
 @export_group("Buttons")
 @export var exit_game_button: Button
@@ -98,6 +98,7 @@ func hide_menus():
 		menu.hide()
 
 func open_sound_menu() -> void:
+	sound_menu.update_sliders()
 	open_menu(sound_menu)
 	#animate_options_menu_out()
 	#print(sound_menu.visible)
@@ -106,6 +107,7 @@ func open_video_menu() -> void:
 	open_menu(video_menu)
 
 func open_controls_menu() -> void:
+	controls_menu.populate_keybinds_menu()
 	open_menu(controls_menu)
 	#animate_options_menu_out()
 	#print(controls_menu.visible)

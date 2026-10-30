@@ -12,6 +12,7 @@ gradient = SubResource("Gradient_2bf1q")
 fill_to = Vector2(1, 0.9778157)
 
 [node name="ItemHolder" type="Panel" unique_id=574462740 node_paths=PackedStringArray("item_sprite", "quantity_label", "draggable_component")]
+z_index = 3
 custom_minimum_size = Vector2(64, 64)
 offset_right = 59.0
 offset_bottom = 63.0
