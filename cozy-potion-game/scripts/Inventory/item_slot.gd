@@ -4,8 +4,6 @@ extends PanelContainer
 # Emitted every frame if cursor inside slot
 signal hovering
 
-const ITEM_HOLDER = preload("uid://80sdcv4hsqa1")
-
 var item_holder : ItemHolder = null
 var ishovering := false
 var max_quantity: int = 999
@@ -55,7 +53,7 @@ func emulate_mouse_inside() -> bool:
 	return intersecting_mouse
 
 func create_holder_as_child(stack : Stack) -> ItemHolder:
-	var new_item_holder = ITEM_HOLDER.instantiate()
+	var new_item_holder: ItemHolder = ItemHolder.get_scene().instantiate()
 	add_child(new_item_holder)
 	new_item_holder.stack = stack
 	
@@ -71,10 +69,9 @@ func set_stack(stack:Stack) -> void:
 
 # Adds ItemHolder that does not exist in scene yet, as child and stores in slot
 func set_item_holder(holder : ItemHolder) -> void:
-	if item_holder == null:
-		item_holder = holder
-		drag_acceptor.accepting_items = false
-		item_holder.draggable_component.draggable_accepted.connect(remove_holder)
+	item_holder = holder
+	drag_acceptor.accepting_items = false
+	item_holder.draggable_component.draggable_accepted.connect(remove_holder)
 
 func remove_holder() -> void:
 	item_holder.draggable_component.draggable_accepted.disconnect(remove_holder)
@@ -90,6 +87,7 @@ func remove_holder() -> void:
 		item_holder.get_item_stack().quantity = 1
 		set_stack(Stack.new(previous_quant - 1).
 			clone_type(item_holder.get_item_stack()))
+
 
 func is_item_blacklist(_item: Resource) -> bool:
 	if blacklist.size() == 0:

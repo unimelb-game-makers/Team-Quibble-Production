@@ -18,7 +18,7 @@ Label/fonts/font = ExtResource("3_hm4m4")
 [sub_resource type="LabelSettings" id="LabelSettings_4dvm4"]
 font_size = 33
 
-[node name="OptionsMenu" type="CanvasLayer" unique_id=1433898098 node_paths=PackedStringArray("options_menu_container", "sound_menu", "video_menu", "controls_menu", "exit_game_button", "sound_menu_button", "video_menu_button", "controls_menu_button", "blur_rect")]
+[node name="OptionsMenu" type="CanvasLayer" unique_id=1433898098 node_paths=PackedStringArray("options_menu_container", "sound_menu", "video_menu", "controls_menu", "exit_game_button", "sound_menu_button", "button_container", "return_to_game_button", "video_menu_button", "controls_menu_button", "blur_rect")]
 script = ExtResource("1_liyum")
 options_menu_container = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer")
 sound_menu = NodePath("MainMenu/MarginContainer/Control/SoundMenu")
@@ -26,6 +26,8 @@ video_menu = NodePath("MainMenu/MarginContainer/Control/VideoMenu")
 controls_menu = NodePath("MainMenu/MarginContainer/Control/ControlsMenu")
 exit_game_button = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ExitGameButton")
 sound_menu_button = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/SoundOptions")
+button_container = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer")
+return_to_game_button = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/ReturnToGame")
 video_menu_button = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Video")
 controls_menu_button = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Controls")
 blur_rect = NodePath("ScreenBlur")

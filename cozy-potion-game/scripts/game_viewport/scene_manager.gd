@@ -19,6 +19,9 @@ var screen_transition_rect_anim_player: AnimationPlayer:
 			return screen_transition_rect_anim_player
 		return null
 
+## concurrency
+var loading_scene: bool = false
+
 enum TRANSITIONS{
 	NONE,
 	FADE,
@@ -30,9 +33,10 @@ func _ready() -> void:
 
 
 func change_active_scene_to_packed(scene: PackedScene) -> bool:
-	if not scene or not scene.can_instantiate() or not sub_viewport:
+	if not scene or not scene.can_instantiate() or not sub_viewport or loading_scene:
 		return false
-		
+	
+	loading_scene = true
 	var new_scene_node = scene.instantiate()
 	
 	if sub_viewport.get_child_count(0) == 1:
@@ -40,11 +44,15 @@ func change_active_scene_to_packed(scene: PackedScene) -> bool:
 	await get_tree().process_frame
 	
 	sub_viewport.add_child(new_scene_node)
+	loading_scene = false
 	return true
 
 func change_active_scene_to_file(path: String, transition_name: TRANSITIONS = TRANSITIONS.NONE) -> bool:
 	assert(sub_viewport, "A sub viewport could not be found")
-		
+	if loading_scene:
+		return false
+	
+	loading_scene = true
 	var error = ResourceLoader.load_threaded_request(path)
 	
 	if error:
@@ -62,6 +70,8 @@ func change_active_scene_to_file(path: String, transition_name: TRANSITIONS = TR
 		
 	if transition_name != TRANSITIONS.NONE:
 		screen_transition_rect_anim_player.play_backwards(TRANSITIONS.find_key(transition_name))
+	
+	loading_scene = false
 	return await change_active_scene_to_packed(scene)
 	
 func wait_for_resource(path: String) -> Resource:

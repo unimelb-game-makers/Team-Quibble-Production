@@ -5,12 +5,14 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyhx2"]
 bg_color = Color(0.19793722, 0.19793725, 0.19793713, 1)
 
-[node name="DevTools" type="CanvasLayer" unique_id=1875863142 node_paths=PackedStringArray("customer_leave_button", "scene_switcher_button")]
+[node name="DevTools" type="CanvasLayer" unique_id=1875863142 node_paths=PackedStringArray("customer_leave_button", "scene_switcher_button", "fill_pantry_button", "save_game_button")]
 process_mode = 3
 script = ExtResource("1_lyhx2")
 customer_leave_button = NodePath("MarginContainer/Panel/VBoxContainer/CustomerLeaveButton")
 scene_switcher_button = NodePath("MarginContainer/Panel/VBoxContainer/Control/SceneSwitcherButton")
 destination_strings = Array[String](["res://scenes/shop_copyformerge.tscn", "res://scenes/shop.tscn"])
+fill_pantry_button = NodePath("MarginContainer/Panel/VBoxContainer/FillPantryButton")
+save_game_button = NodePath("MarginContainer/Panel/VBoxContainer/SaveGameButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2014769689]
 anchors_preset = 15
@@ -38,6 +40,7 @@ theme_override_font_sizes/font_size = 40
 text = "Force Customer to leave"
 
 [node name="Control" type="Control" parent="MarginContainer/Panel/VBoxContainer" unique_id=252331018]
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 
 [node name="HackPanelNotNeeded" type="Panel" parent="MarginContainer/Panel/VBoxContainer/Control" unique_id=565028218]
@@ -45,7 +48,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 42.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -66,3 +68,12 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_lyhx2")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_lyhx2")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lyhx2")
 text = "Switch Scene to:"
+
+[node name="FillPantryButton" type="Button" parent="MarginContainer/Panel/VBoxContainer" unique_id=901748516]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "Fill Pantry"
+
+[node name="SaveGameButton" type="Button" parent="MarginContainer/Panel/VBoxContainer" unique_id=1192474403]
+layout_mode = 2
+text = "SAVE GAME"
