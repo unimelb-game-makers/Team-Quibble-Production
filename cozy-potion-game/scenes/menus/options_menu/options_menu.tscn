@@ -31,7 +31,6 @@ return_to_game_button = NodePath("MainMenu/MarginContainer/Control/OptionsMenuCo
 video_menu_button = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Video")
 controls_menu_button = NodePath("MainMenu/MarginContainer/Control/OptionsMenuContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Controls")
 blur_rect = NodePath("ScreenBlur")
-blur_amount = null
 
 [node name="ScreenBlur" type="ColorRect" parent="." unique_id=622338059]
 material = ExtResource("2_ijpji")
