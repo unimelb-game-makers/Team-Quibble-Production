@@ -4,7 +4,7 @@ class_name Radio extends Control
 @export var pause_toggle_button: TextureButton
 @export var next_button: TextureButton
 @export var replay_button: TextureButton
-@export var track_label: Label
+@export var track_label: TrackLabel
 @export var music_volume: VSlider
 
 @export var pause_button_texture: Texture2D
@@ -29,7 +29,7 @@ func prev_pressed(dir: int) -> void:
 	FallbackMusicManager.play_next_track(dir)
 	
 func update_track_name() -> void:
-	track_label.text = FallbackMusicManager.get_current_track_name()
+	track_label.base_text = FallbackMusicManager.get_current_track_name()
 	
 func replay_pressed() -> void:
 	FallbackMusicManager.toggle_repeat_current_track()
