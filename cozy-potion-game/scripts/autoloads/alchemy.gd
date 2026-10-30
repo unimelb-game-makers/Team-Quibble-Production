@@ -238,7 +238,7 @@ func read_processes() -> void:
 	
 	for process in json_data.data:
 		var process_resource: Process = Process.new()
-		process_resource.id = ProcessID.keys().find(process["PROCESS_ID"])
+		process_resource.id = ProcessID.keys().find(process["PROCESS_ID"]) as Alchemy.ProcessID
 		process_resource.texture = PROCESS_SPRITES[process_resource.id]
 		for attribute in process:
 			var id = AttributeID.keys().find(attribute)

@@ -12,5 +12,5 @@ func initialize(_pivot: Node3D, text: String):
 func follow_pivot():
 	global_position = get_viewport().get_camera_3d().unproject_position(pivot.global_position)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	follow_pivot()
