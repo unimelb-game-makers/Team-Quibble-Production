@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dtsoufmiy8x8d"]
+
+[ext_resource type="Script" uid="uid://cba4ugu62og7w" path="res://scripts/menus/options/key_bind_entry.gd" id="1_7325p"]
+
+[node name="KeyBindEntry" type="HBoxContainer" unique_id=1791180790]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7325p")
+
+[node name="KeyName" type="Label" parent="." unique_id=337934251]
+custom_minimum_size = Vector2(250, 0)
+custom_maximum_size = Vector2(250, -1)
+layout_mode = 2
+text = "Key1"
+
+[node name="Button" type="Button" parent="." unique_id=1445971729]
+custom_minimum_size = Vector2(250, 0)
+custom_maximum_size = Vector2(250, -1)
+layout_mode = 2
+text = "Key1"

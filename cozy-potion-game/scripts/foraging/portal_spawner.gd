@@ -10,7 +10,5 @@ func _ready() -> void:
 	button.pressed.connect(spawn)
 
 func spawn() -> void:
-	var tween = get_tree().create_tween()
-	portal.scale = Vector3.ONE * 0.1
-	tween.tween_property(portal, "scale", Vector3.ONE, 0.2)
+	portal.animate_spawn()
 	portal.global_position = player.position + offset

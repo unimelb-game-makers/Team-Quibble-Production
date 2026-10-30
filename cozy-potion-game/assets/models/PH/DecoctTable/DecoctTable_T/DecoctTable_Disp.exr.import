@@ -3,19 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyd48fmltm8vx"
-path="res://.godot/imported/DecoctTable_Disp.exr-ce6e68cbf5fcec700eb198181ec2da18.ctex"
+path.bptc="res://.godot/imported/DecoctTable_Disp.exr-ce6e68cbf5fcec700eb198181ec2da18.bptc.ctex"
+path.astc="res://.godot/imported/DecoctTable_Disp.exr-ce6e68cbf5fcec700eb198181ec2da18.astc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/models/PH/DecoctTable/DecoctTable_T/DecoctTable_Disp.exr"
-dest_files=["res://.godot/imported/DecoctTable_Disp.exr-ce6e68cbf5fcec700eb198181ec2da18.ctex"]
+dest_files=["res://.godot/imported/DecoctTable_Disp.exr-ce6e68cbf5fcec700eb198181ec2da18.bptc.ctex", "res://.godot/imported/DecoctTable_Disp.exr-ce6e68cbf5fcec700eb198181ec2da18.astc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dpf6cm5y8upkb"]
+
+[ext_resource type="Script" uid="uid://cabep75hppwlm" path="res://scripts/autoloads/fallback_music_manager.gd" id="1_n62dh"]
+[ext_resource type="AudioStream" uid="uid://hqeloqwmphft" path="res://audio/music/MainMenu/MainMenu_V.1.ogg" id="2_fi7xs"]
+[ext_resource type="AudioStream" uid="uid://d4nglhda3n3m2" path="res://audio/music/ForestMusicPLACEHOLDER/Forest_Theme_NightMix_Daniel_Edit_shorter.ogg" id="3_oj20q"]
+[ext_resource type="AudioStream" uid="uid://cwdvvnsl46mvh" path="res://audio/music/ShopMusic/102BPMShopMusicAfternoon-no-intro.ogg" id="5_n35qf"]
+[ext_resource type="AudioStream" uid="uid://bfy5rxmrh7m4" path="res://audio/music/ShopMusic/81BPMShopMusicNight.ogg" id="6_fi7xs"]
+[ext_resource type="AudioStream" uid="uid://dima6dforsotl" path="res://audio/music/ForestMusicPLACEHOLDER/70bpm_Forest_Theme_MorningMix_Full.ogg" id="6_g41vb"]
+
+[node name="FallbackMusicManager" type="Node" unique_id=1680318052 node_paths=PackedStringArray("music_player")]
+script = ExtResource("1_n62dh")
+music_player = NodePath("AudioStreamPlayer")
+track_dict = Dictionary[int, AudioStream]({
+0: ExtResource("2_fi7xs"),
+1: ExtResource("5_n35qf"),
+2: ExtResource("6_fi7xs"),
+3: ExtResource("6_g41vb"),
+4: ExtResource("3_oj20q")
+})
+track_names = Dictionary[int, String]({
+0: "Main Menu",
+1: "Shop - Day",
+2: "Shop - Night",
+3: "Forest - Day",
+4: "Forest - Night"
+})
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2123312227]
+bus = &"Music"

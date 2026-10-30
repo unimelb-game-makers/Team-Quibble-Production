@@ -6,11 +6,13 @@ signal forced_customer_leave
 
 @export var scene_switcher_button: MenuButton
 @export var destination_strings: Array[String]
+@export var fill_pantry_button: Button
 
 func _ready() -> void:
 	visible = false
 	customer_leave_button.pressed.connect(customer_leave)
 	setup_scene_switcher_menu_button()
+	fill_pantry_button.pressed.connect(fill_pantry)
 
 func setup_scene_switcher_menu_button() -> void:
 	for string in destination_strings:
@@ -26,3 +28,7 @@ func _input(event: InputEvent) -> void:
 
 func customer_leave():
 	forced_customer_leave.emit()
+
+func fill_pantry():
+	for ingredient in Alchemy.ingredient_list:
+		PersistentInventory.pantry.append(Stack.new(5,ingredient))

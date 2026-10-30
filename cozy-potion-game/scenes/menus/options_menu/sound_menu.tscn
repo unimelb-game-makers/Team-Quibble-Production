@@ -46,7 +46,9 @@ text = "Master"
 [node name="HSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/MasterControl" unique_id=734952985]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-value = 100.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="MusicControl" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=206916452]
 layout_mode = 2
@@ -59,7 +61,9 @@ text = "Music"
 [node name="HSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/MusicControl" unique_id=1450742322]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-value = 100.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="SFXControl" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=2003916152]
 layout_mode = 2
@@ -72,9 +76,15 @@ text = "Sound Effects"
 [node name="HSlider" type="HSlider" parent="PanelContainer/MarginContainer/VBoxContainer/SFXControl" unique_id=1856373827]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
-value = 100.0
+max_value = 1.0
+step = 0.05
+value = 1.0
 
 [node name="ReturnButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1490055924]
 visible = false
 layout_mode = 2
 text = "Return"
+
+[node name="SliderPollTimer" type="Timer" parent="." unique_id=2091777715]
+wait_time = 0.3
+autostart = true

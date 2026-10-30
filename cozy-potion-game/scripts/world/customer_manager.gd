@@ -30,19 +30,7 @@ func _ready() -> void:
 	if returning_from_forest:
 		send_customer()
 		returning_from_forest = false
-	
 
-func _unhandled_input(_event: InputEvent) -> void:
-	if !can_force_potion_to_customer:
-		return
-
-	if DraggableComponent.dragged_control != null:
-		_on_acceptor_accepted(DraggableComponent.dragged_control)
-		return
-
-	if ClickableComponent.dragged_control != null:
-		_on_acceptor_accepted(ClickableComponent.dragged_control)
-		return
 
 func add_model_to_customer(customer: CustomerWorld, id: Customer.CustomerID) -> void:
 	var model_scene = customer_models.get(id)
@@ -155,6 +143,7 @@ func show_acceptor_dialogue() -> void:
 	var free_all = func(x: Array): for i in x: if is_instance_valid(i): i.queue_free()
 	for balloon_enumerated in balloons:
 		balloon_enumerated.tree_exited.connect(free_all.bind(balloons))
+	
 	var acceptor_balloon = balloons.front()
 	if acceptor_balloon is ItemAcceptDialogueBalloon:
 		var potion_accept_zone: CustomerPotionAcceptZone = acceptor_balloon.potion_accept_zone
@@ -200,10 +189,7 @@ func _on_acceptor_accepted(control: Control):
 		return
 	
 	if customer_world.customer.check_potion_sufficient(item):
-		if nightmare(control) == RAMSEY:
-			DraggableComponent.get_draggable_component(control).return_to_previous()
-		else:
-			ClickableComponent.the_cunt.die()
+		control.queue_free()
 		buy_potion(item)
 	else:
 		if nightmare(control) == RAMSEY:

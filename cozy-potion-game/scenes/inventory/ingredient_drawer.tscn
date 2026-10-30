@@ -17,37 +17,48 @@ script = ExtResource("1_ts6jv")
 drawer_open_sfx = ExtResource("4_6e2wj")
 drawer_close_sfx = ExtResource("3_58pfd")
 
-[node name="Storage" type="VBoxContainer" parent="." unique_id=1040191227]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=576766691]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -377.0
+offset_top = -242.5
+offset_right = 377.0
+offset_bottom = 242.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = -90
+alignment = 1
+
+[node name="Storage" type="VBoxContainer" parent="HBoxContainer" unique_id=1040191227]
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_filter = 2
 alignment = 1
 script = ExtResource("1_d0n75")
 
-[node name="SortButton" type="MenuButton" parent="Storage" unique_id=2075698012]
+[node name="SortButton" type="MenuButton" parent="HBoxContainer/Storage" unique_id=2075698012]
 layout_mode = 2
 text = "Itemname"
 
-[node name="InventoryWithHover" parent="Storage" unique_id=414539128 instance=ExtResource("3_foq3e")]
+[node name="InventoryWithHover" parent="HBoxContainer/Storage" unique_id=414539128 instance=ExtResource("3_foq3e")]
 layout_mode = 2
 columns = 10
 rows = 5
 blacklist = Array[Resource]([SubResource("Resource_qwmll")])
 
-[node name="Panel" type="Panel" parent="Storage/InventoryWithHover" unique_id=442951970]
+[node name="Panel" type="Panel" parent="HBoxContainer/Storage/InventoryWithHover" unique_id=442951970]
 z_index = -1
 custom_minimum_size = Vector2(750, 450)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("6_83lib")
 
-[node name="ItemDisplay" type="CenterContainer" parent="." unique_id=755041674]
-offset_left = 1267.0
-offset_top = 310.0
-offset_right = 1307.0
-offset_bottom = 350.0
+[node name="ItemDisplay" type="CenterContainer" parent="HBoxContainer" unique_id=755041674]
+custom_minimum_size = Vector2(720, 810)
+layout_mode = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.75, 0.75)
