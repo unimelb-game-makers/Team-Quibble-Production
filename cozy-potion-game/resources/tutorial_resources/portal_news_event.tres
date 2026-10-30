@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NewsEvent" format=3 uid="uid://bvp3h22baatnn"]
+
+[ext_resource type="Script" uid="uid://bk5vtn31w8pje" path="res://scripts/autoloads/news_event.gd" id="1_s6d1e"]
+
+[resource]
+script = ExtResource("1_s6d1e")
+headline = "Portal Travel to the Magic Forest is Open! "
+description = "After the recent tragic events that shook the nation, connection to the magic plane has been re-established allowing portal travel"
+metadata/_custom_type_script = "uid://bk5vtn31w8pje"

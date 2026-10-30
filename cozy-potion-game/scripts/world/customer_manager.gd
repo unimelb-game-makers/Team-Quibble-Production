@@ -23,6 +23,7 @@ func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(func(idk = null): can_force_potion_to_customer = false)
 	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
+	TimeCycle.tutorial_day_started.connect(_on_tutorial_day_started)
 	var crack
 	DevTools.forced_customer_leave.connect(buy_potion.bind(crack))
 	
@@ -30,7 +31,6 @@ func _ready() -> void:
 	if returning_from_forest:
 		send_customer()
 		returning_from_forest = false
-
 
 func add_model_to_customer(customer: CustomerWorld, id: Customer.CustomerID) -> void:
 	var model_scene = customer_models.get(id)
@@ -46,21 +46,17 @@ func add_model_to_customer(customer: CustomerWorld, id: Customer.CustomerID) -> 
 	model.position += customer_model_offset
 	model.scale *= 1.2
 
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("close_minigame") or event.is_action_pressed("ui_accept"):
-		#
-#runs at the start of the day and sets up the list of customers and
-#also sends the first one to the shop
 func _on_day_started() -> void:
 	#this await is so that the news manager, which generates
 	#news at the start of the day, has time to do that
 	#before we need to use it here
 	await get_tree().create_timer(1).timeout
-	if !TutorialDirector.tutorial_day:
-		generate_customer_queue()
-	else:
-		generate_tutorial_customers()
+	generate_customer_queue()
 	send_customer()
+
+func _on_tutorial_day_started() -> void:
+	await get_tree().create_timer(1).timeout
+	generate_tutorial_customers()
 
 #generates some number of customers to be drawn from during the day
 func generate_customer_queue() -> void:
@@ -102,7 +98,8 @@ func generate_customer_time_allotments() -> Array[float]:
 	return customer_time_allotments
 
 func generate_tutorial_customers() -> void:
-	pass
+	customer_queue.clear()
+	
 
 func send_customer() -> void:
 	customer_world.customer = get_next_customer()
