@@ -738,3 +738,4 @@ night_track = 4
 
 [node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("9_54ec3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.27434, 0.10668945, -79.28735)
+destination_path = &"res://scenes/enviroments/shop_revamp.tscn"
