@@ -15,7 +15,7 @@ base_font = ExtResource("3_0cbu8")
 default_font = SubResource("FontVariation_anejk")
 
 [node name="NotebookItemDisplay" type="PanelContainer" unique_id=1355663028]
-custom_maximum_size = Vector2(720, -1)
+custom_maximum_size = Vector2(710, -1)
 clip_contents = true
 offset_right = 1440.0
 offset_bottom = 810.0

@@ -39,5 +39,5 @@ func set_process_display(pid : Alchemy.ProcessID) -> void:
 	
 	sprite.texture = process.texture
 	label_name.text = process.name
-	label_descrip.text = "Nothing Here Yet"
-	what_it_does_descrip.text = "A description"
+	label_descrip.text = process.descripition
+	what_it_does_descrip.text = process.tooltip
