@@ -86,7 +86,7 @@ func start_day() -> void:
 	target_day_progress = 0
 	days_passed += 1
 	day_progress_changed.emit()
-	
+	SaveManager.save_game()
 
 func end_day() -> void:
 	day_complete.emit()

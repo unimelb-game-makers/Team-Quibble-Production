@@ -60,9 +60,6 @@ font_color = Color(0, 0, 0, 1)
 font = ExtResource("7_dofmw")
 font_size = 42
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fbiof"]
-viewport_path = NodePath("SubViewportContainer/SubViewport")
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4dvm4"]
 radius = 20.191406
 
@@ -688,11 +685,6 @@ forest = NodePath("..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.51564, -15.827637, -55.712257)
 merchant_ui = NodePath("../SceneUI/MerchantUI")
 
-[node name="PlaceholderPortal" parent="." unique_id=1626540936 instance=ExtResource("9_54ec3")]
-transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 1.5899999, 90.812, -0.149, -79.953)
-texture = SubResource("ViewportTexture_fbiof")
-destination_path = &"res://scenes/enviroments/shop_revamp.tscn"
-
 [node name="LeftQuadrant" type="Area3D" parent="." unique_id=1142467544]
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="LeftQuadrant" unique_id=950486851]
@@ -743,3 +735,7 @@ bank_paths = ["res://audio/music/ShopMusicFMOD/Build/Desktop/Master.strings.bank
 script = ExtResource("29_05h0o")
 day_track = 3
 night_track = 4
+
+[node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("9_54ec3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 91.27434, 0.10668945, -79.28735)
+destination_path = &"res://scenes/enviroments/shop_revamp.tscn"

@@ -190,10 +190,10 @@ layout_mode = 2
 
 [node name="HotbarHover" parent="SceneUI" unique_id=584691377 instance=ExtResource("12_fg6qk")]
 z_index = 101
-offset_left = 83.0
-offset_top = 230.0
-offset_right = -1576.0
-offset_bottom = -684.0
+offset_left = 84.0
+offset_top = 297.0
+offset_right = -1575.0
+offset_bottom = -658.0
 columns = 3
 rows = 1
 include_trash_bin = true
@@ -232,11 +232,6 @@ script = ExtResource("7_7orju")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBoundsCollider" unique_id=279533657]
 shape = SubResource("BoxShape3D_ja4bt")
 
-[node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("21_jn854")]
-transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 3.349, 1.5, 0.245)
-texture = SubResource("ViewportTexture_n1o4x")
-destination_path = &"uid://bxq7bq8537rse"
-
 [node name="DayStarter" type="Node" parent="." unique_id=872273419]
 script = ExtResource("40_qwmll")
 
@@ -248,3 +243,6 @@ night_track = 2
 [node name="TutorialDirector" parent="." unique_id=53706943 node_paths=PackedStringArray("customer_manager") instance=ExtResource("42_2x3wa")]
 customer_manager = NodePath("../CustomerManager")
 portal_news_event = ExtResource("43_n1o4x")
+[node name="PlaceholderPortal2" parent="." unique_id=1962374183 instance=ExtResource("21_jn854")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3435276, 1.1149747, 0.047812223)
+destination_path = &"res://scenes/foraging/forest.tscn"
