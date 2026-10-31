@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://b3cd2a5yxvfp" path="res://scenes/viewports/popup_sub_window.tscn" id="8_m4ofw"]
 [ext_resource type="PackedScene" uid="uid://b8cph38syc08d" path="res://scenes/minigames/components/cauldron_scene.tscn" id="9_m4ofw"]
 [ext_resource type="Script" uid="uid://7dbakg2lpk8h" path="res://scripts/world/customer_world.gd" id="10_44xle"]
+[ext_resource type="PackedScene" uid="uid://c7buurds4lwef" path="res://scenes/user_interface/money_display.tscn" id="10_myw0l"]
 [ext_resource type="Script" uid="uid://ddq4xbbyhtwx4" path="res://scripts/audio/audio_manager.gd" id="10_ovj2c"]
 [ext_resource type="Texture2D" uid="uid://dcf70bnocgvbq" path="res://assets/models/Placeholder_Character.png" id="10_p0at6"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="11_7mqwv"]
@@ -102,7 +103,7 @@ corner_radius_bottom_left = 25
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4dvm4"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_myw0l"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rfeuv"]
 viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="Shop" type="Node" unique_id=428524118]
@@ -274,6 +275,8 @@ offset_right = -1576.0
 offset_bottom = -684.0
 columns = 3
 rows = 1
+
+[node name="MoneyDisplay" parent="SceneUI" unique_id=1711600455 instance=ExtResource("10_myw0l")]
 
 [node name="AudioManager" type="AudioStreamPlayer" parent="." unique_id=2136724672]
 script = ExtResource("10_ovj2c")
@@ -518,4 +521,4 @@ omni_attenuation = 3.951
 
 [node name="PlaceholderPortal" parent="Node3D" unique_id=480202819 instance=ExtResource("38_bacbi")]
 transform = Transform3D(0.7211901, 0, -1.1014522, 0, 1, 0, 0.6927372, 0, 1.1466923, 2.7578125, 1.3579102, 0.33984375)
-texture = SubResource("ViewportTexture_myw0l")
+texture = SubResource("ViewportTexture_rfeuv")

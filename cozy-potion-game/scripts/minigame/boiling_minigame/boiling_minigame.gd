@@ -8,6 +8,8 @@ class_name BoilingMinigame extends Minigame
 @export var thermometer_sprite: Sprite2D
 @export var needle_sprite: Sprite2D
 
+@export var ingredient_sprites: Node2D
+
 const SUCCESS_AREA_START: float = 0.25
 const SUCCESS_AREA_END: float = 0.75
 
@@ -40,12 +42,11 @@ func _on_ingredient_added(ingredient_stack: Stack):
 	boiling_timer.paused = false
 	animation_player.play(&"start")
 	
+	for ingredient_sprite in ingredient_sprites.get_children():
+		ingredient_sprite.set_texture(ingredient_stack.get_item_sprite())
+	
 	output_ingredient = process_ingredient(ingredient_stack)
 
-func process_ingredient(input_stack: Stack) -> Stack:
-	print_debug("IT IS NOW TIME TO IMPLEMENT ITEM PROCESSING ON THIS LINE")
-	input_stack.item.ingredient_name = "PROCESSED INGREDIENT"
-	return input_stack
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	match anim_name:

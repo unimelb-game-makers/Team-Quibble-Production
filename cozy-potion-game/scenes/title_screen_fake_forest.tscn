@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://ba6o7krm0dacy"]
+
+[ext_resource type="PackedScene" uid="uid://d1s3n3yh2tev5" path="res://scenes/Mythical_Forest.tscn" id="1_8nl5b"]
+
+[node name="TitleScreenFakeForest" type="Node3D" unique_id=1357049931]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2137491629]
+transform = Transform3D(0.8277149, 0, -0.56114894, 0, 1, 0, 0.56114894, 0, 0.8277149, 54.242096, 3.408945, -63.698524)
+current = true
+fov = 59.6
+size = 26.097
+
+[node name="MythicalForest" parent="." unique_id=1236479139 instance=ExtResource("1_8nl5b")]

@@ -3,11 +3,10 @@ extends Node
 
 @onready var item_display: NotebookItemDisplay = $NotebookItemDisplay
 
-
-@onready var pedia: Control = $Pedia
-@onready var item_array: NotebookItemArray = $Pedia/ItemArray
-@onready var left_arrow: TextureButton = $Pedia/LeftArrow
-@onready var right_arrow: TextureButton = $Pedia/RightArrow
+@onready var pedia: Control = $MarginContainer/Pedia
+@onready var item_array: NotebookItemArray = $MarginContainer/Pedia/ItemArray
+@onready var left_arrow: TextureButton = $MarginContainer/Pedia/Arrows/LeftArrow
+@onready var right_arrow: TextureButton = $MarginContainer/Pedia/Arrows/RightArrow
 
 
 func _ready() -> void:

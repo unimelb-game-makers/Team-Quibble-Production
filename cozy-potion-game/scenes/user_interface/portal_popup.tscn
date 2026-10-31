@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://yb5b6cpub8qh"]
+
+[ext_resource type="Script" uid="uid://bhgdky2jesod7" path="res://scripts/user_interface/portal_popup.gd" id="1_cy4kx"]
+[ext_resource type="Theme" uid="uid://b5rk2obep48bo" path="res://resources/ui_themes/main_menu_theme.tres" id="2_5jyob"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6ar3d"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_q2fix"]
+font_size = 32
+
+[node name="PortalPopup" type="CanvasLayer" unique_id=640943272 node_paths=PackedStringArray("yes_button", "no_button") groups=["portal_popup"]]
+visible = false
+script = ExtResource("1_cy4kx")
+yes_button = NodePath("Control/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/Button2")
+no_button = NodePath("Control/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer/Button")
+
+[node name="Control" type="Control" parent="." unique_id=1687869585]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5jyob")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control" unique_id=984922264]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/CenterContainer" unique_id=377836059]
+custom_minimum_size = Vector2(500, 230)
+layout_mode = 2
+offset_transform_scale = Vector2(1.5, 1.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer/PanelContainer" unique_id=1001662512]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Control/CenterContainer/PanelContainer/VBoxContainer" unique_id=2049131758]
+layout_mode = 2
+text = "Return Home?"
+label_settings = SubResource("LabelSettings_6ar3d")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/CenterContainer/PanelContainer/VBoxContainer" unique_id=8019547]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "You won't be able to come back until tomorrow. (You're a busy girl.)"
+label_settings = SubResource("LabelSettings_q2fix")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer/PanelContainer/VBoxContainer" unique_id=609046106]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Button2" type="Button" parent="Control/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1712340308]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Leave"
+
+[node name="Button" type="Button" parent="Control/CenterContainer/PanelContainer/VBoxContainer/HBoxContainer" unique_id=388079632]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Stay"

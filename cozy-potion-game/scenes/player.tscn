@@ -173,13 +173,13 @@ transform = Transform3D(1.21, 0, 0, 0, 1.21, 0, 0, 0, 1.21, 0, 0, 0)
 [node name="MimiFrontBack" parent="AnimationPivot/Sprites" unique_id=2010580373 instance=ExtResource("4_6o77n")]
 transform = Transform3D(0.305, 0, 0, 0, 0.305, 0, 0, 0, 0.205, 0.012121186, -0.07802725, -0.020415366)
 
-[node name="mimi-front" parent="AnimationPivot/Sprites/MimiFrontBack" index="1" unique_id=531760448]
+[node name="mimi-front" parent="AnimationPivot/Sprites/MimiFrontBack" index="1" unique_id=542018268]
 mesh = SubResource("ArrayMesh_50rl7")
 
 [node name="MimiLeftRight" parent="AnimationPivot/Sprites" unique_id=503888036 instance=ExtResource("2_dqkch")]
 transform = Transform3D(0.001816079, 0, -0.9999984, 0, 1, 0, 0.9999984, 0, 0.001816079, 0.017564297, 0.477, 0.008782238)
 
-[node name="Plane" parent="AnimationPivot/Sprites/MimiLeftRight" index="0" unique_id=1084512468]
+[node name="Plane" parent="AnimationPivot/Sprites/MimiLeftRight" index="0" unique_id=1337423863]
 mesh = SubResource("ArrayMesh_lagtt")
 
 [node name="CameraPivot" type="Node3D" parent="." unique_id=1669848937]

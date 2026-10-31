@@ -4,11 +4,10 @@ extends PanelContainer
 # Emitted every frame if cursor inside slot
 signal hovering
 
-const ITEM_HOLDER = preload("uid://80sdcv4hsqa1")
-
 var item_holder : ItemHolder = null
 var ishovering := false
 var max_quantity: int = 999
+var blacklist: Array[Resource]
 
 var max_pickup: int = 1
 
@@ -22,13 +21,17 @@ func _ready() -> void:
 	pass
 
 # Exists so panel can be filter Ignore, emulates mouse_exited/entered
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	# Previously this would only emit motion but not justs emits if cursor hovering
-	var hovering = emulate_mouse_inside()
+	var is_hovering = emulate_mouse_inside()
 	
-	if not hovering and Input.is_action_just_pressed("RMB"):
+	if not is_hovering and Input.is_action_just_pressed("RMB"):
 		if item_holder:
 			item_holder.highlight_turn_off()
+
+func add_blacklist(_list: Array) -> void:
+	blacklist = _list
+	drag_acceptor.blacklist = _list
 
 # If cursor inside emits hovering signal, emits mouse_exited if cursor leaves
 func emulate_mouse_inside() -> bool:
@@ -50,7 +53,7 @@ func emulate_mouse_inside() -> bool:
 	return intersecting_mouse
 
 func create_holder_as_child(stack : Stack) -> ItemHolder:
-	var new_item_holder = ITEM_HOLDER.instantiate()
+	var new_item_holder: ItemHolder = ItemHolder.get_scene().instantiate()
 	add_child(new_item_holder)
 	new_item_holder.stack = stack
 	
@@ -66,10 +69,9 @@ func set_stack(stack:Stack) -> void:
 
 # Adds ItemHolder that does not exist in scene yet, as child and stores in slot
 func set_item_holder(holder : ItemHolder) -> void:
-	if item_holder == null:
-		item_holder = holder
-		drag_acceptor.accepting_items = false
-		item_holder.draggable_component.draggable_accepted.connect(remove_holder)
+	item_holder = holder
+	drag_acceptor.accepting_items = false
+	item_holder.draggable_component.draggable_accepted.connect(remove_holder)
 
 func remove_holder() -> void:
 	item_holder.draggable_component.draggable_accepted.disconnect(remove_holder)
@@ -87,6 +89,15 @@ func remove_holder() -> void:
 			clone_type(item_holder.get_item_stack()))
 
 
+func is_item_blacklist(_item: Resource) -> bool:
+	if blacklist.size() == 0:
+		return false
+
+	for item in blacklist:
+		if item.get_script() == _item.get_script():
+			return true
+	
+	return false
 
 # NOT USED BELOW
 
@@ -125,11 +136,10 @@ func add_to_stack(new_item: Stack) -> Stack:
 		set_stack(Stack.new(0, new_item.item))
 	elif not get_item_stack().compare_stacks(new_item):
 		return new_item
-
 	# Adds as much as can be added to stack
-	var add_to_stack : int = \
+	var to_add : int = \
 		min(max_quantity - get_item_stack().quantity, new_item.quantity)
-	item_holder.stack.quantity += add_to_stack
-	new_item.quantity -= add_to_stack
+	item_holder.stack.quantity += to_add
+	new_item.quantity -= to_add
 	
 	return new_item

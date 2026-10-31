@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b8oobmqd0kur3"]
+
+[ext_resource type="Script" uid="uid://bkflfdjun0tqm" path="res://scripts/minigame/notebook/notebook_process_list.gd" id="1_0rcr4"]
+[ext_resource type="Script" uid="uid://vii5df013pij" path="res://scripts/minigame/notebook/notebook_process_view.gd" id="1_6drjx"]
+[ext_resource type="PackedScene" uid="uid://bsk8n3lqgdh0q" path="res://scenes/minigames/components/notebook_process_display.tscn" id="2_0rcr4"]
+[ext_resource type="Script" uid="uid://ccbww58r7fx6a" path="res://scripts/minigame/notebook/notebook_process_display.gd" id="4_i45t5"]
+
+[node name="NotebookItemView" type="HBoxContainer" unique_id=1657712383]
+custom_minimum_size = Vector2(1440, 810)
+offset_right = 1444.0
+offset_bottom = 810.0
+mouse_filter = 2
+script = ExtResource("1_6drjx")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2057694618]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+
+[node name="ProcessList" type="VBoxContainer" parent="MarginContainer" unique_id=1201628451]
+custom_minimum_size = Vector2(600, 810)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("1_0rcr4")
+
+[node name="TemplateButton" type="Button" parent="MarginContainer/ProcessList" unique_id=71276396]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Null"
+
+[node name="NotebookProcessDisplay" parent="." unique_id=1355663028 instance=ExtResource("2_0rcr4")]
+layout_mode = 2
+script = ExtResource("4_i45t5")

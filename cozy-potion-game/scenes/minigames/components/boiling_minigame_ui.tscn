@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dwjhqwlvqsrte"]
 
 [ext_resource type="Script" uid="uid://dqu204rtfgneb" path="res://scripts/minigame/boiling_minigame/boiling_minigame.gd" id="1_11f7o"]
-[ext_resource type="Texture2D" uid="uid://fueysbadjrju" path="res://assets/sprites/minigame/boiling_minigame/teapot_full.png" id="2_0vbjg"]
+[ext_resource type="Texture2D" uid="uid://biqtr33nugo6q" path="res://assets/sprites/minigame/boiling_minigame/teapot_full_daniel_opaque.png" id="2_11eex"]
 [ext_resource type="Texture2D" uid="uid://bcde7p1jknv7b" path="res://assets/sprites/minigame/boiling_minigame/teapot_lid_full.png" id="3_n1qmb"]
 [ext_resource type="Texture2D" uid="uid://4ixno0w1bych" path="res://assets/sprites/unhappy.png" id="4_x0t0n"]
 [ext_resource type="Script" uid="uid://bwrg8ejfsfk8i" path="res://scripts/user_interface/colorable_sprite.gd" id="5_52bvf"]
@@ -68,7 +68,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(930, 280)]
+"values": [Vector2(800, 280)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ingredients:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_siphr"]
@@ -89,7 +101,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("Ingredients:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -97,12 +109,12 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(930, 480), Vector2(930, 280)]
+"values": [Vector2(800, 480), Vector2(800, 280)]
 }
 
 [sub_resource type="Animation" id="Animation_b5035"]
 resource_name = "start"
-length = 1.5
+length = 2.0
 step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -111,7 +123,7 @@ tracks/0/path = NodePath("TeapotFull/TeapotLidFull:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 1),
+"times": PackedFloat32Array(1, 1.5),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Vector2(0, -400), Vector2(0, 0)]
@@ -123,10 +135,22 @@ tracks/1/path = NodePath("Ingredients:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.5, 1),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(930, 280), Vector2(930, 480)]
+"values": [Vector2(800, 280), Vector2(800, 480)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Ingredients:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h368w"]
@@ -136,21 +160,22 @@ _data = {
 &"start": SubResource("Animation_b5035")
 }
 
-[node name="BoilingMinigame" type="CanvasLayer" unique_id=1533572996 node_paths=PackedStringArray("boiling_timer", "animation_player", "thermometer_sprite", "needle_sprite", "acceptor", "draggable_hint_rect")]
+[node name="BoilingMinigame" type="CanvasLayer" unique_id=1533572996 node_paths=PackedStringArray("boiling_timer", "animation_player", "thermometer_sprite", "needle_sprite", "ingredient_sprites", "acceptor", "draggable_hint_rect")]
 script = ExtResource("1_11f7o")
 progress_variance_array = Array[Curve]([SubResource("Curve_ii47s"), SubResource("Curve_siphr"), SubResource("Curve_b5035")])
 boiling_timer = NodePath("BoilingTimer")
 animation_player = NodePath("AnimationPlayer")
 thermometer_sprite = NodePath("Thermometer")
 needle_sprite = NodePath("Thermometer/Needle")
+ingredient_sprites = NodePath("Ingredients")
 acceptor = NodePath("Control/DraggableAcceptorComponent")
 draggable_hint_rect = NodePath("Control/ColorRect")
 process = 3
 
 [node name="TeapotFull" type="Sprite2D" parent="." unique_id=2053737364]
-position = Vector2(930, 480)
+position = Vector2(800, 440)
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("2_0vbjg")
+texture = ExtResource("2_11eex")
 
 [node name="TeapotLidFull" type="Sprite2D" parent="TeapotFull" unique_id=1204067302]
 position = Vector2(0, -400)
@@ -159,7 +184,7 @@ texture = ExtResource("3_n1qmb")
 [node name="Thermometer" type="Sprite2D" parent="." unique_id=2072749853]
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 1
-position = Vector2(960, 910)
+position = Vector2(830, 870)
 texture = SubResource("GradientTexture2D_x2l7t")
 
 [node name="Needle" type="Sprite2D" parent="Thermometer" unique_id=55972828]
@@ -175,7 +200,7 @@ libraries/ = SubResource("AnimationLibrary_h368w")
 
 [node name="Ingredients" type="Node2D" parent="." unique_id=803572519]
 visible = false
-position = Vector2(930, 280)
+position = Vector2(800, 280)
 
 [node name="ColorableSprite" type="Sprite2D" parent="Ingredients" unique_id=1783808881]
 z_index = -1
@@ -201,9 +226,9 @@ script = ExtResource("5_52bvf")
 [node name="Control" type="Control" parent="." unique_id=1438279605]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 758.0
+offset_left = 630.0
 offset_top = 301.0
-offset_right = 1184.0
+offset_right = 1056.0
 offset_bottom = 498.0
 mouse_filter = 2
 

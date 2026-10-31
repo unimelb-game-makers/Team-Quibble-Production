@@ -37,7 +37,7 @@ func apply_process(id: Alchemy.ProcessID) -> void:
 	ingredient_sprite = new_texture
 	process_applied.append(id)
 	for attribute in process.attribute_changes:
-		attributes[attribute] *= process.attribute_changes[attribute]
+		attributes[attribute] *= int(process.attribute_changes[attribute])
 
 func get_greatest_attribute() -> Alchemy.AttributeID:
 	return attributes.find_key(attributes.values().max())

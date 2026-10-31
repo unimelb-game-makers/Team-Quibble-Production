@@ -25,15 +25,21 @@ Utils="*uid://dxmo3so2glesr"
 SceneManager="*uid://c0071jx5m4ofo"
 OptionsMenu="*uid://c7rl0bd26eupb"
 DialogueManager="*uid://c3rodes2l3gxb"
-FmodManager="*uid://cds10pm7hwn3p"
 TimeCycle="*uid://jkbigy13ojrr"
 NewsManager="*uid://brtfnh3amack8"
 Alchemy="*uid://brexs4dtg3b08"
 DevTools="*uid://do8xg03yglhhw"
-MusicController="*uid://fmu0thgkusvs"
 PersistentInventory="*uid://okowyngxw7yo"
 AudioManager="*uid://ddq4xbbyhtwx4"
 ForestSceneModifications="*uid://fnarcmnys0pr"
+FallbackMusicManager="*uid://dpf6cm5y8upkb"
+SaveManager="*uid://c33br6pmw1rok"
+
+[debug]
+
+gdscript/warnings/static_called_on_instance=0
+gdscript/warnings/int_as_enum_without_cast=0
+gdscript/warnings/int_as_enum_without_match=0
 
 [display]
 
@@ -45,7 +51,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/fmod/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [global_group]
 
@@ -186,4 +192,5 @@ locale/translations_pot_files=PackedStringArray("res://dialogue/customer/placeho
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
 textures/vram_compression/import_etc2_astc=true

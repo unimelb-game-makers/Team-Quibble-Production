@@ -23,7 +23,6 @@
 [ext_resource type="PackedScene" uid="uid://ck5cra1btw4tq" path="res://assets/models/Customers/NPC_Base_2_Baker.glb" id="8_vb12q"]
 [ext_resource type="PackedScene" uid="uid://4myaodb70j83" path="res://assets/models/Customers/NPC_Base_2_Courier.glb" id="9_4sck7"]
 [ext_resource type="Script" uid="uid://v35ej18pauh0" path="res://scripts/user_interface/list_manager.gd" id="9_fg6qk"]
-[ext_resource type="Texture2D" uid="uid://3fqvgiio2dvn" path="res://assets/sprites/ui/ui_box_64_3x_tile.png" id="10_jn854"]
 [ext_resource type="PackedScene" uid="uid://duepgsna73jdx" path="res://assets/models/Customers/NPC_Base_2_Musician.glb" id="10_kh5es"]
 [ext_resource type="FontFile" uid="uid://rrepqltfxk2v" path="res://assets/fonts/Adventurer.ttf" id="11_jjrkg"]
 [ext_resource type="PackedScene" uid="uid://c2dggmeibidsk" path="res://assets/models/Customers/NPC_Base_2_Student.glb" id="11_qwmll"]
@@ -37,7 +36,12 @@
 [ext_resource type="PackedScene" uid="uid://bm55o4twdnjtx" path="res://assets/models/Customers/NPC_Base_3_Lumberjack.glb" id="16_va5sy"]
 [ext_resource type="PackedScene" uid="uid://djwvfhxhrfr83" path="res://assets/models/Customers/investigator_rotated.tscn" id="20_qwmll"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="21_jn854"]
-[ext_resource type="Script" uid="uid://c63vcvaayrcgx" path="res://scenes/enviroments/shop_music.gd" id="22_jjrkg"]
+[ext_resource type="PackedScene" uid="uid://c7buurds4lwef" path="res://scenes/user_interface/money_display.tscn" id="21_kh5es"]
+[ext_resource type="StyleBox" uid="uid://cff3oxr8jourw" path="res://resources/ui_themes/wreath_style_box.tres" id="28_10j44"]
+[ext_resource type="PackedScene" uid="uid://c42y0lkc4tsam" path="res://scenes/user_interface/notebook_hint.tscn" id="29_kh5es"]
+[ext_resource type="PackedScene" uid="uid://c4hnfe6y3qo4c" path="res://scenes/minigames/boiling_minigame.tscn" id="35_qwmll"]
+[ext_resource type="Script" uid="uid://bkv0jpacagup1" path="res://scripts/day_starter.gd" id="40_qwmll"]
+[ext_resource type="Script" uid="uid://5pvk3tb41p66" path="res://scripts/world/scene_music_controller.gd" id="41_10j44"]
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -75,20 +79,8 @@ _data = {
 &"person_in": SubResource("Animation_tbgi4")
 }
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r5foe"]
-texture = ExtResource("10_jn854")
-texture_margin_left = 64.0
-texture_margin_top = 64.0
-texture_margin_right = 64.0
-texture_margin_bottom = 64.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_ja4bt"]
 size = Vector3(100, 1, 100)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_4sck7"]
-viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="ShopRevamp" type="Node3D" unique_id=1366204913]
 
@@ -124,6 +116,24 @@ libraries/ = SubResource("AnimationLibrary_xua33")
 
 [node name="SceneUI" type="CanvasLayer" parent="." unique_id=1356840973]
 
+[node name="MoneyDisplay" parent="SceneUI" unique_id=1711600455 instance=ExtResource("21_kh5es")]
+
+[node name="MarginContainer" type="MarginContainer" parent="SceneUI" unique_id=1952891633]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="NotebookHint" parent="SceneUI/MarginContainer" unique_id=1638977271 instance=ExtResource("29_kh5es")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
 [node name="PopupSubWindow" parent="SceneUI" unique_id=1360167922 groups=["popup_subwindow"] instance=ExtResource("1_20pkh")]
 
 [node name="TimeUI" parent="SceneUI" unique_id=1025226181 instance=ExtResource("6_yt3dh")]
@@ -153,7 +163,7 @@ offset_top = 60.0
 offset_right = -51.0
 offset_bottom = 177.0
 grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_r5foe")
+theme_override_styles/panel = ExtResource("28_10j44")
 
 [node name="MarginContainer" type="MarginContainer" parent="SceneUI/ListManager/PanelContainer" unique_id=515838446]
 layout_mode = 2
@@ -176,12 +186,13 @@ layout_mode = 2
 
 [node name="HotbarHover" parent="SceneUI" unique_id=584691377 instance=ExtResource("12_fg6qk")]
 z_index = 101
-offset_left = 83.0
-offset_top = 230.0
-offset_right = -1576.0
-offset_bottom = -684.0
+offset_left = 84.0
+offset_top = 297.0
+offset_right = -1575.0
+offset_bottom = -658.0
 columns = 3
 rows = 1
+include_trash_bin = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1800487255]
 environment = ExtResource("2_suouy")
@@ -204,6 +215,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7299187, 0.96952724, 7.4823
 [node name="CrushingMinigame" parent="." unique_id=474952040 instance=ExtResource("5_p210v")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3, -0.24897656, -8.501)
 
+[node name="BoilingMinigame" parent="." unique_id=93761189 instance=ExtResource("35_qwmll")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 0, -8.5)
+
 [node name="CauldronMinigame" parent="." unique_id=1117195076 instance=ExtResource("6_giko4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2419014, -0.25551674, -4.594636)
 
@@ -217,11 +231,14 @@ script = ExtResource("7_7orju")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OutOfBoundsCollider" unique_id=279533657]
 shape = SubResource("BoxShape3D_ja4bt")
 
-[node name="PlaceholderPortal" parent="." unique_id=480202819 instance=ExtResource("21_jn854")]
-transform = Transform3D(0.69033396, 0, -1.1503505, 0, 1, 0, 0.72349083, 0, 1.097631, 3.2892015, 1.6600952, 0.16595316)
-texture = SubResource("ViewportTexture_4sck7")
-destination_path = &"uid://bxq7bq8537rse"
+[node name="DayStarter" type="Node" parent="." unique_id=872273419]
+script = ExtResource("40_qwmll")
 
-[node name="ShopMusicStarter" type="Node" parent="." unique_id=1890158475]
-script = ExtResource("22_jjrkg")
-metadata/_custom_type_script = "uid://c63vcvaayrcgx"
+[node name="ShopMusicController" type="Node" parent="." unique_id=1189943893]
+script = ExtResource("41_10j44")
+day_track = 1
+night_track = 2
+
+[node name="PlaceholderPortal2" parent="." unique_id=1962374183 instance=ExtResource("21_jn854")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3435276, 1.1149747, 0.047812223)
+destination_path = &"res://scenes/foraging/forest.tscn"
