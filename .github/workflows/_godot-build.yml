@@ -79,20 +79,6 @@ jobs:
           mkdir -p "build/${{ inputs.platform }}"
           godot --headless --export-release "$preset" "$output"
 
-      - name: Prepare Web package for static hosting
-        if: inputs.platform == 'web'
-        working-directory: ${{ inputs.project_path }}
-        shell: bash
-        run: bash "$GITHUB_WORKSPACE/.github/scripts/prepare-web-package.sh" build/web
-
-      - name: Add cross-origin isolation service worker
-        if: inputs.platform == 'web'
-        working-directory: ${{ inputs.project_path }}
-        run: |
-          git clone --depth 1 https://github.com/gzuidhof/coi-serviceworker.git
-          mv coi-serviceworker/coi-serviceworker.js build/web/
-          sed -i 's#</head>#<script src="coi-serviceworker.js"></script>\n</head>#' build/web/index.html
-
       - name: Upload ${{ inputs.platform }} artifact
         uses: actions/upload-artifact@v7
         with:
