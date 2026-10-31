@@ -22,6 +22,7 @@ func _ready() -> void:
 	
 	adjust_foliage_weights()
 	filter_ingredients_by_needed()
+	filter_purchaseable_ingredients()
 
 	await get_tree().process_frame
 	spawn_foliage()
@@ -37,8 +38,15 @@ func filter_ingredients_by_needed() -> void:
 		var ing_res: PotionIngredient = Alchemy.find_ingredient_by_id(ingredient)
 		if not ing_res.get_greatest_attribute() in CustomerManager.customer_queue_needs_list:
 			ingredients[ingredient] = 0
-			print_debug("%s will not spawn" % ing_res.ingredient_name)
-			
+			print_debug("%s will not spawn because unneeded" % ing_res.ingredient_name)
+
+func filter_purchaseable_ingredients() -> void:
+	for ingredient in ingredients:
+		var ing_res: PotionIngredient = Alchemy.find_ingredient_by_id(ingredient)
+		if ing_res.purchaseable:
+			ingredients[ingredient] = 0
+			print_debug("%s will not spawn because purchaseable" % ing_res.ingredient_name)
+
 func spawn_foliage() -> void:
 	for marker in ingredient_foliage_spawn_points:
 		var does_spawn: bool = randf() <= ingredient_foliage_spawn_rate
