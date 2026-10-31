@@ -8,10 +8,6 @@
 
 config_version=5
 
-[Fmod]
-
-General/banks_path="res://audio/music/ShopMusicFMOD/Build/Desktop"
-
 [application]
 
 config/name="Cozy Potion Game"
