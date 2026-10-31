@@ -253,6 +253,7 @@ texture_disabled = ExtResource("6_pjwkr")
 texture_focused = ExtResource("6_pjwkr")
 
 [node name="MerchantUI" type="CanvasLayer" parent="SceneUI" unique_id=1074401360 node_paths=PackedStringArray("item_box_container", "dialogue_label")]
+visible = false
 script = ExtResource("3_iyol6")
 merchant_item_box_scene = ExtResource("4_iyol6")
 item_box_container = NodePath("Control/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer")
