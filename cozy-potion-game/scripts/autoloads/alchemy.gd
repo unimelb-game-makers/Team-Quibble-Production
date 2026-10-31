@@ -29,6 +29,7 @@ enum AttributeID {
 	ATTR_LIGHT,
 	ATTR_DARK,
 	ATTR_PAIN_RELIEF,
+	ATTR_NULL_ATTR,
 }
 
 enum IngredientID{
@@ -196,6 +197,8 @@ func read_ingredient_data() -> void:
 			temp_ingredient.valid_process_methods.append(ProcessID.keys().find(process))
 
 		for attribute in AttributeID.values():
+			if attribute == AttributeID.ATTR_NULL_ATTR:
+				continue
 			temp_ingredient.attributes.set(attribute, int(ingredient[AttributeID.keys()[attribute]]))
 		
 		temp_ingredient.ingredient_color = Color(ingredient["COLOUR_HEX"])

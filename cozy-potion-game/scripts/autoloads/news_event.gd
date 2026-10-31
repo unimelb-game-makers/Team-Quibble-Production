@@ -1,7 +1,7 @@
 class_name NewsEvent extends Resource
 
-var headline: String
-var description: String
+@export var headline: String
+@export var description: String
 #this dictionary maps strings representing effect names to floats
 #representing their magnitudes. At the moment, each news event has the same three
 #effects, but this may change
@@ -10,6 +10,7 @@ var effects: Array
 func initialise(news_dict: Dictionary = {}) -> void:
 	if news_dict.size() <= 0:
 		return
+		
 	headline = news_dict.get("HEADLINE")
 	description = news_dict.get("DESCRIPTION")
 	for i in range(1,4):

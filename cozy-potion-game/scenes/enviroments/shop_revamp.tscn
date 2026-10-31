@@ -42,6 +42,8 @@
 [ext_resource type="PackedScene" uid="uid://c4hnfe6y3qo4c" path="res://scenes/minigames/boiling_minigame.tscn" id="35_qwmll"]
 [ext_resource type="Script" uid="uid://bkv0jpacagup1" path="res://scripts/day_starter.gd" id="40_qwmll"]
 [ext_resource type="Script" uid="uid://5pvk3tb41p66" path="res://scripts/world/scene_music_controller.gd" id="41_10j44"]
+[ext_resource type="PackedScene" uid="uid://b3ee5yq8o72ch" path="res://assets/prefabs/tutorial_director.tscn" id="42_2x3wa"]
+[ext_resource type="Resource" uid="uid://bvp3h22baatnn" path="res://resources/tutorial_resources/portal_news_event.tres" id="43_n1o4x"]
 
 [sub_resource type="Animation" id="Animation_jyhfs"]
 length = 0.001
@@ -239,6 +241,14 @@ script = ExtResource("41_10j44")
 day_track = 1
 night_track = 2
 
-[node name="PlaceholderPortal2" parent="." unique_id=1962374183 instance=ExtResource("21_jn854")]
+[node name="TutorialDirector" parent="." unique_id=53706943 node_paths=PackedStringArray("customer_manager") instance=ExtResource("42_2x3wa")]
+customer_manager = NodePath("../CustomerManager")
+portal_news_event = ExtResource("43_n1o4x")
+
+[node name="PlaceholderPortal2" parent="." unique_id=1962374183 node_paths=PackedStringArray("portal_marker") instance=ExtResource("21_jn854")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3435276, 1.1149747, 0.047812223)
 destination_path = &"res://scenes/foraging/forest.tscn"
+portal_marker = NodePath("../PortalMarker")
+
+[node name="PortalMarker" type="Marker3D" parent="." unique_id=704407439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.344, 1.115, 0.048)

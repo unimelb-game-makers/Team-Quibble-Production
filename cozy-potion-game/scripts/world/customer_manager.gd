@@ -23,6 +23,7 @@ func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(func(idk = null): can_force_potion_to_customer = false)
 	customer_interactable.interacted.connect(_on_customer_interact)
 	TimeCycle.day_started.connect(_on_day_started)
+	TimeCycle.tutorial_day_started.connect(_on_tutorial_day_started)
 	var crack
 	DevTools.forced_customer_leave.connect(buy_potion.bind(crack))
 	
@@ -30,7 +31,6 @@ func _ready() -> void:
 	if returning_from_forest:
 		send_customer()
 		returning_from_forest = false
-
 
 func add_model_to_customer(customer: CustomerWorld, id: Customer.CustomerID) -> void:
 	var model_scene = customer_models.get(id)
@@ -46,11 +46,6 @@ func add_model_to_customer(customer: CustomerWorld, id: Customer.CustomerID) -> 
 	model.position += customer_model_offset
 	model.scale *= 1.2
 
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("close_minigame") or event.is_action_pressed("ui_accept"):
-		#
-#runs at the start of the day and sets up the list of customers and
-#also sends the first one to the shop
 func _on_day_started() -> void:
 	#this await is so that the news manager, which generates
 	#news at the start of the day, has time to do that
@@ -59,16 +54,19 @@ func _on_day_started() -> void:
 	generate_customer_queue()
 	send_customer()
 
+func _on_tutorial_day_started() -> void:
+	await get_tree().create_timer(1).timeout
+	generate_tutorial_customers()
+	send_customer()
+
 #generates some number of customers to be drawn from during the day
-func generate_customer_queue(_customer_queue: Array[Customer] = []) -> void:
+func generate_customer_queue() -> void:
 	customer_queue.clear()
 	var customer_needs_list: Dictionary[Alchemy.NeedID, int]
-	if _customer_queue.size() == 0:
-		for i in range(TimeCycle.customers_per_day):
-			customer_queue.append(Customer.generate_customer())
-	else:
-		customer_queue = _customer_queue
 	
+	for i in range(TimeCycle.customers_per_day):
+		customer_queue.append(Customer.generate_customer())
+
 	for customer in customer_queue:
 		customer_needs_list[customer.primary_need] = 0
 		if customer.secondary_need > 0:
@@ -100,9 +98,18 @@ func generate_customer_time_allotments() -> Array[float]:
 	customer_time_allotments.append(1.1-points.back())
 	return customer_time_allotments
 
+func generate_tutorial_customers() -> void:
+	customer_queue.clear()
+	customer_queue = TutorialDirector.customer_manager_queue
+
+	var time_allotments = generate_customer_time_allotments()
+	for i in range(time_allotments.size()):
+		customer_queue[i].time_allotment = time_allotments[i]
+
 func send_customer() -> void:
 	customer_world.customer = get_next_customer()
 	if not customer_world.customer :
+		print_debug("customer_world is null!!!")
 		return
 	
 	add_model_to_customer(customer_world, customer_world.customer.customer_id)
