@@ -30,8 +30,7 @@ func tutorial_day_one() -> void:
 func tutorial_day_two() -> void:
 	portal_open = true
 	TimeCycle.customers_per_day = 3
-	customer_manager_queue = [custom_customer[2], custom_customer[3], custom_customer[4]]
-
+	customer_manager_queue = [custom_customer[2], custom_customer[0], custom_customer[1]]
 
 func _on_day_started() -> void:
 	if TimeCycle.days_passed == 0:

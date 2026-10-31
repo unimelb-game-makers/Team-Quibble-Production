@@ -4,4 +4,6 @@
 
 [resource]
 script = ExtResource("1_1al8q")
+needs = Array[int]([23, 17])
+need_severities = Array[float]([10.0, 5.0])
 metadata/_custom_type_script = "uid://bh1olcq0so2ta"
