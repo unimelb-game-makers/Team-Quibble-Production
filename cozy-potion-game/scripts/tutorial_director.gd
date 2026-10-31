@@ -25,7 +25,7 @@ func _ready() -> void:
 func tutorial_day_one() -> void:
 	TimeCycle.customers_per_day = 2
 	customer_manager_queue = [custom_customer[0], custom_customer[1]]
-	PersistentInventory.pantry.append(day_one_resources)
+	PersistentInventory.pantry.assign(day_one_resources)
 
 func tutorial_day_two() -> void:
 	portal_open = true

@@ -245,6 +245,10 @@ night_track = 2
 customer_manager = NodePath("../CustomerManager")
 portal_news_event = ExtResource("43_n1o4x")
 
-[node name="PlaceholderPortal2" parent="." unique_id=1962374183 instance=ExtResource("21_jn854")]
+[node name="PlaceholderPortal2" parent="." unique_id=1962374183 node_paths=PackedStringArray("portal_marker") instance=ExtResource("21_jn854")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3435276, 1.1149747, 0.047812223)
 destination_path = &"res://scenes/foraging/forest.tscn"
+portal_marker = NodePath("../PortalMarker")
+
+[node name="PortalMarker" type="Marker3D" parent="." unique_id=704407439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.344, 1.115, 0.048)

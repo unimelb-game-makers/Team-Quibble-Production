@@ -5,6 +5,7 @@ class_name Portal extends Node3D
 @export var player_spawn_position: Marker3D
 
 @export var enter_portal_sounds: AudioResource
+@export var portal_marker: Marker3D
 
 # TODO: I don't know where these would play
 @export var portal_spawn_sounds: AudioResource
@@ -19,25 +20,26 @@ static var spawn_at_portal: bool = false
 var underground: bool = false
 
 func _ready() -> void:
+	if portal_marker:
+		position = portal_marker.position
 	if !TutorialDirector.portal_open:
-		visible = false
 		position += Vector3(0,-100,0)
 		underground = true
-		force_update_transform()
-		return
 
-	if TimeCycle.visited_forest_this_day:
+	elif TimeCycle.visited_forest_this_day:
 		position += Vector3(0,-100,0)
 		underground = true
-		force_update_transform()
-		
+	
+	force_update_transform()
+
 	interactable.interacted.connect(_on_interact)
 	portal_popup = get_tree().get_first_node_in_group("portal_popup")
 	if portal_popup:
 		portal_popup.no_clicked.connect(cancel_popup)
 		portal_popup.yes_clicked.connect(teleport)
-	
+
 	TimeCycle.day_started.connect(return_from_underground)
+	TimeCycle.tutorial_day_started.connect(return_from_underground)
 
 func _on_interact() -> void:
 	if not portal_popup:
