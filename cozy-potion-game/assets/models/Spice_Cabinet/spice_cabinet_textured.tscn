@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dogv15tueb12k"]
+
+[ext_resource type="PackedScene" uid="uid://bq881rwv1qjfj" path="res://assets/models/PH/Spice_Cabinet_PH/Spice_Cabinet_Placeholder.glb" id="1_xlegm"]
+[ext_resource type="Texture2D" uid="uid://d4eqm5qxvr8ae" path="res://assets/models/Spice_Cabinet/Textures/SpiceCabinet_Albedo.png" id="2_cy0ey"]
+[ext_resource type="Texture2D" uid="uid://cufjxp7ahr4hr" path="res://assets/models/Spice_Cabinet/Textures/SpiceCabinet_AO.png" id="3_jm2ow"]
+[ext_resource type="Texture2D" uid="uid://ciqi6kf1q6glk" path="res://assets/models/Spice_Cabinet/Textures/SpiceCabinet_Displacement.exr" id="4_v312l"]
+[ext_resource type="Texture2D" uid="uid://c3f1vof6xfwb" path="res://assets/models/Spice_Cabinet/Textures/SpiceCabinet_Metalness.png" id="5_76ycj"]
+[ext_resource type="Texture2D" uid="uid://bcq05a0vngyfi" path="res://assets/models/Spice_Cabinet/Textures/SpiceCabinet_Normal.png" id="6_ljj8i"]
+[ext_resource type="Texture2D" uid="uid://btpa3phd0r0bp" path="res://assets/models/Spice_Cabinet/Textures/SpiceCabinet_Roughness.png" id="7_3slp2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g7aqr"]
+albedo_texture = ExtResource("2_cy0ey")
+metallic = 1.0
+metallic_texture = ExtResource("5_76ycj")
+roughness_texture = ExtResource("7_3slp2")
+normal_enabled = true
+normal_texture = ExtResource("6_ljj8i")
+ao_enabled = true
+ao_texture = ExtResource("3_jm2ow")
+heightmap_scale = -16.0
+heightmap_texture = ExtResource("4_v312l")
+
+[node name="Spice_Cabinet_Placeholder2" unique_id=816337255 instance=ExtResource("1_xlegm")]
+
+[node name="Spice_Cabinet_Placeholder" parent="." index="0" unique_id=1197192020]
+material_override = SubResource("StandardMaterial3D_g7aqr")

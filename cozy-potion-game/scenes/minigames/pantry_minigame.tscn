@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ccvp68inp2bhf" path="res://scenes/inventory/ingredient_drawer.tscn" id="2_ul8ib"]
 [ext_resource type="Script" uid="uid://ciwktypwu667m" path="res://scripts/world/interactable.gd" id="3_1dddh"]
 [ext_resource type="PackedScene" uid="uid://cgwcxn7koxnq4" path="res://scenes/user_interface/indicator_anchor.tscn" id="4_k7v8y"]
-[ext_resource type="PackedScene" uid="uid://bq881rwv1qjfj" path="res://assets/models/PH/Spice_Cabinet_PH/Spice_Cabinet_Placeholder.glb" id="5_2j7ns"]
+[ext_resource type="PackedScene" uid="uid://dogv15tueb12k" path="res://assets/models/Spice_Cabinet/spice_cabinet_textured.tscn" id="5_ul8ib"]
 [ext_resource type="Script" uid="uid://jusf4fjwy8qp" path="res://scripts/audio/audio_player_3d.gd" id="6_ul8ib"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8g8s0"]
@@ -28,7 +28,7 @@ shape = SubResource("BoxShape3D_8g8s0")
 [node name="IndicatorAnchor" parent="." unique_id=1791509362 instance=ExtResource("4_k7v8y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15099335, 0.7722844, 0.23813152)
 
-[node name="PantryStationModel" parent="." unique_id=1608011355 instance=ExtResource("5_2j7ns")]
+[node name="Spice_Cabinet_Placeholder2" parent="." unique_id=816337255 instance=ExtResource("5_ul8ib")]
 
 [node name="AudioPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1523137722]
 script = ExtResource("6_ul8ib")

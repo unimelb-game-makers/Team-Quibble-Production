@@ -7,6 +7,8 @@
 [ext_resource type="Shader" uid="uid://c76b18fovhb0l" path="res://shaders/Water.gdshader" id="3_xf7vt"]
 [ext_resource type="Material" uid="uid://bj5fvljnkgr62" path="res://assets/materials/mythical_forest/PlantAtlasPurple.tres" id="4_6v7aw"]
 [ext_resource type="ArrayMesh" uid="uid://blkfrryenp8ih" path="res://assets/models/enviroment/Mythical_Forest/Foliage/Tree 1.glb" id="5_xf7vt"]
+[ext_resource type="PackedScene" uid="uid://cdp0acsf1hs2c" path="res://assets/models/Bridge/bridge_textured.tscn" id="5_yjysa"]
+[ext_resource type="PackedScene" uid="uid://ciu0hcpgv58da" path="res://assets/models/Bridge/Bridge.glb" id="6_4y38g"]
 [ext_resource type="Texture2D" uid="uid://yusk1v6cxpat" path="res://assets/textures/mythical_forest/trees/Tree 1_ColorAlpha_PlantAtlasV2.png" id="6_ib1ns"]
 [ext_resource type="Texture2D" uid="uid://bdf1h2uwd7qgm" path="res://assets/textures/mythical_forest/trees/Tree 1_PlantAtlasv2_roughness.png" id="7_5knbb"]
 [ext_resource type="Texture2D" uid="uid://y8ifmwremcum" path="res://assets/textures/mythical_forest/trees/Tree 1_PlantAtlasv2_normal.png" id="8_t4vcj"]
@@ -154,14 +156,14 @@ shader_parameter/norRand1 = SubResource("NoiseTexture2D_xf7vt")
 shader_parameter/dir = Vector2(-0.2, 1)
 shader_parameter/alpha = 0.59500002500262
 shader_parameter/distScaler = 0.69500003231398
-shader_parameter/baseCol = Color(0.36778054, 0.67527264, 0.83529073, 1)
-shader_parameter/deepCol = Color(0.20225257, 0.49832183, 0.549136, 1)
+shader_parameter/baseCol = Color(0.19607843, 0.49411765, 0.65882355, 1)
+shader_parameter/deepCol = Color(0.1254902, 0.34117648, 0.41568628, 1)
 shader_parameter/deepColOffset = 0.0
 shader_parameter/noiseScaler = 0.001
 shader_parameter/waveSpeedScaler = 5.0
 shader_parameter/vertexSpeedScaler = 1.0
-shader_parameter/fresnelColor = Color(0.5320375, 0.7244045, 0.81324935, 1)
-shader_parameter/edgeColor = Color(0.84624076, 0.9111291, 0.9084852, 1)
+shader_parameter/fresnelColor = Color(0.3372549, 0.5568628, 0.6509804, 1)
+shader_parameter/edgeColor = Color(0.4862745, 0.62352943, 0.65882355, 1)
 shader_parameter/edgeThreshold = 0.05
 shader_parameter/windRippleDegScaler = 1.0
 
@@ -171,19 +173,17 @@ shader = ExtResource("3_xf7vt")
 shader_parameter/norRand1 = SubResource("NoiseTexture2D_xf7vt")
 shader_parameter/dir = Vector2(-0.2, 1)
 shader_parameter/alpha = 0.59500002500262
-shader_parameter/distScaler = 0.69500003231398
-shader_parameter/baseCol = Color(0.36778054, 0.67527264, 0.83529073, 1)
-shader_parameter/deepCol = Color(0.20225257, 0.49832183, 0.549136, 1)
+shader_parameter/distScaler = 0.03000000072648
+shader_parameter/baseCol = Color(0.19607843, 0.49411765, 0.65882355, 1)
+shader_parameter/deepCol = Color(0.13161927, 0.3214638, 0.2814283, 1)
 shader_parameter/deepColOffset = 0.0
 shader_parameter/noiseScaler = 0.001
 shader_parameter/waveSpeedScaler = 5.0
 shader_parameter/vertexSpeedScaler = 1.0
-shader_parameter/fresnelColor = Color(0.5320375, 0.7244045, 0.81324935, 1)
-shader_parameter/edgeColor = Color(0.84624076, 0.9111291, 0.9084852, 1)
+shader_parameter/fresnelColor = Color(0.3372549, 0.5568628, 0.6509804, 1)
+shader_parameter/edgeColor = Color(0.39307922, 0.64308655, 0.68311447, 1)
 shader_parameter/edgeThreshold = 0.05
 shader_parameter/windRippleDegScaler = 1.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_gowr6"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_dmvtt"]
 height = 15.481018
@@ -556,7 +556,7 @@ texture = ExtResource("2_a4g2n")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1083423818]
 transform = Transform3D(0.82636106, -0.37002134, -0.42451337, 0.09175642, -0.6552875, 0.7497862, -0.5556151, -0.65854585, -0.50755215, 107.23567, 14.709133, -81.689644)
-light_energy = 2.65
+light_energy = 2.0
 light_indirect_energy = 1.331
 light_volumetric_fog_energy = 2.901
 light_angular_distance = 2.8
@@ -579,13 +579,20 @@ mesh = SubResource("PlaneMesh_dmvtt")
 surface_material_override/0 = SubResource("ShaderMaterial_o7k20")
 
 [node name="Water_Plane2" type="MeshInstance3D" parent="." unique_id=111741951]
-transform = Transform3D(39.381664, 0, 0, 0, 1, 0, 0, 0, 10.6550665, 145.19019, 3.8146973e-06, -86.05162)
+transform = Transform3D(38.54, 0, 0, 0, 0.98, 0, 0, 0, 10.419, 143.34895, -0.26102793, -85.157005)
 mesh = SubResource("PlaneMesh_dmvtt")
 surface_material_override/0 = SubResource("ShaderMaterial_xf7vt")
 
+[node name="Bridge2" parent="." unique_id=195839920 instance=ExtResource("5_yjysa")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 139.99036, 0.7465466, -90.79151)
+
+[node name="Bridge" parent="." unique_id=2096526894 instance=ExtResource("6_4y38g")]
+transform = Transform3D(-6.556708e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.556708e-08, 139.99036, 0.7465466, -90.79151)
+visible = false
+
 [node name="PH_Bridge" type="MeshInstance3D" parent="." unique_id=1352672289]
 transform = Transform3D(-1.4057139e-07, 2.8967457, 0, -3.2158983, -1.2662078e-07, 0, 0, 0, 9.680066, 139.5467, 0, -91.13072)
-mesh = SubResource("CylinderMesh_gowr6")
+visible = false
 
 [node name="PH_Trees" type="Node3D" parent="." unique_id=1364501590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 134.60797, 7.706682, -103.74559)

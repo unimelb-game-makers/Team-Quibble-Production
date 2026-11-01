@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cs6as35lknvxd"]
+
+[ext_resource type="PackedScene" uid="uid://dl2b8oidm5fcn" path="res://assets/models/PH/Mortar_Pestle_Table_PH/Mortar_Pestle_Placeholder.glb" id="1_kwnjx"]
+[ext_resource type="Texture2D" uid="uid://bck08h47vgwlv" path="res://assets/models/Mortar_Pestle_Table/Textures/MortarPestleTab_Albedo.png" id="2_cpv71"]
+[ext_resource type="Texture2D" uid="uid://dpjclr17oh6r5" path="res://assets/models/Mortar_Pestle_Table/Textures/MortarPestleTab_AO.png" id="3_8atdm"]
+[ext_resource type="Texture2D" uid="uid://bb6l3i4vuuj7a" path="res://assets/models/Mortar_Pestle_Table/Textures/MortarPestleTab_Displacement.exr" id="4_wern1"]
+[ext_resource type="Texture2D" uid="uid://bn8ltp2vgklmi" path="res://assets/models/Mortar_Pestle_Table/Textures/MortarPestleTab_Metalness.png" id="5_mea74"]
+[ext_resource type="Texture2D" uid="uid://c8n83njdakr04" path="res://assets/models/Mortar_Pestle_Table/Textures/MortarPestleTab_Normal.png" id="6_ry8uc"]
+[ext_resource type="Texture2D" uid="uid://j5ffpjuycar1" path="res://assets/models/Mortar_Pestle_Table/Textures/MortarPestleTab_Roughness.png" id="7_ox5mc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_417ed"]
+albedo_texture = ExtResource("2_cpv71")
+metallic = 1.0
+metallic_texture = ExtResource("5_mea74")
+roughness_texture = ExtResource("7_ox5mc")
+normal_enabled = true
+normal_texture = ExtResource("6_ry8uc")
+ao_enabled = true
+ao_texture = ExtResource("3_8atdm")
+heightmap_enabled = true
+heightmap_texture = ExtResource("4_wern1")
+
+[node name="Mortar_Pestle_Placeholder" unique_id=1630935897 instance=ExtResource("1_kwnjx")]
+
+[node name="Mortar_Pestle_Table_Placeholder" parent="." index="0" unique_id=939947679]
+material_override = SubResource("StandardMaterial3D_417ed")
