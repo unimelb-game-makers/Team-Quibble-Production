@@ -15,7 +15,7 @@ const DAYS = ["Monday",
 "Sunday",
 ]
 #the speed that the day progresses when it has a time to progress towards
-const DAY_TICK_RATE_SECONDS: float = 0.09
+const DAY_TICK_RATE_SECONDS: float = 0.15
 
 var current_day: DayResource
 
@@ -54,7 +54,7 @@ func day_progress_to_time_string() -> String:
 		minute = 0
 	else:
 		minute = ceil(wrap(60 * day_progress * day_length, 0, 60))
-	return "%02d:%02d" % [hour, minute]
+	return "%02d.%02d" % [hour, minute]
 
 func days_passed_to_day_string() -> String:
 	return DAYS[wrapi(days_passed,0, 7)]

@@ -4,8 +4,8 @@ class_name Indicator
 var pivot_pos: Vector3
 
 func _ready() -> void:
-	var tw: Tween = get_tree().create_tween()
-	tw.set_loops(-1)
+	var tw: Tween = create_tween()
+	tw.set_loops()
 	tw.tween_property($PanelContainer, "offset_transform_position:y", -30, 1).set_trans(Tween.TRANS_QUAD)
 	tw.tween_property($PanelContainer, "offset_transform_position:y", 0, 1).set_trans(Tween.TRANS_QUAD)
 

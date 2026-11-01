@@ -54,6 +54,8 @@ func _ready() -> void:
 	#zooms the player out if we are in a foraging scene
 	if get_tree().get_first_node_in_group(Utils.Group.GROUP_FORAGING_BAG):
 		camera.size = 15
+		
+	hide_unwanted_sprites()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if accepting_control:

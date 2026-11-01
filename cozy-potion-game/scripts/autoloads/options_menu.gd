@@ -8,6 +8,7 @@ extends CanvasLayer
 
 @export_group("Buttons")
 @export var exit_game_button: Button
+@export var quit_to_menu_button: Button
 @export var sound_menu_button: Button
 @export var button_container: VBoxContainer
 @export var return_to_game_button: Button
@@ -52,8 +53,9 @@ func _ready() -> void:
 func connect_buttons() -> void:
 	#TODO: exiting the game should probably be more graceful than this
 	exit_game_button.pressed.connect(get_tree().quit)
-	sound_menu_button.pressed.connect(open_sound_menu)
+	quit_to_menu_button.pressed.connect(quit_to_menu)
 	return_to_game_button.pressed.connect(return_to_game)
+	sound_menu_button.pressed.connect(open_sound_menu)
 	video_menu_button.pressed.connect(open_video_menu)
 	controls_menu_button.pressed.connect(open_controls_menu)
 
@@ -91,6 +93,10 @@ func open_menu(menu: Control) -> void:
 func return_button_pressed() -> void:
 	open_menu(options_menu_container)
 	animate_options_menu_in()
+	
+func quit_to_menu() -> void:
+	return_to_game()
+	get_tree().change_scene_to_file("res://scenes/viewports/game_viewport.tscn")
 
 func hide_menus():
 	close_options_menu()

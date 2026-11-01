@@ -110,9 +110,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 320.00003
+offset_top = 210.99998
+offset_right = 290.0
+offset_bottom = 48.142822
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
+scale = Vector2(0.7, 0.7)
 theme_override_constants/margin_left = 300
 theme_override_constants/margin_top = 300
 theme_override_constants/margin_right = 300
@@ -126,6 +130,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -586.0
+offset_top = -21.5
+offset_right = 586.0
+offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -145,8 +153,8 @@ alignment = 1
 [node name="Label" type="Label" parent="Control/MarginContainer2/Control/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1759481511]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Daniel Sandvik - Design lead, Producer, Music
-Hamish Luke - Programming lead, Design
+text = "Daniel Sandvik - Creative Director, Producer, Music
+Hamish Luke - Lead Programmer, Design
 Ren Jackson - 3D Art, Design
 Stefanus Hanson Hadikristijanto - 3D Art
 Stephanie Seoyoung Min - 2D Art
@@ -161,15 +169,32 @@ text = "Dylan Wotherspoon - Programming
 Jay Kim - Programming
 Ramsey Morris - Programming
 Jeremy Wong - Music
-Thomas Afford - Music"
+Thomas Afford - Music
+Leo Liu — Production Officer, Assisting Programmer
+Dante Di Muccio — Production Officer
+Alex Wang — Production Officer"
 label_settings = SubResource("LabelSettings_4dvm4")
+
+[node name="Label3" type="Label" parent="Control/MarginContainer2/Control/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1760694759]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Special Thanks to:
+Keijo Sandvik — Recording Engineer, Music
+Owen Fong — Drums
+Chanon Charnchainarong — E. Bass
+Box Hill Institute - Recording Studio B
+The UniMelb Game Makers Club (GMC) community!"
+label_settings = SubResource("LabelSettings_4dvm4")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer2/Control/PanelContainer/VBoxContainer" unique_id=126341098]
+layout_mode = 2
 
 [node name="CloseCreditsButton" type="Button" parent="Control/MarginContainer2/Control" unique_id=2001097079]
 layout_mode = 0
-offset_left = 590.0
-offset_top = 495.0
-offset_right = 737.0
-offset_bottom = 566.0
+offset_left = 554.2857
+offset_top = 458.57144
+offset_right = 701.28577
+offset_bottom = 529.5714
 text = "Close"
 
 [node name="TitleMusicController" type="Node" parent="." unique_id=2130283347]

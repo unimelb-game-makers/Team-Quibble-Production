@@ -178,7 +178,7 @@ mouse_filter = 2
 
 [node name="TimeLabel" type="Label" parent="HBoxContainer/DigitalClock/Radio/Control/VBoxContainer" unique_id=153237212]
 layout_mode = 2
-text = "07:00"
+text = "07.00"
 label_settings = SubResource("LabelSettings_4dvm4")
 horizontal_alignment = 1
 vertical_alignment = 1

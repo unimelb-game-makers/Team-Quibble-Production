@@ -28,9 +28,9 @@ func _ready() -> void:
 	DevTools.forced_customer_leave.connect(buy_potion.bind(crack))
 	
 	await get_tree().process_frame
-	if returning_from_forest:
+	if not customer_queue.is_empty():
 		send_customer()
-		returning_from_forest = false
+	returning_from_forest = false
 
 func add_model_to_customer(customer: CustomerWorld, id: Customer.CustomerID) -> void:
 	var model_scene = customer_models.get(id)
