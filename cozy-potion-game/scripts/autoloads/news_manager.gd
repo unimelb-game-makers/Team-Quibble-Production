@@ -13,6 +13,12 @@ func _ready() -> void:
 	TimeCycle.day_started.connect(set_new_news_event)
 
 func set_new_news_event() -> void:
+	if TutorialDirector.tutorial_day:
+		if TimeCycle.days_passed == 1:
+			current_news_event = TutorialDirector.portal_news_event_static
+			new_news_event.emit()
+		return
+
 	current_news_event = generate_news_event()
 	new_news_event.emit()
 	new_news_event_attribute_data.emit(current_news_event.get_effect("NEED_PROBABILITY").target, current_news_event.get_effect("NEED_PROBABILITY").magnitude)

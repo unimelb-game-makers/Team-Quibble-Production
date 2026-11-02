@@ -30,7 +30,7 @@ enum CustomerID{
 @export var needs: Array[Alchemy.NeedID]
 ##each element in needs has a corresponding severity in this array at
 ##the same index.
-var need_severities: Array[float]
+@export var need_severities: Array[float]
 ##the first need. Ooh, that souds philosophical. root of all desires and shit.
 var primary_need: Alchemy.NeedID:
 	get():

@@ -23,7 +23,7 @@ func spawn_ball(ingredient: Stack):
 	var ball: IngredientBall = ingredient_ball_scene.instantiate()
 	add_child(ball)
 	ball.position = ball_spawn_marker.position
-	ball.set_texture(ingredient.get_item_sprite())
+	ball.set_texture_and_color(ingredient.get_item_sprite(), Color.WHITE)
 	
 #checks all the objects with tag ingredient ball to see if any have not reached their split limit
 #runs every 0.1 seconds or so
