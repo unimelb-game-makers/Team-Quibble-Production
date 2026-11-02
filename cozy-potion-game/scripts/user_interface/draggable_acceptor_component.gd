@@ -6,6 +6,7 @@ class_name DraggableAcceptorComponent extends Node
 ## parent has at least max_items number of children.
 @export var use_max_items: bool = false
 @export var max_items: int = 1
+@export var reject_processed: bool = false
 var my_control: Control
 var accepting_items: bool = true
 var blacklist: Array[Resource]

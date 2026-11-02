@@ -263,17 +263,12 @@ func brew_potion(_ingredient_list: Array[PotionIngredient]) -> Potion:
 	return potion
 
 func sum_attributes(_ingredient_list: Array) -> Dictionary[Alchemy.AttributeID, int]:
-	var _attributes: Dictionary[Alchemy.AttributeID, int]
-	_attributes.assign(_ingredient_list[0].attributes.duplicate())
-	if _ingredient_list.size() == 1:
-			return _attributes
-	
-	for ingredient in range(1, _ingredient_list.size()):
-		for attribute in AttributeID.values():
-			print(_ingredient_list[ingredient], ingredient)
-			var new_value = _attributes[attribute] + _ingredient_list[ingredient].attributes[attribute]
-			_attributes[attribute] = new_value
-			
+	var _attributes: Dictionary[Alchemy.AttributeID, int] = {}
+
+	for ingredient in _ingredient_list:
+		for attribute in ingredient.attributes:
+			_attributes[attribute] = _attributes.get(attribute, 0) + ingredient.attributes[attribute]
+
 	return _attributes
 
 

@@ -3,7 +3,7 @@ render_mode world_vertex_coords;
 uniform sampler2D norRand1 :repeat_enable;
 uniform sampler2D norRand2 :repeat_enable;
 uniform vec2 dir = vec2(-0.2,1.);
-uniform float alpha:hint_range(0.1, 1.0) = 0.65f;
+uniform float alpha:hint_range(0.1, 1.0) = 0.45f;
 uniform float distScaler:hint_range(0.01, 1.0) = 0.1f;
 uniform vec4 baseCol :source_color;
 uniform vec3 deepCol : source_color;
@@ -49,7 +49,7 @@ void fragment() {
 	ALBEDO = mix(ALBEDO,edgeColor.rgb,mixAmount * mixEdge);	
 	
 
-	float mixDeepAmount = clamp(dis * (deepColOffset + 1.) * 5.5, 0.0, 1.0);
+	float mixDeepAmount = clamp(dis * (deepColOffset + 1.) * 1.5, 0.0, 1.0);
 	mixDeepAmount = pow(mixDeepAmount, 0.65);
 	ALBEDO = mix(ALBEDO, deepCol, mixDeepAmount);
 

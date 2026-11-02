@@ -91,6 +91,8 @@ func return_to_previous() -> void:
 		previous_parent.queue_sort()
 
 func parent_to_acceptor() -> void:
+	print("From: ", previous_parent.name)
+	print("To: ", pending_parent.name if pending_parent else "None")
 	if not pending_parent:
 		return_to_previous()
 		return
@@ -108,7 +110,17 @@ func parent_to_acceptor() -> void:
 	pending_parent = null
 
 func check_blacklist() -> bool:
-	if pending_parent is not ItemSlot:
-		return false
+	var acceptor = get_acceptor(pending_parent)
 
-	return pending_parent.is_item_blacklist(item_resource)
+	if item_resource is PotionIngredient:
+		if acceptor and acceptor.reject_processed and not item_resource.process_applied.is_empty():
+			return true
+
+		if pending_parent is ItemSlot and pending_parent.is_in_group("CauldronSlots"):
+			if item_resource.process_applied.is_empty():
+				return true
+
+	if pending_parent is ItemSlot:
+		return pending_parent.is_item_blacklist(item_resource)
+
+	return false

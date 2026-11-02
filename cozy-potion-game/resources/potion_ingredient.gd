@@ -38,3 +38,17 @@ func apply_process(id: Alchemy.ProcessID) -> void:
 	process_applied.append(id)
 	for attribute in process.attribute_changes:
 		attributes[attribute] *= int(process.attribute_changes[attribute])
+
+# copy ingredient into player inventory to avoid processing remaining ingredients in drawer
+func copy() -> PotionIngredient:
+	var ingredient = PotionIngredient.new()
+	ingredient.ingredient_name = ingredient_name
+	ingredient.ingredient_id = ingredient_id
+	ingredient.ingredient_sprite = ingredient_sprite
+	ingredient.ingredient_price = ingredient_price
+	ingredient.ingredient_color = ingredient_color
+	ingredient.purchaseable = purchaseable
+	ingredient.valid_process_methods = valid_process_methods.duplicate()
+	ingredient.attributes = attributes.duplicate()
+	ingredient.process_applied = process_applied.duplicate()
+	return ingredient

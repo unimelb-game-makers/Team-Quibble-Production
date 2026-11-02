@@ -234,6 +234,7 @@ mouse_filter = 2
 
 [node name="DraggableAcceptorComponent" type="Node" parent="Control" unique_id=566397651]
 script = ExtResource("6_och44")
+reject_processed = true
 metadata/_custom_type_script = "uid://b85c75nnvco20"
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=718113165]

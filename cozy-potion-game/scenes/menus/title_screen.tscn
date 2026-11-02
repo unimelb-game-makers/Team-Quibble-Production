@@ -14,8 +14,12 @@ font_size = 32
 [node name="TitleScreen" type="CanvasLayer" unique_id=1226151043]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1747670831]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=722494161]
 handle_input_locally = false
@@ -23,6 +27,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="TitleScreenFakeForest" parent="SubViewportContainer/SubViewport" unique_id=1357049931 instance=ExtResource("1_n17qi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1177323, -0.30047297, 0.7976668)
 
 [node name="Control" type="Control" parent="." unique_id=47089385 node_paths=PackedStringArray("options_button", "continue_button", "new_game_button", "quit_button", "credits_button", "close_credits_button", "credits_screen", "buttons_container", "title_label")]
 layout_mode = 3
@@ -39,7 +44,7 @@ new_game_button = NodePath("MarginContainer/ButtonsContainer/NewGameButton")
 quit_button = NodePath("MarginContainer/ButtonsContainer/QuitButton")
 credits_button = NodePath("MarginContainer/ButtonsContainer/CreditsButton")
 close_credits_button = NodePath("MarginContainer2/Control/CloseCreditsButton")
-credits_screen = NodePath("MarginContainer2")
+credits_screen = NodePath("MarginContainer2/Control")
 buttons_container = NodePath("MarginContainer/ButtonsContainer")
 title_label = NodePath("MarginContainer/VBoxContainer/TitleLabel")
 shop_path = "res://scenes/enviroments/shop_revamp.tscn"

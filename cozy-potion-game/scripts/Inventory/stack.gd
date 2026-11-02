@@ -42,6 +42,12 @@ func update_stack() -> void:
 
 func get_item_name() -> String:
 	if item is PotionIngredient:
+		if not item.process_applied.is_empty():
+			match item.process_applied.back():
+				Alchemy.ProcessID.PROC_GRIND:
+					return "Crushed " + item.ingredient_name
+				Alchemy.ProcessID.PROC_BOIL:
+					return "Decocted " + item.ingredient_name
 		return item.ingredient_name
 	elif item is Potion:
 		return item.potion_name
@@ -78,8 +84,10 @@ func compare_stacks(comp_stack: Stack) -> bool:
 				return true
 	
 	elif comp_stack.item is Potion and item is Potion:
-		if comp_stack.item.potion_id == item.potion_id:
-				return true
+		if comp_stack.item.potion_id == item.potion_id \
+			and comp_stack.item.potion_attribute_strength == item.potion_attribute_strength \
+			and comp_stack.item.base_gold_value == item.base_gold_value:
+			return true
 	return false
 
 

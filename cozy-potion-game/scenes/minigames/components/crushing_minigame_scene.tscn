@@ -83,6 +83,7 @@ color = Color(0.54509807, 1, 0.54509807, 0.078431375)
 
 [node name="DraggableAcceptorComponent" type="Node" parent="Control" unique_id=263375117]
 script = ExtResource("6_73gys")
+reject_processed = true
 metadata/_custom_type_script = "uid://b85c75nnvco20"
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=957697711]

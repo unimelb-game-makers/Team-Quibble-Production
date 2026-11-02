@@ -187,11 +187,16 @@ text = "Customer Needs:"
 layout_mode = 2
 
 [node name="HotbarHover" parent="SceneUI" unique_id=584691377 instance=ExtResource("12_fg6qk")]
-z_index = 101
-offset_left = 84.0
-offset_top = 297.0
-offset_right = -1575.0
-offset_bottom = -658.0
+z_index = 111
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+offset_left = -6.0
+offset_top = -76.0
+offset_right = 5.0
+offset_bottom = -16.0
+grow_vertical = 0
 columns = 3
 rows = 1
 include_trash_bin = true
@@ -200,10 +205,11 @@ include_trash_bin = true
 environment = ExtResource("2_suouy")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2004823834]
-transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0, 0, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, 0.78260815, 0.62251467, 0, -0.62251467, 0.78260815, 0.67551804, 0.99967766, 5.4987154)
 light_color = Color(0.9946533, 0.9195563, 0.8045114, 1)
+light_energy = 0.33
 shadow_enabled = true
+sky_mode = 1
 
 [node name="ShopLayout" parent="." unique_id=634199379 instance=ExtResource("1_m0d6u")]
 

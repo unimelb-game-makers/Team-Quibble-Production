@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dcvn8d4c6w5eq"]
+
+[ext_resource type="PackedScene" uid="uid://bip276livsj0" path="res://assets/models/Mortar_Pestle_Table_UV_Mod.glb" id="1_ooac0"]
+[ext_resource type="Texture2D" uid="uid://rv0po8hgub76" path="res://assets/models/Front Bench/Textures/wood_table_worn_diff.jpg" id="2_7e36q"]
+[ext_resource type="Texture2D" uid="uid://yvmyvjh26rwn" path="res://assets/models/Front Bench/Textures/wood_table_worn_nor_dx.jpg" id="3_oef8w"]
+[ext_resource type="Texture2D" uid="uid://p26v8f58t6q1" path="res://assets/models/Front Bench/Textures/wood_table_worn_rough.jpg" id="4_6mbq7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bw1c"]
+albedo_texture = ExtResource("2_7e36q")
+roughness_texture = ExtResource("4_6mbq7")
+normal_enabled = true
+normal_texture = ExtResource("3_oef8w")
+ao_enabled = true
+heightmap_texture = ExtResource("2_7e36q")
+
+[node name="Mortar_Pestle_Table_UV_Mod" unique_id=1103415113 instance=ExtResource("1_ooac0")]
+
+[node name="Mortar_Pestle_Table_Export" parent="." index="0" unique_id=1259799842]
+material_override = SubResource("StandardMaterial3D_2bw1c")
