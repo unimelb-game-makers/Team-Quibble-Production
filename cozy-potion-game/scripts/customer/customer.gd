@@ -61,12 +61,17 @@ const GAME_STAGE_1_SEVERITY_CURVE: String = "res://scripts/customer/game_stage_1
 ## not sure yet. TODO: update this function after the rest of the potion system
 ## is done
 func check_potion_sufficient(potion: Potion) -> bool:
-	var match_primary = Alchemy.attribute_to_need_index[potion.potion_primary] == primary_need
-	var match_secondary = true
-	if secondary_need >= 0:
-		match_secondary = Alchemy.attribute_to_need_index[potion.potion_secondary] == secondary_need
-	
-	return match_primary and match_secondary
+	var primary = Alchemy.attribute_to_need_index.get(potion.potion_primary, -1)
+	var secondary = Alchemy.attribute_to_need_index.get(potion.potion_secondary, -1)
+
+	if secondary_need < 0:
+		return primary == primary_need or secondary == primary_need
+
+	return (
+		(primary == primary_need and secondary == secondary_need)
+		or
+		(primary == secondary_need and secondary == primary_need)
+	)
 
 
 ## Returns a randomly created customer resource. 

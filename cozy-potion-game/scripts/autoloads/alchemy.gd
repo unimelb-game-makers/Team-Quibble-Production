@@ -151,7 +151,7 @@ var PROCESS_SPRITES: Dictionary[Alchemy.ProcessID, Texture2D] = {
 	ProcessID.PROC_CHOP: preload("res://assets/sprites/ingredients/chopped_fill_128.png"),
 	ProcessID.PROC_GRIND: preload("res://assets/sprites/ingredients/ground_fill_128.png"),
 	ProcessID.PROC_PRESS: preload("res://assets/sprites/ingredients/pressed_fill_128.png"),
-	ProcessID.PROC_BOIL: preload("res://assets/sprites/ingredients/bottle_liquid_128.png"),
+	ProcessID.PROC_BOIL: preload("res://assets/sprites/minigame/boiling_minigame/decoction_fill_128.png"),
 	ProcessID.PROC_DRY: null,
 	ProcessID.PROC_FREEZE: null,
 	ProcessID.PROC_FRY: null,

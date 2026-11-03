@@ -2,6 +2,7 @@ extends Node
 
 signal money_changed(new_money: float)
 const PANTRY_SIZE = 40
+var hotbar_data: Array = []
 
 var money: int = 200:
 	set(value):

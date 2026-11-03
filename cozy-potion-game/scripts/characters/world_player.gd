@@ -56,6 +56,13 @@ func _ready() -> void:
 		camera.size = 15
 		
 	hide_unwanted_sprites()
+	await get_tree().process_frame
+
+	if hotbar_display and hotbar_display.inventory:
+		for data in PersistentInventory.hotbar_data:
+			var stack = SaveManager.deserialize_stack(data)
+			if not stack.isEmpty:
+				hotbar_display.inventory.blind_add_stack(stack)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if accepting_control:
@@ -217,3 +224,9 @@ func interact() -> void:
 			area.interact()
 			# probably bad to interact with two things at once
 			return
+
+func _exit_tree() -> void:
+	if hotbar_display and hotbar_display.inventory:
+		PersistentInventory.hotbar_data = (
+			hotbar_display.inventory.export_stacks().map(SaveManager.serialize_stack)
+		)

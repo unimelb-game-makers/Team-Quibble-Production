@@ -11,7 +11,7 @@
   },
   {
 	"NEEDS_ID": "NEED_CURE",
-	"PROBLEM": "Disease",
+	"PROBLEM": "Paralysis",
 	"VALID_ATTR_TO_SOLVE_PROBLEM": "ATTR_PARALYSIS"
   },
   {

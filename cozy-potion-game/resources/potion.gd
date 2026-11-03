@@ -12,7 +12,7 @@ const BOTTLE_CORK = preload("res://assets/sprites/potions/bottle_cork_64.png")
 var base_gold_value: int
 var potion_id: Alchemy.PotionID
 var potion_primary: Alchemy.AttributeID
-var potion_secondary: Alchemy.AttributeID
+var potion_secondary: Alchemy.AttributeID = -1
 var potion_attribute_strength: int
 
 func create_potion_sprite() -> void:
@@ -61,7 +61,19 @@ func constructor(_attributes: Dictionary[Alchemy.AttributeID, int], _ingredients
 
 	potion_name += Alchemy.AttributeID.keys()[potion_primary].trim_prefix("ATTR_").capitalize()
 
-	if  _attributes[keys[0]] != _attributes[keys[1]]:
+	if _ingredients.size() < 2:
+		return
+
+	if keys.size() < 2:
+		return
+
+	var primary_strength: int = _attributes[keys[0]]
+	var secondary_strength: int = _attributes[keys[1]]
+
+	if secondary_strength < 20:
+		return
+
+	if secondary_strength < primary_strength * 0.6:
 		return
 
 	potion_secondary = keys[1]

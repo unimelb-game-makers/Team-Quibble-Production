@@ -36,6 +36,7 @@ alignment = 1
 script = ExtResource("1_d0n75")
 
 [node name="SortButton" type="MenuButton" parent="HBoxContainer/Storage" unique_id=2075698012]
+visible = false
 layout_mode = 2
 text = "Itemname"
 
@@ -50,6 +51,19 @@ custom_minimum_size = Vector2(750, 450)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("6_83lib")
+
+[node name="AttributeFilters" type="HBoxContainer" parent="HBoxContainer/Storage" unique_id=148500334]
+layout_mode = 2
+
+[node name="Attribute1" type="OptionButton" parent="HBoxContainer/Storage/AttributeFilters" unique_id=123229289]
+layout_mode = 2
+
+[node name="FilterModeButton" type="Button" parent="HBoxContainer/Storage/AttributeFilters" unique_id=1626530954]
+layout_mode = 2
+text = "OR"
+
+[node name="Attribute2" type="OptionButton" parent="HBoxContainer/Storage/AttributeFilters" unique_id=772375673]
+layout_mode = 2
 
 [node name="ItemDisplay" type="CenterContainer" parent="HBoxContainer" unique_id=755041674]
 custom_minimum_size = Vector2(720, 810)

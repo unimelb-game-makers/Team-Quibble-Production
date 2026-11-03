@@ -75,19 +75,22 @@ func progress_day(increment: float = 0):
 	
 
 func start_day() -> void:
-	if TutorialDirector.tutorial_day:
-		tutorial_day_started.emit()
-		visited_forest_this_day = true
-	else:
-		day_started.emit()
-		visited_forest_this_day = false
-		customers_per_day = 6
+	if days_passed >= 2:
+		TutorialDirector.tutorial_day = false
+
+	visited_forest_this_day = TutorialDirector.tutorial_day and days_passed == 0
 
 	day_progress = 0
 	target_day_progress = 0
+
+	if TutorialDirector.tutorial_day:
+		tutorial_day_started.emit()
+	else:
+		customers_per_day = 6
+		day_started.emit()
+
 	days_passed += 1
 	day_progress_changed.emit()
-	SaveManager.save_game()
 
 func end_day() -> void:
 	day_complete.emit()

@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 	if dragged_control == my_control:
 		move_to_mouse()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_released("LMB"):
 		being_dragged = false
 		my_control.top_level = false
@@ -60,6 +60,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				parent_to_acceptor()
 	
 	if !event.is_action_pressed("LMB"):
+		return
+
+	if not my_control.is_visible_in_tree():
 		return
 
 	if !my_control.get_global_rect().has_point(my_control.get_global_mouse_position()):

@@ -13,17 +13,17 @@ static var potion_request_lines: Array[PotionRequestLine]
 
 ## The one other classes call.
 static func get_potion_request_line(attribute: Alchemy.AttributeID, customer: Customer.CustomerID) -> DialogueResource:
-	print_debug("potion_request_lines:",potion_request_lines)
-	
-	if not potion_request_lines:
+	if potion_request_lines.is_empty():
 		populate_potion_request_lines()
-	
-	if not attribute or not customer:
-		DialogueManager.create_resource_from_text("~ start\n %s" % potion_request_lines.pick_random().text)
 
-	
 	var shortlist = get_shortlist(attribute, customer)
-	
+
+	if shortlist.is_empty():
+		push_warning("No dialogue found for attribute: %s" % attribute)
+		return DialogueManager.create_resource_from_text(
+			"~ start\nI'm looking for a potion."
+		)
+
 	var text = shortlist.pick_random().text
 	return DialogueManager.create_resource_from_text("~ start\n %s" % text)
 	
@@ -52,23 +52,36 @@ static func get_initial_dialogue(customer: Customer) -> DialogueResource:
 
 
 static func populate_potion_request_lines() -> void:
+	potion_request_lines.clear()
+
 	var json_data = Utils.get_json(POTION_REQUEST_LINES_JSON)
+
 	for element in json_data.data:
-		var request_line: PotionRequestLine = PotionRequestLine.new()
-		request_line.attribute = Alchemy.AttributeID.keys().find(element["ATTR"])
-		request_line.customer = Customer.CustomerID.keys().find(element["NPC"])
-		request_line.text = element["PROBLEM"]
+		var attribute_id = Alchemy.AttributeID.keys().find(element["ATTR"])
+		if attribute_id < 0 or attribute_id == Alchemy.AttributeID.ATTR_NULL_ATTR:
+			continue
 
-		if request_line.text == "":
-			request_line.text = element["REQUEST"]
+		var npc_name: String = element["NPC"]
+		var customer_id: int = -1
 
-		if (request_line.attribute != Alchemy.AttributeID.ATTR_NULL_ATTR) and request_line.customer and request_line.text:
-			potion_request_lines.append(request_line)
+		if npc_name != "GENERIC":
+			customer_id = Customer.CustomerID.keys().find("NPC_" + npc_name)
+			if customer_id < 0:
+				continue
 
-		else:
-			var response = "%s : %s : %s" % [str(bool(request_line.attribute)), str(bool(request_line.customer)), str(request_line.text.is_empty())]
-			response += "\nrequest_line:\n - request_line.attribute %s\n - request_line.customer %s\n - request_line.text %s\n" % [Alchemy.AttributeID.keys()[request_line.attribute], request_line.customer, request_line.text]
-			print_debug(response)
+		var line_text: String = element["PROBLEM"]
+		if line_text.is_empty():
+			line_text = element["REQUEST"]
+
+		if line_text.is_empty():
+			continue
+
+		var request_line = PotionRequestLine.new()
+		request_line.attribute = attribute_id
+		request_line.customer = customer_id as Customer.CustomerID
+		request_line.text = line_text
+
+		potion_request_lines.append(request_line)
 
 
 	

@@ -31,9 +31,31 @@ func open_options() -> void:
 
 func continue_pressed() -> void:
 	SaveManager.load_game()
-	start()
+
+	if SaveManager.saved_scene_path.is_empty():
+		start()
+		return
+
+	SaveManager.continue_saved_game()
 	
 func new_game_pressed() -> void:
+	TutorialDirector.tutorial_day = true
+	TutorialDirector.portal_open = false
+	TutorialDirector.customer_manager_queue.clear()
+
+	TimeCycle.days_passed = 0
+	TimeCycle.day_progress = 0.0
+	TimeCycle.target_day_progress = 0.0
+	TimeCycle.visited_forest_this_day = false
+
+	CustomerManager.customer_queue.clear()
+	CustomerManager.returning_from_forest = false
+	Portal.spawn_at_portal = false
+	DayStarter.fired = false
+
+	SaveManager.restoring_session = false
+	PersistentInventory.hotbar_data.clear()
+
 	start()
 
 func start() -> void:

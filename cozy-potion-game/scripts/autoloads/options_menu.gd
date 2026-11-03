@@ -51,8 +51,7 @@ func _ready() -> void:
 	connect_buttons()
 
 func connect_buttons() -> void:
-	#TODO: exiting the game should probably be more graceful than this
-	exit_game_button.pressed.connect(get_tree().quit)
+	exit_game_button.pressed.connect(quit_to_desktop)
 	quit_to_menu_button.pressed.connect(quit_to_menu)
 	return_to_game_button.pressed.connect(return_to_game)
 	sound_menu_button.pressed.connect(open_sound_menu)
@@ -96,6 +95,12 @@ func return_button_pressed() -> void:
 	
 func quit_to_menu() -> void:
 	return_to_game()
+	SaveManager.save_game()
+
+	var bag = get_tree().get_first_node_in_group("foraging_bag")
+	if bag is ForagingBag:
+		bag.transfer_on_exit = false
+
 	get_tree().change_scene_to_file("res://scenes/viewports/game_viewport.tscn")
 
 func hide_menus():
@@ -185,3 +190,9 @@ func animate_unblur() -> void:
 
 func get_options_menu_out_position() -> Vector2:
 	return Vector2(-(options_menu_container.global_position.x + options_menu_container.size.x), 0)
+
+func quit_to_desktop() -> void:
+	if get_tree().get_first_node_in_group("player") != null:
+		SaveManager.save_game()
+
+	get_tree().quit()

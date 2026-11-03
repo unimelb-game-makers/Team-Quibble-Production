@@ -17,6 +17,8 @@ var attributes: Dictionary[Alchemy.AttributeID, int]
 # What processes have been applied to thing
 var process_applied: Array[Alchemy.ProcessID]
 
+const DECOCTION_LINE = preload("res://assets/sprites/minigame/boiling_minigame/decoction_line_128.png")
+
 func apply_process(id: Alchemy.ProcessID) -> void:
 	if process_applied.size() > 0:
 		return
@@ -32,6 +34,14 @@ func apply_process(id: Alchemy.ProcessID) -> void:
 			if current_color.a > 0: # If pixel isn't transparent
 				img.set_pixel(x, y, current_color * ingredient_color) # Change to yellow
 				
+	if id == Alchemy.ProcessID.PROC_BOIL:
+		var line_image = DECOCTION_LINE.get_image()
+		img.blend_rect(
+			line_image,
+			Rect2i(Vector2i.ZERO, line_image.get_size()),
+			Vector2i.ZERO
+		)
+	
 	# 4. Turn the image back into a usable texture
 	var new_texture = ImageTexture.create_from_image(img)
 	ingredient_sprite = new_texture
