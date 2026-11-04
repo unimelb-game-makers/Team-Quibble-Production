@@ -55,6 +55,10 @@ func new_game_pressed() -> void:
 
 	SaveManager.restoring_session = false
 	PersistentInventory.hotbar_data.clear()
+	PersistentInventory.money = 200
+	
+	Notebook.open_on_tutorial_page = true
+	DayStarter.show_initial_tutorial = true
 
 	start()
 

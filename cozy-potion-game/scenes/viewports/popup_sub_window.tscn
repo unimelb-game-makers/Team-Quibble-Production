@@ -170,6 +170,7 @@ _data = {
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2rywg"]
 
 [node name="PopupSubWindow" type="CanvasLayer" unique_id=1360167922 node_paths=PackedStringArray("sub_viewport", "animation_player")]
+layer = 10
 script = ExtResource("1_xhyie")
 sub_viewport = NodePath("PanelContainer/SubViewportContainer/SubViewport")
 animation_player = NodePath("AnimationPlayer")
