@@ -44,6 +44,9 @@ func change_active_scene_to_packed(scene: PackedScene) -> bool:
 	await get_tree().process_frame
 	
 	sub_viewport.add_child(new_scene_node)
+
+	await warm_up_scene(new_scene_node)
+
 	loading_scene = false
 	return true
 
@@ -87,3 +90,54 @@ func wait_for_resource(path: String) -> Resource:
 				await get_tree().process_frame
 	#seems unneccessary, but godot was angry at me
 	return null
+
+
+func warm_up_scene(scene_root: Node) -> void:
+	if not OS.has_feature("web"):
+		return
+
+	var original_camera: Camera3D = sub_viewport.get_camera_3d()
+	if original_camera == null:
+		return
+
+	# Hide rendering behind an opaque loading overlay.
+	var overlay := CanvasLayer.new()
+	overlay.layer = 100
+	scene_root.add_child(overlay)
+
+	var background := ColorRect.new()
+	background.color = Color.BLACK
+	background.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	background.set_anchors_and_offsets_preset(
+		Control.PRESET_FULL_RECT
+	)
+	overlay.add_child(background)
+
+	# Create a temporary camera at the player's viewpoint.
+	var warm_camera := Camera3D.new()
+	scene_root.add_child(warm_camera)
+
+	warm_camera.global_transform = original_camera.global_transform
+	warm_camera.fov = original_camera.fov
+	warm_camera.near = original_camera.near
+	warm_camera.far = original_camera.far
+	warm_camera.cull_mask = original_camera.cull_mask
+	warm_camera.environment = original_camera.environment
+	warm_camera.attributes = original_camera.attributes
+
+	var starting_rotation := warm_camera.global_rotation
+
+	warm_camera.make_current()
+
+	# Render the environment in eight directions.
+	for i in range(8):
+		warm_camera.global_rotation = starting_rotation
+		warm_camera.rotate_y(deg_to_rad(float(i) * 45.0))
+
+		await RenderingServer.frame_post_draw
+
+	# Restore normal gameplay.
+	original_camera.make_current()
+
+	warm_camera.queue_free()
+	overlay.free()
