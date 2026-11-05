@@ -35,8 +35,12 @@
 [ext_resource type="PackedScene" uid="uid://v4oujqpdk52o" path="res://assets/models/Customers/corporate_mage_rotated.tscn" id="15_kh5es"]
 [ext_resource type="PackedScene" uid="uid://bm55o4twdnjtx" path="res://assets/models/Customers/NPC_Base_3_Lumberjack.glb" id="16_va5sy"]
 [ext_resource type="PackedScene" uid="uid://djwvfhxhrfr83" path="res://assets/models/Customers/investigator_rotated.tscn" id="20_qwmll"]
+[ext_resource type="PackedScene" uid="uid://b5nx7enfxtp4c" path="res://assets/models/Customers/NPC_Base_4_Wizard.glb" id="21_1fwfe"]
 [ext_resource type="PackedScene" uid="uid://86hobw64ehjg" path="res://scenes/portal.tscn" id="21_jn854"]
 [ext_resource type="PackedScene" uid="uid://c7buurds4lwef" path="res://scenes/user_interface/money_display.tscn" id="21_kh5es"]
+[ext_resource type="PackedScene" uid="uid://ctq78yfnvma1r" path="res://assets/models/Customers/NPC_Base_Unique_Comedian.glb" id="22_ix2hi"]
+[ext_resource type="PackedScene" uid="uid://bdkpkuri22jnq" path="res://assets/models/Customers/NPC_Base_Un_Raver.glb" id="23_76sk1"]
+[ext_resource type="PackedScene" uid="uid://6yaib7aw7n47" path="res://assets/models/Customers/NPC_Base_1_TaxiDriver.glb" id="24_tos64"]
 [ext_resource type="StyleBox" uid="uid://cff3oxr8jourw" path="res://resources/ui_themes/wreath_style_box.tres" id="28_10j44"]
 [ext_resource type="PackedScene" uid="uid://c42y0lkc4tsam" path="res://scenes/user_interface/notebook_hint.tscn" id="29_kh5es"]
 [ext_resource type="PackedScene" uid="uid://c4hnfe6y3qo4c" path="res://scenes/minigames/boiling_minigame.tscn" id="35_qwmll"]
@@ -96,13 +100,17 @@ speech_bubble_dialogue_balloon = ExtResource("4_t7nsl")
 customer_models = Dictionary[int, PackedScene]({
 0: ExtResource("11_qwmll"),
 1: ExtResource("9_4sck7"),
+2: ExtResource("21_1fwfe"),
 3: ExtResource("7_vb12q"),
 4: ExtResource("8_vb12q"),
 5: ExtResource("16_va5sy"),
 6: ExtResource("15_e5tqh"),
 7: ExtResource("14_n1o4x"),
 8: ExtResource("12_4sck7"),
+9: ExtResource("22_ix2hi"),
 10: ExtResource("10_kh5es"),
+11: ExtResource("24_tos64"),
+12: ExtResource("23_76sk1"),
 13: ExtResource("5_0tb7t"),
 14: ExtResource("15_kh5es"),
 15: ExtResource("6_p6xtf"),
