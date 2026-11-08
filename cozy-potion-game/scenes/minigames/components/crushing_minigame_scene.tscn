@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bvwov7462yf1x" path="res://scenes/minigames/components/pestle.tscn" id="1_j31fb"]
 [ext_resource type="PackedScene" uid="uid://dndijkbu6kmrt" path="res://scenes/minigames/components/ingredient_ball.tscn" id="2_fhxy2"]
 [ext_resource type="Texture2D" uid="uid://b3gjpa70gjjns" path="res://assets/sprites/minigame/crushing_minigame/mortar_pestle_tan_side_full.png" id="3_73gys"]
+[ext_resource type="Texture2D" uid="uid://dalw2hx0t15wt" path="res://assets/sprites/minigame/crushing_minigame/blue_mortar.png" id="4_f3myw"]
 [ext_resource type="AudioStream" uid="uid://bno2eeqej66eu" path="res://audio/sfx/ingredient_drop_in_bowl.mp3" id="6_2tac5"]
 [ext_resource type="Script" uid="uid://b85c75nnvco20" path="res://scripts/user_interface/draggable_acceptor_component.gd" id="6_73gys"]
 [ext_resource type="Script" uid="uid://coe1t2e6118dr" path="res://scripts/audio/audio_player.gd" id="7_dp2bl"]
@@ -32,6 +33,7 @@ offset_bottom = 900.0
 color = Color(0, 0, 0, 0.10980392)
 
 [node name="Mortar" type="StaticBody2D" parent="." unique_id=611331611]
+visible = false
 position = Vector2(513, 438)
 
 [node name="MortarPestleTanSideFull" type="Sprite2D" parent="Mortar" unique_id=473328038]
@@ -41,6 +43,17 @@ texture = ExtResource("3_73gys")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar" unique_id=717882679]
 polygon = PackedVector2Array(-190, -237, -186, 52, -151, 144, -60, 224, 163, 247, 390, 224, 482, 131, 510, -16, 533, -161, 689, -246, 618, -118, 590, -10, 581, 151, 515, 278, 391, 346, 211, 346, 5, 346, -122, 310, -213, 206, -252, 71, -250, -83, -246, -249)
+
+[node name="Mortar_Proper" type="StaticBody2D" parent="." unique_id=1960838780]
+position = Vector2(715, 445.99994)
+scale = Vector2(0.5, 0.5)
+
+[node name="MortarTan" type="Sprite2D" parent="Mortar_Proper" unique_id=287694549]
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_f3myw")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Mortar_Proper" unique_id=1419210991]
+polygon = PackedVector2Array(-670.9226, -80.37079, -522.4111, 15.7248535, -276.0567, 106.57898, -8.735962, 127.54529, 218.39929, 83.86542, 452.52332, -40.185364, 539.88306, -153.75299, 651.7035, -157.24738, 615.01245, 83.86542, 490.96167, 321.48383, 228.88245, 524.1584, 3.4943848, 573.0798, -276.0567, 510.18085, -496.2032, 321.48383, -622.00116, 113.56775)
 
 [node name="Pestle" parent="." unique_id=1770029033 node_paths=PackedStringArray("crushing_minigame") instance=ExtResource("1_j31fb")]
 z_index = 1
@@ -83,6 +96,7 @@ color = Color(0.54509807, 1, 0.54509807, 0.078431375)
 
 [node name="DraggableAcceptorComponent" type="Node" parent="Control" unique_id=263375117]
 script = ExtResource("6_73gys")
+reject_processed = true
 metadata/_custom_type_script = "uid://b85c75nnvco20"
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=957697711]

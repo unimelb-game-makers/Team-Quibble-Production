@@ -18,6 +18,8 @@ func _ready() -> void:
 	#reset_button.pressed.connect(reset_potion)
 	make_button.pressed.connect(create_potion)
 	potion_created_container.gui_input.connect(_on_potion_created_container_gui_input)
+	for slot in inventory.inventory.item_slots:
+		slot.add_to_group("CauldronSlots")
 
 func create_potion() -> void:
 	if inventory.get_inventory().size() == 0:
@@ -30,6 +32,12 @@ func create_potion() -> void:
 	potion_recipe.assign(inventory.get_inventory())
 	
 	var created_potion := Alchemy.brew_potion(potion_recipe)
+	
+	for slot in inventory.inventory.item_slots:
+		if slot.item_holder:
+			slot.item_holder.queue_free()
+			slot.item_holder = null
+			slot.drag_acceptor.accepting_items = true
 	
 	potion_created_container.show()
 	potion_created_name_label.text = "You made a %s!" % created_potion.potion_name
@@ -48,3 +56,11 @@ func _on_potion_created_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		potion_created_container.hide()
 		minigame_won.emit()
+
+func close_minigame() -> void:
+	for slot in inventory.inventory.item_slots:
+		if slot.item_holder:
+			player.inventory().blind_add_stack(slot.get_item_stack())
+			slot.item_holder.queue_free()
+			slot.item_holder = null
+			slot.drag_acceptor.accepting_items = true

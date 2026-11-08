@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dmpkd7retf71x"]
+
+[ext_resource type="PackedScene" uid="uid://dqxvi2y4a6sw4" path="res://assets/models/Front Bench/Front Bench.glb" id="1_he220"]
+[ext_resource type="Texture2D" uid="uid://rv0po8hgub76" path="res://assets/models/Front Bench/Textures/wood_table_worn_diff.jpg" id="2_v26su"]
+[ext_resource type="Texture2D" uid="uid://yvmyvjh26rwn" path="res://assets/models/Front Bench/Textures/wood_table_worn_nor_dx.jpg" id="3_sl146"]
+[ext_resource type="Texture2D" uid="uid://p26v8f58t6q1" path="res://assets/models/Front Bench/Textures/wood_table_worn_rough.jpg" id="4_h37ss"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wern1"]
+albedo_texture = ExtResource("2_v26su")
+roughness_texture = ExtResource("4_h37ss")
+normal_enabled = true
+normal_texture = ExtResource("3_sl146")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_he220"]
+data = PackedVector3Array(-2.9417, 0.8448, 0.3198, -2.9417, 1, -0.3198, -2.9417, 1, 0.3198, -2.9417, 0.8448, 0.3198, -2.9417, 0.8448, -0.3198, -2.9417, 1, -0.3198, -2.9417, 1, 0.3198, -2.9417, 0.8448, 0.48479998, -2.9417, 0.8448, 0.3198, -2.9417, 1, 0.3198, -2.9417, 1, 0.48479998, -2.9417, 0.8448, 0.48479998, -2.9417, 0, 0.3198, -2.9417, 0.8448, -0.3198, -2.9417, 0.8448, 0.3198, -2.9417, 0, 0.3198, -2.9417, 0, -0.3198, -2.9417, 0.8448, -0.3198, -2.9417, 0.8448, -0.3198, 1, 1, -0.3198, -2.9417, 1, -0.3198, -2.9417, 0.8448, -0.3198, 1, 0.8448, -0.3198, 1, 1, -0.3198, -2.9417, 0, -0.3198, 1, 0.8448, -0.3198, -2.9417, 0.8448, -0.3198, -2.9417, 0, -0.3198, 1, 0, -0.3198, 1, 0.8448, -0.3198, 1, 0.8448, -0.3198, 1, 1, 0.3198, 1, 1, -0.3198, 1, 0.8448, -0.3198, 1, 0.8448, 0.3198, 1, 1, 0.3198, 1, 0.8448, 0.3198, 1, 1, 0.48479998, 1, 1, 0.3198, 1, 0.8448, 0.3198, 1, 0.8448, 0.48479998, 1, 1, 0.48479998, 1, 0, -0.3198, 1, 0.8448, 0.3198, 1, 0.8448, -0.3198, 1, 0, -0.3198, 1, 0, 0.3198, 1, 0.8448, 0.3198, -2.9417, 0.8448, 0.3198, 1, 0.8448, 0.48479998, 1, 0.8448, 0.3198, -2.9417, 0.8448, 0.3198, -2.9417, 0.8448, 0.48479998, 1, 0.8448, 0.48479998, -2.9417, 0, -0.3198, 1, 0, 0.3198, 1, 0, -0.3198, -2.9417, 0, -0.3198, -2.9417, 0, 0.3198, 1, 0, 0.3198, 1, 1, -0.3198, -2.9417, 1, 0.3198, -2.9417, 1, -0.3198, 1, 1, -0.3198, 1, 1, 0.3198, -2.9417, 1, 0.3198, 1, 1, 0.3198, -2.9417, 1, 0.48479998, -2.9417, 1, 0.3198, 1, 1, 0.3198, 1, 1, 0.48479998, -2.9417, 1, 0.48479998, 1, 0, 0.3198, -2.9417, 0.8448, 0.3198, 1, 0.8448, 0.3198, 1, 0, 0.3198, -2.9417, 0, 0.3198, -2.9417, 0.8448, 0.3198, 1, 0.8448, 0.48479998, -2.9417, 1, 0.48479998, 1, 1, 0.48479998, 1, 0.8448, 0.48479998, -2.9417, 0.8448, 0.48479998, -2.9417, 1, 0.48479998)
+
+[node name="Front Bench" unique_id=86922549 instance=ExtResource("1_he220")]
+
+[node name="Cube_005" parent="." index="0" unique_id=1990873642]
+material_override = SubResource("StandardMaterial3D_wern1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cube_005" index="0" unique_id=1283937169]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_005/StaticBody3D" index="0" unique_id=293441995]
+shape = SubResource("ConcavePolygonShape3D_he220")

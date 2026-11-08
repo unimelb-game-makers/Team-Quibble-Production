@@ -116,7 +116,7 @@ enum ProcessID {
 enum NeedID {
 	NEED_HEAL,
 	NEED_MANA,
-	NEED_CURE,
+	NEED_PARALYSIS,
 	NEED_FOCUS,
 	NEED_STRENGTH,
 	NEED_PERCEPTION,
@@ -151,7 +151,7 @@ var PROCESS_SPRITES: Dictionary[Alchemy.ProcessID, Texture2D] = {
 	ProcessID.PROC_CHOP: preload("res://assets/sprites/ingredients/chopped_fill_128.png"),
 	ProcessID.PROC_GRIND: preload("res://assets/sprites/ingredients/ground_fill_128.png"),
 	ProcessID.PROC_PRESS: preload("res://assets/sprites/ingredients/pressed_fill_128.png"),
-	ProcessID.PROC_BOIL: preload("res://assets/sprites/ingredients/bottle_liquid_128.png"),
+	ProcessID.PROC_BOIL: preload("res://assets/sprites/minigame/boiling_minigame/decoction_fill_128.png"),
 	ProcessID.PROC_DRY: null,
 	ProcessID.PROC_FREEZE: null,
 	ProcessID.PROC_FRY: null,
@@ -263,17 +263,12 @@ func brew_potion(_ingredient_list: Array[PotionIngredient]) -> Potion:
 	return potion
 
 func sum_attributes(_ingredient_list: Array) -> Dictionary[Alchemy.AttributeID, int]:
-	var _attributes: Dictionary[Alchemy.AttributeID, int]
-	_attributes.assign(_ingredient_list[0].attributes.duplicate())
-	if _ingredient_list.size() == 1:
-			return _attributes
-	
-	for ingredient in range(1, _ingredient_list.size()):
-		for attribute in AttributeID.values():
-			print(_ingredient_list[ingredient], ingredient)
-			var new_value = _attributes[attribute] + _ingredient_list[ingredient].attributes[attribute]
-			_attributes[attribute] = new_value
-			
+	var _attributes: Dictionary[Alchemy.AttributeID, int] = {}
+
+	for ingredient in _ingredient_list:
+		for attribute in ingredient.attributes:
+			_attributes[attribute] = _attributes.get(attribute, 0) + ingredient.attributes[attribute]
+
 	return _attributes
 
 

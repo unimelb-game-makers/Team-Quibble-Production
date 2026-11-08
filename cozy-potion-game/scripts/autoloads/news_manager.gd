@@ -9,7 +9,7 @@ signal new_news_event_attribute_data(need: Alchemy.NeedID, multiplier: float)
 
 func _ready() -> void:
 	test_news()
-	
+	TimeCycle.tutorial_day_started.connect(set_new_news_event)
 	TimeCycle.day_started.connect(set_new_news_event)
 
 func set_new_news_event() -> void:

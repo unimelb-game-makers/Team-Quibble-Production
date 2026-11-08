@@ -19,7 +19,6 @@ var day_one_resources: Array[Stack] = \
 func _ready() -> void:
 	# customer_manager.generate_customer_queue([custom_customer[0]])	
 	TimeCycle.tutorial_day_started.connect(_on_day_started)
-	TimeCycle.day_started.connect(_on_other_day_started)
 	portal_news_event_static = portal_news_event
 
 func tutorial_day_one() -> void:
@@ -38,7 +37,3 @@ func _on_day_started() -> void:
 
 	elif TimeCycle.days_passed == 1:
 		tutorial_day_two()
-
-func _on_other_day_started() -> void:
-	TimeCycle.day_started.disconnect(_on_other_day_started)
-	tutorial_day = false

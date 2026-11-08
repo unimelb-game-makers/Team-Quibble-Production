@@ -18,7 +18,7 @@ func set_key(key_name: String) -> void:
 	key = key_name
 	# Other option
 	#label.text = ControlsOptionMenu.STARTING_KEYBINDS[key_name]
-	label.text = key_name
+	label.text = ControlsOptionMenu.STARTING_KEYBINDS.get(key_name, key_name.capitalize())
 	var inputs = InputMap.action_get_events(key_name)
 	if inputs.size() >= 1:
 		button.text = get_key_text(inputs[0])
@@ -30,7 +30,7 @@ func set_key(key_name: String) -> void:
 func update_text() -> void:
 	# Other option
 	# label.text = ControlsOptionMenu.STARTING_KEYBINDS[key_name]
-	label.text = key
+	label.text = ControlsOptionMenu.STARTING_KEYBINDS.get(key, key.capitalize())
 	button.text = InputMap.action_get_events(key)[0].as_text()
 
 

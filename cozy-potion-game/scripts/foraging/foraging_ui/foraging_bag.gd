@@ -1,6 +1,5 @@
 class_name ForagingBag extends CanvasLayer
 
-
 var player: WorldPlayer:
 	get():
 		if not player:
@@ -10,6 +9,8 @@ var player: WorldPlayer:
 @export var bag_display: Control
 @export var blur_rect: ColorRect
 @export var hover_inventory: HoverInventory
+
+var transfer_on_exit: bool = true
 
 func _ready() -> void:
 	if not player:
@@ -30,4 +31,5 @@ func add_stacks_to_pantry() -> void:
 	PersistentInventory.pantry.append_array(stacks)
 
 func _exit_tree() -> void:
-	add_stacks_to_pantry()
+	if transfer_on_exit:
+		add_stacks_to_pantry()

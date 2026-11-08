@@ -21,6 +21,7 @@ func _ready() -> void:
 		if marker is Marker3D:
 			ingredient_foliage_spawn_points.append(marker)
 	
+	apply_tutorial_ingredients()
 	adjust_foliage_weights()
 
 	await get_tree().process_frame
@@ -31,7 +32,31 @@ func adjust_foliage_weights() -> void:
 		if ingredients.has(item):
 			ingredients[item] *= ForestSceneModifications.weighted_items[item]
 
+	if TutorialDirector.tutorial_day:
+		return
+
+	if CustomerManager.customer_queue.is_empty():
+		return
+
+	var customer = CustomerManager.customer_queue.front()
+
+	for ingredient_id in ingredients:
+		var ingredient = Alchemy.find_ingredient_by_id(ingredient_id)
+
+		for attribute in ingredient.attributes:
+			if ingredient.attributes[attribute] <= 0:
+				continue
+
+			var need = Alchemy.attribute_to_need_index.get(attribute, -1)
+
+			if need in customer.needs:
+				ingredients[ingredient_id] *= 1.75
+				break
+
 func spawn_foliage() -> void:
+	if ingredients.is_empty():
+		return
+		
 	for marker in ingredient_foliage_spawn_points:
 		var does_spawn: bool = randf() <= ingredient_foliage_spawn_rate
 		if not does_spawn:
@@ -42,3 +67,23 @@ func spawn_foliage() -> void:
 		foliage_instance.initialise(ingredient)
 		marker.add_child(foliage_instance)
 		foliage_instance.global_position = Utils.get_marker_ground_pos(marker)
+
+func apply_tutorial_ingredients() -> void:
+	if not TutorialDirector.tutorial_day or TimeCycle.days_passed != 2:
+		return
+
+	match name:
+		"TreeFoliageManager":
+			ingredients = {
+				Alchemy.IngredientID.INGR_WILLOW_BARK: 1.0
+			}
+
+		"CaveFoliageManager":
+			ingredients = {
+				Alchemy.IngredientID.INGR_SEA_SALT: 1.0
+			}
+
+		_:
+			ingredients.clear()
+
+	ingredient_foliage_spawn_rate = 1.0

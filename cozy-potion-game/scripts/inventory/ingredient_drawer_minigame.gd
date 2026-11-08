@@ -42,8 +42,13 @@ func display_notebook() -> void:
 
 
 func change_displayed(slot: ItemSlot) -> void:
+	var item = slot.get_item_stack().item
+
+	if item is not PotionIngredient:
+		return
+
 	if notebook == null:
 		add_notebook()
-		display_notebook()
-	
-	notebook.set_potion_ingredient(slot.get_item_stack().item)
+
+	display_notebook()
+	notebook.set_potion_ingredient(item)

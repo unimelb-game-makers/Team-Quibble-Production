@@ -1,5 +1,63 @@
 [gd_scene format=3 uid="uid://bio4negeixv1a"]
 
 [node name="NotebookTutorial" type="Control" unique_id=1551564634]
+custom_minimum_size = Vector2(1440, 810)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TutorialPage1" type="HBoxContainer" parent="." unique_id=2099349950]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LeftPage" type="VBoxContainer" parent="TutorialPage1" unique_id=361497599]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TutorialPage1/LeftPage" unique_id=1687195730]
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.6, 0.6)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 28
+text = "Dearest Mimi, I sincerely thank you for managing my shop in my absence. Teaching has taken much time from me, so I greatly appreciate this. Here is how you run the shop:
+
+Each day, arriving customers will tell you what they need.
+
+You will find a couple ingredients in the drawer. 
+
+Take these ingredients to the stations and process them. 
+
+Then, mix the processed stuff in the cauldron. Whichever attributes are strongest will determine what type of potion you make."
+scroll_active = false
+
+[node name="RightPage" type="VBoxContainer" parent="TutorialPage1" unique_id=1647737956]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TutorialPage1/RightPage" unique_id=285540572]
+layout_mode = 2
+size_flags_vertical = 3
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.6, 0.6)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 28
+text = "If you combine multiple ingredients, the strongest two attributes will create a combined potion. 
+
+Mimi, if you can, use the highest quality ingredients. My clientele will pay extra for it.
+
+Oh, and, you will often need to find ingredients in the Mythical Forest. When the Rune Programmers have fixed the portal, you will be able to go there. Inside the forest, there dwells a most wonderful salesman. 
+
+You may spend gold with him to get some of the best ingredients in the land. When you’re done, you can summon yourself back to the shop from anywhere in the forest.
+
+Best of luck, apprentice.
+Prof Jedus"
+scroll_active = false

@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="Cozy Potion Game"
+config/name="AlcheMimi: Straight Outta Cauldron"
 run/main_scene="uid://2qiws8u3tfkj"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dvdhrcdgs2uwq"
+
+[audio]
+
+buses/default_bus_layout="uid://d011f4gljwwh7"
 
 [autoload]
 
@@ -41,9 +45,17 @@ gdscript/warnings/int_as_enum_without_match=0
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/icon="uid://dvdhrcdgs2uwq"
+window/name="AlcheMimi: Straight Outta Cauldron"
+
+[editor]
+
+version_control/stretch/aspect="expand"
+version_control/stretch/mode="disabled"
 
 [editor_plugins]
 
@@ -60,6 +72,8 @@ money_display=""
 [gui]
 
 common/snap_controls_to_pixels=false
+fonts/stretch/aspect="expand"
+fonts/stretch/mode="disabled"
 
 [input]
 
