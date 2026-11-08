@@ -11,6 +11,8 @@ class_name Portal extends Node3D
 @export var portal_spawn_sounds: AudioResource
 @export var portal_despawn_sounds: AudioResource
 
+@export var require_confirmation: bool = true
+
 var portal_popup: PortalPopup
 
 
@@ -26,9 +28,9 @@ func _ready() -> void:
 		position += Vector3(0,-100,0)
 		underground = true
 
-	elif TimeCycle.visited_forest_this_day:
-		position += Vector3(0,-100,0)
-		underground = true
+	#elif TimeCycle.visited_forest_this_day:
+		#position += Vector3(0,-100,0)
+		#underground = true
 	
 	force_update_transform()
 
@@ -42,17 +44,22 @@ func _ready() -> void:
 	TimeCycle.tutorial_day_started.connect(return_from_underground)
 
 func _on_interact() -> void:
-	if not portal_popup:
-		teleport()
-	else:
-		TimeCycle.visited_forest_this_day = true
-		portal_popup.show()
-		get_tree().get_first_node_in_group("player").accepting_control = false
+	#if not require_confirmation or not portal_popup:
+	teleport()
+	#else:
+		#portal_popup.show()
+		#get_tree().get_first_node_in_group("player").accepting_control = false
 
 func return_from_underground() -> void:
+	if not TutorialDirector.portal_open:
+		return
+
+	#if TimeCycle.visited_forest_this_day:
+		#return
+
 	if underground:
 		underground = false
-		position += Vector3(0,100,0)
+		position += Vector3(0, 100, 0)
 		animate_spawn()
 		force_update_transform()
 

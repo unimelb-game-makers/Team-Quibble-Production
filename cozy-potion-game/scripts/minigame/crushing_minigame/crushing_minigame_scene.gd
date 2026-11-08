@@ -15,7 +15,7 @@ func _ready() -> void:
 func _on_ingredient_added(ingredient_stack: Stack):
 	spawn_ball(ingredient_stack)
 	
-	output_ingredient = process_ingredient(ingredient_stack)
+	output_ingredient = ingredient_stack
 	$AudioPlayer.play()
 
 

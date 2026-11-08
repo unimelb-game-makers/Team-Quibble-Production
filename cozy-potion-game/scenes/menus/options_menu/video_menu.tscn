@@ -12,9 +12,9 @@ theme_override_constants/margin_bottom = 10
 script = ExtResource("1_802n7")
 resolution_option_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/ResolutionControl/OptionButton")
 fps_option_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/FpsControl/OptionButton")
-full_screen_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/FullScreenControl/Button")
-resolution_options = Array[Vector2i]([Vector2i(1280, 720), Vector2i(1920, 1080)])
-fps_options = Array[int]([1, 30, 60, 0])
+full_screen_button = NodePath("PanelContainer/MarginContainer/VBoxContainer/FullScreenControl/CheckBox")
+resolution_options = Array[Vector2i]([Vector2i(1280, 720), Vector2i(1920, 1080), Vector2i(2560, 1440), Vector2i(3840, 2160)])
+fps_options = Array[int]([15, 30, 60, 120, 240, 0])
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=235589810]
 layout_mode = 2
@@ -59,15 +59,14 @@ text = "FPS"
 [node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/VBoxContainer/FpsControl" unique_id=1254976878]
 layout_mode = 2
 
-[node name="FullScreenControl" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1132167269]
+[node name="FullScreenControl" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=332040593]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/FullScreenControl" unique_id=1629097165]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
-text = "Full Screen"
+text = "Fullscreen"
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/FullScreenControl" unique_id=830006104]
+[node name="CheckBox" type="CheckBox" parent="PanelContainer/MarginContainer/VBoxContainer/FullScreenControl" unique_id=808185401]
 layout_mode = 2
-toggle_mode = true
-text = "cool checkbox here"
+button_pressed = true

@@ -3,7 +3,7 @@ render_mode world_vertex_coords;
 uniform sampler2D norRand1 :repeat_enable;
 uniform sampler2D norRand2 :repeat_enable;
 uniform vec2 dir = vec2(-0.2,1.);
-uniform float alpha:hint_range(0.1, 1.0) = 0.65f;
+uniform float alpha:hint_range(0.1, 1.0) = 0.45f;
 uniform float distScaler:hint_range(0.01, 1.0) = 0.1f;
 uniform vec4 baseCol :source_color;
 uniform vec3 deepCol : source_color;
@@ -38,21 +38,21 @@ void fragment() {
 	ALBEDO = mix(ALBEDO,fresnelColor.rgb,fresnel_schlick(VIEW,NORMAL));
 
 	float depth = texture(depthTex,SCREEN_UV).x;
-	vec3 ndc = vec3(SCREEN_UV * 2.0 - 1.0, depth);
+	vec3 ndc = vec3(SCREEN_UV, depth) * 2.0 - 1.0;
   	vec4 world = INV_VIEW_MATRIX * INV_PROJECTION_MATRIX * vec4(ndc, 1.0);
 	vec3 world_position = world.xyz / world.w;
 	float nodeY = NODE_POSITION_WORLD.y;
 	float dis = (nodeY - world_position.y) * distScaler;
-	float mixEdge = step(dis,edgeThreshold);
+	float mixEdge = 1.0 - smoothstep(0.0, edgeThreshold, dis);
 	float rand = texture(edgeNoise,(-dir * TIME + worldXZ)*0.02).x;
 	float mixAmount = clamp(rand+0.2, 0 , 1);
 	ALBEDO = mix(ALBEDO,edgeColor.rgb,mixAmount * mixEdge);	
 	
 
-	float mixDeepAmount = clamp(dis *(deepColOffset + 1.)* 0.6f,0.,1.);
-	mixDeepAmount = pow(mixDeepAmount ,0.85);
-	ALBEDO = mix(ALBEDO,deepCol,mixDeepAmount);
+	float mixDeepAmount = clamp(dis * (deepColOffset + 1.) * 1.5, 0.0, 1.0);
+	mixDeepAmount = pow(mixDeepAmount, 0.65);
+	ALBEDO = mix(ALBEDO, deepCol, mixDeepAmount);
 
 	ROUGHNESS = 0.02;
-	ALPHA = alpha;
+	ALPHA = mix(alpha, 1.0, mixDeepAmount);
 }

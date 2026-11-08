@@ -46,7 +46,7 @@ func _process(_delta: float) -> void:
 	if dragged_control == my_control:
 		move_to_mouse()
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_released("LMB"):
 		being_dragged = false
 		my_control.top_level = false
@@ -60,6 +60,9 @@ func _unhandled_input(event: InputEvent) -> void:
 				parent_to_acceptor()
 	
 	if !event.is_action_pressed("LMB"):
+		return
+
+	if not my_control.is_visible_in_tree():
 		return
 
 	if !my_control.get_global_rect().has_point(my_control.get_global_mouse_position()):
@@ -91,6 +94,8 @@ func return_to_previous() -> void:
 		previous_parent.queue_sort()
 
 func parent_to_acceptor() -> void:
+	print("From: ", previous_parent.name)
+	print("To: ", pending_parent.name if pending_parent else "None")
 	if not pending_parent:
 		return_to_previous()
 		return
@@ -108,7 +113,17 @@ func parent_to_acceptor() -> void:
 	pending_parent = null
 
 func check_blacklist() -> bool:
-	if pending_parent is not ItemSlot:
-		return false
+	var acceptor = get_acceptor(pending_parent)
 
-	return pending_parent.is_item_blacklist(item_resource)
+	if item_resource is PotionIngredient:
+		if acceptor and acceptor.reject_processed and not item_resource.process_applied.is_empty():
+			return true
+
+		if pending_parent is ItemSlot and pending_parent.is_in_group("CauldronSlots"):
+			if item_resource.process_applied.is_empty():
+				return true
+
+	if pending_parent is ItemSlot:
+		return pending_parent.is_item_blacklist(item_resource)
+
+	return false

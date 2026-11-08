@@ -15,6 +15,18 @@ static var customer_queue_needs_list: Array[Alchemy.NeedID]
 var can_force_potion_to_customer: bool = false
 static var returning_from_forest: bool = false
 
+var primary_request_dialogue: DialogueResource
+var secondary_request_dialogue: DialogueResource
+
+const THANK_YOU_LINES: Array[String] = [
+	"Yeah, that's exactly what I needed. Thanks!",
+	"Oh, wonderful! Thank you so much!",
+	"Perfect! This should help a lot.",
+	"Just what I was looking for!",
+	"You're a lifesaver. Thank you!",
+	"Excellent! I'll be back if I need another."
+]
+
 func _ready() -> void:
 	assert(customer_world, "Customer Manager wasn't assigned a customer")
 	customer_interactable = customer_world.interactable
@@ -28,9 +40,9 @@ func _ready() -> void:
 	DevTools.forced_customer_leave.connect(buy_potion.bind(crack))
 	
 	await get_tree().process_frame
-	if returning_from_forest:
+	if not customer_queue.is_empty():
 		send_customer()
-		returning_from_forest = false
+	returning_from_forest = false
 
 func add_model_to_customer(customer: CustomerWorld, id: Customer.CustomerID) -> void:
 	var model_scene = customer_models.get(id)
@@ -47,17 +59,17 @@ func add_model_to_customer(customer: CustomerWorld, id: Customer.CustomerID) -> 
 	model.scale *= 1.2
 
 func _on_day_started() -> void:
-	#this await is so that the news manager, which generates
-	#news at the start of the day, has time to do that
-	#before we need to use it here
 	await get_tree().create_timer(1).timeout
 	generate_customer_queue()
 	send_customer()
+	SaveManager.save_game()
+
 
 func _on_tutorial_day_started() -> void:
 	await get_tree().create_timer(1).timeout
 	generate_tutorial_customers()
 	send_customer()
+	SaveManager.save_game()
 
 #generates some number of customers to be drawn from during the day
 func generate_customer_queue() -> void:
@@ -108,19 +120,37 @@ func generate_tutorial_customers() -> void:
 
 func send_customer() -> void:
 	customer_world.customer = get_next_customer()
-	if not customer_world.customer :
+	if not customer_world.customer:
 		print_debug("customer_world is null!!!")
 		return
-	
+
+	primary_request_dialogue = CustomerDialogue.get_potion_request_line(
+		Alchemy.attribute_to_need_index.find_key(customer_world.customer.primary_need) as Alchemy.AttributeID,
+		customer_world.customer.customer_id
+	)
+
+	secondary_request_dialogue = null
+
+	if customer_world.customer.secondary_need >= 0:
+		secondary_request_dialogue = CustomerDialogue.get_potion_request_line(
+			Alchemy.attribute_to_need_index.find_key(customer_world.customer.secondary_need) as Alchemy.AttributeID,
+			customer_world.customer.customer_id
+		)
+
 	add_model_to_customer(customer_world, customer_world.customer.customer_id)
 	customer_anim_player.play("person_in")
 	Utils.corner_needs_list_manager.create_list(customer_world.customer)
 
 func recall_customer() -> void:
+	if customer_queue.is_empty():
+		return
+
 	customer_queue.pop_front()
 	customer_anim_player.play_backwards("person_in")
 	await get_tree().create_timer(1).timeout
-	send_customer()
+
+	if not customer_queue.is_empty():
+		send_customer()
 
 func _on_customer_interact() -> void:
 	show_acceptor_dialogue()
@@ -129,14 +159,15 @@ func show_acceptor_dialogue() -> void:
 	var customer = customer_world.customer
 	var balloons: Array[SpeechBubbleBalloon]
 	# Display dialogue for first request
-	var request_dialogue_resource = CustomerDialogue.get_potion_request_line(customer.primary_need, customer.customer_id)
+	var request_dialogue_resource = primary_request_dialogue
+	
 	var balloon: SpeechBubbleBalloon = DialogueManager.show_dialogue_balloon_scene(acceptor_dialogue_balloon, request_dialogue_resource,"start")
 	balloons.append(balloon)
 	balloon.set_severity_values(customer.need_severities.front())
 	
 	# Display dialogue for second request if able, and shift that dialogue's position
 	if customer.secondary_need >= 0:
-		request_dialogue_resource = CustomerDialogue.get_potion_request_line(customer.secondary_need, customer.customer_id)
+		request_dialogue_resource = secondary_request_dialogue
 		balloon = DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon, request_dialogue_resource,"start")
 		balloons.append(balloon)
 		balloon.flip_x()
@@ -206,7 +237,15 @@ func other_accepted():
 
 func buy_potion(potion: Potion) -> void:
 	Utils.corner_needs_list_manager.clear_list()
-	DialogueManager.show_dialogue_balloon_scene(speech_bubble_dialogue_balloon, dialogue_resource, "accept")
+	var thank_you_dialogue = DialogueManager.create_resource_from_text(
+		"~ start\n%s" % THANK_YOU_LINES.pick_random()
+	)
+
+	DialogueManager.show_dialogue_balloon_scene(
+		speech_bubble_dialogue_balloon,
+		thank_you_dialogue,
+		"start"
+	)
 	await DialogueManager.dialogue_ended
 	if customer_world.customer.time_allotment:
 		TimeCycle.progress_day(customer_world.customer.time_allotment)
@@ -222,6 +261,9 @@ func refuse_potion() -> void:
 
 #gets the next customer of the day, or else null
 func get_next_customer() -> Customer:
+	if customer_queue.is_empty():
+		return null
+
 	return customer_queue.front()
 
 func get_potion_value(potion: Potion, customer: Customer) -> int:
