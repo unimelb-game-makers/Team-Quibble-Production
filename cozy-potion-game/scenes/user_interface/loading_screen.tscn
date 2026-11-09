@@ -1,0 +1,277 @@
+[gd_scene format=3 uid="uid://b6tkpvgul4k2m"]
+
+[ext_resource type="Theme" uid="uid://b5rk2obep48bo" path="res://resources/ui_themes/main_menu_theme.tres" id="1_7x5wj"]
+[ext_resource type="Texture2D" uid="uid://dvdhrcdgs2uwq" path="res://assets/models/mimi/Mimi - Side.png" id="2_a6tcj"]
+[ext_resource type="Texture2D" uid="uid://cxrxecaecrg8v" path="res://assets/sprites/ui/ui_box_corner_full_top_left.png" id="3_1t5gd"]
+[ext_resource type="Texture2D" uid="uid://cj6mhlvo0bygn" path="res://assets/sprites/ui/ui_box_corner_full_top_right.png" id="4_1itgw"]
+[ext_resource type="Texture2D" uid="uid://w2v82jenbtkl" path="res://assets/sprites/ui/ui_box_corner_full_bottom_left.png" id="5_jhq7q"]
+
+[sub_resource type="Animation" id="Animation_i7jsx"]
+resource_name = "FADE"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadScreen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_sygov"]
+resource_name = "FADE_OUT"
+
+[sub_resource type="Animation" id="Animation_atojv"]
+resource_name = "FADE_START"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadScreen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_k2gmx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LoadScreen:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sygov"]
+_data = {
+&"FADE": SubResource("Animation_i7jsx"),
+&"FADE_OUT": SubResource("Animation_sygov"),
+&"FADE_START": SubResource("Animation_atojv"),
+&"RESET": SubResource("Animation_k2gmx")
+}
+
+[sub_resource type="Animation" id="Animation_1itgw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(970.00006, 431.00003)]
+}
+
+[sub_resource type="Animation" id="Animation_jhq7q"]
+resource_name = "mimihover"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.9666667, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.13962634015954636, 0.13962634015954636, -0.13962634015954636, 0.13962634015954636, -0.13962634015954636]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.9666667, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(970, 410), Vector2(970.00006, 431.00003), Vector2(970, 410), Vector2(970.00006, 431.00003), Vector2(970, 410)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4a41"]
+_data = {
+&"RESET": SubResource("Animation_1itgw"),
+&"mimihover": SubResource("Animation_jhq7q")
+}
+
+[node name="ScreenTransitionRect" type="ColorRect" unique_id=259199688]
+z_index = 4
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_7x5wj")
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=981577426 groups=["SceneTransitionRectAnimPlayer"]]
+libraries/ = SubResource("AnimationLibrary_sygov")
+autoplay = &"FADE_START"
+
+[node name="LoadScreen" type="ColorRect" parent="." unique_id=1485878394]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.84788394, 0.71115106, 0.55744296, 1)
+
+[node name="MimiSide" type="Sprite2D" parent="LoadScreen" unique_id=464046103]
+position = Vector2(970.00006, 431.00003)
+scale = Vector2(0.27362204, 0.27362204)
+texture = ExtResource("2_a6tcj")
+offset = Vector2(27.91, -200.055)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LoadScreen/MimiSide" unique_id=1226439010]
+libraries/ = SubResource("AnimationLibrary_l4a41")
+
+[node name="CenterContainer" type="CenterContainer" parent="LoadScreen" unique_id=1772905339]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="LoadScreen/CenterContainer" unique_id=552931519]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5470742, 0.22683242, 0.00350594, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.38039216)
+theme_override_colors/font_outline_color = Color(0.06469653, 0.06469653, 0.06469653, 1)
+theme_override_constants/shadow_offset_x = 6
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 8
+text = "Loading!"
+
+[node name="Corners" type="Control" parent="LoadScreen" unique_id=943016459]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FrillyCorner" type="TextureRect" parent="LoadScreen/Corners" unique_id=1249482539]
+layout_mode = 1
+offset_left = -64.0
+offset_top = -75.0
+offset_right = 179.0
+offset_bottom = 168.0
+texture = ExtResource("3_1t5gd")
+expand_mode = 1
+flip_h = true
+flip_v = true
+
+[node name="FrillyCorner3" type="TextureRect" parent="LoadScreen/Corners" unique_id=892921752]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -68.0
+offset_top = -141.0
+offset_right = 175.0
+offset_bottom = 102.0
+grow_vertical = 0
+texture = ExtResource("4_1itgw")
+expand_mode = 1
+
+[node name="FrillyCorner4" type="TextureRect" parent="LoadScreen/Corners" unique_id=1089527841]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -184.0
+offset_top = -149.0
+offset_right = 59.0
+offset_bottom = 94.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("3_1t5gd")
+expand_mode = 1
+
+[node name="FrillyCorner2" type="TextureRect" parent="LoadScreen/Corners" unique_id=427099936]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -177.0
+offset_top = -88.0
+offset_right = 66.0
+offset_bottom = 155.0
+grow_horizontal = 0
+texture = ExtResource("5_jhq7q")
+expand_mode = 1
