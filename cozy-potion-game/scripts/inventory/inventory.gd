@@ -126,12 +126,9 @@ func add_some_to_slot(stack: Stack, slot: ItemSlot, amount: int) -> Stack:
 # Orders items in inventory according to parsed sort key
 func sort_items(sort_func: Callable) -> void:
 	item_slots.sort_custom(sort_func)
-	
-	for node in item_slots:
-		storage.remove_child(node)
-	
-	for node in item_slots:
-		storage.add_child(node)
+
+	for i in range(item_slots.size()):
+		storage.move_child(item_slots[i], i)
 
 
 # Returns array of stacks current stored in inventory

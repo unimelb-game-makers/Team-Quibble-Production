@@ -6,6 +6,7 @@ class_name DraggableAcceptorComponent extends Node
 ## parent has at least max_items number of children.
 @export var use_max_items: bool = false
 @export var max_items: int = 1
+@export var reject_processed: bool = false
 var my_control: Control
 var accepting_items: bool = true
 var blacklist: Array[Resource]
@@ -21,7 +22,7 @@ func _ready() -> void:
 	my_control = get_parent()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not event is InputEventMouseMotion:
 		# print_debug(1)
 		return
@@ -32,7 +33,6 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 	if not my_control.is_visible_in_tree():
-		print_debug(3)
 		return
 
 	if not accepting_items:
@@ -46,7 +46,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		DraggableComponent.pending_parent = my_control
 	
 	if not intersecting_mouse and DraggableComponent.pending_parent == my_control:
-		DraggableComponent.pending_parent == null
+		DraggableComponent.pending_parent = null
 
 func is_full() -> bool:
 	if not use_max_items:

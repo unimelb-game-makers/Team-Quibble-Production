@@ -14,8 +14,12 @@ font_size = 32
 [node name="TitleScreen" type="CanvasLayer" unique_id=1226151043]
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1747670831]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=722494161]
 handle_input_locally = false
@@ -23,6 +27,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="TitleScreenFakeForest" parent="SubViewportContainer/SubViewport" unique_id=1357049931 instance=ExtResource("1_n17qi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1177323, -0.30047297, 0.7976668)
 
 [node name="Control" type="Control" parent="." unique_id=47089385 node_paths=PackedStringArray("options_button", "continue_button", "new_game_button", "quit_button", "credits_button", "close_credits_button", "credits_screen", "buttons_container", "title_label")]
 layout_mode = 3
@@ -39,7 +44,7 @@ new_game_button = NodePath("MarginContainer/ButtonsContainer/NewGameButton")
 quit_button = NodePath("MarginContainer/ButtonsContainer/QuitButton")
 credits_button = NodePath("MarginContainer/ButtonsContainer/CreditsButton")
 close_credits_button = NodePath("MarginContainer2/Control/CloseCreditsButton")
-credits_screen = NodePath("MarginContainer2")
+credits_screen = NodePath("MarginContainer2/Control")
 buttons_container = NodePath("MarginContainer/ButtonsContainer")
 title_label = NodePath("MarginContainer/VBoxContainer/TitleLabel")
 shop_path = "res://scenes/enviroments/shop_revamp.tscn"
@@ -110,9 +115,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 320.00003
+offset_top = 210.99998
+offset_right = 290.0
+offset_bottom = 48.142822
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 0
+scale = Vector2(0.7, 0.7)
 theme_override_constants/margin_left = 300
 theme_override_constants/margin_top = 300
 theme_override_constants/margin_right = 300
@@ -126,6 +135,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -586.0
+offset_top = -21.5
+offset_right = 586.0
+offset_bottom = 21.5
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -145,8 +158,8 @@ alignment = 1
 [node name="Label" type="Label" parent="Control/MarginContainer2/Control/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1759481511]
 layout_mode = 2
 size_flags_vertical = 1
-text = "Daniel Sandvik - Design lead, Producer, Music
-Hamish Luke - Programming lead, Design
+text = "Daniel Sandvik - Creative Director, Producer, Music
+Hamish Luke - Lead Programmer, Design
 Ren Jackson - 3D Art, Design
 Stefanus Hanson Hadikristijanto - 3D Art
 Stephanie Seoyoung Min - 2D Art
@@ -161,15 +174,32 @@ text = "Dylan Wotherspoon - Programming
 Jay Kim - Programming
 Ramsey Morris - Programming
 Jeremy Wong - Music
-Thomas Afford - Music"
+Thomas Afford - Music
+Leo Liu — Production Officer, Assisting Programmer
+Dante Di Muccio — Production Officer
+Alex Wang — Production Officer"
 label_settings = SubResource("LabelSettings_4dvm4")
+
+[node name="Label3" type="Label" parent="Control/MarginContainer2/Control/PanelContainer/VBoxContainer/HBoxContainer" unique_id=1760694759]
+layout_mode = 2
+size_flags_vertical = 1
+text = "Special Thanks to:
+Keijo Sandvik — Recording Engineer, Music
+Owen Fong — Drums
+Chanon Charnchainarong — E. Bass
+Box Hill Institute - Recording Studio B
+The UniMelb Game Makers Club (GMC) community!"
+label_settings = SubResource("LabelSettings_4dvm4")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/MarginContainer2/Control/PanelContainer/VBoxContainer" unique_id=126341098]
+layout_mode = 2
 
 [node name="CloseCreditsButton" type="Button" parent="Control/MarginContainer2/Control" unique_id=2001097079]
 layout_mode = 0
-offset_left = 590.0
-offset_top = 495.0
-offset_right = 737.0
-offset_bottom = 566.0
+offset_left = 554.2857
+offset_top = 458.57144
+offset_right = 701.28577
+offset_bottom = 529.5714
 text = "Close"
 
 [node name="TitleMusicController" type="Node" parent="." unique_id=2130283347]

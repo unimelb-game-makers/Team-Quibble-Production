@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c116pieuq8hhv"]
+
+[ext_resource type="PackedScene" uid="uid://cotyslk8lxn27" path="res://assets/models/PH/Decoction_Pot/DecoctPot.glb" id="1_nb2hb"]
+[ext_resource type="Texture2D" uid="uid://cxe3mxn3w41rj" path="res://assets/models/PH/Decoction_Pot/DecoctPot_T/DecoctPot_Al.png" id="2_1ehlr"]
+[ext_resource type="Texture2D" uid="uid://c134clklrc0bm" path="res://assets/models/Decoction_Pot/Textures/Pot/DecoctPot_AO.png" id="3_jo5wy"]
+[ext_resource type="Texture2D" uid="uid://d0d5l4mc5na6p" path="res://assets/models/PH/Decoction_Pot/DecoctPot_T/DecoctPot_Disp.exr" id="4_fmqck"]
+[ext_resource type="Texture2D" uid="uid://brhuwinroyv0m" path="res://assets/models/Decoction_Pot/Textures/Pot/DecoctPot_Metalness.png" id="5_6vhxn"]
+[ext_resource type="Texture2D" uid="uid://b3udyy5djp8og" path="res://assets/models/Decoction_Pot/Textures/Pot/DecoctPot_Normal.png" id="6_40r1p"]
+[ext_resource type="Texture2D" uid="uid://gqyjcogynfek" path="res://assets/models/Decoction_Pot/Textures/Pot/DecoctPot_Roughness.png" id="7_3rno7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hcdtq"]
+albedo_texture = ExtResource("2_1ehlr")
+metallic = 1.0
+metallic_texture = ExtResource("5_6vhxn")
+roughness_texture = ExtResource("7_3rno7")
+normal_enabled = true
+normal_texture = ExtResource("6_40r1p")
+ao_enabled = true
+ao_texture = ExtResource("3_jo5wy")
+heightmap_enabled = true
+heightmap_texture = ExtResource("4_fmqck")
+
+[node name="DecoctPot" unique_id=1265880495 instance=ExtResource("1_nb2hb")]
+
+[node name="Decoction_Pot" parent="." index="0" unique_id=59571549]
+material_override = SubResource("StandardMaterial3D_hcdtq")

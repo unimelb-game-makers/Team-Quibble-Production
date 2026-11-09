@@ -21,7 +21,7 @@
    "COLOUR_HEX": "#7D7D7D",
    "ATTR_ID": "ATTR_PARALYSIS",
    "PRIMARY_ATTRIBUTE": "Paralysis",
-   "NEED_ID": "NEED_CURE"
+   "NEED_ID": "NEED_PARALYSIS"
  },
  {
    "POT_ID": "POT_FOCUS",

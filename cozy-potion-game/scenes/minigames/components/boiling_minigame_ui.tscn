@@ -161,6 +161,8 @@ _data = {
 }
 
 [node name="BoilingMinigame" type="CanvasLayer" unique_id=1533572996 node_paths=PackedStringArray("boiling_timer", "animation_player", "thermometer_sprite", "needle_sprite", "ingredient_sprites", "acceptor", "draggable_hint_rect")]
+scale = Vector2(0.7, 0.7)
+transform = Transform2D(0.7, 0, 0, 0.7, 0, 0)
 script = ExtResource("1_11f7o")
 progress_variance_array = Array[Curve]([SubResource("Curve_ii47s"), SubResource("Curve_siphr"), SubResource("Curve_b5035")])
 boiling_timer = NodePath("BoilingTimer")
@@ -173,7 +175,7 @@ draggable_hint_rect = NodePath("Control/ColorRect")
 process = 3
 
 [node name="TeapotFull" type="Sprite2D" parent="." unique_id=2053737364]
-position = Vector2(800, 440)
+position = Vector2(1114.2858, 590)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_11eex")
 
@@ -184,7 +186,7 @@ texture = ExtResource("3_n1qmb")
 [node name="Thermometer" type="Sprite2D" parent="." unique_id=2072749853]
 self_modulate = Color(1, 1, 1, 0)
 texture_filter = 1
-position = Vector2(830, 870)
+position = Vector2(1144.2858, 1020)
 texture = SubResource("GradientTexture2D_x2l7t")
 
 [node name="Needle" type="Sprite2D" parent="Thermometer" unique_id=55972828]
@@ -204,21 +206,21 @@ position = Vector2(800, 280)
 
 [node name="ColorableSprite" type="Sprite2D" parent="Ingredients" unique_id=1783808881]
 z_index = -1
-position = Vector2(-42, -8)
+position = Vector2(237.14287, 119.99999)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_x0t0n")
 script = ExtResource("5_52bvf")
 
 [node name="ColorableSprite2" type="Sprite2D" parent="Ingredients" unique_id=898555877]
 z_index = -1
-position = Vector2(46, 8)
+position = Vector2(334.28568, 137.14287)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_x0t0n")
 script = ExtResource("5_52bvf")
 
 [node name="ColorableSprite3" type="Sprite2D" parent="Ingredients" unique_id=1668329368]
 z_index = -1
-position = Vector2(182, -8)
+position = Vector2(455.71423, 117.14286)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_x0t0n")
 script = ExtResource("5_52bvf")
@@ -226,14 +228,15 @@ script = ExtResource("5_52bvf")
 [node name="Control" type="Control" parent="." unique_id=1438279605]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 630.0
-offset_top = 301.0
-offset_right = 1056.0
-offset_bottom = 498.0
+offset_left = 944.28577
+offset_top = 451.00006
+offset_right = 1370.2858
+offset_bottom = 648.0001
 mouse_filter = 2
 
 [node name="DraggableAcceptorComponent" type="Node" parent="Control" unique_id=566397651]
 script = ExtResource("6_och44")
+reject_processed = true
 metadata/_custom_type_script = "uid://b85c75nnvco20"
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=718113165]

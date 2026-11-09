@@ -64,8 +64,14 @@ func slot_hovered(slot: ItemSlot) -> void:
 
 # Set Info sheet based on item
 func update_info_sheet(stack: Stack):
-	info_sheet.global_position = get_global_mouse_position()+Vector2(10,10)
+	info_sheet.global_position = get_global_mouse_position() + Vector2(10, 10)
 	info_name.text = stack.get_item_name()
+
+	if stack.item is PotionIngredient:
+		info_name.text += "\nValue: %d gold" % stack.item.ingredient_price
+	elif stack.item is Potion:
+		info_name.text += "\nValue: %d gold" % stack.item.base_gold_value
+
 	info_sheet.visible = true
 
 

@@ -19,7 +19,7 @@ func _ready() -> void:
 func setup_scene_switcher_menu_button() -> void:
 	for string in destination_strings:
 		scene_switcher_button.get_popup().add_item(string)
-		scene_switcher_button.get_popup().id_pressed.connect(switch_scene)
+	scene_switcher_button.get_popup().id_pressed.connect(switch_scene)
 
 func switch_scene(id: int) -> void:
 	SceneManager.change_active_scene_to_file(destination_strings[id])

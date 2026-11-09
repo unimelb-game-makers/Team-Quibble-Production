@@ -8,6 +8,7 @@ const NOTEBOOK_PROCESS_VIEW = preload("uid://b8oobmqd0kur3")
 const NOTEBOOK = preload("uid://bgulnwmxdnlnl")
 
 var loaded_page : Control
+static var open_on_tutorial_page: bool = false
 
 @onready var display: Control = $ThePage/PageCenter/Display
 
@@ -26,7 +27,11 @@ static func open_notebook(popup_subwindow : PopupSubWindow) -> void:
 
 func _ready() -> void:
 	page_turn_animation.visible = false
-	load_page_without_animation(NOTEBOOK_PEDIA_VIEW)
+	if open_on_tutorial_page:
+		open_on_tutorial_page = false
+		load_page_without_animation(NOTEBOOK_TUTORIAL)
+	else:
+		load_page_without_animation(NOTEBOOK_PEDIA_VIEW)
 	
 	exit_button.pressed.connect(win_minigame)
 	

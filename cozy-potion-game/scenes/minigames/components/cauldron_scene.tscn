@@ -50,7 +50,7 @@ text = "Reset Potion"
 
 [node name="Container" type="VBoxContainer" parent="MarginContainer" unique_id=487341122]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 4
 
 [node name="CurrentPotion" type="VBoxContainer" parent="MarginContainer/Container" unique_id=2085211380]
 custom_minimum_size = Vector2(300, 100)

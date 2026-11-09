@@ -45,7 +45,7 @@ func _on_ingredient_added(ingredient_stack: Stack):
 	for ingredient_sprite in ingredient_sprites.get_children():
 		ingredient_sprite.set_texture(ingredient_stack.get_item_sprite())
 	
-	output_ingredient = process_ingredient(ingredient_stack)
+	output_ingredient = ingredient_stack
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
