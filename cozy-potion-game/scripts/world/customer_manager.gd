@@ -11,7 +11,7 @@ class_name CustomerManager extends Node
 
 var customer_interactable: Interactable
 static var customer_queue: Array[Customer]
-var customer_queue_needs_list: Array[Alchemy.NeedID]
+static var customer_queue_needs_list: Array[Alchemy.NeedID]
 var can_force_potion_to_customer: bool = false
 static var returning_from_forest: bool = false
 

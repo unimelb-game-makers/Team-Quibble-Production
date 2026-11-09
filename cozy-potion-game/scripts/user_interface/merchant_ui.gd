@@ -2,9 +2,16 @@ class_name MerchantUI extends CanvasLayer
 
 @export var merchant_item_box_scene: PackedScene
 @export var item_box_container: VBoxContainer
+@export var merchant_dialogue: Array[String]
+@export var dialogue_label: Label
 
 func _ready() -> void:
 	populate_container()
+
+
+func randomize_dialogue() -> void:
+	##this one gets called by the interactable on the merchant
+	dialogue_label.text = merchant_dialogue.pick_random()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("close_minigame"):

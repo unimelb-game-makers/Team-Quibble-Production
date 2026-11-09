@@ -8,4 +8,5 @@ func _ready() -> void:
 	
 func _on_interact() -> void:
 	merchant_ui.show()
+	merchant_ui.randomize_dialogue()
 	get_tree().get_first_node_in_group(Utils.Group.GROUP_PLAYER).accepting_control = false

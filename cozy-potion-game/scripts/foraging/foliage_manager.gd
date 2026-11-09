@@ -15,7 +15,6 @@ var ingredient_foliage_spawn_points: Array[Marker3D]
 ## for each marker, the chance that it spawns a foliage
 @export var ingredient_foliage_spawn_rate: float
 
-
 func _ready() -> void:
 	for marker in get_children():
 		if marker is Marker3D:
@@ -23,6 +22,8 @@ func _ready() -> void:
 	
 	apply_tutorial_ingredients()
 	adjust_foliage_weights()
+	filter_ingredients_by_needed()
+	filter_purchaseable_ingredients()
 
 	await get_tree().process_frame
 	spawn_foliage()
@@ -32,6 +33,20 @@ func adjust_foliage_weights() -> void:
 		if ingredients.has(item):
 			ingredients[item] *= ForestSceneModifications.weighted_items[item]
 
+func filter_ingredients_by_needed() -> void:
+	## sets the weight of ingredients that do not contain a needed attribute
+	for ingredient in ingredients:
+		var ing_res: PotionIngredient = Alchemy.find_ingredient_by_id(ingredient)
+		if not ing_res.get_greatest_attribute() in CustomerManager.customer_queue_needs_list:
+			ingredients[ingredient] = 0
+			print_debug("%s will not spawn because unneeded" % ing_res.ingredient_name)
+
+func filter_purchaseable_ingredients() -> void:
+	for ingredient in ingredients:
+		var ing_res: PotionIngredient = Alchemy.find_ingredient_by_id(ingredient)
+		if ing_res.purchaseable:
+			ingredients[ingredient] = 0
+			print_debug("%s will not spawn because purchaseable" % ing_res.ingredient_name)
 	if TutorialDirector.tutorial_day:
 		return
 

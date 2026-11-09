@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://bom07i0gr8r3s"]
+
+[ext_resource type="Texture2D" uid="uid://o7on1gjfsed2" path="res://assets/sprites/ui/ui_box_frame_full.png" id="1_bccrw"]
+
+[resource]
+texture = ExtResource("1_bccrw")
+expand_margin_left = 64.0
+expand_margin_top = 64.0
+expand_margin_right = 64.0
+expand_margin_bottom = 64.0
+axis_stretch_horizontal = 2

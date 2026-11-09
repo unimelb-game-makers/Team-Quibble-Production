@@ -49,6 +49,8 @@ func apply_process(id: Alchemy.ProcessID) -> void:
 	for attribute in process.attribute_changes:
 		attributes[attribute] *= int(process.attribute_changes[attribute])
 
+func get_greatest_attribute() -> Alchemy.AttributeID:
+	return attributes.find_key(attributes.values().max())
 # copy ingredient into player inventory to avoid processing remaining ingredients in drawer
 func copy() -> PotionIngredient:
 	var ingredient = PotionIngredient.new()
